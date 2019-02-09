@@ -1,0 +1,128 @@
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+[[plugins]]
+repo = 'Shougo/denite.nvim'
+hook_add = '''
+" Denite用プレフィックス
+nmap [denite] <Nop>
+map <C-j> [denite]
+
+" プロジェクト内のファイル検索
+nmap <silent> [denite]<C-P> :<C-u>Denite file_rec -highlight-mode-insert=Search<CR>
+" バッファに展開中のファイル検索
+nmap <silent> [denite]<C-B> :<C-u>Denite buffer -highlight-mode-insert=Search<CR>
+" ファイル内の関数/クラス等の検索
+nmap <silent> [denite]<C-O> :<C-u>Denite outline -highlight-mode-insert=Search<CR>
+" dotfiles配下をカレントにしてfile_rec起動
+nmap <silent> [denite]<C-V> :<C-u>call denite#start([{'name': 'file_rec', 'args': ['~/.dotfiles']}]) -highlight-mode-insert=Search=Search<CR>
+
+" 上下移動を<C-N>, <C-P>
+call denite#custom#map('normal', '<C-N>', '<denite:move_to_next_line>')
+call denite#custom#map('normal', '<C-P>', '<denite:move_to_previous_line>')
+call denite#custom#map('insert', '<C-N>', '<denite:move_to_next_line>')
+call denite#custom#map('insert', '<C-P>', '<denite:move_to_previous_line>')
+" 入力履歴移動を<C-J>, <C-K>
+call denite#custom#map('insert', '<C-J>', '<denite:assign_next_text>')
+call denite#custom#map('insert', '<C-K>', '<denite:assign_previous_text>')
+" 横割りオープンを`<C-S>`
+call denite#custom#map('insert', '<C-S>', '<denite:do_action:split>')
+" 縦割りオープンを`<C-I>`
+call denite#custom#map('insert', '<C-I>', '<denite:do_action:vsplit>')
+" タブオープンを`<C-O>`
+call denite#custom#map('insert', '<C-O>', '<denite:do_action:tabopen>')
+
+" file_rec検索時にfuzzymatchを有効にし、検索対象から指定のファイルを除外
+call denite#custom#source(
+    \ 'file_rec', 'matchers', ['matcher_fuzzy', 'matcher_project_files', 'matcher_ignore_globs'])
+
+" 検索対象外のファイル指定
+call denite#custom#filter('matcher_ignore_globs', 'ignore_globs',
+    \ [ '.git/', '.ropeproject/', '__pycache__/',
+    \   'venv/', 'images/', '*.min.*', 'img/', 'fonts/'])
+" grepする
+command! Dgrep execute(":Denite grep -buffer-name=grep-buffer-denite")
+" Denite grep結果を再表示する
+command! Dresume execute(":Denite -resume -buffer-name=grep-buffer-denite")
+" resumeしたgrep結果の次の行の結果へ飛ぶ
+command! Dnext execute(":Denite -resume -buffer-name=grep-buffer-denite -select=+1 -immediately")
+" resumeしたgrep結果の前の行の結果へ飛ぶ
+command! Dprev execute(":Denite -resume -buffer-name=grep-buffer-denite -select=-1 -immediately")
+'''
+
+########################## LSP plugins ##########################
+[[plugins]]
+repo = 'prabirshrestha/asyncomplete.vim'
+
+[[plugins]]
+repo = 'prabirshrestha/asyncomplete-lsp.vim'
+
+########################## UI plugins ##########################
+[[plugins]]
+repo='scrooloose/nerdtree'
+hook_add = '''
+    let NERDTreeShowHidden = 1
+'''
+
+[[plugins]]
+repo = 'jistr/vim-nerdtree-tabs'
+hook_add = '''
+    " トグル設定
+    map <C-e> <plug>NERDTreeTabsToggle<CR>
+    " 起動時有効
+    let g:nerdtree_tabs_open_on_console_startup=1
+    " 起動時にファイルにカーソルを合わせる
+    function! s:MoveCursorAtStart()
+        call feedkeys("\<C-l>")
+    endfunction
+    autocmd VimEnter * NERDTree | call s:MoveCursorAtStart()
+'''
+depends = ['nerdtree']
+
+[[plugins]]
+repo = 'vim-airline/vim-airline'
+hook_add = '''
+    if has('unix')
+    	set t_Co=256
+    	let &t_AB="\e[48;5;%dm"
+    	let &t_AF="\e[38;5;%dm"
+    endif
+
+    " タブラインの表示
+    let g:airline#extensions#tabline#enabled = 1
+    " （タブが一個の場合）バッファのリストをタブラインに表示する機能をオフ
+    let g:airline#extensions#tabline#show_buffers = 0
+    " 0でそのタブで開いてるウィンドウ数、1で左のタブから連番
+    let g:airline#extensions#tabline#tab_nr_type = 1
+    " パワーラインフォントの使用
+    let g:airline_powerline_fonts = 1
+    " aleの表示
+    let g:airline#extensions#ale#enabled = 1
+    " Do not collapse the status line while having multiple windows
+    let g:airline_inactive_collapse = 0
+    " tagbarの表示
+    let g:airline#extensions#tagbar#enabled = 1
+    " virtualenvを有効
+    let g:airline#extensions#virtualenv#enabled = 1
+'''
+
+[[plugins]]
+repo = 'morhetz/gruvbox'
+hook_add = '''
+colorscheme gruvbox
+
+set background=dark
+set t_Co=256            " gruvboxをカラースキーマにするときに必要！
+let g:ligthline = { 'colorscheme': 'gruvbox' }
+'''
+
+[[plugins]]
+repo = 'cespare/vim-toml'
+
+########################## Git plugins ##########################
+[[plugins]]
+repo = "airblade/vim-gitgutter"
+
+[[plugins]]
+repo = "tpope/vim-fugitive"
+
