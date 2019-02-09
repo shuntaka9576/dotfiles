@@ -1,7 +1,16 @@
+########################## Git plugins ##########################
+[[plugins]]
+repo = "airblade/vim-gitgutter"
+hook_add = '''
+    let g:gitgutter_map_keys = 0
+    nmap [g <Plug>GitGutterPrevHunk
+    nmap ]g <Plug>GitGutterNextHunk
+'''
+
 [[plugins]]
 repo = 'tpope/vim-fugitive'
 hook_add = '''
-command Gst :Gstatus
-command Gdf :Gdiff
-command Gbl :Gblame
+    command Gst :Gstatus
+    command Gdf :Gdiff
+    command Gbl :Gblame
 '''
