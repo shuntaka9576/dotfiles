@@ -1,0 +1,7 @@
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+hook_add = '''
+command Gst :Gstatus
+command Gdf :Gdiff
+command Gbl :Gblame
+'''

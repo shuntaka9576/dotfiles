@@ -7,3 +7,4 @@ ln -sf ~/dotfiles/nvim/dein_go.toml ~/.config/nvim/dein/dein_go.toml
 ln -sf ~/dotfiles/nvim/dein_python.toml ~/.config/nvim/dein/dein_python.toml
 ln -sf ~/dotfiles/nvim/dein_lsp.toml ~/.config/nvim/dein/dein_lsp.toml
 ln -sf ~/dotfiles/nvim/dein_linter.toml ~/.config/nvim/dein/dein_linter.toml
+ln -sf ~/dotfiles/nvim/dein_git.toml ~/.config/nvim/dein/dein_git.toml
