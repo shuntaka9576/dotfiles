@@ -14,3 +14,10 @@ alias g='cd (ghq root)/(ghq list | peco)'
 
 # nvim
 alias nv='nvim'
+
+# ls after cd
+functions --copy cd standard_cd
+
+function cd
+  standard_cd $argv; and ls
+end

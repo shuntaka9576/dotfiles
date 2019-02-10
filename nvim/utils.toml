@@ -1,0 +1,41 @@
+# =*=*=*=*=*=*=*=*=*=*=*=*=*= fuzzy finder settings *=*=*=*=*=*=*=*=*=*=*=*=*=*
+[[plugins]]
+repo = 'junegunn/fzf'
+
+[[plugins]]
+repo = 'junegunn/fzf.vim'
+depends = ['fzf']
+on_cmd = [
+  'Files',
+  'GFiles',
+  'Tags',
+  'Commands',
+  'Maps',
+  'History:',
+]
+
+hook_souce = '''
+    call fzf#run(fzf#wrap({'source': 'ghq list --full-path', 'sink': 'cd' }))
+'''
+
+hook_add = '''
+    let g:fzf_layout = {'down': '~50%'}
+
+    nnoremap <silent> <C-j><C-f> :<C-u>Files<CR>
+    nnoremap <silent> <C-j><C-g> :<C-u>GFiles?<CR>
+    nnoremap <silent> <C-j><C-t> :<C-u>Tags<CR>
+    nnoremap <silent> <C-j><C-v> :<C-u>Files ~/dotfiles<CR>
+    nnoremap <silent> <C-j><C-o> :<C-u>Commands<CR>
+    nnoremap <silent> <C-j><C-m> :<C-u>Maps<CR>
+    nnoremap <silent> <C-j><C-h> :<C-u>History:<CR>
+
+    imap <C-x><C-k> <plug>(fzf-complete-word)
+    imap <C-x><C-p> <plug>(fzf-complete-path)
+    imap <C-x><C-j> <plug>(fzf-complete-file-ag)
+    imap <C-x><C-l> <plug>(fzf-complete-line)
+
+    command! -nargs=0 Fq call fzf#run({
+    \ 'source': 'ghq list --full-path',
+    \ 'sink': 'cd'
+    \ })
+'''

@@ -1,0 +1,33 @@
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+[[plugins]]
+repo = 'prabirshrestha/asyncomplete.vim'
+
+[[plugins]]
+repo = 'prabirshrestha/asyncomplete-lsp.vim'
+
+[[plugins]]
+repo = 'Shougo/denite.nvim'
+hook_add = '''
+    source ~/dotfiles/nvim/plugins/denite.vim
+'''
+
+[[plugins]]
+repo = 'osyo-manga/vim-over'
+hook_add = '''
+    nnoremap <silent> <Space>o :OverCommandLine<CR>%s//g<Left><Left>
+    vnoremap <silent> <Space>o :OverCommandLine<CR>s//g<Left><Left>
+    nnoremap sub :OverCommandLine<CR>%s/<C-r><C-w>//g<Left><Left><Paste>
+'''
+
+[[plugins]]
+repo = 'dhruvasagar/vim-table-mode'
+
+[[plugins]]
+repo = "airblade/vim-gitgutter"
+hook_add = '''
+    let g:gitgutter_map_keys = 0
+    nmap [g <Plug>GitGutterPrevHunk
+    nmap ]g <Plug>GitGutterNextHunk
+'''

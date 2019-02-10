@@ -10,3 +10,5 @@ brew install nvim
 brew install make
 brew install jq
 brew install shellcheck
+brew install tree
+brew install ren
