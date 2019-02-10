@@ -11,14 +11,17 @@ curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh >
 sh ~/installer.sh ~/.cache/dein
 rm installer.sh 
 
-# install ghq
+# install go binaries
 go get github.com/motemen/ghq
+go get github.com/mrtazz/checkmake
+go get github.com/gohugoio/hugo
 
 # install pip3 packages
 pip3 install python-language-server
 pip3 install flake8
 pip3 install autopep8
 pip3 install neovim
+pip3 install vim-vint
 
 # install lsp
 git clone https://github.com/saibing/bingo.git ~/bingo

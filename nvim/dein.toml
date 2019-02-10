@@ -2,8 +2,6 @@
 [[plugins]]
 repo = 'Shougo/dein.vim'
 
-
-
 # =*=*=*=*=*=*=*=*=*=*=*=*=*= LSP plugins *=*=*=*=*=*=*=*=*=*=*=*=*=*=
 [[plugins]]
 repo = 'prabirshrestha/asyncomplete.vim'
@@ -90,3 +88,7 @@ hook_add = '''
     " カーソルしたの単語置換
     nnoremap sub :OverCommandLine<CR>%s/<C-r><C-w>//g<Left><Left><Paste>
 '''
+
+# =*=*=*=*=*=*=*=*=*=*=*=*=*= completion plugins *=*=*=*=*=*=*=*=*=*=*=*=*=*=
+[[plugins]]
+repo = 'dhruvasagar/vim-table-mode'

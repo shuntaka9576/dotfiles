@@ -27,6 +27,7 @@ let g:go_highlight_methods = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_structs = 1
 let g:go_highlight_types = 1
+let g:go_fmt_command = "goimports"
 
 " highlight all uses of the identifier under the cursor. |:GoSameIds| automatically
 let g:go_auto_sameids = 0
