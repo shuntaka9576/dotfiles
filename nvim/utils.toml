@@ -1,3 +1,4 @@
+# =*=*=*=*=*=*=*=*=*=*=*=*=*= fuzzy finder settings *=*=*=*=*=*=*=*=*=*=*=*=*=*=
 [[plugins]]
 repo = 'junegunn/fzf'
 build = './install --all'
@@ -23,7 +24,6 @@ nnoremap <silent> <C-j><C-v> :<C-u>Files ~/dotfiles<CR>
 nnoremap <silent> <C-j><C-u> :<C-u>Commands<CR>
 nnoremap <silent> <C-j><C-m> :<C-u>Maps<CR>
 
-" Insert mode completion
 imap <c-x><c-k> <plug>(fzf-complete-word)
 imap <c-x><c-f> <plug>(fzf-complete-path)
 imap <c-x><c-j> <plug>(fzf-complete-file-ag)
