@@ -1,0 +1,31 @@
+[[plugins]]
+repo = 'junegunn/fzf'
+build = './install --all'
+
+[[plugins]]
+repo = 'junegunn/fzf.vim'
+depends = ['fzf']
+on_cmd = [
+  'Files',
+  'GFiles',
+  'Tags',
+  'Commands',
+  'Maps',
+]
+hook_add = '''
+" Appearance
+let g:fzf_layout = {'down': '~50%'}
+
+nnoremap <silent> <C-j><C-j> :<C-u>Files<CR>
+nnoremap <silent> <C-j><C-g> :<C-u>GFiles?<CR>
+nnoremap <silent> <C-j><C-]> :<C-u>Tags<CR>
+nnoremap <silent> <C-j><C-v> :<C-u>Files ~/dotfiles<CR>
+nnoremap <silent> <C-j><C-u> :<C-u>Commands<CR>
+nnoremap <silent> <C-j><C-m> :<C-u>Maps<CR>
+
+" Insert mode completion
+imap <c-x><c-k> <plug>(fzf-complete-word)
+imap <c-x><c-f> <plug>(fzf-complete-path)
+imap <c-x><c-j> <plug>(fzf-complete-file-ag)
+imap <c-x><c-l> <plug>(fzf-complete-line)
+'''
