@@ -36,6 +36,6 @@ hook_add = '''
 
     command! -nargs=0 Fq call fzf#run({
     \ 'source': 'ghq list --full-path',
-    \ 'sink': 'cd'
+    \ 'sink': 'cd |:NERDTree'
     \ })
 '''
