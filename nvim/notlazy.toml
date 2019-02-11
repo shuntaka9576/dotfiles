@@ -31,3 +31,6 @@ hook_add = '''
     nmap [g <Plug>GitGutterPrevHunk
     nmap ]g <Plug>GitGutterNextHunk
 '''
+
+[[plugins]]
+repo = 'cespare/vim-toml'
