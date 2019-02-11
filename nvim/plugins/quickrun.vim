@@ -6,8 +6,11 @@ let g:quickrun_config = {
         \ 'outputter/error/success' : 'buffer',
         \ 'outputter/error/error'   : 'quickfix',
         \ 'outputter/buffer/split' : ':botright 8sp',
-    \ }
-\}
+    \ },
+    \ 'python' : {
+        \ 'command': 'python3'
+    \ },
+\ }
 
 augroup MyQuickFixClose
     au FileType qf nnoremap <silent><buffer>q :quit<CR>
