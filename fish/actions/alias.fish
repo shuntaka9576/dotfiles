@@ -16,8 +16,8 @@ alias g='cd (ghq root)/(ghq list | peco)'
 alias nv='nvim'
 
 # fazzy repository move
-function fg
-    cd (ghq list --full-path |fzf-tmux)
+function f
+    cd (ghq root)/(ghq list | fzf-tmux)
 end
 
 # fazzy cd
