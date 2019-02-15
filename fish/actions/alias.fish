@@ -32,4 +32,4 @@ function cd
 end
 
 # memo ailas 
-alias me='memo e (memo list |fzf)'
+alias me='memo e'
