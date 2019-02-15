@@ -31,3 +31,5 @@ function cd
     standard_cd $argv; and ls
 end
 
+# memo ailas 
+alias me='memo e'
