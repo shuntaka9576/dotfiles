@@ -1,10 +1,10 @@
 nmap [denite] <Nop>
-map <C-j> [denite]
+map <C-d> [denite]
 
-nmap <silent> [denite]<C-P> :<C-u>Denite file_rec -highlight-mode-insert=Search<CR>
-nmap <silent> [denite]<C-B> :<C-u>Denite buffer -highlight-mode-insert=Search<CR>
-nmap <silent> [denite]<C-O> :<C-u>Denite outline -highlight-mode-insert=Search<CR>
-nmap <silent> [denite]<C-V> :<C-u>call denite#start([{'name': 'file_rec', 'args': ['~/.dotfiles']}]) -highlight-mode-insert=Search=Search<CR>
+nmap <silent> [denite]p :<C-u>Denite file_rec -highlight-mode-insert=Search<CR>
+nmap <silent> [denite]b :<C-u>Denite buffer -highlight-mode-insert=Search<CR>
+nmap <silent> [denite]o :<C-u>Denite outline -highlight-mode-insert=Search<CR>
+nmap <silent> [denite]v :<C-u>call denite#start([{'name': 'file_rec', 'args': ['~/.dotfiles']}]) -highlight-mode-insert=Search=Search<CR>
 
 call denite#custom#map('normal', '<C-N>', '<denite:move_to_next_line>')
 call denite#custom#map('normal', '<C-P>', '<denite:move_to_previous_line>')
@@ -21,6 +21,7 @@ call denite#custom#source(
 call denite#custom#filter('matcher_ignore_globs', 'ignore_globs',
 \ [ '.git/', '.ropeproject/', '__pycache__/',
 \   'venv/', 'images/', '*.min.*', 'img/', 'fonts/'])
+
 command! D execute(":Denite grep -buffer-name=grep-buffer-denite")
 command! Dresume execute(":Denite -resume -buffer-name=grep-buffer-denite")
 command! Dnext execute(":Denite -resume -buffer-name=grep-buffer-denite -select=+1 -immediately")
