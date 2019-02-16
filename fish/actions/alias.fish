@@ -9,9 +9,6 @@ alias ga='git add'
 alias gl='git log' 
 alias gr='git reset --hard' 
 
-# clear terminal
-alias c='clear' 
-
 # simple repository move
 alias g='cd (ghq root)/(ghq list | peco)'
 

@@ -1,10 +1,10 @@
 nmap [denite] <Nop>
-map <C-d> [denite]
+map <C-j> [denite]
 
-nmap <silent> [denite]p :<C-u>Denite file_rec -highlight-mode-insert=Search<CR>
-nmap <silent> [denite]b :<C-u>Denite buffer -highlight-mode-insert=Search<CR>
-nmap <silent> [denite]o :<C-u>Denite outline -highlight-mode-insert=Search<CR>
-nmap <silent> [denite]v :<C-u>call denite#start([{'name': 'file_rec', 'args': ['~/.dotfiles']}]) -highlight-mode-insert=Search=Search<CR>
+nmap <silent> [denite]<C-p> :<C-u>Denite file_rec -highlight-mode-insert=Search<CR>
+nmap <silent> [denite]<C-b> :<C-u>Denite buffer -highlight-mode-insert=Search<CR>
+nmap <silent> [denite]<C-o> :<C-u>Denite outline -highlight-mode-insert=Search<CR>
+nmap <silent> [denite]<C-v> :<C-u>call denite#start([{'name': 'file_rec', 'args': ['~/.dotfiles']}]) -highlight-mode-insert=Search=Search<CR>
 
 call denite#custom#map('normal', '<C-N>', '<denite:move_to_next_line>')
 call denite#custom#map('normal', '<C-P>', '<denite:move_to_previous_line>')
