@@ -12,3 +12,5 @@ end
 source ~/dotfiles/fish/actions/alias.fish
 cd ~/
 
+# fzf .git ignore setting
+set --export FZF_DEFAULT_COMMAND 'ag --hidden --ignore .git -g ""'

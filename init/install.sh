@@ -31,5 +31,7 @@ echo '====================================== install tools =====================
 ~/dotfiles/init/setup/common.sh
 echo '====================================== symbolic link nvim ======================================'
 ~/dotfiles/nvim/link.sh
+echo '====================================== symbolic link tools ======================================'
+~/dotfiles/tools/link.sh
 echo '====================================== install fisher plugins ======================================'
 ~/dotfiles/fish/fish_plug.sh
