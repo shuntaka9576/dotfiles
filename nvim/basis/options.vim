@@ -6,6 +6,18 @@ set lazyredraw
 set cursorline
 highlight cursorline term=reverse cterm=reverse
 
+" Change move editor window	
+nnoremap <C-k>j <C-w>j
+nnoremap <C-k>k <C-w>k
+nnoremap <C-k>l <C-w>l
+nnoremap <C-k>h <C-w>h
+nnoremap <C-k>J <C-w>J
+nnoremap <C-k>K <C-w>K
+nnoremap <C-k>L <C-w>L
+nnoremap <C-k>H <C-w>H
+nnoremap <C-k>r <C-w>r
+nnoremap <C-k>w <C-w>w
+
 " Invisible stirng
 set list
 set listchars=tab:»-,extends:»,precedes:«,nbsp:%,eol:↲,trail:~
