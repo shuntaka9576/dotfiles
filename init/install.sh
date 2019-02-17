@@ -8,16 +8,12 @@ if [ "$(uname)" == 'Darwin' ]; then
   echo '====================================== Mac ======================================'
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
   ~/dotfiles/init/setup/mac.sh
-  ~/dotfiles/init/setup/brew.sh
 elif [ -e /proc/sys/fs/binfmt_misc/WSLInterop ]; then
   echo '====================================== WSL ======================================'
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
-  ~/dotfiles/init/setup/brew.sh
 elif [ -e /etc/debian_version ]; then
   echo '====================================== Ubuntu ======================================'
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
-  ~/dotfiles/init/setup/brew.sh
-  # ~/dotfiles/init/setup/apt.sh
 fi
 
 # start symbolic link shell
@@ -26,6 +22,8 @@ fi
 # setting PATH
 source ~/.bashrc
 
+echo '====================================== run brew ======================================'
+~/dotfiles/init/setup/brew.sh
 echo '====================================== install tools ======================================'
 ~/dotfiles/init/setup/common.sh
 echo '====================================== symbolic link nvim ======================================'

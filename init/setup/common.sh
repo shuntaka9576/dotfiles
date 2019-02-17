@@ -9,7 +9,7 @@ curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fi
 # install dein
 curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > ~/installer.sh 
 sh ~/installer.sh ~/.cache/dein
-rm installer.sh 
+rm ~/installer.sh 
 
 # install go binaries
 go get github.com/motemen/ghq
