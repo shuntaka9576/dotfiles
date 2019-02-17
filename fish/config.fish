@@ -14,3 +14,7 @@ cd ~/
 
 # fzf .git ignore setting
 set --export FZF_DEFAULT_COMMAND 'ag --hidden --ignore .git -g ""'
+
+# theme-bobthefish settings
+set -g theme_display_hostname no
+set -g theme_display_user no
