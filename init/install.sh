@@ -8,9 +8,6 @@ if [ "$(uname)" == 'Darwin' ]; then
   echo '====================================== Mac ======================================'
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
   ~/dotfiles/init/setup/mac.sh
-elif [ -e /proc/sys/fs/binfmt_misc/WSLInterop ]; then
-  echo '====================================== WSL ======================================'
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
 elif [ -e /etc/debian_version ]; then
   echo '====================================== Ubuntu ======================================'
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
@@ -21,6 +18,11 @@ fi
 
 # setting PATH
 source ~/.bashrc
+
+if [ -e /etc/debian_version ]; then
+  echo '====================================== run apt ======================================'
+    ~/dotfiles/init/setup/apt.sh
+fi
 
 echo '====================================== run brew ======================================'
 ~/dotfiles/init/setup/brew.sh
