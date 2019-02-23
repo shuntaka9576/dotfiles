@@ -19,4 +19,4 @@ else
 fi
 
 # alias settings
-alias tmux="tmux -2"
+alias t="tmux -2"

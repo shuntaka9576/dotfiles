@@ -5,9 +5,9 @@ alias ll='ls -al'
 alias gs='git status'
 alias gd='git diff'
 alias gc='git commit -m '
-alias ga='git add' 
-alias gl='git log' 
-alias gr='git reset --hard' 
+alias ga='git add'
+alias gl='git log'
+alias gr='git reset --hard'
 
 # simple repository move
 alias g='cd (ghq root)/(ghq list | peco)'
@@ -31,6 +31,10 @@ function cd
     standard_cd $argv; and ls
 end
 
-# memo ailas
+# memo alias
 alias me='memo e'
 alias mn='memo new'
+
+# tmux alias
+alias tk='tmux kill-session -t'
+alias tl='tmux ls'
