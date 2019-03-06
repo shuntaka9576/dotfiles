@@ -3,25 +3,25 @@
 # clone dotfiles
 git clone https://github.com/shuntaka9576/dotfiles.git ~/dotfiles
 
-# install brew
-if [ "$(uname)" == 'Darwin' ]; then
-  echo '====================================== Mac ======================================'
-  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-  ~/dotfiles/init/setup/mac.sh
-elif [ -e /etc/debian_version ]; then
-  echo '====================================== Ubuntu ======================================'
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
-fi
-
 # start symbolic link shell
 ~/dotfiles/init/setup/link.sh
 
-# setting PATH
-source ~/.bashrc
+if [ "$(uname)" == 'Darwin' ]; then
+  echo '====================================== Mac ======================================'
+  # install brew
+  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-if [ -e /etc/debian_version ]; then
-  echo '====================================== run apt ======================================'
-    ~/dotfiles/init/setup/apt.sh
+  # install lib for mac
+  source ~/.bash_profile
+  ~/dotfiles/init/setup/mac.sh
+elif [ -e /etc/debian_version ]; then
+  echo '====================================== Ubuntu ======================================'
+  # install brew
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
+
+  # install lib for ubuntu
+  source ~/.bashrc
+  ~/dotfiles/init/setup/apt.sh
 fi
 
 echo '====================================== run brew ======================================'
