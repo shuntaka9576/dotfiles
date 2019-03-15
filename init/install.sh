@@ -1,9 +1,19 @@
 #!/bin/bash
 
-# clone dotfiles
+# =*=*=*=*=*=*=*=*=*=*=* install git for amazon linux =*=*=*=*=*=*=*=*=*=*=*
+amazonLinuxReleaseFile=`cat /etc/system-release`
+# check exists amazonlinux release
+if [ -e /etc/system-release ]; then
+  if [[ `echo $amazonLinuxReleaseFile|grep "Amazon Linux"` ]]; then
+      # install git g++
+      ~/dotfiles/init/setup/yum.sh
+  fi
+fi
+
+# =*=*=*=*=*=*=*=*=*=*=* clone dotfiles =*=*=*=*=*=*=*=*=*=*=*
 git clone https://github.com/shuntaka9576/dotfiles.git ~/dotfiles
 
-# start symbolic link shell
+# =*=*=*=*=*=*=*=*=*=*=* start symbolic link shell =*=*=*=*=*=*=*=*=*=*=*
 ~/dotfiles/init/setup/link.sh
 
 if [ "$(uname)" == 'Darwin' ]; then
@@ -22,6 +32,11 @@ elif [ -e /etc/debian_version ]; then
   # install lib for ubuntu
   source ~/.bashrc
   ~/dotfiles/init/setup/apt.sh
+elif [ -e /etc/system-release ]; then
+  if [[ `echo $amazonLinuxReleaseFile|grep "Amazon Linux"` ]]; then
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
+    source ~/.bashrc
+  fi
 fi
 
 echo '====================================== run brew ======================================'

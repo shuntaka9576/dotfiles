@@ -40,6 +40,11 @@ curl -L raw.github.com/shuntaka9576/dotfiles/master/init/install.sh| bash
 curl -L raw.github.com/shuntaka9576/dotfiles/master/init/install.sh| bash
 ```
 
+### AmazonLinux
+```
+curl -L raw.github.com/shuntaka9576/dotfiles/master/init/install.sh| bash
+```
+
 ## Update
 ```
 rm -rf ~/dotfiles
