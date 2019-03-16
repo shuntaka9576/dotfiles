@@ -5,9 +5,8 @@ amazonLinuxReleaseFile=`cat /etc/system-release`
 # check exists amazonlinux release
 if [ -e /etc/system-release ]; then
   if [[ `echo $amazonLinuxReleaseFile|grep "Amazon Linux"` ]]; then
-      # install git
-      sudo yum update -y
-      sudo yum install -y git
+      # install git g++
+      ~/dotfiles/init/setup/yum.sh
   fi
 fi
 
