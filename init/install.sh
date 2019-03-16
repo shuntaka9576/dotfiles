@@ -6,7 +6,7 @@ amazonLinuxReleaseFile=`cat /etc/system-release`
 if [ -e /etc/system-release ]; then
   if [[ `echo $amazonLinuxReleaseFile|grep "Amazon Linux"` ]]; then
       # install git g++
-      ~/dotfiles/init/setup/yum.sh
+      curl -L raw.github.com/shuntaka9576/dotfiles/master/init/setup/yum.sh| bash
   fi
 fi
 
