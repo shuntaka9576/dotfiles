@@ -1,17 +1,24 @@
 #!/bin/bash
 
+# =*=*=*=*=*=*=*=*=*=*=* interactive settings  =*=*=*=*=*=*=*=*=*=*=*
+echo -n "Set install branch name:"
+read branchName
+
 # =*=*=*=*=*=*=*=*=*=*=* install git for amazon linux =*=*=*=*=*=*=*=*=*=*=*
-amazonLinuxReleaseFile=`cat /etc/system-release`
 # check exists amazonlinux release file
 if [ -e /etc/system-release ]; then
+  amazonLinuxReleaseFile=`cat /etc/system-release`
   if [[ `echo $amazonLinuxReleaseFile|grep "Amazon Linux"` ]]; then
       # install git g++
-      curl -L raw.github.com/shuntaka9576/dotfiles/master/init/setup/yum.sh| bash
+      curl -L raw.github.com/shuntaka9576/dotfiles/$branchName/init/setup/yum.sh| bash
   fi
 fi
 
 # =*=*=*=*=*=*=*=*=*=*=* clone dotfiles =*=*=*=*=*=*=*=*=*=*=*
-git clone https://github.com/shuntaka9576/dotfiles.git ~/dotfiles
+if [ -e ~/dotfiles ]; then
+  rm -rf ~/dotfiles
+fi
+git clone -b $branchName https://github.com/shuntaka9576/dotfiles.git ~/dotfiles
 
 # =*=*=*=*=*=*=*=*=*=*=* start symbolic link shell =*=*=*=*=*=*=*=*=*=*=*
 ~/dotfiles/init/setup/link.sh

@@ -5,7 +5,8 @@ shuntaka9576's dotfiles
 ## Installation
 ### Mac
 ```
-curl -L raw.github.com/shuntaka9576/dotfiles/master/init/install.sh| bash
+bash <(curl -sL raw.github.com/shuntaka9576/dotfiles/master/init/install.sh)
+Set install branch name:master
 ```
 
 ### Ubuntu
@@ -17,7 +18,8 @@ passwd ubuntu
 su ubuntu
 
 # install dotfiles
-curl -L raw.github.com/shuntaka9576/dotfiles/master/init/install.sh| bash
+bash <(curl -sL raw.github.com/shuntaka9576/dotfiles/master/init/install.sh)
+Set install branch name:master
 ```
 
 #### DigitalOcean
@@ -32,21 +34,30 @@ su ubuntu
 cd
 
 # install dotfiles
-curl -L raw.github.com/shuntaka9576/dotfiles/master/init/install.sh| bash
+bash <(curl -sL raw.github.com/shuntaka9576/dotfiles/master/init/install.sh)
+Set install branch name:master
 ```
 
 #### WSL
 ```
-curl -L raw.github.com/shuntaka9576/dotfiles/master/init/install.sh| bash
+bash <(curl -sL raw.github.com/shuntaka9576/dotfiles/master/init/install.sh)
+Set install branch name:master
 ```
 
 ### AmazonLinux
 ```
-curl -L raw.github.com/shuntaka9576/dotfiles/master/init/install.sh| bash
+bash <(curl -sL raw.github.com/shuntaka9576/dotfiles/master/init/install.sh)
+Set install branch name:master
 ```
 
 ## Update
 ```
-rm -rf ~/dotfiles
-curl -L raw.github.com/shuntaka9576/dotfiles/master/init/install.sh| bash
+bash <(curl -sL raw.github.com/shuntaka9576/dotfiles/master/init/install.sh)
+Set install branch name:master
+```
+
+## Contribution
+```
+bash <(curl -sL raw.github.com/shuntaka9576/dotfiles/{contribute branch name}/init/install.sh)
+Set install branch name:{contribute branch name}
 ```
