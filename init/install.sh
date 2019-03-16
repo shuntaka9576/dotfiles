@@ -2,7 +2,7 @@
 
 # =*=*=*=*=*=*=*=*=*=*=* install git for amazon linux =*=*=*=*=*=*=*=*=*=*=*
 amazonLinuxReleaseFile=`cat /etc/system-release`
-# check exists amazonlinux release
+# check exists amazonlinux release file
 if [ -e /etc/system-release ]; then
   if [[ `echo $amazonLinuxReleaseFile|grep "Amazon Linux"` ]]; then
       # install git g++
