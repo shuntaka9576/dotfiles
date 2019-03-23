@@ -13,6 +13,9 @@ let g:ale_linters = {
     \ 'make': ['checkmake'],
     \ 'vim': ['vint'],
     \ 'shell': ['shellcheck'],
+    \ 'vue': ['prettier', 'eslint'],
+    \ 'javascript': ['prettier', 'eslint'],
+    \ 'typescript': ['prettier', 'eslint'],
     \ }
 
 let g:ale_go_gometalinter_options = '--vendored-linters --disable-all --enable=gotype --enable=vet --enable=golint -t'
