@@ -38,6 +38,7 @@ repo = 'cespare/vim-toml'
 # =*=*=*=*=*=*=*=*=*=*=*=*=*= LanguageClient settings *=*=*=*=*=*=*=*=*=*=*=*=*=*
 [[plugins]]
 repo = 'autozimu/LanguageClient-neovim'
+depends = ['deoplete.nvim', 'context_filetype.vim']
 rev = 'next'
 build = 'bash install.sh'
 hook_add = '''
@@ -55,7 +56,6 @@ hook_add = '''
     setlocal iskeyword+=-
 
     let g:LanguageClient_autoStart = 1
-    let g:deoplete#enable_at_startup = 1
     nnoremap <F5> :call LanguageClient_contextMenu()<CR>
     " Or map each action separately
     nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
@@ -64,12 +64,11 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'junegunn/fzf'
-
-[[plugins]]
 repo = 'Shougo/deoplete.nvim'
 depends = 'context_filetype.vim'
+# on_i = 1
 hook_add = '''
+    let g:deoplete#enable_at_startup = 1
     " <TAB>: completion.
     inoremap <silent><expr> <TAB>
           \ pumvisible() ? "\<C-n>" :
@@ -97,23 +96,8 @@ hook_add = '''
     let g:deoplete#skip_chars = ['(', ')']
 '''
 
-
 [[plugins]]
-repo = 'Shougo/neosnippet.vim'
-depends = ['context_filetype.vim']
-on_event = 'InsertCharPre'
-on_ft = 'snippet'
-hook_add = '''
-    imap <C-j> <Plug>(neosnippet_expand_or_jump)
-    smap <C-j> <Plug>(neosnippet_expand_or_jump)
-    xmap <C-j> <Plug>(neosnippet_expand_target)
-    let g:neosnippet#enable_snipmate_compatibility = 1
-    let g:neosnippet#enable_completed_snippet = 1
-    let g:neosnippet#expand_word_boundary = 1
-'''
-
-[[plugins]]
-repo = 'Shougo/neosnippet-snippets'
+repo = 'junegunn/fzf'
 
 [[plugins]]
 repo = 'posva/vim-vue'
@@ -144,6 +128,26 @@ hook_add = '''
 
 [[plugins]]
 repo = 'Shougo/context_filetype.vim'
+
+[[plugins]]
+repo = 'Shougo/neosnippet.vim'
+depends = 'context_filetype.vim'
+on_event = 'InsertCharPre'
+on_ft = 'snippet'
+hook_add = '''
+    imap <C-j> <Plug>(neosnippet_expand_or_jump)
+    smap <C-j> <Plug>(neosnippet_expand_or_jump)
+    xmap <C-j> <Plug>(neosnippet_expand_target)
+    let g:neosnippet#enable_snipmate_compatibility = 1
+    let g:neosnippet#enable_completed_snippet = 1
+    let g:neosnippet#expand_word_boundary = 1
+'''
+
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'
+
+[[plugins]]
+ repo = "osyo-manga/vim-precious"
 
 # [[plugins]]
 # repo = 'mhartington/nvim-typescript'
