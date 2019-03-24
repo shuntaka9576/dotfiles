@@ -1,8 +1,5 @@
 # =*=*=*=*=*=*=*=*=*=*=*=*=*= fuzzy finder settings *=*=*=*=*=*=*=*=*=*=*=*=*=*
 [[plugins]]
-repo = 'junegunn/fzf'
-
-[[plugins]]
 repo = 'junegunn/fzf.vim'
 depends = ['fzf']
 on_cmd = [

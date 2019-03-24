@@ -12,3 +12,4 @@ brew install jq
 brew install shellcheck
 brew install tree
 brew install ren
+brew install direnv

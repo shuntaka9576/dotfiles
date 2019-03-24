@@ -12,18 +12,18 @@ hook_source = '''
 
 [[plugins]]
 repo = 'w0rp/ale'
-on_ft = ['go', 'python', 'json', 'make', 'vim', 'shell']
+on_ft = ['go', 'python', 'json', 'make', 'vim', 'shell', 'js', 'vue', 'ts']
 hook_source = '''
     source ~/dotfiles/nvim/plugins/ale.vim
 '''
 
-[[plugins]]
-repo = 'prabirshrestha/async.vim'
+#[[plugins]]
+#repo = 'prabirshrestha/async.vim'
 
-[[plugins]]
-repo = 'prabirshrestha/vim-lsp'
-on_ft = ['python', 'go']
-depends = ['async.vim']
-hook_source = '''
-    source ~/dotfiles/nvim/plugins/lsp.vim
-'''
+#[[plugins]]
+#repo = 'prabirshrestha/vim-lsp'
+#on_ft = ['python', 'go']
+#depends = ['async.vim']
+#hook_source = '''
+#    source ~/dotfiles/nvim/plugins/lsp.vim
+#'''
