@@ -1,0 +1,38 @@
+{
+  "languageserver": {
+    "golang": {
+      "command": "bingo",
+      "args": [
+        "--diagnostics-style=instant"
+      ],
+      "rootPatterns": [
+        "go.mod",
+        ".vim/",
+        ".git/",
+        ".hg/"
+      ],
+      "filetypes": [
+        "go"
+      ]
+    },
+    "python": {
+      "command": "pyls",
+      "filetypes": [
+        "python"
+      ]
+    },
+    "vue": {
+      "command": "vls",
+      "filetypes": [
+        "vue"
+      ]
+    },
+    "javascript": {
+      "command": "javascript-typescript-stdio",
+      "filetypes": [
+        "javascript",
+        "vue"
+      ]
+    }
+  }
+}
