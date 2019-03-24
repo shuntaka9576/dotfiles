@@ -30,7 +30,9 @@ let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_python_flake8_args = '--max-line-length=120'
 
 let g:ale_fixers = {
-    \ 'python': ['autopep8', 'isort'],
-    \ 'json': ['jq'],
+    \ 'python':     ['autopep8', 'isort'],
+    \ 'json':       ['jq'],
+    \ 'javascript': ['prettier'],
+    \ 'vue':        ['prettier'],
     \ }
 let g:ale_fix_on_save = 1
