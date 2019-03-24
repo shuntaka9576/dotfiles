@@ -16,6 +16,9 @@ hook_add = '''
 depends = ['nerdtree']
 
 [[plugins]]
+repo = 'scrooloose/nerdcommenter'
+
+[[plugins]]
 repo = 'vim-airline/vim-airline'
 hook_add = '''
     if has('unix')
