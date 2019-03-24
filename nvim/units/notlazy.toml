@@ -35,85 +35,15 @@ hook_add = '''
 [[plugins]]
 repo = 'cespare/vim-toml'
 
-# =*=*=*=*=*=*=*=*=*=*=*=*=*= LanguageClient settings *=*=*=*=*=*=*=*=*=*=*=*=*=*
 [[plugins]]
-repo = 'autozimu/LanguageClient-neovim'
-rev = 'next'
-build = 'bash install.sh'
+repo = 'neoclide/coc.nvim'
+build = 'coc#util#install()'
 hook_add = '''
-    set hidden
-    let g:LanguageClient_serverCommands = {
-        \ 'go': ['bingo'],
-        \ 'python': ['pyls'],
-        \ 'vue': ['vls'],
-        \ 'html': [],
-        \ 'css': [],
-        \ 'typescript': ['javascript-typescript-stdio'],
-        \ 'javascript': ['javascript-typescript-stdio'],
-    \ }
-    setlocal iskeyword+=$
-    setlocal iskeyword+=-
-
-    let g:LanguageClient_autoStart = 1
-    let g:deoplete#enable_at_startup = 1
-    nnoremap <F5> :call LanguageClient_contextMenu()<CR>
-    " Or map each action separately
-    nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-    nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-    nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+    source ~/dotfiles/nvim/plugins/coc.vim
 '''
 
 [[plugins]]
 repo = 'junegunn/fzf'
-
-[[plugins]]
-repo = 'Shougo/deoplete.nvim'
-depends = 'context_filetype.vim'
-hook_add = '''
-    " <TAB>: completion.
-    inoremap <silent><expr> <TAB>
-          \ pumvisible() ? "\<C-n>" :
-          \ <SID>check_back_space() ? "\<TAB>" :
-          \ deoplete#manual_complete()
-    function! s:check_back_space() abort "{{{
-      let col = col('.') - 1
-      return !col || getline('.')[col - 1]  =~ '\s'
-    endfunction"}}}
-    
-    " <S-TAB>: completion back.
-    inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<C-h>"
-    
-    " <BS>: close popup and delete backword char.
-    inoremap <expr><BS> deoplete#smart_close_popup()."\<C-h>"
-    
-    " <CR>: close popup and save indent.
-    inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-    function! s:my_cr_function() abort
-      return deoplete#cancel_popup() . "\<CR>"
-    endfunction
-    
-    let g:deoplete#enable_refresh_always = 0
-    let g:deoplete#enable_camel_case = 1
-    let g:deoplete#skip_chars = ['(', ')']
-'''
-
-
-[[plugins]]
-repo = 'Shougo/neosnippet.vim'
-depends = ['context_filetype.vim']
-on_event = 'InsertCharPre'
-on_ft = 'snippet'
-hook_add = '''
-    imap <C-j> <Plug>(neosnippet_expand_or_jump)
-    smap <C-j> <Plug>(neosnippet_expand_or_jump)
-    xmap <C-j> <Plug>(neosnippet_expand_target)
-    let g:neosnippet#enable_snipmate_compatibility = 1
-    let g:neosnippet#enable_completed_snippet = 1
-    let g:neosnippet#expand_word_boundary = 1
-'''
-
-[[plugins]]
-repo = 'Shougo/neosnippet-snippets'
 
 [[plugins]]
 repo = 'posva/vim-vue'
@@ -143,10 +73,24 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'Shougo/context_filetype.vim'
+repo = 'Shougo/neosnippet.vim'
+depends = 'context_filetype.vim'
+on_event = 'InsertCharPre'
+on_ft = 'snippet'
+hook_add = '''
+    imap <C-j> <Plug>(neosnippet_expand_or_jump)
+    smap <C-j> <Plug>(neosnippet_expand_or_jump)
+    xmap <C-j> <Plug>(neosnippet_expand_target)
+    let g:neosnippet#enable_snipmate_compatibility = 1
+    let g:neosnippet#enable_completed_snippet = 1
+    let g:neosnippet#expand_word_boundary = 1
+'''
 
-# [[plugins]]
-# repo = 'mhartington/nvim-typescript'
-# hook_add = '''
-#     let g:nvim_typescript#vue_support = 1
-# '''
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'
+
+#[[plugins]]
+#repo = 'Shougo/context_filetype.vim'
+#
+#[[plugins]]
+#repo = "osyo-manga/vim-precious"

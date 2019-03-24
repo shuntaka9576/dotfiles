@@ -17,6 +17,7 @@ go get github.com/mrtazz/checkmake
 go get github.com/gohugoio/hugo
 go get github.com/mattn/memo
 go get github.com/jesseduffield/lazygit
+go get github.com/mattn/efm-langserver/cmd/efm-langserver
 
 # install pip3 packages
 pip3 install python-language-server
