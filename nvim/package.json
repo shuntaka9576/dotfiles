@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "coc-json": "^1.0.12",
     "coc-neosnippet": "^1.2.2",
     "coc-yaml": "^1.0.0"
   }

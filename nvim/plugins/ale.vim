@@ -8,7 +8,7 @@ let g:ale_set_quickfix = 1
 
 let g:ale_linters = {
     \ 'python': ['flake8'],
-    \ 'go': ['gometalinter'],
+    \ 'go': ['golangci-lint'],
     \ 'json': ['jq'],
     \ 'make': ['checkmake'],
     \ 'vim': ['vint'],
@@ -19,6 +19,7 @@ let g:ale_linters = {
     \ }
 
 let g:ale_go_gometalinter_options = '--vendored-linters --disable-all --enable=gotype --enable=vet --enable=golint -t'
+let g:ale_go_golangci_lint_options = '--enable-all --disable gochecknoglobals --disable gochecknoinits'
 let g:ale_open_list = 1
 let g:ale_sign_error = '✗'
 let g:ale_sign_warning = '⚠'

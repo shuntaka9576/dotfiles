@@ -1,9 +1,4 @@
 {
-  "snippets.extends": {
-    "javascriptreact": [
-      "javascript"
-    ]
-  },
   "languageserver": {
     "golang": {
       "command": "bingo",
