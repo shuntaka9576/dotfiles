@@ -14,7 +14,7 @@ noremap <Down> gj
 noremap <Up> gk
 
 " Run script settings
-autocmd BufNewFile,BufRead *.rb nnoremap <C-r> :!ruby %
-autocmd BufNewFile,BufRead *.py nnoremap <C-r> :!python %
-autocmd BufNewFile,BufRead *.pl nnoremap <C-r> :!perl %
+autocmd BufNewFile,BufRead *.rb nnoremap <leader><C-r> :!ruby %
+autocmd BufNewFile,BufRead *.py nnoremap <leader><C-r> :!python %
+autocmd BufNewFile,BufRead *.pl nnoremap <leader><C-r> :!perl %
 
