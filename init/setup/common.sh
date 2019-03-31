@@ -19,6 +19,10 @@ go get github.com/mattn/memo
 go get github.com/jesseduffield/lazygit
 go get github.com/mattn/efm-langserver/cmd/efm-langserver
 
+go get -d github.com/skanehira/docui
+cd $GOPATH/src/github.com/skanehira/docui
+GO111MODULE=on go install
+
 # install pip3 packages
 pip3 install python-language-server
 pip3 install flake8
