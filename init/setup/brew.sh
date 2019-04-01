@@ -16,3 +16,4 @@ brew install tree
 brew install ren
 brew install direnv
 brew install wget
+brew install tig

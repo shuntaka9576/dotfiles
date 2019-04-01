@@ -29,6 +29,7 @@ pip3 install flake8
 pip3 install autopep8
 pip3 install neovim
 pip3 install vim-vint
+pip3 install pytest
 
 # install lsp
 git clone https://github.com/saibing/bingo.git ~/bingo
