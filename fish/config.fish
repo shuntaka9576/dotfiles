@@ -18,3 +18,7 @@ set --export FZF_DEFAULT_COMMAND 'ag --hidden --ignore .git -g ""'
 # theme-bobthefish settings
 set -g theme_display_hostname no
 set -g theme_display_user no
+
+# development settingns
+set --export PIPENV_VENV_IN_PROJECT true
+set --export AWS_SAM_LOCAL true
