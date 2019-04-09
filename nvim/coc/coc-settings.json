@@ -1,9 +1,8 @@
 {
-  "snippets.extends": {
-    "javascriptreact": [
-      "javascript"
-    ]
-  },
+  "python.linting.enabled": true,
+  "python.linting.pylintEnabled": true,
+  "python.linting.flake8Enabled": true,
+  "python.linting.lintOnSave": true,
   "languageserver": {
     "golang": {
       "command": "bingo",
@@ -24,7 +23,10 @@
       "command": "pyls",
       "filetypes": [
         "python"
-      ]
+      ],
+      "initializationOptions": {
+        "diagnosticsEnabled": false
+      }
     },
     "vue": {
       "command": "vls",
