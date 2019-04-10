@@ -1,8 +1,21 @@
 {
   "python.linting.enabled": true,
-  "python.linting.pylintEnabled": true,
+  "python.linting.pylintEnabled": false,
+  "python.linting.pep8Enabled": false,
   "python.linting.flake8Enabled": true,
-  "python.linting.lintOnSave": true,
+  "python.linting.mypyEnabled": true,
+  "pyls.plugins.pycodestyle.enabled": false,
+  "pyls.trace.server": "verbose",
+  "python.analysis.errors": [
+    "undefined-variable"
+  ],
+  "python.analysis.information": [
+    "undefined-variable"
+  ],
+  "python.analysis.disabled": [
+    "disabled"
+  ],
+  "python.venvPath": ".venv",
   "languageserver": {
     "golang": {
       "command": "bingo",
@@ -18,15 +31,6 @@
       "filetypes": [
         "go"
       ]
-    },
-    "python": {
-      "command": "pyls",
-      "filetypes": [
-        "python"
-      ],
-      "initializationOptions": {
-        "diagnosticsEnabled": false
-      }
     },
     "vue": {
       "command": "vls",
