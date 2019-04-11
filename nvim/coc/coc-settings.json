@@ -5,6 +5,7 @@
   "python.linting.flake8Enabled": true,
   "python.linting.mypyEnabled": true,
   "pyls.plugins.pycodestyle.enabled": false,
+  "pyls.plugins.pyflakes.enabled": false,
   "pyls.trace.server": "verbose",
   "python.analysis.errors": [
     "undefined-variable"
