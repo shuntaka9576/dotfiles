@@ -6,6 +6,10 @@ let g:ale_sign_column_always = 1
 let g:ale_set_loclist = 0
 let g:ale_set_quickfix = 1
 
+let g:ale_linters = {
+    \ 'go': ['golangci-lint'],
+    \ }
+
 " let g:ale_linters = {
 "    \ 'python': ['flake8'],
 "    \ 'go': ['golangci-lint'],
@@ -19,7 +23,11 @@ let g:ale_set_quickfix = 1
 "    \ }
 
 " let g:ale_go_gometalinter_options = '--vendored-linters --disable-all --enable=gotype --enable=vet --enable=golint -t'
-" let g:ale_go_golangci_lint_options = '--enable-all --disable gochecknoglobals --disable gochecknoinits'
+let g:ale_go_golangci_lint_options = '--enable-all --disable gochecknoglobals --disable gochecknoinits'
+
+let g:ale_statusline_format = ['E%d', 'W%d', 'ok']
+let g:ale_set_loclist = 0
+nmap <silent> <C-n> <Plug>(ale_next_wrap)
 " let g:ale_open_list = 1
 " let g:ale_sign_error = '✗'
 " let g:ale_sign_warning = '⚠'

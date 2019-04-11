@@ -5,6 +5,21 @@ hook_add = '''
 '''
 
 [[plugins]]
+repo = 'itchyny/lightline.vim'
+hook_add='''
+let g:lightline = {
+    \ 'colorscheme': 'wombat',
+    \ 'active': {
+    \   'left': [ [ 'mode', 'paste' ],
+    \             [ 'cocstatus', 'readonly', 'filename', 'modified' ] ]
+    \ },
+    \ 'component_function': {
+    \   'cocstatus': 'coc#status'
+    \ },
+    \ }
+'''
+
+[[plugins]]
 repo='simeji/winresizer.git'
 hook_add='''
 " let g:winresizer_start_key = '<C-T>'

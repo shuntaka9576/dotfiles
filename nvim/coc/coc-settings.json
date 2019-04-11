@@ -31,7 +31,12 @@
       ],
       "filetypes": [
         "go"
-      ]
+      ],
+      "initializationOptions": {
+        "gocodeCompletionEnabled": true,
+        "diagnosticsEnabled": true,
+        "lintTool": "golint"
+      }
     },
     "vue": {
       "command": "vls",
