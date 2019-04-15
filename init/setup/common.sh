@@ -27,6 +27,8 @@ GO111MODULE=on go install
 pip3 install python-language-server
 pip3 install flake8
 pip3 install autopep8
+pip3 install isort
+pip3 install black
 pip3 install neovim
 pip3 install vim-vint
 pip3 install pytest

@@ -26,10 +26,10 @@ function fd
 end
 
 # ls after cd
-functions --copy cd standard_cd
-function cd
-    standard_cd $argv; and ls
-end
+#functions --copy cd standard_cd
+#function cd
+#    standard_cd $argv; and ls
+#end
 
 # memo alias
 alias me='memo e'
