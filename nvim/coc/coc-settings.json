@@ -1,25 +1,11 @@
 {
-  "python.linting.enabled": true,
-  "python.linting.pylintEnabled": false,
-  "python.linting.pep8Enabled": false,
-  "python.linting.flake8Enabled": true,
-  "python.linting.mypyEnabled": true,
+  "pyls.enable": true,
   "pyls.plugins.pycodestyle.enabled": false,
   "pyls.plugins.pyflakes.enabled": false,
-  "pyls.trace.server": "verbose",
-  "python.analysis.errors": [
-    "undefined-variable"
-  ],
-  "python.analysis.information": [
-    "undefined-variable"
-  ],
-  "python.analysis.disabled": [
-    "disabled"
-  ],
-  "python.venvPath": ".venv",
+  "diagnostic.displayByAle": true,
   "languageserver": {
     "golang": {
-      "command": "gopls",
+      "command": "bingo",
       "filetypes": [
         "go"
       ]
