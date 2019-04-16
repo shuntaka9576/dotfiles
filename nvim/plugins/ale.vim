@@ -25,6 +25,7 @@ let g:ale_go_golangci_lint_options = '--enable-all --disable gochecknoglobals --
 
 let g:ale_fixers = {
     \ 'python':     ['autopep8', 'isort', 'black'],
+    \ 'go':         ['goimports'],
     \ 'json':       ['jq'],
     \ 'javascript': ['prettier'],
     \ 'vue':        ['prettier'],
@@ -33,6 +34,7 @@ let g:ale_fix_on_save = 1
 let g:ale_save_event_fired = 0
 
 nmap <silent> <C-n> <Plug>(ale_next_wrap)
+nmap <silent> <C-p> <Plug>(ale_previous_wrap)
 
 function! s:ale_list()
   let g:ale_open_list = 1
@@ -46,9 +48,11 @@ function! s:ale_clean()
   call ale#Queue(0, 'lint_file')
 endfunction
 command! ALEClean call s:ale_clean()
-nnoremap <leader>c  :ALEClean<CR>
 
+let mapleader = ','
+nnoremap <leader>c  :ALEClean<CR>
 nnoremap <leader>m  :ALEList<CR>
+
 augroup alegroup
     autocmd!
     autocmd FileType qf nnoremap <buffer>d:let g:ale_open_list=0<CR>:q!<CR>

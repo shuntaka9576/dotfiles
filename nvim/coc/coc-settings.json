@@ -2,6 +2,7 @@
   "pyls.enable": true,
   "pyls.plugins.pycodestyle.enabled": false,
   "pyls.plugins.pyflakes.enabled": false,
+  "python.linting.pylintEnabled": false,
   "diagnostic.displayByAle": true,
   "languageserver": {
     "golang": {

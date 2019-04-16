@@ -141,7 +141,7 @@ repo = 'kristijanhusak/defx-icons.git'
 [[plugins]]
 repo = 'jistr/vim-nerdtree-tabs'
 hook_add = '''
-    map <C-a> <plug>NERDTreeTabsToggle<CR>
+    map <C-q> <plug>NERDTreeTabsToggle<CR>
 
     " Don't display the NERDTree when specifying files
     autocmd StdinReadPre * let s:std_in=1

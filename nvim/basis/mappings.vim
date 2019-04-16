@@ -1,6 +1,9 @@
 " Change <c-c> to complete <esc>
 inoremap <C-c> <ESC>
 
+" <leader> setting
+let mapleader = ','
+
 " Search settigs
 noremap <Space> *
 noremap <silent><Space><Space> :nohlsearch<Cr><Esc>
