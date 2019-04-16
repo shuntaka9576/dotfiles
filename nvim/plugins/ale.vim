@@ -5,6 +5,9 @@ let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 
 let g:ale_lint_on_enter = 0
 let g:ale_lint_on_save = 0 
+let g:ale_lint_on_text_changed = 1
+let g:ale_set_loclist = 0
+let g:ale_set_quickfix = 1
 
 let g:ale_linters = {
    \ 'python': ['flake8', 'mypy'],
@@ -37,5 +40,18 @@ function! s:ale_list()
 endfunction
 command! ALEList call s:ale_list()
 nnoremap <leader>m  :ALEList<CR>
-autocmd FileType qf nnoremap <silent><buffer> q :let g:ale_open_list = 0<CR>:q!<CR>
-autocmd FileType help,qf,man,ref let b:ale_enabled = 0
+
+function! s:ale_clean()
+  let g:ale_open_list = 0
+  call ale#Queue(0, 'lint_file')
+endfunction
+command! ALEClean call s:ale_clean()
+nnoremap <leader>c  :ALEClean<CR>
+
+nnoremap <leader>m  :ALEList<CR>
+augroup alegroup
+    autocmd!
+    autocmd FileType qf nnoremap <buffer>d:let g:ale_open_list=0<CR>:q!<CR>
+    autocmd FileType help,qf,man,ref let b:ale_enabled = 0
+augroup end
+
