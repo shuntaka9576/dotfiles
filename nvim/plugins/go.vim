@@ -10,10 +10,12 @@ augroup GoCommands
     autocmd FileType go nmap <silent><leader>tf <Plug>(go-test-func)
     autocmd FileType go nmap <silent><leader>ts :<C-u>GoTests
     autocmd FileType go nmap <silent><leader>ta :<C-u>GoTestsAll
-    autocmd FileType go nmap <silent><leader>m  <Plug>(go-imports)
+    " disable for ALEList
+    " autocmd FileType go nmap <silent><leader>m  <Plug>(go-imports)
     autocmd FileType go nmap <silent><leader>i  <Plug>(go-install)
     autocmd FileType go nmap <silent><leader>k  <Plug>(go-doc-browser)
-    autocmd FileType go nmap <silent><leader>c  <Plug>(go-coverage-toggle)
+    " disable for ALEclean
+    " autocmd FileType go nmap <silent><leader>c  <Plug>(go-coverage-toggle)
     autocmd FileType go nmap <silent><leader>a  <Plug>(go-alternate-edit)
     autocmd FileType go nmap <silent><leader>e  <Plug>(go-iferr)
     autocmd FileType go nmap <silent><leader>p  <Plug>(go-implements)

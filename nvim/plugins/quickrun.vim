@@ -12,15 +12,11 @@ let g:quickrun_config = {
     \ },
 \ }
 
-augroup MyQuickFixClose
-    au FileType qf nnoremap <silent><buffer>q :quit<CR>
-augroup END
-
 " Keymap
 let g:quickrun_no_default_key_mappings = 1
 " Running with close quickfix and save file
-" nnoremap <Leader>r :<C-U>QuickRun<CR>
-" nnoremap <Leader>t :<C-U>QuickRun -args
+nnoremap <Leader>r :<C-U>QuickRun<CR>
+nnoremap <Leader>t :<C-U>QuickRun -args
 " xnoremap <Leader>r gv:<C-U>QuickRun<CR>
 
 " Stop quickrun is [C-c]

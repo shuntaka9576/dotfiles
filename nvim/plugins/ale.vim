@@ -55,7 +55,7 @@ nnoremap <leader>m  :ALEList<CR>
 
 augroup alegroup
     autocmd!
-    autocmd FileType qf nnoremap <buffer>d:let g:ale_open_list=0<CR>:q!<CR>
+    autocmd FileType qf nnoremap <silent><buffer> q :let g:ale_open_list=0<CR>:q!<CR>
     autocmd FileType help,qf,man,ref let b:ale_enabled = 0
 augroup end
 
