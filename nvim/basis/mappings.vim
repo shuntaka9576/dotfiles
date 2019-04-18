@@ -1,5 +1,11 @@
-" Change <c-c> to complete <esc>
+" change <ESC> mappings
 inoremap <C-c> <ESC>
+inoremap jj <Esc>
+inoremap JJ <Esc>
+" inoremap <C-j> <Down>
+" inoremap <C-k> <Up>
+" inoremap <C-b> <Left>
+" inoremap <C-f> <Right>
 
 " <leader> setting
 let mapleader = ','
