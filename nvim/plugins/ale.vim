@@ -8,6 +8,7 @@ let g:ale_lint_on_save = 0
 let g:ale_lint_on_text_changed = 1
 let g:ale_set_loclist = 0
 let g:ale_set_quickfix = 1
+let g:ale_python_auto_pipenv = 1
 
 let g:ale_linters = {
    \ 'python': ['flake8', 'mypy'],
@@ -22,6 +23,7 @@ let g:ale_linters = {
    \ }
 
 let g:ale_go_golangci_lint_options = '--enable-all --disable gochecknoglobals --disable gochecknoinits'
+let g:ale_python_mypy_options = '--ignore-missing-imports'
 
 let g:ale_fixers = {
     \ 'python':     ['autopep8', 'isort', 'black'],
@@ -31,7 +33,7 @@ let g:ale_fixers = {
     \ 'vue':        ['prettier'],
     \ }
 let g:ale_fix_on_save = 1
-let g:ale_save_event_fired = 0
+" let g:ale_save_event_fired = 0
 
 nmap <silent> <C-n> <Plug>(ale_next_wrap)
 nmap <silent> <C-p> <Plug>(ale_previous_wrap)
