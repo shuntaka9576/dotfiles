@@ -7,6 +7,8 @@ git config --global ghq.root $GOPATH/src
 git config --global user.name "shuntaka9576"
 git config --global user.email "shuntaka9576@gmail.com"
 git config --global core.editor 'vim -c "set fenc=utf-8"'
+git config --global push.default current
+git config --global alias.see browse
 
 # path settigs
 if [ "$(uname)" == 'Darwin' ]; then
