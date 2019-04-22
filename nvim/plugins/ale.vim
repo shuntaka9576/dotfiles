@@ -29,9 +29,9 @@ let g:ale_fixers = {
     \ 'python':     ['autopep8', 'isort', 'black'],
     \ 'go':         ['goimports'],
     \ 'json':       ['jq'],
-    \ 'javascript': ['prettier'],
-    \ 'vue':        ['prettier'],
     \ }
+    "\ 'javascript': ['prettier'],
+    "\ 'vue':        ['prettier'],
 let g:ale_fix_on_save = 1
 " let g:ale_save_event_fired = 0
 
