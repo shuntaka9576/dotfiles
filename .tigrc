@@ -1,0 +1,2 @@
+# Main view setting
+set main-view = id date author:email-user commit-title:graph=yes,refs=yes
