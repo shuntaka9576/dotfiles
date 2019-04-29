@@ -10,6 +10,11 @@ augroup GoCommands
     autocmd FileType go nmap <silent><leader>tf <Plug>(go-test-func)
     autocmd FileType go nmap <silent><leader>ts :<C-u>GoTests
     autocmd FileType go nmap <silent><leader>ta :<C-u>GoTestsAll
+    autocmd FileType go nmap <silent><leader>bb  :<C-u>GoDebugStart
+    autocmd FileType go nmap <silent><leader>bp :<C-u>GoDebugBreakpoint<CR>
+    autocmd FileType go nmap <silent><leader>bc :<C-u>GoDebugContinue<CR>
+    autocmd FileType go nmap <silent><leader>bs :<C-u>GoDebugStop<CR>
+    autocmd FileType go nmap <silent><leader>bn :<C-u>GoDebugNext<CR>
     " disable for ALEList
     " autocmd FileType go nmap <silent><leader>m  <Plug>(go-imports)
     autocmd FileType go nmap <silent><leader>i  <Plug>(go-install)
