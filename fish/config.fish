@@ -22,6 +22,7 @@ set -g theme_display_user no
 # development settingns
 set --export PIPENV_VENV_IN_PROJECT true
 set --export AWS_SAM_LOCAL true
+set --export GO111MODULE on
 
 # hub alias
 eval (hub alias -s)
