@@ -25,6 +25,10 @@ function fd
     cd (find . -type d |fzf-tmux)
 end
 
+function d
+    cd (z -l|awk '{print $2}'| fzf-tmux)
+end
+
 # ls after cd
 #functions --copy cd standard_cd
 #function cd
