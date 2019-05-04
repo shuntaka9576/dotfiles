@@ -28,6 +28,7 @@ pip3 install python-language-server
 pip3 install neovim
 pip3 install vim-vint
 pip3 install pipenv
+pip3 install awscli
 
 # install lsp
 git clone https://github.com/saibing/bingo.git ~/bingo

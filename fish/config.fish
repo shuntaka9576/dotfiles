@@ -26,3 +26,6 @@ set --export GO111MODULE on
 
 # hub alias
 eval (hub alias -s)
+
+# complete aws-cli
+complete -c aws -f -a '(begin; set -lx COMP_SHELL fish; set -lx COMP_LINE (commandline); /usr/local/bin/aws_completer; end)'
