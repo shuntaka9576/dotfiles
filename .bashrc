@@ -25,4 +25,5 @@ elif [ -e /etc/system-release ]; then
 fi
 
 # alias settings
+# alias t="tmux -2 command-prompt 'new-session -n %1'"
 alias t="tmux -2"
