@@ -95,3 +95,6 @@ repo = 'Shougo/neosnippet-snippets'
 #
 #[[plugins]]
 #repo = "osyo-manga/vim-precious"
+
+[[plugins]]
+repo='leafgarland/typescript-vim'
