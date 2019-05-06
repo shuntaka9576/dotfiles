@@ -1,0 +1,13 @@
+{
+    "recommendations": [
+      "vscodevim.vim",
+      "ms-vscode.go",
+      "ms-python.python",
+      "donjayamanne.jupyter",
+      "coenraads.bracket-pair-colorizer",
+      "vscode-icons-team.vscode-icons",
+      "oderwat.indent-rainbow",
+      "editorconfig.editorconfig",
+      "dbaeumer.vscode-eslint"
+    ]
+}

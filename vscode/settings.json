@@ -1,2 +1,117 @@
 {
+    "[go]": {
+        "editor.insertSpaces": false,
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": true
+        }
+    },
+    "go.formatTool": "goimports",
+    "go.formatFlags": ["-w"],
+    "go.lintTool": "golangci-lint",
+    // "go.toolsEnvVars": {"GO111MODULE": "on"},
+    "go.useLanguageServer": true,
+    "go.alternateTools": {"go-langserver": "go-langserver"},
+    "[python]": {
+        "editor.formatOnSave": true
+    },
+    "python.linting.pylintEnabled": false,
+    "python.linting.flake8Enabled": true,
+    "python.formatting.provider": "black",
+    "python.jediEnabled": false,
+    "python.pythonPath": "${workspaceFolder}/.venv/bin/python",
+    "python.venvPath": ".venv",
+    "vim.useSystemClipboard": true,
+    "vim.hlsearch": true,
+    "vim.leader": ",",
+    "vim.insertModeKeyBindings": [
+        {
+          "before": ["j", "j"],
+          "after": ["<Esc>"]
+        },
+        {
+            "before": ["leader","w"],
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.action.files.save",
+                    "args": []
+                }
+            ]
+        },
+    ],
+    "vim.normalModeKeyBindings": [
+        {
+            "before": ["leader","a"],
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.debug.viewlet.action.removeAllBreakpoints",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": ["leader","r","n"],
+            "after": [],
+            "commands": [
+                {
+                    "command": "editor.action.rename",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": ["leader","b","p"],
+            "after": [],
+            "commands": [
+                {
+                    "command": "editor.debug.action.conditionalBreakpoint",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": ["leader","b","b"],
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.action.debug.start",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": ["leader","b","n"],
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.action.debug.stepOver",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": ["leader","b","s"],
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.action.debug.stop",
+                    "args": []
+                }
+            ]
+          }
+    ],
+    "explorer.openEditors.visible": 0,
+    "terminal.integrated.shell.osx": "/usr/local/bin/fish",
+    "terminal.integrated.shell.windows": "cmd.exe",
+    "files.eol": "\n",
+    "files.autoGuessEncoding": true,
+    "editor.minimap.showSlider": "always",
+    "editor.minimap.renderCharacters": false,
+    "window.zoomLevel": 0,
+    "workbench.editor.enablePreview": false,
+    "workbench.iconTheme": "vscode-icons",
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
 }
