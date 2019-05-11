@@ -22,6 +22,18 @@
     "python.jediEnabled": false,
     "python.pythonPath": "${workspaceFolder}/.venv/bin/python",
     "python.venvPath": ".venv",
+    "eslint.enable": true,
+    "eslint.validate": [
+        "javascript",
+        "javascriptreact",
+        {
+            "language":"typescript",
+            "autoFix": true
+        }
+    ],
+    "eslint.run": "onType",
+    "eslint.autoFixOnSave": true,
+    "files.autoSave": "off",
     "vim.useSystemClipboard": true,
     "vim.hlsearch": true,
     "vim.leader": ",",
