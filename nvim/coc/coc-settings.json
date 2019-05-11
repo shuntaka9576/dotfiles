@@ -6,52 +6,58 @@
   "diagnostic.displayByAle": true,
   "languageserver": {
     "golang": {
-      "command": "bingo",
+      "command": "gopls",
+      "rootPatterns": [
+        "go.mod",
+        ".vim/",
+        ".git/",
+        ".hg/"
+      ],
       "filetypes": [
         "go"
       ]
-    },
-    "vue": {
-      "command": "vls",
-      "filetypes": [
-        "vue"
-      ]
-    },
-    "javascript": {
-      "command": "javascript-typescript-stdio",
-      "filetypes": [
-        "javascript",
-        "vue"
-      ]
-    },
-    "dockerfile": {
-      "command": "docker-langserver",
-      "filetypes": [
-        "dockerfile"
-      ],
-      "args": [
-        "--stdio"
-      ]
-    },
-    "bash": {
-      "command": "bash-language-server",
-      "args": [
-        "start"
-      ],
-      "filetypes": [
-        "sh"
-      ],
-      "ignoredRootPaths": [
-        "~"
-      ]
-    },
-    "efm": {
-      "command": "efm-langserver",
-      "filetypes": [
-        "vim",
-        "eruby",
-        "markdown"
-      ]
     }
+  },
+  "vue": {
+    "command": "vls",
+    "filetypes": [
+      "vue"
+    ]
+  },
+  "javascript": {
+    "command": "javascript-typescript-stdio",
+    "filetypes": [
+      "javascript",
+      "vue"
+    ]
+  },
+  "dockerfile": {
+    "command": "docker-langserver",
+    "filetypes": [
+      "dockerfile"
+    ],
+    "args": [
+      "--stdio"
+    ]
+  },
+  "bash": {
+    "command": "bash-language-server",
+    "args": [
+      "start"
+    ],
+    "filetypes": [
+      "sh"
+    ],
+    "ignoredRootPaths": [
+      "~"
+    ]
+  },
+  "efm": {
+    "command": "efm-langserver",
+    "filetypes": [
+      "vim",
+      "eruby",
+      "markdown"
+    ]
   }
 }

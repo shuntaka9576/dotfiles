@@ -31,7 +31,7 @@ pip3 install pipenv
 pip3 install awscli
 
 # install lsp
-git clone https://github.com/saibing/bingo.git ~/bingo
-cd ~/bingo
-GO111MODULE=on CGO_ENABLED=0 go install
-rm -rf ~/bingo
+# git clone https://github.com/saibing/bingo.git ~/bingo
+# cd ~/bingo
+# GO111MODULE=on CGO_ENABLED=0 go install
+# rm -rf ~/bingo

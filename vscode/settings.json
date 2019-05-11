@@ -9,15 +9,16 @@
     "go.formatTool": "goimports",
     "go.formatFlags": ["-w"],
     "go.lintTool": "golangci-lint",
-    // "go.toolsEnvVars": {"GO111MODULE": "on"},
+    "go.toolsEnvVars": {"GO111MODULE": "on"},
     "go.useLanguageServer": true,
-    "go.alternateTools": {"go-langserver": "go-langserver"},
+    "go.alternateTools": {"go-langserver": "gopls"},
     "[python]": {
         "editor.formatOnSave": true
     },
     "python.linting.pylintEnabled": false,
     "python.linting.flake8Enabled": true,
     "python.formatting.provider": "black",
+    "python.linting.mypyEnabled": true,
     "python.jediEnabled": false,
     "python.pythonPath": "${workspaceFolder}/.venv/bin/python",
     "python.venvPath": ".venv",
