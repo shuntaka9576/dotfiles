@@ -33,6 +33,7 @@
     ],
     "eslint.run": "onType",
     "eslint.autoFixOnSave": true,
+    "editor.minimap.enabled": false,
     "files.autoSave": "off",
     "vim.useSystemClipboard": true,
     "vim.hlsearch": true,
