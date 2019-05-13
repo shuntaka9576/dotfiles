@@ -2,27 +2,12 @@
 [
     {
         "key": "ctrl+k",
-        "command": "-deleteAllRight",
-        "when": "textInputFocus && !editorReadonly"
-    },
-    {
-        "key": "ctrl+k",
-        "command": "-extension.vim_ctrl+k",
-        "when": "editorTextFocus && vim.active && vim.use<C-k> && !inDebugRepl"
-    },
-    {
-        "key": "ctrl+k",
         "command": "extension.vim_ctrl+w",
         "when": "editorTextFocus && vim.active && vim.use<C-w> && !inDebugRepl"
     },
     {
         "key": "ctrl+w",
-        "command": "-extension.vim_ctrl+w",
-        "when": "editorTextFocus && vim.active && vim.use<C-w> && !inDebugRepl"
-    },
-    {
-        "key": "ctrl+w",
-        "command": "-workbench.action.switchWindow"
+        "command": "workbench.action.switchWindow"
     },
     {
         "key": "cmd+n",

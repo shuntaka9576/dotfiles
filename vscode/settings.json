@@ -130,4 +130,5 @@
     "workbench.iconTheme": "vscode-icons",
     "editor.suggestSelection": "first",
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "workbench.startupEditor": "newUntitledFile"
 }
