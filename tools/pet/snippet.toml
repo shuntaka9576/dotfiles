@@ -16,6 +16,12 @@
   output = ""
 
 [[snippets]]
+  description = "python-step-count"
+  command = 'find . -type d \( -name ".git" -o -name ".venv" -o -name ".mypy_cache" \) -prune -o -type f -print'
+  tag = ["filer"]
+  output = ""
+
+[[snippets]]
   description = "go-step-count"
   command = "find . -name '*.go'| xargs wc -l"
   tag = ["filer"]
