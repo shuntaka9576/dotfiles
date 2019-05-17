@@ -42,3 +42,8 @@ alias mn='memo new'
 # tmux alias
 alias tk='tmux kill-session -t'
 alias tl='tmux ls'
+
+# pet settings
+function fish_user_key_bindings
+  bind \cs 'pet-select'
+end

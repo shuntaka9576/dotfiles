@@ -18,6 +18,7 @@ go get github.com/gohugoio/hugo
 go get github.com/mattn/memo
 go get github.com/jesseduffield/lazygit
 go get github.com/mattn/efm-langserver/cmd/efm-langserver
+go get github.com/knqyf263/pet
 
 go get -d github.com/skanehira/docui
 cd $GOPATH/src/github.com/skanehira/docui

@@ -1,0 +1,28 @@
+[[snippets]]
+  description = "show all"
+  command = "ls -al"
+  output = ""
+
+[[snippets]]
+  description = "ping"
+  command = "ping 8.8.8.8"
+  tag = ["network", "google"]
+  output = ""
+
+[[snippets]]
+  description = "filer"
+  command = "find . -type d -name '.git' -prune -o -type f -print"
+  tag = ["filer"]
+  output = ""
+
+[[snippets]]
+  description = "go-step-count"
+  command = "find . -name '*.go'| xargs wc -l"
+  tag = ["filer"]
+  output = ""
+
+[[snippets]]
+  description = "display specified field"
+  command = "ls -al |awk '{print $1,$9}'"
+  tag = ["awk"]
+  output = ""
