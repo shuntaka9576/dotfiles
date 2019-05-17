@@ -98,3 +98,19 @@ repo = 'Shougo/neosnippet-snippets'
 
 [[plugins]]
 repo='leafgarland/typescript-vim'
+
+[[plugins]]
+repo='easymotion/vim-easymotion'
+hook_add = '''
+    let g:EasyMotion_do_mapping = 0 "Disable default mappings
+    nmap s <Plug>(easymotion-s2)
+    xmap s <Plug>(easymotion-s2)
+    omap s <Plug>(easymotion-s2)
+    let g:EasyMotion_enter_jump_first = 1
+
+    map <Leader>j <Plug>(easymotion-j)
+    map <Leader>k <Plug>(easymotion-k)
+    nmap g/ <Plug>(easymotion-sn)
+    xmap g/ <Plug>(easymotion-sn)
+    omap g/ <Plug>(easymotion-tn)
+'''

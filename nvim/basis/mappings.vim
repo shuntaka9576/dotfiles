@@ -28,5 +28,5 @@ autocmd BufNewFile,BufRead *.py nnoremap <leader><C-r> :!python %
 autocmd BufNewFile,BufRead *.pl nnoremap <leader><C-r> :!perl %
 
 " Split window command
-nnoremap ss :<C-u>sp<CR>
+" nnoremap ss :<C-u>sp<CR>
 nnoremap vv :<C-u>vs<CR>
