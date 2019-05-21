@@ -104,7 +104,7 @@ repo='easymotion/vim-easymotion'
 hook_add = '''
     let g:EasyMotion_do_mapping = 0 "Disable default mappings
     nmap s <Plug>(easymotion-s2)
-    xmap s <Plug>(easymotion-s2)
+    xmap <C-s> <Plug>(easymotion-s2)
     omap s <Plug>(easymotion-s2)
     let g:EasyMotion_enter_jump_first = 1
 
@@ -113,4 +113,27 @@ hook_add = '''
     nmap g/ <Plug>(easymotion-sn)
     xmap g/ <Plug>(easymotion-sn)
     omap g/ <Plug>(easymotion-tn)
+
+    map f <Plug>(easymotion-fl)
+    map t <Plug>(easymotion-tl)
+    map F <Plug>(easymotion-Fl)
+    map T <Plug>(easymotion-Tl)
+
+    let g:EasyMotion_use_upper = 1
+    let g:EasyMotion_smartcase = 1
+
+    " Smartsign (type `3` and match `3`&`#`)
+    let g:EasyMotion_use_smartsign_us = 1
+
+    set nohlsearch
+    map  / <Plug>(easymotion-sn)
+    omap / <Plug>(easymotion-tn)
+    map  n <Plug>(easymotion-next)
+    map  N <Plug>(easymotion-prev)
 '''
+
+#[[plugins]]
+#repo='tpope/vim-repeat'
+#hook_add = '''
+#    silent! call repeat#set("\<Plug>(easymotion-repeat)",v:count)
+#'''
