@@ -38,3 +38,9 @@
   command = "set --export GO111MODULE off"
   tag = ["go"]
   output = ""
+
+[[snippets]]
+  description = "set proxy and discard the response"
+  command = "curl -v --proxy http://{adress}:{port} -o /dev/null https://www.google.com"
+  tag = ["go"]
+  output = ""
