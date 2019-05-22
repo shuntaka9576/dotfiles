@@ -32,3 +32,9 @@
   command = "ls -al |awk '{print $1,$9}'"
   tag = ["awk"]
   output = ""
+
+[[snippets]]
+  description = "GOPATH mode"
+  command = "set --export GO111MODULE off"
+  tag = ["go"]
+  output = ""
