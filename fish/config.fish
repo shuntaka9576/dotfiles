@@ -23,6 +23,8 @@ set -g theme_display_user no
 set --export PIPENV_VENV_IN_PROJECT true
 set --export AWS_SAM_LOCAL true
 set --export GO111MODULE on
+set --export PYENV_ROOT "$HOME/.pyenv"
+set --export PATH "$PYENV_ROOT/bin:$PATH"
 
 # hub alias
 eval (hub alias -s)
