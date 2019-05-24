@@ -17,7 +17,7 @@
 
 [[snippets]]
   description = "python-step-count"
-  command = 'find . -type d \( -name ".git" -o -name ".venv" -o -name ".mypy_cache" \) -prune -o -type f -print'
+  command = 'find . -type d \( -name ".git" -o -name ".venv" -o -name ".mypy_cache" \) -prune -o -type f -print| xargs wc -l'
   tag = ["filer"]
   output = ""
 
@@ -43,4 +43,10 @@
   description = "set proxy and discard the response"
   command = "curl -v --proxy http://{adress}:{port} -o /dev/null https://www.google.com"
   tag = ["go"]
+  output = ""
+
+[[snippets]]
+  description = "print the process listening on 8888"
+  command = "lsof -i -P | grep 8888"
+  tag = ["network"]
   output = ""
