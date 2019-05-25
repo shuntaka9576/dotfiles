@@ -24,6 +24,7 @@
     //"python.autoComplete.extraPaths": [],
     "python.pythonPath": "${workspaceFolder}/.venv/bin/python",
     "python.venvPath": ".venv",
+    "eslint.run": "onType",
     "eslint.enable": true,
     "eslint.validate": [
         "javascript",
@@ -31,10 +32,28 @@
         {
             "language":"typescript",
             "autoFix": true
-        }
+        },
+        {
+            "language": "vue",
+            "autoFix": true
+        },
     ],
-    "eslint.run": "onType",
+    "editor.formatOnSave": false,
     "eslint.autoFixOnSave": true,
+    "[vue]": {
+        "editor.formatOnSave": false
+    },
+    "javascript.format.insertSpaceBeforeFunctionParenthesis": true,
+    "typescript.format.insertSpaceBeforeFunctionParenthesis": true,
+    "vetur.format.defaultFormatter.js": "prettier",
+    "vetur.format.defaultFormatter.css": "prettier",
+    "vetur.format.defaultFormatter.less": "prettier",
+    "vetur.format.defaultFormatter.postcss": "prettier",
+    "vetur.format.defaultFormatter.scss": "prettier",
+    "vetur.format.defaultFormatter.stylus": "stylus-supremacy",
+    "vetur.format.defaultFormatter.ts": "prettier",
+    "vetur.validation.style": true,
+    "vetur.validation.template": true,
     "editor.minimap.enabled": false,
     "files.autoSave": "off",
     "vim.useSystemClipboard": true,
