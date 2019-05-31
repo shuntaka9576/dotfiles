@@ -1,52 +1,59 @@
 [[snippets]]
-  description = "show all"
+  description = "Show all"
   command = "ls -al"
+  tag = ["util"]
   output = ""
 
 [[snippets]]
-  description = "ping"
+  description = "Ping to google dns server"
   command = "ping 8.8.8.8"
   tag = ["network", "google"]
   output = ""
 
 [[snippets]]
-  description = "filer"
+  description = "Filer"
   command = "find . -type d -name '.git' -prune -o -type f -print"
   tag = ["filer"]
   output = ""
 
 [[snippets]]
-  description = "python-step-count"
+  description = "To count python files steps"
   command = 'find . -type d \( -name ".git" -o -name ".venv" -o -name ".mypy_cache" \) -prune -o -type f -print| xargs wc -l'
   tag = ["filer"]
   output = ""
 
 [[snippets]]
-  description = "go-step-count"
+  description = "To count go files steps"
   command = "find . -name '*.go'| xargs wc -l"
   tag = ["filer"]
   output = ""
 
 [[snippets]]
-  description = "display specified field"
+  description = "Display specified field"
   command = "ls -al |awk '{print $1,$9}'"
   tag = ["awk"]
   output = ""
 
 [[snippets]]
-  description = "GOPATH mode"
+  description = "Change GOPATH mode"
   command = "set --export GO111MODULE off"
   tag = ["go"]
   output = ""
 
 [[snippets]]
-  description = "set proxy and discard the response"
+  description = "Set proxy and discard the response"
   command = "curl -v --proxy http://{adress}:{port} -o /dev/null https://www.google.com"
-  tag = ["go"]
+  tag = ["http"]
   output = ""
 
 [[snippets]]
-  description = "print the process listening on 8888"
+  description = "Print the process listening on 8888"
   command = "lsof -i -P | grep 8888"
   tag = ["network"]
+  output = ""
+
+[[snippets]]
+  description = "Remove the 1st line"
+  command = "sed 1d {f}"
+  tag = ["sed"]
   output = ""
