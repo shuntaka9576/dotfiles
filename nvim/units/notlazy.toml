@@ -137,3 +137,6 @@ hook_add = '''
 #hook_add = '''
 #    silent! call repeat#set("\<Plug>(easymotion-repeat)",v:count)
 #'''
+
+[[plugins]]
+repo='JuliaEditorSupport/julia-vim'
