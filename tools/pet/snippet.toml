@@ -57,3 +57,9 @@
   command = "sed 1d {f}"
   tag = ["sed"]
   output = ""
+
+[[snippets]]
+  description = "lunch jupyter"
+  command = "jupyter notebook --ip=0.0.0.0 --no-browser --allow-root --NotebookApp.token=''"
+  tag = ["julia"]
+  output = ""
