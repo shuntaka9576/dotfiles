@@ -8,12 +8,6 @@ repo = 'Shougo/dein.vim'
 #repo = 'prabirshrestha/asyncomplete-lsp.vim'
 
 [[plugins]]
-repo = 'Shougo/denite.nvim'
-hook_add = '''
-    source ~/dotfiles/nvim/plugins/denite.vim
-'''
-
-[[plugins]]
 repo = 'osyo-manga/vim-over'
 hook_add = '''
     nnoremap <silent> <Space>o :OverCommandLine<CR>%s//g<Left><Left>
