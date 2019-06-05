@@ -1,4 +1,25 @@
 [[plugins]]
+repo = 'Shougo/denite.nvim'
+on_cmd = 'Denite'
+build = ':UpdateRemotePlugins'
+hook_add='''
+    nmap [denite] <Nop>
+    map <C-j> [denite]
+
+    nnoremap <silent> [denite]<C-p> :<C-u>Denite file/rec<CR>
+    command! D execute(":Denite grep -buffer-name=grep-buffer-denite")
+    command! Dresume execute(":Denite -resume -buffer-name=grep-buffer-denite")
+    command! Dnext execute(":Denite -resume -buffer-name=grep-buffer-denite -cursor-pos=+1 -immediately")
+    command! Dprev execute(":Denite -resume -buffer-name=grep-buffer-denite -cursor-pos=-1 -immediately")
+    nmap <silent> [denite]<C-m> :<C-u>Denite -resume -buffer-name=grep-buffer-denite<CR>
+    nnoremap <silent> [denite]n :<C-u>Denite -resume -buffer-name=grep-buffer-denite -cursor-pos=+1 -immediately<CR>
+    nnoremap <silent> [denite]p :<C-u>Denite -resume -buffer-name=grep-buffer-denite -cursor-pos=-1 -immediately<CR>
+'''
+hook_source = '''
+    source ~/dotfiles/nvim/plugins/denite.vim
+'''
+
+[[plugins]]
 repo = 'Shougo/vimproc.vim'
 build = 'make'
 
