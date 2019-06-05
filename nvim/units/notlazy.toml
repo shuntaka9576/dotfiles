@@ -29,13 +29,13 @@ hook_add = '''
 [[plugins]]
 repo = 'cespare/vim-toml'
 
-# [[plugins]]
-# repo = 'neoclide/coc.nvim'
-# merge = 0
-# build = 'yarn install --frozen-lockfile'
-# hook_add = '''
-#     source ~/dotfiles/nvim/plugins/coc.vim
-# '''
+[[plugins]]
+repo = 'neoclide/coc.nvim'
+merge = 0
+build = 'yarn install --frozen-lockfile'
+hook_add = '''
+    source ~/dotfiles/nvim/plugins/coc.vim
+'''
 
 [[plugins]]
 repo = 'Shougo/context_filetype.vim'
@@ -53,9 +53,7 @@ build = ':UpdateRemotePlugins'
 hook_add = '''
     let g:LanguageClient_autoStart = 1
     let g:LanguageClient_serverCommands = {
-        \ 'go': ['gopls'],
-        \ 'python': ['pyls'],
-        \ 'julia': ['/usr/local/bin/julia', '--startup-file=no', '--history-file=no', '-e', '
+        \ 'julia': ['julia', '--startup-file=no', '--history-file=no', '-e', '
         \    using LanguageServer;
         \    using Pkg;
         \    import StaticLint;
@@ -170,3 +168,6 @@ hook_add = '''
 
 [[plugins]]
 repo='JuliaEditorSupport/julia-vim'
+hook_add = '''
+    let g:default_julia_version = '1.1'
+'''

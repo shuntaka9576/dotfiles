@@ -1,13 +1,15 @@
 {
-    "recommendations": [
-      "vscodevim.vim",
-      "ms-vscode.go",
-      "ms-python.python",
-      "coenraads.bracket-pair-colorizer",
-      "vscode-icons-team.vscode-icons",
-      "oderwat.indent-rainbow",
-      "editorconfig.editorconfig",
-      "dbaeumer.vscode-eslint",
-      "octref.vetur"
-    ]
+  "recommendations": [
+    "vscodevim.vim",
+    "ms-vscode.go",
+    "ms-python.python",
+    "coenraads.bracket-pair-colorizer",
+    "vscode-icons-team.vscode-icons",
+    "oderwat.indent-rainbow",
+    "editorconfig.editorconfig",
+    "dbaeumer.vscode-eslint",
+    "octref.vetur",
+    "julialang.language-julia",
+    "bungcip.better-toml"
+  ]
 }
