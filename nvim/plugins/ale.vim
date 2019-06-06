@@ -32,6 +32,7 @@ let g:ale_fixers = {
     \ 'javascript': ['prettier'],
     \ 'typescript': ['prettier'],
     \ 'vue':        ['prettier'],
+    \ 'rust':       ['rustfmt'],
     \ }
 let g:ale_fix_on_save = 1
 " let g:ale_save_event_fired = 0

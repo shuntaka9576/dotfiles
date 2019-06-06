@@ -29,16 +29,62 @@ hook_add = '''
 [[plugins]]
 repo = 'cespare/vim-toml'
 
-
 [[plugins]]
 repo = 'Shougo/context_filetype.vim'
 
 [[plugins]]
-repo = 'Shougo/deoplete.nvim'
+repo = 'neoclide/coc.nvim'
+merge = 0
+build = 'yarn install --frozen-lockfile'
 hook_add = '''
-    let g:deoplete#enable_at_startup = 1
+    source ~/dotfiles/nvim/plugins/coc.vim
 '''
 
+# [[plugins]]
+# repo = 'autozimu/LanguageClient-neovim'
+# rev = 'next'
+# on_ft = ['julia', 'rust']
+# build = ':UpdateRemotePlugins'
+# hook_add = '''
+#     let g:LanguageClient_autoStart = 1
+#     let g:LanguageClient_serverCommands = {
+#         \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+#         \ 'julia': ['julia', '--startup-file=no', '--history-file=no', '-e', '
+#         \    using LanguageServer;
+#         \    using Pkg;
+#         \    import StaticLint;
+#         \    import SymbolServer;
+#         \    env_path = dirname(Pkg.Types.Context().env.project_file);
+#         \    debug = false; 
+#         \    server = LanguageServer.LanguageServerInstance(stdin, stdout, debug, env_path, "", Dict());
+#         \    server.runlinter = true;
+#         \    run(server);
+#         \   '],
+#         \ }
+# 
+#     nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+#     " Or map each action separately
+#     nnoremap K :call LanguageClient#textDocument_hover()<CR>
+#     nnoremap gd :call LanguageClient#textDocument_definition()<CR>
+#     nnoremap <leader>d :call LanguageClient#textDocument_definition()<CR>
+#     nnoremap <F2> :call LanguageClient#textDocument_rename()<CR>
+# '''
+
+# [[plugins]]
+# repo = 'Shougo/deoplete.nvim'
+# depends = 'context_filetype.vim'
+# on_event = "InsertEnter"
+# hook_add = '''
+#     let g:deoplete#enable_at_startup = 1
+#     let g:deoplete#auto_complete_delay = 0
+#     let g:deoplete#auto_complete_start_length = 1
+#     let g:deoplete#enable_camel_case = 0
+#     let g:deoplete#enable_ignore_case = 0
+#     let g:deoplete#enable_refresh_always = 0
+#     let g:deoplete#enable_smart_case = 1
+#     let g:deoplete#file#enable_buffer_path = 1
+#     let g:deoplete#max_list = 10000
+# '''
 
 [[plugins]]
 repo = 'posva/vim-vue'
@@ -136,4 +182,11 @@ hook_add = '''
 repo='JuliaEditorSupport/julia-vim'
 hook_add = '''
     let g:default_julia_version = '1.1'
+'''
+
+[[plugins]]
+repo = 'rust-lang/rust.vim'
+on_ft = 'rust'
+hook_add = '''
+    let g:rustfmt_autosave = 1
 '''
