@@ -9,6 +9,9 @@ alias ga='git add'
 alias gl='git log'
 alias gr='git reset --hard'
 
+# julia alias
+alias jl='julia'
+
 # simple repository move
 alias g='cd (ghq root)/(ghq list | peco)'
 

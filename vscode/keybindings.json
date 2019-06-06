@@ -90,4 +90,8 @@
         "key": "shift+cmd+u",
         "command": "-workbench.action.output.toggleOutput"
     },
+    {
+        "key": "alt+l",
+        "command": "workbench.action.terminal.focusNext"
+    },
 ]

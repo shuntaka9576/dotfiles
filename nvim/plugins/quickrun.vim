@@ -10,6 +10,9 @@ let g:quickrun_config = {
     \ 'python' : {
         \ 'command': 'python3'
     \ },
+    \ 'julia' : {
+        \ 'command': 'julia'
+    \ },
 \ }
 
 " Keymap

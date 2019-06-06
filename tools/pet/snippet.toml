@@ -29,6 +29,12 @@
   output = ""
 
 [[snippets]]
+  description = "To count jlia files steps"
+  command = 'find . -type d \( -name ".git" \) -prune -o -type f -print| xargs wc -l'
+  tag = ["filer"]
+  output = ""
+
+[[snippets]]
   description = "Display specified field"
   command = "ls -al |awk '{print $1,$9}'"
   tag = ["awk"]
@@ -56,4 +62,10 @@
   description = "Remove the 1st line"
   command = "sed 1d {f}"
   tag = ["sed"]
+  output = ""
+
+[[snippets]]
+  description = "lunch jupyter"
+  command = "jupyter notebook --ip=0.0.0.0 --no-browser --allow-root --NotebookApp.token=''"
+  tag = ["julia"]
   output = ""
