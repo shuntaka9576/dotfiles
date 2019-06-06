@@ -31,6 +31,7 @@ repo = 'cespare/vim-toml'
 
 [[plugins]]
 repo = 'neoclide/coc.nvim'
+on_ft = ['go', 'python', 'json', 'make', 'vim', 'shell', 'js', 'vue', 'ts']
 merge = 0
 build = 'yarn install --frozen-lockfile'
 hook_add = '''
