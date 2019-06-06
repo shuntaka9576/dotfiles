@@ -10,6 +10,7 @@
     "dbaeumer.vscode-eslint",
     "octref.vetur",
     "julialang.language-julia",
-    "bungcip.better-toml"
+    "bungcip.better-toml",
+    "rust-lang.rust"
   ]
 }

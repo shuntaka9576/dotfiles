@@ -1,5 +1,6 @@
 export GOPATH=$HOME/go
 export PATH=$GOPATH/bin:$PATH
+export PATH=$HOME/.cargo/bin:$PATH
 export PS1='\[\e[1;33m\]\u@\h \w ->\n\[\e[1;36m\] \@ \d\$\[\e[m\] '
 
 # create .gitconfig
