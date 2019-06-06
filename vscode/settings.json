@@ -60,6 +60,8 @@
     "vim.useSystemClipboard": true,
     "vim.hlsearch": true,
     "vim.leader": ",",
+    "vim.easymotion": true,
+    "vim.easymotionMarkerFontFamily": "Fira Code",
     "vim.insertModeKeyBindings": [
         {
           "before": ["j", "j"],
