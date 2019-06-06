@@ -24,6 +24,5 @@ call denite#custom#var('file/rec', 'command', ['rg', '--files', '--glob', '!.git
 call denite#custom#option('_', {
     \ 'prompt': '$ ',
     \ 'split': 'floating',
-    \ 'start_filter': v:true,
     \ })
 

@@ -24,3 +24,7 @@ nnoremap <Leader>t :<C-U>QuickRun -args
 
 " Stop quickrun is [C-c]
 nnoremap <expr><silent> <C-c> quickrun#is_running() ? quickrun#sweep_sessions() : "\<C-c>"
+
+autocmd BufNewFile,BufRead *.crs setf rust
+autocmd BufNewFile,BufRead *.rs g:quickrun_config.rust = {'exec': 'cargo run'}
+autocmd BufNewFile,BufRead *.crs g:quickrun_config.rust = {'exec': 'cargo script %s -- %a'}
