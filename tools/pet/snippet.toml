@@ -29,6 +29,12 @@
   output = ""
 
 [[snippets]]
+  description = "To count jlia files steps"
+  command = 'find . -type d \( -name ".git" \) -prune -o -type f -print| xargs wc -l'
+  tag = ["filer"]
+  output = ""
+
+[[snippets]]
   description = "Display specified field"
   command = "ls -al |awk '{print $1,$9}'"
   tag = ["awk"]
