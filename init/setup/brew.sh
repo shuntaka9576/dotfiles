@@ -19,5 +19,3 @@ brew install wget
 brew install tig
 brew install hub
 brew install rg
-
-brew cask install julia
