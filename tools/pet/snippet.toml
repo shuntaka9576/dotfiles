@@ -69,3 +69,9 @@
   command = "jupyter notebook --ip=0.0.0.0 --no-browser --allow-root --NotebookApp.token=''"
   tag = ["julia"]
   output = ""
+
+[[snippets]]
+  description = "init python project"
+  command = "echo '.venv'>>.gitignore;pipenv install --dev black flake8 isort --pre"
+  tag = ["python"]
+  output = ""
