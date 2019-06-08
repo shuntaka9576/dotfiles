@@ -1,5 +1,5 @@
 {
-    "editor.fontFamily": "Fira Code",
+    // golang settings
     "[go]": {
         "editor.insertSpaces": false,
         "editor.formatOnSave": true,
@@ -13,6 +13,7 @@
     "go.toolsEnvVars": {"GO111MODULE": "on"},
     "go.useLanguageServer": true,
     "go.alternateTools": {"go-langserver": "gopls"},
+    // python settings
     "[python]": {
         "editor.formatOnSave": true
     },
@@ -21,12 +22,29 @@
     "python.formatting.provider": "black",
     "python.linting.mypyEnabled": true,
     "python.jediEnabled": true,
-    //"python.analysis.logLevel": "Trace",
-    //"python.autoComplete.extraPaths": [],
     "python.pythonPath": "${workspaceFolder}/.venv/bin/python",
     "python.venvPath": ".venv",
+    // rust settings
+    "[rust]": {
+        "editor.formatOnSave": true
+    },
+    // vue.js settings
+    "[vue]": {
+        "editor.formatOnSave": false
+    },
+    "vetur.format.defaultFormatter.js": "prettier",
+    "vetur.format.defaultFormatter.css": "prettier",
+    "vetur.format.defaultFormatter.less": "prettier",
+    "vetur.format.defaultFormatter.postcss": "prettier",
+    "vetur.format.defaultFormatter.scss": "prettier",
+    "vetur.format.defaultFormatter.stylus": "stylus-supremacy",
+    "vetur.format.defaultFormatter.ts": "prettier",
+    "vetur.validation.style": true,
+    "vetur.validation.template": true,
+    // eslint settings
     "eslint.run": "onType",
     "eslint.enable": true,
+    "eslint.autoFixOnSave": true,
     "eslint.validate": [
         "javascript",
         "javascriptreact",
@@ -39,24 +57,11 @@
             "autoFix": true
         },
     ],
-    "editor.formatOnSave": false,
-    "eslint.autoFixOnSave": true,
-    "[vue]": {
-        "editor.formatOnSave": false
-    },
+    // javascirpt settings
     "javascript.format.insertSpaceBeforeFunctionParenthesis": true,
+    // typescirpt settings
     "typescript.format.insertSpaceBeforeFunctionParenthesis": true,
-    "vetur.format.defaultFormatter.js": "prettier",
-    "vetur.format.defaultFormatter.css": "prettier",
-    "vetur.format.defaultFormatter.less": "prettier",
-    "vetur.format.defaultFormatter.postcss": "prettier",
-    "vetur.format.defaultFormatter.scss": "prettier",
-    "vetur.format.defaultFormatter.stylus": "stylus-supremacy",
-    "vetur.format.defaultFormatter.ts": "prettier",
-    "vetur.validation.style": true,
-    "vetur.validation.template": true,
-    "editor.minimap.enabled": false,
-    "files.autoSave": "off",
+    // vim settings
     "vim.useSystemClipboard": true,
     "vim.hlsearch": true,
     "vim.leader": ",",
@@ -140,17 +145,24 @@
             ]
           }
     ],
-    "explorer.openEditors.visible": 0,
-    "terminal.integrated.shell.osx": "/usr/local/bin/fish",
-    "terminal.integrated.shell.windows": "cmd.exe",
-    "files.eol": "\n",
-    "files.autoGuessEncoding": true,
+    // editor settings
+    "editor.fontFamily": "Fira Code",
+    "editor.formatOnSave": false,
+    "editor.minimap.enabled": false,
+    "editor.suggestSelection": "first",
     "editor.minimap.showSlider": "always",
     "editor.minimap.renderCharacters": false,
-    "window.zoomLevel": 1,
+    "explorer.openEditors.visible": 0,
+    // terminal settings
+    "terminal.integrated.shell.osx": "/usr/local/bin/fish",
+    "terminal.integrated.shell.windows": "cmd.exe",
+    // workbench settings
     "workbench.editor.enablePreview": false,
     "workbench.iconTheme": "vscode-icons",
-    "editor.suggestSelection": "first",
-    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-    "workbench.startupEditor": "newUntitledFile"
+    // file settings
+    "files.eol": "\n",
+    "files.autoSave": "off",
+    "files.autoGuessEncoding": true,
+    // window settings
+    "window.zoomLevel": 0,
 }
