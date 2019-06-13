@@ -75,3 +75,9 @@
   command = "echo '.venv'>>.gitignore;pipenv install --dev black flake8 isort --pre"
   tag = ["python"]
   output = ""
+
+[[snippets]]
+  description = "generate mod.rs"
+  command = 'ls| sed -e "s/ /\n/g"| grep -v "mod.rs.*"| sed -e "s/.rs//g" -e "s/mod\n//g" -e "s/^/pub mod /g" -e "s/\$/;/g">mod.rs'
+  tag = ["rust"]
+  output = ""
