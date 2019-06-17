@@ -31,6 +31,11 @@ pip3 install vim-vint
 pip3 install pipenv
 pip3 install awscli
 
+# TODO install cargo
+# install rustup
+## curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+## cargo install cargo-edit # for run *cargo add* cmd
+
 # install lsp
 # git clone https://github.com/saibing/bingo.git ~/bingo
 # cd ~/bingo
