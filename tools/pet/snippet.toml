@@ -87,3 +87,9 @@
   command = 'ls| sed -e "s/ /\n/g"| grep -v "mod.rs.*"| sed -e "s/.rs//g" -e "s/mod\n//g" -e "s/^/pub mod /g" -e "s/\$/;/g">mod.rs'
   tag = ["rust"]
   output = ""
+
+[[snippets]]
+  description = "share link"
+  command = 'echo "https://play.golang.org/p/"(curl -sSX POST -H "Content-Type: application/json" --data-binary @test.go https://play.golang.org/share)'
+  tag = ["go"]
+  output = ""
