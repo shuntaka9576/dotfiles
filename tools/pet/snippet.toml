@@ -71,25 +71,31 @@
   output = ""
 
 [[snippets]]
-  description = "lunch jupyter"
+  description = "Lunch jupyter"
   command = "jupyter notebook --ip=0.0.0.0 --no-browser --allow-root --NotebookApp.token=''"
   tag = ["julia"]
   output = ""
 
 [[snippets]]
-  description = "init python project"
+  description = "Init python project"
   command = "echo '.venv'>>.gitignore;pipenv install --dev black flake8 isort --pre"
   tag = ["python"]
   output = ""
 
 [[snippets]]
-  description = "generate mod.rs"
+  description = "Generate mod.rs"
   command = 'ls| sed -e "s/ /\n/g"| grep -v "mod.rs.*"| sed -e "s/.rs//g" -e "s/mod\n//g" -e "s/^/pub mod /g" -e "s/\$/;/g">mod.rs'
   tag = ["rust"]
   output = ""
 
 [[snippets]]
-  description = "share link"
+  description = "Share link"
   command = 'echo "https://play.golang.org/p/"(curl -sSX POST -H "Content-Type: application/json" --data-binary @test.go https://play.golang.org/share)'
   tag = ["go"]
+  output = ""
+
+[[snippets]]
+  description = "Delete neovim swap files"
+  command = ' rm -rf ~/.local/share/nvim/'
+  tag = ["nvim"]
   output = ""
