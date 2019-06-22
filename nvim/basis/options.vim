@@ -122,3 +122,13 @@ let g:omni_sql_no_default_maps = 1
 " Disable conceal for visible markdown decoration
 set conceallevel=0
 
+" tab page action
+nnoremap <silent>tf :<c-u>tabfirst<cr>
+nnoremap <silent>tl :<c-u>tablast<cr>
+nnoremap <silent>tn :<c-u>tabnext<cr>
+nnoremap <silent>tN :<c-u>tabNext<cr>
+nnoremap <silent>tp :<c-u>tabprevious<cr>
+nnoremap <silent>te :<c-u>tabedit<cr>
+nnoremap <silent>tc :<c-u>tabclose<cr>
+nnoremap <silent>to :<c-u>tabonly<cr>
+nnoremap <silent>ts :<c-u>tabs<cr>
