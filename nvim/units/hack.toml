@@ -7,6 +7,7 @@ hook_add='''
     map <C-j> [denite]
 
     nnoremap <silent> [denite]<C-p> :<C-u>Denite file/rec<CR>
+    nnoremap <silent> [denite]<C-i> :<C-u>Denite buffer<CR>
     command! D execute(":Denite grep -buffer-name=grep-buffer-denite")
     command! Dresume execute(":Denite -resume -buffer-name=grep-buffer-denite")
     command! Dnext execute(":Denite -resume -buffer-name=grep-buffer-denite -cursor-pos=+1 -immediately")
