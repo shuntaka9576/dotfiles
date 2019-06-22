@@ -3,10 +3,10 @@
     "coc-json": "^1.0.14",
     "coc-neosnippet": "^1.2.2",
     "coc-pyls": "^1.0.6",
-    "coc-python": "^1.1.5",
+    "coc-python": "^1.2.1",
     "coc-rls": "^1.1.1",
     "coc-tsserver": "^1.2.1",
     "coc-vetur": "^1.1.1",
-    "coc-yaml": "^1.0.0"
+    "coc-yaml": "^1.0.2"
   }
 }
