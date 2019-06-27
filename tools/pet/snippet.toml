@@ -59,6 +59,12 @@
   output = ""
 
 [[snippets]]
+  description = "Ignore http-proxy request. --noporxy [ignore domain]"
+  command = 'curl -v --noproxy localhost http://localhost:3000'
+  tag = ["curl"]
+  output = ""
+
+[[snippets]]
   description = "Print the process listening on 8888"
   command = "lsof -i -P | grep 8888"
   tag = ["network"]
