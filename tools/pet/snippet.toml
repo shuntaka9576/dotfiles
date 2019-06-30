@@ -99,3 +99,9 @@
   command = ' rm -rf ~/.local/share/nvim/'
   tag = ["nvim"]
   output = ""
+
+[[snippets]]
+  description = "Clean all containers"
+  command = 'docker ps -aq| xargs docker stop;docker ps -aq| xargs docker rm;docker images -aq| xargs docker rmi -f;docker ps -a;docker images -a;'
+  tag = ["docker"]
+  output = ""
