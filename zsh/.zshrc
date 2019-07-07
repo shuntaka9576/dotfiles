@@ -80,7 +80,15 @@ alias mn='memo new'
 alias tk='tmux kill-session -t'
 alias tl='tmux ls'
 
-# TODO pet settings
+# pet settings
+function pet-select() {
+  BUFFER=$(pet search --query "$LBUFFER")
+  CURSOR=$#BUFFER
+  zle redisplay
+}
+zle -N pet-select
+stty -ixon
+bindkey '^s' pet-select
 
 # ------------------------------------------------------------------------------
 # Kye mapping

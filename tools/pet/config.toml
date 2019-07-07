@@ -2,7 +2,7 @@
   snippetfile = "~/.config/pet/snippet.toml"
   editor = "sensible-editor"
   column = 40
-  selectcmd = "fzf-tmux"
+  selectcmd = "fzf-tmux --reverse"
   backend = "gist"
   sortby = ""
 
