@@ -8,6 +8,12 @@ ln -sf ~/dotfiles/.tigrc  ~/.tigrc
 ln -sf ~/dotfiles/.gitconfig  ~/.gitconfig
 ln -sf ~/dotfiles/fish/config.fish  ~/.config/fish/config.fish
 
+ln -sf ~/dotfiles/.zlogin  ~/.zlogin # zsh
+ln -sf ~/dotfiles/.zprofile  ~/.zprofile # zsh
+ln -sf ~/dotfiles/.zshenv  ~/.zshenv # zsh
+ln -sf ~/dotfiles/.zshrc  ~/.zshrc # zsh
+# ln -s ~/.zplug/repos/sorin-ionescu/prezto ~/.zprezto # zsh
+
 if [ "$(uname)" == 'Darwin' ]; then
   ln -sf ~/dotfiles/.bashrc ~/.bash_profile
 elif [ -e /etc/debian_version ]; then
