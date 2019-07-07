@@ -10,6 +10,7 @@ git config --global user.email "shuntaka9576@gmail.com"
 git config --global core.editor 'vim -c "set fenc=utf-8"'
 git config --global push.default current
 git config --global alias.see browse
+git config --global hub.protocol https
 
 # path settigs
 if [ "$(uname)" == 'Darwin' ]; then
