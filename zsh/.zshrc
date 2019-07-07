@@ -34,7 +34,7 @@ alias nv='nvim'
 
 # fazzy repository move
 function ghq-fzf() {
-  local target_dir=$(ghq list | fzf-tmux --query="$LBUFFER")
+  local target_dir=$(ghq list | fzf-tmux --reverse --query="$LBUFFER")
   local ghq_root=$(ghq root)
 
   if [ -n "$target_dir" ]; then
@@ -50,7 +50,7 @@ bindkey "^f" ghq-fzf
 
 # fd cd
 function fd-fzf() {
-  local target_dir=$(fd -t d| fzf-tmux --query="$LBUFFER")
+  local target_dir=$(fd -t d| fzf-tmux --reverse --query="$LBUFFER")
   local current_dir=$(pwd)
 
   if [ -n "$target_dir" ]; then
@@ -63,7 +63,7 @@ function fd-fzf() {
 
 # select history
 function select-history() {
-  BUFFER=$(history -n -r 1 | fzf-tmux --no-sort +m --query "$LBUFFER" --prompt="History > ")
+  BUFFER=$(history -n -r 1 | fzf-tmux --reverse --no-sort +m --query "$LBUFFER" --prompt="History > ")
   CURSOR=$#BUFFER
 }
 zle -N select-history
