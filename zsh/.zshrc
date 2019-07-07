@@ -16,6 +16,7 @@ source ~/.zplug/repos/sorin-ionescu/prezto/runcoms/zshrc
 # Base command
 alias ll='exa -al'
 alias ls='exa'
+alias t='tmux -2'
 
 # exec ls(exa) after cd
 chpwd() { exa -al }
