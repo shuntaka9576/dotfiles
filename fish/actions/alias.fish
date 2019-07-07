@@ -24,7 +24,7 @@ function f
 end
 
 # fazzy cd
-function fd
+function ffd
     cd (find . -type d |fzf-tmux)
 end
 

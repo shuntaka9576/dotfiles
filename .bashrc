@@ -24,6 +24,7 @@ elif [ -e /etc/system-release ]; then
     export PATH=/home/linuxbrew/.linuxbrew/bin:$PATH
   fi
 fi
+export RUST_BACKTRACE=1;
 
 # alias settings
 # alias t="tmux -2 command-prompt 'new-session -n %1'"

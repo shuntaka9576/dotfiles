@@ -26,6 +26,7 @@ set --export GO111MODULE off
 set --export PYENV_ROOT "$HOME/.pyenv"
 set --export PATH "$PYENV_ROOT/bin:$PATH"
 set --export PATH "$HOME/.cargo/bin:$PATH"
+set --export RUST_BACKTRACE 1
 
 # hub alias
 eval (hub alias -s)
