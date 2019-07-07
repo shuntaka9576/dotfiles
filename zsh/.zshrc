@@ -61,6 +61,14 @@ function fd-fzf() {
   zle reset-prompt
 }
 
+# select history
+function select-history() {
+  BUFFER=$(history -n -r 1 | fzf-tmux --no-sort +m --query "$LBUFFER" --prompt="History > ")
+  CURSOR=$#BUFFER
+}
+zle -N select-history
+bindkey '^r' select-history
+
 zle -N fd-fzf
 bindkey "^n" fd-fzf
 
