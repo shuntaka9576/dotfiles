@@ -2,7 +2,7 @@
 
 # ------------------------------------------------------------------------------
 # Read plugins settings
-source /Users/shuntaka9576/.zplug/repos/sorin-ionescu/prezto/runcoms/zshenv
+source ~/.zplug/repos/sorin-ionescu/prezto/runcoms/zshenv
 
 # ------------------------------------------------------------------------------
 # Enviroment value
