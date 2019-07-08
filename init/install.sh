@@ -57,5 +57,7 @@ echo '====================================== symbolic link nvim ================
 ~/dotfiles/nvim/link.sh
 echo '====================================== symbolic link tools ======================================'
 ~/dotfiles/tools/link.sh
+echo '====================================== symbolic link tmux ======================================'
+~/dotfiles/tmux/link.sh
 echo '====================================== install fisher plugins ======================================'
 ~/dotfiles/fish/fish_plug.sh
