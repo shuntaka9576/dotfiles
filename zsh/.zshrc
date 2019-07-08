@@ -7,6 +7,7 @@ source $ZPLUG_HOME/init.zsh
 
 zplug "zsh-users/zsh-autosuggestions"
 zplug "sorin-ionescu/prezto"
+zplug "greymd/tmux-xpanes"
 
 source ~/.zplug/repos/sorin-ionescu/prezto/runcoms/zshrc
 
@@ -31,6 +32,10 @@ alias gr='git reset --hard'
 
 # nvim alias
 alias nv='nvim'
+
+# tmux alias
+alias x='xpanes -d -e --stay "lazygit" "lazydocker";xpanes -e --stay "nvim";'
+alias tka='tmux kill-server'
 
 # fazzy repository move
 function ghq-fzf() {
