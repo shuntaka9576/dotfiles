@@ -1,11 +1,10 @@
 #!/usr/bin/zsh
 
 # ------------------------------------------------------------------------------
-# Read plugins settings
-source ~/.zplug/repos/sorin-ionescu/prezto/runcoms/zshenv
-
-# ------------------------------------------------------------------------------
 # Enviroment value
+
+# zsh
+export ZDOTDIR="$HOME/.zsh"
 
 # LANGUAGE
 export LANGUAGE=en_US.UTF-8
@@ -29,3 +28,8 @@ export AWS_SAM_LOCAL=true
 
 # TODO Linux brew settings
 
+# ------------------------------------------------------------------------------
+# Read plugins settings
+if [[ -f "$ZDOTDIR/.zplug/repos/shuntaka9576/prezto/runcoms/zshenv" ]]; then
+  source "$ZDOTDIR/.zplug/repos/shuntaka9576/prezto/runcoms/zshenv"
+fi

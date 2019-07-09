@@ -1,3 +1,3 @@
 #!/usr/bin/zsh
 
-source ~/.zplug/repos/sorin-ionescu/prezto/runcoms/zlogin
+source $ZDOTDIR/.zplug/repos/shuntaka9576/prezto/runcoms/zlogin

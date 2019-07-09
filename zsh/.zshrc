@@ -2,18 +2,48 @@
 
 # ------------------------------------------------------------------------------
 # zplug settings
-export ZPLUG_HOME=$HOME/.zplug
-source $ZPLUG_HOME/init.zsh
+export ZPLUG_HOME="$ZDOTDIR/.zplug"
+export ZPLUG_REPOS="$ZPLUG_HOME/repos"
+export ZPLUG_BIN="$ZPLUG_HOME/bin"
+export PATH="$ZPLUG_BIN:$PATH"
+export ZPLUG_LOADFILE="$ZPLUG_HOME/packages.zsh"
+export ZPLUG_CACHE_DIR="$ZPLUG_HOME/.cache"
+export ZPLUG_LOADFILE="$ZPLUG_HOME/packages.zsh"
+source "$ZPLUG_HOME/init.zsh"
 
 zplug "zsh-users/zsh-autosuggestions"
-zplug "sorin-ionescu/prezto"
+zplug "shuntaka9576/prezto", at:shuntaka9576
 zplug "greymd/tmux-xpanes"
 
-source ~/.zplug/repos/sorin-ionescu/prezto/runcoms/zshrc
+if [[ -f "$ZDOTDIR/.zplug/repos/shuntaka9576/prezto/runcoms/zshrc" ]]; then
+  source "$ZDOTDIR/.zplug/repos/shuntaka9576/prezto/runcoms/zshrc"
+fi
+
+# ------------------------------------------------------------------------------
+# UI
+autoload vcs_info
+autoload -Uz colors
+colors
+
+setopt prompt_subst
+unsetopt promptcr
+
+precmd() {
+  autoload -Uz vcs_info
+  autoload -Uz add-zsh-hook
+  zstyle ':vcs_info:*' formats '(%b)'
+  vcs_info
+  cmd=`pwd |perl -pe "s;$HOME;~;"`
+  # local left='\n%F{243}%n%f %F{4}➜ %f %F{243}$cmd%f'
+  local left='\n%F{247}$cmd%f %F{105}${vcs_info_msg_0_}%f'
+  print -P $left
+}
+
+PROMPT=$'%{\e[$[32+$RANDOM % 5]m%}❯%{\e[$[32+$RANDOM % 5]m%}❯%{\e[$[32+$RANDOM % 5]m%}❯ '
+RPROMPT=$'%{\e[38;5;001m%}%(?..✘$(echo $?)😈)%{\e[0m%} %{\e[30;48;5;237m%}%{\e[38;5;249m%} %D %* %{\e[0m%}'
 
 # ------------------------------------------------------------------------------
 # Alias
-
 # Base command
 alias ll='exa -al'
 alias ls='exa'
@@ -55,7 +85,7 @@ bindkey "^f" ghq-fzf
 
 # fd cd
 function fd-fzf() {
-  local target_dir=$(fd -t d| fzf-tmux --reverse --query="$LBUFFER")
+  local target_dir=$(fd -t d -I -H | fzf-tmux --reverse --query="$LBUFFER")
   local current_dir=$(pwd)
 
   if [ -n "$target_dir" ]; then
@@ -65,6 +95,8 @@ function fd-fzf() {
 
   zle reset-prompt
 }
+zle -N fd-fzf
+bindkey "^n" fd-fzf
 
 # select history
 function select-history() {
@@ -73,9 +105,6 @@ function select-history() {
 }
 zle -N select-history
 bindkey '^r' select-history
-
-zle -N fd-fzf
-bindkey "^n" fd-fzf
 
 # memo alias
 alias me='memo e'

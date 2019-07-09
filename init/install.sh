@@ -61,3 +61,6 @@ echo '====================================== symbolic link tmux ================
 ~/dotfiles/tmux/link.sh
 echo '====================================== install fisher plugins ======================================'
 ~/dotfiles/fish/fish_plug.sh
+exit
+echo '====================================== setting zsh ======================================'
+~/dotfiles/zsh/install_link.sh # TODO test
