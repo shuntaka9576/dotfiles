@@ -9,11 +9,16 @@ export PATH="$ZPLUG_BIN:$PATH"
 export ZPLUG_LOADFILE="$ZPLUG_HOME/packages.zsh"
 export ZPLUG_CACHE_DIR="$ZPLUG_HOME/.cache"
 export ZPLUG_LOADFILE="$ZPLUG_HOME/packages.zsh"
-source "$ZPLUG_HOME/init.zsh"
 
-zplug "zsh-users/zsh-autosuggestions"
-zplug "shuntaka9576/prezto", at:shuntaka9576
-zplug "greymd/tmux-xpanes"
+if [[ -f "$ZPLUG_HOME/init.zsh" ]]; then
+  source "$ZPLUG_HOME/init.zsh"
+fi
+
+if type "zplug" > /dev/null 2>&1; then
+  zplug "zsh-users/zsh-autosuggestions"
+  zplug "shuntaka9576/prezto", at:shuntaka9576
+  zplug "greymd/tmux-xpanes"
+fi
 
 if [[ -f "$ZDOTDIR/.zplug/repos/shuntaka9576/prezto/runcoms/zshrc" ]]; then
   source "$ZDOTDIR/.zplug/repos/shuntaka9576/prezto/runcoms/zshrc"
