@@ -50,12 +50,12 @@ RPROMPT=$'%{\e[38;5;001m%}%(?..✘$(echo $?)😈)%{\e[0m%} %{\e[30;48;5;237m%}%{
 # ------------------------------------------------------------------------------
 # Alias
 # Base command
-alias ll='exa -al'
+alias ll='exa -ahl --git'
 alias ls='exa'
 alias t='tmux -2'
 
 # exec ls(exa) after cd
-chpwd() { exa -al }
+chpwd() { exa -ahl --git }
 
 # git alias
 alias gs='git status'
