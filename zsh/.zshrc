@@ -53,6 +53,7 @@ RPROMPT=$'%{\e[38;5;001m%}%(?..✘$(echo $?)😈)%{\e[0m%} %{\e[30;48;5;237m%}%{
 alias ll='exa -ahl --git'
 alias ls='exa'
 alias t='tmux -2'
+alias cr='cargo run'
 
 # exec ls(exa) after cd
 chpwd() { exa -ahl --git }
@@ -66,10 +67,10 @@ alias gl='git log'
 alias gr='git reset --hard'
 
 # nvim alias
-alias nv='nvim'
+alias n='nvim'
 
 # tmux alias
-alias x='xpanes -d -e --stay "lazygit" "lazydocker";xpanes -e --stay "nvim";'
+alias x='xpanes -d -e --stay "lazygit" "lazydocker";xpanes -d -e --stay "nvim";'
 alias tka='tmux kill-server'
 
 # fazzy repository move
@@ -90,7 +91,7 @@ bindkey "^f" ghq-fzf
 
 # fd cd
 function fd-fzf() {
-  local target_dir=$(fd -t d -I -H | fzf-tmux --reverse --query="$LBUFFER")
+  local target_dir=$(fd -t d -I -H -E ".git"| fzf-tmux --reverse --query="$LBUFFER")
   local current_dir=$(pwd)
 
   if [ -n "$target_dir" ]; then

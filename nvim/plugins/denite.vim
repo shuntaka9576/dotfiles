@@ -19,7 +19,7 @@ function! s:denite_my_settings() abort
   \ denite#do_map('toggle_select').'j'
 endfunction
 
-call denite#custom#var('file/rec', 'command', ['rg', '--files', '--glob', '!.git'])
+call denite#custom#var('file/rec', 'command', ['rg', '--files', '--hidden', '--glob', '!.git'])
 call denite#custom#var('grep', 'command', ['rg', '--hidden'])
 call denite#custom#var('grep', 'default_opts',
             \ ['-i', '--vimgrep', '--no-heading'])

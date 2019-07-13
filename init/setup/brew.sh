@@ -22,3 +22,4 @@ brew install rg
 brew install tmux-xpanes
 brew install exa
 brew install fd
+brew install bat
