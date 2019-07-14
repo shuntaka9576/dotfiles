@@ -18,6 +18,7 @@ if type "zplug" > /dev/null 2>&1; then
   zplug "zsh-users/zsh-autosuggestions"
   zplug "shuntaka9576/prezto", at:shuntaka9576
   zplug "greymd/tmux-xpanes"
+  # zplug "b-ryan/powerline-shell"
 fi
 
 if [[ -f "$ZDOTDIR/.zplug/repos/shuntaka9576/prezto/runcoms/zshrc" ]]; then
@@ -39,13 +40,32 @@ precmd() {
   zstyle ':vcs_info:*' formats '(%b)'
   vcs_info
   cmd=`pwd |perl -pe "s;$HOME;~;"`
+  user=`whoami`
+  hostname=`hostname`
   # local left='\n%F{243}%n%f %F{4}➜ %f %F{243}$cmd%f'
-  local left='\n%F{247}$cmd%f %F{105}${vcs_info_msg_0_}%f'
+  local left='\n%F{247}$cmd%f %F{105}${vcs_info_msg_0_}%f %F{30}$user%f%F{10} ➜ %f%F{30}$hostname%f'
   print -P $left
 }
 
 PROMPT=$'%{\e[$[32+$RANDOM % 5]m%}❯%{\e[$[32+$RANDOM % 5]m%}❯%{\e[$[32+$RANDOM % 5]m%}❯ '
 RPROMPT=$'%{\e[38;5;001m%}%(?..✘$(echo $?)😈)%{\e[0m%} %{\e[30;48;5;237m%}%{\e[38;5;249m%} %D %* %{\e[0m%}'
+
+# function powerline_precmd() {
+#     PS1="$(powerline-shell --shell zsh $?)"
+# }
+# 
+# function install_powerline_precmd() {
+#   for s in ${precmd_functions[@]}; do
+#     if [ "$s" = "powerline_precmd" ]; then
+#       return
+#     fi
+#   done
+#   precmd_functions+=(powerline_precmd)
+# }
+# 
+# if [ "$TERM" != "linux" ]; then
+#     install_powerline_precmd
+# fi
 
 # ------------------------------------------------------------------------------
 # Alias

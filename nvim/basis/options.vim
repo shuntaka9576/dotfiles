@@ -126,7 +126,9 @@ set conceallevel=0
 nnoremap <silent>tf :<c-u>tabfirst<cr>
 nnoremap <silent>tl :<c-u>tablast<cr>
 nnoremap <silent>tn :<c-u>tabnext<cr>
+nnoremap <silent><tab> :<c-u>tabnext<cr>
 nnoremap <silent>tN :<c-u>tabNext<cr>
+nnoremap <silent><S-tab> :<c-u>tabprevious<cr>
 nnoremap <silent>tp :<c-u>tabprevious<cr>
 nnoremap <silent>te :<c-u>tabedit<cr>
 nnoremap <silent>tc :<c-u>tabclose<cr>
