@@ -19,20 +19,26 @@ if type "zplug" > /dev/null 2>&1; then
   zplug "zsh-users/zsh-syntax-highlighting"
   zplug "shuntaka9576/prezto", at:shuntaka9576
   zplug "greymd/tmux-xpanes"
+  zplug "mollifier/cd-gitroot"
   # zplug "b-ryan/powerline-shell"
-fi
-
- if [[ -f $ZDOTDIR/.zplug/repos/zsh-users/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]; then
-   source $ZDOTDIR/.zplug/repos/zsh-users/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
- fi
-
-if [[ -f "$ZDOTDIR/.zplug/repos/zsh-users/zsh-autosuggestions/zsh-autosuggestions.zsh" ]]; then
-  source $ZDOTDIR/.zplug/repos/zsh-users/zsh-autosuggestions/zsh-autosuggestions.zsh
 fi
 
 if [[ -f "$ZDOTDIR/.zplug/repos/shuntaka9576/prezto/runcoms/zshrc" ]]; then
   source "$ZDOTDIR/.zplug/repos/shuntaka9576/prezto/runcoms/zshrc"
 fi
+
+if [[ -f $ZDOTDIR/.zplug/repos/zsh-users/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]; then
+  source $ZDOTDIR/.zplug/repos/zsh-users/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fi
+
+if [[ -f "$ZDOTDIR/.zplug/repos/zsh-users/zsh-autosuggestions/zsh-autosuggestions.zsh" ]]; then
+  source $ZDOTDIR/.zplug/repos/zsh-users/zsh-autosuggestions/zsh-autosuggestions.zsh
+fi
+
+# `cdu` command move to git root
+fpath=($ZDOTDIR/.zplug/repos/mollifier/cd-gitroot $fpath)
+autoload -Uz cd-gitroot
+alias cdu='cd-gitroot'
 
 # ------------------------------------------------------------------------------
 # UI
@@ -94,6 +100,7 @@ alias gc='git commit -m '
 alias ga='git add'
 alias gl='git log'
 alias gr='git reset --hard'
+alias l='lazygit'
 
 # nvim alias
 alias n='nvim'
