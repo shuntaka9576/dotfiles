@@ -52,8 +52,14 @@ unsetopt promptcr
 precmd() {
   autoload -Uz vcs_info
   autoload -Uz add-zsh-hook
-  zstyle ':vcs_info:*' formats '(%b)'
+  zstyle ':vcs_info:git:*' check-for-changes true
+  zstyle ':vcs_info:git:*' stagedstr "%F{yellow}!"
+  zstyle ':vcs_info:git:*' unstagedstr "%F{red}+"
+  zstyle ':vcs_info:*' formats "%F{green}%c%u[%b]%f"
+  zstyle ':vcs_info:*' actionformats '[%b|%a]'
+
   vcs_info
+
   cmd=`pwd |perl -pe "s;$HOME;~;"`
   user=`whoami`
   hostname=`hostname`
