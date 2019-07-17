@@ -3,6 +3,7 @@ augroup MyTabStop
     autocmd BufNewFile,BufRead *.rhtml     setlocal tabstop=2 shiftwidth=2
     autocmd BufNewFile,BufRead *.html      setlocal tabstop=2 shiftwidth=2
     autocmd BufNewFile,BufRead *.js        setlocal tabstop=2 shiftwidth=2
+    autocmd BufNewFile,BufRead *.ts        setlocal tabstop=2 shiftwidth=2
     autocmd BufNewFile,BufRead *.css       setlocal tabstop=2 shiftwidth=2
     autocmd BufNewFile,BufRead *.scss      setlocal tabstop=2 shiftwidth=2
     autocmd BufNewFile,BufRead *.md        setlocal tabstop=4 shiftwidth=4

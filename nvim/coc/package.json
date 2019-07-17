@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "coc-angular": "^0.1.0",
     "coc-json": "^1.0.14",
     "coc-neosnippet": "^1.2.2",
     "coc-pyls": "^1.0.6",
