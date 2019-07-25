@@ -118,6 +118,9 @@ alias tka='tmux kill-server'
 # python alias
 alias prn='pipenv run nvim'
 
+# npnm alias
+alias ns='npm start'
+
 # fazzy repository move
 function ghq-fzf() {
   local target_dir=$(ghq list | fzf-tmux --reverse --query="$LBUFFER")

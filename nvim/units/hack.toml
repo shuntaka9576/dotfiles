@@ -27,7 +27,7 @@ build = 'make'
 [[plugins]]
 repo = 'thinca/vim-quickrun'
 depends = ['vimproc.vim']
-on_ft = ['python', 'go', 'julia', 'rust']
+on_ft = ['python', 'go', 'julia', 'rust', 'typescript']
 hook_source = '''
   source ~/dotfiles/nvim/plugins/quickrun.vim
 '''
