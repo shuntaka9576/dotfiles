@@ -115,6 +115,9 @@ alias n='nvim'
 alias x='xpanes -d -e --stay "lazygit" "lazydocker";xpanes -d -e --stay "nvim";'
 alias tka='tmux kill-server'
 
+# python alias
+alias prn='pipenv run nvim'
+
 # fazzy repository move
 function ghq-fzf() {
   local target_dir=$(ghq list | fzf-tmux --reverse --query="$LBUFFER")
