@@ -112,4 +112,8 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
-
+" coc-bookmark settings
+nmap <space>bb <Plug>(coc-bookmark-annotate)
+nmap <space>bn <Plug>(coc-bookmark-next)
+nmap <space>bp <Plug>(coc-bookmark-prev)
+nmap <space>bt <Plug>(coc-bookmark-toggle)

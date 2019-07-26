@@ -1,5 +1,11 @@
 {
   "diagnostic.displayByAle": true,
+  "list.insertMappings": {
+    "<C-n>": "normal:j",
+    "<C-p>": "normal:k"
+  },
+  "todolist.monitor": true,
+  "todolist.autoUpload": true,
   "languageserver": {
     "golang": {
       "command": "gopls",
@@ -80,5 +86,6 @@
         }
       }
     }
-  }
+  },
+  "coc.preferences.extensionUpdateCheck": "never"
 }
