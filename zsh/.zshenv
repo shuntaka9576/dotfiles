@@ -26,6 +26,9 @@ export PATH="$HOME/.cargo/bin:$PATH"
 # AWS
 export AWS_SAM_LOCAL=true
 
+# npm
+export PATH=~/.npm-global/bin:$PATH
+
 # TODO Linux brew settings
 
 # ------------------------------------------------------------------------------
