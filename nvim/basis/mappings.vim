@@ -11,7 +11,7 @@ inoremap JJ <Esc>
 let mapleader = ','
 
 " Search settigs
-noremap <Space> *
+" noremap <Space> *
 noremap <silent><Space><Space> :nohlsearch<Cr><Esc>
 
 " Multi line move
