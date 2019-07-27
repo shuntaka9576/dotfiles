@@ -6,6 +6,10 @@
   },
   "todolist.monitor": true,
   "todolist.autoUpload": true,
+  "snippets.ultisnips.directories": [
+    "UltiSnips",
+    "~/.cache/dein/repos/github.com/fatih/vim-go/gosnippets/UltiSnips"
+  ],
   "languageserver": {
     "golang": {
       "command": "gopls",
@@ -87,5 +91,6 @@
       }
     }
   },
-  "coc.preferences.extensionUpdateCheck": "never"
+  "coc.preferences.extensionUpdateCheck": "never",
+  "git.enableGutters": true
 }
