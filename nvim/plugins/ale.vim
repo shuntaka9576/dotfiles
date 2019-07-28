@@ -53,7 +53,6 @@ function! s:ale_clean()
 endfunction
 command! ALEClean call s:ale_clean()
 
-let mapleader = ','
 nnoremap <leader>c  :ALEClean<CR>
 nnoremap <leader>m  :ALEList<CR>
 

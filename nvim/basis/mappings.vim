@@ -8,7 +8,8 @@ inoremap JJ <Esc>
 " inoremap <C-f> <Right>
 
 " <leader> setting
-let mapleader = ','
+let g:mapleader = ','
+let g:maplocalleader = '\'
 
 " Search settigs
 " noremap <Space> *
