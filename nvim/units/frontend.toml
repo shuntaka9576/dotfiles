@@ -5,6 +5,56 @@ hook_add = '''
 '''
 
 [[plugins]]
+repo = 'scrooloose/nerdcommenter'
+
+[[plugins]]
+repo = 'jistr/vim-nerdtree-tabs'
+hook_add = '''
+    map <C-q> <plug>NERDTreeTabsToggle<CR>
+
+    " Don't display the NERDTree when specifying files
+    autocmd StdinReadPre * let s:std_in=1
+    autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+'''
+depends = ['nerdtree']
+
+[[plugins]]
+repo = 'Xuyuanp/nerdtree-git-plugin.git'
+hook_add = '''
+  let g:NERDTreeIndicatorMapCustom = {
+      \ "Modified"  : "✹",
+      \ "Staged"    : "✚",
+      \ "Untracked" : "✭",
+      \ "Renamed"   : "➜",
+      \ "Unmerged"  : "═",
+      \ "Deleted"   : "✖",
+      \ "Dirty"     : "✗",
+      \ "Clean"     : "✔︎",
+      \ 'Ignored'   : '☒',
+      \ "Unknown"   : "?"
+      \ }
+'''
+depends = ['nerdtree']
+
+[[plugins]]
+repo = 'ryanoasis/vim-devicons'
+hook_add = '''
+  let g:webdevicons_conceal_nerdtree_brackets = 1
+  let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
+
+  " dir-icons
+  let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+  let g:DevIconsEnableFoldersOpenClose = 1
+'''
+depends = ['nerdtree']
+
+[[plugins]]
+repo = 'tiagofumo/vim-nerdtree-syntax-highlight'
+hook_add = '''
+'''
+depends = ['nerdtree']
+
+[[plugins]]
 repo = 'itchyny/lightline.vim'
 hook_add = '''
     let g:lightline = {
@@ -40,20 +90,6 @@ repo='simeji/winresizer.git'
 hook_add='''
 " let g:winresizer_start_key = '<C-T>'
 '''
-
-[[plugins]]
-repo = 'jistr/vim-nerdtree-tabs'
-hook_add = '''
-    map <C-q> <plug>NERDTreeTabsToggle<CR>
-
-    " Don't display the NERDTree when specifying files
-    autocmd StdinReadPre * let s:std_in=1
-    autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-'''
-depends = ['nerdtree']
-
-[[plugins]]
-repo = 'scrooloose/nerdcommenter'
 
 [[plugins]]
 repo = 'vim-airline/vim-airline'

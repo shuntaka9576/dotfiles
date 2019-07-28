@@ -23,3 +23,4 @@ brew install tmux-xpanes
 brew install exa
 brew install fd
 brew install bat
+brew install fontforge

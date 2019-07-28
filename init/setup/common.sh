@@ -36,8 +36,10 @@ pip3 install awscli
 ## curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ## cargo install cargo-edit # for run *cargo add* cmd
 
-# install lsp
-# git clone https://github.com/saibing/bingo.git ~/bingo
-# cd ~/bingo
-# GO111MODULE=on CGO_ENABLED=0 go install
-# rm -rf ~/bingo
+# TODO install nerd-fonts
+# git clone https://github.com/ryanoasis/nerd-fonts.git
+# // 変換したいフォントを、~/Library/Fontsなどから指定する
+# fontforge ./font-patcher [変換したいフォント] -w --fontawesome --fontlinux --octicons --pomicons --powerline --powerlineextra
+
+# // 上記で、フォントにパッチがあたり、ttfファイルが出来るので、~/Library/Fontsにコピーする
+# cp [フォントファイル] ~/Library/Fonts
