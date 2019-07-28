@@ -15,9 +15,9 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gf <Plug>(coc-references)
 " Use <tab> for select selections ranges, needs server support, like: coc-tsserver, coc-python
-nmap <silent> <TAB> <Plug>(coc-range-select)
-xmap <silent> <TAB> <Plug>(coc-range-select)
-xmap <silent> <S-TAB> <Plug>(coc-range-select-backword)
+nmap <silent> go <Plug>(coc-range-select)
+xmap <silent> go <Plug>(coc-range-select)
+xmap <silent> go <Plug>(coc-range-select-backword)
 
 " coc-bookmark settings
 nmap <space>bb <Plug>(coc-bookmark-annotate)

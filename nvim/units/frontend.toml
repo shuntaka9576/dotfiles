@@ -39,32 +39,86 @@ depends = ['nerdtree']
 [[plugins]]
 repo = 'ryanoasis/vim-devicons'
 hook_add = '''
-  let g:webdevicons_conceal_nerdtree_brackets = 1
-  let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
-
-  " dir-icons
+  let g:airline_powerline_fonts = 1
+  let g:WebDevIconsOS = 'Darwin'
   let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+  let g:webdevicons_conceal_nerdtree_brackets = 1
   let g:DevIconsEnableFoldersOpenClose = 1
+  let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 '''
 depends = ['nerdtree']
 
 [[plugins]]
 repo = 'tiagofumo/vim-nerdtree-syntax-highlight'
 hook_add = '''
+  let s:brown = "905532"
+  let s:aqua =  "3AFFDB"
+  let s:blue = "689FB6"
+  let s:darkBlue = "44788E"
+  let s:purple = "834F79"
+  let s:lightPurple = "834F79"
+  let s:red = "AE403F"
+  let s:beige = "F5C06F"
+  let s:yellow = "F09F17"
+  let s:orange = "D4843E"
+  let s:darkOrange = "F16529"
+  let s:pink = "CB6F6F"
+  let s:salmon = "EE6E73"
+  let s:green = "8FAA54"
+  let s:lightGreen = "31B53E"
+  let s:white = "FFFFFF"
+  let s:rspec_red = 'FE405F'
+  let s:git_orange = 'F54D27'
+
+  let g:NERDTreeHighlightFolders = 1 " enables folder icon highlighting using exact match<Plug>CocRefresh
+  let g:NERDTreeFileExtensionHighlightFullName = 1
+  let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
+  let g:NERDTreeExactMatchHighlightColor['.gitignore'] = s:git_orange
+
+  " :h syntaxに記載されている表参照。文字色と第三引数が対応している
+  " :hi link NERDTreeFlags Statement " 赤
+  :hi link NERDTreeFlags Identifier  " 青
+  " :hi link NERDTreeFlags Type " 橙
 '''
 depends = ['nerdtree']
 
 [[plugins]]
 repo = 'itchyny/lightline.vim'
 hook_add = '''
-    let g:lightline = {
-    \ 'colorscheme': 'wombat',
-    \ 'active': {
-    \   'left': [ [ 'mode', 'paste' ],
-    \             [ 'readonly', 'filename', 'modified' ],
-    \             [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ] ],
-    \ },
-    \ }
+  let g:lightline = {
+        \ 'colorscheme': 'wombat',
+        \ 'active': {
+        \   'left': [ [ 'mode', 'paste' ],
+        \             [ 'readonly', 'filepath', 'modified' ],
+        \             [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ]]
+        \ },
+        \ 'component_function': {
+        \   'filepath': 'FilePath',
+        \   'filetype': 'MyFiletype',
+        \   'fileformat': 'MyFileformat',
+        \ }
+        \ }
+
+  function! MyFiletype()
+    return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
+  endfunction
+
+  function! MyFileformat()
+    return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
+  endfunction
+
+  function! FilePath()
+    if winwidth(0) > 90
+      return expand("%:s")
+    else
+      return expand("%:t")
+    endif
+  endfunction
+
+  " # show statusbar
+  set laststatus=2
+  " # hide --INSERT--
+  set noshowmode
 '''
 
 [[plugins]]
@@ -91,25 +145,25 @@ hook_add='''
 " let g:winresizer_start_key = '<C-T>'
 '''
 
-[[plugins]]
-repo = 'vim-airline/vim-airline'
-hook_add = '''
-    if has('unix')
-        set t_Co=256
-        let &t_AB="\e[48;5;%dm"
-        let &t_AF="\e[38;5;%dm"
-    endif
-
-    let g:airline#extensions#tabline#enabled = 1
-    let g:airline#extensions#tabline#show_buffers = 0
-    let g:airline#extensions#tabline#tab_nr_type = 1
-    let g:airline_powerline_fonts = 1
-    let g:airline#extensions#ale#enabled = 1
-    " Do not collapse the status line while having multiple windows
-    let g:airline_inactive_collapse = 0
-    let g:airline#extensions#tagbar#enabled = 1
-    let g:airline#extensions#virtualenv#enabled = 1
-'''
+# [[plugins]]
+# repo = 'vim-airline/vim-airline'
+# hook_add = '''
+#     if has('unix')
+#         set t_Co=256
+#         let &t_AB="\e[48;5;%dm"
+#         let &t_AF="\e[38;5;%dm"
+#     endif
+# 
+#     let g:airline#extensions#tabline#enabled = 1
+#     let g:airline#extensions#tabline#show_buffers = 0
+#     let g:airline#extensions#tabline#tab_nr_type = 1
+#     let g:airline_powerline_fonts = 1
+#     let g:airline#extensions#ale#enabled = 1
+#     " Do not collapse the status line while having multiple windows
+#     let g:airline_inactive_collapse = 0
+#     let g:airline#extensions#tagbar#enabled = 1
+#     let g:airline#extensions#virtualenv#enabled = 1
+# '''
 
 [[plugins]]
 repo = 'morhetz/gruvbox'

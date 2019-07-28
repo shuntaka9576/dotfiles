@@ -1,6 +1,9 @@
 " message
-let g:ale_sign_error = '👿'
-let g:ale_sign_warning = '🤔'
+let g:ale_sign_error = "\uf05e"
+let g:ale_sign_warning = "\uf071"
+let g:lightline#ale#indicator_ok = "\uf00c "
+let g:lightline#ale#indicator_errors = "\uf05e "
+let g:lightline#ale#indicator_warnings = "\uf071 "
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 
 let g:ale_lint_on_enter = 0
