@@ -4,6 +4,7 @@ set signcolumn=yes
 " cursor settigs
 set lazyredraw
 set cursorline
+set cursorcolumn
 highlight cursorline term=reverse cterm=reverse
 
 " Change move editor window	

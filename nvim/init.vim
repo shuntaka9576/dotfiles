@@ -1,3 +1,17 @@
+" =*=*=*=*=*=*=*=*=*=*=*=*=*= Read other vim script *=*=*=*=*=*=*=*=*=*=*=*=*=*=
+function! s:source_rc(path, ...) abort
+  let l:use_global = get(a:000, 0, !has('vim_starting'))
+  let l:abspath = resolve(expand('~/dotfiles/nvim/basis/' . a:path))
+  if !l:use_global
+    execute 'source' fnameescape(l:abspath)
+    return
+  endif
+endfunction
+
+call s:source_rc('filetype.vim')
+call s:source_rc('mappings.vim')
+call s:source_rc('options.vim')
+
 " =*=*=*=*=*=*=*=*=*=*=*=*=*= dein.vim settings *=*=*=*=*=*=*=*=*=*=*=*=*=*=
 set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
 
@@ -23,17 +37,3 @@ endif
 if dein#check_install()
  call dein#install()
 endif
-
-" =*=*=*=*=*=*=*=*=*=*=*=*=*= Read other vim script *=*=*=*=*=*=*=*=*=*=*=*=*=*=
-function! s:source_rc(path, ...) abort 
-  let l:use_global = get(a:000, 0, !has('vim_starting'))
-  let l:abspath = resolve(expand('~/dotfiles/nvim/basis/' . a:path))
-  if !l:use_global
-    execute 'source' fnameescape(l:abspath)
-    return
-  endif
-endfunction
-
-call s:source_rc('filetype.vim')
-call s:source_rc('mappings.vim')
-call s:source_rc('options.vim')

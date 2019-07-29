@@ -5,16 +5,120 @@ hook_add = '''
 '''
 
 [[plugins]]
+repo = 'scrooloose/nerdcommenter'
+
+[[plugins]]
+repo = 'jistr/vim-nerdtree-tabs'
+hook_add = '''
+    map <C-q> <plug>NERDTreeTabsToggle<CR>
+
+    " Don't display the NERDTree when specifying files
+    autocmd StdinReadPre * let s:std_in=1
+    autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+'''
+depends = ['nerdtree']
+
+[[plugins]]
+repo = 'Xuyuanp/nerdtree-git-plugin.git'
+hook_add = '''
+  let g:NERDTreeIndicatorMapCustom = {
+      \ "Modified"  : "✹",
+      \ "Staged"    : "✚",
+      \ "Untracked" : "✭",
+      \ "Renamed"   : "➜",
+      \ "Unmerged"  : "═",
+      \ "Deleted"   : "✖",
+      \ "Dirty"     : "✗",
+      \ "Clean"     : "✔︎",
+      \ 'Ignored'   : '☒',
+      \ "Unknown"   : "?"
+      \ }
+'''
+depends = ['nerdtree']
+
+[[plugins]]
+repo = 'ryanoasis/vim-devicons'
+hook_add = '''
+  let g:airline_powerline_fonts = 1
+  let g:WebDevIconsOS = 'Darwin'
+  let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+  let g:webdevicons_conceal_nerdtree_brackets = 1
+  let g:DevIconsEnableFoldersOpenClose = 1
+  let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+'''
+depends = ['nerdtree']
+
+[[plugins]]
+repo = 'tiagofumo/vim-nerdtree-syntax-highlight'
+hook_add = '''
+  let s:brown = "905532"
+  let s:aqua =  "3AFFDB"
+  let s:blue = "689FB6"
+  let s:darkBlue = "44788E"
+  let s:purple = "834F79"
+  let s:lightPurple = "834F79"
+  let s:red = "AE403F"
+  let s:beige = "F5C06F"
+  let s:yellow = "F09F17"
+  let s:orange = "D4843E"
+  let s:darkOrange = "F16529"
+  let s:pink = "CB6F6F"
+  let s:salmon = "EE6E73"
+  let s:green = "8FAA54"
+  let s:lightGreen = "31B53E"
+  let s:white = "FFFFFF"
+  let s:rspec_red = 'FE405F'
+  let s:git_orange = 'F54D27'
+
+  let g:NERDTreeHighlightFolders = 1 " enables folder icon highlighting using exact match<Plug>CocRefresh
+  let g:NERDTreeFileExtensionHighlightFullName = 1
+  let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
+  let g:NERDTreeExactMatchHighlightColor['.gitignore'] = s:git_orange
+
+  " :h syntaxに記載されている表参照。文字色と第三引数が対応している
+  " :hi link NERDTreeFlags Statement " 赤
+  :hi link NERDTreeFlags Identifier  " 青
+  " :hi link NERDTreeFlags Type " 橙
+'''
+depends = ['nerdtree']
+
+[[plugins]]
 repo = 'itchyny/lightline.vim'
 hook_add = '''
-    let g:lightline = {
-    \ 'colorscheme': 'wombat',
-    \ 'active': {
-    \   'left': [ [ 'mode', 'paste' ],
-    \             [ 'readonly', 'filename', 'modified' ],
-    \             [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ] ],
-    \ },
-    \ }
+  let g:lightline = {
+        \ 'colorscheme': 'wombat',
+        \ 'active': {
+        \   'left': [ [ 'mode', 'paste' ],
+        \             [ 'readonly', 'filepath', 'modified' ],
+        \             [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ]]
+        \ },
+        \ 'component_function': {
+        \   'filepath': 'FilePath',
+        \   'filetype': 'MyFiletype',
+        \   'fileformat': 'MyFileformat',
+        \ }
+        \ }
+
+  function! MyFiletype()
+    return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
+  endfunction
+
+  function! MyFileformat()
+    return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
+  endfunction
+
+  function! FilePath()
+    if winwidth(0) > 90
+      return expand("%:s")
+    else
+      return expand("%:t")
+    endif
+  endfunction
+
+  " # show statusbar
+  set laststatus=2
+  " # hide --INSERT--
+  set noshowmode
 '''
 
 [[plugins]]
@@ -41,136 +145,25 @@ hook_add='''
 " let g:winresizer_start_key = '<C-T>'
 '''
 
-[[plugins]]
-repo = 'Shougo/defx.nvim'
-hook_add = '''
-" Base config
-
-autocmd FileType defx call s:defx_my_settings()
-function! s:defx_my_settings() abort
-" Define mappings
-  nnoremap <silent><buffer><expr> <CR>
-  \ defx#do_action('open')
-  nnoremap <silent><buffer><expr> c
-  \ defx#do_action('copy')
-  nnoremap <silent><buffer><expr> m
-  \ defx#do_action('move')
-  nnoremap <silent><buffer><expr> p
-  \ defx#do_action('paste')
-  nnoremap <silent><buffer><expr> l
-  \ defx#do_action('open')
-  nnoremap <silent><buffer><expr> E
-  \ defx#do_action('open', 'vsplit')
-  nnoremap <silent><buffer><expr> P
-  \ defx#do_action('open', 'pedit')
-  nnoremap <silent><buffer><expr> o
-  \ defx#do_action('open_or_close_tree')
-  nnoremap <silent><buffer><expr> K
-  \ defx#do_action('new_directory')
-  nnoremap <silent><buffer><expr> N
-  \ defx#do_action('new_file')
-  nnoremap <silent><buffer><expr> M
-  \ defx#do_action('new_multiple_files')
-  nnoremap <silent><buffer><expr> C
-  \ defx#do_action('toggle_columns',
-  \                'mark:filename:type:size:time')
-  nnoremap <silent><buffer><expr> S
-  \ defx#do_action('toggle_sort', 'time')
-  nnoremap <silent><buffer><expr> d
-  \ defx#do_action('remove')
-  nnoremap <silent><buffer><expr> r
-  \ defx#do_action('rename')
-  nnoremap <silent><buffer><expr> !
-  \ defx#do_action('execute_command')
-  nnoremap <silent><buffer><expr> x
-  \ defx#do_action('execute_system')
-  nnoremap <silent><buffer><expr> yy
-  \ defx#do_action('yank_path')
-  nnoremap <silent><buffer><expr> .
-  \ defx#do_action('toggle_ignored_files')
-  nnoremap <silent><buffer><expr> ;
-  \ defx#do_action('repeat')
-  nnoremap <silent><buffer><expr> h
-  \ defx#do_action('cd', ['..'])
-  nnoremap <silent><buffer><expr> ~
-  \ defx#do_action('cd')
-  nnoremap <silent><buffer><expr> q
-  \ defx#do_action('quit')
-  nnoremap <silent><buffer><expr> <Space>
-  \ defx#do_action('toggle_select') . 'j'
-  nnoremap <silent><buffer><expr> *
-  \ defx#do_action('toggle_select_all')
-  nnoremap <silent><buffer><expr> j
-  \ line('.') == line('$') ? 'gg' : 'j'
-  nnoremap <silent><buffer><expr> k
-  \ line('.') == 1 ? 'G' : 'k'
-  nnoremap <silent><buffer><expr> <C-l>
-  \ defx#do_action('redraw')
-  nnoremap <silent><buffer><expr> <C-g>
-  \ defx#do_action('print')
-  nnoremap <silent><buffer><expr> cd
-  \ defx#do_action('change_vim_cwd')
-endfunction
-
-" disable root maker
-call defx#custom#option('_', {
-      \ 'root_marker': ':',
-      \ })
-call defx#custom#column('filename', {
-      \ 'root_marker_highlight': 'Ignore',
-      \ })
-
-" marker
-let g:defx_icons_enable_syntax_highlight = 1
-let g:defx_icons_column_length = 2
-let g:defx_icons_directory_icon = ''
-let g:defx_icons_mark_icon = '*'
-let g:defx_icons_parent_icon = ''
-let g:defx_icons_default_icon = ''
-let g:defx_icons_directory_symlink_icon = ''
-
-" Options below are applicable only when using "tree" feature
-let g:defx_icons_root_opened_tree_icon = ''
-let g:defx_icons_nested_opened_tree_icon = ''
-let g:defx_icons_nested_closed_tree_icon = ''
-'''
-
-[[plugins]]
-repo = 'kristijanhusak/defx-icons.git'
-
-[[plugins]]
-repo = 'jistr/vim-nerdtree-tabs'
-hook_add = '''
-    map <C-q> <plug>NERDTreeTabsToggle<CR>
-
-    " Don't display the NERDTree when specifying files
-    autocmd StdinReadPre * let s:std_in=1
-    autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-'''
-depends = ['nerdtree']
-
-[[plugins]]
-repo = 'scrooloose/nerdcommenter'
-
-[[plugins]]
-repo = 'vim-airline/vim-airline'
-hook_add = '''
-    if has('unix')
-        set t_Co=256
-        let &t_AB="\e[48;5;%dm"
-        let &t_AF="\e[38;5;%dm"
-    endif
-
-    let g:airline#extensions#tabline#enabled = 1
-    let g:airline#extensions#tabline#show_buffers = 0
-    let g:airline#extensions#tabline#tab_nr_type = 1
-    let g:airline_powerline_fonts = 1
-    let g:airline#extensions#ale#enabled = 1
-    " Do not collapse the status line while having multiple windows
-    let g:airline_inactive_collapse = 0
-    let g:airline#extensions#tagbar#enabled = 1
-    let g:airline#extensions#virtualenv#enabled = 1
-'''
+# [[plugins]]
+# repo = 'vim-airline/vim-airline'
+# hook_add = '''
+#     if has('unix')
+#         set t_Co=256
+#         let &t_AB="\e[48;5;%dm"
+#         let &t_AF="\e[38;5;%dm"
+#     endif
+# 
+#     let g:airline#extensions#tabline#enabled = 1
+#     let g:airline#extensions#tabline#show_buffers = 0
+#     let g:airline#extensions#tabline#tab_nr_type = 1
+#     let g:airline_powerline_fonts = 1
+#     let g:airline#extensions#ale#enabled = 1
+#     " Do not collapse the status line while having multiple windows
+#     let g:airline_inactive_collapse = 0
+#     let g:airline#extensions#tagbar#enabled = 1
+#     let g:airline#extensions#virtualenv#enabled = 1
+# '''
 
 [[plugins]]
 repo = 'morhetz/gruvbox'
