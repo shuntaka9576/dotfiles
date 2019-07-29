@@ -113,19 +113,19 @@ hook_add = '''
     endfunction
 '''
 
-[[plugins]]
-repo = 'Shougo/neosnippet.vim'
-depends = 'context_filetype.vim'
-on_event = 'InsertCharPre'
-on_ft = 'snippet'
-hook_add = '''
-    imap <C-j> <Plug>(neosnippet_expand_or_jump)
-    smap <C-j> <Plug>(neosnippet_expand_or_jump)
-    xmap <C-j> <Plug>(neosnippet_expand_target)
-    let g:neosnippet#enable_snipmate_compatibility = 1
-    let g:neosnippet#enable_completed_snippet = 1
-    let g:neosnippet#expand_word_boundary = 1
-'''
+# [[plugins]]
+# repo = 'Shougo/neosnippet.vim'
+# depends = 'context_filetype.vim'
+# on_event = 'InsertCharPre'
+# on_ft = 'snippet'
+# hook_add = '''
+#     imap <C-j> <Plug>(neosnippet_expand_or_jump)
+#     smap <C-j> <Plug>(neosnippet_expand_or_jump)
+#     xmap <C-j> <Plug>(neosnippet_expand_target)
+#     let g:neosnippet#enable_snipmate_compatibility = 1
+#     let g:neosnippet#enable_completed_snippet = 1
+#     let g:neosnippet#expand_word_boundary = 1
+# '''
 
 [[plugins]]
 repo = 'Shougo/neosnippet-snippets'

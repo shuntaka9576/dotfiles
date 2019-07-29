@@ -112,7 +112,8 @@ alias l='lazygit'
 alias n='nvim'
 
 # tmux alias
-alias x='xpanes -d -e --stay "lazygit" "lazydocker";xpanes -d -e --stay "nvim";'
+alias x='tmux source-file ~/dotfiles/tmux/window/git-window; tmux source-file ~/dotfiles/tmux/window/nvim-window'
+# alias x='xpanes -d -e --stay "lazygit" "lazydocker";xpanes -d -e --stay "nvim";'
 alias tka='tmux kill-server'
 
 # python alias
