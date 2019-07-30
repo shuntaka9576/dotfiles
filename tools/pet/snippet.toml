@@ -84,7 +84,7 @@
 
 [[snippets]]
   description = "Init python project"
-  command = "echo '.venv'>>.gitignore;pipenv install --dev black flake8 isort --pre;pipenv install --dev python-languageserver"
+  command = "echo '.venv'>>.gitignore;pipenv install --dev black flake8 isort python-language-server --pre;prn"
   tag = ["python"]
   output = ""
 
