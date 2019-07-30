@@ -19,7 +19,7 @@ let g:ale_linters = {
    \ 'json': ['jq'],
    \ 'make': ['checkmake'],
    \ 'vim': ['vint'],
-   \ 'shell': ['shellcheck'],
+   \ 'sh': ['shellcheck'],
    \ 'vue': ['prettier', 'eslint'],
    \ 'javascript': ['prettier', 'eslint'],
    \ 'typescript': ['prettier', 'eslint', 'typecheck'],
@@ -36,8 +36,10 @@ let g:ale_fixers = {
     \ 'typescript': ['prettier'],
     \ 'vue':        ['prettier'],
     \ 'rust':       ['rustfmt'],
+    \ 'sh':         ['shfmt'],
     \ }
 let g:ale_fix_on_save = 1
+let g:ale_sh_shfmt_options = '-i 2 -ci -bn -s' " -wは不要
 " let g:ale_save_event_fired = 0
 
 nmap <silent> <C-n> <Plug>(ale_next_wrap)
