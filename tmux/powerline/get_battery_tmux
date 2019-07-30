@@ -75,6 +75,8 @@ class battery:
             return BATTERY_20
         elif self.battery_cap >= 0:
             return BATTERY_10
+        else:
+            return "Error"
 
 
 if __name__ == "__main__":
