@@ -40,7 +40,6 @@ pip3 install awscli
 # TODO install nerd-fonts
 # git clone https://github.com/ryanoasis/nerd-fonts.git
 # // 変換したいフォントを、~/Library/Fontsなどから指定する
-# fontforge ./font-patcher [変換したいフォント] -w --fontawesome --fontlinux --octicons --pomicons --powerline --powerlineextra
-
+# fontforge ./font-patcher ~/Library/Fonts/Roboto\ Mono\ Medium\ for\ Powerline.ttf -w --fontawesome --fontawesomeextension --fontlinux --octicons --powersymbols --pomicons --powerline --powerlineextra --material --weather
 # // 上記で、フォントにパッチがあたり、ttfファイルが出来るので、~/Library/Fontsにコピーする
-# cp [フォントファイル] ~/Library/Fonts
+# cp Roboto\ Mono\ Medium\ Nerd\ Font\ Complete\ Windows\ Compatible.ttf ~/Library/Fonts/
