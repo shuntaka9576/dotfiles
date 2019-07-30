@@ -1,13 +1,101 @@
-#!/bin/sh
+#!/usr/local/bin/python3
+import re
+import subprocess
 
-if battery_info=$(/usr/bin/pmset -g ps | awk '{ if (NR == 2) print $3 }' | sed -e "s/;//g" -e "s/%//") ; then
-  battery_quantity=$(echo $battery_info | awk '{print $1}')
-  if [[ ! $battery_info =~ "discharging" ]]; then
-    battery="#[bg=cyan,fg=black,bold] ⚡︎$battery_quantity% #[default]"
-  elif (( $battery_quantity < 16 )); then
-    battery="#[bg=red,fg=white,bold] $battery_quantity% #[default]"
-  else
-    battery="#[bg=cyan,fg=black,bold] $battery_quantity% #[default]"
-  fi
-  echo $battery
-fi
+
+def exec_pmset():
+    # exec pmset command and get result
+    res = subprocess.run(["/usr/bin/pmset", "-g", "ps"], stdout=subprocess.PIPE)
+    battery_info = res.stdout.decode().splitlines()[1]
+    battery_cap, charged_status, _ = battery_info.split(";")
+
+    # trim exec pmset result
+    battery_cap = battery_cap.strip()
+    charged_status = charged_status.strip()
+
+    # use regex to get battery capacity number
+    match = re.search(r"(\d+)%", battery_cap)
+    battery_cap = match.group(1)
+
+    return battery_cap, charged_status
+
+
+class battery:
+    def __init__(self):
+        battery_cap, charged_status = exec_pmset()
+        self.charged_status = charged_status
+        self.battery_cap = int(battery_cap)
+
+    def get_charege_status_icon(self):
+        DISCHARGING = " "
+        CHARGING = ""
+        CHARGE_OK = ""
+        AC_ATTACHED = ""
+
+        if self.charged_status == "discharging":
+            return DISCHARGING
+        elif self.charged_status == "charging":
+            return CHARGING
+        elif self.charged_status == "charged":
+            return CHARGE_OK
+        elif self.charged_status == "AC attached":
+            return AC_ATTACHED
+        else:
+            return "Error"
+
+    def get_battey_capacity_icon(self):
+        BATTERY_10 = ""
+        BATTERY_20 = ""
+        BATTERY_30 = ""
+        BATTERY_40 = ""
+        BATTERY_50 = ""
+        BATTERY_60 = ""
+        BATTERY_70 = ""
+        BATTERY_80 = ""
+        BATTERY_90 = ""
+        BATTERY_100 = ""
+
+        if self.battery_cap == 100:
+            return BATTERY_100
+        elif self.battery_cap >= 90:
+            return BATTERY_90
+        elif self.battery_cap >= 80:
+            return BATTERY_80
+        elif self.battery_cap >= 70:
+            return BATTERY_70
+        elif self.battery_cap >= 60:
+            return BATTERY_60
+        elif self.battery_cap >= 50:
+            return BATTERY_50
+        elif self.battery_cap >= 40:
+            return BATTERY_40
+        elif self.battery_cap >= 30:
+            return BATTERY_30
+        elif self.battery_cap >= 20:
+            return BATTERY_20
+        elif self.battery_cap >= 0:
+            return BATTERY_10
+        else:
+            return "Error"
+
+
+if __name__ == "__main__":
+    try:
+        battery_now = battery()
+
+        print(
+            "#[fg={}]".format(
+                "colour38"
+                if 100 == battery_now.battery_cap
+                else "colour46"
+                if 100 >= battery_now.battery_cap >= 40
+                else "colour9"
+            )
+            + battery_now.get_battey_capacity_icon()  # noqa: W503
+            + "#[default]"  # noqa: W503
+            + "#[fg=colour190]"  # noqa: W503
+            + battery_now.get_charege_status_icon()  # noqa: W503
+            + "#[default] "  # noqa: W503
+        )
+    except Exception as e:
+        print("Error!", e.args)

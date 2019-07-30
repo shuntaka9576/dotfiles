@@ -1,25 +1,50 @@
-#!/bin/sh
+#!/usr/local/bin/python3
+import re
+import subprocess
 
-airport_path="/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport"
 
-if air_info=($(eval "$airport_path" -I | grep -E "^ *(agrCtlRSSI|state|SSID):" | awk '{print $2}')) ; then
+def exec_airport():
+    res = subprocess.run(
+        [
+            "/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport",
+            "-I",
+        ],
+        stdout=subprocess.PIPE,
+    )
+    return res
 
-  rssi=${air_info[0]}
-  state=${air_info[1]}
-  ssid=${air_info[2]}
 
-  case "$state" in
-    "running" )
-      signals=(▁▂▄▆█)
-      signal=""
-      rssi_=$(expr 5 - ${rssi} / -20)
-      for ((i=0; i < $rssi_; i++ )); do
-        signal="${signal}${signals[$i]}"
-      done
-      airport_="${signal}"
-    ;;
-    "init"    ) airport_="#[fg=yellow] ... " ;;
-    *         ) airport_="#[fg=red] ✘  " ;;
-  esac
-  echo "#[fg=colour3,bold]${airport_}#[default]"
-fi
+class ssid:
+    def __init__(self):
+        res = exec_airport()
+        try:
+            ssid_state = res.stdout.decode().splitlines()[4]
+            match = re.search(r"state: (\w+)", ssid_state)
+            self.status = match.group(1).strip()
+        except IndexError:
+            self.status = "Off"
+        except Exception:
+            self.status = "Error"
+
+    def get_icon(self):
+        WIFI_RUNNING = "直"
+        WIFI_INIIT = "睊"
+        WIFI_NG = "Error"
+
+        if self.status == "init":
+            return WIFI_INIIT
+        elif self.status == "Off":
+            return WIFI_INIIT
+        elif self.status == "running":
+            return WIFI_RUNNING
+        else:
+            return WIFI_NG
+
+
+if __name__ == "__main__":
+    ssid_now = ssid()
+    print(
+        "#[fg={}]".format("colour045" if ssid_now.status == "running" else "colour1")
+        + ssid_now.get_icon()  # noqa: W503
+        + "#[default] "  # noqa: W503
+    )
