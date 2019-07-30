@@ -7,10 +7,10 @@ read branchName
 # =*=*=*=*=*=*=*=*=*=*=* install git for amazon linux =*=*=*=*=*=*=*=*=*=*=*
 # check exists amazonlinux release file
 if [ -e /etc/system-release ]; then
-  amazonLinuxReleaseFile=`cat /etc/system-release`
-  if [[ `echo $amazonLinuxReleaseFile|grep "Amazon Linux"` ]]; then
-      # install git g++
-      curl -L raw.github.com/shuntaka9576/dotfiles/$branchName/init/setup/yum.sh| bash
+  amazonLinuxReleaseFile=$(cat /etc/system-release)
+  if [[ $(echo $amazonLinuxReleaseFile | grep "Amazon Linux") ]]; then
+    # install git g++
+    curl -L raw.github.com/shuntaka9576/dotfiles/$branchName/init/setup/yum.sh | bash
   fi
 fi
 
@@ -40,7 +40,7 @@ elif [ -e /etc/debian_version ]; then
   source ~/.bashrc
   ~/dotfiles/init/setup/apt.sh
 elif [ -e /etc/system-release ]; then
-  if [[ `echo $amazonLinuxReleaseFile|grep "Amazon Linux"` ]]; then
+  if [[ $(echo $amazonLinuxReleaseFile | grep "Amazon Linux") ]]; then
     echo '====================================== Amazon Linux ======================================'
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
     source ~/.bashrc
@@ -57,8 +57,6 @@ echo '====================================== symbolic link nvim ================
 ~/dotfiles/nvim/link.sh
 echo '====================================== symbolic link tools ======================================'
 ~/dotfiles/tools/link.sh
-echo '====================================== symbolic link tmux ======================================'
-~/dotfiles/tmux/link.sh
 echo '====================================== install fisher plugins ======================================'
 ~/dotfiles/fish/fish_plug.sh
 exit

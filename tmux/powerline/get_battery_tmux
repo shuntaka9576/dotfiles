@@ -28,7 +28,7 @@ class battery:
 
     def get_charege_status_icon(self):
         DISCHARGING = " "
-        CHARGING = ""
+        CHARGING = "ﯓ"
         CHARGE_OK = ""
         AC_ATTACHED = ""
 
