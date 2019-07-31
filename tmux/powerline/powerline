@@ -1,0 +1,21 @@
+#!/usr/local/bin/python3
+
+"""
+# tmux-powerline
+
+# [fg=colour234,bg=colour148] 1:0.0 #[default]#[fg=colour148,bg=colour33]#[default]#[fg=colour0,bg=colour33] shuntaka9576noMacBook-Pro #[default]#[fg=colour33,bg=colour24]#[default]#[fg=colour255,bg=colour24] ⓛ 192.168.1.31 #[default]#[fg=colour255,bg=colour24]#[default]#[fg=colour255,bg=colour24] ⓦ 118.241.21.138 #[default]#[fg=colour24,bg=colour29]#[default]#[fg=colour88,bg=colour29] #[fg=colour5] #[fg=colour88]master #[default]#[fg=colour29,bg=colour235]#[default]
+
+# 現在の設定
+[fg=colour145,bold][#S]
+"""
+
+# print("#[fg=colour145,bg=colour145]1#[default]#[fg=colour145]#[default]")
+# print(
+#     "#[fg=colour145,bg=colour238]1#[default]#[fg=colour238]#[default]#[fg=colour145,bg=colour197]1#[default]#[fg=colour197]#[default]"
+# )
+print("#[fg=colour145,bg=colour238] 1#[default]")
+# [fg=colour234,bg=colour148] 1:0.0 #[default]#[fg=colour148,bg=colour33]#[default]#[fg=colour0,bg=colour33] shuntaka9576noMacBook-Pro #[default]#[fg=colour33,bg=colour24]#[default]#[fg=colour255,bg=colour24] ⓛ 192.168.1.31 #[default]#[fg=colour255,bg=colour24]#[default]#[fg=colour255,bg=colour24] ⓦ 118.241.21.138 #[default]#[fg=colour24,bg=colour29]#[default]#[fg=colour88,bg=colour29] #[fg=colour5] #[fg=colour88]master #[default]#[fg=colour29,bg=colour235]#[default]
+
+# print(
+#     "#[fg=colour234,bg=colour148] 0:1.0 #[default]#[fg=colour148,bg=colour33]#[default]#[fg=colour0,bg=colour33] shuntaka9576noMacBook-Pro #[default]#[fg=colour33,bg=colour24]#[default]#[fg=colour255,bg=colour24] ⓛ 192.168.1.31 #[default]#[fg=colour255,bg=colour24]#[default]#[fg=colour255,bg=colour24] ⓦ 118.241.21.138 #[default]#[fg=colour24,bg=colour29]#[default]#[fg=colour88,bg=colour29] #[fg=colour5] #[fg=colour88]master #[default]#[fg=colour29,bg=colour235]#[default]"
+# )
