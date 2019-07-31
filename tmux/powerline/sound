@@ -1,0 +1,50 @@
+#!/usr/local/bin/python3
+import subprocess
+from distutils.util import strtobool
+
+
+def exec_osascript():
+    subproc = subprocess.run(
+        ["osascript", "-e", "get volume settings"], stdout=subprocess.PIPE
+    )
+    return subproc
+
+
+class sound:
+    def __init__(self):
+        subproc = exec_osascript()
+        soudinfo = {}
+        for info in subproc.stdout.decode().strip().split(","):
+            key, value = info.split(":")
+            value = value.strip()
+            if str.isdigit(value):
+                value = int(value)
+            elif value == "true" or "false":
+                value = bool(strtobool(value))
+            soudinfo[key.strip().replace(" ", "_")] = value
+
+        self.output_volume = soudinfo.get("output_volume")
+        self.input_volume = soudinfo.get("input_volume")
+        self.alert_volume = soudinfo.get("alert_volume")
+        self.output_muted = soudinfo.get("output_muted")
+
+    def get_icon(self):
+        VOLUME_OFF = "婢"
+        VOLUME_LOW = "奄"
+        VOLUME_MEDIUM = "奔"
+        VOLUME_HIGH = "墳"
+
+        if self.output_muted:
+            return VOLUME_OFF
+        else:
+            if self.output_volume >= 50:
+                return VOLUME_HIGH
+            elif self.output_volume >= 30:
+                return VOLUME_MEDIUM
+            elif self.output_volume >= 0:
+                return VOLUME_LOW
+
+
+if __name__ == "__main__":
+    sound_now = sound()
+    print("#[fg=colour190]" + sound_now.get_icon() + "#[default]", end="")
