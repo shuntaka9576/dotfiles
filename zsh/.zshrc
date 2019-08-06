@@ -179,6 +179,9 @@ zle -N pet-select
 stty -ixon
 bindkey '^s' pet-select
 
+# aws alias
+alias assume-role='function(){eval $(command assume-role $@);}'
+
 # ------------------------------------------------------------------------------
 # Kye mapping
 # bindkey -v # setting viins
