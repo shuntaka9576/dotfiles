@@ -22,7 +22,7 @@ set -g theme_display_user no
 # development settingns
 set --export PIPENV_VENV_IN_PROJECT true
 set --export AWS_SAM_LOCAL true
-set --export GO111MODULE off
+# set --export GO111MODULE off
 set --export PYENV_ROOT "$HOME/.pyenv"
 set --export PATH "$PYENV_ROOT/bin:$PATH"
 set --export PATH "$HOME/.cargo/bin:$PATH"

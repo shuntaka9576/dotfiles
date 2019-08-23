@@ -12,7 +12,7 @@ export LANGUAGE=en_US.UTF-8
 # Golang
 export GOPATH=$HOME/go
 export PATH="$GOPATH/bin:$PATH"
-export GO111MODULE=off
+export GO111MODULE=on
 
 # Python
 export PIPENV_VENV_IN_PROJECT=true
