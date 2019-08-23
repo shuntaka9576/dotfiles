@@ -212,3 +212,11 @@ on_ft = 'rust'
 hook_add = '''
     let g:rustfmt_autosave = 1
 '''
+
+# =*=*=*=*=*=*=*=*=*=*=*=*=*= Wordpress *=*=*=*=*=*=*=*=*=*=*=*=*=*
+[[plugins]]
+repo = 'haoyayoi/VimWordpress'
+hook_add='''
+    command! BSaveDaraft execute(":BlogSave draft")
+    command! BPreveiwDraft execute(":BlogPreview draft")
+'''
