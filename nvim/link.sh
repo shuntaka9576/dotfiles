@@ -19,3 +19,6 @@ ln -sf ~/dotfiles/nvim/pylintfiles/flake8 ~/.config/flake8
 ln -sf ~/dotfiles/nvim/coc/coc-settings.json ~/.config/nvim/coc-settings.json
 ln -sf ~/dotfiles/nvim/coc/package.json ~/.config/coc/extensions/package.json
 ln -sf ~/dotfiles/nvim/coc/config.yaml ~/.config/efm-langserver/config.yaml
+
+# neosnippet
+ln -s ~/dotfiles/nvim/neosnippet-snippets ~/.config

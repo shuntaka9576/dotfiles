@@ -113,22 +113,21 @@ hook_add = '''
     endfunction
 '''
 
-# [[plugins]]
-# repo = 'Shougo/neosnippet.vim'
-# depends = 'context_filetype.vim'
-# on_event = 'InsertCharPre'
-# on_ft = 'snippet'
-# hook_add = '''
-#     imap <C-j> <Plug>(neosnippet_expand_or_jump)
-#     smap <C-j> <Plug>(neosnippet_expand_or_jump)
-#     xmap <C-j> <Plug>(neosnippet_expand_target)
-#     let g:neosnippet#enable_snipmate_compatibility = 1
-#     let g:neosnippet#enable_completed_snippet = 1
-#     let g:neosnippet#expand_word_boundary = 1
-# '''
+[[plugins]]
+repo = 'Shougo/neosnippet.vim'
 
 [[plugins]]
 repo = 'Shougo/neosnippet-snippets'
+hook_add = '''
+imap <expr><TAB> pumvisible() ? "<C-n>" : neosnippet#jumpable() ? "<Plug>(neosnippet_expand_or_jump)" : "<TAB>"
+
+" For conceal markers.
+if has('conceal')
+  set conceallevel=2 concealcursor=niv
+endif
+
+let g:neosnippet#snippets_directory='~/.config/neosnippet-snippets'
+'''
 
 #[[plugins]]
 #repo = 'Shougo/context_filetype.vim'
