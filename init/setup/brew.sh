@@ -24,3 +24,4 @@ brew install exa
 brew install fd
 brew install bat
 brew install fontforge
+brew install reattach-to-user-namespace
