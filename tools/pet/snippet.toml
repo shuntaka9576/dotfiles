@@ -1,119 +1,88 @@
 [[snippets]]
-  description = "Show all"
-  command = "ls -al"
-  tag = ["util"]
-  output = ""
-
-[[snippets]]
-  description = "Ping to google dns server"
-  command = "ping 8.8.8.8"
-  tag = ["network", "google"]
-  output = ""
-
-[[snippets]]
-  description = "Filer"
-  command = "find . -type d -name '.git' -prune -o -type f -print"
-  tag = ["filer"]
-  output = ""
-
-[[snippets]]
-  description = "To count python files steps"
-  command = 'find . -type d \( -name ".git" -o -name ".venv" -o -name ".mypy_cache" \) -prune -o -type f -print| xargs wc -l'
-  tag = ["filer"]
-  output = ""
-
-[[snippets]]
-  description = "To count go files steps"
-  command = "find . -name '*.go'| xargs wc -l"
-  tag = ["filer"]
-  output = ""
-
-[[snippets]]
-  description = "To count jlia files steps"
-  command = 'find . -type d \( -name ".git" \) -prune -o -type f -print| xargs wc -l'
-  tag = ["filer"]
-  output = ""
-
-[[snippets]]
-  description = "Display specified field"
+  description = "特定行表示"
   command = "ls -al |awk '{print $1,$9}'"
   tag = ["awk"]
   output = ""
 
 [[snippets]]
-  description = "Change GOPATH mode"
+  description = "GOPATH modeに変更"
   command = "set --export GO111MODULE off"
   tag = ["go"]
   output = ""
 
 [[snippets]]
-  description = "Set proxy and discard the response"
+  description = "Proxy環境下で、curl"
   command = "curl -v --proxy http://{adress}:{port} -o /dev/null https://www.google.com"
   tag = ["curl"]
   output = ""
 
 [[snippets]]
-  description = "Post request"
-  command = 'curl -X POST -H "Content-Type: application/json" -d "test" https://play.golang.org/share'
-  tag = ["curl"]
-  output = ""
-
-[[snippets]]
-  description = "Ignore http-proxy request. --noporxy [ignore domain]"
+  description = "curlでnoproxyを設定"
   command = 'curl -v --noproxy localhost http://localhost:3000'
   tag = ["curl"]
   output = ""
 
 [[snippets]]
-  description = "Print the process listening on 8888"
+  description = "Check listening port"
   command = "lsof -i -P | grep 8888"
-  tag = ["network"]
+  tag = ["port"]
   output = ""
 
+
 [[snippets]]
-  description = "Remove the 1st line"
+  description = "1行目を非表示で出力"
   command = "sed 1d {f}"
   tag = ["sed"]
   output = ""
 
 [[snippets]]
-  description = "Lunch jupyter"
-  command = "jupyter notebook --ip=0.0.0.0 --no-browser --allow-root --NotebookApp.token=''"
-  tag = ["julia"]
+  description = "1〜3行目を非表示で出力"
+  command = "sed 1,3d {f}"
+  tag = ["sed"]
   output = ""
 
 [[snippets]]
-  description = "Init python project"
+  description = "Pythonプロジェクトを初期化"
   command = "echo '.venv'>>.gitignore;pipenv install --dev black flake8 isort python-language-server --pre;prn"
   tag = ["python"]
   output = ""
 
 [[snippets]]
-  description = "Generate mod.rs"
-  command = 'ls| sed -e "s/ /\n/g"| grep -v "mod.rs.*"| sed -e "s/.rs//g" -e "s/mod\n//g" -e "s/^/pub mod /g" -e "s/\$/;/g">mod.rs'
-  tag = ["rust"]
-  output = ""
-
-[[snippets]]
-  description = "Share link"
-  command = 'echo "https://play.golang.org/p/"(curl -sSX POST -H "Content-Type: application/json" --data-binary @test.go https://play.golang.org/share)'
-  tag = ["go"]
-  output = ""
-
-[[snippets]]
-  description = "Delete neovim swap files"
+  description = "Neovimのswapファイルを削除"
   command = ' rm -rf ~/.local/share/nvim/'
   tag = ["nvim"]
   output = ""
 
 [[snippets]]
-  description = "Clean all containers"
+  description = "コンテナ全停止削除"
   command = 'docker ps -aq| xargs docker stop;docker ps -aq| xargs docker rm;docker images -aq| xargs docker rmi -f;docker ps -a;docker images -a;'
   tag = ["docker"]
   output = ""
 
+# -------------------------
+# Perlワンライナー
+# -e 'スクリプト'： 実行するPerlスクリプトを指定
+# -------------------------
 [[snippets]]
-  description = "Replace character"
-  command = 'pwd |perl -pe "s;$HOME;~;"'
+  description = "改行をつける(-l)"
+  command = "perl -le 'print \"Hello\"'"
+  tag = ["perl"]
+  output = ""
+
+[[snippets]]
+  description = "ファイルを読み込んで1行ずつ処理する(-n)"
+  command = "perl -nle '$i++;print \"$i: $_\"' README.md"
+  tag = ["perl"]
+  output = ""
+
+[[snippets]]
+  description = "-nの機能に加えて$_をprintする(-p)"
+  command = "perl -pe 's/dotfiles/aaaa/g' README.md"
+  tag = ["perl"]
+  output = ""
+
+[[snippets]]
+  description = "最短マッチで文字列抽出(?無しで最長マッチ)"
+  command = "echo 'aaaa(cccc)aaaaa' |perl -ne 'print \"$1\" if /.*\\((.*?)\\).*/'"
   tag = ["perl"]
   output = ""
