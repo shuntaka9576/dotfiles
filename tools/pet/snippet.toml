@@ -59,6 +59,12 @@
   tag = ["docker"]
   output = ""
 
+[[snippets]]
+  description = "submoduleをclone"
+  command = 'git submodule update --init --recursive'
+  tag = ["git"]
+  output = ""
+
 # -------------------------
 # Perlワンライナー
 # -e 'スクリプト'： 実行するPerlスクリプトを指定
@@ -84,5 +90,11 @@
 [[snippets]]
   description = "最短マッチで文字列抽出(?無しで最長マッチ)"
   command = "echo 'aaaa(cccc)aaaaa' |perl -ne 'print \"$1\" if /.*\\((.*?)\\).*/'"
+  tag = ["perl"]
+  output = ""
+
+[[snippets]]
+  description = "tab区切りの出力処理"
+  command = "echo \"col1\\tcol2\\tcol3\" |perl -F'\\t' -lne 'print \"$F[1]\"'"
   tag = ["perl"]
   output = ""
