@@ -98,3 +98,22 @@
   command = "echo \"col1\\tcol2\\tcol3\" |perl -F'\\t' -lne 'print \"$F[1]\"'"
   tag = ["perl"]
   output = ""
+
+# -------------------------
+# aws
+# -------------------------
+[[snippets]]
+  description = "codecommitのリポジトリ一覧出力"
+  command = "aws codecommit list-repositories | jq -r '.repositories[].repositoryName'"
+  tag = ["aws"]
+  output = ""
+[[snippets]]
+  description = "codecommitのリポジトリを全てクローン"
+  command = "aws codecommit list-repositories | jq -r '.repositories[].repositoryName'| xargs -I{} ghq get https://git-codecommit.ap-northeast-1.amazonaws.com/v1/repos/{}" # -Iで改行区切りで一つ一つコマンドを実行してくれる
+  tag = ["aws"]
+  output = ""
+[[snippets]]
+  description = "codecommitのリポジトリを全て更新"
+  command = "aws codecommit list-repositories | jq -r '.repositories[].repositoryName'| xargs -I{} ghq get -u https://git-codecommit.ap-northeast-1.amazonaws.com/v1/repos/{}"
+  tag = ["aws"]
+  output = ""
