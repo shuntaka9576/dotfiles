@@ -14,11 +14,6 @@ export GOPATH=$HOME/go
 export PATH="$GOPATH/bin:$PATH"
 export GO111MODULE=on
 
-# Python
-export PIPENV_VENV_IN_PROJECT=true
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-
 # Rust
 export RUST_BACKTRACE=1
 export PATH="$HOME/.cargo/bin:$PATH"
@@ -28,6 +23,15 @@ export AWS_SAM_LOCAL=true
 
 # npm
 export PATH=~/.npm-global/bin:$PATH
+
+# anyenv
+export PATH="$HOME/.anyenv/bin:$PATH"
+eval "$(anyenv init -)"
+
+# Python
+export PIPENV_VENV_IN_PROJECT=true
+# export PYENV_ROOT="$HOME/.pyenv"
+# export PATH="$PYENV_ROOT/bin:$PATH"
 
 # TODO Linux brew settings
 

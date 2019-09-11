@@ -40,6 +40,9 @@ fpath=($ZDOTDIR/.zplug/repos/mollifier/cd-gitroot $fpath)
 autoload -Uz cd-gitroot
 alias cdu='cd-gitroot'
 
+# python
+alias pip=pip3
+
 # ------------------------------------------------------------------------------
 # UI
 autoload vcs_info

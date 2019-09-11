@@ -56,6 +56,7 @@ repo = 'Shougo/denite.nvim'
 on_cmd = 'Denite'
 build = ':UpdateRemotePlugins'
 hook_add='''
+    let g:python3_host_prog = expand('~/.anyenv/envs/pyenv/shims/python3')
     nmap [denite] <Nop>
     map <C-j> [denite]
 
