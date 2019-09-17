@@ -20,13 +20,13 @@ elif [ -e /proc/sys/fs/binfmt_misc/WSLInterop ]; then
 elif [ -e /etc/debian_version ]; then
   export PATH=/home/linuxbrew/.linuxbrew/bin:$PATH
 elif [ -e /etc/system-release ]; then
-  amazonLinuxReleaseFile=`cat /etc/system-release`
-  if [[ `echo $amazonLinuxReleaseFile|grep "Amazon Linux"` ]]; then
+  amazonLinuxReleaseFile=$(cat /etc/system-release)
+  if [[ $(echo $amazonLinuxReleaseFile | grep "Amazon Linux") ]]; then
     export PATH=/home/linuxbrew/.linuxbrew/bin:$PATH
   fi
 fi
-export RUST_BACKTRACE=1;
+export RUST_BACKTRACE=1
 
 # alias settings
 # alias t="tmux -2 command-prompt 'new-session -n %1'"
-alias t="tmux -2"
+alias t='tmux -2'

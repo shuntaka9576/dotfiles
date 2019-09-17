@@ -1,6 +1,15 @@
 #!/usr/bin/zsh
 
 # ------------------------------------------------------------------------------
+# lazy path settings
+# 下記のPATHに重複するコマンドがあり、優先させたい場合
+# /usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin
+
+# /usr/bin/python < ~/.anyenv/envs/pyenv/shims/python
+export PATH="$HOME/.anyenv/bin:$PATH"
+eval "$(anyenv init -)"
+
+# ------------------------------------------------------------------------------
 # zplug settings
 export ZPLUG_HOME="$ZDOTDIR/.zplug"
 export ZPLUG_REPOS="$ZPLUG_HOME/repos"
@@ -41,7 +50,6 @@ autoload -Uz cd-gitroot
 alias cdu='cd-gitroot'
 
 # python
-alias pip=pip3
 
 # ------------------------------------------------------------------------------
 # UI

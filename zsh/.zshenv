@@ -24,10 +24,6 @@ export AWS_SAM_LOCAL=true
 # npm
 export PATH=~/.npm-global/bin:$PATH
 
-# anyenv
-export PATH="$HOME/.anyenv/bin:$PATH"
-eval "$(anyenv init -)"
-
 # Python
 export PIPENV_VENV_IN_PROJECT=true
 # export PYENV_ROOT="$HOME/.pyenv"
