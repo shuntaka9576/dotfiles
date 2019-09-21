@@ -65,10 +65,10 @@
   tag = ["git"]
   output = ""
 
-# -------------------------
+# ----------------------------------------------------------------
 # Perlワンライナー
 # -e 'スクリプト'： 実行するPerlスクリプトを指定
-# -------------------------
+
 [[snippets]]
   description = "改行をつける(-l)"
   command = "perl -le 'print \"Hello\"'"
@@ -99,9 +99,9 @@
   tag = ["perl"]
   output = ""
 
-# -------------------------
+# ----------------------------------------------------------------
 # aws
-# -------------------------
+
 [[snippets]]
   description = "codecommitのリポジトリ一覧出力"
   command = "aws codecommit list-repositories | jq -r '.repositories[].repositoryName'"
@@ -116,4 +116,25 @@
   description = "codecommitのリポジトリを全て更新"
   command = "aws codecommit list-repositories | jq -r '.repositories[].repositoryName'| xargs -I{} ghq get -u https://git-codecommit.ap-northeast-1.amazonaws.com/v1/repos/{}"
   tag = ["aws"]
+  output = ""
+
+# ----------------------------------------------------------------
+# Terraform
+
+[[snippets]]
+  description = "setup dokernized terraform"
+  command = "docker pull hashicorp/terraform:0.12.5;docker run --rm hashicorp/terraform:0.12.5 --version"
+  tag = ["terraform"]
+  output = ""
+
+[[snippets]]
+  description = "start dokernized terraform"
+  command = """
+docker run --rm -i -v $PWD:/work -w /work \
+-e AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID \
+-e AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY \
+-e AWS_DEFAULT_REGION=$AWS_DEFAULT_REGION \
+hashicorp/terraform:0.12.5 <command>
+  """
+  tag = ["terraform"]
   output = ""
