@@ -59,6 +59,15 @@
   tag = ["docker"]
   output = ""
 
+# ----------------------------------------------------------------
+# Git
+
+[[snippets]]
+  description = "Author指定でステップ数カウント"
+  command = 'git ls-files | xargs -n1 git --no-pager blame -f -w | grep <username> | wc -l'
+  tag = ["git"]
+  output = ""
+
 [[snippets]]
   description = "submoduleをclone"
   command = 'git submodule update --init --recursive'
