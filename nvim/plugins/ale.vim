@@ -25,7 +25,10 @@ let g:ale_linters = {
    \ 'typescript': ['prettier', 'eslint', 'typecheck'],
    \ }
 
+" Golang
 let g:ale_go_golangci_lint_options = '--enable-all --disable gochecknoglobals --disable gochecknoinits'
+
+" Python
 let g:ale_python_mypy_options = '--ignore-missing-imports'
 
 let g:ale_fixers = {
@@ -41,6 +44,9 @@ let g:ale_fixers = {
 let g:ale_fix_on_save = 1
 let g:ale_sh_shfmt_options = '-i 2 -ci -bn -s' " -wは不要
 " let g:ale_save_event_fired = 0
+"
+" JavaScript
+let g:ale_javascript_prettier_use_local_config = 1
 
 nmap <silent> <C-n> <Plug>(ale_next_wrap)
 nmap <silent> <C-p> <Plug>(ale_previous_wrap)

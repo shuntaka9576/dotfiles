@@ -11,3 +11,6 @@
 	see = browse
 [hub]
 	protocol = https
+[credential]
+    helper = !aws codecommit credential-helper --profile=L_ITG $@
+    UseHttpPath = true
