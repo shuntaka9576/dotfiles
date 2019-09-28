@@ -12,6 +12,7 @@
     "julialang.language-julia",
     "bungcip.better-toml",
     "rust-lang.rust",
-    "vadimcn.vscode-lldb"
+    "vadimcn.vscode-lldb",
+    "jebbs.plantuml"
   ]
 }
