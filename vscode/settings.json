@@ -153,6 +153,7 @@
     ],
     // editor settings
     "editor.fontFamily": "Fira Code",
+    "editor.fontLigatures": true,
     "editor.formatOnSave": false,
     "editor.minimap.enabled": false,
     "editor.suggestSelection": "first",
