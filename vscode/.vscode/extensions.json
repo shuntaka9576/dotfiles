@@ -13,6 +13,7 @@
     "bungcip.better-toml",
     "rust-lang.rust",
     "vadimcn.vscode-lldb",
-    "jebbs.plantuml"
+    "jebbs.plantuml",
+    "esbenp.prettier-vscode"
   ]
 }

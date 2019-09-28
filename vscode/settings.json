@@ -8,11 +8,17 @@
         }
     },
     "go.formatTool": "goimports",
-    "go.formatFlags": ["-w"],
+    "go.formatFlags": [
+        "-w"
+    ],
     "go.lintTool": "golangci-lint",
-    "go.toolsEnvVars": {"GO111MODULE": "on"},
+    "go.toolsEnvVars": {
+        "GO111MODULE": "on"
+    },
     "go.useLanguageServer": true,
-    "go.alternateTools": {"go-langserver": "gopls"},
+    "go.alternateTools": {
+        "go-langserver": "gopls"
+    },
     // python settings
     "[python]": {
         "editor.formatOnSave": true
@@ -27,6 +33,9 @@
     // rust settings
     "[rust]": {
         "editor.formatOnSave": true
+    },
+    "[javascirpt]": {
+        "editor.tabSize": 2
     },
     // vue.js settings
     "[vue]": {
@@ -46,10 +55,14 @@
     "eslint.enable": true,
     "eslint.autoFixOnSave": true,
     "eslint.validate": [
-        "javascript",
-        "javascriptreact",
         {
-            "language":"typescript",
+            "language": "javascript",
+            "autoFix": true
+        },
+        "javascriptreact",
+        "typescript",
+        {
+            "language": "typescriptreact",
             "autoFix": true
         },
         {
@@ -69,17 +82,31 @@
     "vim.easymotionKeys": "hklasdgjf",
     "vim.normalModeKeyBindingsNonRecursive": [
         {
-            "before": ["f"],
-            "after": ["leader", "leader", "s"]
+            "before": [
+                "f"
+            ],
+            "after": [
+                "leader",
+                "leader",
+                "s"
+            ]
         }
     ],
     "vim.insertModeKeyBindings": [
         {
-          "before": ["j", "j"],
-          "after": ["<Esc>"]
+            "before": [
+                "j",
+                "j"
+            ],
+            "after": [
+                "<Esc>"
+            ]
         },
         {
-            "before": ["leader","w"],
+            "before": [
+                "leader",
+                "w"
+            ],
             "after": [],
             "commands": [
                 {
@@ -91,7 +118,10 @@
     ],
     "vim.normalModeKeyBindings": [
         {
-            "before": ["leader","a"],
+            "before": [
+                "leader",
+                "a"
+            ],
             "after": [],
             "commands": [
                 {
@@ -101,7 +131,11 @@
             ]
         },
         {
-            "before": ["leader","r","n"],
+            "before": [
+                "leader",
+                "r",
+                "n"
+            ],
             "after": [],
             "commands": [
                 {
@@ -111,7 +145,11 @@
             ]
         },
         {
-            "before": ["leader","b","p"],
+            "before": [
+                "leader",
+                "b",
+                "p"
+            ],
             "after": [],
             "commands": [
                 {
@@ -121,7 +159,11 @@
             ]
         },
         {
-            "before": ["leader","b","b"],
+            "before": [
+                "leader",
+                "b",
+                "b"
+            ],
             "after": [],
             "commands": [
                 {
@@ -131,7 +173,11 @@
             ]
         },
         {
-            "before": ["leader","b","n"],
+            "before": [
+                "leader",
+                "b",
+                "n"
+            ],
             "after": [],
             "commands": [
                 {
@@ -141,7 +187,11 @@
             ]
         },
         {
-            "before": ["leader","b","s"],
+            "before": [
+                "leader",
+                "b",
+                "s"
+            ],
             "after": [],
             "commands": [
                 {
@@ -149,11 +199,11 @@
                     "args": []
                 }
             ]
-          }
+        }
     ],
     // editor settings
     "editor.fontFamily": "Source Code Pro for Powerline",
-    "editor.formatOnSave": false,
+    "editor.formatOnSave": true,
     "editor.fontSize": 13,
     "editor.minimap.enabled": false,
     "editor.suggestSelection": "first",
