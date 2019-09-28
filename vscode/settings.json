@@ -152,17 +152,18 @@
           }
     ],
     // editor settings
-    "editor.fontFamily": "Fira Code",
-    "editor.fontLigatures": true,
+    "editor.fontFamily": "Source Code Pro for Powerline",
     "editor.formatOnSave": false,
+    "editor.fontSize": 13,
     "editor.minimap.enabled": false,
     "editor.suggestSelection": "first",
     "editor.minimap.showSlider": "always",
     "editor.minimap.renderCharacters": false,
     "explorer.openEditors.visible": 0,
     // terminal settings
-    "terminal.integrated.shell.osx": "/usr/local/bin/fish",
+    "terminal.integrated.shell.osx": "/bin/zsh",
     "terminal.integrated.shell.windows": "cmd.exe",
+    "terminal.integrated.macOptionIsMeta": true
     // workbench settings
     "workbench.editor.enablePreview": false,
     "workbench.startupEditor": "newUntitledFile",
