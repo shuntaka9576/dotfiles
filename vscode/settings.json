@@ -66,7 +66,13 @@
     "vim.hlsearch": true,
     "vim.leader": ",",
     "vim.easymotion": true,
-    "vim.easymotionMarkerFontFamily": "Fira Code",
+    "vim.easymotionKeys": "hklasdgjf",
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": ["f"],
+            "after": ["leader", "leader", "s"]
+        }
+    ],
     "vim.insertModeKeyBindings": [
         {
           "before": ["j", "j"],
@@ -158,6 +164,7 @@
     "terminal.integrated.shell.windows": "cmd.exe",
     // workbench settings
     "workbench.editor.enablePreview": false,
+    "workbench.startupEditor": "newUntitledFile",
     "workbench.iconTheme": "vscode-icons",
     // file settings
     "files.eol": "\n",
@@ -165,4 +172,5 @@
     "files.autoGuessEncoding": true,
     // window settings
     "window.zoomLevel": 0,
+    "explorer.confirmDragAndDrop": false,
 }
