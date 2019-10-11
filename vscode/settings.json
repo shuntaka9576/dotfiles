@@ -1,4 +1,14 @@
 {
+    // exclude files
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/*.js.map": true,
+        "**/*.d.ts": true,
+    },
     // golang settings
     "[go]": {
         "editor.insertSpaces": false,
@@ -27,9 +37,11 @@
     "python.linting.flake8Enabled": true,
     "python.formatting.provider": "black",
     "python.linting.mypyEnabled": true,
-    "python.jediEnabled": true,
+    // "python.jediEnabled": true,
     "python.pythonPath": "${workspaceFolder}/.venv/bin/python",
     "python.venvPath": ".venv",
+    "python.linting.flake8Args": ["--max-line-length", "88"],
+    "python.sortImports.path": "${workspaceFolder}/.venv/bin/isort",
     // rust settings
     "[rust]": {
         "editor.formatOnSave": true
@@ -60,7 +72,10 @@
             "autoFix": true
         },
         "javascriptreact",
-        "typescript",
+        {
+            "language": "typescript",
+            "autoFix": true
+        },
         {
             "language": "typescriptreact",
             "autoFix": true
@@ -203,7 +218,7 @@
     ],
     // editor settings
     "editor.fontFamily": "Source Code Pro for Powerline",
-    "editor.formatOnSave": true,
+    "editor.formatOnSave": false,
     "editor.fontSize": 13,
     "editor.minimap.enabled": false,
     "editor.suggestSelection": "first",
@@ -213,7 +228,7 @@
     // terminal settings
     "terminal.integrated.shell.osx": "/bin/zsh",
     "terminal.integrated.shell.windows": "cmd.exe",
-    "terminal.integrated.macOptionIsMeta": true
+    "terminal.integrated.macOptionIsMeta": true,
     // workbench settings
     "workbench.editor.enablePreview": false,
     "workbench.startupEditor": "newUntitledFile",
@@ -225,4 +240,5 @@
     // window settings
     "window.zoomLevel": 0,
     "explorer.confirmDragAndDrop": false,
+    "explorer.confirmDelete": false,
 }

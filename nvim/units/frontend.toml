@@ -19,7 +19,7 @@ hook_add = '''
 depends = ['nerdtree']
 
 [[plugins]]
-repo = 'Xuyuanp/nerdtree-git-plugin.git'
+repo = 'albfan/nerdtree-git-plugin.git'
 hook_add = '''
   let g:NERDTreeIndicatorMapCustom = {
       \ "Modified"  : "✹",

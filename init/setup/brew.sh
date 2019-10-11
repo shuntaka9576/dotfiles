@@ -27,4 +27,5 @@ brew install fontforge
 brew install reattach-to-user-namespace # tmux
 brew install terraform
 brew unlink terraform
-brew install tfenv # terraform version manager
+brew install tfenv   # terraform version manager
+brew install gnu-sed # replace \t
