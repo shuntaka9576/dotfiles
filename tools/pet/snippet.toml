@@ -147,3 +147,12 @@ hashicorp/terraform:0.12.5 <command>
   """
   tag = ["terraform"]
   output = ""
+
+# ----------------------------------------------------------------
+# TypeScirpt
+
+[[snippets]]
+  description = "TypeScriptをスクリプト実行"
+  command = "ts-node --project ~/dotfiles/nvim/languages/ts/tsconfig.json"
+  tag = ["typescript"]
+  output = ""
