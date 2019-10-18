@@ -91,7 +91,7 @@
         "command": "-workbench.action.output.toggleOutput"
     },
     {
-        "key": "alt+l",
+        "key": "alt+0",
         "command": "workbench.action.terminal.focusNext"
-    },
+    }
 ]
