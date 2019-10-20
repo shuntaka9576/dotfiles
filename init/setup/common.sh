@@ -7,9 +7,9 @@ sudo chmod o+w ~/.cache
 curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish
 
 # install dein
-curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > ~/installer.sh 
+curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh >~/installer.sh
 sh ~/installer.sh ~/.cache/dein
-rm ~/installer.sh 
+rm ~/installer.sh
 
 # install go binaries
 go get github.com/motemen/ghq
@@ -36,6 +36,10 @@ pip3 install awscli
 # install rustup
 ## curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ## cargo install cargo-edit # for run *cargo add* cmd
+## rustup update
+## rustup update nightly
+## rustup default nightly
+## rustc --version
 
 # TODO install nerd-fonts
 # git clone https://github.com/ryanoasis/nerd-fonts.git
