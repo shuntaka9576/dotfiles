@@ -1,2 +1,1 @@
 new-window -n git lazygit
-split-window -h -d lazydocker
