@@ -7,7 +7,7 @@
         "**/CVS": true,
         "**/.DS_Store": true,
         "**/*.js.map": true,
-        "**/*.d.ts": true,
+        // "**/*.d.ts": true,
     },
     // golang settings
     "[go]": {

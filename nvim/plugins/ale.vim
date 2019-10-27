@@ -40,6 +40,7 @@ let g:ale_fixers = {
     \ 'vue':        ['prettier'],
     \ 'rust':       ['rustfmt'],
     \ 'sh':         ['shfmt'],
+    \ 'perl':       ['perltidy'],
     \ }
 let g:ale_fix_on_save = 1
 let g:ale_sh_shfmt_options = '-i 2 -ci -bn -s' " -wは不要

@@ -31,6 +31,9 @@ export PIPENV_VENV_IN_PROJECT=true
 
 # TODO Linux brew settings
 
+# Perl
+export PATH="/usr/local/Cellar/perl/5.30.0/bin:$PATH"
+
 # ------------------------------------------------------------------------------
 # Read plugins settings
 if [[ -f "$ZDOTDIR/.zplug/repos/shuntaka9576/prezto/runcoms/zshenv" ]]; then

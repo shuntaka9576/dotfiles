@@ -4,6 +4,7 @@
     "<C-n>": "normal:j",
     "<C-p>": "normal:k"
   },
+  "suggest.autoTrigger": "none",
   "todolist.monitor": true,
   "todolist.autoUpload": true,
   "snippets.ultisnips.directories": [
