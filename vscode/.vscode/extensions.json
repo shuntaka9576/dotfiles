@@ -15,6 +15,7 @@
     "rust-lang.rust",
     "vadimcn.vscode-lldb",
     "jebbs.plantuml",
+    "joaompinto.asciidoctor-vscode",
     "esbenp.prettier-vscode"
   ]
 }

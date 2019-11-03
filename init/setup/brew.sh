@@ -29,3 +29,4 @@ brew install terraform
 brew unlink terraform
 brew install tfenv   # terraform version manager
 brew install gnu-sed # replace \t
+brew install asciidoctor
