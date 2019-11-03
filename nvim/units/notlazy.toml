@@ -40,6 +40,12 @@ hook_add = '''
     source ~/dotfiles/nvim/plugins/coc.vim
 '''
 
+[[plugins]]
+repo = 'glacambre/firenvim'
+hook_post_update = '''
+  call firenvim#install(0)
+'''
+
 # [[plugins]]
 # repo = 'autozimu/LanguageClient-neovim'
 # rev = 'next'
