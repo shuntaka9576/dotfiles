@@ -107,5 +107,17 @@
     {
         "key": "cmd+r",
         "command": "editor.action.rename"
+    },
+    {
+        "key": "cmd+shift+m",
+        "command": "workbench.action.toggleMaximizedPanel"
+    },
+    {
+        "key": "ctrl+q",
+        "command": "workbench.action.toggleSidebarVisibility"
+    },
+    {
+        "key": "cmd+b",
+        "command": "-workbench.action.toggleSidebarVisibility"
     }
 ]

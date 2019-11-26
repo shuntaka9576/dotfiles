@@ -7,7 +7,7 @@
         "**/CVS": true,
         "**/.DS_Store": true,
         "**/*.js.map": true,
-        // "**/*.d.ts": true,
+        "**/*.d.ts": true,
     },
     // golang settings
     "[go]": {
@@ -235,10 +235,11 @@
     "workbench.iconTheme": "vscode-icons",
     // file settings
     "files.eol": "\n",
-    "files.autoSave": "off",
+    "files.autoSave": "onFocusChange",
     "files.autoGuessEncoding": true,
     // window settings
     "window.zoomLevel": 0,
     "explorer.confirmDragAndDrop": false,
     "explorer.confirmDelete": false,
+    "julia.enableCrashReporter": true,
 }
