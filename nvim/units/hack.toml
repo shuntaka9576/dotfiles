@@ -10,7 +10,6 @@ hook_add = '''
 hook_source = '''
   autocmd FileType defx call s:defx_my_settings()
   function! s:defx_my_settings() abort
-
     " control tree action mappings
     nnoremap <silent><buffer><expr> o
     \ defx#is_directory() ?
@@ -18,7 +17,6 @@ hook_source = '''
     \ defx#do_action('drop')
     nnoremap <silent><buffer><expr> l
     \ defx#do_action('open')
-
     " control file or directory mappings
     nnoremap <silent><buffer><expr> c
     \ defx#do_action('copy')
@@ -44,10 +42,8 @@ hook_source = '''
     \ defx#do_action('change_vim_cwd')
   endfunction
 '''
-
 [[plugins]]
 repo = 'kristijanhusak/defx-icons.git'
-
 [[plugins]]
 repo = 'kristijanhusak/defx-git'
 
@@ -59,7 +55,6 @@ hook_add='''
     let g:python3_host_prog = expand('~/.anyenv/envs/pyenv/shims/python3')
     nmap [denite] <Nop>
     map <C-j> [denite]
-
     nnoremap <silent> [denite]<C-p> :<C-u>Denite file/rec<CR>
     nnoremap <silent> [denite]<C-i> :<C-u>Denite buffer<CR>
     command! D execute(":Denite grep -buffer-name=grep-buffer-denite")
@@ -74,6 +69,7 @@ hook_source = '''
     source ~/dotfiles/nvim/plugins/denite.vim
 '''
 
+# =*=*=*=*=*=*=*=*=*=*=*=*=*= Run Code *=*=*=*=*=*=*=*=*=*=*=*=*=*
 [[plugins]]
 repo = 'Shougo/vimproc.vim'
 build = 'make'
@@ -86,6 +82,7 @@ hook_source = '''
   source ~/dotfiles/nvim/plugins/quickrun.vim
 '''
 
+# =*=*=*=*=*=*=*=*=*=*=*=*=*= Linter *=*=*=*=*=*=*=*=*=*=*=*=*=*
 [[plugins]]
 repo = 'w0rp/ale'
 on_ft = ['go', 'python', 'json', 'make', 'vim', 'shell', 'js', 'vue', 'ts']

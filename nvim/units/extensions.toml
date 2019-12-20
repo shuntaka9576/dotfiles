@@ -3,3 +3,6 @@ repo = 'cespare/vim-toml'
 
 [[plugins]]
 repo='uarun/vim-protobuf'
+
+[[plugins]]
+repo='leafgarland/typescript-vim'
