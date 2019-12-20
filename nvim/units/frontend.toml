@@ -5,9 +5,6 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'scrooloose/nerdcommenter'
-
-[[plugins]]
 repo = 'jistr/vim-nerdtree-tabs'
 hook_add = '''
     map <C-q> <plug>NERDTreeTabsToggle<CR>
