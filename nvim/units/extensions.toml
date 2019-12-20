@@ -1,0 +1,5 @@
+[[plugins]]
+repo = 'cespare/vim-toml'
+
+[[plugins]]
+repo='uarun/vim-protobuf'
