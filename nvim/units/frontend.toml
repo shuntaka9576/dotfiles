@@ -147,26 +147,6 @@ hook_add='''
 " let g:winresizer_start_key = '<C-T>'
 '''
 
-# [[plugins]]
-# repo = 'vim-airline/vim-airline'
-# hook_add = '''
-#     if has('unix')
-#         set t_Co=256
-#         let &t_AB="\e[48;5;%dm"
-#         let &t_AF="\e[38;5;%dm"
-#     endif
-# 
-#     let g:airline#extensions#tabline#enabled = 1
-#     let g:airline#extensions#tabline#show_buffers = 0
-#     let g:airline#extensions#tabline#tab_nr_type = 1
-#     let g:airline_powerline_fonts = 1
-#     let g:airline#extensions#ale#enabled = 1
-#     " Do not collapse the status line while having multiple windows
-#     let g:airline_inactive_collapse = 0
-#     let g:airline#extensions#tagbar#enabled = 1
-#     let g:airline#extensions#virtualenv#enabled = 1
-# '''
-
 [[plugins]]
 repo = 'morhetz/gruvbox'
 hook_add = '''
