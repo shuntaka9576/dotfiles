@@ -10,7 +10,6 @@ endfunction
 
 call s:source_rc('filetype.vim')
 call s:source_rc('mappings.vim')
-call s:source_rc('options.vim')
 
 " =*=*=*=*=*=*=*=*=*=*=*=*=*= dein.vim settings *=*=*=*=*=*=*=*=*=*=*=*=*=*=
 set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
@@ -22,13 +21,8 @@ if dein#load_state(s:dein_dir)
  call dein#begin(s:dein_dir)
  call dein#load_toml('~/.config/nvim/dein/notlazy.toml',       {'lazy': 0})
  call dein#load_toml('~/.config/nvim/dein/frontend.toml',      {'lazy': 0})
-
- call dein#load_toml('~/.config/nvim/dein/git.toml',           {'lazy': 1})
- call dein#load_toml('~/.config/nvim/dein/go.toml',            {'lazy': 1})
- call dein#load_toml('~/.config/nvim/dein/python.toml',        {'lazy': 1})
+ call dein#load_toml('~/.config/nvim/dein/extensions.toml',    {'lazy': 0})
  call dein#load_toml('~/.config/nvim/dein/hack.toml',          {'lazy': 1})
- call dein#load_toml('~/.config/nvim/dein/utils.toml',         {'lazy': 1})
- call dein#load_toml('~/.config/nvim/dein/extentions.toml',    {'lazy': 1})
 
  call dein#end()
  call dein#save_state()
