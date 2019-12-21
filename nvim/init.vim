@@ -10,7 +10,6 @@ endfunction
 
 call s:source_rc('filetype.vim')
 call s:source_rc('mappings.vim')
-call s:source_rc('options.vim')
 
 " =*=*=*=*=*=*=*=*=*=*=*=*=*= dein.vim settings *=*=*=*=*=*=*=*=*=*=*=*=*=*=
 set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim

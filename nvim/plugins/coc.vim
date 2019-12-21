@@ -1,5 +1,7 @@
 " nodeのPATHを指定
 let g:coc_node_path = expand('~/.anyenv/envs/nodenv/shims/node')
+" コード補完時にEnterで確定した際に改行しない
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 " リファクタリング機能
 nmap <silent>gr <Plug>(coc-rename)
 " コードジャンプ
