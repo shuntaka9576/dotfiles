@@ -128,3 +128,4 @@ hook_add = '''
     nnoremap <silent> <C-w>l :TmuxNavigateRight<CR>
     nnoremap <silent> <C-w>\\ :TmuxNavigatePrevious<CR>
 '''
+

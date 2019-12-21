@@ -66,6 +66,14 @@ hook_add = '''
   map zg/ <Plug>(incsearch-easymotion-stay)
 '''
 
+[[plugins]]
+repo = "airblade/vim-gitgutter"
+hook_add = '''
+    let g:gitgutter_map_keys = 0
+    nmap [g <Plug>GitGutterPrevHunk
+    nmap ]g <Plug>GitGutterNextHunk
+'''
+
 # =*=*=*=*=*=*=*=*=*=*=*=*=*= Wordpress *=*=*=*=*=*=*=*=*=*=*=*=*=*
 [[plugins]]
 repo = 'haoyayoi/VimWordpress'
