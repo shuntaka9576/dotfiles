@@ -4,7 +4,7 @@ repo = 'Shougo/dein.vim'
 
 [[plugins]]
 repo = 'neoclide/coc.nvim'
-merge = 0
+merged = 0
 build = 'yarn install --frozen-lockfile'
 hook_add = '''
     source ~/dotfiles/nvim/plugins/coc.vim

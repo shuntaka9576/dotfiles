@@ -3,8 +3,8 @@
 
 " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
 " Coc only does snippet and additional edit on confirm.
+let g:coc_node_path = expand('~/.anyenv/envs/nodenv/shims/node')
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-
 " --------------------------------------------------------
 " Plugin settings
 

@@ -83,9 +83,9 @@ hook_source = '''
 '''
 
 # =*=*=*=*=*=*=*=*=*=*=*=*=*= Linter *=*=*=*=*=*=*=*=*=*=*=*=*=*
-[[plugins]]
-repo = 'w0rp/ale'
-on_ft = ['go', 'python', 'json', 'make', 'vim', 'shell', 'js', 'vue', 'ts']
-hook_add = '''
-    source ~/dotfiles/nvim/plugins/ale.vim
-'''
+# [[plugins]]
+# repo = 'w0rp/ale'
+# on_ft = ['go', 'python', 'json', 'make', 'vim', 'shell', 'js', 'vue', 'ts']
+# hook_add = '''
+#     source ~/dotfiles/nvim/plugins/ale.vim
+# '''
