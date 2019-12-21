@@ -107,14 +107,33 @@ hook_add='''
 " let g:winresizer_start_key = '<C-T>'
 '''
 
-[[plugins]]
-repo = 'morhetz/gruvbox'
-hook_add = '''
-    colorscheme gruvbox
+# [[plugins]]
+# repo = 'morhetz/gruvbox'
+# hook_add = '''
+#     colorscheme gruvbox
+# 
+#     set background=dark
+#     set t_Co=256
+#     let g:ligthline = { 'colorscheme': 'gruvbox' }
+# '''
 
-    set background=dark
-    set t_Co=256
-    let g:ligthline = { 'colorscheme': 'gruvbox' }
+# [[plugins]]
+# repo = 'wadackel/vim-dogrun'
+# hook_add = '''
+# colorscheme dogrun
+# let g:lightline = {
+#   \ 'colorscheme': 'dogrun',
+#   \ }
+# '''
+
+[[plugins]]
+repo = 'joshdick/onedark.vim'
+hook_add = '''
+syntax on
+colorscheme onedark
+let g:lightline = {
+  \ 'colorscheme': 'onedark',
+  \ }
 '''
 
 [[plugins]]
