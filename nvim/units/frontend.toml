@@ -84,21 +84,34 @@
 [[plugins]]
 repo = 'itchyny/lightline.vim'
 hook_add = '''
-function! CocCurrentFunction()
-    return get(b:, 'coc_current_function', '')
-endfunction
+syntax on
 
 let g:lightline = {
-      \ 'colorscheme': 'wombat',
+      \ 'colorscheme': 'onedark',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'cocstatus', 'currentfunction', 'readonly', 'filename', 'modified' ] ]
+      \             [ 'cocstatus', 'currentfunction', 'readonly', 'filepath', 'modified' ] ]
       \ },
       \ 'component_function': {
       \   'cocstatus': 'coc#status',
-      \   'currentfunction': 'CocCurrentFunction'
+      \   'currentfunction': 'CocCurrentFunction',
+      \   'filepath': 'FilePath'
       \ },
       \ }
+
+function! CocCurrentFunction()
+  return get(b:, 'coc_current_function', '')
+endfunction
+
+function! FilePath()
+  let fullpath = substitute(expand('%:p'), $HOME, '~', '')
+  return fullpath
+endfunction
+
+" # show statusbar
+set laststatus=2
+" # hide --INSERT--
+set noshowmode
 '''
 
 [[plugins]]
@@ -129,11 +142,7 @@ hook_add='''
 [[plugins]]
 repo = 'joshdick/onedark.vim'
 hook_add = '''
-syntax on
 colorscheme onedark
-let g:lightline = {
-  \ 'colorscheme': 'onedark',
-  \ }
 '''
 
 [[plugins]]

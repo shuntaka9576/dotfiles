@@ -21,14 +21,23 @@ noremap gj j
 noremap <Down> gj
 noremap <Up> gk
 
+" ヤンクをクリップボードに保存
+set clipboard+=unnamed
+
 " 縦横のカーソル表示
 set cursorline
 set cursorcolumn
+
+" 行を折り返す
+set wrap
 
 " 制御文字の可視化
 " trailは行末に続くスペースを笑わす
 set list
 set listchars=tab:»-,extends:»,precedes:«,nbsp:%,eol:↲,trail:~
+
+" 検索結果のハイライトを消す
+noremap <silent><Space><Space> :nohlsearch<Cr><Esc>
 
 " 行数表示
 set number

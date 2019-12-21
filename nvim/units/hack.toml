@@ -43,6 +43,8 @@ function! s:defx_my_settings() abort
   \ defx#do_action('rename')
   nnoremap <silent><buffer><expr> d
   \ defx#do_action('remove')
+  nnoremap <silent><buffer><expr> a
+  \ defx#do_action('new_multiple_files')
   nnoremap <silent><buffer><expr> q
   \ defx#do_action('quit')
   nnoremap <silent><buffer><expr> h
