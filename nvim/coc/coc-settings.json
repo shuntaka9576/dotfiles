@@ -1,16 +1,3 @@
 {
-  "diagnostic.displayByAle": true,
-  "list.insertMappings": {
-    "<C-n>": "normal:j",
-    "<C-p>": "normal:k"
-  },
-  "suggest.autoTrigger": "none",
-  "todolist.monitor": true,
-  "todolist.autoUpload": true,
-  "snippets.ultisnips.directories": [
-    "UltiSnips",
-    "~/.cache/dein/repos/github.com/fatih/vim-go/gosnippets/UltiSnips"
-  ],
-  "languageserver": {},
-  "git.enableGutters": true
+    "eslint.autoFixOnSave": true
 }

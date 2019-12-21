@@ -36,7 +36,7 @@ let g:ale_fixers = {
     \ 'go':         ['goimports'],
     \ 'json':       ['jq'],
     \ 'javascript': ['prettier'],
-    \ 'typescript': ['prettier'],
+    \ 'typescript': ['eslint'],
     \ 'vue':        ['prettier'],
     \ 'rust':       ['rustfmt'],
     \ 'sh':         ['shfmt'],
