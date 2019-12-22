@@ -1,17 +1,4 @@
 [[plugins]]
-repo = 'ryanoasis/vim-devicons'
-hook_add = '''
-  let g:airline_powerline_fonts = 1
-  let g:WebDevIconsOS = 'Darwin'
-  let g:WebDevIconsUnicodeDecorateFolderNodes = 1
-  let g:webdevicons_conceal_nerdtree_brackets = 1
-  let g:DevIconsEnableFoldersOpenClose = 1
-  let g:WebDevIconsUnicodeDecorateFolderNodes = 1
-  let g:DevIconsDefaultFolderOpenSymbol = ''
-  let g:WebDevIconsUnicodeDecorateFolderNodesDefaultSymbol = ''
-'''
-
-[[plugins]]
 repo = 'itchyny/lightline.vim'
 hook_add = '''
 syntax on
@@ -40,6 +27,12 @@ function! FilePath()
   return fullpath
 endfunction
 
+" # show statusbar
+set laststatus=2
+" # hide --INSERT--
+set noshowmode
+'''
+hook_post_source = '''
 function! MyFiletype()
   return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
 endfunction
@@ -47,11 +40,6 @@ endfunction
 function! MyFileformat()
   return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
 endfunction
-
-" # show statusbar
-set laststatus=2
-" # hide --INSERT--
-set noshowmode
 '''
 
 [[plugins]]

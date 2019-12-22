@@ -61,9 +61,23 @@ endfunction
 '''
 
 [[plugins]]
+repo = 'ryanoasis/vim-devicons'
+hook_add = '''
+  let g:airline_powerline_fonts = 1
+  let g:WebDevIconsOS = 'Darwin'
+  let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+  let g:webdevicons_conceal_nerdtree_brackets = 1
+  let g:DevIconsEnableFoldersOpenClose = 1
+  let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+  let g:DevIconsDefaultFolderOpenSymbol = ''
+  let g:WebDevIconsUnicodeDecorateFolderNodesDefaultSymbol = ''
+'''
+
+[[plugins]]
 repo = 'Shougo/denite.nvim'
 on_cmd = 'Denite'
 build = ':UpdateRemotePlugins'
+depends = ['vim-devicons']
 hook_add='''
     let g:python3_host_prog = expand('~/.anyenv/envs/pyenv/shims/python3')
     nmap [denite] <Nop>
@@ -80,6 +94,7 @@ hook_add='''
 '''
 hook_source = '''
     source ~/dotfiles/nvim/plugins/denite.vim
+    let g:webdevicons_enable_denite = 1
 '''
 
 [[plugins]]
@@ -100,3 +115,4 @@ hook_add = '''
     nnoremap <silent> [figitive]b :<C-u>Gblame<CR>
     nnoremap <silent> [figitive]l :<C-u>Glog<CR>
 '''
+
