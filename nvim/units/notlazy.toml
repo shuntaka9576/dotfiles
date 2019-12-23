@@ -81,3 +81,7 @@ hook_add='''
     command! BSaveDaraft execute(":BlogSave draft")
     command! BPreveiwDraft execute(":BlogPreview draft")
 '''
+
+[[plugins]]
+repo='mattn/vim-goimports'
+

@@ -1,7 +1,13 @@
 {
-    "eslint.autoFixOnSave": true,
-    "list.insertMappings": {
-        "<C-n>": "normal:j",
-        "<C-p>": "normal:k"
+  "eslint.autoFixOnSave": true,
+  "list.insertMappings": {
+      "<C-n>": "normal:j",
+      "<C-p>": "normal:k"
+  },
+  "languageserver": {
+    "golang": {
+      "command": "gopls",
+      "filetypes": ["go"]
     }
+  }
 }
