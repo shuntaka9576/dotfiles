@@ -9,5 +9,6 @@
       "command": "gopls",
       "filetypes": ["go"]
     }
-  }
+  },
+  "python.formatting.provider": "black"
 }
