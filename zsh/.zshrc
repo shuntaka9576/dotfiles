@@ -9,6 +9,11 @@
 export PATH="$HOME/.anyenv/bin:$PATH"
 eval "$(anyenv init -)"
 
+# nvim nightly
+if [ -d $HOME/nvim-osx64 ]; then
+  export PATH="$HOME/nvim-osx64/bin:$PATH"
+fi
+
 # ------------------------------------------------------------------------------
 # zplug settings
 export ZPLUG_HOME="$ZDOTDIR/.zplug"
