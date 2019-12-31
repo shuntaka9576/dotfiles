@@ -217,7 +217,7 @@
         }
     ],
     // editor settings
-    "editor.fontFamily": "Source Code Pro for Powerline",
+    "editor.fontFamily": "Monaco Nerd Font Mono",
     "editor.formatOnSave": false,
     "editor.fontSize": 13,
     "editor.minimap.enabled": false,
