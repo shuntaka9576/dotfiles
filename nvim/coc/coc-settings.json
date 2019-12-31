@@ -11,11 +11,13 @@
     },
   },
   "python.jediEnabled": false,
-  "python.pythonPath": "${workspaceFolder}/.venv/bin/python",
-  "python.venvPath": ".venv",
+  "python.pythonPath": ".venv/bin/python",
+  "python.analysis.typeshedPaths": [
+    "${workspaceFolder}/.venv/lib/python3.7/site-packages/typeshed"
+  ],
   "python.linting.enabled": true,
   "python.linting.flake8Enabled": true,
   "python.linting.mypyEnabled": true,
   "python.formatting.provider": "black",
-  "python.sortImports.path": "${workspaceFolder}/.venv/bin/isort"
+  // "python.sortImports.path": "${workspaceFolder}/.venv/bin/isort"
 }
