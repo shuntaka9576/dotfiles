@@ -86,20 +86,20 @@ hook_add='''
 repo='mattn/vim-goimports'
 
 
-[[plugins]]
-repo = 'habamax/vim-asciidoctor'
-hook_add = '''
-" What to use for HTML, default `asciidoctor`.
-let g:asciidoctor_executable = 'asciidoctor'
-
-" What extensions to use for HTML, default `[]`.
-let g:asciidoctor_extensions = ['asciidoctor-diagram']
-
-" !をつけると、コマンド上書きになり、Ascii.*系のコマンドが全て使用不可
-command AsPreveiw AsciidoctorOpenHTML
-
-augroup
-  autocmd!
-  autocmd BufWritePost *.adoc execute(":Asciidoctor2HTML")
-augroup END
-'''
+# [[plugins]]
+# repo = 'habamax/vim-asciidoctor'
+# hook_add = '''
+# " What to use for HTML, default `asciidoctor`.
+# let g:asciidoctor_executable = 'asciidoctor'
+# 
+# " What extensions to use for HTML, default `[]`.
+# let g:asciidoctor_extensions = ['asciidoctor-diagram']
+# 
+# " !をつけると、コマンド上書きになり、Ascii.*系のコマンドが全て使用不可
+# " command AsPreveiw AsciidoctorOpenHTML
+# 
+# augroup
+#   autocmd!
+#   autocmd BufWritePost *.adoc execute(":Asciidoctor2HTML")
+# augroup END
+# '''
