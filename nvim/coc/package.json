@@ -4,6 +4,6 @@
     "coc-json": ">=1.2.4",
     "coc-tabnine": ">=1.2.2",
     "coc-tsserver": ">=1.4.9",
-    "coc-pyls": ">=1.0.6"
+    "coc-python": ">=1.2.6"
   }
 }

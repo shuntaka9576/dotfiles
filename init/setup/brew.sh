@@ -30,3 +30,5 @@ brew unlink terraform
 brew install tfenv   # terraform version manager
 brew install gnu-sed # replace \t
 brew install asciidoctor
+brew install --HEAD pyenv-virtualenv
+brew install --HEAD pyenv-virtualenvwrapper

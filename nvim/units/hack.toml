@@ -79,7 +79,6 @@ on_cmd = 'Denite'
 build = ':UpdateRemotePlugins'
 depends = ['vim-devicons']
 hook_add='''
-    let g:python3_host_prog = expand('~/.anyenv/envs/pyenv/shims/python3')
     nmap [denite] <Nop>
     map <C-j> [denite]
     nnoremap <silent> [denite]<C-p> :<C-u>Denite file/rec<CR>
