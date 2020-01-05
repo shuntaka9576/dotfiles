@@ -107,20 +107,27 @@ repo='mattn/vim-goimports'
 # [[plugins]]
 # repo = 'plasticboy/vim-markdown'
 
+# [[plugins]]
+# repo = 'tyru/open-browser.vim'
+# 
+# [[plugins]]
+# repo = 'kannokanno/previm'
+# hook_add = '''
+# autocmd BufRead,BufNewFile *.mkd  set filetype=markdown
+# autocmd BufRead,BufNewFile *.md  set filetype=markdown
+# 
+# " Need: kannokanno/previm
+# nnoremap <silent> <C-p> :PrevimOpen<CR> " Ctrl-pでプレビュー
+# 
+# " 自動で折りたたまないようにする
+# let g:vim_markdown_folding_disabled=1
+# '''
 [[plugins]]
-repo = 'tyru/open-browser.vim'
-
-[[plugins]]
-repo = 'kannokanno/previm'
-hook_add = '''
-autocmd BufRead,BufNewFile *.mkd  set filetype=markdown
-autocmd BufRead,BufNewFile *.md  set filetype=markdown
-
-" Need: kannokanno/previm
-nnoremap <silent> <C-p> :PrevimOpen<CR> " Ctrl-pでプレビュー
-
-" 自動で折りたたまないようにする
-let g:vim_markdown_folding_disabled=1
+repo = 'iamcco/markdown-preview.nvim'
+on_ft = ['markdown', 'pandoc.markdown', 'rmd']
+build =  'cd app & yarn install'
+hook_add='''
+let g:mkdp_auto_start = 1
 '''
 
 [[plugins]]
