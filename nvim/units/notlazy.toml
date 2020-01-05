@@ -103,3 +103,31 @@ repo='mattn/vim-goimports'
 #   autocmd BufWritePost *.adoc execute(":Asciidoctor2HTML")
 # augroup END
 # '''
+
+# [[plugins]]
+# repo = 'plasticboy/vim-markdown'
+
+[[plugins]]
+repo = 'tyru/open-browser.vim'
+
+[[plugins]]
+repo = 'kannokanno/previm'
+hook_add = '''
+autocmd BufRead,BufNewFile *.mkd  set filetype=markdown
+autocmd BufRead,BufNewFile *.md  set filetype=markdown
+
+" Need: kannokanno/previm
+nnoremap <silent> <C-p> :PrevimOpen<CR> " Ctrl-pでプレビュー
+
+" 自動で折りたたまないようにする
+let g:vim_markdown_folding_disabled=1
+'''
+
+[[plugins]]
+repo = 'shuntaka9576/preview-asciidoc.nvim'
+build = 'yarn install --frozen-lockfile'
+merged = 0
+hook_add='''
+let g:previewasciidoc_node_path = expand('~/.anyenv/envs/nodenv/shims/node')
+let g:previewasciidoc_build_command = 'asciidoctor -r asciidoctor-diagram'
+'''
