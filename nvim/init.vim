@@ -31,6 +31,8 @@ if dein#load_state(s:dein_dir)
  call dein#end()
  call dein#save_state()
 endif
+
+silent Defx -split=vertical -winwidth=30 -direction=topleft -toggle -resume -buffer-name=tab`tabpagenr()`
  
 if dein#check_install()
  call dein#install()
