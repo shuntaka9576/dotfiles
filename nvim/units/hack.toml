@@ -14,6 +14,9 @@ nnoremap <silent><Leader>d :<C-u>Defx -split=vertical -winwidth=30 -direction=to
 '''
 
 hook_source = '''
+" 保存時にビューをリロードする
+autocmd BufWritePost * call defx#redraw()
+
 call defx#custom#option('_', {
 \ 'columns': 'indent:git:icons:filename',
 \ 'show_ignored_files': 1,
