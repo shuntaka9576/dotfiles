@@ -4,7 +4,7 @@ hook_add = '''
 syntax on
 
 let g:lightline = {
-      \ 'colorscheme': 'onedark',
+      \ 'colorscheme': 'PaperColor_dark',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'cocstatus', 'currentfunction', 'readonly', 'filepath', 'modified' ] ]

@@ -24,10 +24,6 @@ call defx#custom#option('_', {
 
 autocmd FileType defx call s:defx_my_settings()
 function! s:defx_my_settings() abort
-  " カーソル設定
-  set cursorline
-  set cursorcolumn
-
   " マッピング設定
   nnoremap <silent><buffer><expr> o
   \ defx#is_directory() ?
