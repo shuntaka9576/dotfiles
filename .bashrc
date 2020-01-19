@@ -1,13 +1,10 @@
-export GOPATH=$HOME/go
-export PATH=$GOPATH/bin:$PATH
 export PATH=$HOME/.cargo/bin:$PATH
 export PS1='\[\e[1;33m\]\u@\h \w ->\n\[\e[1;36m\] \@ \d\$\[\e[m\] '
 
 # create .gitconfig
-git config --global ghq.root $GOPATH/src
 git config --global user.name "shuntaka9576"
 git config --global user.email "shuntaka9576@gmail.com"
-git config --global core.editor 'vim -c "set fenc=utf-8"'
+git config --global core.editor 'nvim -c "set fenc=utf-8"'
 git config --global push.default current
 git config --global alias.see browse
 git config --global hub.protocol https

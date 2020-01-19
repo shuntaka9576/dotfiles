@@ -9,10 +9,12 @@ export ZDOTDIR="$HOME/.zsh"
 # LANGUAGE
 export LANGUAGE=en_US.UTF-8
 
+# GHQ
+export GHQ_ROOT=~/repos
+
 # Golang
-export GOPATH=$HOME/go
-export PATH="$GOPATH/bin:$PATH"
 export GO111MODULE=on
+export PATH=~/go/bin
 
 # Rust
 export RUST_BACKTRACE=1
