@@ -11,10 +11,12 @@ depends = ['defx-git', 'defx-icons']
 on_cmd = 'Defx'
 hook_add = '''
 nnoremap <silent><Leader>d :<C-u>Defx -split=vertical -winwidth=30 -direction=topleft -toggle -resume -buffer-name=tab`tabpagenr()`<CR>
-silent Defx -split=vertical -winwidth=30 -direction=topleft -toggle -resume -buffer-name=tab`tabpagenr()`
 '''
 
 hook_source = '''
+" 保存時にビューをリロードする
+autocmd BufWritePost * call defx#redraw()
+
 call defx#custom#option('_', {
 \ 'columns': 'indent:git:icons:filename',
 \ 'show_ignored_files': 1,
@@ -22,15 +24,11 @@ call defx#custom#option('_', {
 
 autocmd FileType defx call s:defx_my_settings()
 function! s:defx_my_settings() abort
-  " カーソル設定
-  set cursorline
-  set cursorcolumn
-
   " マッピング設定
   nnoremap <silent><buffer><expr> o
   \ defx#is_directory() ?
   \ defx#do_action('open_or_close_tree') :
-  \ defx#do_action('drop')
+  \ defx#do_action('multi', ['drop', 'quit'])
   nnoremap <silent><buffer><expr> l
   \ defx#do_action('open')
   " control file or directory mappings
@@ -48,6 +46,10 @@ function! s:defx_my_settings() abort
   \ defx#do_action('new_multiple_files')
   nnoremap <silent><buffer><expr> q
   \ defx#do_action('quit')
+  nnoremap <silent><buffer><expr> <Space>
+  \ defx#do_action('toggle_select') . 'j'
+  nnoremap <silent><buffer><expr> *
+  \ defx#do_action('toggle_select_all')
   nnoremap <silent><buffer><expr> h
   \ defx#do_action('cd', ['..'])
   nnoremap <silent><buffer><expr> <C-l>

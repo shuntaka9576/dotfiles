@@ -1,10 +1,10 @@
 {
   "dependencies": {
-    "coc-eslint": ">=1.2.3",
+    "coc-eslint": ">=1.2.4",
     "coc-json": ">=1.2.4",
+    "coc-python": ">=1.2.7",
     "coc-tabnine": ">=1.2.2",
     "coc-tsserver": ">=1.4.9",
-    "coc-python": ">=1.2.6",
     "coc-vimlsp": ">=0.4.4"
   }
 }
