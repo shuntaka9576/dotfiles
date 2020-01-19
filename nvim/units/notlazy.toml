@@ -127,14 +127,21 @@ repo = 'iamcco/markdown-preview.nvim'
 on_ft = ['markdown', 'pandoc.markdown', 'rmd']
 build =  'cd app & yarn install'
 hook_add='''
-let g:mkdp_auto_start = 1
+" let g:mkdp_auto_start = 1
 '''
 
 [[plugins]]
+repo='xavierchow/vim-swagger-preview'
+
+[[plugins]]
 repo = 'shuntaka9576/preview-asciidoc.nvim'
-build = 'yarn install --frozen-lockfile'
+build = 'yarn install'
+rev = 'v1'
 merged = 0
 hook_add='''
-let g:previewasciidoc_node_path = expand('~/.anyenv/envs/nodenv/shims/node')
-let g:previewasciidoc_build_command = 'asciidoctor -r asciidoctor-diagram'
+  let g:padoc_command='asciidoctor -o - -r asciidoctor-diagram'
 '''
+
+[[plugins]]
+repo = 'shuntaka9576/preview-swagger.nvim'
+build = 'yarn install'
