@@ -22,18 +22,18 @@ if has('nvim') && isdirectory( $PYENV_ROOT."/versions/nvim-python3" )
 endif
 
 if dein#load_state(s:dein_dir)
- call dein#begin(s:dein_dir)
- call dein#load_toml('~/.config/nvim/dein/notlazy.toml',       {'lazy': 0})
- call dein#load_toml('~/.config/nvim/dein/frontend.toml',      {'lazy': 0})
- call dein#load_toml('~/.config/nvim/dein/extensions.toml',    {'lazy': 0})
- call dein#load_toml('~/.config/nvim/dein/hack.toml',          {'lazy': 1})
+  call dein#begin(s:dein_dir)
+  call dein#load_toml('~/.config/nvim/dein/notlazy.toml',       {'lazy': 0})
+  call dein#load_toml('~/.config/nvim/dein/frontend.toml',      {'lazy': 0})
+  call dein#load_toml('~/.config/nvim/dein/extensions.toml',    {'lazy': 0})
+  call dein#load_toml('~/.config/nvim/dein/hack.toml',          {'lazy': 1})
 
- call dein#end()
- call dein#save_state()
+  call dein#end()
+  call dein#save_state()
 endif
 
 silent Defx -split=vertical -winwidth=30 -direction=topleft -toggle -resume -buffer-name=tab`tabpagenr()`
- 
+
 if dein#check_install()
  call dein#install()
 endif
