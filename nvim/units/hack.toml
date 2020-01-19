@@ -28,7 +28,7 @@ function! s:defx_my_settings() abort
   nnoremap <silent><buffer><expr> o
   \ defx#is_directory() ?
   \ defx#do_action('open_or_close_tree') :
-  \ defx#do_action('drop')
+  \ defx#do_action('multi', ['drop', 'quit'])
   nnoremap <silent><buffer><expr> l
   \ defx#do_action('open')
   " control file or directory mappings
@@ -46,6 +46,10 @@ function! s:defx_my_settings() abort
   \ defx#do_action('new_multiple_files')
   nnoremap <silent><buffer><expr> q
   \ defx#do_action('quit')
+  nnoremap <silent><buffer><expr> <Space>
+  \ defx#do_action('toggle_select') . 'j'
+  nnoremap <silent><buffer><expr> *
+  \ defx#do_action('toggle_select_all')
   nnoremap <silent><buffer><expr> h
   \ defx#do_action('cd', ['..'])
   nnoremap <silent><buffer><expr> <C-l>
