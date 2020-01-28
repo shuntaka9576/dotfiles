@@ -135,10 +135,8 @@ repo='xavierchow/vim-swagger-preview'
 [[plugins]]
 repo = 'shuntaka9576/preview-asciidoc.nvim'
 build = 'yarn install'
-rev = 'v1'
 merged = 0
 hook_add='''
-  let g:padoc_command='asciidoctor -o - -r asciidoctor-diagram'
 '''
 
 [[plugins]]

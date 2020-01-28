@@ -6,3 +6,6 @@ repo='uarun/vim-protobuf'
 
 [[plugins]]
 repo='leafgarland/typescript-vim'
+
+[[plugins]]
+repo='jparise/vim-graphql'

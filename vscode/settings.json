@@ -248,4 +248,5 @@
     "editor.codeActionsOnSave": {
         "source.fixAll.eslint": true
     },
+    "typescript.updateImportsOnFileMove.enabled": "always",
 }
