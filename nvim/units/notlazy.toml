@@ -142,3 +142,15 @@ hook_add='''
 [[plugins]]
 repo = 'shuntaka9576/preview-swagger.nvim'
 build = 'yarn install'
+
+[[plugins]]
+repo = 'fisadev/vim-isort'
+on_ft = ['python']
+
+[[plugins]]
+repo = 'python/black'
+on_ft = ['python']
+hook_add='''
+  autocmd BufWritePost *.py silent execute ':Black'
+  autocmd BufWritePre *.py silent execute ':Black'
+'''
