@@ -154,3 +154,12 @@ hook_add='''
   autocmd BufWritePost *.py silent execute ':Black'
   autocmd BufWritePre *.py silent execute ':Black'
 '''
+
+[[plugins]]
+repo = "voldikss/vim-floaterm"
+hook_add ='''
+let g:floaterm_keymap_new    = '<C-t>N'
+let g:floaterm_keymap_prev   = '<C-t>p'
+let g:floaterm_keymap_next   = '<C-t>n'
+let g:floaterm_keymap_toggle = '<C-t>h'
+'''
