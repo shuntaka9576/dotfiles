@@ -5,16 +5,6 @@
 repo = 'Shougo/dein.vim'
 
 # ======================================================================================================================
-# Multiple filetype syntax
-# ======================================================================================================================
-[[plugins]]
-repo = 'osyo-manga/vim-precious'
-depends = ['context_filetype.vim']
-
-[[plugins]]
-repo = 'Shougo/context_filetype.vim'
-
-# ======================================================================================================================
 # LSP
 # ======================================================================================================================
 [[plugins]]
@@ -25,113 +15,12 @@ hook_add = '''
 source ~/dotfiles/nvim/plugins/coc.vim
 '''
 
-# ======================================================================================================================
-# easy-motion
-# ======================================================================================================================
-[[plugins]]
-repo='haya14busa/incsearch.vim'
-hook_source = '''
-set hlsearch
-let g:incsearch#auto_nohlsearch = 1
-
-map n  <Plug>(incsearch-nohl-n)
-map N  <Plug>(incsearch-nohl-N)
-map *  <Plug>(incsearch-nohl-*)
-'''
-
-[[plugins]]
-repo='easymotion/vim-easymotion'
-hook_add = '''
-" japanise move
-let g:EasyMotion_use_migemo = 1
-
-map f <Plug>(easymotion-bd-f)
-nmap f <Plug>(easymotion-overwin-f)
-nmap s <Plug>(easymotion-overwin-f2)
-
-" Move to line
-map L <Plug>(easymotion-bd-jk)
-nmap L <Plug>(easymotion-overwin-line)
-
-" Move to word
-map  w <Plug>(easymotion-bd-w)
-nmap w <Plug>(easymotion-overwin-w)
-
-" You can use other keymappings like <C-l> instead of <CR> if you want to
-" use these mappings as default search and sometimes want to move cursor with
-" EasyMotion.
-function! s:incsearch_config(...) abort
-  return incsearch#util#deepextend(deepcopy({
-        \ 'modules': [incsearch#config#easymotion#module({'overwin': 1})],
-        \ 'keymap': {
-        \   '\<CR>': '<Over>(easymotion)'
-        \ },
-        \   'is_expr': 0
-        \ }), get(a:, 1, {}))
-endfunction
-
-noremap <silent><expr> /  incsearch#go(<SID>incsearch_config())
-noremap <silent><expr> ?  incsearch#go(<SID>incsearch_config({'command': '?'}))
-noremap <silent><expr> g/ incsearch#go(<SID>incsearch_config({'is_stay': 1}))
-'''
-
-[[plugins]]
-repo='haya14busa/incsearch-easymotion.vim'
-depends = ['incsearch.vim', 'easymotion/vim-easymotion']
-hook_add = '''
-map z/ <Plug>(incsearch-easymotion-/)
-map z? <Plug>(incsearch-easymotion-?)
-map zg/ <Plug>(incsearch-easymotion-stay)
-'''
-
 [[plugins]]
 repo = "airblade/vim-gitgutter"
 hook_add = '''
 let g:gitgutter_map_keys = 0
 nmap [g <Plug>GitGutterPrevHunk
 nmap ]g <Plug>GitGutterNextHunk
-'''
-
-# =*=*=*=*=*=*=*=*=*=*=*=*=*= Wordpress *=*=*=*=*=*=*=*=*=*=*=*=*=*
-[[plugins]]
-repo = 'haoyayoi/VimWordpress'
-hook_add='''
-    command! BSaveDaraft execute(":BlogSave draft")
-    command! BPreveiwDraft execute(":BlogPreview draft")
-'''
-
-[[plugins]]
-repo='mattn/vim-goimports'
-
-[[plugins]]
-repo = 'iamcco/markdown-preview.nvim'
-on_ft = ['markdown', 'pandoc.markdown', 'rmd']
-build =  'cd app & yarn install'
-# hook_add='''
-# " let g:mkdp_auto_start = 1
-# '''
-
-[[plugins]]
-repo = 'shuntaka9576/preview-asciidoc.nvim'
-build = 'yarn install'
-merged = 0
-hook_add='''
-'''
-
-[[plugins]]
-repo = 'shuntaka9576/preview-swagger.nvim'
-build = 'yarn install'
-
-[[plugins]]
-repo = 'fisadev/vim-isort'
-on_ft = ['python']
-
-[[plugins]]
-repo = 'python/black'
-on_ft = ['python']
-hook_add='''
-  autocmd BufWritePost *.py silent execute ':Black'
-  autocmd BufWritePre *.py silent execute ':Black'
 '''
 
 [[plugins]]
