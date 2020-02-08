@@ -1,3 +1,6 @@
+# ======================================================================================================================
+# Syntax highlight for 3rd party filetype settings
+# ======================================================================================================================
 [[plugins]]
 repo = 'cespare/vim-toml'
 on_ft = ['toml']
@@ -10,15 +13,15 @@ on_ft = ['proto']
 repo = 'jparise/vim-graphql'
 on_ft = ['graphql']
 
+# ======================================================================================================================
+# Syntax highlight settings
+# ======================================================================================================================
 [[plugins]]
-repo = 'joshdick/onedark.vim'
+repo = 'inkarkat/vim-SyntaxRange'
 
-[[plugins]]
-repo = 'kristijanhusak/defx-git'
-
-[[plugins]]
-repo = 'kristijanhusak/defx-icons.git'
-
+# ======================================================================================================================
+# File explorer(defx) settings
+# ======================================================================================================================
 [[plugins]]
 repo = 'Shougo/defx.nvim'
 build = ':UpdateRemotePlugins'
@@ -27,9 +30,7 @@ on_cmd = 'Defx'
 hook_add = '''
 nnoremap <silent><Leader>d :<C-u>Defx -split=vertical -winwidth=30 -direction=topleft -toggle -resume -buffer-name=tab`tabpagenr()`<CR>
 '''
-
 hook_source = '''
-" 保存時にビューをリロードする
 autocmd BufWritePost * call defx#redraw()
 
 call defx#custom#option('_', {
@@ -39,7 +40,6 @@ call defx#custom#option('_', {
 
 autocmd FileType defx call s:defx_my_settings()
 function! s:defx_my_settings() abort
-  " マッピング設定
   nnoremap <silent><buffer><expr> o
   \ defx#is_directory() ?
   \ defx#do_action('open_or_close_tree') :
@@ -78,6 +78,15 @@ function! s:defx_my_settings() abort
 endfunction
 '''
 
+[[plugins]]
+repo = 'kristijanhusak/defx-git'
+
+[[plugins]]
+repo = 'kristijanhusak/defx-icons.git'
+
+# ======================================================================================================================
+# syntax highlight
+# ======================================================================================================================
 [[plugins]]
 repo = 'ryanoasis/vim-devicons'
 hook_add = '''

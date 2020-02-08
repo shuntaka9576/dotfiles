@@ -1,6 +1,22 @@
+# ======================================================================================================================
+# Package manager
+# ======================================================================================================================
 [[plugins]]
 repo = 'Shougo/dein.vim'
 
+# ======================================================================================================================
+# Multiple filetype syntax
+# ======================================================================================================================
+[[plugins]]
+repo = 'osyo-manga/vim-precious'
+depends = ['context_filetype.vim']
+
+[[plugins]]
+repo = 'Shougo/context_filetype.vim'
+
+# ======================================================================================================================
+# LSP
+# ======================================================================================================================
 [[plugins]]
 repo = 'neoclide/coc.nvim'
 merged = 0
@@ -9,11 +25,15 @@ hook_add = '''
 source ~/dotfiles/nvim/plugins/coc.vim
 '''
 
+# ======================================================================================================================
+# easy-motion
+# ======================================================================================================================
 [[plugins]]
 repo='haya14busa/incsearch.vim'
 hook_source = '''
 set hlsearch
 let g:incsearch#auto_nohlsearch = 1
+
 map n  <Plug>(incsearch-nohl-n)
 map N  <Plug>(incsearch-nohl-N)
 map *  <Plug>(incsearch-nohl-*)
@@ -42,10 +62,10 @@ nmap w <Plug>(easymotion-overwin-w)
 " EasyMotion.
 function! s:incsearch_config(...) abort
   return incsearch#util#deepextend(deepcopy({
-        \   'modules': [incsearch#config#easymotion#module({'overwin': 1})],
-        \   'keymap': {
-        \     "\<CR>": '<Over>(easymotion)'
-        \   },
+        \ 'modules': [incsearch#config#easymotion#module({'overwin': 1})],
+        \ 'keymap': {
+        \   '\<CR>': '<Over>(easymotion)'
+        \ },
         \   'is_expr': 0
         \ }), get(a:, 1, {}))
 endfunction
@@ -169,9 +189,6 @@ endfunction
 
 [[plugins]]
 repo='simeji/winresizer.git'
-hook_add='''
-" let g:winresizer_start_key = '<C-T>'
-'''
 
 [[plugins]]
 repo = 'christoomey/vim-tmux-navigator'
@@ -185,3 +202,11 @@ nnoremap <silent> <C-w>l :TmuxNavigateRight<CR>
 nnoremap <silent> <C-w>\\ :TmuxNavigatePrevious<CR>
 '''
 
+# ======================================================================================================================
+# Color schema settings
+# ======================================================================================================================
+[[plugins]]
+repo = 'joshdick/onedark.vim'
+hook_add='''
+colorscheme onedark
+'''

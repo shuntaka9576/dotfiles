@@ -10,5 +10,5 @@ augroup MyTabStop
   autocmd BufNewFile,BufRead *.vim setlocal tabstop=2 shiftwidth=2 expandtab
   autocmd BufNewFile,BufRead Makefile setlocal noexpandtab
   autocmd BufNewFile,BufRead *.yml setlocal tabstop=2 shiftwidth=2
-  autocmd BufNewFile,BufRead *.toml setlocal tabstop=4 shiftwidth=4
+  autocmd BufNewFile,BufRead *.toml setlocal tabstop=2 shiftwidth=2 expandtab
 augroup END
