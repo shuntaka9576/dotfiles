@@ -4,7 +4,7 @@ mkdir -p ~/.config/nvim/dein
 ln -sf ~/dotfiles/nvim/init.vim ~/.config/nvim/init.vim
 ln -sf ~/dotfiles/nvim/units/notlazy.toml ~/.config/nvim/dein/notlazy.toml
 ln -sf ~/dotfiles/nvim/units/frontend.toml ~/.config/nvim/dein/frontend.toml
-ln -sf ~/dotfiles/nvim/units/extensions.toml ~/.config/nvim/dein/extensions.toml
+ln -sf ~/dotfiles/nvim/units/dein_lazy.toml ~/.config/nvim/dein/dein_lazy.toml
 ln -sf ~/dotfiles/nvim/units/git.toml ~/.config/nvim/dein/git.toml
 ln -sf ~/dotfiles/nvim/units/go.toml ~/.config/nvim/dein/go.toml
 ln -sf ~/dotfiles/nvim/units/python.toml ~/.config/nvim/dein/python.toml

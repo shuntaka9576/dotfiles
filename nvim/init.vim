@@ -23,10 +23,10 @@ endif
 
 if dein#load_state(s:dein_dir)
   call dein#begin(s:dein_dir)
-  call dein#load_toml('~/.config/nvim/dein/notlazy.toml',       {'lazy': 0})
-  call dein#load_toml('~/.config/nvim/dein/frontend.toml',      {'lazy': 0})
-  call dein#load_toml('~/.config/nvim/dein/extensions.toml',    {'lazy': 0})
-  call dein#load_toml('~/.config/nvim/dein/hack.toml',          {'lazy': 1})
+  call dein#load_toml('~/.config/nvim/dein/notlazy.toml',   {'lazy': 0})
+  call dein#load_toml('~/.config/nvim/dein/frontend.toml',  {'lazy': 0})
+  call dein#load_toml('~/.config/nvim/dein/dein_lazy.toml',  {'lazy': 1})
+  call dein#load_toml('~/.config/nvim/dein/hack.toml',      {'lazy': 1})
 
   call dein#end()
   call dein#save_state()

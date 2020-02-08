@@ -1,0 +1,11 @@
+[[plugins]]
+repo = 'cespare/vim-toml'
+on_ft = ['toml']
+
+[[plugins]]
+repo = 'uarun/vim-protobuf'
+on_ft = ['proto']
+
+[[plugins]]
+repo = 'jparise/vim-graphql'
+on_ft = ['graphql']
