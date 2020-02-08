@@ -48,12 +48,6 @@ hook_add='''
 " let g:winresizer_start_key = '<C-T>'
 '''
 
- [[plugins]]
- repo = 'joshdick/onedark.vim'
- hook_add = '''
- colorscheme onedark
- '''
-
 [[plugins]]
 repo = 'christoomey/vim-tmux-navigator'
 hook_add = '''

@@ -9,3 +9,6 @@ on_ft = ['proto']
 [[plugins]]
 repo = 'jparise/vim-graphql'
 on_ft = ['graphql']
+
+[[plugins]]
+repo = 'joshdick/onedark.vim'
