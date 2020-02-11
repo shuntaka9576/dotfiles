@@ -13,6 +13,7 @@ export LANGUAGE=en_US.UTF-8
 export GHQ_ROOT=~/repos
 
 # Golang
+export GOPATH=~/repos
 export GO111MODULE=on
 export PATH=~/go/bin
 
