@@ -65,26 +65,6 @@
     // eslint settings
     "eslint.run": "onType",
     "eslint.enable": true,
-    "eslint.autoFixOnSave": true,
-    "eslint.validate": [
-        {
-            "language": "javascript",
-            "autoFix": true
-        },
-        "javascriptreact",
-        {
-            "language": "typescript",
-            "autoFix": true
-        },
-        {
-            "language": "typescriptreact",
-            "autoFix": true
-        },
-        {
-            "language": "vue",
-            "autoFix": true
-        },
-    ],
     // javascirpt settings
     "javascript.format.insertSpaceBeforeFunctionParenthesis": true,
     // typescirpt settings

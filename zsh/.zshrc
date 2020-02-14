@@ -35,6 +35,7 @@ if type "zplug" > /dev/null 2>&1; then
   zplug "shuntaka9576/prezto", at:shuntaka9576
   zplug "greymd/tmux-xpanes"
   zplug "mollifier/cd-gitroot"
+  zplug "drgr33n/oh-my-zsh_aws2-plugin"
   # zplug "b-ryan/powerline-shell"
 fi
 
@@ -199,6 +200,7 @@ bindkey '^s' pet-select
 
 # aws alias
 alias assume-role='function(){eval $(command assume-role $@);}'
+alias aws='/usr/local/bin/aws' # aws v2
 
 # ------------------------------------------------------------------------------
 # Kye mapping
