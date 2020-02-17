@@ -137,8 +137,11 @@ alias tka='tmux kill-server'
 # python alias
 alias prn='pipenv run nvim'
 
-# npnm alias
+# npm alias
 alias ns='npm start'
+
+# aws alias
+alias aws2='/usr/local/bin/aws'
 
 # fazzy repository move
 function ghq-fzf() {
