@@ -184,6 +184,26 @@ on_ft = ['markdown', 'pandoc.markdown', 'rmd']
 build =  'cd app & yarn install'
 
 # ======================================================================================================================
+# Markdown
+# ======================================================================================================================
+[[plugins]]
+repo = 'godlygeek/tabular'
+on_ft = ['markdown']
+
+[[plugins]]
+repo = 'joker1007/vim-markdown-quote-syntax'
+on_ft = ['markdown']
+
+[[plugins]]
+repo = 'rcmdnk/vim-markdown'
+on_ft = ['markdown']
+hook_add = '''
+let g:vim_markdown_better_folding=0
+let g:vim_markdown_folding_level = 6
+let g:vim_markdown_frontmatter = 1
+'''
+
+# ======================================================================================================================
 # Python code formatter settings
 # ======================================================================================================================
 [[plugins]]

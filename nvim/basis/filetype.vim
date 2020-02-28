@@ -14,25 +14,25 @@ augroup MyTabStop
 augroup END
 
 " Markdownを折りたたむ
-function! FoldMarkdown(lnum)
-  let line = getline(a:lnum)
-  let next = getline(a:lnum + 1)
-
-  if line =~ '^#\{1}[^#]\+'
-    return 1
-  elseif next =~ '^#\{1}[^#]\+'
-    return '<1'
-  elseif line =~ '^#\{2}[^#]\+'
-    return 2
-  elseif next =~ '^#\{2}[^#]\+'
-    return '<2'
-  elseif line =~ '^#\{3}[^#]\+'
-    return 3
-  elseif next =~ '^#\{3}[^#]\+'
-    return '<3'
-  endif
-
-  return '='
-endfunction
-
-set foldmethod=expr foldexpr=FoldMarkdown(v:lnum)
+" function! FoldMarkdown(lnum)
+"   let line = getline(a:lnum)
+"   let next = getline(a:lnum + 1)
+" 
+"   if line =~ '^#\{1}[^#]\+'
+"     return 1
+"   elseif next =~ '^#\{1}[^#]\+'
+"     return '<1'
+"   elseif line =~ '^#\{2}[^#]\+'
+"     return 2
+"   elseif next =~ '^#\{2}[^#]\+'
+"     return '<2'
+"   elseif line =~ '^#\{3}[^#]\+'
+"     return 3
+"   elseif next =~ '^#\{3}[^#]\+'
+"     return '<3'
+"   endif
+" 
+"   return '='
+" endfunction
+" 
+" set foldmethod=expr foldexpr=FoldMarkdown(v:lnum)
