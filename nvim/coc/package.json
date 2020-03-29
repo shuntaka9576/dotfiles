@@ -6,7 +6,7 @@
     "coc-json": ">=1.2.5",
     "coc-python": ">=1.2.9",
     "coc-tabnine": ">=1.2.2",
-    "coc-tsserver": ">=1.4.9",
-    "coc-vimlsp": ">=0.4.5"
+    "coc-tsserver": ">=1.4.12",
+    "coc-vimlsp": ">=0.5.1"
   }
 }

@@ -224,3 +224,12 @@ hook_add='''
 [[plugins]]
 repo='mattn/vim-goimports'
 on_ft = ['go']
+
+# ======================================================================================================================
+# TypeScript code formatter settings
+# ======================================================================================================================
+[[plugins]]
+repo='leafgarland/typescript-vim'
+
+[[plugins]]
+repo='peitalin/vim-jsx-typescript'
