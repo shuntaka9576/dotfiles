@@ -13,6 +13,7 @@ export LANGUAGE=en_US.UTF-8
 export GHQ_ROOT=~/repos
 
 # Golang
+export GOPATH=~/repos
 export GO111MODULE=on
 export PATH=~/go/bin
 
@@ -23,8 +24,9 @@ export PATH="$HOME/.cargo/bin:$PATH"
 # AWS
 export AWS_SAM_LOCAL=true
 
-# npm
+# Node
 export PATH=~/.npm-global/bin:$PATH
+export NODE_OPTIONS="--max-old-space-size=40960"
 
 # Python
 export PIPENV_VENV_IN_PROJECT=true

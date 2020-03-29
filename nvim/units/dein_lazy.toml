@@ -1,0 +1,235 @@
+# ======================================================================================================================
+# Syntax highlight for 3rd party filetype settings
+# ======================================================================================================================
+[[plugins]]
+repo = 'cespare/vim-toml'
+on_ft = ['toml']
+
+[[plugins]]
+repo = 'uarun/vim-protobuf'
+on_ft = ['proto']
+
+[[plugins]]
+repo = 'jparise/vim-graphql'
+on_ft = ['graphql']
+
+# ======================================================================================================================
+# Syntax highlight settings
+# ======================================================================================================================
+[[plugins]]
+repo = 'inkarkat/vim-SyntaxRange'
+
+# ======================================================================================================================
+# File explorer(defx) settings
+# ======================================================================================================================
+[[plugins]]
+repo = 'Shougo/defx.nvim'
+build = ':UpdateRemotePlugins'
+depends = ['defx-git', 'defx-icons']
+on_cmd = 'Defx'
+hook_add = '''
+nnoremap <silent><Leader>d :<C-u>Defx -split=vertical -winwidth=30 -direction=topleft -toggle -resume -buffer-name=tab`tabpagenr()`<CR>
+'''
+hook_source = '''
+autocmd BufWritePost * call defx#redraw()
+
+call defx#custom#option('_', {
+\ 'columns': 'indent:git:icons:filename',
+\ 'show_ignored_files': 1,
+\ })
+
+autocmd FileType defx call s:defx_my_settings()
+function! s:defx_my_settings() abort
+  nnoremap <silent><buffer><expr> o
+  \ defx#is_directory() ?
+  \ defx#do_action('open_or_close_tree') :
+  \ defx#do_action('drop')
+  nnoremap <silent><buffer><expr> l
+  \ defx#do_action('open')
+  " control file or directory mappings
+  nnoremap <silent><buffer><expr> c
+  \ defx#do_action('copy')
+  nnoremap <silent><buffer><expr> m
+  \ defx#do_action('move')
+  nnoremap <silent><buffer><expr> p
+  \ defx#do_action('paste')
+  nnoremap <silent><buffer><expr> r
+  \ defx#do_action('rename')
+  nnoremap <silent><buffer><expr> d
+  \ defx#do_action('remove')
+  nnoremap <silent><buffer><expr> a
+  \ defx#do_action('new_multiple_files')
+  nnoremap <silent><buffer><expr> q
+  \ defx#do_action('quit')
+  nnoremap <silent><buffer><expr> <Space>
+  \ defx#do_action('toggle_select') . 'j'
+  nnoremap <silent><buffer><expr> *
+  \ defx#do_action('toggle_select_all')
+  nnoremap <silent><buffer><expr> h
+  \ defx#do_action('cd', ['..'])
+  nnoremap <silent><buffer><expr> <C-l>
+  \ defx#do_action('redraw')
+  nnoremap <silent><buffer><expr> <C-g>
+  \ defx#do_action('print')
+  nnoremap <silent><buffer><expr> ~
+  \ defx#do_action('cd')
+  nnoremap <silent><buffer><expr> cd
+  \ defx#do_action('change_vim_cwd')
+endfunction
+'''
+
+[[plugins]]
+repo = 'kristijanhusak/defx-git'
+
+[[plugins]]
+repo = 'kristijanhusak/defx-icons.git'
+
+# ======================================================================================================================
+# syntax highlight
+# ======================================================================================================================
+[[plugins]]
+repo = 'ryanoasis/vim-devicons'
+hook_add = '''
+let g:airline_powerline_fonts = 1
+let g:WebDevIconsOS = 'Darwin'
+let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+let g:webdevicons_conceal_nerdtree_brackets = 1
+let g:DevIconsEnableFoldersOpenClose = 1
+let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+let g:DevIconsDefaultFolderOpenSymbol = ''
+let g:WebDevIconsUnicodeDecorateFolderNodesDefaultSymbol = ''
+'''
+
+[[plugins]]
+repo = 'Shougo/denite.nvim'
+on_cmd = 'Denite'
+build = ':UpdateRemotePlugins'
+depends = ['vim-devicons']
+hook_add='''
+nmap [denite] <Nop>
+map <C-j> [denite]
+nnoremap <silent> [denite]<C-p> :<C-u>Denite file/rec<CR>
+nnoremap <silent> [denite]<C-i> :<C-u>Denite buffer<CR>
+command! D execute(":Denite grep -buffer-name=grep-buffer-denite")
+command! Dresume execute(":Denite -resume -buffer-name=grep-buffer-denite")
+command! Dnext execute(":Denite -resume -buffer-name=grep-buffer-denite -cursor-pos=+1 -immediately")
+command! Dprev execute(":Denite -resume -buffer-name=grep-buffer-denite -cursor-pos=-1 -immediately")
+nmap <silent> [denite]<C-m> :<C-u>Denite -resume -buffer-name=grep-buffer-denite<CR>
+nnoremap <silent> [denite]n :<C-u>Denite -resume -buffer-name=grep-buffer-denite -cursor-pos=+1 -immediately<CR>
+nnoremap <silent> [denite]p :<C-u>Denite -resume -buffer-name=grep-buffer-denite -cursor-pos=-1 -immediately<CR>
+'''
+hook_source = '''
+    source ~/dotfiles/nvim/plugins/denite.vim
+    let g:webdevicons_enable_denite = 1
+'''
+
+[[plugins]]
+repo = "tpope/vim-fugitive"
+on_cmd = [
+  'Git',
+  'Gcommit',
+  'Gstatus',
+  'Gdiff',
+  'Gblame',
+  'Glog'
+]
+hook_add = '''
+nmap [figitive] <Nop>
+map <Leader>g [figitive]
+nnoremap <silent> [figitive]c :<C-u>Gcommit<CR>
+nnoremap <silent> [figitive]d :<C-u>Gdiff<CR>
+nnoremap <silent> [figitive]b :<C-u>Gblame<CR>
+nnoremap <silent> [figitive]l :<C-u>Glog<CR>
+'''
+
+# ======================================================================================================================
+# Multiple filetype syntax
+# ======================================================================================================================
+[[plugins]]
+repo = 'osyo-manga/vim-precious'
+on_ft = ['toml']
+depends = ['context_filetype.vim']
+
+[[plugins]]
+repo = 'Shougo/context_filetype.vim'
+
+# ======================================================================================================================
+# WordPress
+# ======================================================================================================================
+[[plugins]]
+repo = 'haoyayoi/VimWordpress'
+on_ft = ['markdown']
+hook_add='''
+  command! BSaveDaraft execute(":BlogSave draft")
+  command! BPreveiwDraft execute(":BlogPreview draft")
+'''
+
+# ======================================================================================================================
+# Realtime preview plugins settings
+# ======================================================================================================================
+[[plugins]]
+repo = 'shuntaka9576/preview-asciidoc.nvim'
+on_ft = ['asciidoc']
+build = 'yarn install'
+merged = 0
+
+[[plugins]]
+repo = 'shuntaka9576/preview-swagger.nvim'
+on_ft = ['yaml']
+build = 'yarn install'
+
+[[plugins]]
+repo = 'iamcco/markdown-preview.nvim'
+on_ft = ['markdown', 'pandoc.markdown', 'rmd']
+build =  'cd app & yarn install'
+
+# ======================================================================================================================
+# Markdown
+# ======================================================================================================================
+[[plugins]]
+repo = 'godlygeek/tabular'
+on_ft = ['markdown']
+
+[[plugins]]
+repo = 'joker1007/vim-markdown-quote-syntax'
+on_ft = ['markdown']
+
+[[plugins]]
+repo = 'rcmdnk/vim-markdown'
+on_ft = ['markdown']
+hook_add = '''
+let g:vim_markdown_better_folding=0
+let g:vim_markdown_folding_level = 6
+let g:vim_markdown_frontmatter = 1
+'''
+
+# ======================================================================================================================
+# Python code formatter settings
+# ======================================================================================================================
+[[plugins]]
+repo = 'fisadev/vim-isort'
+on_ft = ['python']
+
+[[plugins]]
+repo = 'python/black'
+on_ft = ['python']
+hook_add='''
+  autocmd BufWritePost *.py silent execute ':Black'
+  autocmd BufWritePre *.py silent execute ':Black'
+'''
+
+# ======================================================================================================================
+# Go code formatter settings
+# ======================================================================================================================
+[[plugins]]
+repo='mattn/vim-goimports'
+on_ft = ['go']
+
+# ======================================================================================================================
+# TypeScript code formatter settings
+# ======================================================================================================================
+[[plugins]]
+repo='leafgarland/typescript-vim'
+
+[[plugins]]
+repo='peitalin/vim-jsx-typescript'

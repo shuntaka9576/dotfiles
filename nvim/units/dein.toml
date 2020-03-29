@@ -1,0 +1,183 @@
+# ======================================================================================================================
+# Package manager
+# ======================================================================================================================
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+# ======================================================================================================================
+# LSP
+# ======================================================================================================================
+[[plugins]]
+repo = 'neoclide/coc.nvim'
+merged = 0
+build = 'yarn install --frozen-lockfile'
+hook_add = '''
+source ~/dotfiles/nvim/plugins/coc.vim
+'''
+
+[[plugins]]
+repo = "airblade/vim-gitgutter"
+hook_add = '''
+let g:gitgutter_map_keys = 0
+nmap [g <Plug>GitGutterPrevHunk
+nmap ]g <Plug>GitGutterNextHunk
+'''
+
+[[plugins]]
+repo = "voldikss/vim-floaterm"
+hook_add ='''
+let g:floaterm_keymap_new    = '<C-t>N'
+let g:floaterm_keymap_prev   = '<C-t>p'
+let g:floaterm_keymap_next   = '<C-t>n'
+let g:floaterm_keymap_toggle = '<C-t>h'
+'''
+
+[[plugins]]
+repo = 'itchyny/lightline.vim'
+hook_add = '''
+syntax on
+
+let g:lightline = {
+      \ 'colorscheme': 'PaperColor_dark',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'cocstatus', 'currentfunction', 'readonly', 'filepath', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'cocstatus': 'coc#status',
+      \   'currentfunction': 'CocCurrentFunction',
+      \   'filepath': 'FilePath',
+      \   'filetype': 'MyFiletype',
+      \   'fileformat': 'MyFileformat'
+      \ },
+      \ }
+
+function! CocCurrentFunction()
+  return get(b:, 'coc_current_function', '')
+endfunction
+
+function! FilePath()
+  let fullpath = substitute(expand('%:p'), $HOME, '~', '')
+  return fullpath
+endfunction
+
+" # show statusbar
+set laststatus=2
+" # hide --INSERT--
+set noshowmode
+'''
+hook_post_source = '''
+function! MyFiletype()
+  return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
+endfunction
+
+function! MyFileformat()
+  return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
+endfunction
+'''
+
+[[plugins]]
+repo='simeji/winresizer.git'
+
+[[plugins]]
+repo = 'christoomey/vim-tmux-navigator'
+hook_add = '''
+let g:tmux_navigator_no_mappings = 1
+
+nnoremap <silent> <C-w>j :TmuxNavigateDown<CR>
+nnoremap <silent> <C-w>h :TmuxNavigateLeft<CR>
+nnoremap <silent> <C-w>k :TmuxNavigateUp<CR>
+nnoremap <silent> <C-w>l :TmuxNavigateRight<CR>
+nnoremap <silent> <C-w>\\ :TmuxNavigatePrevious<CR>
+'''
+
+# ======================================================================================================================
+# Color schema settings
+# ======================================================================================================================
+[[plugins]]
+repo = 'joshdick/onedark.vim'
+hook_add='''
+colorscheme onedark
+'''
+
+# ======================================================================================================================
+# easy-motion
+# ======================================================================================================================
+[[plugins]]
+repo='haya14busa/incsearch.vim'
+hook_source = '''
+set hlsearch
+let g:incsearch#auto_nohlsearch = 1
+
+map n  <Plug>(incsearch-nohl-n)
+map N  <Plug>(incsearch-nohl-N)
+map *  <Plug>(incsearch-nohl-*)
+'''
+
+[[plugins]]
+repo='haya14busa/incsearch-easymotion.vim'
+depends = ['incsearch.vim', 'easymotion/vim-easymotion']
+hook_add = '''
+map z/ <Plug>(incsearch-easymotion-/)
+map z? <Plug>(incsearch-easymotion-?)
+map zg/ <Plug>(incsearch-easymotion-stay)
+'''
+
+[[plugins]]
+repo='easymotion/vim-easymotion'
+hook_add = '''
+" japanise move
+let g:EasyMotion_use_migemo = 1
+
+map f <Plug>(easymotion-bd-f)
+nmap f <Plug>(easymotion-overwin-f)
+nmap s <Plug>(easymotion-overwin-f2)
+
+" Move to line
+map L <Plug>(easymotion-bd-jk)
+nmap L <Plug>(easymotion-overwin-line)
+
+" Move to word
+map  w <Plug>(easymotion-bd-w)
+nmap w <Plug>(easymotion-overwin-w)
+
+" You can use other keymappings like <C-l> instead of <CR> if you want to
+" use these mappings as default search and sometimes want to move cursor with
+" EasyMotion.
+function! s:incsearch_config(...) abort
+  return incsearch#util#deepextend(deepcopy({
+        \ 'modules': [incsearch#config#easymotion#module({'overwin': 1})],
+        \ 'keymap': {
+        \   '\<CR>': '<Over>(easymotion)'
+        \ },
+        \   'is_expr': 0
+        \ }), get(a:, 1, {}))
+endfunction
+
+noremap <silent><expr> /  incsearch#go(<SID>incsearch_config())
+noremap <silent><expr> ?  incsearch#go(<SID>incsearch_config({'command': '?'}))
+noremap <silent><expr> g/ incsearch#go(<SID>incsearch_config({'is_stay': 1}))
+'''
+
+# ======================================================================================================================
+# Replace characters
+# ======================================================================================================================
+[[plugins]]
+repo = 'kana/vim-operator-replace'
+hook_add= '''
+map R  <Plug>(operator-replace)
+'''
+
+[[plugins]]
+repo = 'kana/vim-operator-user'
+
+[[plugins]]
+repo = 'osyo-manga/vim-over'
+hook_add='''
+nnoremap <silent> <Leader>m :OverCommandLine<CR>
+nnoremap sub :OverCommandLine<CR>%s/<C-r><C-w>//g<Left><Left>
+nnoremap subp y:OverCommandLine<CR>%s!<C-r>=substitute(@0, '!', '\\!', 'g')<CR>!!gI<Left><Left><Left>
+'''
+
+[[plugins]]
+repo = 'lambdalisue/fern.vim'
