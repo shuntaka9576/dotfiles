@@ -74,6 +74,18 @@
   tag = ["git"]
   output = ""
 
+[[snippets]]
+  description = "amend時にコミット時刻を変更"
+  command = 'git commit --amend --date="Thu Mar 27 17:20:22 2020 +0900"'
+  tag = ["git"]
+  output = ""
+
+[[snippets]]
+  description = "git logでコミット時刻を取得"
+  command = 'git log --pretty=fuller'
+  tag = ["git"]
+  output = ""
+
 # ----------------------------------------------------------------
 # Perlワンライナー
 # -e 'スクリプト'： 実行するPerlスクリプトを指定
