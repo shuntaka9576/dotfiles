@@ -34,12 +34,12 @@
         "editor.formatOnSave": true
     },
     "python.linting.pylintEnabled": false,
-    "python.linting.flake8Enabled": true,
+    "python.linting.flake8Enabled": false,
     "python.formatting.provider": "black",
-    "python.linting.mypyEnabled": true,
+    "python.linting.mypyEnabled": false,
     // "python.jediEnabled": true,
     "python.pythonPath": "${workspaceFolder}/.venv/bin/python",
-    "python.venvPath": ".venv",
+    "python.venvPath": "${workspaceFolder}/.venv",
     "python.linting.flake8Args": ["--max-line-length", "88"],
     "python.sortImports.path": "${workspaceFolder}/.venv/bin/isort",
     // rust settings
@@ -249,4 +249,5 @@
         "source.fixAll.eslint": true
     },
     "typescript.updateImportsOnFileMove.enabled": "always",
+    "javascript.updateImportsOnFileMove.enabled": "always",
 }
