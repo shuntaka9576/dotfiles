@@ -39,6 +39,9 @@ export PATH="$HOME/.poetry/bin:$PATH"
 # Perl
 export PATH="/usr/local/Cellar/perl/5.30.0/bin:$PATH"
 
+# tivew
+export LC_CTYPE="en_US.UTF-8"
+
 # ------------------------------------------------------------------------------
 # Read plugins settings
 if [[ -f "$ZDOTDIR/.zplug/repos/shuntaka9576/prezto/runcoms/zshenv" ]]; then
