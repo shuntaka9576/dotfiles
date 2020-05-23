@@ -180,3 +180,11 @@ hashicorp/terraform:0.12.5 <command>
   command = "ts-node --project ~/dotfiles/nvim/languages/ts/tsconfig.json"
   tag = ["typescript"]
   output = ""
+
+# ----------------------------------------------------------------
+# Other
+
+[[snippets]]
+  description = "sha256 digestを取得"
+  command = "openssl dgst -sha256 ~/Downloads/kanban_darwin_x86_64.tar.gz"
+  tag = ["openssl", "sha256"]
