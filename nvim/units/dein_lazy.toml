@@ -40,6 +40,10 @@ call defx#custom#option('_', {
 
 autocmd FileType defx call s:defx_my_settings()
 function! s:defx_my_settings() abort
+  nnoremap <silent><buffer><expr> O
+  \ defx#is_directory() ?
+  \ defx#do_action('open_tree_recursive') :
+  \ defx#do_action('drop')
   nnoremap <silent><buffer><expr> o
   \ defx#is_directory() ?
   \ defx#do_action('open_or_close_tree') :
