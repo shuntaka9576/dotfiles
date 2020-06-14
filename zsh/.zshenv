@@ -34,8 +34,6 @@ export PATH="$HOME/.poetry/bin:$PATH"
 # export PYENV_ROOT="$HOME/.pyenv"
 # export PATH="$PYENV_ROOT/bin:$PATH"
 
-# TODO Linux brew settings
-
 # Perl
 export PATH="/usr/local/Cellar/perl/5.30.0/bin:$PATH"
 

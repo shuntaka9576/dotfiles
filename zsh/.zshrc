@@ -1,6 +1,15 @@
 #!/usr/bin/zsh
 
 # ------------------------------------------------------------------------------
+case ${OSTYPE} in
+  darwin*)
+    ;;
+  linux*)
+    export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH" # not $HOME dir
+    export PATH="/usr/bin:$PATH"
+    ;;
+esac
+
 # lazy path settings
 # 下記のPATHに重複するコマンドがあり、優先させたい場合
 # /usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin
