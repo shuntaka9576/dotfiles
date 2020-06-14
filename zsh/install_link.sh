@@ -14,3 +14,5 @@ zsh -c "source ~/.zshenv;source ~/.zsh/.zshrc;zplug install;"
 # link plugin setting files
 zsh -c 'source ~/.zshenv;source ~/.zsh/.zshrc;ln -sf "$ZDOTDIR/.zplug/repos/shuntaka9576/prezto/runcoms/zpreztorc" "$ZDOTDIR/.zpreztorc"'
 zsh -c 'source ~/.zshenv;source ~/.zsh/.zshrc;ln -sf "$ZDOTDIR/.zplug/repos/shuntaka9576/prezto" "$ZDOTDIR/.zprezto"'
+
+sudo rm -rf /etc/zsh # Linux only?

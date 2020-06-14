@@ -8,7 +8,6 @@ brew install peco
 brew install python3
 # brew install nvim
 # install latest version
-brew install --HEAD neovim
 brew install make
 brew install jq
 brew install shellcheck
@@ -32,3 +31,7 @@ brew install gnu-sed # replace \t
 brew install asciidoctor
 brew install --HEAD pyenv-virtualenv
 brew install --HEAD pyenv-virtualenvwrapper
+brew install anyenv
+brew install curl
+brew install knqyf263/pet/pet
+brew install --HEAD neovim
