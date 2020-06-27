@@ -24,15 +24,6 @@ nmap ]g <Plug>GitGutterNextHunk
 '''
 
 [[plugins]]
-repo = "voldikss/vim-floaterm"
-hook_add ='''
-let g:floaterm_keymap_new    = '<C-t>N'
-let g:floaterm_keymap_prev   = '<C-t>p'
-let g:floaterm_keymap_next   = '<C-t>n'
-let g:floaterm_keymap_toggle = '<C-t>h'
-'''
-
-[[plugins]]
 repo = 'itchyny/lightline.vim'
 hook_add = '''
 syntax on
@@ -264,3 +255,6 @@ augroup fern-custom
   autocmd FileType fern call s:init_fern()
 augroup END
 '''
+
+[[plugins]]
+repo = 'lambdalisue/gina.vim'

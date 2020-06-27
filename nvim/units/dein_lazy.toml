@@ -118,6 +118,7 @@ nmap [denite] <Nop>
 map <C-j> [denite]
 nnoremap <silent> [denite]<C-p> :<C-u>Denite file/rec<CR>
 nnoremap <silent> [denite]<C-i> :<C-u>Denite buffer<CR>
+nnoremap <silent> [denite]<C-a> :<C-u>Denite floaterm<CR>
 command! D execute(":Denite grep -buffer-name=grep-buffer-denite")
 command! Dresume execute(":Denite -resume -buffer-name=grep-buffer-denite")
 command! Dnext execute(":Denite -resume -buffer-name=grep-buffer-denite -cursor-pos=+1 -immediately")
@@ -241,3 +242,15 @@ repo='leafgarland/typescript-vim'
 
 [[plugins]]
 repo='peitalin/vim-jsx-typescript'
+
+[[plugins]]
+repo = "voldikss/vim-floaterm"
+hook_add ='''
+let g:floaterm_keymap_new    = '<C-a>N'
+let g:floaterm_keymap_prev   = '<C-a><C-p>'
+let g:floaterm_keymap_next   = '<C-a><C-n>'
+let g:floaterm_keymap_toggle = '<C-a><C-h>'
+let g:floaterm_width = 0.9
+let g:floaterm_height = 0.9
+command! L execute(":FloatermNew") | execute(":FloatermNew! lazygit")
+'''
