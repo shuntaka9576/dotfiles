@@ -180,4 +180,87 @@ nnoremap subp y:OverCommandLine<CR>%s!<C-r>=substitute(@0, '!', '\\!', 'g')<CR>!
 '''
 
 [[plugins]]
+repo = 'lambdalisue/fern-renderer-devicons.vim'
+
+[[plugins]]
 repo = 'lambdalisue/fern.vim'
+depends = ['lambdalisue/fern-renderer-devicons.vim', 'vim-devicons']
+hook_add='''
+" アイコン有効化
+let g:fern#renderer = "devicons"
+let g:fern#default_hidden = 1
+
+" 起動コマンド
+nnoremap <silent><Leader>d :<C-u>Fern . -drawer -toggle<CR>
+" スタートアップでfernを起動する
+augroup my-fern-startup
+  autocmd! *
+  autocmd VimEnter * ++nested Fern . -drawer
+augroup END
+
+" netrwの無効化
+let g:loaded_netrw             = 1
+let g:loaded_netrwPlugin       = 1
+let g:loaded_netrwSettings     = 1
+let g:loaded_netrwFileHandlers = 1
+
+augroup my-fern-hijack
+  autocmd!
+  autocmd BufEnter * ++nested call s:hijack_directory()
+augroup END
+
+function! s:hijack_directory() abort
+  let path = expand('%:p')
+  if !isdirectory(path)
+    return
+  endif
+  bwipeout %
+  execute printf('Fern %s', fnameescape(path))
+endfunction
+
+nnoremap <silent> <Leader>ee :<C-u>Fern <C-r>=<SID>smart_path()<CR><CR>
+function! s:smart_path() abort
+  if !empty(&buftype) || bufname('%') =~# '^[^:]\+://'
+    return fnamemodify('.', ':p')
+  endif
+  return fnamemodify(expand('%'), ':p:h')
+endfunction
+
+" ?
+nmap <buffer><silent> <Plug>(fern-my-open-and-close)
+      \ <Plug>(fern-action-open)
+      \ :<C-u>FernDo close -drawer -stay<CR>
+
+" コンフィグ設定
+function! s:init_fern() abort
+  nmap <buffer> <Space> <Plug>(fern-action-mark-toggle)
+  nmap <buffer><expr>
+      \ <Plug>(fern-my-expand-or-collapse)
+      \ fern#smart#leaf(
+      \   "\<Plug>(fern-action-collapse)",
+      \   "\<Plug>(fern-action-expand)",
+      \   "\<Plug>(fern-action-collapse)",
+      \ )
+  nmap <buffer><nowait> o <Plug>(fern-my-expand-or-collapse)
+  nmap <buffer><expr>
+        \ <Plug>(fern-my-expand-or-enter)
+        \ fern#smart#drawer(
+        \   "\<Plug>(fern-open-or-expand)",
+        \   "\<Plug>(fern-open-or-enter)",
+        \ )
+  nmap <buffer><expr>
+        \ <Plug>(fern-my-collapse-or-leave)
+        \ fern#smart#drawer(
+        \   "\<Plug>(fern-action-collapse)",
+        \   "\<Plug>(fern-action-leave)",
+        \ )
+  nmap <buffer><nowait> l <Plug>(fern-action-enter)
+  nmap <buffer><nowait> h <Plug>(fern-action-leave)
+  nmap <buffer><nowait> e <Plug>(fern-action-open:side)
+endfunction
+
+augroup fern-custom
+  autocmd! *
+  autocmd FileType fern call s:init_fern()
+augroup END
+'''
