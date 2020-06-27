@@ -32,3 +32,7 @@ call denite#custom#option('_', {
       \ 'prompt': '$ ',
       \ 'split': 'floating',
       \ })
+
+" See https://github.com/Shougo/dein.vim/issues/342
+call denite#custom#source('file/rec,file_mru,file/old,buffer,directory/rec,directory_mru', 'converters', ['devicons_denite_converter'])
+

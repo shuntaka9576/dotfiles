@@ -184,7 +184,7 @@ repo = 'lambdalisue/fern-renderer-devicons.vim'
 
 [[plugins]]
 repo = 'lambdalisue/fern.vim'
-depends = ['lambdalisue/fern-renderer-devicons.vim', 'vim-devicons']
+depends = ['vim-devicons']
 hook_add='''
 " アイコン有効化
 let g:fern#renderer = "devicons"
