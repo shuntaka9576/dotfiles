@@ -82,7 +82,7 @@ precmd() {
   user=`whoami`
   hostname=`hostname`
   # local left='\n%F{243}%n%f %F{4}➜ %f %F{243}$cmd%f'
-  local left='\n%F{247}$cmd%f %F{105}${vcs_info_msg_0_}%f %F{30}$user%f%F{10} ➜ %f%F{30}$hostname%f'
+  local left='\n%F{247}$cmd%f %F{105}${vcs_info_msg_0_}%f ➜ %f%F{30}$hostname%f'
   print -P $left
 }
 
