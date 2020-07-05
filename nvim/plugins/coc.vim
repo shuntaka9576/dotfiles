@@ -17,4 +17,5 @@ nmap <silent><C-n> <Plug>(coc-diagnostic-next)
 nmap <silent><C-p> <Plug>(coc-diagnostic-prev)
 " 警告の一覧表示
 nnoremap <silent><space>a :<C-u>CocList diagnostics<cr>
+nnoremap <silent><space>t :CocList floaterm<CR>
 

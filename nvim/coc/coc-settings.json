@@ -4,12 +4,13 @@
       "<C-n>": "normal:j",
       "<C-p>": "normal:k"
   },
+  "coc.preferences.jumpCommand": "tab drop",
   "languageserver": {
     "golang": {
       "command": "gopls",
       "rootPatterns": ["go.mod"],
       "filetypes": ["go"]
-    },
+    }
   },
   "python.jediEnabled": false,
   "python.pythonPath": ".venv/bin/python",
