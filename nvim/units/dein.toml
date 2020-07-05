@@ -248,6 +248,7 @@ function! s:init_fern() abort
   nmap <buffer><nowait> l <Plug>(fern-action-enter)
   nmap <buffer><nowait> h <Plug>(fern-action-leave)
   nmap <buffer><nowait> e <Plug>(fern-action-open:side)
+  nmap <buffer><nowait> d <Plug>(fern-action-remove)
 endfunction
 
 augroup fern-custom

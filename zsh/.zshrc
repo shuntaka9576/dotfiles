@@ -25,6 +25,9 @@ export ZPLUG_LOADFILE="$ZPLUG_HOME/packages.zsh"
 export ZPLUG_CACHE_DIR="$ZPLUG_HOME/.cache"
 export ZPLUG_LOADFILE="$ZPLUG_HOME/packages.zsh"
 
+# gh
+export VISUAL="nvim"
+
 if [[ -f "$ZPLUG_HOME/init.zsh" ]]; then
   source "$ZPLUG_HOME/init.zsh"
 fi
