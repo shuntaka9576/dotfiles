@@ -2,7 +2,9 @@
   "dependencies": {
     "coc-css": ">=1.2.3",
     "coc-eslint": ">=1.2.7",
+    "coc-explorer": ">=0.7.24",
     "coc-floaterm": ">=0.0.7",
+    "coc-flutter": ">=1.5.1",
     "coc-go": ">=0.7.0",
     "coc-html": ">=1.2.4",
     "coc-json": ">=1.2.5",

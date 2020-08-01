@@ -13,6 +13,7 @@
     "rust-lang.rust",
     "jebbs.plantuml",
     "joaompinto.asciidoctor-vscode",
-    "esbenp.prettier-vscode"
+    "esbenp.prettier-vscode",
+    "dart-code.flutter"
   ]
 }

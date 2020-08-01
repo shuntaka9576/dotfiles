@@ -39,6 +39,15 @@ export PATH="$HOME/.poetry/bin:$PATH"
 # Perl
 export PATH="/usr/local/Cellar/perl/5.30.0/bin:$PATH"
 
+# flutter
+export PATH="$HOME/repos/github.com/flutter/flutter/bin:$PATH"
+export PATH="/usr/local/opt/android-sdk/cmdline-tools/tools/bin:$PATH"
+export ANDROID_SDK_ROOT=/usr/local/opt/android-sdk
+
+# Java
+export JAVA_HOME=$HOME/.sdkman/candidates/java/current
+export PATH=$JAVA_HOME/bin:$PATH
+
 # tivew
 export LC_CTYPE="en_US.UTF-8"
 
