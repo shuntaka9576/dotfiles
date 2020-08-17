@@ -5,6 +5,9 @@
       "<C-p>": "normal:k"
   },
   "coc.preferences.jumpCommand": "tab drop",
+  "coc.preferences.formatOnSaveFiletypes":[
+    "dart"
+  ],
   "languageserver": {
     "golang": {
       "command": "gopls",

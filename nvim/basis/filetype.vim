@@ -13,6 +13,7 @@ augroup MyTabStop
   autocmd BufNewFile,BufRead Makefile setlocal noexpandtab
   autocmd BufNewFile,BufRead *.yml setlocal tabstop=2 shiftwidth=2
   autocmd BufNewFile,BufRead *.toml setlocal tabstop=2 shiftwidth=2 expandtab
+  autocmd BufNewFile,BufRead *.dart setlocal tabstop=2 shiftwidth=2 expandtab
 augroup END
 
 " Markdownを折りたたむ

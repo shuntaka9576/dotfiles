@@ -259,3 +259,27 @@ augroup END
 
 [[plugins]]
 repo = 'lambdalisue/gina.vim'
+
+[[plugins]]
+repo = "voldikss/vim-floaterm"
+hook_add ='''
+let g:floaterm_keymap_new    = '<C-a>N'
+let g:floaterm_keymap_prev   = '<C-a><C-p>'
+let g:floaterm_keymap_next   = '<C-a><C-n>'
+let g:floaterm_keymap_toggle = '<C-a><C-h>'
+let g:floaterm_width = 0.9
+let g:floaterm_height = 0.9
+command! L execute(":FloatermNew") | execute(":FloatermNew! lazygit")
+'''
+
+# ======================================================================================================================
+# Flutter
+# ======================================================================================================================
+[[plugins]]
+repo = 'dart-lang/dart-vim-plugin'
+hook_add='''
+let g:dart_style_guide = 2
+'''
+
+[[plugins]]
+repo = 'thosakwe/vim-flutter'
