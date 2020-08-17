@@ -188,7 +188,16 @@ hashicorp/terraform:0.12.5 <command>
   output = ""
 
 # ----------------------------------------------------------------
-# Other
+# Encode/Decode
+[[snippets]]
+  description = "base64にエンコード"
+  command = "echo 'テスト' | python -m base64"
+  tag = ["base64", "encode"]
+
+[[snippets]]
+  description = "base64にデコード"
+  command = "echo '44OG44K544OICg==' | python -m base64 -d"
+  tag = ["base64", "decode"]
 
 [[snippets]]
   description = "sha256 digestを取得"
