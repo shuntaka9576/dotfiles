@@ -76,7 +76,7 @@
 
 [[snippets]]
   description = "amend時にコミット時刻を変更"
-  command = 'git commit --amend --date="Thu Mar 27 17:20:22 2020 +0900"'
+  command = 'git commit --amend --date="Thu Mar 27 17:20:22 2020 +0900";git rebase HEAD~1 --committer-date-is-author-date;git log --pretty=fuller'
   tag = ["git"]
   output = ""
 
