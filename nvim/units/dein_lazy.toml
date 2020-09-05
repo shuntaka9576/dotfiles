@@ -237,9 +237,14 @@ on_ft = ['go']
 # ======================================================================================================================
 # TypeScript code formatter settings
 # ======================================================================================================================
+# [[plugins]]
+# repo='leafgarland/typescript-vim'
+
 [[plugins]]
-repo='leafgarland/typescript-vim'
+repo='HerringtonDarkholme/yats.vim'
+on_ft = ['ts', 'tsx']
 
 [[plugins]]
 repo='peitalin/vim-jsx-typescript'
+on_ft = ['ts', 'tsx']
 
