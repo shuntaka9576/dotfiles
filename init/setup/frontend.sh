@@ -9,4 +9,6 @@ npm install -g markdownlint
 npm install -g typescript
 npm install -g typescript-language-server
 npm install -g yarn
+npm install -g jwt-cli
+npm install -g reload
 # npm install -g prettier
