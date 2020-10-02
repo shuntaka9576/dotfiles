@@ -206,6 +206,12 @@ bindkey '^s' pet-select
 # aws alias
 alias assume-role='function(){eval $(command assume-role $@);}'
 
+# auto complete
+autoload -U compinit
+compinit
+# zstyle ':completion:*' menu true
+# zstyle ':completion:yarn:test-unit' menu true
+
 # ------------------------------------------------------------------------------
 # Kye mapping
 # bindkey -v # setting viins
