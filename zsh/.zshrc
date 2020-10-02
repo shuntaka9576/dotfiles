@@ -146,6 +146,10 @@ alias ns='npm start'
 # aws alias
 alias aws2='/usr/local/bin/aws'
 
+# figure
+alias draw.io='/Applications/draw.io.app/Contents/MacOS/draw.io'
+
+
 # fazzy repository move
 function ghq-fzf() {
   local target_dir=$(ghq list | fzf-tmux --reverse --query="$LBUFFER")
