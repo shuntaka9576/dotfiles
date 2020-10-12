@@ -11,4 +11,6 @@ npm install -g typescript-language-server
 npm install -g yarn
 npm install -g jwt-cli
 npm install -g reload
+npm install -g jsondiffpatch
+npm install -g uuid-cli
 # npm install -g prettier
