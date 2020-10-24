@@ -8,6 +8,7 @@ git config --global core.editor 'nvim -c "set fenc=utf-8"'
 git config --global push.default current
 git config --global alias.see browse
 git config --global hub.protocol https
+git config --global pull.ff only
 
 # path settigs
 if [ "$(uname)" == 'Darwin' ]; then
