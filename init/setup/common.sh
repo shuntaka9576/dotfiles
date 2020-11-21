@@ -42,14 +42,26 @@ pip3 install vim-vint
 pip3 install pipenv
 pip3 install awscli
 
-# TODO install cargo
-# install rustup
-## curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-## cargo install cargo-edit # for run *cargo add* cmd
-## rustup update
-## rustup update nightly
-## rustup default nightly
-## rustc --version
+# install Rust
+if [ "$(uname)" == 'Darwin' ]  && [ "$(uname -m)" == 'arm64' ]; then
+  echo "arm64 mac need to manual install"
+  echo "default host triple: x86_64-apple-darwin"
+  echo "default toolchain: nightly <-- Please manual change!"
+  echo "profile: default"
+  echo "modify PATH variable: no <-- Please manual change!"
+  arch --x86_64 sh <(curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs )
+else
+  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+  cargo install cargo-edit # for run *cargo add* cmd
+  rustup update
+  rustup update nightly
+  rustup default nightly
+  rustc --version
+fi
+cargo install ripgrep
+cargo install exa
+cargo install fd-find
+cargo install bat
 
 # TODO install nerd-fonts
 # git clone https://github.com/ryanoasis/nerd-fonts.git
