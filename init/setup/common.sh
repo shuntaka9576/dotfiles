@@ -7,8 +7,8 @@ sudo chmod o+w ~/.cache
 curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish
 
 # install anyenv
-git clone https://github.com/anyenv/anyenv ~/.anyenv
 export PATH="$HOME/.anyenv/bin:$PATH"
+git clone https://github.com/anyenv/anyenv ~/.anyenv
 anyenv install --init
 
 # install dein
@@ -31,6 +31,11 @@ go get github.com/github/hub
 go get -d github.com/skanehira/docui
 cd $GOPATH/src/github.com/skanehira/docui
 GO111MODULE=on go install
+
+# install prezto
+export PATH="$HOME/go/bin:$PATH"
+export GHQ_ROOT=~/repos
+ghq get https://github.com/shuntaka9576/prezto.git
 
 # install pip3 packages
 pip3 install python-language-server
