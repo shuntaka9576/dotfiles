@@ -21,9 +21,9 @@ set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
 let s:dein_dir = expand('~/.cache/dein')
 let s:toml_dir = expand('~/.config/nvim/dein')
 
-if has('nvim') && isdirectory( $PYENV_ROOT."/versions/nvim-python3" )
-  let g:python3_host_prog = $PYENV_ROOT.'/versions/nvim-python3/bin/python'
-endif
+" if has('nvim') && isdirectory( $PYENV_ROOT."/versions/nvim-python3" )
+"   let g:python3_host_prog = $PYENV_ROOT.'/versions/nvim-python3/bin/python'
+" endif
 
 if dein#load_state(s:dein_dir)
   call dein#begin(s:dein_dir)

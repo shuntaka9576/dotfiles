@@ -36,7 +36,7 @@ elif [ "$(uname)" == 'Darwin' ]  && [ "$(uname -m)" == 'arm64' ]; then
   echo '====================================== Mac(arm64) ======================================'
   # TODO install MacPorts
   export PATH=/opt/local/bin:$PATH
-  ~/dotfiles/init/setup/mac.sh
+  # ~/dotfiles/init/setup/mac.sh
   ~/dotfiles/init/setup/port.sh
   IS_INSTALL_BREW=false
 elif [ -e /etc/debian_version ]; then
@@ -55,7 +55,7 @@ elif [ -e /etc/system-release ]; then
   fi
 fi
 
-if [ "${IS_INSTALL_BREW}" ]; then
+if "${IS_INSTALL_BREW}"; then
   echo '====================================== run brew ======================================'
   ~/dotfiles/init/setup/brew.sh
 fi
@@ -67,8 +67,8 @@ echo '====================================== symbolic link nvim ================
 ~/dotfiles/nvim/link.sh
 echo '====================================== symbolic link tools ======================================'
 ~/dotfiles/tools/link.sh
-echo '====================================== install fisher plugins ======================================'
-~/dotfiles/fish/fish_plug.sh
-exit
+# echo '====================================== install fisher plugins ======================================'
+# ~/dotfiles/fish/fish_plug.sh
+# exit
 echo '====================================== setting zsh ======================================'
 ~/dotfiles/zsh/install_link.sh # TODO test

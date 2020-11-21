@@ -8,7 +8,7 @@
 # /usr/bin/python < ~/.anyenv/envs/pyenv/shims/python
 export PATH="$HOME/.anyenv/bin:$PATH"
 eval "$(anyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+# eval "$(pyenv virtualenv-init -)"
 
 # nvim nightly
 if [ -d $HOME/nvim-osx64 ]; then
