@@ -6,6 +6,11 @@ sudo chmod o+w ~/.cache
 # install fisher
 curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish
 
+# install anyenv
+git clone https://github.com/anyenv/anyenv ~/.anyenv
+export PATH="$HOME/.anyenv/bin:$PATH"
+anyenv install --init
+
 # install dein
 curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh >~/installer.sh
 sh ~/installer.sh ~/.cache/dein

@@ -23,6 +23,7 @@ git clone -b $branchName https://github.com/shuntaka9576/dotfiles.git ~/dotfiles
 # =*=*=*=*=*=*=*=*=*=*=* start symbolic link shell =*=*=*=*=*=*=*=*=*=*=*
 ~/dotfiles/init/setup/link.sh
 
+IS_INSTALL_BREW=true
 if [ "$(uname)" == 'Darwin' ]  && [ "$(uname -m)" == 'x86_64' ]; then
   echo '====================================== Mac(x86_64) ======================================'
   # install brew
@@ -31,20 +32,13 @@ if [ "$(uname)" == 'Darwin' ]  && [ "$(uname -m)" == 'x86_64' ]; then
   # install lib for mac
   source ~/.bash_profile
   ~/dotfiles/init/setup/mac.sh
-
 elif [ "$(uname)" == 'Darwin' ]  && [ "$(uname -m)" == 'arm64' ]; then
   echo '====================================== Mac(arm64) ======================================'
   # TODO install MacPorts
-  # TODO mac.sh
   export PATH=/opt/local/bin:$PATH
+  ~/dotfiles/init/setup/mac.sh
   ~/dotfiles/init/setup/port.sh
-  ~/dotfiles/init/setup/frontend.sh
-  ~/dotfiles/init/setup/common.sh
-  ~/dotfiles/nvim/link.sh
-  ~/dotfiles/tools/link.sh
-  ~/dotfiles/fish/fish_plug.sh
-  ~/dotfiles/zsh/install_link.sh # TODO test
-  exit # TODO standardize
+  IS_INSTALL_BREW=false
 elif [ -e /etc/debian_version ]; then
   echo '====================================== Ubuntu ======================================'
   # install brew
@@ -61,8 +55,10 @@ elif [ -e /etc/system-release ]; then
   fi
 fi
 
-echo '====================================== run brew ======================================'
-~/dotfiles/init/setup/brew.sh
+if [ "${IS_INSTALL_BREW}" ]; then
+  echo '====================================== run brew ======================================'
+  ~/dotfiles/init/setup/brew.sh
+fi
 echo '====================================== install npm modules ======================================'
 ~/dotfiles/init/setup/frontend.sh
 echo '====================================== install tools ======================================'
