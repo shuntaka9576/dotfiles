@@ -36,11 +36,11 @@ cd $GOPATH/src/github.com/skanehira/docui
 GO111MODULE=on go install
 
 # install pip3 packages
-pip3 install python-language-server
-pip3 install neovim
-pip3 install vim-vint
-pip3 install pipenv
-pip3 install awscli
+sudo pip3 install python-language-server
+sudo pip3 install neovim
+sudo pip3 install vim-vint
+sudo pip3 install pipenv
+sudo pip3 install awscli
 
 # install Rust
 if [ "$(uname)" == 'Darwin' ]  && [ "$(uname -m)" == 'arm64' ]; then
