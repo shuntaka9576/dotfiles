@@ -35,6 +35,7 @@ if [ "$(uname)" == 'Darwin' ]  && [ "$(uname -m)" == 'x86_64' ]; then
 elif [ "$(uname)" == 'Darwin' ]  && [ "$(uname -m)" == 'arm64' ]; then
   echo '====================================== Mac(arm64) ======================================'
   # TODO install MacPorts
+  # TODO mac.sh
   export PATH=/opt/local/bin:$PATH
   ~/dotfiles/init/setup/port.sh
   ~/dotfiles/init/setup/frontend.sh
