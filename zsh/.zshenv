@@ -3,6 +3,10 @@
 # ------------------------------------------------------------------------------
 # Enviroment value
 
+if [ "$(uname)" == 'Darwin' ]  && [ "$(uname -m)" == 'arm64' ]; then
+  export PATH="/opt/local/bin:$PATH"
+end
+
 # zsh
 export ZDOTDIR="$HOME/.zsh"
 
@@ -13,9 +17,9 @@ export LANGUAGE=en_US.UTF-8
 export GHQ_ROOT=~/repos
 
 # Golang
-export GOPATH=~/repos
+export GOPATH=~/go
 export GO111MODULE=on
-export PATH=~/go/bin
+export PATH="~/go/bin:$PATH"
 
 # Rust
 export RUST_BACKTRACE=1

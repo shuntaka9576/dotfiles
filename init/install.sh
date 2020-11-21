@@ -40,6 +40,10 @@ elif [ "$(uname)" == 'Darwin' ]  && [ "$(uname -m)" == 'arm64' ]; then
   ~/dotfiles/init/setup/port.sh
   ~/dotfiles/init/setup/frontend.sh
   ~/dotfiles/init/setup/common.sh
+  ~/dotfiles/nvim/link.sh
+  ~/dotfiles/tools/link.sh
+  ~/dotfiles/fish/fish_plug.sh
+  ~/dotfiles/zsh/install_link.sh # TODO test
   exit # TODO standardize
 elif [ -e /etc/debian_version ]; then
   echo '====================================== Ubuntu ======================================'

@@ -12,6 +12,7 @@ sh ~/installer.sh ~/.cache/dein
 rm ~/installer.sh
 
 # install go binaries
+export GOPATH=~/go
 go get github.com/motemen/ghq
 go get github.com/mrtazz/checkmake
 go get github.com/gohugoio/hugo
