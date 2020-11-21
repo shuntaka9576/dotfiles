@@ -1,5 +1,6 @@
 #!/bin/bash
 
+brew install npm
 brew install fish
 brew install fzf
 brew install go

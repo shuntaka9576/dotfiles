@@ -23,14 +23,23 @@ git clone -b $branchName https://github.com/shuntaka9576/dotfiles.git ~/dotfiles
 # =*=*=*=*=*=*=*=*=*=*=* start symbolic link shell =*=*=*=*=*=*=*=*=*=*=*
 ~/dotfiles/init/setup/link.sh
 
-if [ "$(uname)" == 'Darwin' ]; then
-  echo '====================================== Mac ======================================'
+if [ "$(uname)" == 'Darwin' ]  && [ "$(uname -m)" == 'x86_64' ]; then
+  echo '====================================== Mac(x86_64) ======================================'
   # install brew
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
   # install lib for mac
   source ~/.bash_profile
   ~/dotfiles/init/setup/mac.sh
+
+elif [ "$(uname)" == 'Darwin' ]  && [ "$(uname -m)" == 'arm64' ]; then
+  echo '====================================== Mac(arm64) ======================================'
+  # TODO install MacPorts
+  export PATH=/opt/local/bin:$PATH
+  ~/dotfiles/init/setup/port.sh
+  ~/dotfiles/init/setup/frontend.sh
+  ~/dotfiles/init/setup/common.sh
+  exit # TODO standardize
 elif [ -e /etc/debian_version ]; then
   echo '====================================== Ubuntu ======================================'
   # install brew
