@@ -4,7 +4,6 @@ mkdir -p ~/.config/fish
 
 # link dotfiles
 ln -sf ~/dotfiles/tmux/.tmux.conf ~/.tmux.conf
-ln -sf ~/dotfiles/.tigrc  ~/.tigrc
 ln -sf ~/dotfiles/.gitconfig  ~/.gitconfig
 ln -sf ~/dotfiles/fish/config.fish  ~/.config/fish/config.fish
 
