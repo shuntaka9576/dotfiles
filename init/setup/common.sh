@@ -58,6 +58,7 @@ else
   rustup default nightly
   rustc --version
 fi
+export PATH="$HOME/.cargo/bin:$PATH"
 cargo install ripgrep
 cargo install exa
 cargo install fd-find
