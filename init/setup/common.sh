@@ -10,9 +10,12 @@ curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fi
 export PATH="$HOME/.anyenv/bin:$PATH"
 git clone https://github.com/anyenv/anyenv ~/.anyenv
 anyenv install --init
-anyenv install pyenv
-pyenv install 3.7.4 --force
 
+# install anyenv
+anyenv install pyenv
+
+# install nodenv
+anyenv install nodenv
 
 # install dein
 curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh >~/installer.sh
