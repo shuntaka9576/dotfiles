@@ -37,10 +37,7 @@ elif [ "$(uname)" == 'Darwin' ]  && [ "$(uname -m)" == 'arm64' ]; then
   # TODO install MacPorts
   export PATH=/opt/local/bin:$PATH
   # ~/dotfiles/init/setup/mac.sh
-  ~/dotfiles/init/setup/port.sh
-  wget https://github.com/neovim/neovim/releases/download/nightly/nvim-macos.tar.gz
-  tar xzvf nvim-macos.tar.gz
-  rm nvim-macos.tar.gz
+  ~/dotfiles/init/setup/mac-arm64.sh
   IS_INSTALL_BREW=false
 elif [ -e /etc/debian_version ]; then
   echo '====================================== Ubuntu ======================================'
