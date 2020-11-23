@@ -19,7 +19,7 @@ rm ~/xpanes
 
 # install apps
 mkdir homebrew && curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C homebrew
-sudo mv --force homebrew /opt/homebrew
+sudo mv -f homebrew /opt/homebrew
 export PATH=/opt/homebrew/bin:$PATH
 
 brew cask install google-chrome
