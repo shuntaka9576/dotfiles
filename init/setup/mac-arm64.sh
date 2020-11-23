@@ -1,10 +1,10 @@
 #!/bin/bash
-sudo port install tmux
-sudo port install go
-sudo port install fzf
-sudo port install wget
-sudo port install fontforge
-sudo port install tmux-pasteboard
+sudo port install -f tmux
+sudo port install -f go
+sudo port install -f fzf
+sudo port install -f wget
+sudo port install -f fontforge
+sudo port install -f tmux-pasteboard
 # sudo port install nodejs15 # not work
 
 # install nvim
