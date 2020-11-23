@@ -5,6 +5,7 @@
 
 # MacPorts # TODO Darwin arm64 only
 export PATH="/opt/local/bin:$PATH"
+export PATH="/opt/homebrew/bin:$PATH"
 
 # zsh
 export ZDOTDIR="$HOME/.zsh"
