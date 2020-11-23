@@ -62,4 +62,5 @@ if [ "$(uname)" == 'Darwin' ]  && [ "$(uname -m)" == 'arm64' ]; then
 
   cp $HOME/repos/github.com/Karmenzind/monaco-nerd-fonts/fonts/Monaco\ Nerd\ Font\ Complete\ Windows\ Compatible.otf $HOME/Library/Fonts
   fontforge $HOME/repos/github.com/ryanoasis/nerd-fonts/font-patcher $HOME/Library/Fonts/Monaco\ Nerd\ Font\ Complete\ Windows\ Compatible.otf -w --fontawesome --fontawesomeextension --fontlinux --octicons --powersymbols --pomicons --powerline --powerlineextra --material --weather
+  rm -rf Monaco\ Nerd\ Font\ Complete\ Windows\ Compatible\ Nerd\ Font\ Complete\ Windows\ Compatible.otf
 fi

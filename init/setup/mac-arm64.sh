@@ -21,6 +21,7 @@ rm ~/xpanes
 mkdir homebrew && curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C homebrew
 sudo mv -f homebrew /opt/homebrew
 export PATH=/opt/homebrew/bin:$PATH
+rm -rf homebrew
 
 brew cask install google-chrome
 brew cask install iterm2
