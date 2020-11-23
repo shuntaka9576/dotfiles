@@ -15,6 +15,7 @@ rm nvim-macos.tar.gz
 # install xpanes
 wget https://raw.githubusercontent.com/greymd/tmux-xpanes/v4.1.2/bin/xpanes -O ./xpanes
 sudo install -m 0755 xpanes /usr/local/bin/xpanes
+rm ~/xpanes
 
 # install apps
 mkdir homebrew && curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C homebrew
