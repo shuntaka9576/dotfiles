@@ -25,3 +25,7 @@ rm -rf homebrew
 
 brew cask install google-chrome
 brew cask install iterm2
+brew cask install gyazo
+brew cask install slack
+brew cask install visual-studio-code
+brew cask install drawio

@@ -59,6 +59,7 @@ if [ "$(uname)" == 'Darwin' ]  && [ "$(uname -m)" == 'arm64' ]; then
   export PATH=$HOME/go/bin:$PATH
   ghq get https://github.com/ryanoasis/nerd-fonts.git
   ghq get https://github.com/Karmenzind/monaco-nerd-fonts.git
+  ghq get https://github.com/dracula/iterm.git
 
   cp $HOME/repos/github.com/Karmenzind/monaco-nerd-fonts/fonts/Monaco\ Nerd\ Font\ Complete\ Windows\ Compatible.otf $HOME/Library/Fonts
   fontforge $HOME/repos/github.com/ryanoasis/nerd-fonts/font-patcher $HOME/Library/Fonts/Monaco\ Nerd\ Font\ Complete\ Windows\ Compatible.otf -w --fontawesome --fontawesomeextension --fontlinux --octicons --powersymbols --pomicons --powerline --powerlineextra --material --weather
