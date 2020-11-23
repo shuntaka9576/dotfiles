@@ -5,7 +5,6 @@ sudo port install fzf
 sudo port install wget
 sudo port install fontforge
 sudo port install tmux-pasteboard
-# sudo port install exa # not work
 # sudo port install nodejs15 # not work
 
 # install nvim
@@ -19,7 +18,7 @@ sudo install -m 0755 xpanes /usr/local/bin/xpanes
 
 # install apps
 mkdir homebrew && curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C homebrew
-sudo mv homebrew /opt/homebrew
+sudo mv --force homebrew /opt/homebrew
 export PATH=/opt/homebrew/bin:$PATH
 
 brew cask install google-chrome
