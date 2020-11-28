@@ -53,6 +53,7 @@ cargo install ripgrep
 cargo install exa
 cargo install fd-find
 cargo install bat
+cargo install gitui
 
 # install nerd-fonts
 if [ "$(uname)" == 'Darwin' ]  && [ "$(uname -m)" == 'arm64' ]; then
