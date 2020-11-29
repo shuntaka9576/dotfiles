@@ -29,3 +29,4 @@ brew cask install gyazo
 brew cask install slack
 brew cask install visual-studio-code
 brew cask install drawio
+brew install --cask 1password
