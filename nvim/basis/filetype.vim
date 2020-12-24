@@ -7,6 +7,7 @@ augroup MyTabStop
   autocmd BufNewFile,BufRead *.tsx setlocal tabstop=2 shiftwidth=2 expandtab
   autocmd BufNewFile,BufRead *.html setlocal tabstop=2 shiftwidth=2 expandtab
   autocmd BufNewFile,BufRead *.css setlocal tabstop=2 shiftwidth=2 expandtab
+  autocmd BufNewFile,BufRead *.scss setlocal tabstop=2 shiftwidth=2 expandtab
   autocmd BufNewFile,BufRead *.md setlocal tabstop=4 shiftwidth=4
   autocmd BufNewFile,BufRead *.go setlocal tabstop=4 shiftwidth=4
   autocmd BufNewFile,BufRead *.vim setlocal tabstop=2 shiftwidth=2 expandtab
