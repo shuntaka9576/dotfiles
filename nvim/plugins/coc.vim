@@ -1,5 +1,14 @@
 " nodeのPATHを指定
-let g:coc_node_path = expand('~/.anyenv/envs/nodenv/shims/node')
+
+let g:os = substitute(system('arch -arm64e uname'), '\n', '', '')
+let g:arch = substitute(system('arch -arm64e uname -m'), '\n', '', '')
+
+if g:os ==# 'Darwin' && g:arch ==# 'x86_64'
+  let g:coc_node_path = expand('~/.anyenv/envs/nodenv/shims/node')
+elseif g:os ==# 'Darwin' && g:arch ==# 'arm64'
+  let g:coc_node_path = expand('/usr/local/bin/node')
+endif
+
 " コード補完時にEnterで確定した際に改行しない
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 " リファクタリング機能

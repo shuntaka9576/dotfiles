@@ -3,6 +3,10 @@
 # ------------------------------------------------------------------------------
 # Enviroment value
 
+# MacPorts # TODO Darwin arm64 only
+export PATH="/opt/local/bin:$PATH"
+export PATH="/opt/homebrew/bin:$PATH"
+
 # zsh
 export ZDOTDIR="$HOME/.zsh"
 
@@ -13,9 +17,9 @@ export LANGUAGE=en_US.UTF-8
 export GHQ_ROOT=~/repos
 
 # Golang
-export GOPATH=~/repos
+export GOPATH=~/go
 export GO111MODULE=on
-export PATH=~/go/bin
+export PATH="$HOME/go/bin:$PATH"
 
 # Rust
 export RUST_BACKTRACE=1

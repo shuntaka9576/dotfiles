@@ -23,14 +23,22 @@ git clone -b $branchName https://github.com/shuntaka9576/dotfiles.git ~/dotfiles
 # =*=*=*=*=*=*=*=*=*=*=* start symbolic link shell =*=*=*=*=*=*=*=*=*=*=*
 ~/dotfiles/init/setup/link.sh
 
-if [ "$(uname)" == 'Darwin' ]; then
-  echo '====================================== Mac ======================================'
+IS_INSTALL_BREW=true
+if [ "$(uname)" == 'Darwin' ]  && [ "$(uname -m)" == 'x86_64' ]; then
+  echo '====================================== Mac(x86_64) ======================================'
   # install brew
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
   # install lib for mac
   source ~/.bash_profile
   ~/dotfiles/init/setup/mac.sh
+elif [ "$(uname)" == 'Darwin' ]  && [ "$(uname -m)" == 'arm64' ]; then
+  echo '====================================== Mac(arm64) ======================================'
+  # TODO install MacPorts
+  export PATH=/opt/local/bin:$PATH
+  # ~/dotfiles/init/setup/mac.sh
+  ~/dotfiles/init/setup/mac-arm64.sh
+  IS_INSTALL_BREW=false
 elif [ -e /etc/debian_version ]; then
   echo '====================================== Ubuntu ======================================'
   # install brew
@@ -47,8 +55,10 @@ elif [ -e /etc/system-release ]; then
   fi
 fi
 
-echo '====================================== run brew ======================================'
-~/dotfiles/init/setup/brew.sh
+if "${IS_INSTALL_BREW}"; then
+  echo '====================================== run brew ======================================'
+  ~/dotfiles/init/setup/brew.sh
+fi
 echo '====================================== install npm modules ======================================'
 ~/dotfiles/init/setup/frontend.sh
 echo '====================================== install tools ======================================'
@@ -57,8 +67,8 @@ echo '====================================== symbolic link nvim ================
 ~/dotfiles/nvim/link.sh
 echo '====================================== symbolic link tools ======================================'
 ~/dotfiles/tools/link.sh
-echo '====================================== install fisher plugins ======================================'
-~/dotfiles/fish/fish_plug.sh
-exit
+# echo '====================================== install fisher plugins ======================================'
+# ~/dotfiles/fish/fish_plug.sh
+# exit
 echo '====================================== setting zsh ======================================'
 ~/dotfiles/zsh/install_link.sh # TODO test

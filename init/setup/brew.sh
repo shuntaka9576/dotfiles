@@ -16,19 +16,20 @@ brew install tree
 brew install ren
 brew install direnv
 brew install wget
-brew install tig
-brew install hub
-brew install rg
 brew install tmux-xpanes
-brew install exa
-brew install fd
-brew install bat
 brew install fontforge
 brew install reattach-to-user-namespace # tmux
-brew install terraform
-brew unlink terraform
-brew install tfenv   # terraform version manager
 brew install gnu-sed # replace \t
 brew install asciidoctor
 brew install --HEAD pyenv-virtualenv
 brew install --HEAD pyenv-virtualenvwrapper
+# brew install tig
+# brew install terraform
+# brew unlink terraform
+# brew install tfenv   # terraform version manager
+
+# TODO deplicate(change to cargo install. See common.sh.)
+# brew install fd
+# brew install bat
+# brew install rg
+# brew install exa
