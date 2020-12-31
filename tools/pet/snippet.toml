@@ -203,3 +203,20 @@ hashicorp/terraform:0.12.5 <command>
   description = "sha256 digestを取得"
   command = "openssl dgst -sha256 ~/Downloads/kanban_darwin_x86_64.tar.gz"
   tag = ["openssl", "sha256"]
+
+# ----------------------------------------------------------------
+# blog
+[[snippets]]
+  description = "blog"
+  command = "ulid| tr A-Z a-z | xargs -I {} touch '{}.md'"
+  tag = ["blog"]
+
+[[snippets]]
+  description = "blog dev"
+  command = "export AIRTICLE_DIR=./articles;export STAGE_NAME=dev;yarn ts-node ./bin/article-writer.ts"
+  tag = ["blog"]
+
+[[snippets]]
+  description = "blog prd"
+  command = "export AIRTICLE_DIR=./articles;export STAGE_NAME=prd;yarn ts-node ./bin/article-writer.ts"
+  tag = ["blog"]
