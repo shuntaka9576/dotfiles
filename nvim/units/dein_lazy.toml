@@ -187,6 +187,12 @@ repo = 'shuntaka9576/preview-swagger.nvim'
 on_ft = ['yaml']
 build = 'yarn install'
 
+# [[plugins]]
+# repo = 'hozi-dev/preview-hozi-dev.nvim.git'
+# on_ft = ['markdown', 'yaml', 'yml']
+# build = 'yarn install'
+# merged = 0
+
 [[plugins]]
 repo = 'iamcco/markdown-preview.nvim'
 on_ft = ['markdown', 'pandoc.markdown', 'rmd']

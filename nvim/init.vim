@@ -27,6 +27,7 @@ let s:toml_dir = expand('~/.config/nvim/dein')
 
 if dein#load_state(s:dein_dir)
   call dein#begin(s:dein_dir)
+  call dein#add('~/repos/github.com/hozi-dev/preview-hozi-dev.nvim', {'marged': 0, 'build': 'yarn install'})
   call dein#load_toml('~/.config/nvim/dein/dein.toml',       {'lazy': 0})
   call dein#load_toml('~/.config/nvim/dein/dein_lazy.toml',  {'lazy': 1})
 

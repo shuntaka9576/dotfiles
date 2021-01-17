@@ -213,10 +213,15 @@ hashicorp/terraform:0.12.5 <command>
 
 [[snippets]]
   description = "blog dev"
-  command = "export AIRTICLE_DIR=./articles;export STAGE_NAME=dev;yarn ts-node ./bin/article-writer.ts"
+  command = "export AIRTICLE_DIR=./articles;export DEV=true;yarn ts-node ./bin/article-writer.ts"
   tag = ["blog"]
 
 [[snippets]]
   description = "blog prd"
-  command = "export AIRTICLE_DIR=./articles;export STAGE_NAME=prd;yarn ts-node ./bin/article-writer.ts"
+  command = "export AIRTICLE_DIR=./articles;yarn ts-node ./bin/article-writer.ts"
   tag = ["blog"]
+
+[[snippets]]
+  description = "lighthouse"
+  command = "lighthouse http://localhost:3000 --view"
+  tag = ["lighthouse"]
