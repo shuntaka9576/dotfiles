@@ -208,7 +208,7 @@ hashicorp/terraform:0.12.5 <command>
 # blog
 [[snippets]]
   description = "blog"
-  command = "ulid| tr A-Z a-z | xargs -I {} touch '{}.md'"
+  command = "ulid| tr A-Z a-z | xargs -I {} touch 'articles/{}.md'"
   tag = ["blog"]
 
 [[snippets]]
