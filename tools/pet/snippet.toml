@@ -232,3 +232,10 @@ hashicorp/terraform:0.12.5 <command>
   description = "development nvim plugin"
   command = "nvim -u ~/repos/github.com/shuntaka9576/init.vim/init.vim"
   tag = ["nvim"]
+
+# ----------------------------------------------------------------
+# deno
+[[snippets]]
+  description = "deno fmt"
+  command = "deno fmt --ext ts --unstable --watch"
+  tag = ["deno"]
