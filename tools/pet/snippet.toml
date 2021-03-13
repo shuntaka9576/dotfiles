@@ -225,3 +225,10 @@ hashicorp/terraform:0.12.5 <command>
   description = "lighthouse"
   command = "lighthouse http://localhost:3000 --view"
   tag = ["lighthouse"]
+
+# ----------------------------------------------------------------
+# nvim
+[[snippets]]
+  description = "development nvim plugin"
+  command = "nvim -u ~/repos/github.com/shuntaka9576/init.vim/init.vim"
+  tag = ["nvim"]
