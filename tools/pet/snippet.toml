@@ -98,6 +98,12 @@
   tag = ["git"]
   output = ""
 
+[[snippets]]
+  description = "HEADを取得"
+  command = 'git rev-parse --short HEAD'
+  tag = ["git"]
+  output = ""
+
 # ----------------------------------------------------------------
 # Perlワンライナー
 # -e 'スクリプト'： 実行するPerlスクリプトを指定
