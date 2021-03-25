@@ -144,6 +144,12 @@
   tag = ["perl"]
   output = ""
 
+[[snippets]]
+  description = "ディレクトリ指定一括置換"
+  command = "find dir1 dir2 | xargs perl -i -pe 's/foo/hoge/g'"
+  tag = ["perl"]
+  output = ""
+
 # ----------------------------------------------------------------
 # aws
 
