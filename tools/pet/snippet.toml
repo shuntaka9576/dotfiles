@@ -23,6 +23,34 @@
   output = ""
 
 [[snippets]]
+  description = "curlでヘッダーのみ表示"
+  command = 'curl -D - -s  -o /dev/null "https://api.hozi.dev/v1/users/hozi576/articles?type=tech"'
+  tag = ["curl"]
+  output = ""
+
+[[snippets]]
+  description = "curlで速度を測る"
+  command = '''
+cat <(echo "time\thttp_code\ttime_namelookup\ttime_connect\ttime_pretransfer\ttime_starttransfer\ttime_total") \
+<(for i in $(seq 1 5); do
+  TIME_STAMP=$(date '+%y/%m/%d %H:%M:%S')
+  curl -X GET \
+     --url "https://api.hozi.dev/v1/users/hozi576/articles?type=tech" \
+    --header "Content-Type: application/json" \
+    --show-error \
+    --silent \
+    --write-out "$TIME_STAMP\t%{http_code}\t%{time_namelookup}\t%{time_connect}\t%{time_pretransfer}\t%{time_starttransfer}\t%{time_total}\n" \
+    --output /dev/null
+  sleep 5
+done) | tee >(pbcopy)
+'''
+  tag = ["curl"]
+  output = ""
+
+# --data '{"test": {"test": true}}' \
+# --header "authorization: Bearer $token"'
+
+[[snippets]]
   description = "Check listening port"
   command = "lsof -i -P | grep 8888"
   tag = ["port"]
@@ -203,12 +231,12 @@ hashicorp/terraform:0.12.5 <command>
 # Encode/Decode
 [[snippets]]
   description = "base64にエンコード"
-  command = "echo 'テスト' | python -m base64"
+  command = "echo -n 'テスト' | python -m base64"
   tag = ["base64", "encode"]
 
 [[snippets]]
   description = "base64にデコード"
-  command = "echo '44OG44K544OICg==' | python -m base64 -d"
+  command = "echo -n '44OG44K544OI' | python -m base64 -d"
   tag = ["base64", "decode"]
 
 [[snippets]]
@@ -223,16 +251,8 @@ hashicorp/terraform:0.12.5 <command>
   command = "ulid| tr A-Z a-z | xargs -I {} touch 'articles/{}.md'"
   tag = ["blog"]
 
-[[snippets]]
-  description = "blog dev"
-  command = "export AIRTICLE_DIR=./articles;export DEV=true;yarn ts-node ./bin/article-writer.ts"
-  tag = ["blog"]
-
-[[snippets]]
-  description = "blog prd"
-  command = "export AIRTICLE_DIR=./articles;yarn ts-node ./bin/article-writer.ts"
-  tag = ["blog"]
-
+# ----------------------------------------------------------------
+# web
 [[snippets]]
   description = "lighthouse"
   command = "lighthouse http://localhost:3000 --view"
