@@ -27,6 +27,7 @@ export PATH="$HOME/.cargo/bin:$PATH"
 
 # AWS
 export AWS_SAM_LOCAL=true
+export AWS_SDK_LOAD_CONFIG=true # See https://qiita.com/tamanugi/items/4e0bee33507174a1647e
 
 # Node
 export PATH=~/.npm-global/bin:$PATH
