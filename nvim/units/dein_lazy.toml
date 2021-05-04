@@ -254,3 +254,11 @@ on_ft = ['ts', 'tsx']
 repo='peitalin/vim-jsx-typescript'
 on_ft = ['ts', 'tsx']
 
+# rust
+[[plugins]]
+repo = 'rust-lang/rust.vim'
+on_ft = ['rust']
+hook_add='''
+  let g:rustfmt_autosave = 1
+'''
+
