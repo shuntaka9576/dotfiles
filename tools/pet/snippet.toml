@@ -10,6 +10,13 @@
   tag = ["go"]
   output = ""
 
+
+[[snippets]]
+  description = "ディレクトリ内のファイル分実行するコマンドを生成する"
+  command = "ls -al tests/e2e |awk '{print $7}' | xargs -I {} echo 'yarn test-e2e --runTestsByPath ./tests/e2e/{}'"
+  tag = ["xargs", "awk"]
+  output = ""
+
 [[snippets]]
   description = "Proxy環境下で、curl"
   command = "curl -v --proxy http://{adress}:{port} -o /dev/null https://www.google.com"
@@ -231,12 +238,12 @@ hashicorp/terraform:0.12.5 <command>
 # Encode/Decode
 [[snippets]]
   description = "base64にエンコード"
-  command = "echo -n 'テスト' | python -m base64"
+  command = "echo -n 'テスト' | base64"
   tag = ["base64", "encode"]
 
 [[snippets]]
   description = "base64にデコード"
-  command = "echo -n '44OG44K544OI' | python -m base64 -d"
+  command = "echo -n '44OG44K544OI' | base64 -D"
   tag = ["base64", "decode"]
 
 [[snippets]]
