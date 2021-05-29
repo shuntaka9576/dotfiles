@@ -5,6 +5,12 @@
       "<C-p>": "normal:k"
   },
   "coc.preferences.jumpCommand": "tab drop",
+  "coc.preferences.rootPatterns": [
+      ".git",
+      ".hg",
+      ".projections.json",
+      "pyproject.toml" // Without it it didn't work in the monorepo python project
+  ],
   "coc.preferences.formatOnSaveFiletypes":[
     "dart"
   ],
@@ -15,9 +21,9 @@
       "filetypes": ["go"]
     }
   },
-  "python.linting.enabled": true,
   "python.venvPath": "${workspaceFolder}/.venv",
   "python.pythonPath": "${workspaceFolder}/.venv/bin/python",
+  "python.linting.enabled": false,
   "python.linting.flake8Enabled": true,
   "python.linting.flake8Args": ["--max-line-length", "88"],
   "python.linting.mypyEnabled": false,
@@ -28,5 +34,6 @@
       "--show-column-numbers",
       "--check-untyped-defs"
   ],
-  "pyright.enable": false
+  "python.formatting.blackdPath": "${workspaceFolder}/.venv/bin/black",
+  "pyright.enable": true
 }

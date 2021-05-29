@@ -127,6 +127,10 @@ alias gl='git log'
 alias gr='git reset --hard'
 alias l='lazygit'
 
+# python
+alias pf='poetry run pysen run format'
+alias pl='poetry run pysen run lint'
+
 # nvim alias
 alias n='nvim'
 
@@ -137,6 +141,8 @@ alias tka='tmux kill-server'
 
 # python alias
 alias prn='pipenv run nvim'
+# __pycache__を生成しない
+export PYTHONDONTWRITEBYTECODE=1
 
 # npm alias
 alias ns='npm start'
