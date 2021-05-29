@@ -15,15 +15,18 @@
       "filetypes": ["go"]
     }
   },
-  "python.jediEnabled": false,
-  "python.pythonPath": ".venv/bin/python",
-  "python.venvFolders": [".venv"],
-  "python.venvPath": "${workspaceFolder}",
-  "python.analysis.typeshedPaths": [
-    "${workspaceFolder}/.venv/lib/python3.7/site-packages/typeshed"
-  ],
   "python.linting.enabled": true,
+  "python.venvPath": "${workspaceFolder}/.venv",
+  "python.pythonPath": "${workspaceFolder}/.venv/bin/python",
   "python.linting.flake8Enabled": true,
-  "python.linting.mypyEnabled": true,
-  "python.formatting.provider": "black"
+  "python.linting.flake8Args": ["--max-line-length", "88"],
+  "python.linting.mypyEnabled": false,
+  "python.linting.lintOnSave": true,
+  "python.linting.mypyArgs": [
+      "--ignore-missing-imports",
+      "--follow-imports=silent",
+      "--show-column-numbers",
+      "--check-untyped-defs"
+  ],
+  "pyright.enable": false
 }

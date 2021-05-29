@@ -28,3 +28,5 @@ export RUST_BACKTRACE=1
 # alias settings
 # alias t="tmux -2 command-prompt 'new-session -n %1'"
 alias t='tmux -2'
+
+export PATH="$HOME/.poetry/bin:$PATH"

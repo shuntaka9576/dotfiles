@@ -229,8 +229,8 @@ on_ft = ['python']
 repo = 'python/black'
 on_ft = ['python']
 hook_add='''
-  autocmd BufWritePost *.py silent execute ':Black'
-  autocmd BufWritePre *.py silent execute ':Black'
+" autocmd BufWritePost *.py silent execute ':Black'
+"  autocmd BufWritePre *.py silent execute ':Black'
 '''
 
 # ======================================================================================================================
