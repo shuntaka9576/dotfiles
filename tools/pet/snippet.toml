@@ -63,6 +63,11 @@ done) | tee >(pbcopy)
   tag = ["port"]
   output = ""
 
+[[snippets]]
+  description = "Check process"
+  command="ps auxfww"
+  tag = ["ps"]
+  output = ""
 
 [[snippets]]
   description = "1行目を非表示で出力"
