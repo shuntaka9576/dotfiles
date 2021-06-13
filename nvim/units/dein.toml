@@ -224,7 +224,7 @@ nmap <buffer><silent> <Plug>(fern-my-open-and-close)
 
 " コンフィグ設定
 function! s:init_fern() abort
-  nmap <buffer> <Space> <Plug>(fern-action-mark-toggle)
+  nmap <buffer> <Space> <Plug>(fern-action-mark)
   nmap <buffer><expr>
       \ <Plug>(fern-my-expand-or-collapse)
       \ fern#smart#leaf(
@@ -247,7 +247,9 @@ function! s:init_fern() abort
         \ )
   nmap <buffer><nowait> l <Plug>(fern-action-enter)
   nmap <buffer><nowait> h <Plug>(fern-action-leave)
-  nmap <buffer><nowait> e <Plug>(fern-action-open:side)
+  nmap <buffer><nowait> e <Plug>(fern-action-hidden)
+  nmap <buffer><nowait> p <Plug>(fern-action-focus:parent)
+  nmap <buffer><nowait> r <Plug>(fern-action-reload:all)
   nmap <buffer><nowait> d <Plug>(fern-action-remove)
 endfunction
 
