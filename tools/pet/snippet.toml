@@ -271,11 +271,16 @@ hashicorp/terraform:0.12.5 <command>
   tag = ["lighthouse"]
 
 # ----------------------------------------------------------------
-# nvim
+# nvim/vim
 [[snippets]]
   description = "development nvim plugin"
   command = "nvim -u ~/repos/github.com/shuntaka9576/init.vim/init.vim"
   tag = ["nvim"]
+
+[[snippets]]
+  description = "development vim plugin"
+  command = "vim -S ~/repos/github.com/shuntaka9576/init.vim/init.vim"
+  tag = ["vim"]
 
 # ----------------------------------------------------------------
 # deno

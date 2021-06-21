@@ -293,3 +293,14 @@ let g:dart_style_guide = 2
 
 [[plugins]]
 repo = 'thosakwe/vim-flutter'
+
+[[plugins]]
+repo = 'vim-jp/vital.vim'
+merged = 0
+
+[[plugins]]
+repo = 'lambdalisue/vim-amake'
+
+# use System.Job
+[[plugins]]
+repo = 'lambdalisue/vital-Whisky'
