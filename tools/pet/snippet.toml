@@ -279,7 +279,7 @@ hashicorp/terraform:0.12.5 <command>
 
 [[snippets]]
   description = "development vim plugin"
-  command = "vim -S ~/repos/github.com/shuntaka9576/init.vim/init.vim"
+  command = "vim -u ~/repos/github.com/shuntaka9576/init.vim/init.vim"
   tag = ["vim"]
 
 # ----------------------------------------------------------------
