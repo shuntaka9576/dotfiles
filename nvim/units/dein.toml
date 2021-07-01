@@ -171,15 +171,25 @@ nnoremap subp y:OverCommandLine<CR>%s!<C-r>=substitute(@0, '!', '\\!', 'g')<CR>!
 '''
 
 [[plugins]]
-repo = 'lambdalisue/fern-renderer-devicons.vim'
+repo = 'lambdalisue/fern-renderer-nerdfont.vim'
+
+[[plugins]]
+repo = 'lambdalisue/nerdfont.vim.git'
+hook_add='''
+let g:nerdfont#directory#customs = {
+      \ '': '',
+      \ 'open': '',
+      \ 'close': '',
+      \ 'symlink': '',
+      \}
+'''
 
 [[plugins]]
 repo = 'lambdalisue/fern.vim'
-depends = ['vim-devicons']
 hook_add='''
 " アイコン有効化
-let g:fern#renderer = "devicons"
 let g:fern#default_hidden = 1
+let g:fern#renderer = "nerdfont"
 
 " 起動コマンド
 nnoremap <silent><Leader>d :<C-u>Fern . -drawer -toggle<CR>
