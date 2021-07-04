@@ -154,13 +154,13 @@ nnoremap <silent> [figitive]l :<C-u>Glog<CR>
 # ======================================================================================================================
 # Multiple filetype syntax
 # ======================================================================================================================
-[[plugins]]
-repo = 'osyo-manga/vim-precious'
-on_ft = ['toml']
-depends = ['context_filetype.vim']
+# [[plugins]]
+# repo = 'osyo-manga/vim-precious'
+# on_ft = ['toml']
+# depends = ['context_filetype.vim']
 
-[[plugins]]
-repo = 'Shougo/context_filetype.vim'
+# [[plugins]]
+# repo = 'Shougo/context_filetype.vim'
 
 # ======================================================================================================================
 # WordPress
