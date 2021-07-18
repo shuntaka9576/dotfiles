@@ -155,6 +155,16 @@ done) | tee >(pbcopy)
   output = ""
 
 [[snippets]]
+  description = "if elseを使った置換"
+  command = "echo \"\\`\\`\\`bash\\n\\`\\`\\`\\\\n\\`\\`\\`toml\\n\\`\\`\\`\" | perl -nle '$i++;if (/^```(\\w+)$/){$a=$1; print \"[$1]\";}elsif(/```/){print \"[/$a]\"}else{print $_}'"
+  tag = ["perl"]
+
+[[snippets]]
+  description = "標準入力の最後に行を追加する"
+  command = "echo \"foo.log\\nfoo.log.2021-07-16\\nfoo.log.2021-07-17\\nfoo.log.2021-07-18\" | perl -nle 'if(eof){print \"$_\\nfoo.log\"}elsif(/foo.log..*/){print $_}'"
+  tag = ["perl"]
+
+[[snippets]]
   description = "ファイルを読み込んで1行ずつ処理する(-n)"
   command = "perl -nle '$i++;print \"$i: $_\"' README.md"
   tag = ["perl"]
