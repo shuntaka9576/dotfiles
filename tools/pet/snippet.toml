@@ -165,6 +165,11 @@ done) | tee >(pbcopy)
   tag = ["perl"]
 
 [[snippets]]
+  description = "ファイルごとにきまった文字をカウントする"
+  command = "find nvim -type f |sort | xargs -I{} perl -nle '$i++ while /vim/g}{print \"$ARGV: $i回\"' {}"
+  tag = ["perl"]
+
+[[snippets]]
   description = "ファイルを読み込んで1行ずつ処理する(-n)"
   command = "perl -nle '$i++;print \"$i: $_\"' README.md"
   tag = ["perl"]
