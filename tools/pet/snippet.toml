@@ -3,7 +3,6 @@
   command = "ls -al |awk '{print $1,$9}'"
   tag = ["awk"]
   output = ""
-
 [[snippets]]
   description = "GOPATH modeに変更"
   command = "set --export GO111MODULE off"
@@ -315,3 +314,9 @@ hashicorp/terraform:0.12.5 <command>
   description = "証明書のデコード"
   command = "openssl x509 -text -noout -in rootCA.pem"
   tag = ["openssl"]
+
+# ----------------------------------------------------------------
+[[snippets]]
+  description = "ポートスキャン"
+  command = "nmap 192.168.1.5 -p 1-65535"
+  tag = ["network"]
