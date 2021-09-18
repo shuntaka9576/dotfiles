@@ -237,8 +237,6 @@
     "files.eol": "\n",
     "files.autoSave": "onFocusChange",
     "files.autoGuessEncoding": true,
-    // window settings
-    "window.zoomLevel": 0,
     "explorer.confirmDragAndDrop": false,
     "explorer.confirmDelete": false,
     "julia.enableCrashReporter": true,

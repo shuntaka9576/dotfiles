@@ -243,6 +243,3 @@ if [ -f '/Users/takahashi.shunichi/google-cloud-sdk/path.zsh.inc' ]; then . '/Us
 
 export PATH="$HOME/.poetry/bin:$PATH"
 
-# ------------------------------------------------------------------------------
-# platformio settings
-export PATH="$HOME/.platformio/penv/bin:$PATH"

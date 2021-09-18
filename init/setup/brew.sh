@@ -23,6 +23,7 @@ brew install gnu-sed # replace \t
 brew install asciidoctor
 brew install --HEAD pyenv-virtualenv
 brew install --HEAD pyenv-virtualenvwrapper
+
 # brew install tig
 # brew install terraform
 # brew unlink terraform
@@ -33,3 +34,6 @@ brew install --HEAD pyenv-virtualenvwrapper
 # brew install bat
 # brew install rg
 # brew install exa
+
+# for cpp enviroment settings
+brew install llvm
