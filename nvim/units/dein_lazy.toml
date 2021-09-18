@@ -162,16 +162,6 @@ nnoremap <silent> [figitive]l :<C-u>Glog<CR>
 # [[plugins]]
 # repo = 'Shougo/context_filetype.vim'
 
-# ======================================================================================================================
-# WordPress
-# ======================================================================================================================
-[[plugins]]
-repo = 'haoyayoi/VimWordpress'
-on_ft = ['markdown']
-hook_add='''
-  command! BSaveDaraft execute(":BlogSave draft")
-  command! BPreveiwDraft execute(":BlogPreview draft")
-'''
 
 # ======================================================================================================================
 # Realtime preview plugins settings
