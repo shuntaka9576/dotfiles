@@ -2,7 +2,6 @@
   "recommendations": [
     "eamodio.gitlens",
     "vscodevim.vim",
-    "ms-vscode.go",
     "ms-python.python",
     "coenraads.bracket-pair-colorizer",
     "vscode-icons-team.vscode-icons",
@@ -14,6 +13,6 @@
     "jebbs.plantuml",
     "joaompinto.asciidoctor-vscode",
     "esbenp.prettier-vscode",
-    "dart-code.flutter"
+    "platformio.platformio-ide"
   ]
 }
