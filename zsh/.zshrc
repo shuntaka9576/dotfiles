@@ -116,7 +116,7 @@ alias t='tmux -2'
 alias cr='cargo run'
 
 # exec ls(exa) after cd
-chpwd() { exa -ahl --git }
+# chpwd() { exa -ahl --git }
 
 # git alias
 alias gs='git status'
@@ -242,4 +242,9 @@ if [ -f '/Users/takahashi.shunichi/google-cloud-sdk/path.zsh.inc' ]; then . '/Us
 # The next line enables shell command completion for gcloud.
 
 export PATH="$HOME/.poetry/bin:$PATH"
+
+# ------------------------------------------------------------------------------
+# esp-idf settings
+alias get_idf='. $HOME/esp/esp-idf/export.sh'
+export PATH="/usr/local/opt/llvm/bin:$PATH"
 
