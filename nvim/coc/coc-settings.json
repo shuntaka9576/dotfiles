@@ -12,7 +12,9 @@
       "pyproject.toml" // Without it it didn't work in the monorepo python project
   ],
   "coc.preferences.formatOnSaveFiletypes":[
-    "dart"
+    "dart",
+    "cpp",
+    "c"
   ],
   "languageserver": {
     "golang": {
