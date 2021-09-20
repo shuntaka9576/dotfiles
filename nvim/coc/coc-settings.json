@@ -19,17 +19,17 @@
       "command": "gopls",
       "rootPatterns": ["go.mod"],
       "filetypes": ["go"]
+    },
+    "ccls": {
+      "command": "ccls",
+      "filetypes": ["c", "cc", "cpp", "c++", "objc", "objcpp"],
+      "rootPatterns": [".ccls", "compile_commands.json", ".git/", ".hg/"],
+      "initializationOptions": {
+          "cache": {
+            "directory": "/tmp/ccls"
+          }
+        }
     }
-    // "ccls": {
-    //   "command": "ccls",
-    //   "filetypes": ["c", "cc", "cpp", "c++", "objc", "objcpp"],
-    //   "rootPatterns": [".ccls", "compile_commands.json", ".git/", ".hg/"],
-    //   "initializationOptions": {
-    //       "cache": {
-    //         "directory": "/tmp/ccls"
-    //       }
-    //     }
-    // }
   },
   "python.venvPath": "${workspaceFolder}/.venv",
   "python.pythonPath": "${workspaceFolder}/.venv/bin/python",
