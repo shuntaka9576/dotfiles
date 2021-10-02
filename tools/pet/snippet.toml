@@ -321,6 +321,7 @@ hashicorp/terraform:0.12.5 <command>
   command = "nmap 192.168.1.5 -p 1-65535"
   tag = ["network"]
 
+# ----------------------------------------------------------------
 [[snippets]]
   description = "PlatformIOでccls定義ファイルを吐き出す"
   command = "pio init --board=m5stack-core2 --project-option=\"framework=espidf\" --ide vim"
@@ -330,4 +331,10 @@ hashicorp/terraform:0.12.5 <command>
   description = "ファームウェアの削除,アップロード,転送"
   command = "pio run --upload-port /dev/cu.SLAB_USBtoUART -t upload;pio device monitor -p /dev/cu.SLAB_USBtoUART --raw"
   tag = ["PlatformIO"]
+
+# ----------------------------------------------------------------
+[[snippets]]
+  description = "Cのビルド"
+  command = "gcc -std=c99 -o main main.c; ./main"
+  tag = ["C"]
 
