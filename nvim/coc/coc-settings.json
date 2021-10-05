@@ -46,6 +46,6 @@
       "--show-column-numbers",
       "--check-untyped-defs"
   ],
-  "python.formatting.blackdPath": "${workspaceFolder}/.venv/bin/black",
-  "pyright.enable": true
+  "pyright.enable": true,
+  "pyright.disableDiagnostics": true
 }
