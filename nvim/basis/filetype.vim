@@ -4,6 +4,7 @@
 augroup MyTabStop
   autocmd!
   autocmd BufNewFile,BufRead *.ts setlocal tabstop=2 shiftwidth=2 expandtab
+  autocmd BufNewFile,BufRead *.pl setlocal tabstop=2 shiftwidth=2 expandtab
   autocmd BufNewFile,BufRead *.c setlocal tabstop=2 shiftwidth=2 expandtab
   autocmd BufNewFile,BufRead *.cpp setlocal tabstop=2 shiftwidth=2 expandtab
   autocmd BufNewFile,BufRead *.tsx setlocal tabstop=2 shiftwidth=2 expandtab
@@ -17,6 +18,7 @@ augroup MyTabStop
   autocmd BufNewFile,BufRead *.yml setlocal tabstop=2 shiftwidth=2
   autocmd BufNewFile,BufRead *.toml setlocal tabstop=2 shiftwidth=2 expandtab
   autocmd BufNewFile,BufRead *.dart setlocal tabstop=2 shiftwidth=2 expandtab
+  autocmd BufNewFile,BufRead *.mjs setlocal tabstop=2 shiftwidth=2 expandtab
 augroup END
 
 " Markdownを折りたたむ

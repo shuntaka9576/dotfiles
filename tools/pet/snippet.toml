@@ -338,3 +338,7 @@ hashicorp/terraform:0.12.5 <command>
   command = "gcc -std=c99 -o main main.c; ./main"
   tag = ["C"]
 
+[[snippets]]
+  description = "google/zxの実行"
+  command = "zx --quiet http://zxsh.dev/hello.mjs"
+  tag = ["zx"]
