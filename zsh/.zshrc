@@ -136,7 +136,7 @@ alias n='nvim'
 
 # tmux alias
 # alias x='tmux source-file ~/dotfiles/tmux/window/git-window; tmux source-file ~/dotfiles/tmux/window/nvim-window'
-alias x='xpanes -d -e --stay "lazygit";xpanes -d -e --stay "nvim";'
+alias x='tmux rename-window "$(basename `pwd` | cut -c1-4)";tmux new-window -n "n" nvim;tmux new-window -n "p";tmux new-window -n "repo";lazygit'
 alias tka='tmux kill-server'
 
 # python alias
