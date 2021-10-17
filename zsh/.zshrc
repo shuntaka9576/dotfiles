@@ -136,8 +136,10 @@ alias n='nvim'
 
 # tmux alias
 # alias x='tmux source-file ~/dotfiles/tmux/window/git-window; tmux source-file ~/dotfiles/tmux/window/nvim-window'
-alias x='tmux rename-window "$(basename `pwd` | cut -c1-4)";tmux new-window -n "n" nvim;tmux new-window -n "p";tmux new-window -n "repo";lazygit'
+alias x='tmux rename-window "$(basename `pwd` | cut -c1-4)";tmux new-window -n "n" nvim;tmux new-window -n "p";lazygit'
 alias tka='tmux kill-server'
+
+alias memoi='cd ~/repos/github.com/shuntaka9576/memo;tmux rename-window "memo";tmux new-window -n "ar" -c ~/repos/github.com/hozi-dev/article lazygit;tmux new-window -n "n" -c ~/repos/github.com/hozi-dev/article nvim;tmux new-window -n "do" -c ~/repos/github.com/hozi-dev/docs lazygit;tmux new-window -n "n" -c ~/repos/github.com/hozi-dev/docs nvim;memo new'
 
 # python alias
 alias prn='pipenv run nvim'
