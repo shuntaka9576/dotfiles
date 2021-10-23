@@ -12,4 +12,5 @@ sudo npm install -g reload
 sudo npm install -g jsondiffpatch
 sudo npm install -g uuid-cli
 sudo npm install -g lighthouse
+sudo npm install -g npm-check-updates
 # npm install -g prettier
