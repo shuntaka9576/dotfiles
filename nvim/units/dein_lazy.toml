@@ -1,9 +1,8 @@
-# ======================================================================================================================
-# Syntax highlight settings
-# ======================================================================================================================
+# syntax assistance
 [[plugins]]
 repo = 'inkarkat/vim-SyntaxRange'
 
+# icon
 [[plugins]]
 repo = 'ryanoasis/vim-devicons'
 hook_add = '''
@@ -17,6 +16,7 @@ let g:DevIconsDefaultFolderOpenSymbol = ''
 let g:WebDevIconsUnicodeDecorateFolderNodesDefaultSymbol = ''
 '''
 
+# filer
 [[plugins]]
 repo = 'chemzqm/denite-git'
 
@@ -44,6 +44,7 @@ hook_source = '''
     let g:webdevicons_enable_denite = 1
 '''
 
+# Git
 [[plugins]]
 repo = "tpope/vim-fugitive"
 on_cmd = [
@@ -63,9 +64,7 @@ nnoremap <silent> [figitive]b :<C-u>Gblame<CR>
 nnoremap <silent> [figitive]l :<C-u>Glog<CR>
 '''
 
-# ======================================================================================================================
 # Realtime preview plugins settings
-# ======================================================================================================================
 [[plugins]]
 repo = 'shuntaka9576/preview-asciidoc.nvim'
 on_ft = ['asciidoc']
@@ -82,9 +81,7 @@ repo = 'iamcco/markdown-preview.nvim'
 on_ft = ['markdown', 'pandoc.markdown', 'rmd']
 build =  'cd app & yarn install'
 
-# ======================================================================================================================
 # Markdown
-# ======================================================================================================================
 [[plugins]]
 repo = 'godlygeek/tabular'
 on_ft = ['markdown']
@@ -102,9 +99,7 @@ let g:vim_markdown_folding_level = 6
 let g:vim_markdown_frontmatter = 1
 '''
 
-# ======================================================================================================================
-# Python code formatter settings
-# ======================================================================================================================
+# Python
 [[plugins]]
 repo = 'fisadev/vim-isort'
 on_ft = ['python']
@@ -117,18 +112,12 @@ hook_add='''
 "  autocmd BufWritePre *.py silent execute ':Black'
 '''
 
-# ======================================================================================================================
-# Go code formatter settings
-# ======================================================================================================================
+# Go
 [[plugins]]
 repo='mattn/vim-goimports'
 on_ft = ['go']
 
-# ======================================================================================================================
-# TypeScript code formatter settings
-# ======================================================================================================================
-
-# rust
+# Rust
 [[plugins]]
 repo = 'rust-lang/rust.vim'
 on_ft = ['rust']
