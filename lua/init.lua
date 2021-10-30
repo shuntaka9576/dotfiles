@@ -91,15 +91,22 @@ require('packer').startup(function()
 
   }
 
-  -- filer plugin
+  -- file explorer  plugin
   use {
     'kyazdani42/nvim-tree.lua',
     requires = 'kyazdani42/nvim-web-devicons',
     config = function()
-      require'nvim-tree'.setup {
+      require('nvim-tree').setup {
         vim.api.nvim_set_keymap('n', '<Leader>d', ':NvimTreeToggle<CR>',
+                                {noremap = true, silent = true}),
+        vim.api.nvim_set_keymap('n', '<Leader>r', ':NvimTreeRefresh<CR>',
                                 {noremap = true, silent = true})
       }
+      -- key mapping
+      -- local tree_cb = require('nvim-tree.config').nvim_tree_callback
+      -- local list = {
+      --   {},
+      -- }
     end
   }
   -- color theme and syntax plugin
