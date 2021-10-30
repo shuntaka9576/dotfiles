@@ -33,6 +33,12 @@
         }
     }
   },
+  "Lua.workspace.library": {
+    "~/nvim-osx64/share/nvim/runtime/lua": true,
+    "~/nvim-osx64/share/nvim/runtime/lua/vim": true,
+    "~/nvim-osx64/share/nvim/runtime/lua/vim/lsp": true
+  },
+  "Lua.diagnostics.globals": ["vim", "use"],
   "python.venvPath": "${workspaceFolder}/.venv",
   "python.pythonPath": "${workspaceFolder}/.venv/bin/python",
   "python.linting.enabled": false,

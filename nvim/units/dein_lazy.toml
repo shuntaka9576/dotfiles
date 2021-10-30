@@ -125,3 +125,12 @@ hook_add='''
   let g:rustfmt_autosave = 1
 '''
 
+
+# Lua
+[[plugins]]
+repo = 'andrejlevkovitch/vim-lua-format'
+on_ft = ['lua']
+hook_add='''
+  autocmd FileType lua nnoremap <buffer> <c-k> :call LuaFormat()<cr>
+  autocmd BufWrite *.lua call LuaFormat()
+'''
