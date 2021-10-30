@@ -167,6 +167,40 @@ require('packer').startup(function()
 
     end
   }
+
+  -- formatter plugin
+  use {
+    "mhartington/formatter.nvim",
+    config = function()
+      require('formatter').setup({
+        filetype = {
+          lua = {
+            function()
+              return {exe = "lua-format", args = {}, stdin = true}
+            end
+          }
+        }
+      })
+      vim.api.nvim_exec([[
+        augroup FormatAutogroup
+          autocmd!
+          autocmd BufWritePost *.lua FormatWrite
+        augroup END
+        ]], true)
+    end
+  }
+
+  -- term plugin
+  --[[
+  use {
+    "akinsho/toggleterm.nvim",
+    config = function ()
+      local Terminal = require('toggleterm.terminal').Terminal
+      local lazygit = Terminal:new({cmd = "lazygit", hidden=true})
+      vim.api.nvim_set_keymap('n', "")
+    end
+  }
+  --]]
 end)
 
 ----------------------------
