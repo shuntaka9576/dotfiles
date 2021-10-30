@@ -27,6 +27,22 @@ vim.api.nvim_set_keymap('n', '<Down>', 'gj', {noremap = true})
 vim.api.nvim_set_keymap('n', '<Up>', 'gk', {noremap = true})
 
 ----------------------------
+-- filetype settings
+----------------------------
+local extension_list = {
+  "ts", "pl", "lua", "c", "cpp", "tsx", "html", "css", "scss", "md", "go",
+  "vim", "yml", "toml", "dart", "mjs"
+}
+vim.api.nvim_command('augroup MyTabStop')
+vim.api.nvim_command('autocmd!')
+for i = 1, #extension_list do
+  vim.api.nvim_command('autocmd BufNewFile,BufRead *.' .. extension_list[i] ..
+                         ' setlocal tabstop=2 shiftwidth=2 expandtab')
+end
+vim.api.nvim_command('autocmd BufNewFile,BufRead Makefile setlocal noexpandtab')
+vim.api.nvim_command('augroup END')
+
+----------------------------
 -- display content settings
 ----------------------------
 -- visualize line number
