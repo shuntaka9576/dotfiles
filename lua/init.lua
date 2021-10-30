@@ -204,6 +204,9 @@ require('packer').startup(function()
                               {noremap = true, silent = true})
     end
   }
+
+  -- TODO:maigrate to lua plugin
+  use {use "airblade/vim-gitgutter"}
 end)
 
 ----------------------------
