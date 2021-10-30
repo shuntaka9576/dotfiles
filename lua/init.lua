@@ -293,5 +293,9 @@ local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp
 local lspconfig = require('lspconfig')
 lspconfig['tsserver'].setup {capabilities = capabilities}
 lspconfig['pylsp'].setup {capabilities = capabilities}
-lspconfig['sumneko_lua'].setup {capabilities = capabilities}
+-- sumeneko_lua does not read .luacheckrc. Disables warnings, luacheck does otherwise
+lspconfig['sumneko_lua'].setup {
+  capabilities = capabilities,
+  settings = {Lua = {diagnostics = {enable = false}}}
+}
 lspconfig['clangd'].setup {capabilities = capabilities}
