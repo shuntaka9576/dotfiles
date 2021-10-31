@@ -68,6 +68,15 @@ vim.api.nvim_command('set clipboard+=unnamed')
 ----------------------------
 -- Package manager settings
 ----------------------------
+local fn = vim.fn
+local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
+if fn.empty(fn.glob(install_path)) > 0 then
+  packer_bootstrap = fn.system({
+    'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim',
+    install_path
+  })
+end
+
 vim.cmd [[packadd packer.nvim]]
 local use = require('packer').use
 
@@ -209,6 +218,9 @@ require('packer').startup(function()
   use {"airblade/vim-gitgutter"}
   -- TODO:maigrate to lua plugin
   use {"tpope/vim-fugitive"}
+
+  -- If you want to automatically install and set up packer.nvim on any machine you clone your configuration to, add the following snippet
+  if packer_bootstrap then require('packer').sync() end
 end)
 
 ----------------------------
