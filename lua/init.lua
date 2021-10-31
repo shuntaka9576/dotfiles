@@ -177,6 +177,8 @@ require('packer').startup(function()
               return {exe = "lua-format", args = {}, stdin = true}
             end
           }
+          -- TODO TS formatter settings
+          -- typescript = {function() end}
         }
       })
       vim.api.nvim_exec([[
