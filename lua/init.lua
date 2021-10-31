@@ -251,7 +251,7 @@ local on_attach = function(client, bufnr)
 
   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-  local opts = {noremap = true, silent = false}
+  local opts = {noremap = true, silent = true}
 
   buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
   buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
@@ -275,34 +275,31 @@ end
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp
                                                                    .protocol
                                                                    .make_client_capabilities())
+
 local servers = {'sumneko_lua'}
 for _, lsp in ipairs(servers) do
-  nvim_lsp[lsp].setup({
-    on_attach = on_attach,
-    flags = {debounce_text_changes = 150},
-    capabilities = capabilities
-  })
+  if lsp == "sumneko_lua" then
+    local sumneko_root_path = os.getenv("HOME") ..
+                                "/repos/github.com/sumneko/lua-language-server"
+    local sumneko_binary = sumneko_root_path .. "/bin/macOS/lua-language-server"
+
+    local runtime_path = vim.split(package.path, ';')
+    table.insert(runtime_path, "lua/?.lua")
+    table.insert(runtime_path, "lua/?/init.lua")
+
+    nvim_lsp[lsp].setup({
+      on_attach = on_attach,
+      flags = {debounce_text_changes = 150},
+      capabilities = capabilities,
+      cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"},
+      settings = {
+        Lua = {
+          runtime = {version = 'LuaJIT', path = runtime_path},
+          diagnostics = {enable = false, globals = {}},
+          workspace = {library = vim.api.nvim_get_runtime_file("", true)},
+          telemetry = {enable = false}
+        }
+      }
+    })
+  end
 end
-
-----------------------------
--- lua lsp config
-----------------------------
-local sumneko_root_path = os.getenv("HOME") ..
-                            "/repos/github.com/sumneko/lua-language-server"
-local sumneko_binary = sumneko_root_path .. "/bin/macOS/lua-language-server"
-
-local runtime_path = vim.split(package.path, ';')
-table.insert(runtime_path, "lua/?.lua")
-table.insert(runtime_path, "lua/?/init.lua")
-
-nvim_lsp.sumneko_lua.setup {
-  cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"},
-  settings = {
-    Lua = {
-      runtime = {version = 'LuaJIT', path = runtime_path},
-      diagnostics = {enable = true, globals = {}},
-      workspace = {library = vim.api.nvim_get_runtime_file("", true)},
-      telemetry = {enable = false}
-    }
-  }
-}
