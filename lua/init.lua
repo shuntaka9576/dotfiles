@@ -102,11 +102,6 @@ require('packer').startup(function()
         vim.api.nvim_set_keymap('n', '<Leader>r', ':NvimTreeRefresh<CR>',
                                 {noremap = true, silent = true})
       }
-      -- key mapping
-      -- local tree_cb = require('nvim-tree.config').nvim_tree_callback
-      -- local list = {
-      --   {},
-      -- }
     end
   }
   -- color theme and syntax plugin
