@@ -117,11 +117,14 @@ require('packer').startup(function()
       require'nvim-treesitter.configs'.setup {ensure_installed = "maintained"}
     end
   }
+
   use {
     'folke/tokyonight.nvim',
     config = function() vim.cmd [[colorscheme tokyonight]] end
   }
-  use {'neovim/nvim-lspconfig', 'williamboman/nvim-lsp-installer'}
+
+  use {'neovim/nvim-lspconfig'}
+
   -- autocomplete plugin
   use {
     "hrsh7th/cmp-nvim-lsp", "hrsh7th/cmp-buffer", "hrsh7th/cmp-path",
@@ -206,8 +209,36 @@ require('packer').startup(function()
   }
 
   -- TODO:maigrate to lua plugin
-  use {use "airblade/vim-gitgutter"}
+  use {"airblade/vim-gitgutter"}
 end)
+
+----------------------------
+-- autocomplete settings
+----------------------------
+local cmp = require('cmp')
+
+cmp.setup({
+  snippet = {expand = function(args) vim.fn["vsnip#anonymous"](args.body) end},
+  mapping = {
+    ['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), {'i', 'c'}),
+    ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), {'i', 'c'}),
+    ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), {'i', 'c'}),
+    ['<C-y>'] = cmp.config.disable,
+    ['<C-e>'] = cmp.mapping({i = cmp.mapping.abort(), c = cmp.mapping.close()}),
+    ['<CR>'] = cmp.mapping.confirm({select = true})
+  },
+  sources = cmp.config.sources({{name = 'nvim_lsp'}, {name = 'vsnip'}},
+                               {{name = 'buffer'}}),
+  experimental = {ghost_text = true}
+})
+
+local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
+
+cmp.setup.cmdline('/', {sources = {{name = 'buffer'}}})
+cmp.setup.cmdline(':', {
+  sources = cmp.config.sources({{name = 'path'}}, {{name = 'cmdline'}})
+})
 
 ----------------------------
 -- nvim-lspconfig settings
@@ -250,55 +281,38 @@ local on_attach = function(_, bufnr)
   buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 end
 
-local lsp_installer = require("nvim-lsp-installer")
+local nvim_lsp = require('lspconfig')
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
-lsp_installer.on_server_ready(function(server)
-  local opts = {}
-  opts.on_attach = on_attach
-
-  server:setup(opts)
-  vim.cmd [[ do User LspAttachBuffers ]]
-end)
+local servers = {'sumneko_lua'}
+for _, lsp in ipairs(servers) do
+  nvim_lsp[lsp].setup {
+    on_attach = on_attach,
+    flags = {debounce_text_changes = 150},
+    capabilities = capabilities
+  }
+end
 
 ----------------------------
--- autocomplete settings
+-- lua lsp config
 ----------------------------
-local cmp = require('cmp')
+local sumneko_root_path = os.getenv("HOME") ..
+                            "/repos/github.com/sumneko/lua-language-server"
+local sumneko_binary = sumneko_root_path .. "/bin/macOS/lua-language-server"
 
-cmp.setup({
-  snippet = {expand = function(args) vim.fn["vsnip#anonymous"](args.body) end},
-  mapping = {
-    ['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), {'i', 'c'}),
-    ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), {'i', 'c'}),
-    ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), {'i', 'c'}),
-    ['<C-y>'] = cmp.config.disable,
-    ['<C-e>'] = cmp.mapping({i = cmp.mapping.abort(), c = cmp.mapping.close()}),
-    ['<CR>'] = cmp.mapping.confirm({select = true})
-  },
-  sources = cmp.config.sources({{name = 'nvim_lsp'}, {name = 'vsnip'}},
-                               {{name = 'buffer'}}),
-  experimental = {ghost_text = true}
-})
+local runtime_path = vim.split(package.path, ';')
+table.insert(runtime_path, "lua/?.lua")
+table.insert(runtime_path, "lua/?/init.lua")
 
-local cmp_autopairs = require('nvim-autopairs.completion.cmp')
-cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
-
-cmp.setup.cmdline('/', {sources = {{name = 'buffer'}}})
-cmp.setup.cmdline(':', {
-  sources = cmp.config.sources({{name = 'path'}}, {{name = 'cmdline'}})
-})
-
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp
-                                                                   .protocol
-                                                                   .make_client_capabilities())
-
--- nvim-cmp and lsp settings
-local lspconfig = require('lspconfig')
-lspconfig['tsserver'].setup {capabilities = capabilities}
-lspconfig['pylsp'].setup {capabilities = capabilities}
--- sumeneko_lua does not read .luacheckrc. Disables warnings, luacheck does otherwise
-lspconfig['sumneko_lua'].setup {
-  capabilities = capabilities,
-  settings = {Lua = {diagnostics = {enable = false}}}
+nvim_lsp.sumneko_lua.setup {
+  cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"},
+  settings = {
+    Lua = {
+      runtime = {version = 'LuaJIT', path = runtime_path},
+      diagnostics = {enable = true, globals = {}},
+      workspace = {library = vim.api.nvim_get_runtime_file("", true)},
+      telemetry = {enable = false}
+    }
+  }
 }
-lspconfig['clangd'].setup {capabilities = capabilities}
