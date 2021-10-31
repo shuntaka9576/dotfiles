@@ -205,6 +205,8 @@ require('packer').startup(function()
 
   -- TODO:maigrate to lua plugin
   use {"airblade/vim-gitgutter"}
+  -- TODO:maigrate to lua plugin
+  use {"tpope/vim-fugitive"}
 end)
 
 ----------------------------
