@@ -315,7 +315,7 @@ for _, lsp in ipairs(servers) do
       settings = {
         Lua = {
           runtime = {version = 'LuaJIT', path = runtime_path},
-          diagnostics = {enable = false, globals = {}},
+          diagnostics = {enable = true, globals = {}},
           workspace = {library = vim.api.nvim_get_runtime_file("", true)},
           telemetry = {enable = false}
         }
