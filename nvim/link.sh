@@ -1,7 +1,7 @@
 #!/bin/bash
 
 mkdir -p ~/.config/nvim/dein
-ln -sf ~/dotfiles/nvim/init.vim ~/.config/nvim/init.vim
+ln -sf ~/dotfiles/lua/init.lua ~/.config/nvim/init.lua
 ln -sf ~/dotfiles/nvim/units/dein.toml ~/.config/nvim/dein/dein.toml
 ln -sf ~/dotfiles/nvim/units/frontend.toml ~/.config/nvim/dein/frontend.toml
 ln -sf ~/dotfiles/nvim/units/dein_lazy.toml ~/.config/nvim/dein/dein_lazy.toml
