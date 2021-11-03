@@ -327,10 +327,7 @@ for _, lsp in ipairs(servers) do
       flags = {debounce_text_changes = 150},
       capabilities = capabilities,
       settings = {
-        python = {
-          venvPath = "${workspaceFolder}/.venv",
-          pythonPath = "${workspaceFolder}/.venv/bin/python"
-        }
+        python = {venvPath = ".venv", pythonPath = ".venv/bin/python"}
       }
     })
   elseif lsp == "tsserver" then
