@@ -120,6 +120,7 @@ packer.startup(function(use)
         vim.api.nvim_set_keymap('n', '<Leader>r', ':NvimTreeRefresh<CR>',
                                 {noremap = true, silent = true})
       }
+      vim.g.nvim_tree_refresh_wait = 100
       vim.cmd [[
        execute(":NvimTreeToggle")
       ]]
