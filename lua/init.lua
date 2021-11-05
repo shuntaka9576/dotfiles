@@ -90,6 +90,9 @@ packer.startup(function(use)
     'nvim-telescope/telescope.nvim',
     requires = {{'nvim-lua/plenary.nvim'}},
     config = function()
+      local telescope = require('telescope')
+      telescope.setup({defaults = {layout_strategy = 'horizontal'}})
+
       vim.api.nvim_set_keymap("n", "<C-j><C-p>",
                               ":lua require('telescope.builtin').find_files()<CR>",
                               {noremap = true, silent = true})
