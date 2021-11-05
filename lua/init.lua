@@ -68,6 +68,7 @@ vim.api.nvim_command('set clipboard+=unnamed')
 ----------------------------
 -- Package manager settings
 ----------------------------
+-- init packer.nvim(first time only)
 local fn = vim.fn
 local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
@@ -78,10 +79,12 @@ if fn.empty(fn.glob(install_path)) > 0 then
 end
 
 vim.cmd [[packadd packer.nvim]]
-local use = require('packer').use
+local packer = require('packer')
+packer.init({display = {non_interactive = true, open_fn = nil}})
 
-require('packer').startup(function()
-  use 'wbthomason/packer.nvim'
+packer.startup(function(use)
+  use {'wbthomason/packer.nvim'}
+
   -- fuzzy finder plugin
   use {
     'nvim-telescope/telescope.nvim',
@@ -96,6 +99,9 @@ require('packer').startup(function()
       vim.api.nvim_set_keymap("n", "<C-j><C-b>",
                               ":lua require('telescope.builtin').buffers()<CR>",
                               {noremap = true, silent = true})
+      vim.cmd [[
+        command! D execute(":lua require('telescope.builtin').live_grep()")
+      ]]
     end
 
   }
@@ -111,6 +117,9 @@ require('packer').startup(function()
         vim.api.nvim_set_keymap('n', '<Leader>r', ':NvimTreeRefresh<CR>',
                                 {noremap = true, silent = true})
       }
+      vim.cmd [[
+       execute(":NvimTreeToggle")
+      ]]
     end
   }
   -- color theme and syntax plugin
@@ -223,13 +232,16 @@ require('packer').startup(function()
     end
   }
 
-  -- TODO:maigrate to lua plugin
   use {"airblade/vim-gitgutter"}
-  -- TODO:maigrate to lua plugin
   use {"tpope/vim-fugitive"}
 
   -- If you want to automatically install and set up packer.nvim on any machine you clone your configuration to, add the following snippet
-  if packer_bootstrap then require('packer').sync() end
+  if packer_bootstrap then
+    packer.sync()
+  else
+    -- start up packer sync disable
+    -- packer.sync()
+  end
 end)
 
 ----------------------------
