@@ -93,6 +93,12 @@ done) | tee >(pbcopy)
   output = ""
 
 [[snippets]]
+  description = "カレントのプラグインを読み込む"
+  command = 'nvim --cmd "set rtp+=."'
+  tag = ["nvim"]
+  output = ""
+
+[[snippets]]
   description = "コンテナ全停止削除"
   command = 'docker ps -aq| xargs docker stop;docker ps -aq| xargs docker rm;docker images -aq| xargs docker rmi -f;docker ps -a;docker images -a;'
   tag = ["docker"]
