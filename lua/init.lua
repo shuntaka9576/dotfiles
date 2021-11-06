@@ -232,6 +232,11 @@ packer.startup(function(use)
         on_open = function(term)
           vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", "<cmd>close<CR>",
                                       {noremap = true, silent = true})
+        end,
+        on_close = function(_)
+          -- Allow nvim-tree to detect changes in lazygit immediately
+          local nvim_tree = require("nvim-tree")
+          nvim_tree.refresh()
         end
       })
 
