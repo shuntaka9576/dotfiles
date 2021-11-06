@@ -96,9 +96,6 @@ packer.startup(function(use)
       vim.api.nvim_set_keymap("n", "<C-j><C-p>",
                               ":lua require('telescope.builtin').find_files()<CR>",
                               {noremap = true, silent = true})
-      vim.api.nvim_set_keymap("n", "<C-j><C-d>",
-                              ":lua require('telescope.builtin').live_grep()<CR>",
-                              {noremap = true, silent = true})
       vim.api.nvim_set_keymap("n", "<C-j><C-b>",
                               ":lua require('telescope.builtin').buffers()<CR>",
                               {noremap = true, silent = true})
