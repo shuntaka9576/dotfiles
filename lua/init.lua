@@ -239,6 +239,8 @@ packer.startup(function(use)
   use {"airblade/vim-gitgutter"}
   use {"tpope/vim-fugitive"}
 
+  use {'pwntester/octo.nvim', config = function() require"octo".setup() end}
+
   -- If you want to automatically install and set up packer.nvim on any machine you clone your configuration to, add the following snippet
   if packer_bootstrap then
     packer.sync()
