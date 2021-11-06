@@ -71,6 +71,7 @@ vim.api.nvim_command('set clipboard+=unnamed')
 -- init packer.nvim(first time only)
 local fn = vim.fn
 local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
+local packer_bootstrap = nil
 if fn.empty(fn.glob(install_path)) > 0 then
   packer_bootstrap = fn.system({
     'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim',
@@ -234,10 +235,10 @@ packer.startup(function(use)
         end
       })
 
-      function _lazygit_toggle() lazygit:toggle() end
+      function _LAZYGIT_TOGGLE() lazygit:toggle() end
 
       vim.api.nvim_set_keymap("n", "<leader>g",
-                              "<cmd>lua _lazygit_toggle()<CR>",
+                              "<cmd>lua _LAZYGIT_TOGGLE()<CR>",
                               {noremap = true, silent = true})
     end
   }
@@ -294,7 +295,7 @@ cmp.setup.cmdline(':', {
 ----------------------------
 local nvim_lsp = require('lspconfig')
 
-local on_attach = function(client, bufnr)
+local on_attach = function(_, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
