@@ -78,7 +78,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
   })
 end
 
-vim.cmd [[packadd packer.nvim]]
+-- vim.cmd [[packadd packer.nvim]]
 local packer = require('packer')
 packer.init({display = {non_interactive = true, open_fn = nil}})
 
