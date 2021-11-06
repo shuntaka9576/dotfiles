@@ -80,7 +80,13 @@ end
 
 -- vim.cmd [[packadd packer.nvim]]
 local packer = require('packer')
-packer.init({display = {non_interactive = true, open_fn = nil}})
+packer.init({
+  display = {
+    open_fn = function()
+      return require('packer.util').float({border = 'double'})
+    end
+  }
+})
 
 packer.startup(function(use)
   use {'wbthomason/packer.nvim'}
@@ -110,17 +116,20 @@ packer.startup(function(use)
   use {
     'kyazdani42/nvim-tree.lua',
     requires = 'kyazdani42/nvim-web-devicons',
+    ---[[ packer.nvim floating window for sync result cannot be deleted without this setting.
+    opt = true,
+    event = {"VimEnter"},
+    -- ]]
     config = function()
-      require('nvim-tree').setup {
+      local nvim_tree = require('nvim-tree')
+      nvim_tree.setup {
         vim.api.nvim_set_keymap('n', '<Leader>d', ':NvimTreeToggle<CR>',
                                 {noremap = true, silent = true}),
         vim.api.nvim_set_keymap('n', '<Leader>r', ':NvimTreeRefresh<CR>',
                                 {noremap = true, silent = true})
       }
       vim.g.nvim_tree_refresh_wait = 100
-      vim.cmd [[
-       execute(":NvimTreeToggle")
-      ]]
+      nvim_tree.open()
     end
   }
   -- color theme and syntax plugin
@@ -233,10 +242,15 @@ packer.startup(function(use)
     end
   }
 
+  -- Git utility
   use {"airblade/vim-gitgutter"}
   use {"tpope/vim-fugitive"}
 
+  -- GitHub utility
   use {'pwntester/octo.nvim', config = function() require"octo".setup() end}
+
+  -- debug tool
+  use {'mfussenegger/nvim-dap'}
 
   -- If you want to automatically install and set up packer.nvim on any machine you clone your configuration to, add the following snippet
   if packer_bootstrap then
