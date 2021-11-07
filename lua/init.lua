@@ -256,7 +256,13 @@ packer.startup(function(use)
   use {"pwntester/octo.nvim", config = function() require"octo".setup() end}
 
   -- debug tool
+  -- TODO setting
   use {"mfussenegger/nvim-dap"}
+  use {"jbyuki/one-small-step-for-vimkind"}
+
+  -- preview markdown
+  use {"ellisonleao/glow.nvim"}
+  use {"kat0h/bufpreview.vim", requires = {{"vim-denops/denops.vim"}}}
 
   -- If you want to automatically install and set up packer.nvim on any machine you clone your configuration to, add the following snippet
   if packer_bootstrap then
