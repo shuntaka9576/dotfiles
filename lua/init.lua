@@ -263,6 +263,11 @@ packer.startup(function(use)
   -- preview markdown
   use {"ellisonleao/glow.nvim"}
   use {"kat0h/bufpreview.vim", requires = {{"vim-denops/denops.vim"}}}
+  use {
+    "alvarosevilla95/luatab.nvim",
+    requires = "kyazdani42/nvim-web-devicons",
+    config = function() require("luatab").setup {} end
+  }
 
   -- If you want to automatically install and set up packer.nvim on any machine you clone your configuration to, add the following snippet
   if packer_bootstrap then
