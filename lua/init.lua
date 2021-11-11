@@ -55,6 +55,9 @@ vim.api.nvim_command(
 -- display vertical and horizontal cursors
 vim.api.nvim_command("set cursorline")
 vim.api.nvim_command("set cursorcolumn")
+vim.api.nvim_command("set cmdheight=1")
+-- tab title always display
+vim.api.nvim_command("set showtabline=2")
 -- clear search result
 vim.api.nvim_set_keymap("n", "<Space><Space>", ":nohlsearch<CR><Esc>",
                         {noremap = true, silent = true})
@@ -255,6 +258,7 @@ packer.startup(function(use)
   -- Git utility
   use {"airblade/vim-gitgutter"}
   use {"tpope/vim-fugitive"}
+  use {"simeji/winresizer"}
 
   -- GitHub utility
   use {"pwntester/octo.nvim", config = function() require"octo".setup() end}
@@ -270,7 +274,39 @@ packer.startup(function(use)
   use {
     "alvarosevilla95/luatab.nvim",
     requires = "kyazdani42/nvim-web-devicons",
-    config = function() require("luatab").setup {} end
+    config = function() require("luatab").setup({}) end
+  }
+
+  -- tab
+  use {
+    "akinsho/bufferline.nvim",
+    requires = "kyazdani42/nvim-web-devicons",
+    config = function()
+      vim.opt.termguicolors = true
+      require("bufferline").setup {}
+    end
+  }
+
+  -- status line
+  use {
+    "nvim-lualine/lualine.nvim",
+    requires = {"kyazdani42/nvim-web-devicons", opt = true},
+    config = function()
+      require("lualine").setup({options = {theme = "gruvbox"}})
+    end
+  }
+
+  -- diagnostics
+  use {
+    "folke/trouble.nvim",
+    requires = "kyazdani42/nvim-web-devicons",
+    config = function()
+      require("trouble").setup {
+
+        vim.api.nvim_set_keymap("n", "<Space>a", "<cmd>TroubleToggle<cr>",
+                                {noremap = true, silent = true})
+      }
+    end
   }
 
   -- If you want to automatically install and set up packer.nvim on any machine you clone your configuration to, add the following snippet
