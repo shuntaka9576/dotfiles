@@ -96,11 +96,25 @@ packer.startup(function(use)
   use {"wbthomason/packer.nvim"}
 
   -- fuzzy finder plugin
-  use {"nvim-telescope/telescope-fzf-native.nvim", run = "make"}
-  use {"nvim-telescope/telescope-fzy-native.nvim", run = "make"}
   use {
     "nvim-telescope/telescope.nvim",
-    requires = {{"nvim-lua/plenary.nvim"}},
+    requires = {
+      {"nvim-lua/plenary.nvim"},
+      {"nvim-telescope/telescope-fzf-native.nvim", run = "make"},
+      {"nvim-telescope/telescope-fzy-native.nvim"}, {
+        "AckslD/nvim-neoclip.lua",
+        requires = {"tami5/sqlite.lua", module = "sqlite"},
+        config = function()
+          require("neoclip").setup({
+            keys = {
+              i = {select = "<cr>", paste = "<c-p>", custom = {}},
+              n = {select = "<cr>", paste = "p", custom = {}}
+            }
+          })
+        end
+      }
+
+    },
     config = function()
       local telescope = require("telescope")
       telescope.setup({
@@ -116,19 +130,25 @@ packer.startup(function(use)
       })
       require("telescope").load_extension("fzf")
       require("telescope").load_extension("fzy_native")
-      require("telescope").load_extension("emoji")
+      require("telescope").load_extension("neoclip")
 
       vim.api.nvim_set_keymap("n", "<C-j><C-p>",
-                              ":lua require('telescope.builtin').find_files()<CR>",
+                              "<cmd>lua require('telescope.builtin').find_files()<cr>",
                               {noremap = true, silent = true})
       vim.api.nvim_set_keymap("n", "<C-j><C-b>",
-                              ":lua require('telescope.builtin').buffers()<CR>",
+                              "<cmd>lua require('telescope.builtin').buffers()<cr>",
+                              {noremap = true, silent = true})
+      vim.api.nvim_set_keymap("n", "<Space>a",
+                              "<cmd>Telescope lsp_workspace_diagnostics<cr>",
+                              {noremap = true, silent = true})
+      vim.api.nvim_set_keymap("i", "<C-j><C-n>", "<cmd>Telescope neoclip<cr>",
+                              {noremap = true, silent = true})
+      vim.api.nvim_set_keymap("n", "<C-j><C-n>", "<cmd>Telescope neoclip<cr>",
                               {noremap = true, silent = true})
       vim.cmd [[
         command! D execute(":lua require('telescope.builtin').live_grep()")
       ]]
     end
-
   }
 
   -- file explorer  plugin
@@ -293,34 +313,76 @@ packer.startup(function(use)
   }
 
   -- tab
+  use {"kyazdani42/nvim-web-devicons"}
   use {
     "akinsho/bufferline.nvim",
     requires = "kyazdani42/nvim-web-devicons",
     config = function()
       vim.opt.termguicolors = true
-      require("bufferline").setup {}
+
+      require("bufferline").setup({
+        -- close_command = "bdelete! %d",
+        -- diagnostics = "nvim_lsp",
+        -- diagnostics_indicator = function(count, level, _, _)
+        --   local icon = level:match("error") and " " or " "
+        --   return " " .. icon .. count
+        -- end,
+        offsets = {{filetype = "NvimTree"}},
+        -- FIXME not work
+        groups = {
+          options = {
+            toggle_hidden_on_enter = true -- when you re-enter a hidden group this options re-opens that group so the buffer is visible
+          },
+          items = {
+            {
+              name = "Tests", -- Mandatory
+              highlight = {gui = "underline", guisp = "blue"}, -- Optional
+              priority = 2, -- determines where it will appear relative to other groups (Optional)
+              icon = "", -- Optional
+              matcher = function(buf) -- Mandatory
+                return buf.filename:match("%.ts")
+              end
+            }, {
+              name = "Docs",
+              highlight = {gui = "undercurl", guisp = "green"},
+              auto_close = false, -- whether or not close this group if it doesn't contain the current buffer
+              matcher = function(buf)
+                return
+                  buf.filename:match("%.md") or buf.filename:match("%.txt") or
+                    buf.filename:match("%.json")
+              end,
+              separator = { -- Optional
+                style = require("bufferline.groups").separator.tab
+              }
+            }
+          }
+        }
+      })
+
+      vim.api.nvim_set_keymap("n", "[b", "<cmd>BufferLineCycleNext<cr>",
+                              {noremap = true, silent = true})
+      vim.api.nvim_set_keymap("n", "b]", "<cmd>BufferLineCyclePrev<cr>",
+                              {noremap = true, silent = true})
+      vim.api.nvim_set_keymap("n", "<C-s>", "<cmd>BufferLineSortByTabs<cr>",
+                              {noremap = true, silent = true})
+      vim.api.nvim_set_keymap("n", "<leader><leader>r",
+                              "<cmd>BufferLineCloseRight<cr>",
+                              {noremap = true, silent = true})
     end
   }
 
   -- status line
   use {
     "nvim-lualine/lualine.nvim",
-    requires = {"kyazdani42/nvim-web-devicons", opt = true},
+    requires = {"kyazdani42/nvim-web-devicons"},
     config = function()
-      require("lualine").setup({options = {theme = "gruvbox"}})
-    end
-  }
-
-  -- diagnostics
-  use {
-    "folke/trouble.nvim",
-    requires = "kyazdani42/nvim-web-devicons",
-    config = function()
-      require("trouble").setup {
-
-        vim.api.nvim_set_keymap("n", "<Space>a", "<cmd>TroubleToggle<cr>",
-                                {noremap = true, silent = true})
-      }
+      require("lualine").setup({
+        options = {
+          theme = "gruvbox",
+          section_separators = "",
+          component_separators = ""
+        }
+      })
     end
   }
 
