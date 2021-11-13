@@ -96,12 +96,27 @@ packer.startup(function(use)
   use {"wbthomason/packer.nvim"}
 
   -- fuzzy finder plugin
+  use {"nvim-telescope/telescope-fzf-native.nvim", run = "make"}
+  use {"nvim-telescope/telescope-fzy-native.nvim", run = "make"}
   use {
     "nvim-telescope/telescope.nvim",
     requires = {{"nvim-lua/plenary.nvim"}},
     config = function()
       local telescope = require("telescope")
-      telescope.setup({defaults = {layout_strategy = "horizontal"}})
+      telescope.setup({
+        extensions = {
+          fzf = {
+            fuzzy = true,
+            override_generic_sorter = true,
+            override_file_sorter = true,
+            case_mode = "smart_case"
+          }
+        },
+        defaults = {layout_strategy = "horizontal"}
+      })
+      require("telescope").load_extension("fzf")
+      require("telescope").load_extension("fzy_native")
+      require("telescope").load_extension("emoji")
 
       vim.api.nvim_set_keymap("n", "<C-j><C-p>",
                               ":lua require('telescope.builtin').find_files()<CR>",
