@@ -135,7 +135,7 @@ packer.startup(function(use)
       vim.api.nvim_set_keymap("n", "<C-j><C-p>",
                               "<cmd>lua require('telescope.builtin').find_files()<cr>",
                               {noremap = true, silent = true})
-      vim.api.nvim_set_keymap("n", "<C-j><C-b>",
+      vim.api.nvim_set_keymap("n", "<C-j><C-d>",
                               "<cmd>lua require('telescope.builtin').buffers()<cr>",
                               {noremap = true, silent = true})
       vim.api.nvim_set_keymap("n", "<Space>a",
@@ -151,7 +151,7 @@ packer.startup(function(use)
     end
   }
 
-  -- file explorer  plugin
+  -- file explorer plugin
   use {
     "kyazdani42/nvim-tree.lua",
     requires = "kyazdani42/nvim-web-devicons",
@@ -287,6 +287,18 @@ packer.startup(function(use)
       vim.api.nvim_set_keymap("n", "<leader>g",
                               "<cmd>lua _LAZYGIT_TOGGLE()<CR>",
                               {noremap = true, silent = true})
+
+      function _G.set_terminal_keymaps()
+        local opts = {noremap = true}
+        vim.api.nvim_buf_set_keymap(0, "t", "jj", [[<C-\><C-n>]], opts)
+        vim.api.nvim_buf_set_keymap(0, "t", "jk", [[<C-\><C-n>]], opts)
+        vim.api.nvim_buf_set_keymap(0, "t", "<C-h>", [[<C-\><C-n><C-W>h]], opts)
+        vim.api.nvim_buf_set_keymap(0, "t", "<C-j>", [[<C-\><C-n><C-W>j]], opts)
+        vim.api.nvim_buf_set_keymap(0, "t", "<C-k>", [[<C-\><C-n><C-W>k]], opts)
+        vim.api.nvim_buf_set_keymap(0, "t", "<C-l>", [[<C-\><C-n><C-W>l]], opts)
+      end
+
+      vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
     end
   }
 
@@ -320,39 +332,28 @@ packer.startup(function(use)
     config = function()
       vim.opt.termguicolors = true
 
+      local groups = require("bufferline.groups")
+
       require("bufferline").setup({
-        -- close_command = "bdelete! %d",
-        -- diagnostics = "nvim_lsp",
-        -- diagnostics_indicator = function(count, level, _, _)
-        --   local icon = level:match("error") and " " or " "
-        --   return " " .. icon .. count
-        -- end,
-        offsets = {{filetype = "NvimTree"}},
-        -- FIXME not work
-        groups = {
-          options = {
-            toggle_hidden_on_enter = true -- when you re-enter a hidden group this options re-opens that group so the buffer is visible
-          },
-          items = {
-            {
-              name = "Tests", -- Mandatory
-              highlight = {gui = "underline", guisp = "blue"}, -- Optional
-              priority = 2, -- determines where it will appear relative to other groups (Optional)
-              icon = "", -- Optional
-              matcher = function(buf) -- Mandatory
-                return buf.filename:match("%.ts")
-              end
-            }, {
-              name = "Docs",
-              highlight = {gui = "undercurl", guisp = "green"},
-              auto_close = false, -- whether or not close this group if it doesn't contain the current buffer
-              matcher = function(buf)
-                return
-                  buf.filename:match("%.md") or buf.filename:match("%.txt") or
-                    buf.filename:match("%.json")
-              end,
-              separator = { -- Optional
-                style = require("bufferline.groups").separator.tab
+        options = {
+          close_command = "bdelete! %d",
+          diagnostics = "nvim_lsp",
+          diagnostics_indicator = function(count, level, _, _)
+            local icon = level:match("error") and " " or " "
+            return " " .. icon .. count
+          end,
+          offsets = {{filetype = "NvimTree"}},
+          groups = {
+            options = {
+              toggle_hidden_on_enter = true -- when you re-enter a hidden group this options re-opens that group so the buffer is visible
+            },
+            items = {
+              groups.builtin.ungrouped, {
+                name = "Docs",
+                auto_close = true,
+                matcher = function(buf)
+                  return buf.filename:match("%.md")
+                end
               }
             }
           }
@@ -364,6 +365,8 @@ packer.startup(function(use)
       vim.api.nvim_set_keymap("n", "b]", "<cmd>BufferLineCyclePrev<cr>",
                               {noremap = true, silent = true})
       vim.api.nvim_set_keymap("n", "<C-s>", "<cmd>BufferLineSortByTabs<cr>",
+                              {noremap = true, silent = true})
+      vim.api.nvim_set_keymap("n", "<leader>t", "<cmd>BufferLinePick<cr>",
                               {noremap = true, silent = true})
       vim.api.nvim_set_keymap("n", "<leader><leader>r",
                               "<cmd>BufferLineCloseRight<cr>",
