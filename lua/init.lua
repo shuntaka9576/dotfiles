@@ -324,6 +324,13 @@ packer.startup(function(use)
     config = function() require("luatab").setup({}) end
   }
 
+  -- regexp search and replace word
+  use {
+    "windwp/nvim-spectre",
+    requires = "nvim-lua/plenary.nvim",
+    config = function() require("spectre").setup({}) end
+  }
+
   -- tab
   use {"kyazdani42/nvim-web-devicons"}
   use {
