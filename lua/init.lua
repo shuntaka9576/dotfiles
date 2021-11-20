@@ -496,11 +496,6 @@ for _, lsp in ipairs(servers) do
         }
       }
     })
-  elseif lsp == "denols" then
-    nvim_lsp[lsp].setup({
-      on_attach = on_attach,
-      root_dir = lspconfig_util.root_pattern("deps.ts")
-    })
   elseif lsp == "pyright" then
     nvim_lsp[lsp].setup({
       on_attach = on_attach,
@@ -510,13 +505,18 @@ for _, lsp in ipairs(servers) do
         python = {venvPath = ".venv", pythonPath = ".venv/bin/python"}
       }
     })
-  elseif lsp == "tsserver" then
-    nvim_lsp[lsp].setup({
-      on_attach = on_attach,
-      flags = {debounce_text_changes = 150},
-      capabilities = capabilities,
-      -- denolsを起動するため
-      root_dir = lspconfig_util.root_pattern("tsconfig.json", "package.json")
-    })
+  elseif lsp == "denols" or "tsserver" then
+    local package_json_file = require("plenary.path"):new("package.json")
+    local is_ts = package_json_file:exists()
+
+    if is_ts then
+      nvim_lsp["tsserver"].setup({
+        on_attach = on_attach,
+        flags = {debounce_text_changes = 150},
+        capabilities = capabilities
+      })
+    else
+      nvim_lsp["denols"].setup({on_attach = on_attach})
+    end
   end
 end
