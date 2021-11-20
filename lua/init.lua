@@ -317,7 +317,7 @@ packer.startup(function(use)
 
   -- preview markdown
   use {"ellisonleao/glow.nvim"}
-  use {"kat0h/bufpreview.vim", requires = {{"vim-denops/denops.vim"}}}
+  use {"shuntaka9576/bufpreview.vim", requires = {{"vim-denops/denops.vim"}}}
   use {
     "alvarosevilla95/luatab.nvim",
     requires = "kyazdani42/nvim-web-devicons",
