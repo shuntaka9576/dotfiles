@@ -469,7 +469,9 @@ local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp
                                                                    .protocol
                                                                    .make_client_capabilities())
 
-local servers = {"sumneko_lua", "pyright", "tsserver"}
+local servers = {"sumneko_lua", "pyright", "tsserver", "denols"}
+local lspconfig_util = require("lspconfig.util")
+
 for _, lsp in ipairs(servers) do
   if lsp == "sumneko_lua" then
     local sumneko_root_path = os.getenv("HOME") ..
@@ -494,6 +496,11 @@ for _, lsp in ipairs(servers) do
         }
       }
     })
+  elseif lsp == "denols" then
+    nvim_lsp[lsp].setup({
+      on_attach = on_attach,
+      root_dir = lspconfig_util.root_pattern("deps.ts")
+    })
   elseif lsp == "pyright" then
     nvim_lsp[lsp].setup({
       on_attach = on_attach,
@@ -507,7 +514,9 @@ for _, lsp in ipairs(servers) do
     nvim_lsp[lsp].setup({
       on_attach = on_attach,
       flags = {debounce_text_changes = 150},
-      capabilities = capabilities
+      capabilities = capabilities,
+      -- denolsを起動するため
+      root_dir = lspconfig_util.root_pattern("tsconfig.json", "package.json")
     })
   end
 end
