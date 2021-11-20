@@ -135,9 +135,6 @@ packer.startup(function(use)
       vim.api.nvim_set_keymap("n", "<C-j><C-p>",
                               "<cmd>lua require('telescope.builtin').find_files()<cr>",
                               {noremap = true, silent = true})
-      vim.api.nvim_set_keymap("n", "<C-j><C-d>",
-                              "<cmd>lua require('telescope.builtin').buffers()<cr>",
-                              {noremap = true, silent = true})
       vim.api.nvim_set_keymap("n", "<Space>a",
                               "<cmd>Telescope lsp_workspace_diagnostics<cr>",
                               {noremap = true, silent = true})
@@ -287,16 +284,6 @@ packer.startup(function(use)
       vim.api.nvim_set_keymap("n", "<leader>g",
                               "<cmd>lua _LAZYGIT_TOGGLE()<CR>",
                               {noremap = true, silent = true})
-
-      function _G.set_terminal_keymaps()
-        local opts = {noremap = true}
-        -- vim.api.nvim_buf_set_keymap(0, "t", "jj", [[<C-\><C-n>]], opts)
-        -- vim.api.nvim_buf_set_keymap(0, "t", "jk", [[<C-\><C-n>]], opts)
-        vim.api.nvim_buf_set_keymap(0, "t", "<C-h>", [[<C-\><C-n><C-W>h]], opts)
-        vim.api.nvim_buf_set_keymap(0, "t", "<C-j>", [[<C-\><C-n><C-W>j]], opts)
-        vim.api.nvim_buf_set_keymap(0, "t", "<C-k>", [[<C-\><C-n><C-W>k]], opts)
-        vim.api.nvim_buf_set_keymap(0, "t", "<C-l>", [[<C-\><C-n><C-W>l]], opts)
-      end
 
       vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
     end
