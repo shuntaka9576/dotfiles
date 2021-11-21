@@ -383,6 +383,8 @@ packer.startup(function(use)
     end
   }
 
+  use {"hozi-dev/preview-hozi-dev.nvim", run = "yarn install"}
+
   -- If you want to automatically install and set up packer.nvim on any machine you clone your configuration to, add the following snippet
   if packer_bootstrap then
     packer.sync()
