@@ -383,6 +383,31 @@ packer.startup(function(use)
     end
   }
 
+  use {
+    "NTBBloodbath/rest.nvim",
+    requires = {"nvim-lua/plenary.nvim"},
+    config = function()
+      require("rest-nvim").setup({
+        -- Open request results in a horizontal split
+        result_split_horizontal = false,
+        -- Skip SSL verification, useful for unknown certificates
+        skip_ssl_verification = false,
+        -- Highlight request on run
+        highlight = {enabled = true, timeout = 150},
+        result = {
+          -- toggle showing URL, HTTP info, headers at top the of result window
+          show_url = true,
+          show_http_info = true,
+          show_headers = true
+        },
+        -- Jump to request line on run
+        jump_to_request = false,
+        env_file = ".env",
+        custom_dynamic_variables = {}
+      })
+    end
+  }
+
   use {"hozi-dev/preview-hozi-dev.nvim", run = "yarn install"}
 
   -- If you want to automatically install and set up packer.nvim on any machine you clone your configuration to, add the following snippet
