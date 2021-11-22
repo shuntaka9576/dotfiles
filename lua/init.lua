@@ -26,6 +26,13 @@ vim.api.nvim_set_keymap("n", "gj", "j", {noremap = true})
 vim.api.nvim_set_keymap("n", "<Down>", "gj", {noremap = true})
 vim.api.nvim_set_keymap("n", "<Up>", "gk", {noremap = true})
 
+-- devlopment plugin
+vim.api.nvim_set_keymap("n", "<leader>r", ":luafile dev/init.lua<cr>",
+                        {noremap = true, silent = false})
+
+-- vim.api.nvim_set_keymap("n", "<Space>a",
+--                         "<cmd>Telescope lsp_workspace_diagnostics<cr>",
+--                         {noremap = true, silent = true})
 ----------------------------
 -- filetype settings
 ----------------------------
@@ -160,8 +167,6 @@ packer.startup(function(use)
       local nvim_tree = require("nvim-tree")
       nvim_tree.setup {
         vim.api.nvim_set_keymap("n", "<Leader>d", ":NvimTreeToggle<CR>",
-                                {noremap = true, silent = true}),
-        vim.api.nvim_set_keymap("n", "<Leader>r", ":NvimTreeRefresh<CR>",
                                 {noremap = true, silent = true})
       }
       vim.g.nvim_tree_refresh_wait = 100
@@ -381,6 +386,7 @@ packer.startup(function(use)
     end
   }
 
+  ---[[
   use {
     "NTBBloodbath/rest.nvim",
     requires = {"nvim-lua/plenary.nvim"},
@@ -405,6 +411,9 @@ packer.startup(function(use)
       })
     end
   }
+
+  use {"MunifTanjim/nui.nvim"}
+  -- ]]
 
   use {"hozi-dev/preview-hozi-dev.nvim", run = "yarn install"}
 
