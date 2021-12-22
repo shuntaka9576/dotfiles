@@ -108,19 +108,7 @@ packer.startup(function(use)
     requires = {
       {"nvim-lua/plenary.nvim"},
       {"nvim-telescope/telescope-fzf-native.nvim", run = "make"},
-      {"nvim-telescope/telescope-fzy-native.nvim"}, {
-        "AckslD/nvim-neoclip.lua",
-        requires = {"tami5/sqlite.lua", module = "sqlite"},
-        config = function()
-          require("neoclip").setup({
-            keys = {
-              i = {select = "<cr>", paste = "<c-p>", custom = {}},
-              n = {select = "<cr>", paste = "p", custom = {}}
-            }
-          })
-        end
-      }
-
+      {"nvim-telescope/telescope-fzy-native.nvim"}
     },
     config = function()
       local telescope = require("telescope")
@@ -137,7 +125,7 @@ packer.startup(function(use)
       })
       require("telescope").load_extension("fzf")
       require("telescope").load_extension("fzy_native")
-      require("telescope").load_extension("neoclip")
+      -- require("telescope").load_extension("neoclip")
 
       vim.api.nvim_set_keymap("n", "<C-j><C-p>",
                               "<cmd>lua require('telescope.builtin').find_files()<cr>",
@@ -145,10 +133,10 @@ packer.startup(function(use)
       vim.api.nvim_set_keymap("n", "<Space>a",
                               "<cmd>Telescope lsp_workspace_diagnostics<cr>",
                               {noremap = true, silent = true})
-      vim.api.nvim_set_keymap("i", "<C-j><C-n>", "<cmd>Telescope neoclip<cr>",
-                              {noremap = true, silent = true})
-      vim.api.nvim_set_keymap("n", "<C-j><C-n>", "<cmd>Telescope neoclip<cr>",
-                              {noremap = true, silent = true})
+      -- vim.api.nvim_set_keymap("i", "<C-j><C-n>", "<cmd>Telescope neoclip<cr>",
+      --                         {noremap = true, silent = true})
+      -- vim.api.nvim_set_keymap("n", "<C-j><C-n>", "<cmd>Telescope neoclip<cr>",
+      --                         {noremap = true, silent = true})
       vim.cmd [[
         command! D execute(":lua require('telescope.builtin').live_grep()")
       ]]
