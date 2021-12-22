@@ -478,8 +478,7 @@ local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp
                                                                    .protocol
                                                                    .make_client_capabilities())
 
-local servers = {"sumneko_lua", "pyright", "tsserver", "denols"}
-local lspconfig_util = require("lspconfig.util")
+local servers = {"sumneko_lua", "pyright", "tsserver", "denols", "rls"}
 
 for _, lsp in ipairs(servers) do
   if lsp == "sumneko_lua" then
@@ -512,6 +511,16 @@ for _, lsp in ipairs(servers) do
       capabilities = capabilities,
       settings = {
         python = {venvPath = ".venv", pythonPath = ".venv/bin/python"}
+      }
+    })
+  elseif lsp == "rls" then
+    nvim_lsp[lsp].setup({
+      settings = {
+        rust = {
+          unstable_features = true,
+          build_on_save = false,
+          all_features = true
+        }
       }
     })
   elseif lsp == "denols" or "tsserver" then
