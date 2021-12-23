@@ -37,8 +37,8 @@ vim.api.nvim_set_keymap("n", "<leader>r", ":luafile dev/init.lua<cr>",
 -- filetype settings
 ----------------------------
 local extension_list = {
-  "ts", "pl", "lua", "c", "cpp", "tsx", "html", "css", "scss", "md", "go",
-  "vim", "yml", "toml", "dart", "mjs"
+  "ts", "pl", "lua", "c", "cpp", "tsx", "html", "css", "scss", "md", "vim",
+  "yml", "toml", "dart", "mjs"
 }
 vim.api.nvim_command("augroup MyTabStop")
 vim.api.nvim_command("autocmd!")
@@ -46,6 +46,8 @@ for i = 1, #extension_list do
   vim.api.nvim_command("autocmd BufNewFile,BufRead *." .. extension_list[i] ..
                          " setlocal tabstop=2 shiftwidth=2 expandtab")
 end
+vim.api.nvim_command(
+  "autocmd BufNewFile,BufRead *.go setlocal tabstop=4 shiftwidth=4 noexpandtab")
 vim.api.nvim_command("autocmd BufNewFile,BufRead Makefile setlocal noexpandtab")
 vim.api.nvim_command("augroup END")
 
@@ -237,6 +239,15 @@ packer.startup(function(use)
             function()
               return {exe = "lua-format", args = {}, stdin = true}
             end
+          },
+          go = {
+            function()
+              return {
+                exe = "goimports",
+                args = {vim.api.nvim_buf_get_name(0)},
+                stdin = true
+              }
+            end
           }
           -- TODO TS formatter settings
           -- typescript = {function() end}
@@ -246,6 +257,7 @@ packer.startup(function(use)
         augroup FormatAutogroup
           autocmd!
           autocmd BufWritePost *.lua FormatWrite
+          autocmd BufWritePost *.go FormatWrite
         augroup END
         ]], true)
     end
@@ -479,7 +491,7 @@ local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp
                                                                    .protocol
                                                                    .make_client_capabilities())
 
-local servers = {"sumneko_lua", "pyright", "tsserver", "denols", "rls"}
+local servers = {"sumneko_lua", "pyright", "tsserver", "denols", "rls", "gopls"}
 
 for _, lsp in ipairs(servers) do
   if lsp == "sumneko_lua" then
@@ -516,6 +528,9 @@ for _, lsp in ipairs(servers) do
     })
   elseif lsp == "rls" then
     nvim_lsp[lsp].setup({
+      on_attach = on_attach,
+      flags = {debounce_text_changes = 150},
+      capabilities = capabilities,
       settings = {
         rust = {
           unstable_features = true,
@@ -523,6 +538,12 @@ for _, lsp in ipairs(servers) do
           all_features = true
         }
       }
+    })
+  elseif lsp == "gopls" then
+    nvim_lsp[lsp].setup({
+      on_attach = on_attach,
+      flags = {debounce_text_changes = 150},
+      capabilities = capabilities
     })
   elseif lsp == "denols" or "tsserver" then
     local package_json_file = require("plenary.path"):new("package.json")
