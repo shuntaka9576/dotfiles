@@ -293,7 +293,7 @@ packer.startup(function(use)
   use {"mfussenegger/nvim-dap"}
   use {"jbyuki/one-small-step-for-vimkind"}
 
-  -- preview markdown
+  --[[ preview markdown
   use {"ellisonleao/glow.nvim"}
   use {"shuntaka9576/bufpreview.vim", requires = {{"vim-denops/denops.vim"}}}
   use {
@@ -301,6 +301,7 @@ packer.startup(function(use)
     requires = "kyazdani42/nvim-web-devicons",
     config = function() require("luatab").setup({}) end
   }
+  --]]
 
   -- regexp search and replace word
   use {
