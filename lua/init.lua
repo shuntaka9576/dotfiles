@@ -248,6 +248,11 @@ packer.startup(function(use)
                 stdin = true
               }
             end
+          },
+          rust = {
+            function()
+              return {exe = "rustfmt", args = {"--emit=stdout"}, stdin = true}
+            end
           }
           -- TODO TS formatter settings
           -- typescript = {function() end}
@@ -256,8 +261,7 @@ packer.startup(function(use)
       vim.api.nvim_exec([[
         augroup FormatAutogroup
           autocmd!
-          autocmd BufWritePost *.lua FormatWrite
-          autocmd BufWritePost *.go FormatWrite
+          autocmd BufWritePost *.lua,*.go,*.rs FormatWrite
         augroup END
         ]], true)
     end
