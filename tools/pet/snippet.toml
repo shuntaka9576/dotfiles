@@ -3,12 +3,12 @@
   command = "ls -al |awk '{print $1,$9}'"
   tag = ["awk"]
   output = ""
+
 [[snippets]]
   description = "GOPATH modeに変更"
   command = "set --export GO111MODULE off"
   tag = ["go"]
   output = ""
-
 
 [[snippets]]
   description = "ディレクトリ内のファイル分実行するコマンドを生成する"
@@ -110,9 +110,7 @@ done) | tee >(pbcopy)
   tag = ["docker"]
   output = ""
 
-# ----------------------------------------------------------------
 # Git
-
 [[snippets]]
   description = "Author指定でステップ数カウント"
   command = 'git ls-files | xargs -n1 git --no-pager blame -f -w | grep <username> | wc -l'
@@ -155,10 +153,8 @@ done) | tee >(pbcopy)
   tag = ["git"]
   output = ""
 
-# ----------------------------------------------------------------
 # Perlワンライナー
 # -e 'スクリプト'： 実行するPerlスクリプトを指定
-
 [[snippets]]
   description = "改行をつける(-l)"
   command = "perl -le 'print \"Hello\"'"
@@ -216,9 +212,7 @@ done) | tee >(pbcopy)
   tag = ["perl"]
   output = ""
 
-# ----------------------------------------------------------------
 # aws
-
 [[snippets]]
   description = "codecommitのリポジトリ一覧出力"
   command = "aws codecommit list-repositories | jq -r '.repositories[].repositoryName'"
@@ -235,9 +229,7 @@ done) | tee >(pbcopy)
   tag = ["aws"]
   output = ""
 
-# ----------------------------------------------------------------
 # Terraform
-
 [[snippets]]
   description = "setup dokernized terraform"
   command = "docker pull hashicorp/terraform:0.12.5;docker run --rm hashicorp/terraform:0.12.5 --version"
@@ -256,16 +248,13 @@ hashicorp/terraform:0.12.5 <command>
   tag = ["terraform"]
   output = ""
 
-# ----------------------------------------------------------------
 # TypeScirpt
-
 [[snippets]]
   description = "TypeScriptをスクリプト実行"
   command = "ts-node --project ~/dotfiles/nvim/languages/ts/tsconfig.json"
   tag = ["typescript"]
   output = ""
 
-# ----------------------------------------------------------------
 # Encode/Decode
 [[snippets]]
   description = "base64にエンコード"
@@ -289,14 +278,12 @@ hashicorp/terraform:0.12.5 <command>
   command = "ulid| tr A-Z a-z | xargs -I {} touch 'articles/{}.md'"
   tag = ["blog"]
 
-# ----------------------------------------------------------------
 # web
 [[snippets]]
   description = "lighthouse"
   command = "lighthouse http://localhost:3000 --view"
   tag = ["lighthouse"]
 
-# ----------------------------------------------------------------
 # nvim/vim
 [[snippets]]
   description = "development nvim plugin"
@@ -308,14 +295,12 @@ hashicorp/terraform:0.12.5 <command>
   command = "vim -u ~/repos/github.com/shuntaka9576/init.vim/init.vim"
   tag = ["vim"]
 
-# ----------------------------------------------------------------
 # deno
 [[snippets]]
   description = "deno fmt"
   command = "deno fmt --ext ts --unstable --watch"
   tag = ["deno"]
 
-# ----------------------------------------------------------------
 # openssl
 [[snippets]]
   description = "証明書チェーンを確認する"
@@ -327,13 +312,11 @@ hashicorp/terraform:0.12.5 <command>
   command = "openssl x509 -text -noout -in rootCA.pem"
   tag = ["openssl"]
 
-# ----------------------------------------------------------------
 [[snippets]]
   description = "ポートスキャン"
   command = "nmap 192.168.1.5 -p 1-65535"
   tag = ["network"]
 
-# ----------------------------------------------------------------
 [[snippets]]
   description = "PlatformIOでccls定義ファイルを吐き出す"
   command = "pio init --board=m5stack-core2 --project-option=\"framework=espidf\" --ide vim"
@@ -344,7 +327,6 @@ hashicorp/terraform:0.12.5 <command>
   command = "pio run --upload-port /dev/cu.SLAB_USBtoUART -t upload;pio device monitor -p /dev/cu.SLAB_USBtoUART --raw"
   tag = ["PlatformIO"]
 
-# ----------------------------------------------------------------
 [[snippets]]
   description = "Cのビルド"
   command = "gcc -std=c99 -o main main.c; ./main"
@@ -354,3 +336,9 @@ hashicorp/terraform:0.12.5 <command>
   description = "google/zxの実行"
   command = "zx --quiet http://zxsh.dev/hello.mjs"
   tag = ["zx"]
+
+[[snippets]]
+description = "cargoテストで標準出力を表示"
+command = "cargo test -- --nocapture"
+tag = ["rust"]
+output = ""
