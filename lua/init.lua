@@ -233,6 +233,7 @@ packer.startup(function(use)
   use {
     "mhartington/formatter.nvim",
     config = function()
+
       require("formatter").setup({
         filetype = {
           lua = {
@@ -254,8 +255,6 @@ packer.startup(function(use)
               return {exe = "rustfmt", args = {"--emit=stdout"}, stdin = true}
             end
           }
-          -- TODO TS formatter settings
-          -- typescript = {function() end}
         }
       })
       vim.api.nvim_exec([[
@@ -309,6 +308,8 @@ packer.startup(function(use)
   use {"mfussenegger/nvim-dap"}
   use {"jbyuki/one-small-step-for-vimkind"}
 
+  use {"shuntaka9576/preview-asciidoc.nvim", run = "yarn install"}
+  use {"shuntaka9576/preview-swagger.nvim", run = "yarn install"}
   --[[ preview markdown
   use {"ellisonleao/glow.nvim"}
   use {"shuntaka9576/bufpreview.vim", requires = {{"vim-denops/denops.vim"}}}
@@ -437,7 +438,15 @@ end)
 local cmp = require("cmp")
 
 cmp.setup({
-  snippet = {expand = function(args) vim.fn["vsnip#anonymous"](args.body) end},
+  snippet = {
+    -- REQUIRED - you must specify a snippet engine
+    expand = function(args)
+      vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+      -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+      -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
+      -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+    end
+  },
   mapping = {
     ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), {"i", "c"}),
     ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), {"i", "c"}),
