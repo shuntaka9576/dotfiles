@@ -49,6 +49,7 @@ end
 vim.api.nvim_command(
   "autocmd BufNewFile,BufRead *.go setlocal tabstop=4 shiftwidth=4 noexpandtab")
 vim.api.nvim_command("autocmd BufNewFile,BufRead Makefile setlocal noexpandtab")
+vim.api.nvim_command("autocmd BufWritePre *.ts,*.tsx :Format")
 vim.api.nvim_command("augroup END")
 
 ----------------------------
@@ -229,42 +230,42 @@ packer.startup(function(use)
     end
   }
 
-  -- formatter plugin
-  use {
-    "mhartington/formatter.nvim",
-    config = function()
+  -- -- formatter plugin
+  -- use {
+  --  "mhartington/formatter.nvim",
+  --  config = function()
 
-      require("formatter").setup({
-        filetype = {
-          lua = {
-            function()
-              return {exe = "lua-format", args = {}, stdin = true}
-            end
-          },
-          go = {
-            function()
-              return {
-                exe = "goimports",
-                args = {vim.api.nvim_buf_get_name(0)},
-                stdin = true
-              }
-            end
-          },
-          rust = {
-            function()
-              return {exe = "rustfmt", args = {"--emit=stdout"}, stdin = true}
-            end
-          }
-        }
-      })
-      vim.api.nvim_exec([[
-        augroup FormatAutogroup
-          autocmd!
-          autocmd BufWritePost *.lua,*.go,*.rs FormatWrite
-        augroup END
-        ]], true)
-    end
-  }
+  --    require("formatter").setup({
+  --      filetype = {
+  --        lua = {
+  --          function()
+  --            return {exe = "lua-format", args = {}, stdin = true}
+  --          end
+  --        },
+  --        go = {
+  --          function()
+  --            return {
+  --              exe = "goimports",
+  --              args = {vim.api.nvim_buf_get_name(0)},
+  --              stdin = true
+  --            }
+  --          end
+  --        },
+  --        rust = {
+  --          function()
+  --            return {exe = "rustfmt", args = {"--emit=stdout"}, stdin = true}
+  --          end
+  --        }
+  --      }
+  --    })
+  --    vim.api.nvim_exec([[
+  --      augroup FormatAutogroup
+  --        autocmd!
+  --        autocmd BufWritePost *.lua,*.go,*.rs FormatWrite
+  --      augroup END
+  --      ]], true)
+  --  end
+  -- }
 
   -- term plugin
   use {
@@ -377,6 +378,9 @@ packer.startup(function(use)
     end
   }
 
+  -- null-ls
+  use {"jose-elias-alvarez/null-ls.nvim"}
+
   -- status line
   use {
     "nvim-lualine/lualine.nvim",
@@ -433,6 +437,15 @@ packer.startup(function(use)
 end)
 
 ----------------------------
+-- null_ls settings
+----------------------------
+local null_ls = require("null-ls")
+local formatting = null_ls.builtins.formatting
+local sources = {}
+sources = {formatting.eslint, formatting.prettier}
+null_ls.setup({debug = false, sources = sources})
+
+----------------------------
 -- autocomplete settings
 ----------------------------
 local cmp = require("cmp")
@@ -473,7 +486,11 @@ cmp.setup.cmdline(":", {
 ----------------------------
 local nvim_lsp = require("lspconfig")
 
-local on_attach = function(_, bufnr)
+local on_attach = function(client, bufnr)
+  if client.name == "tsserver" then
+    client.resolved_capabilities.document_formatting = false
+  end
+
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
@@ -498,6 +515,9 @@ local on_attach = function(_, bufnr)
   buf_set_keymap("n", "<space>q",
                  "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
   buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+  vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
+  -- vim.api.nvim_set_keymap("n", "<leader>f", ":Format<cr>",
+  --                         {noremap = true, silent = false})
 end
 
 local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp
