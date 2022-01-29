@@ -442,7 +442,7 @@ end)
 local null_ls = require("null-ls")
 local formatting = null_ls.builtins.formatting
 local sources = {}
-sources = {formatting.eslint, formatting.prettier}
+sources = {formatting.eslint, formatting.prettier, null_ls.builtins.diagnostics.eslint}
 null_ls.setup({debug = false, sources = sources})
 
 ----------------------------
