@@ -234,6 +234,14 @@ packer.startup(function(use)
       vim.api.nvim_set_keymap("n", "<leader>R", ":%Reword", { noremap = true, silent = false })
     end,
   })
+
+  use({
+    "j-hui/fidget.nvim",
+    config = function()
+      require("fidget").setup({})
+    end,
+  })
+
   -- seamless navigation between tmux panes and vim splits plugin
   use({
     "alexghergh/nvim-tmux-navigation",
@@ -424,7 +432,19 @@ packer.startup(function(use)
   })
 
   -- null-ls
-  use({ "jose-elias-alvarez/null-ls.nvim" })
+  use({
+    "jose-elias-alvarez/null-ls.nvim",
+    config = function()
+      local null_ls = require("null-ls")
+      local sources = {
+        null_ls.builtins.formatting.eslint,
+        null_ls.builtins.formatting.prettier,
+        null_ls.builtins.formatting.stylua,
+        null_ls.builtins.diagnostics.eslint,
+      }
+      null_ls.setup({ debug = false, sources = sources })
+    end,
+  })
 
   -- status line
   use({
@@ -480,18 +500,6 @@ packer.startup(function(use)
     -- packer.sync()
   end
 end)
-
-----------------------------
--- null_ls settings
-----------------------------
-local null_ls = require("null-ls")
-local sources = {
-  null_ls.builtins.formatting.eslint,
-  null_ls.builtins.formatting.prettier,
-  null_ls.builtins.formatting.stylua,
-  null_ls.builtins.diagnostics.eslint,
-}
-null_ls.setup({ debug = false, sources = sources })
 
 ----------------------------
 -- autocomplete settings
