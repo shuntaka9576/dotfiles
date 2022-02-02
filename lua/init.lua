@@ -228,6 +228,12 @@ packer.startup(function(use)
     end,
   })
 
+  use({
+    "lambdalisue/reword.vim",
+    config = function()
+      vim.api.nvim_set_keymap("n", "<leader>R", ":%Reword", { noremap = true, silent = false })
+    end,
+  })
   -- seamless navigation between tmux panes and vim splits plugin
   use({
     "alexghergh/nvim-tmux-navigation",
