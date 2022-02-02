@@ -58,7 +58,7 @@ for i = 1, #extension_list do
 end
 vim.api.nvim_command("autocmd BufNewFile,BufRead *.go setlocal tabstop=4 shiftwidth=4 noexpandtab")
 vim.api.nvim_command("autocmd BufNewFile,BufRead Makefile setlocal noexpandtab")
-vim.api.nvim_command("autocmd BufWritePre *.ts,*.tsx,*.lua :Format")
+-- vim.api.nvim_command("autocmd BufWritePre *.ts,*.tsx,*.lua :Format")
 vim.api.nvim_command("augroup END")
 
 ----------------------------
