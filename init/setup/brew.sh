@@ -37,3 +37,7 @@ brew install --HEAD pyenv-virtualenvwrapper
 
 # for cpp enviroment settings
 brew install llvm
+
+# aws tools
+brew tap aws/tap
+brew install aws-sam-cli
