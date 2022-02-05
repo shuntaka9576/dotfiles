@@ -342,3 +342,10 @@ description = "cargoテストで標準出力を表示"
 command = "cargo test -- --nocapture"
 tag = ["rust"]
 output = ""
+
+[[snippets]]
+description = "preview cloudflare pages"
+command = "yarn wrangler pages dev --live-reload true ./public"
+tag = ["wrangler", "cloudflare"]
+output = ""
+
