@@ -575,7 +575,7 @@ end
 
 local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
-local servers = { "sumneko_lua", "pyright", "tsserver", "denols", "rls", "gopls" }
+local servers = { "sumneko_lua", "pyright", "tsserver", "denols", "rls", "gopls", "tailwindcss" }
 
 for _, lsp in ipairs(servers) do
   if lsp == "sumneko_lua" then
@@ -623,6 +623,12 @@ for _, lsp in ipairs(servers) do
       },
     })
   elseif lsp == "gopls" then
+    nvim_lsp[lsp].setup({
+      on_attach = on_attach,
+      flags = { debounce_text_changes = 150 },
+      capabilities = capabilities,
+    })
+  elseif lsp == "tailwindcss" then
     nvim_lsp[lsp].setup({
       on_attach = on_attach,
       flags = { debounce_text_changes = 150 },

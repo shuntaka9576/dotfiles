@@ -6,6 +6,7 @@ sudo npm install -g bash-language-server
 sudo npm install -g markdownlint
 sudo npm install -g typescript
 sudo npm install -g typescript-language-server
+sudo npm install -g @tailwindcss/language-server
 sudo npm install -g yarn
 sudo npm install -g jwt-cli
 sudo npm install -g reload
