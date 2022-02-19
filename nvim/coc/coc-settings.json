@@ -16,6 +16,7 @@
     "cpp",
     "c"
   ],
+  "coc.preferences.formatOnSaveFiletypes": ["tsx", "css", "markdown", "ts"],
   "languageserver": {
     "golang": {
       "command": "gopls",

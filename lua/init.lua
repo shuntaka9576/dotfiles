@@ -58,7 +58,7 @@ for i = 1, #extension_list do
 end
 vim.api.nvim_command("autocmd BufNewFile,BufRead *.go setlocal tabstop=4 shiftwidth=4 noexpandtab")
 vim.api.nvim_command("autocmd BufNewFile,BufRead Makefile setlocal noexpandtab")
--- vim.api.nvim_command("autocmd BufWritePre *.ts,*.tsx,*.lua :Format")
+vim.api.nvim_command("autocmd BufWritePre *.ts,*.tsx :Prettier")
 vim.api.nvim_command("augroup END")
 
 ----------------------------
@@ -120,6 +120,7 @@ packer.startup(function(use)
     run = "yarn install --frozen-lockfile",
     config = function()
       vim.cmd [[source ~/dotfiles/nvim/plugins/coc.vim]]
+      vim.cmd [[command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument]]
     end
   })
 
@@ -439,19 +440,19 @@ packer.startup(function(use)
   })
 
   -- null-ls
-  use({
-    "jose-elias-alvarez/null-ls.nvim",
-    config = function()
-      local null_ls = require("null-ls")
-      local sources = {
-        null_ls.builtins.formatting.eslint,
-        null_ls.builtins.formatting.prettier,
-        null_ls.builtins.formatting.stylua,
-        null_ls.builtins.diagnostics.eslint,
-      }
-      null_ls.setup({ debug = false, sources = sources })
-    end,
-  })
+  -- use({
+  --   "jose-elias-alvarez/null-ls.nvim",
+  --   config = function()
+  --     local null_ls = require("null-ls")
+  --     local sources = {
+  --       null_ls.builtins.formatting.eslint,
+  --       null_ls.builtins.formatting.prettier,
+  --       null_ls.builtins.formatting.stylua,
+  --       null_ls.builtins.diagnostics.eslint,
+  --     }
+  --     null_ls.setup({ debug = false, sources = sources })
+  --   end,
+  -- })
 
   -- status line
   use({
