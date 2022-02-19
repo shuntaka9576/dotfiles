@@ -115,6 +115,13 @@ packer.init({
 
 packer.startup(function(use)
   use({ "wbthomason/packer.nvim" })
+  use({
+    "neoclide/coc.nvim",
+    run = "yarn install --frozen-lockfile",
+    config = function()
+      vim.cmd [[source ~/dotfiles/nvim/plugins/coc.vim]]
+    end
+  })
 
   -- fuzzy finder plugin
   use({
