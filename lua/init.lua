@@ -119,9 +119,36 @@ packer.startup(function(use)
     "neoclide/coc.nvim",
     run = "yarn install --frozen-lockfile",
     config = function()
-      vim.cmd [[source ~/dotfiles/nvim/plugins/coc.vim]]
-      vim.cmd [[command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument]]
-    end
+      vim.cmd([[
+        " nodeのPATHを指定
+        let g:os = substitute(system('arch -arm64e uname'), '\n', '', '')
+        let g:arch = substitute(system('arch -arm64e uname -m'), '\n', '', '')
+        if g:os ==# 'Darwin' && g:arch ==# 'x86_64'
+          let g:coc_node_path = expand('~/.anyenv/envs/nodenv/shims/node')
+        elseif g:os ==# 'Darwin' && g:arch ==# 'arm64'
+          let g:coc_node_path = expand('/usr/local/bin/node')
+        endif
+        " コード補完時にEnterで確定した際に改行しない
+        inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+        " リファクタリング機能
+        nmap <silent>gr <Plug>(coc-rename)
+        " コードジャンプ
+        nmap <silent>gd <Plug>(coc-definition)
+        " 型情報の表示
+        nmap <silent>gy <Plug>(coc-type-definition)
+        " 実装の表示
+        nmap <silent>gi <Plug>(coc-implementation)
+        " リファレンス表示
+        nmap <silent>gf <Plug>(coc-references)
+        " diagnosticジャンプ
+        nmap <silent><C-n> <Plug>(coc-diagnostic-next)
+        nmap <silent><C-p> <Plug>(coc-diagnostic-prev)
+        " 警告の一覧表示
+        nnoremap <silent><space>a :<C-u>CocList diagnostics<cr>
+        nnoremap <silent><space>t :CocList floaterm<CR>
+      ]])
+      vim.cmd([[command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument]])
+    end,
   })
 
   -- fuzzy finder plugin
@@ -513,7 +540,7 @@ end)
 -- autocomplete settings
 ----------------------------
 -- local cmp = require("cmp")
--- 
+--
 -- cmp.setup({
 --   snippet = {
 --     -- REQUIRED - you must specify a snippet engine
@@ -535,10 +562,10 @@ end)
 --   sources = cmp.config.sources({ { name = "nvim_lsp" }, { name = "vsnip" } }, { { name = "buffer" } }),
 --   experimental = { ghost_text = true },
 -- })
--- 
+--
 -- local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 -- cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
--- 
+--
 -- cmp.setup.cmdline("/", { sources = { { name = "buffer" } } })
 -- cmp.setup.cmdline(":", {
 --   sources = cmp.config.sources({ { name = "path" } }, { { name = "cmdline" } }),
@@ -548,23 +575,23 @@ end)
 -- nvim-lspconfig settings
 ----------------------------
 -- local nvim_lsp = require("lspconfig")
--- 
+--
 -- local on_attach = function(client, bufnr)
 --   if client.name == "tsserver" then
 --     client.resolved_capabilities.document_formatting = false
 --   end
--- 
+--
 --   local function buf_set_keymap(...)
 --     vim.api.nvim_buf_set_keymap(bufnr, ...)
 --   end
 --   local function buf_set_option(...)
 --     vim.api.nvim_buf_set_option(bufnr, ...)
 --   end
--- 
+--
 --   buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
--- 
+--
 --   local opts = { noremap = true, silent = true }
--- 
+--
 --   buf_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
 --   buf_set_keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
 --   buf_set_keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
@@ -580,20 +607,20 @@ end)
 --   -- vim.api.nvim_set_keymap("n", "<leader>f", ":Format<cr>",
 --   --                         {noremap = true, silent = false})
 -- end
--- 
+--
 -- local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
--- 
+--
 -- local servers = { "sumneko_lua", "pyright", "tsserver", "denols", "rls", "gopls", "tailwindcss" }
--- 
+--
 -- for _, lsp in ipairs(servers) do
 --   if lsp == "sumneko_lua" then
 --     local sumneko_root_path = os.getenv("HOME") .. "/repos/github.com/sumneko/lua-language-server"
 --     local sumneko_binary = sumneko_root_path .. "/bin/macOS/lua-language-server"
--- 
+--
 --     local runtime_path = vim.split(package.path, ";")
 --     table.insert(runtime_path, "lua/?.lua")
 --     table.insert(runtime_path, "lua/?/init.lua")
--- 
+--
 --     nvim_lsp[lsp].setup({
 --       on_attach = on_attach,
 --       flags = { debounce_text_changes = 150 },
@@ -645,7 +672,7 @@ end)
 --   elseif lsp == "denols" or "tsserver" then
 --     local package_json_file = require("plenary.path"):new("package.json")
 --     local is_ts = package_json_file:exists()
--- 
+--
 --     if is_ts then
 --       nvim_lsp["tsserver"].setup({
 --         on_attach = on_attach,
