@@ -14,9 +14,11 @@
   "coc.preferences.formatOnSaveFiletypes":[
     "dart",
     "cpp",
-    "c"
+    "c",
+    "tsx",
+    "css",
+    "ts"
   ],
-  "coc.preferences.formatOnSaveFiletypes": ["tsx", "css", "markdown", "ts"],
   "languageserver": {
     "golang": {
       "command": "gopls",
