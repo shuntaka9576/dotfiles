@@ -9,7 +9,7 @@
     "coc-json": ">=1.4.1",
     "coc-lua": ">=1.0.1",
     "coc-prettier": ">=9.2.1",
-    "coc-pyright": ">=1.1.220",
+    "coc-pyright": ">=1.1.223",
     "coc-rls": ">=1.1.6",
     "coc-tsserver": ">=1.9.12",
     "coc-vimlsp": ">=0.12.5"
