@@ -250,3 +250,6 @@ export PATH="$HOME/.poetry/bin:$PATH"
 alias get_idf='. $HOME/esp/esp-idf/export.sh'
 export PATH="/usr/local/opt/llvm/bin:$PATH"
 
+# ------------------------------------------------------------------------------
+# plantuml
+export PLANTUML_LIMIT_SIZE=81920
