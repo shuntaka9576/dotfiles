@@ -151,6 +151,10 @@ packer.startup(function(use)
     end,
   })
 
+  use({
+    "mattn/vim-goimports",
+  })
+
   -- fuzzy finder plugin
   use({
     "nvim-telescope/telescope.nvim",
