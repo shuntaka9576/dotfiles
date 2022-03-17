@@ -58,7 +58,7 @@ for i = 1, #extension_list do
 end
 vim.api.nvim_command("autocmd BufNewFile,BufRead *.go setlocal tabstop=4 shiftwidth=4 noexpandtab")
 vim.api.nvim_command("autocmd BufNewFile,BufRead Makefile setlocal noexpandtab")
--- vim.api.nvim_command("autocmd BufWritePre *.ts,*.tsx,*.lua :Format")
+vim.api.nvim_command("autocmd BufWritePre *.ts,*.tsx :Prettier")
 vim.api.nvim_command("augroup END")
 
 ----------------------------
@@ -115,6 +115,45 @@ packer.init({
 
 packer.startup(function(use)
   use({ "wbthomason/packer.nvim" })
+  use({
+    "neoclide/coc.nvim",
+    run = "yarn install --frozen-lockfile",
+    config = function()
+      vim.cmd([[
+        " nodeのPATHを指定
+        let g:os = substitute(system('arch -arm64e uname'), '\n', '', '')
+        let g:arch = substitute(system('arch -arm64e uname -m'), '\n', '', '')
+        if g:os ==# 'Darwin' && g:arch ==# 'x86_64'
+          let g:coc_node_path = expand('~/.anyenv/envs/nodenv/shims/node')
+        elseif g:os ==# 'Darwin' && g:arch ==# 'arm64'
+          let g:coc_node_path = expand('/usr/local/bin/node')
+        endif
+        " コード補完時にEnterで確定した際に改行しない
+        inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+        " リファクタリング機能
+        nmap <silent>gr <Plug>(coc-rename)
+        " コードジャンプ
+        nmap <silent>gd <Plug>(coc-definition)
+        " 型情報の表示
+        nmap <silent>gy <Plug>(coc-type-definition)
+        " 実装の表示
+        nmap <silent>gi <Plug>(coc-implementation)
+        " リファレンス表示
+        nmap <silent>gf <Plug>(coc-references)
+        " diagnosticジャンプ
+        nmap <silent><C-n> <Plug>(coc-diagnostic-next)
+        nmap <silent><C-p> <Plug>(coc-diagnostic-prev)
+        " 警告の一覧表示
+        nnoremap <silent><space>a :<C-u>CocList diagnostics<cr>
+        nnoremap <silent><space>t :CocList floaterm<CR>
+      ]])
+      vim.cmd([[command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument]])
+    end,
+  })
+
+  use({
+    "mattn/vim-goimports",
+  })
 
   -- fuzzy finder plugin
   use({
@@ -175,6 +214,13 @@ packer.startup(function(use)
       local nvim_tree = require("nvim-tree")
       nvim_tree.setup({
         vim.api.nvim_set_keymap("n", "<Leader>d", ":NvimTreeToggle<CR>", { noremap = true, silent = true }),
+        view = {
+          mappings = {
+            list = {
+              { key = "<C-e>", action = "" },
+            },
+          },
+        },
       })
       vim.g.nvim_tree_refresh_wait = 100
       nvim_tree.open()
@@ -200,7 +246,7 @@ packer.startup(function(use)
     end,
   })
 
-  use({ "neovim/nvim-lspconfig" })
+  -- use({ "neovim/nvim-lspconfig" })
 
   -- autocomplete plugin
   use({
@@ -432,19 +478,19 @@ packer.startup(function(use)
   })
 
   -- null-ls
-  use({
-    "jose-elias-alvarez/null-ls.nvim",
-    config = function()
-      local null_ls = require("null-ls")
-      local sources = {
-        null_ls.builtins.formatting.eslint,
-        null_ls.builtins.formatting.prettier,
-        null_ls.builtins.formatting.stylua,
-        null_ls.builtins.diagnostics.eslint,
-      }
-      null_ls.setup({ debug = false, sources = sources })
-    end,
-  })
+  -- use({
+  --   "jose-elias-alvarez/null-ls.nvim",
+  --   config = function()
+  --     local null_ls = require("null-ls")
+  --     local sources = {
+  --       null_ls.builtins.formatting.eslint,
+  --       null_ls.builtins.formatting.prettier,
+  --       null_ls.builtins.formatting.stylua,
+  --       null_ls.builtins.diagnostics.eslint,
+  --     }
+  --     null_ls.setup({ debug = false, sources = sources })
+  --   end,
+  -- })
 
   -- status line
   use({
@@ -504,148 +550,148 @@ end)
 ----------------------------
 -- autocomplete settings
 ----------------------------
-local cmp = require("cmp")
-
-cmp.setup({
-  snippet = {
-    -- REQUIRED - you must specify a snippet engine
-    expand = function(args)
-      vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-      -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
-      -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
-      -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
-    end,
-  },
-  mapping = {
-    ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
-    ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
-    ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
-    ["<C-y>"] = cmp.config.disable,
-    ["<C-e>"] = cmp.mapping({ i = cmp.mapping.abort(), c = cmp.mapping.close() }),
-    ["<CR>"] = cmp.mapping.confirm({ select = true }),
-  },
-  sources = cmp.config.sources({ { name = "nvim_lsp" }, { name = "vsnip" } }, { { name = "buffer" } }),
-  experimental = { ghost_text = true },
-})
-
-local cmp_autopairs = require("nvim-autopairs.completion.cmp")
-cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
-
-cmp.setup.cmdline("/", { sources = { { name = "buffer" } } })
-cmp.setup.cmdline(":", {
-  sources = cmp.config.sources({ { name = "path" } }, { { name = "cmdline" } }),
-})
+-- local cmp = require("cmp")
+--
+-- cmp.setup({
+--   snippet = {
+--     -- REQUIRED - you must specify a snippet engine
+--     expand = function(args)
+--       vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+--       -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+--       -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
+--       -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+--     end,
+--   },
+--   mapping = {
+--     ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
+--     ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
+--     ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
+--     ["<C-y>"] = cmp.config.disable,
+--     ["<C-e>"] = cmp.mapping({ i = cmp.mapping.abort(), c = cmp.mapping.close() }),
+--     ["<CR>"] = cmp.mapping.confirm({ select = true }),
+--   },
+--   sources = cmp.config.sources({ { name = "nvim_lsp" }, { name = "vsnip" } }, { { name = "buffer" } }),
+--   experimental = { ghost_text = true },
+-- })
+--
+-- local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+-- cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+--
+-- cmp.setup.cmdline("/", { sources = { { name = "buffer" } } })
+-- cmp.setup.cmdline(":", {
+--   sources = cmp.config.sources({ { name = "path" } }, { { name = "cmdline" } }),
+-- })
 
 ----------------------------
 -- nvim-lspconfig settings
 ----------------------------
-local nvim_lsp = require("lspconfig")
-
-local on_attach = function(client, bufnr)
-  if client.name == "tsserver" then
-    client.resolved_capabilities.document_formatting = false
-  end
-
-  local function buf_set_keymap(...)
-    vim.api.nvim_buf_set_keymap(bufnr, ...)
-  end
-  local function buf_set_option(...)
-    vim.api.nvim_buf_set_option(bufnr, ...)
-  end
-
-  buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
-
-  local opts = { noremap = true, silent = true }
-
-  buf_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-  buf_set_keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-  buf_set_keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-  buf_set_keymap("n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
-  buf_set_keymap("n", "<space>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
-  buf_set_keymap("n", "<space>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)
-  buf_set_keymap("n", "<space>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opts)
-  buf_set_keymap("n", "rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
-  buf_set_keymap("n", "<C-n>", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
-  buf_set_keymap("n", "<space>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
-  buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-  vim.cmd([[ command! Format execute 'lua vim.lsp.buf.formatting()' ]])
-  -- vim.api.nvim_set_keymap("n", "<leader>f", ":Format<cr>",
-  --                         {noremap = true, silent = false})
-end
-
-local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
-
-local servers = { "sumneko_lua", "pyright", "tsserver", "denols", "rls", "gopls", "tailwindcss" }
-
-for _, lsp in ipairs(servers) do
-  if lsp == "sumneko_lua" then
-    local sumneko_root_path = os.getenv("HOME") .. "/repos/github.com/sumneko/lua-language-server"
-    local sumneko_binary = sumneko_root_path .. "/bin/macOS/lua-language-server"
-
-    local runtime_path = vim.split(package.path, ";")
-    table.insert(runtime_path, "lua/?.lua")
-    table.insert(runtime_path, "lua/?/init.lua")
-
-    nvim_lsp[lsp].setup({
-      on_attach = on_attach,
-      flags = { debounce_text_changes = 150 },
-      capabilities = capabilities,
-      cmd = { sumneko_binary, "-E", sumneko_root_path .. "/main.lua" },
-      settings = {
-        Lua = {
-          runtime = { version = "LuaJIT", path = runtime_path },
-          diagnostics = { enable = true, globals = {} },
-          workspace = { library = vim.api.nvim_get_runtime_file("", true) },
-          telemetry = { enable = false },
-        },
-      },
-    })
-  elseif lsp == "pyright" then
-    nvim_lsp[lsp].setup({
-      on_attach = on_attach,
-      flags = { debounce_text_changes = 150 },
-      capabilities = capabilities,
-      settings = {
-        python = { venvPath = ".venv", pythonPath = ".venv/bin/python" },
-      },
-    })
-  elseif lsp == "rls" then
-    nvim_lsp[lsp].setup({
-      on_attach = on_attach,
-      flags = { debounce_text_changes = 150 },
-      capabilities = capabilities,
-      settings = {
-        rust = {
-          unstable_features = true,
-          build_on_save = false,
-          all_features = true,
-        },
-      },
-    })
-  elseif lsp == "gopls" then
-    nvim_lsp[lsp].setup({
-      on_attach = on_attach,
-      flags = { debounce_text_changes = 150 },
-      capabilities = capabilities,
-    })
-  elseif lsp == "tailwindcss" then
-    nvim_lsp[lsp].setup({
-      on_attach = on_attach,
-      flags = { debounce_text_changes = 150 },
-      capabilities = capabilities,
-    })
-  elseif lsp == "denols" or "tsserver" then
-    local package_json_file = require("plenary.path"):new("package.json")
-    local is_ts = package_json_file:exists()
-
-    if is_ts then
-      nvim_lsp["tsserver"].setup({
-        on_attach = on_attach,
-        flags = { debounce_text_changes = 150 },
-        capabilities = capabilities,
-      })
-    else
-      nvim_lsp["denols"].setup({ on_attach = on_attach })
-    end
-  end
-end
+-- local nvim_lsp = require("lspconfig")
+--
+-- local on_attach = function(client, bufnr)
+--   if client.name == "tsserver" then
+--     client.resolved_capabilities.document_formatting = false
+--   end
+--
+--   local function buf_set_keymap(...)
+--     vim.api.nvim_buf_set_keymap(bufnr, ...)
+--   end
+--   local function buf_set_option(...)
+--     vim.api.nvim_buf_set_option(bufnr, ...)
+--   end
+--
+--   buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
+--
+--   local opts = { noremap = true, silent = true }
+--
+--   buf_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
+--   buf_set_keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
+--   buf_set_keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
+--   buf_set_keymap("n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
+--   buf_set_keymap("n", "<space>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
+--   buf_set_keymap("n", "<space>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)
+--   buf_set_keymap("n", "<space>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opts)
+--   buf_set_keymap("n", "rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
+--   buf_set_keymap("n", "<C-n>", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
+--   buf_set_keymap("n", "<space>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
+--   buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+--   vim.cmd([[ command! Format execute 'lua vim.lsp.buf.formatting()' ]])
+--   -- vim.api.nvim_set_keymap("n", "<leader>f", ":Format<cr>",
+--   --                         {noremap = true, silent = false})
+-- end
+--
+-- local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
+--
+-- local servers = { "sumneko_lua", "pyright", "tsserver", "denols", "rls", "gopls", "tailwindcss" }
+--
+-- for _, lsp in ipairs(servers) do
+--   if lsp == "sumneko_lua" then
+--     local sumneko_root_path = os.getenv("HOME") .. "/repos/github.com/sumneko/lua-language-server"
+--     local sumneko_binary = sumneko_root_path .. "/bin/macOS/lua-language-server"
+--
+--     local runtime_path = vim.split(package.path, ";")
+--     table.insert(runtime_path, "lua/?.lua")
+--     table.insert(runtime_path, "lua/?/init.lua")
+--
+--     nvim_lsp[lsp].setup({
+--       on_attach = on_attach,
+--       flags = { debounce_text_changes = 150 },
+--       capabilities = capabilities,
+--       cmd = { sumneko_binary, "-E", sumneko_root_path .. "/main.lua" },
+--       settings = {
+--         Lua = {
+--           runtime = { version = "LuaJIT", path = runtime_path },
+--           diagnostics = { enable = true, globals = {} },
+--           workspace = { library = vim.api.nvim_get_runtime_file("", true) },
+--           telemetry = { enable = false },
+--         },
+--       },
+--     })
+--   elseif lsp == "pyright" then
+--     nvim_lsp[lsp].setup({
+--       on_attach = on_attach,
+--       flags = { debounce_text_changes = 150 },
+--       capabilities = capabilities,
+--       settings = {
+--         python = { venvPath = ".venv", pythonPath = ".venv/bin/python" },
+--       },
+--     })
+--   elseif lsp == "rls" then
+--     nvim_lsp[lsp].setup({
+--       on_attach = on_attach,
+--       flags = { debounce_text_changes = 150 },
+--       capabilities = capabilities,
+--       settings = {
+--         rust = {
+--           unstable_features = true,
+--           build_on_save = false,
+--           all_features = true,
+--         },
+--       },
+--     })
+--   elseif lsp == "gopls" then
+--     nvim_lsp[lsp].setup({
+--       on_attach = on_attach,
+--       flags = { debounce_text_changes = 150 },
+--       capabilities = capabilities,
+--     })
+--   elseif lsp == "tailwindcss" then
+--     nvim_lsp[lsp].setup({
+--       on_attach = on_attach,
+--       flags = { debounce_text_changes = 150 },
+--       capabilities = capabilities,
+--     })
+--   elseif lsp == "denols" or "tsserver" then
+--     local package_json_file = require("plenary.path"):new("package.json")
+--     local is_ts = package_json_file:exists()
+--
+--     if is_ts then
+--       nvim_lsp["tsserver"].setup({
+--         on_attach = on_attach,
+--         flags = { debounce_text_changes = 150 },
+--         capabilities = capabilities,
+--       })
+--     else
+--       nvim_lsp["denols"].setup({ on_attach = on_attach })
+--     end
+--   end
+-- end

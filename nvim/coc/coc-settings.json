@@ -14,7 +14,10 @@
   "coc.preferences.formatOnSaveFiletypes":[
     "dart",
     "cpp",
-    "c"
+    "c",
+    "tsx",
+    "css",
+    "ts"
   ],
   "languageserver": {
     "golang": {

@@ -10,7 +10,8 @@ elseif g:os ==# 'Darwin' && g:arch ==# 'arm64'
 endif
 
 " コード補完時にEnterで確定した際に改行しない
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 " リファクタリング機能
 nmap <silent>gr <Plug>(coc-rename)
 " コードジャンプ

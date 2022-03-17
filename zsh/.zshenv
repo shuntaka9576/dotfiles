@@ -61,3 +61,4 @@ export LC_CTYPE="en_US.UTF-8"
 if [[ -f "$ZDOTDIR/.zplug/repos/shuntaka9576/prezto/runcoms/zshenv" ]]; then
   source "$ZDOTDIR/.zplug/repos/shuntaka9576/prezto/runcoms/zshenv"
 fi
+
