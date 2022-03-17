@@ -214,6 +214,13 @@ packer.startup(function(use)
       local nvim_tree = require("nvim-tree")
       nvim_tree.setup({
         vim.api.nvim_set_keymap("n", "<Leader>d", ":NvimTreeToggle<CR>", { noremap = true, silent = true }),
+        view = {
+          mappings = {
+            list = {
+              { key = "<C-e>", action = "" },
+            },
+          },
+        },
       })
       vim.g.nvim_tree_refresh_wait = 100
       nvim_tree.open()
