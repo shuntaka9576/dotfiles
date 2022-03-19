@@ -5,6 +5,12 @@
   output = ""
 
 [[snippets]]
+  description = "マージされたPR一覧"
+  command = "gh pr list -L 100 --state merged | awk -F '\\t' '{print \"#\" $1,$2}'"
+  tag = ["awk"]
+  output = ""
+
+[[snippets]]
   description = "GOPATH modeに変更"
   command = "set --export GO111MODULE off"
   tag = ["go"]
@@ -229,6 +235,14 @@ done) | tee >(pbcopy)
   tag = ["aws"]
   output = ""
 
+# jq
+[[snippets]]
+  description = "jsonのcsv変換"
+  command = """
+echo '{"persons": [{"attributes": {"filedName": "namevalue", "filedAge": 20}}]}' | jq -r '["name", "age"], (.persons[] |[.attributes.filedName, .attributes.filedAge]) | @csv'
+"""
+  tag = ["jq"]
+
 # Terraform
 [[snippets]]
   description = "setup dokernized terraform"
@@ -361,3 +375,8 @@ echo -n "dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk" \
 | sed -e 's/\//_/g'
 '''
 tag = ['oauth']
+
+[[snippets]]
+description = "GitHubのマークダウンパース"
+command = "gh api -X POST /markdown -f \"text=$(cat README.md)\""
+tag = ['GitHub']
