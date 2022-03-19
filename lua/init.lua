@@ -26,9 +26,6 @@ vim.api.nvim_set_keymap("n", "<Up>", "gk", { noremap = true })
 -- devlopment plugin
 vim.api.nvim_set_keymap("n", "<leader>r", ":luafile dev/init.lua<cr>", { noremap = true, silent = false })
 
--- vim.api.nvim_set_keymap("n", "<Space>a",
---                         "<cmd>Telescope lsp_workspace_diagnostics<cr>",
---                         {noremap = true, silent = true})
 ----------------------------
 -- filetype settings
 ----------------------------
@@ -146,8 +143,8 @@ packer.startup(function(use)
         " 警告の一覧表示
         nnoremap <silent><space>a :<C-u>CocList diagnostics<cr>
         nnoremap <silent><space>t :CocList floaterm<CR>
+        command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument
       ]])
-      vim.cmd([[command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument]])
     end,
   })
 
@@ -161,7 +158,6 @@ packer.startup(function(use)
     requires = {
       { "nvim-lua/plenary.nvim" },
       { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
-      { "nvim-telescope/telescope-fzy-native.nvim" },
     },
     config = function()
       local telescope = require("telescope")
@@ -177,8 +173,6 @@ packer.startup(function(use)
         defaults = { layout_strategy = "horizontal" },
       })
       require("telescope").load_extension("fzf")
-      require("telescope").load_extension("fzy_native")
-      -- require("telescope").load_extension("neoclip")
 
       vim.api.nvim_set_keymap(
         "n",
@@ -192,10 +186,6 @@ packer.startup(function(use)
         "<cmd>Telescope lsp_workspace_diagnostics<cr>",
         { noremap = true, silent = true }
       )
-      -- vim.api.nvim_set_keymap("i", "<C-j><C-n>", "<cmd>Telescope neoclip<cr>",
-      --                         {noremap = true, silent = true})
-      -- vim.api.nvim_set_keymap("n", "<C-j><C-n>", "<cmd>Telescope neoclip<cr>",
-      --                         {noremap = true, silent = true})
       vim.cmd([[
         command! D execute(":lua require('telescope.builtin').live_grep()")
       ]])
@@ -246,17 +236,6 @@ packer.startup(function(use)
     end,
   })
 
-  -- use({ "neovim/nvim-lspconfig" })
-
-  -- autocomplete plugin
-  use({
-    "hrsh7th/cmp-nvim-lsp",
-    "hrsh7th/cmp-buffer",
-    "hrsh7th/cmp-path",
-    "hrsh7th/cmp-cmdline",
-    "hrsh7th/nvim-cmp",
-  })
-  use({ "hrsh7th/cmp-vsnip", "hrsh7th/vim-vsnip" })
   use({
     "windwp/nvim-autopairs",
     config = function()
@@ -323,43 +302,6 @@ packer.startup(function(use)
     end,
   })
 
-  -- -- formatter plugin
-  -- use {
-  --  "mhartington/formatter.nvim",
-  --  config = function()
-
-  --    require("formatter").setup({
-  --      filetype = {
-  --        lua = {
-  --          function()
-  --            return {exe = "lua-format", args = {}, stdin = true}
-  --          end
-  --        },
-  --        go = {
-  --          function()
-  --            return {
-  --              exe = "goimports",
-  --              args = {vim.api.nvim_buf_get_name(0)},
-  --              stdin = true
-  --            }
-  --          end
-  --        },
-  --        rust = {
-  --          function()
-  --            return {exe = "rustfmt", args = {"--emit=stdout"}, stdin = true}
-  --          end
-  --        }
-  --      }
-  --    })
-  --    vim.api.nvim_exec([[
-  --      augroup FormatAutogroup
-  --        autocmd!
-  --        autocmd BufWritePost *.lua,*.go,*.rs FormatWrite
-  --      augroup END
-  --      ]], true)
-  --  end
-  -- }
-
   -- term plugin
   use({
     "akinsho/toggleterm.nvim",
@@ -393,39 +335,10 @@ packer.startup(function(use)
   use({ "tpope/vim-fugitive" })
   use({ "simeji/winresizer" })
 
-  -- GitHub utility
-  use({
-    "pwntester/octo.nvim",
-    config = function()
-      require("octo").setup()
-    end,
-  })
-
-  -- debug tool
-  -- TODO setting
-  use({ "mfussenegger/nvim-dap" })
-  use({ "jbyuki/one-small-step-for-vimkind" })
-
+  -- preview utils
   use({ "shuntaka9576/preview-asciidoc.nvim", run = "yarn install" })
   use({ "shuntaka9576/preview-swagger.nvim", run = "yarn install" })
-  --[[ preview markdown
-  use {"ellisonleao/glow.nvim"}
-  use {"shuntaka9576/bufpreview.vim", requires = {{"vim-denops/denops.vim"}}}
-  use {
-    "alvarosevilla95/luatab.nvim",
-    requires = "kyazdani42/nvim-web-devicons",
-    config = function() require("luatab").setup({}) end
-  }
-  --]]
-
-  -- regexp search and replace word
-  use({
-    "windwp/nvim-spectre",
-    requires = "nvim-lua/plenary.nvim",
-    config = function()
-      require("spectre").setup({})
-    end,
-  })
+  use({ "hozi-dev/preview-hozi-dev.nvim", run = "yarn install" })
 
   -- tab
   use({ "kyazdani42/nvim-web-devicons" })
@@ -440,7 +353,7 @@ packer.startup(function(use)
       require("bufferline").setup({
         options = {
           close_command = "bdelete! %d",
-          diagnostics = "nvim_lsp",
+          diagnostics = "coc",
           diagnostics_indicator = function(count, level, _, _)
             local icon = level:match("error") and " " or " "
             return " " .. icon .. count
@@ -477,21 +390,6 @@ packer.startup(function(use)
     end,
   })
 
-  -- null-ls
-  -- use({
-  --   "jose-elias-alvarez/null-ls.nvim",
-  --   config = function()
-  --     local null_ls = require("null-ls")
-  --     local sources = {
-  --       null_ls.builtins.formatting.eslint,
-  --       null_ls.builtins.formatting.prettier,
-  --       null_ls.builtins.formatting.stylua,
-  --       null_ls.builtins.diagnostics.eslint,
-  --     }
-  --     null_ls.setup({ debug = false, sources = sources })
-  --   end,
-  -- })
-
   -- status line
   use({
     "nvim-lualine/lualine.nvim",
@@ -500,198 +398,17 @@ packer.startup(function(use)
       require("lualine").setup({
         options = {
           theme = "gruvbox",
-          section_separators = "",
-          component_separators = "",
+        },
+        sections = {
+          lualine_a = { "g:coc_status", "bo:filetype" },
+          lualine_c = { "%=", "%t%m", "%3p" },
         },
       })
     end,
   })
 
-  ---[[
-  use({
-    "NTBBloodbath/rest.nvim",
-    requires = { "nvim-lua/plenary.nvim" },
-    config = function()
-      require("rest-nvim").setup({
-        -- Open request results in a horizontal split
-        result_split_horizontal = false,
-        -- Skip SSL verification, useful for unknown certificates
-        skip_ssl_verification = false,
-        -- Highlight request on run
-        highlight = { enabled = true, timeout = 150 },
-        result = {
-          -- toggle showing URL, HTTP info, headers at top the of result window
-          show_url = true,
-          show_http_info = true,
-          show_headers = true,
-        },
-        -- Jump to request line on run
-        jump_to_request = false,
-        env_file = ".env",
-        custom_dynamic_variables = {},
-      })
-    end,
-  })
-
-  use({ "MunifTanjim/nui.nvim" })
-  -- ]]
-
-  use({ "hozi-dev/preview-hozi-dev.nvim", run = "yarn install" })
-
-  -- If you want to automatically install and set up packer.nvim on any machine you clone your configuration to, add the following snippet
   if packer_bootstrap then
     packer.sync()
   else
-    -- start up packer sync disable
-    -- packer.sync()
   end
 end)
-
-----------------------------
--- autocomplete settings
-----------------------------
--- local cmp = require("cmp")
---
--- cmp.setup({
---   snippet = {
---     -- REQUIRED - you must specify a snippet engine
---     expand = function(args)
---       vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
---       -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
---       -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
---       -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
---     end,
---   },
---   mapping = {
---     ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
---     ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
---     ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
---     ["<C-y>"] = cmp.config.disable,
---     ["<C-e>"] = cmp.mapping({ i = cmp.mapping.abort(), c = cmp.mapping.close() }),
---     ["<CR>"] = cmp.mapping.confirm({ select = true }),
---   },
---   sources = cmp.config.sources({ { name = "nvim_lsp" }, { name = "vsnip" } }, { { name = "buffer" } }),
---   experimental = { ghost_text = true },
--- })
---
--- local cmp_autopairs = require("nvim-autopairs.completion.cmp")
--- cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
---
--- cmp.setup.cmdline("/", { sources = { { name = "buffer" } } })
--- cmp.setup.cmdline(":", {
---   sources = cmp.config.sources({ { name = "path" } }, { { name = "cmdline" } }),
--- })
-
-----------------------------
--- nvim-lspconfig settings
-----------------------------
--- local nvim_lsp = require("lspconfig")
---
--- local on_attach = function(client, bufnr)
---   if client.name == "tsserver" then
---     client.resolved_capabilities.document_formatting = false
---   end
---
---   local function buf_set_keymap(...)
---     vim.api.nvim_buf_set_keymap(bufnr, ...)
---   end
---   local function buf_set_option(...)
---     vim.api.nvim_buf_set_option(bufnr, ...)
---   end
---
---   buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
---
---   local opts = { noremap = true, silent = true }
---
---   buf_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
---   buf_set_keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
---   buf_set_keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
---   buf_set_keymap("n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
---   buf_set_keymap("n", "<space>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
---   buf_set_keymap("n", "<space>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)
---   buf_set_keymap("n", "<space>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opts)
---   buf_set_keymap("n", "rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
---   buf_set_keymap("n", "<C-n>", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
---   buf_set_keymap("n", "<space>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
---   buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
---   vim.cmd([[ command! Format execute 'lua vim.lsp.buf.formatting()' ]])
---   -- vim.api.nvim_set_keymap("n", "<leader>f", ":Format<cr>",
---   --                         {noremap = true, silent = false})
--- end
---
--- local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
---
--- local servers = { "sumneko_lua", "pyright", "tsserver", "denols", "rls", "gopls", "tailwindcss" }
---
--- for _, lsp in ipairs(servers) do
---   if lsp == "sumneko_lua" then
---     local sumneko_root_path = os.getenv("HOME") .. "/repos/github.com/sumneko/lua-language-server"
---     local sumneko_binary = sumneko_root_path .. "/bin/macOS/lua-language-server"
---
---     local runtime_path = vim.split(package.path, ";")
---     table.insert(runtime_path, "lua/?.lua")
---     table.insert(runtime_path, "lua/?/init.lua")
---
---     nvim_lsp[lsp].setup({
---       on_attach = on_attach,
---       flags = { debounce_text_changes = 150 },
---       capabilities = capabilities,
---       cmd = { sumneko_binary, "-E", sumneko_root_path .. "/main.lua" },
---       settings = {
---         Lua = {
---           runtime = { version = "LuaJIT", path = runtime_path },
---           diagnostics = { enable = true, globals = {} },
---           workspace = { library = vim.api.nvim_get_runtime_file("", true) },
---           telemetry = { enable = false },
---         },
---       },
---     })
---   elseif lsp == "pyright" then
---     nvim_lsp[lsp].setup({
---       on_attach = on_attach,
---       flags = { debounce_text_changes = 150 },
---       capabilities = capabilities,
---       settings = {
---         python = { venvPath = ".venv", pythonPath = ".venv/bin/python" },
---       },
---     })
---   elseif lsp == "rls" then
---     nvim_lsp[lsp].setup({
---       on_attach = on_attach,
---       flags = { debounce_text_changes = 150 },
---       capabilities = capabilities,
---       settings = {
---         rust = {
---           unstable_features = true,
---           build_on_save = false,
---           all_features = true,
---         },
---       },
---     })
---   elseif lsp == "gopls" then
---     nvim_lsp[lsp].setup({
---       on_attach = on_attach,
---       flags = { debounce_text_changes = 150 },
---       capabilities = capabilities,
---     })
---   elseif lsp == "tailwindcss" then
---     nvim_lsp[lsp].setup({
---       on_attach = on_attach,
---       flags = { debounce_text_changes = 150 },
---       capabilities = capabilities,
---     })
---   elseif lsp == "denols" or "tsserver" then
---     local package_json_file = require("plenary.path"):new("package.json")
---     local is_ts = package_json_file:exists()
---
---     if is_ts then
---       nvim_lsp["tsserver"].setup({
---         on_attach = on_attach,
---         flags = { debounce_text_changes = 150 },
---         capabilities = capabilities,
---       })
---     else
---       nvim_lsp["denols"].setup({ on_attach = on_attach })
---     end
---   end
--- end
