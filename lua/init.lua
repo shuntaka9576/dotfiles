@@ -311,17 +311,14 @@ packer.startup(function(use)
         cmd = "lazygit",
         dir = "git_dir",
         direction = "float",
-        float_opts = { border = "double" },
-        on_open = function(term)
-          vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", "<cmd>close<CR>", { noremap = true, silent = true })
-        end,
         on_close = function(_)
-          -- Allow nvim-tree to detect changes in lazygit immediately
-          local nvim_tree = require("nvim-tree")
-          nvim_tree.refresh()
+          local nvim_tree_reloader = require("nvim-tree.actions.reloaders")
+          nvim_tree_reloader.reload_explorer()
         end,
+        float_opts = {
+          border = "double",
+        },
       })
-
       function _LAZYGIT_TOGGLE()
         lazygit:toggle()
       end
