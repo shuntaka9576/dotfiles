@@ -41,6 +41,13 @@
   output = ""
 
 [[snippets]]
+  description = "module modeをoffにする"
+  command = 'export GO111MODULE=off'
+  tag = ["go"]
+  output = ""
+
+
+[[snippets]]
   description = "curlで速度を測る"
   command = '''
 cat <(echo "time\thttp_code\ttime_namelookup\ttime_connect\ttime_pretransfer\ttime_starttransfer\ttime_total") \
@@ -380,3 +387,24 @@ tag = ['oauth']
 description = "GitHubのマークダウンパース"
 command = "gh api -X POST /markdown -f \"text=$(cat README.md)\""
 tag = ['GitHub']
+
+[[snippets]]
+description = "ローカルからssh先のファイルを取得する"
+command = "scp -r -P {port} pi@{sshToAddress}:/home/pi/log.zip ~/"
+tag = ['scp']
+
+[[snippets]]
+description = "Go ARMビルド"
+command = "GOOS=linux GOARCH=arm GOARM=7 go build"
+tag = ['go']
+
+[[snippets]]
+description = "systemdで特定のサービスのジャーナルを監視する"
+command = "journalctl -u litestream -f"
+tag = ['systemd']
+
+[[snippets]]
+description = "テストデータ作成"
+command = 'while true; do echo "{\"createdAt\":{\"N\":\"1652940797\"},\"uuid\":{\"S\":\"$(uuid)$(uuid)\"}}"; done'
+tag = ['testdata']
+
