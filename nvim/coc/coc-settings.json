@@ -56,5 +56,8 @@
       "--check-untyped-defs"
   ],
   "pyright.enable": true,
-  "pyright.disableDiagnostics": true
+  "pyright.disableDiagnostics": true,
+  "go.goplsOptions": {
+    "staticcheck": true
+  }
 }
