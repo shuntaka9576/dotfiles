@@ -20,6 +20,7 @@ export GHQ_ROOT=~/repos
 export GOPATH=~/go
 export GO111MODULE=on
 export PATH="$HOME/go/bin:$PATH"
+export GOPRIVATE="github.com/shuntaka9576/*"
 
 # Rust
 export RUST_BACKTRACE=1
