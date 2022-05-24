@@ -408,3 +408,7 @@ description = "テストデータ作成"
 command = 'while true; do echo "{\"createdAt\":{\"N\":\"1652940797\"},\"uuid\":{\"S\":\"$(uuid)$(uuid)\"}}"; done'
 tag = ['testdata']
 
+[[snippets]]
+description = "リリースノート作成"
+command = 'ghch -r . --format markdown --from=main --to=release'
+tag = ['release', 'ghch']
