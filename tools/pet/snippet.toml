@@ -412,3 +412,15 @@ tag = ['testdata']
 description = "リリースノート作成"
 command = 'ghch -r . --format markdown --from=main --to=release'
 tag = ['release', 'ghch']
+
+[[snippets]]
+description = "goreleaserでリリース"
+# distディレクトリに資材が残っているとFailするため、無視するオプションを利用
+command = 'goreleaser release --rm-dist'
+tag = ['goreleaser', 'release']
+
+[[snippets]]
+description = "goreleaser(dry run)"
+# distディレクトリに資材が残っているとFailするため、無視するオプションを利用
+command = 'goreleaser release --snapshot --rm-dist --skip-publish'
+tag = ['goreleaser', 'release']
