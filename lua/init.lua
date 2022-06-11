@@ -335,8 +335,8 @@ packer.startup(function(use)
   use({ "simeji/winresizer" })
 
   -- preview utils
-  use({ "shuntaka9576/preview-asciidoc.nvim", run = "yarn install" })
-  use({ "shuntaka9576/preview-swagger.nvim", run = "yarn install" })
+  use({ "shuntaka9576/preview-asciidoc.nvim", run = "yarn install", opt = true, ft = { "adoc" } })
+  use({ "shuntaka9576/preview-swagger.nvim", run = "yarn install", opt = true, ft = { "yaml", "yml" } })
   use({ "hozi-dev/preview-hozi-dev.nvim", run = "yarn install" })
 
   -- tab

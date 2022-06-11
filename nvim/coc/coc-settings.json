@@ -17,7 +17,8 @@
     "c",
     "tsx",
     "css",
-    "ts"
+    "ts",
+    "lua"
   ],
   "languageserver": {
     "golang": {
@@ -36,11 +37,11 @@
         }
     }
   },
-  "Lua.workspace.library": {
-    "~/nvim-osx64/share/nvim/runtime/lua": true,
-    "~/nvim-osx64/share/nvim/runtime/lua/vim": true,
-    "~/nvim-osx64/share/nvim/runtime/lua/vim/lsp": true
-  },
+  "Lua.workspace.library": [
+    "~/nvim-osx64/share/nvim/runtime/lua",
+    "~/nvim-osx64/share/nvim/runtime/lua/vim",
+    "~/nvim-osx64/share/nvim/runtime/lua/vim/lsp"
+  ],
   "Lua.diagnostics.globals": ["vim", "use"],
   "python.venvPath": "${workspaceFolder}/.venv",
   "python.pythonPath": "${workspaceFolder}/.venv/bin/python",
@@ -59,5 +60,6 @@
   "pyright.disableDiagnostics": true,
   "go.goplsOptions": {
     "staticcheck": true
-  }
+  },
+  "Lua.telemetry.enable": true
 }
