@@ -8,11 +8,12 @@
     "coc-go": ">=1.3.0",
     "coc-html": ">=1.6.1",
     "coc-json": ">=1.4.2",
+    "coc-marketplace": ">=1.9.0",
     "coc-prettier": ">=9.3.1",
-    "coc-pyright": ">=1.1.253",
+    "coc-pyright": ">=1.1.255",
     "coc-rls": ">=1.1.6",
-    "coc-stylua": ">=0.0.9",
-    "coc-sumneko-lua": ">=0.0.28",
+    "coc-stylua": ">=0.0.10",
+    "coc-sumneko-lua": ">=0.0.31",
     "coc-tsserver": ">=1.10.5",
     "coc-vimlsp": ">=0.12.8"
   }
