@@ -225,6 +225,14 @@ done) | tee >(pbcopy)
   tag = ["perl"]
   output = ""
 
+[[snippets]]
+  description = "配列形式に変換"
+  command = '''
+ls | grep ".ts" | perl -nle '$i++;if ($i==1){print "[\"$_\", "}elsif(!eof){print "\"$_\", "}elsif(eof){print "\"$_\"]"}' |  perl -pe 's/\n//g' | jq -c
+'''
+  tag = ["perl"]
+  output = ""
+
 # aws
 [[snippets]]
   description = "codecommitのリポジトリ一覧出力"
