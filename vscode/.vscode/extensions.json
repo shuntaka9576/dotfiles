@@ -1,5 +1,6 @@
 {
   "recommendations": [
+    "github.copilot",
     "eamodio.gitlens",
     "vscodevim.vim",
     "ms-python.python",

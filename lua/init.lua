@@ -406,6 +406,17 @@ packer.startup(function(use)
     end,
   })
 
+  use({
+    "github/copilot.vim",
+    config = function()
+      vim.cmd([[
+        let g:copilot_filetypes = {
+        \ '*': v:true,
+        \ }
+      ]])
+    end
+  })
+
   if packer_bootstrap then
     packer.sync()
   else
