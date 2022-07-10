@@ -54,6 +54,12 @@ export ANDROID_SDK_ROOT=/usr/local/opt/android-sdk
 export JAVA_HOME=$HOME/.sdkman/candidates/java/current
 export PATH=$JAVA_HOME/bin:$PATH
 
+# Bun
+export PATH="$HOME/.bun/bin:$PATH"
+
+# Zig
+export PATH="$HOME/zls:$PATH" # LSP
+
 # tivew
 export LC_CTYPE="en_US.UTF-8"
 

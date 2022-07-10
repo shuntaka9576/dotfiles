@@ -61,5 +61,6 @@
   "go.goplsOptions": {
     "staticcheck": true
   },
-  "Lua.telemetry.enable": true
+  "Lua.telemetry.enable": true,
+  "zig.path": "~/zls/zls"
 }
