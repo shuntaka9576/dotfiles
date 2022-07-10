@@ -15,6 +15,7 @@
     "coc-stylua": ">=0.0.10",
     "coc-sumneko-lua": ">=0.0.31",
     "coc-tsserver": ">=1.10.5",
-    "coc-vimlsp": ">=0.12.8"
+    "coc-vimlsp": ">=0.12.8",
+    "coc-zig": ">=0.6.1"
   }
 }
