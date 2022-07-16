@@ -54,6 +54,7 @@ for i = 1, #extension_list do
   )
 end
 vim.api.nvim_command("autocmd BufNewFile,BufRead *.go setlocal tabstop=4 shiftwidth=4 noexpandtab")
+vim.api.nvim_command("autocmd BufNewFile,BufRead *.zig setlocal tabstop=4 shiftwidth=4 expandtab")
 vim.api.nvim_command("autocmd BufNewFile,BufRead Makefile setlocal noexpandtab")
 vim.api.nvim_command("autocmd BufWritePre *.ts,*.tsx :Prettier")
 vim.api.nvim_command("augroup END")
@@ -406,16 +407,27 @@ packer.startup(function(use)
     end,
   })
 
+  -- use({
+  --   "github/copilot.vim",
+  --   config = function()
+  --     vim.cmd([[
+  --       let g:copilot_filetypes = {
+  --       \ '*': v:true,
+  --       \ }
+  --     ]])
+  --   end
+  -- })
+
+  -- zig
   use({
-    "github/copilot.vim",
-    config = function()
-      vim.cmd([[
-        let g:copilot_filetypes = {
-        \ '*': v:true,
-        \ }
-      ]])
-    end
+    "ziglang/zig.vim",
+    function()
+      vim.cmd [[
+        let g:zig_fmt_autosave = 1
+      ]]
+    end,
   })
+
 
   if packer_bootstrap then
     packer.sync()

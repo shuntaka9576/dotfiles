@@ -432,3 +432,9 @@ description = "goreleaser(dry run)"
 # distディレクトリに資材が残っているとFailするため、無視するオプションを利用
 command = 'goreleaser release --snapshot --rm-dist --skip-publish'
 tag = ['goreleaser', 'release']
+
+# zig
+[[snippets]]
+description = "zigのビルド及び実行"
+command = 'zig build run'
+tag = ['zig']
