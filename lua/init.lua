@@ -128,7 +128,7 @@ packer.startup(function(use)
         endif
 
         " コード補完時にEnterで確定した際に改行しない
-        inoremap <silent><expr> <CR> pumvisible() ? coc#_select_confirm()
+        inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
         " リファクタリング機能
         nmap <silent>gr <Plug>(coc-rename)
@@ -407,6 +407,9 @@ packer.startup(function(use)
     end,
   })
 
+
+  use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install",
+    setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
   -- use({
   --   "github/copilot.vim",
   --   config = function()
