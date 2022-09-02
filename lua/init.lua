@@ -226,6 +226,7 @@ packer.startup(function(use)
     config = function()
       require("nvim-treesitter.configs").setup({
         ensure_installed = "all",
+        ignore_install = { "phpdoc", "php" },
         highlight = { enable = true },
         -- additional_vim_regex_highlighting = true
       })
