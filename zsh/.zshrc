@@ -214,7 +214,7 @@ stty -ixon
 bindkey '^s' pet-select
 
 # aws alias
-alias assume-role='function(){eval $(command assume-role $@);}'
+alias assume-role='function(){eval $(command assume $@);}'
 
 # auto complete
 autoload -U compinit
