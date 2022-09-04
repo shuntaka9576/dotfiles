@@ -124,7 +124,7 @@ packer.startup(function(use)
         if g:os ==# 'Darwin' && g:arch ==# 'x86_64'
           let g:coc_node_path = expand('~/.anyenv/envs/nodenv/shims/node')
         elseif g:os ==# 'Darwin' && g:arch ==# 'arm64'
-          let g:coc_node_path = expand('/usr/local/bin/node')
+          let g:coc_node_path = expand('~/.anyenv/envs/nodenv/shims/node')
         endif
 
         " コード補完時にEnterで確定した際に改行しない
