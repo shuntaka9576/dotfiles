@@ -5,6 +5,8 @@ go install github.com/jesseduffield/lazygit@latest
 go install github.com/knqyf263/pet@latest
 go install github.com/mvdan/sh/cmd/shfmt@latest
 go install github.com/github/hub@latest
+go install golang.org/x/tools/cmd/goimports@latest
+go install golang.org/x/tools/gopls@latest
 # go get github.com/gohugoio/hugo
 # go get github.com/mattn/efm-langserver/cmd/efm-langserver
 # go get -d github.com/skanehira/docui
