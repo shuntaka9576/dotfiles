@@ -397,6 +397,12 @@ command = "gh api -X POST /markdown -f \"text=$(cat README.md)\""
 tag = ['GitHub']
 
 [[snippets]]
+description = "リポジトリ作成"
+command = "gh repo create ssscp --private"
+tag = ['GitHub']
+output = ""
+
+[[snippets]]
 description = "ローカルからssh先のファイルを取得する"
 command = "scp -r -P {port} pi@{sshToAddress}:/home/pi/log.zip ~/"
 tag = ['scp']
