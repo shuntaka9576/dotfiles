@@ -27,8 +27,8 @@ brew cask install google-chrome
 brew cask install iterm2
 brew cask install gyazo
 brew cask install slack
-brew cask install visual-studio-code
 brew cask install drawio
 brew install --cask 1password
 brew install --cask figma
 brew install --cask kindle
+brew install visual-studio-code --cask
