@@ -71,3 +71,11 @@ fi
 
 # gh alias
 gh alias set see 'browse'
+
+# ------------------------------------------------------------------------------
+# For Linux
+case ${OSTYPE} in
+    linux*)
+	eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+        ;;
+esac
