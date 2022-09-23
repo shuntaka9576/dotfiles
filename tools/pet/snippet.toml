@@ -347,6 +347,11 @@ hashicorp/terraform:0.12.5 <command>
   tag = ["network"]
 
 [[snippets]]
+  description = "ARP(IPレンジに対して、応答したデバイスのMACアドレス取得)"
+  command = "ip neigh"
+  tag = ["network"]
+
+[[snippets]]
   description = "PlatformIOでccls定義ファイルを吐き出す"
   command = "pio init --board=m5stack-core2 --project-option=\"framework=espidf\" --ide vim"
   tag = ["PlatformIO"]
