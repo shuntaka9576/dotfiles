@@ -261,3 +261,6 @@ export PLANTUML_LIMIT_SIZE=81920
 # deno settings
 export DENO_INSTALL="$HOME/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
+
+# gh alias
+# gh alias set see 'browse'

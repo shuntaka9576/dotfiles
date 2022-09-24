@@ -69,9 +69,6 @@ if [[ -f "$ZDOTDIR/.zplug/repos/shuntaka9576/prezto/runcoms/zshenv" ]]; then
   source "$ZDOTDIR/.zplug/repos/shuntaka9576/prezto/runcoms/zshenv"
 fi
 
-# gh alias
-gh alias set see 'browse'
-
 # ------------------------------------------------------------------------------
 # For Linux
 case ${OSTYPE} in
