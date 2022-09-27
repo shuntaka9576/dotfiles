@@ -342,6 +342,11 @@ hashicorp/terraform:0.12.5 <command>
   tag = ["openssl"]
 
 [[snippets]]
+  description = "secretを利用したSHA256ハッシュダイジェストの取得"
+  command = 'echo "test" | openssl dgst -sha256 -hmac "secret_token" | perl -pe "s/\\(stdin\\)= //g"'
+  tag = ["openssl"]
+
+[[snippets]]
   description = "ポートスキャン"
   command = "nmap 192.168.1.5 -p 1-65535"
   tag = ["network"]
@@ -443,6 +448,11 @@ description = "goreleaser(dry run)"
 # distディレクトリに資材が残っているとFailするため、無視するオプションを利用
 command = 'goreleaser release --snapshot --rm-dist --skip-publish'
 tag = ['goreleaser', 'release']
+
+[[snippets]]
+description = "syscallの確認"
+command = 'sudo strace -e network curl https://wwww.google.com'
+tag = ['strace']
 
 # zig
 [[snippets]]
