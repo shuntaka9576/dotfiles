@@ -46,6 +46,17 @@
   tag = ["go"]
   output = ""
 
+[[snippets]]
+  description = "並列にスタックデプロイ"
+  command = """
+env | perl -nle 'print "export $1;" if /(AWS.*?)$/';
+xpanes -stc 'export STAGE_NAME=<STAGE_NAME>;
+cdk deploy -c stageName=$STAGE_NAME $STAGE_NAME-{}' \
+  <stack1> \
+  <stack2>
+"""
+  tag = ["xpanes", "cdk"]
+
 
 [[snippets]]
   description = "curlで速度を測る"
