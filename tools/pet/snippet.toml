@@ -260,6 +260,11 @@ ls | grep ".ts" | perl -nle '$i++;if ($i==1){print "[\"$_\", "}elsif(!eof){print
   command = "aws codecommit list-repositories | jq -r '.repositories[].repositoryName'| xargs -I{} ghq get -u https://git-codecommit.ap-northeast-1.amazonaws.com/v1/repos/{}"
   tag = ["aws"]
   output = ""
+[[snippets]]
+  description = "AWSの環境変数出力"
+  command = "env | perl -nle 'print \"export $1;\" if /(AWS.*?)$/';"
+  tag = ["aws"]
+  output = ""
 
 # jq
 [[snippets]]
@@ -365,7 +370,12 @@ hashicorp/terraform:0.12.5 <command>
 [[snippets]]
   description = "ARP(IPレンジに対して、応答したデバイスのMACアドレス取得)"
   command = "ip neigh"
-  tag = ["network"]
+  tag = ["network", "linux"]
+
+[[snippets]]
+  description = "ARP(IPレンジに対して、応答したデバイスのMACアドレス取得)"
+  command = " sudo arp-scan -I en0 -l"
+  tag = ["network", "mac"]
 
 [[snippets]]
   description = "PlatformIOでccls定義ファイルを吐き出す"
