@@ -69,6 +69,15 @@ echo "a.ts\nb.ts\nc.ts" |\
   tag = ["perl", "GitHub Actions"]
 
 [[snippets]]
+  description = "セキュア文字列の削除"
+  command = """
+cat ファイル名 |\
+perl -pe 's/(.*?)(""X-API-Key"": "")(.*?)("".?)$/$1$2MASKED$4/g' |\
+perl -pe 's/(.*?)(""Authorization"": ""Bearer )(.*?)("".?)$/$1$2MASKED$4/g'
+"""
+  tag = ["perl", "CloudWatch Logs"]
+
+[[snippets]]
   description = "curlで速度を測る"
   command = '''
 cat <(echo "time\thttp_code\ttime_namelookup\ttime_connect\ttime_pretransfer\ttime_starttransfer\ttime_total") \
