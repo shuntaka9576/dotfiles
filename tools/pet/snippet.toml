@@ -57,6 +57,16 @@ cdk deploy -c stageName=$STAGE_NAME $STAGE_NAME-{}' \
 """
   tag = ["xpanes", "cdk"]
 
+[[snippets]]
+  description = "ファイル名を[]に括る、GHAのmatrixに渡せる値に変換する"
+  command = """
+echo "a.ts\nb.ts\nc.ts" |\
+  grep ".ts" |\
+  perl -nle '$i++;if ($i==1){print "[\\"$_\\", "}elsif(!eof){print "\\"$_\\", "}elsif(eof){print "\\"$_\\"]"}' |\
+  perl -pe 's/\n//g' |\
+  jq -c
+"""
+  tag = ["perl", "GitHub Actions"]
 
 [[snippets]]
   description = "curlで速度を測る"
