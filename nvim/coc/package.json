@@ -12,6 +12,7 @@
     "coc-prettier": ">=9.3.1",
     "coc-pyright": ">=1.1.272",
     "coc-rls": ">=1.1.6",
+    "coc-rust-analyzer": ">=0.69.0",
     "coc-stylua": ">=0.0.11",
     "coc-sumneko-lua": ">=0.0.34",
     "coc-tsserver": ">=1.11.6",
