@@ -153,6 +153,12 @@ done) | tee >(pbcopy)
   tag = ["docker"]
   output = ""
 
+[[snippets]]
+  description = "サービスリソース削除"
+  command = 'docker compose down --rmi all --volumes --remove-orphans'
+  tag = ["docker", "compose"]
+  output = ""
+
 # Git
 [[snippets]]
   description = "Author指定でステップ数カウント"
