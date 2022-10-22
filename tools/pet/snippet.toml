@@ -171,6 +171,24 @@ done) | tee >(pbcopy)
   tag = ["docker", "aarch64"]
   output = ""
 
+[[snippets]]
+  description = "Auroraバージョン取得"
+  command = "select AURORA_VERSION();"
+  tag = ["docker", "aurora"]
+  output = ""
+
+[[snippets]]
+  description = "SessionMangerのポートフォワード"
+  command="""
+export INSTANCE_ID=""
+export CLUSTER_ENDPOINT=""
+aws ssm start-session \
+    --target $INSTANCE_ID \
+    --document-name AWS-StartPortForwardingSessionToRemoteHost \
+    --parameters "{\\"host\\":[\\"$CLUSTER_ENDPOINT\\"],\\"portNumber\\":[\\"3306\\"], \\"localPortNumber\\":[\\"3306\\"]}"
+"""
+  tag = ["docker", "aurora"]
+
 # Git
 [[snippets]]
   description = "Author指定でステップ数カウント"
