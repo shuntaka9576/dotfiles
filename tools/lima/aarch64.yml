@@ -6,7 +6,7 @@
 # $ export DOCKER_HOST=$(limactl list docker --format 'unix://{{.Dir}}/sock/docker.sock')
 # $ docker ...
 
-arch: "x86_64"
+arch: "aarch64"
 # This example requires Lima v0.8.0 or later
 images:
 # Try to use release-yyyyMMdd image if available. Note that release-yyyyMMdd will be removed after several months.

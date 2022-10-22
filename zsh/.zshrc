@@ -266,4 +266,4 @@ export PATH="$DENO_INSTALL/bin:$PATH"
 # gh alias set see 'browse'
 
 # lima
-export DOCKER_HOST=unix://$HOME/.lima/lima_sample/sock/docker.sock
+export DOCKER_HOST=unix://$HOME/.lima/aarch64/sock/docker.sock

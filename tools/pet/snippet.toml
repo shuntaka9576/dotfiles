@@ -159,6 +159,18 @@ done) | tee >(pbcopy)
   tag = ["docker", "compose"]
   output = ""
 
+[[snippets]]
+  description = "x86_64イメージビルド"
+  command = "export DOCKER_HOST=unix:///$HOME/.lima/x86_64/sock/docker.sock"
+  tag = ["docker", "x86"]
+  output = ""
+
+[[snippets]]
+  description = "aarch64イメージビルド"
+  command = "export DOCKER_HOST=unix:///$HOME/.lima/aarch64/sock/docker.sock"
+  tag = ["docker", "aarch64"]
+  output = ""
+
 # Git
 [[snippets]]
   description = "Author指定でステップ数カウント"
