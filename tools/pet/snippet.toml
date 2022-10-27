@@ -35,6 +35,11 @@
   output = ""
 
 [[snippets]]
+  description = "npm workspaceでライブラリ追加"
+  command = 'npm install -w packages/<workspace> --save <lib名>'
+  tag = ["npm"]
+
+[[snippets]]
   description = "curlでヘッダーのみ表示"
   command = 'curl -D - -s  -o /dev/null "https://api.hozi.dev/v1/users/hozi576/articles?type=tech"'
   tag = ["curl"]
