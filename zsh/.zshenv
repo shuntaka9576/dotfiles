@@ -64,6 +64,9 @@ export PATH="$HOME/zls:$PATH" # LSP
 # tivew
 export LC_CTYPE="en_US.UTF-8"
 
+# Docker
+export DOCKER_HOST=unix:///$HOME/.lima/aarch64/sock/docker.sock
+
 # ------------------------------------------------------------------------------
 # Read plugins settings
 if [[ -f "$ZDOTDIR/.zplug/repos/shuntaka9576/prezto/runcoms/zshenv" ]]; then
