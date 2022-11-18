@@ -11,6 +11,12 @@
   output = ""
 
 [[snippets]]
+  description = "特定カラムの値一致行を取得する"
+  command = """awk -v RS="\\r\\n" '{FS=","; if($8 == 0){print $0}else if(NR == 1){print $0}}' <ファイル名>"""
+  tag = ["awk"]
+  output = ""
+
+[[snippets]]
   description = "GOPATH modeに変更"
   command = "set --export GO111MODULE off"
   tag = ["go"]
