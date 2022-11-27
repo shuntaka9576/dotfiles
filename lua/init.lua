@@ -55,6 +55,8 @@ for i = 1, #extension_list do
 end
 vim.api.nvim_command("autocmd BufNewFile,BufRead *.go setlocal tabstop=4 shiftwidth=4 noexpandtab")
 vim.api.nvim_command("autocmd BufNewFile,BufRead *.zig setlocal tabstop=4 shiftwidth=4 expandtab")
+vim.api.nvim_command("autocmd BufNewFile,BufRead *.php set filetype=php")
+vim.api.nvim_command("autocmd FileType php setlocal expandtab tabstop=4 softtabstop=4 shiftwidth=4 autoindent")
 vim.api.nvim_command("autocmd BufNewFile,BufRead Makefile setlocal noexpandtab")
 vim.api.nvim_command("autocmd BufWritePre *.ts,*.tsx :Prettier")
 vim.api.nvim_command("augroup END")
@@ -127,9 +129,16 @@ packer.startup(function(use)
           let g:coc_node_path = expand('~/.anyenv/envs/nodenv/shims/node')
         endif
 
-        " コード補完時にEnterで確定した際に改行しない
-        inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
-              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+        inoremap <silent><expr> <TAB>
+              \ coc#pum#visible() ? coc#pum#next(1) :
+              \ CheckBackspace() ? "\<Tab>" :
+              \ coc#refresh()
+        inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+        " Make <CR> to accept selected completion item or notify coc.nvim to format
+        " <C-g>u breaks current undo, please make your own choice.
+        " inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+        "                       \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+        inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
         " リファクタリング機能
         nmap <silent>gr <Plug>(coc-rename)
         " コードジャンプ
@@ -226,7 +235,6 @@ packer.startup(function(use)
     config = function()
       require("nvim-treesitter.configs").setup({
         ensure_installed = "all",
-        ignore_install = { "phpdoc", "php" },
         highlight = { enable = true },
         -- additional_vim_regex_highlighting = true
       })
