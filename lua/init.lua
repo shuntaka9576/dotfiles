@@ -136,8 +136,8 @@ packer.startup(function(use)
         inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
         " Make <CR> to accept selected completion item or notify coc.nvim to format
         " <C-g>u breaks current undo, please make your own choice
-        inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
-                                      \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+        inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
+
         function! CheckBackspace() abort
           let col = col('.') - 1
           return !col || getline('.')[col - 1]  =~# '\s'
@@ -349,8 +349,8 @@ packer.startup(function(use)
   use({ "simeji/winresizer" })
 
   -- preview utils
-  use({ "shuntaka9576/preview-asciidoc.nvim", run = "yarn install" })
-  use({ "shuntaka9576/preview-swagger.nvim", run = "yarn install" })
+  -- use({ "shuntaka9576/preview-asciidoc.nvim", run = "yarn install" })
+  -- use({ "shuntaka9576/preview-swagger.nvim", run = "yarn install" })
   use({ "hozi-dev/preview-hozi-dev.nvim", run = "yarn install" })
 
   -- tab
