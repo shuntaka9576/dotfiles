@@ -193,7 +193,7 @@ packer.startup(function(use)
       vim.api.nvim_set_keymap(
         "n",
         "<C-j><C-p>",
-        "<cmd>lua require('telescope.builtin').find_files()<cr>",
+        "<cmd>Telescope find_files find_command=rg,--glob=!.git/,--hidden,--files prompt_prefix=🔍<cr>",
         { noremap = true, silent = true }
       )
       vim.api.nvim_set_keymap(
@@ -203,7 +203,7 @@ packer.startup(function(use)
         { noremap = true, silent = true }
       )
       vim.cmd([[
-        command! D execute(":lua require('telescope.builtin').live_grep()")
+        command! D execute(":lua require'telescope.builtin'.live_grep{ vimgrep_arguments = { 'rg', '--color=never', '--no-heading', '--with-filename', '--line-number', '--column', '--smart-case', '--hidden' } }")
       ]])
     end,
   })
@@ -420,9 +420,14 @@ packer.startup(function(use)
     end,
   })
 
-
-  use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install",
-    setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
+  use({
+    "iamcco/markdown-preview.nvim",
+    run = "cd app && npm install",
+    setup = function()
+      vim.g.mkdp_filetypes = { "markdown" }
+    end,
+    ft = { "markdown" },
+  })
   -- use({
   --   "github/copilot.vim",
   --   config = function()
@@ -438,12 +443,11 @@ packer.startup(function(use)
   use({
     "ziglang/zig.vim",
     function()
-      vim.cmd [[
+      vim.cmd([[
         let g:zig_fmt_autosave = 1
-      ]]
+      ]])
     end,
   })
-
 
   if packer_bootstrap then
     packer.sync()
