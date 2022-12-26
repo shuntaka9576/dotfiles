@@ -348,11 +348,6 @@ packer.startup(function(use)
   use({ "tpope/vim-fugitive" })
   use({ "simeji/winresizer" })
 
-  -- preview utils
-  -- use({ "shuntaka9576/preview-asciidoc.nvim", run = "yarn install" })
-  -- use({ "shuntaka9576/preview-swagger.nvim", run = "yarn install" })
-  use({ "hozi-dev/preview-hozi-dev.nvim", run = "yarn install" })
-
   -- tab
   use({ "kyazdani42/nvim-web-devicons" })
   use({
@@ -428,6 +423,15 @@ packer.startup(function(use)
     end,
     ft = { "markdown" },
   })
+
+  use({
+    "vim-denops/denops.vim"
+  })
+
+  use({
+    "shuntaka9576/preview-hozi-dev"
+  })
+
   -- use({
   --   "github/copilot.vim",
   --   config = function()
