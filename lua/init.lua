@@ -88,36 +88,32 @@ vim.api.nvim_command("set clipboard+=unnamed")
 ----------------------------
 -- Package manager settings
 ----------------------------
--- init packer.nvim(first time only)
-local fn = vim.fn
-local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-local packer_bootstrap = nil
-if fn.empty(fn.glob(install_path)) > 0 then
-  packer_bootstrap = fn.system({
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
     "git",
     "clone",
-    "--depth",
-    "1",
-    "https://github.com/wbthomason/packer.nvim",
-    install_path,
+    "--filter=blob:none",
+    "--single-branch",
+    "https://github.com/folke/lazy.nvim.git",
+    lazypath,
   })
 end
 
--- vim.cmd [[packadd packer.nvim]]
-local packer = require("packer")
-packer.init({
-  display = {
-    open_fn = function()
-      return require("packer.util").float({ border = "double" })
+vim.opt.runtimepath:prepend(lazypath)
+
+require("lazy").setup({
+  {
+    "folke/tokyonight.nvim",
+    config = function()
+      vim.cmd([[colorscheme tokyonight]])
     end,
   },
-})
 
-packer.startup(function(use)
-  use({ "wbthomason/packer.nvim" })
-  use({
+  {
     "neoclide/coc.nvim",
-    run = "yarn install --frozen-lockfile",
+    build = "yarn install --frozen-lockfile",
     config = function()
       vim.cmd([[
         " nodeのPATHを指定
@@ -162,18 +158,15 @@ packer.startup(function(use)
         command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument
       ]])
     end,
-  })
+  },
 
-  use({
-    "mattn/vim-goimports",
-  })
+  { "mattn/vim-goimports", lazy = true },
 
-  -- fuzzy finder plugin
-  use({
+  {
     "nvim-telescope/telescope.nvim",
-    requires = {
+    dependencies = {
       { "nvim-lua/plenary.nvim" },
-      { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
+      { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
     },
     config = function()
       local telescope = require("telescope")
@@ -206,16 +199,13 @@ packer.startup(function(use)
         command! D execute(":lua require'telescope.builtin'.live_grep{ vimgrep_arguments = { 'rg', '--color=never', '--no-heading', '--with-filename', '--line-number', '--column', '--smart-case', '--hidden' } }")
       ]])
     end,
-  })
+  },
 
-  -- file explorer plugin
-  use({
+  {
     "kyazdani42/nvim-tree.lua",
     requires = "kyazdani42/nvim-web-devicons",
-    ---[[ packer.nvim floating window for sync result cannot be deleted without this setting.
     opt = true,
     event = { "VimEnter" },
-    -- ]]
     config = function()
       local nvim_tree = require("nvim-tree")
       nvim_tree.setup({
@@ -231,60 +221,44 @@ packer.startup(function(use)
       vim.g.nvim_tree_refresh_wait = 100
       nvim_tree.open()
     end,
-  })
-  -- color theme and syntax plugin
-  use({
+  },
+
+  {
     "nvim-treesitter/nvim-treesitter",
-    run = ":TSUpdate",
+    build = ":TSUpdate",
     config = function()
       require("nvim-treesitter.configs").setup({
         ensure_installed = "all",
         highlight = { enable = true },
-        -- additional_vim_regex_highlighting = true
       })
     end,
-  })
+  },
 
-  use({
-    "folke/tokyonight.nvim",
-    config = function()
-      vim.cmd([[colorscheme tokyonight]])
-    end,
-  })
-
-  use({
+  {
     "windwp/nvim-autopairs",
     config = function()
       require("nvim-autopairs").setup({})
     end,
-  })
+  },
 
-  -- easy-motion like plugin
-  use({
+  {
     "phaazon/hop.nvim",
-    as = "hop",
+    name = "hop",
     config = function()
       require("hop").setup({ keys = "etovxqpdygfblzhckisuran" })
       vim.api.nvim_set_keymap("n", "f", ":HopChar1<CR>", { noremap = true, silent = true })
     end,
-  })
+  },
 
-  use({
-    "lambdalisue/reword.vim",
-    config = function()
-      vim.api.nvim_set_keymap("n", "<leader>R", ":%Reword", { noremap = true, silent = false })
-    end,
-  })
-
-  use({
+  {
     "j-hui/fidget.nvim",
     config = function()
       require("fidget").setup({})
     end,
-  })
+  },
 
-  -- seamless navigation between tmux panes and vim splits plugin
-  use({
+
+  {
     "alexghergh/nvim-tmux-navigation",
     config = function()
       require("nvim-tmux-navigation").setup({
@@ -316,10 +290,9 @@ packer.startup(function(use)
         { noremap = true, silent = true }
       )
     end,
-  })
+  },
 
-  -- term plugin
-  use({
+  {
     "akinsho/toggleterm.nvim",
     config = function()
       local Terminal = require("toggleterm.terminal").Terminal
@@ -341,18 +314,16 @@ packer.startup(function(use)
 
       vim.api.nvim_set_keymap("n", "<leader>g", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", { noremap = true, silent = true })
     end,
-  })
+  },
 
-  -- Git utility
-  use({ "airblade/vim-gitgutter" })
-  use({ "tpope/vim-fugitive" })
-  use({ "simeji/winresizer" })
+  { "airblade/vim-gitgutter" },
+  { "tpope/vim-fugitive" },
+  { "simeji/winresizer" },
 
-  -- tab
-  use({ "kyazdani42/nvim-web-devicons" })
-  use({
+  { "kyazdani42/nvim-web-devicons" },
+  {
     "akinsho/bufferline.nvim",
-    requires = "kyazdani42/nvim-web-devicons",
+    dependencies = "kyazdani42/nvim-web-devicons",
     config = function()
       vim.opt.termguicolors = true
 
@@ -396,12 +367,11 @@ packer.startup(function(use)
         { noremap = true, silent = true }
       )
     end,
-  })
+  },
 
-  -- status line
-  use({
+  {
     "nvim-lualine/lualine.nvim",
-    requires = { "kyazdani42/nvim-web-devicons" },
+    dependencies = { "kyazdani42/nvim-web-devicons" },
     config = function()
       require("lualine").setup({
         options = {
@@ -413,48 +383,31 @@ packer.startup(function(use)
         },
       })
     end,
-  })
+  },
 
-  use({
+  {
     "iamcco/markdown-preview.nvim",
-    run = "cd app && npm install",
-    setup = function()
+    build = "cd app && npm install",
+    init = function()
       vim.g.mkdp_filetypes = { "markdown" }
     end,
     ft = { "markdown" },
-  })
+  },
 
-  use({
+  {
     "vim-denops/denops.vim"
-  })
+  },
 
-  use({
+  {
     "shuntaka9576/preview-hozi-dev"
-  })
+  },
 
-  -- use({
-  --   "github/copilot.vim",
-  --   config = function()
-  --     vim.cmd([[
-  --       let g:copilot_filetypes = {
-  --       \ '*': v:true,
-  --       \ }
-  --     ]])
-  --   end
-  -- })
-
-  -- zig
-  use({
+  {
     "ziglang/zig.vim",
-    function()
+    config = function()
       vim.cmd([[
         let g:zig_fmt_autosave = 1
       ]])
     end,
-  })
-
-  if packer_bootstrap then
-    packer.sync()
-  else
-  end
-end)
+  }
+})
