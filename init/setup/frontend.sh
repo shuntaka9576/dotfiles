@@ -15,3 +15,5 @@ sudo npm install -g uuid-cli
 sudo npm install -g lighthouse
 sudo npm install -g npm-check-updates
 sudo npm install -g pyright
+# for nvim-treesitter plugin
+sudo npm install -g tree-sitter-cli
