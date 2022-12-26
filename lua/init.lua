@@ -104,7 +104,13 @@ end
 vim.opt.runtimepath:prepend(lazypath)
 
 require("lazy").setup({
-  "folke/tokyonight.nvim",
+  {
+    "folke/tokyonight.nvim",
+    config = function()
+      vim.cmd([[colorscheme tokyonight]])
+    end,
+  },
+
   {
     "neoclide/coc.nvim",
     build = "yarn install --frozen-lockfile",
@@ -191,6 +197,216 @@ require("lazy").setup({
       )
       vim.cmd([[
         command! D execute(":lua require'telescope.builtin'.live_grep{ vimgrep_arguments = { 'rg', '--color=never', '--no-heading', '--with-filename', '--line-number', '--column', '--smart-case', '--hidden' } }")
+      ]])
+    end,
+  },
+
+  {
+    "kyazdani42/nvim-tree.lua",
+    requires = "kyazdani42/nvim-web-devicons",
+    opt = true,
+    event = { "VimEnter" },
+    config = function()
+      local nvim_tree = require("nvim-tree")
+      nvim_tree.setup({
+        vim.api.nvim_set_keymap("n", "<Leader>d", ":NvimTreeToggle<CR>", { noremap = true, silent = true }),
+        view = {
+          mappings = {
+            list = {
+              { key = "<C-e>", action = "" },
+            },
+          },
+        },
+      })
+      vim.g.nvim_tree_refresh_wait = 100
+      nvim_tree.open()
+    end,
+  },
+
+  {
+    "nvim-treesitter/nvim-treesitter",
+    build = ":TSUpdate",
+    config = function()
+      require("nvim-treesitter.configs").setup({
+        ensure_installed = "all",
+        highlight = { enable = true },
+      })
+    end,
+  },
+
+  {
+    "windwp/nvim-autopairs",
+    config = function()
+      require("nvim-autopairs").setup({})
+    end,
+  },
+
+  {
+    "phaazon/hop.nvim",
+    name = "hop",
+    config = function()
+      require("hop").setup({ keys = "etovxqpdygfblzhckisuran" })
+      vim.api.nvim_set_keymap("n", "f", ":HopChar1<CR>", { noremap = true, silent = true })
+    end,
+  },
+
+  {
+    "j-hui/fidget.nvim",
+    config = function()
+      require("fidget").setup({})
+    end,
+  },
+
+
+  {
+    "alexghergh/nvim-tmux-navigation",
+    config = function()
+      require("nvim-tmux-navigation").setup({
+        disable_when_zoomed = true, -- defaults to false
+      })
+
+      vim.api.nvim_set_keymap(
+        "n",
+        "<C-w>j",
+        ":lua require'nvim-tmux-navigation'.NvimTmuxNavigateDown()<CR>",
+        { noremap = true, silent = true }
+      )
+      vim.api.nvim_set_keymap(
+        "n",
+        "<C-w>k",
+        ":lua require'nvim-tmux-navigation'.NvimTmuxNavigateUp()<CR>",
+        { noremap = true, silent = true }
+      )
+      vim.api.nvim_set_keymap(
+        "n",
+        "<C-w>l",
+        ":lua require'nvim-tmux-navigation'.NvimTmuxNavigateRight()<CR>",
+        { noremap = true, silent = true }
+      )
+      vim.api.nvim_set_keymap(
+        "n",
+        "<C-w>h",
+        ":lua require'nvim-tmux-navigation'.NvimTmuxNavigateLeft()<CR>",
+        { noremap = true, silent = true }
+      )
+    end,
+  },
+
+  {
+    "akinsho/toggleterm.nvim",
+    config = function()
+      local Terminal = require("toggleterm.terminal").Terminal
+      local lazygit = Terminal:new({
+        cmd = "lazygit",
+        dir = "git_dir",
+        direction = "float",
+        on_close = function(_)
+          local nvim_tree_reloader = require("nvim-tree.actions.reloaders")
+          nvim_tree_reloader.reload_explorer()
+        end,
+        float_opts = {
+          border = "double",
+        },
+      })
+      function _LAZYGIT_TOGGLE()
+        lazygit:toggle()
+      end
+
+      vim.api.nvim_set_keymap("n", "<leader>g", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", { noremap = true, silent = true })
+    end,
+  },
+
+  { "airblade/vim-gitgutter" },
+  { "tpope/vim-fugitive" },
+  { "simeji/winresizer" },
+
+  { "kyazdani42/nvim-web-devicons" },
+  {
+    "akinsho/bufferline.nvim",
+    dependencies = "kyazdani42/nvim-web-devicons",
+    config = function()
+      vim.opt.termguicolors = true
+
+      local groups = require("bufferline.groups")
+
+      require("bufferline").setup({
+        options = {
+          close_command = "bdelete! %d",
+          diagnostics = "coc",
+          diagnostics_indicator = function(count, level, _, _)
+            local icon = level:match("error") and " " or " "
+            return " " .. icon .. count
+          end,
+          offsets = { { filetype = "NvimTree" } },
+          groups = {
+            options = {
+              toggle_hidden_on_enter = true, -- when you re-enter a hidden group this options re-opens that group so the buffer is visible
+            },
+            items = {
+              groups.builtin.ungrouped,
+              {
+                name = "Docs",
+                auto_close = true,
+                matcher = function(buf)
+                  return buf.filename:match("%.md")
+                end,
+              },
+            },
+          },
+        },
+      })
+
+      vim.api.nvim_set_keymap("n", "[b", "<cmd>BufferLineCycleNext<cr>", { noremap = true, silent = true })
+      vim.api.nvim_set_keymap("n", "b]", "<cmd>BufferLineCyclePrev<cr>", { noremap = true, silent = true })
+      vim.api.nvim_set_keymap("n", "<C-s>", "<cmd>BufferLineSortByTabs<cr>", { noremap = true, silent = true })
+      vim.api.nvim_set_keymap("n", "<leader>t", "<cmd>BufferLinePick<cr>", { noremap = true, silent = true })
+      vim.api.nvim_set_keymap(
+        "n",
+        "<leader><leader>r",
+        "<cmd>BufferLineCloseRight<cr>",
+        { noremap = true, silent = true }
+      )
+    end,
+  },
+
+  {
+    "nvim-lualine/lualine.nvim",
+    dependencies = { "kyazdani42/nvim-web-devicons" },
+    config = function()
+      require("lualine").setup({
+        options = {
+          theme = "gruvbox",
+        },
+        sections = {
+          lualine_a = { "g:coc_status", "bo:filetype" },
+          lualine_c = { "%=", "%t%m", "%3p" },
+        },
+      })
+    end,
+  },
+
+  {
+    "iamcco/markdown-preview.nvim",
+    build = "cd app && npm install",
+    init = function()
+      vim.g.mkdp_filetypes = { "markdown" }
+    end,
+    ft = { "markdown" },
+  },
+
+  {
+    "vim-denops/denops.vim"
+  },
+
+  {
+    "shuntaka9576/preview-hozi-dev"
+  },
+
+  {
+    "ziglang/zig.vim",
+    config = function()
+      vim.cmd([[
+        let g:zig_fmt_autosave = 1
       ]])
     end,
   }
