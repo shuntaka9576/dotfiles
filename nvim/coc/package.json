@@ -10,7 +10,6 @@
     "coc-json": ">=1.8.0",
     "coc-marketplace": ">=1.9.0",
     "coc-phpls": ">=2.2.2",
-    "coc-prettier": ">=9.3.1",
     "coc-pyright": ">=1.1.284",
     "coc-rls": ">=1.1.6",
     "coc-rust-analyzer": ">=0.70.0",
@@ -18,9 +17,10 @@
     "coc-sumneko-lua": ">=0.0.35",
     "coc-tsserver": ">=2.1.0",
     "coc-vimlsp": ">=0.13.0",
-    "coc-zig": ">=0.6.1"
+    "coc-zig": ">=0.6.1",
+    "coc-prettier": ">=9.3.1"
   },
   "disabled": [],
   "locked": [],
-  "lastUpdate": 1671347409956
+  "lastUpdate": 1672020125953
 }
