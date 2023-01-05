@@ -398,9 +398,9 @@ require("lazy").setup({
     "vim-denops/denops.vim"
   },
 
-  {
-    "shuntaka9576/preview-hozi-dev"
-  },
+  -- {
+  --   "shuntaka9576/preview-hozi-dev"
+  -- },
 
   {
     "ziglang/zig.vim",
