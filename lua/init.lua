@@ -160,7 +160,7 @@ require("lazy").setup({
     end,
   },
 
-  { "mattn/vim-goimports", lazy = true },
+  { "mattn/vim-goimports" },
 
   {
     "nvim-telescope/telescope.nvim",
