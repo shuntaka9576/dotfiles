@@ -291,6 +291,12 @@ aws ssm start-session \
   output = ""
 
 [[snippets]]
+  description = "シンボリックリンク"
+  command = "ln -s backend/Dockerfile Dockerfile.heroku"
+  tag = ["ln"]
+  output = ""
+
+[[snippets]]
   description = "標準入力からの置換"
   command = "echo \"1(2100), 2(1900), 3(1800)\" | perl -pe 's/\\(.*?\\)//g'"
   tag = ["perl"]
