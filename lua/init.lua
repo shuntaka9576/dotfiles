@@ -221,7 +221,7 @@ require("lazy").setup({
         },
       })
       vim.g.nvim_tree_refresh_wait = 100
-      nvim_tree.open()
+      -- nvim_tree.open()
     end,
   },
 
@@ -398,6 +398,10 @@ require("lazy").setup({
 
   {
     "vim-denops/denops.vim"
+  },
+
+  {
+    "lambdalisue/kensaku.vim"
   },
 
   -- {

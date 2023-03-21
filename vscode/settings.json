@@ -31,7 +31,8 @@
     },
     // python settings
     "[python]": {
-        "editor.formatOnSave": true
+        "editor.formatOnSave": true,
+        "editor.formatOnType": true
     },
     "python.linting.pylintEnabled": false,
     "python.linting.flake8Enabled": false,
