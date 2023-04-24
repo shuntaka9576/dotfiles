@@ -384,53 +384,35 @@ require("lazy").setup({
   { "simeji/winresizer" },
 
   { "kyazdani42/nvim-web-devicons" },
-  -- {
-  --   "akinsho/bufferline.nvim",
-  --   dependencies = "kyazdani42/nvim-web-devicons",
-  --   config = function()
-  --     vim.opt.termguicolors = true
+  {
+    "akinsho/bufferline.nvim",
+    dependencies = "kyazdani42/nvim-web-devicons",
+    config = function()
+      vim.opt.termguicolors = true
+      require("bufferline").setup({
+        options = {
+          close_command = "bdelete! %d",
+          diagnostics = "coc",
+          diagnostics_indicator = function(count, level, _, _)
+            local icon = level:match("error") and " " or " "
+            return " " .. icon .. count
+          end,
+          offsets = { { filetype = "NvimTree" } },
+        },
+      })
 
-  --     local groups = require("bufferline.groups")
-
-  --     require("bufferline").setup({
-  --       options = {
-  --         close_command = "bdelete! %d",
-  --         diagnostics = "coc",
-  --         diagnostics_indicator = function(count, level, _, _)
-  --           local icon = level:match("error") and " " or " "
-  --           return " " .. icon .. count
-  --         end,
-  --         offsets = { { filetype = "NvimTree" } },
-  --         groups = {
-  --           options = {
-  --             toggle_hidden_on_enter = true, -- when you re-enter a hidden group this options re-opens that group so the buffer is visible
-  --           },
-  --           items = {
-  --             groups.builtin.ungrouped,
-  --             {
-  --               name = "Docs",
-  --               auto_close = true,
-  --               matcher = function(buf)
-  --                 return buf.filename:match("%.md")
-  --               end,
-  --             },
-  --           },
-  --         },
-  --       },
-  --     })
-
-  --     vim.api.nvim_set_keymap("n", "[b", "<cmd>BufferLineCycleNext<cr>", { noremap = true, silent = true })
-  --     vim.api.nvim_set_keymap("n", "b]", "<cmd>BufferLineCyclePrev<cr>", { noremap = true, silent = true })
-  --     vim.api.nvim_set_keymap("n", "<C-s>", "<cmd>BufferLineSortByTabs<cr>", { noremap = true, silent = true })
-  --     vim.api.nvim_set_keymap("n", "<leader>t", "<cmd>BufferLinePick<cr>", { noremap = true, silent = true })
-  --     vim.api.nvim_set_keymap(
-  --       "n",
-  --       "<leader><leader>r",
-  --       "<cmd>BufferLineCloseRight<cr>",
-  --       { noremap = true, silent = true }
-  --     )
-  --   end,
-  -- },
+      vim.api.nvim_set_keymap("n", "[b", "<cmd>BufferLineCycleNext<cr>", { noremap = true, silent = true })
+      vim.api.nvim_set_keymap("n", "b]", "<cmd>BufferLineCyclePrev<cr>", { noremap = true, silent = true })
+      vim.api.nvim_set_keymap("n", "<C-s>", "<cmd>BufferLineSortByTabs<cr>", { noremap = true, silent = true })
+      vim.api.nvim_set_keymap("n", "<leader>t", "<cmd>BufferLinePick<cr>", { noremap = true, silent = true })
+      vim.api.nvim_set_keymap(
+        "n",
+        "<leader><leader>r",
+        "<cmd>BufferLineCloseRight<cr>",
+        { noremap = true, silent = true }
+      )
+    end,
+  },
 
   {
     "nvim-lualine/lualine.nvim",
