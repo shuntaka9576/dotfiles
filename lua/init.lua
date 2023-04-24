@@ -15,6 +15,7 @@ vim.api.nvim_set_keymap("n", "te", ":tabedit<CR>", { noremap = true, silent = tr
 vim.api.nvim_set_keymap("n", "<tab>", ":tabnext<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<S-tab>", ":tabprevious<CR>", { noremap = true, silent = true })
 
+
 -- move when one line is wrapped
 vim.api.nvim_set_keymap("n", "k", "gk", { noremap = true })
 vim.api.nvim_set_keymap("n", "j", "gj", { noremap = true })
@@ -132,9 +133,7 @@ require("lazy").setup({
         inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
         " Make <CR> to accept selected completion item or notify coc.nvim to format
         " <C-g>u breaks current undo, please make your own choice
-        " inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
-        inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+        inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
 
         function! CheckBackspace() abort
           let col = col('.') - 1
