@@ -297,12 +297,13 @@ require("lazy").setup({
     end,
   },
 
-  {
-    "windwp/nvim-autopairs",
-    config = function()
-      require("nvim-autopairs").setup({})
-    end,
-  },
+  -- conflict coc.nvim <CR> settings
+  -- {
+  --   "windwp/nvim-autopairs",
+  --   config = function()
+  --     require("nvim-autopairs").setup({})
+  --   end,
+  -- },
 
   {
     "phaazon/hop.nvim",
