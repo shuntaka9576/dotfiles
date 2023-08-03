@@ -355,13 +355,6 @@ require("lazy").setup({
     }
   },
 
-  {
-    "j-hui/fidget.nvim",
-    config = function()
-      require("fidget").setup({})
-    end,
-  },
-
 
   {
     "alexghergh/nvim-tmux-navigation",
@@ -497,6 +490,22 @@ require("lazy").setup({
   },
   { 'lambdalisue/kensaku.vim', lazy = false },
 
+  -- {
+  --   "vim-skk/skkeleton",
+  --   config = function()
+  --     vim.cmd [[
+  --   imap <C-j> <Plug>(skkeleton-toggle)
+  --   cmap <C-j> <Plug>(skkeleton-toggle)
+
+  --   call skkeleton#config({
+  --   \'eggLikeNewline':v:true
+  --   \})
+  --   ]]
+  --   end,
+  --   dependencies = {
+  --     "vim-denops/denops.vim",
+  --   }
+  -- },
 
   -- {
   --   "shuntaka9576/preview-hozi-dev"
