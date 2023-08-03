@@ -442,12 +442,18 @@ require("lazy").setup({
   },
 
   {
-    "vim-denops/denops.vim"
+    "vim-denops/denops.vim",
+    lazy = false
   },
-
   {
-    "lambdalisue/kensaku.vim"
+    'lambdalisue/kensaku-search.vim',
+    lazy = false,
+    config = function()
+      vim.keymap.set('c', '<CR>', '<Plug>(kensaku-search-replace)<CR>')
+    end
   },
+  { 'lambdalisue/kensaku.vim', lazy = false },
+
 
   -- {
   --   "shuntaka9576/preview-hozi-dev"
