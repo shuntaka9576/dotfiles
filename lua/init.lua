@@ -490,22 +490,60 @@ require("lazy").setup({
   },
   { 'lambdalisue/kensaku.vim', lazy = false },
 
-  -- {
-  --   "vim-skk/skkeleton",
-  --   config = function()
-  --     vim.cmd [[
-  --   imap <C-j> <Plug>(skkeleton-toggle)
-  --   cmap <C-j> <Plug>(skkeleton-toggle)
+  {
+    "vim-skk/skkeleton",
+    config = function()
+      vim.cmd([[
+call skkeleton#config({ 'globalJisyo': '~/.skk/SKK-JISYO.L' })
 
-  --   call skkeleton#config({
-  --   \'eggLikeNewline':v:true
-  --   \})
-  --   ]]
-  --   end,
-  --   dependencies = {
-  --     "vim-denops/denops.vim",
-  --   }
-  -- },
+imap <C-j> <Plug>(skkeleton-toggle)
+cmap <C-j> <Plug>(skkeleton-toggle)
+
+call skkeleton#config({
+\'eggLikeNewline':v:true
+\})
+
+augroup skkeleton-coc
+  autocmd!
+  autocmd User skkeleton-enable-pre let b:coc_suggest_disable = v:true
+  autocmd User skkeleton-disable-pre let b:coc_suggest_disable = v:false
+augroup END
+
+call ddc#custom#patch_global('sources', ['skkeleton'])
+call ddc#custom#patch_global('sourceOptions', {
+    \   '_': {
+    \     'matchers': ['matcher_head'],
+    \     'sorters': ['sorter_rank']
+    \   },
+    \   'skkeleton': {
+    \     'mark': 'skkeleton',
+    \     'matchers': ['skkeleton'],
+    \     'sorters': [],
+    \     'isVolatile': v:true,
+    \   },
+    \ })
+]])
+    end,
+    dependencies = {
+      "Shougo/ddc.vim",
+      "Shougo/ddc-matcher_head",
+      "Shougo/ddc-sorter_rank",
+      "vim-denops/denops.vim",
+    }
+  },
+
+  {
+    "Shougo/ddc.vim",
+    dependencies = {
+      "vim-denops/denops.vim",
+    }
+  },
+  {
+    "Shougo/ddc-matcher_head"
+  },
+  {
+    "Shougo/ddc-sorter_rank"
+  },
 
   -- {
   --   "shuntaka9576/preview-hozi-dev"
