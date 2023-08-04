@@ -519,17 +519,24 @@ call ddc#custom#patch_global('sourceOptions', {
     \     'mark': 'skkeleton',
     \     'matchers': ['skkeleton'],
     \     'sorters': [],
-    \     'isVolatile': v:true,
+    \     'minAutoCompleteLength': 2,
     \   },
     \ })
-]])
+call ddc#enable()
+]]
+      )
     end,
     dependencies = {
       "Shougo/ddc.vim",
       "Shougo/ddc-matcher_head",
       "Shougo/ddc-sorter_rank",
+      "Shougo/pum.vim",
       "vim-denops/denops.vim",
     }
+  },
+
+  {
+    "Shougo/pum.vim",
   },
 
   {
