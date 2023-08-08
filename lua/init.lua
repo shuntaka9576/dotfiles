@@ -552,9 +552,19 @@ call ddc#enable()
     "Shougo/ddc-sorter_rank"
   },
 
-  -- {
-  --   "shuntaka9576/preview-hozi-dev"
-  -- },
+  {
+    "shuntaka9576/preview-hozi-dev",
+    dependencies = {
+      "vim-denops/denops.vim",
+    }
+  },
+
+  {
+    "shuntaka9576/preview-asciidoc.vim",
+    dependencies = {
+      "vim-denops/denops.vim",
+    }
+  },
 
   {
     "ziglang/zig.vim",
