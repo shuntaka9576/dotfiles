@@ -16,6 +16,9 @@ if [ -d $HOME/nvim-osx64 ]; then
   export PATH="$HOME/nvim-osx64/bin:$PATH"
 fi
 
+# vim
+export PATH="/opt/homebrew/opt/vim/bin:$PATH"
+
 # ------------------------------------------------------------------------------
 # zplug settings
 export ZPLUG_HOME="$ZDOTDIR/.zplug"
@@ -114,6 +117,7 @@ alias ll='exa -ahl --git'
 alias ls='exa'
 alias t='tmux -2'
 alias cr='cargo run'
+alias docker='finch'
 
 # exec ls(exa) after cd
 # chpwd() { exa -ahl --git }
@@ -267,3 +271,6 @@ export PATH="$DENO_INSTALL/bin:$PATH"
 
 # lima
 export DOCKER_HOST=unix://$HOME/.lima/aarch64/sock/docker.sock
+
+# bun completions
+[ -s "/Users/shuntaka/.bun/_bun" ] && source "/Users/shuntaka/.bun/_bun"
