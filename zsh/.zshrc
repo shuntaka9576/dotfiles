@@ -19,6 +19,9 @@ fi
 # vim
 export PATH="/opt/homebrew/opt/vim/bin:$PATH"
 
+# wasmer
+export PATH="$HOME/.wasmer/bin:$PATH"
+
 # ------------------------------------------------------------------------------
 # zplug settings
 export ZPLUG_HOME="$ZDOTDIR/.zplug"

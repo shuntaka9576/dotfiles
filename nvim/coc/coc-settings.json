@@ -62,5 +62,5 @@
     "staticcheck": true
   },
   "Lua.telemetry.enable": true,
-  "zig.path": "~/zls/zls"
+  "zig.path": "/opt/homebrew/bin/zls"
 }
