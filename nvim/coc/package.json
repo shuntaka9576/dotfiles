@@ -11,7 +11,6 @@
     "coc-marketplace": "1.9.0",
     "coc-phpls": "2.2.3",
     "coc-pyright": "1.1.325",
-    "coc-rls": "1.1.6",
     "coc-rust-analyzer": "0.73.0",
     "coc-stylua": "0.0.11",
     "coc-sumneko-lua": "0.0.39",

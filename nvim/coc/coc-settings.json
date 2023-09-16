@@ -16,6 +16,7 @@
     "cpp",
     "c",
     "tsx",
+    "rust",
     "css",
     "ts",
     "lua"
@@ -42,6 +43,7 @@
     "~/nvim-osx64/share/nvim/runtime/lua/vim",
     "~/nvim-osx64/share/nvim/runtime/lua/vim/lsp"
   ],
+  "rust-analyzer.rustfmt.rangeFormatting.enable": true,
   "Lua.diagnostics.globals": ["vim", "use"],
   "python.venvPath": "${workspaceFolder}/.venv",
   "python.pythonPath": "${workspaceFolder}/.venv/bin/python",
@@ -62,5 +64,6 @@
     "staticcheck": true
   },
   "Lua.telemetry.enable": true,
+  // "rust-analyzer.server.extraEnv": { "RUSTUP_TOOLCHAIN": "stable"},
   "zig.path": "/opt/homebrew/bin/zls"
 }
