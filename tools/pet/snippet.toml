@@ -487,12 +487,6 @@ echo -n '{
   tag = ["zx"]
 
 [[snippets]]
-description = "cargoテストで標準出力を表示"
-command = "cargo test -- --nocapture"
-tag = ["rust"]
-output = ""
-
-[[snippets]]
 description = "preview cloudflare pages"
 command = "yarn wrangler pages dev --live-reload true ./public"
 tag = ["wrangler", "cloudflare"]
@@ -563,6 +557,19 @@ tag = ['goreleaser', 'release']
 description = "syscallの確認"
 command = 'sudo strace -e network curl https://wwww.google.com'
 tag = ['strace']
+
+# rust
+[[snippets]]
+description = "cargoテストで標準出力を表示"
+command = "cargo test -- --nocapture"
+tag = ["rust"]
+output = ""
+
+[[snippets]]
+description = "run with hot reload"
+command = "cargo watch -x run"
+tag = ["rust"]
+output = ""
 
 # zig
 [[snippets]]
