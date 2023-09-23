@@ -571,6 +571,14 @@ command = "cargo watch -x run"
 tag = ["rust"]
 output = ""
 
+[[snippets]]
+description = "最速の場合を計測したい場合"
+command = "cargo run --release"
+tag = ["rust"]
+output = """
+速度計測などに利用
+"""
+
 # zig
 [[snippets]]
 description = "zigのビルド及び実行"
