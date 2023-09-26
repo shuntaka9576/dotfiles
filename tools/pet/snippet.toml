@@ -183,6 +183,12 @@ done) | tee >(pbcopy)
   output = ""
 
 [[snippets]]
+  description = "vm起動"
+  command = "finch vm start"
+  tag = ["docker", "finch"]
+  output = ""
+
+[[snippets]]
   description = "Auroraバージョン取得"
   command = "select AURORA_VERSION();"
   tag = ["docker", "aurora"]
