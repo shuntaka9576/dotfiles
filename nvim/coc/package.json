@@ -18,9 +18,9 @@
     "coc-vimlsp": "0.13.1",
     "coc-zig": "0.6.1",
     "which": "4.0.0",
-    "coc-prettier": "9.3.2"
+    "coc-prettier": ">=9.3.2"
   },
   "disabled": [],
   "locked": [],
-  "lastUpdate": 1694657329113
+  "lastUpdate": 1696363151800
 }

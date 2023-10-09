@@ -572,6 +572,12 @@ tag = ["rust"]
 output = ""
 
 [[snippets]]
+description = "cargoテストでwatch+標準出力を表示"
+command = "cargo watch -x 'test --all tests::test_matching -- --nocapture'"
+tag = ["rust", "cargo", "watch"]
+output = ""
+
+[[snippets]]
 description = "run with hot reload"
 command = "cargo watch -x run"
 tag = ["rust"]
