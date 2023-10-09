@@ -120,7 +120,7 @@ alias ll='exa -ahl --git'
 alias ls='exa'
 alias t='tmux -2'
 alias cr='cargo run'
-alias docker='finch'
+# alias docker='finch'
 
 # exec ls(exa) after cd
 # chpwd() { exa -ahl --git }
