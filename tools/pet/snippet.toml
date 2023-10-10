@@ -597,6 +597,18 @@ command = "cargo doc --document-private-items && open ./target/doc"
 tag = ["rust"]
 output = ""
 
+[[snippets]]
+description = "ベンチマーク"
+command = "cargo criterion"
+tag = ["rust", "benchmark"]
+output = ""
+
+[[snippets]]
+description = "ベンチマークのHTML結果"
+command = "open ./target/criterion/reports/index.html"
+tag = ["rust", "benchmark"]
+output = ""
+
 # zig
 [[snippets]]
 description = "zigのビルド及び実行"
