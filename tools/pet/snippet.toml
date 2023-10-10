@@ -591,6 +591,12 @@ output = """
 速度計測などに利用
 """
 
+[[snippets]]
+description = "プライベートモジュールも含むドキュメント化"
+command = "cargo doc --document-private-items && open ./target/doc"
+tag = ["rust"]
+output = ""
+
 # zig
 [[snippets]]
 description = "zigのビルド及び実行"
