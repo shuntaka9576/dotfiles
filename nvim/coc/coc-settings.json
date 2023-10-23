@@ -19,6 +19,7 @@
     "rust",
     "css",
     "ts",
+    "java",
     "lua"
   ],
   "languageserver": {
@@ -43,6 +44,7 @@
     "~/nvim-osx64/share/nvim/runtime/lua/vim",
     "~/nvim-osx64/share/nvim/runtime/lua/vim/lsp"
   ],
+  "java.format.enabled": true,
   "rust-analyzer.rustfmt.rangeFormatting.enable": true,
   "rust-analyzer.server.extraEnv": { "RUSTUP_TOOLCHAIN": "stable"},
   "Lua.diagnostics.globals": ["vim", "use"],

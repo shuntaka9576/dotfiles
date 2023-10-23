@@ -45,6 +45,7 @@ local extension_list = {
   "yml",
   "toml",
   "dart",
+  "java",
   "mjs",
 }
 vim.api.nvim_command("augroup MyTabStop")
