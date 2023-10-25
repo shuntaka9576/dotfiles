@@ -206,6 +206,13 @@ aws ssm start-session \
 """
   tag = ["docker", "aurora"]
 
+[[snippets]]
+description = "s3一掃"
+command = """
+aws s3 ls | grep "hoge" | awk '{print $3}'| xargs -I {} cls3 -b {} -f
+"""
+tag = ['aws']
+
 # Git
 [[snippets]]
   description = "Author指定でステップ数カウント"
@@ -563,6 +570,7 @@ tag = ['goreleaser', 'release']
 description = "syscallの確認"
 command = 'sudo strace -e network curl https://wwww.google.com'
 tag = ['strace']
+
 
 # rust
 [[snippets]]
