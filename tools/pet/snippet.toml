@@ -206,6 +206,14 @@ aws ssm start-session \
 """
   tag = ["docker", "aurora"]
 
+
+[[snippets]]
+  description = "s3のリージョン一覧"
+  command="""
+aws s3 ls | awk '{print $3}' | xargs -I {} aws s3api get-bucket-location --bucket '{}' | jq -r ".LocationConstraint"
+"""
+  tag = ["aws"]
+
 [[snippets]]
 description = "s3一掃"
 command = """
