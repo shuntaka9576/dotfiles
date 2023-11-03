@@ -1,15 +1,21 @@
 #!/bin/bash
 
-mkdir -p ~/.config/nvim/dein
 ln -sf ~/dotfiles/lua/init.lua ~/.config/nvim/init.lua
-ln -sf ~/dotfiles/nvim/units/dein.toml ~/.config/nvim/dein/dein.toml
-ln -sf ~/dotfiles/nvim/units/frontend.toml ~/.config/nvim/dein/frontend.toml
-ln -sf ~/dotfiles/nvim/units/dein_lazy.toml ~/.config/nvim/dein/dein_lazy.toml
-ln -sf ~/dotfiles/nvim/units/git.toml ~/.config/nvim/dein/git.toml
-ln -sf ~/dotfiles/nvim/units/go.toml ~/.config/nvim/dein/go.toml
-ln -sf ~/dotfiles/nvim/units/python.toml ~/.config/nvim/dein/python.toml
-ln -sf ~/dotfiles/nvim/units/hack.toml ~/.config/nvim/dein/hack.toml
-ln -sf ~/dotfiles/nvim/units/utils.toml ~/.config/nvim/dein/utils.toml
+ln -sf ~/dotfiles/lua/init.lua ~/.config/nvim/init.lua
+ln -sf ~/dotfiles/nvim/neoconf/neoconf.json ~/.config/nvim/neoconf.json
+
+# dein disabled
+# mkdir -p ~/.config/nvim/dein
+# ln -sf ~/dotfiles/nvim/units/dein.toml ~/.config/nvim/dein/dein.toml
+# ln -sf ~/dotfiles/nvim/units/frontend.toml ~/.config/nvim/dein/frontend.toml
+# ln -sf ~/dotfiles/nvim/units/dein_lazy.toml ~/.config/nvim/dein/dein_lazy.toml
+# ln -sf ~/dotfiles/nvim/units/git.toml ~/.config/nvim/dein/git.toml
+# ln -sf ~/dotfiles/nvim/units/go.toml ~/.config/nvim/dein/go.toml
+# ln -sf ~/dotfiles/nvim/units/python.toml ~/.config/nvim/dein/python.toml
+# ln -sf ~/dotfiles/nvim/units/hack.toml ~/.config/nvim/dein/hack.toml
+# ln -sf ~/dotfiles/nvim/units/utils.toml ~/.config/nvim/dein/utils.toml
+# ln -sf ~/dotfiles/nvim/units/utils.toml ~/.config/nvim/dein/utils.toml
+
 
 # coc settings
 mkdir -p ~/.config/coc/extensions

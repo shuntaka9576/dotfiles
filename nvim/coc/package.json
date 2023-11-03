@@ -10,7 +10,7 @@
     "coc-json": "1.9.2",
     "coc-marketplace": "1.9.0",
     "coc-phpls": "2.2.3",
-    "coc-pyright": "1.1.325",
+    "coc-pyright": ">=1.1.333",
     "coc-rust-analyzer": "0.73.0",
     "coc-stylua": "0.0.11",
     "coc-sumneko-lua": "0.0.39",
@@ -23,5 +23,5 @@
   },
   "disabled": [],
   "locked": [],
-  "lastUpdate": 1696363151800
+  "lastUpdate": 1699045892074
 }
