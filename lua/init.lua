@@ -568,6 +568,13 @@ call ddc#enable()
   },
 
   {
+    "shuntaka9576/deno-fmt.vim",
+    dependencies = {
+      "vim-denops/denops.vim",
+    }
+  },
+
+  {
     "ziglang/zig.vim",
     config = function()
       vim.cmd([[

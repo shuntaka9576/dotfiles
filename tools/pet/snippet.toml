@@ -642,3 +642,11 @@ description = "LINE AT期限確認"
 command = 'curl -v -X GET "https://api.line.me/oauth2/v2.1/verify?access_token=$AT"'
 tag = ['line']
 
+
+
+[[snippets]]
+description = "LSPの切り替え"
+command= """
+cat .vim/coc-settings.json | jq '.["tsserver.enable"] = (.["tsserver.enable"] | not) | .["prettier.enable"] = (.["prettier.enable"] | not) | .["deno.enable"] = (.["deno.enable"] | not)' | tee .vim/coc-settings.json
+"""
+tag = ['lsp', 'coc']
