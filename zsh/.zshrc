@@ -264,6 +264,9 @@ export PLANTUML_LIMIT_SIZE=81920
 # bun completions
 [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
+# python
+source $HOME/.rye/env
+
 # ------------------------------------------------------------------------------
 # deno settings
 export DENO_INSTALL="$HOME/.deno"
