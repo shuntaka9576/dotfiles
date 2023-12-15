@@ -60,7 +60,8 @@ vim.api.nvim_command("autocmd BufNewFile,BufRead *.zig setlocal tabstop=4 shiftw
 vim.api.nvim_command("autocmd BufNewFile,BufRead *.php set filetype=php")
 vim.api.nvim_command("autocmd FileType php setlocal expandtab tabstop=4 softtabstop=4 shiftwidth=4 autoindent")
 vim.api.nvim_command("autocmd BufNewFile,BufRead Makefile setlocal noexpandtab")
-vim.api.nvim_command("autocmd BufWritePre *.ts,*.tsx :Prettier")
+-- vim.api.nvim_command("autocmd BufWritePre *.ts,*.tsx :Prettier")
+vim.api.nvim_command("autocmd BufWritePost *.ts,*.tsx FormatWrite")
 vim.api.nvim_command("augroup END")
 
 ----------------------------
@@ -157,7 +158,7 @@ require("lazy").setup({
         " 警告の一覧表示
         nnoremap <silent><space>a :<C-u>CocList diagnostics<cr>
         nnoremap <silent><space>t :CocList floaterm<CR>
-        command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument
+        " command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument
       ]])
     end,
   },
@@ -356,6 +357,19 @@ require("lazy").setup({
     }
   },
 
+  {
+    "mhartington/formatter.nvim",
+    config = function()
+      require("formatter").setup({
+        filetype = {
+          javascript = { require("formatter.filetypes.javascript").biome },
+          javascriptreact = { require("formatter.filetypes.javascriptreact").biome },
+          typescript = { require("formatter.filetypes.typescript").biome },
+          typescriptreact = { require("formatter.filetypes.typescriptreact").biome },
+        },
+      })
+    end,
+  },
 
   {
     "alexghergh/nvim-tmux-navigation",

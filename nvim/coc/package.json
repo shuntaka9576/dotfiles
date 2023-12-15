@@ -18,10 +18,11 @@
     "coc-vimlsp": "0.13.1",
     "coc-zig": "0.6.1",
     "which": "4.0.0",
+    "coc-java": ">=1.15.2",
     "coc-prettier": ">=9.3.2",
-    "coc-java": ">=1.15.2"
+    "coc-biome": ">=1.4.0"
   },
   "disabled": [],
   "locked": [],
-  "lastUpdate": 1696363151800
+  "lastUpdate": 1702598146800
 }
