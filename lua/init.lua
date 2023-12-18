@@ -61,7 +61,7 @@ vim.api.nvim_command("autocmd BufNewFile,BufRead *.php set filetype=php")
 vim.api.nvim_command("autocmd FileType php setlocal expandtab tabstop=4 softtabstop=4 shiftwidth=4 autoindent")
 vim.api.nvim_command("autocmd BufNewFile,BufRead Makefile setlocal noexpandtab")
 -- vim.api.nvim_command("autocmd BufWritePre *.ts,*.tsx :Prettier")
-vim.api.nvim_command("autocmd BufWritePost *.ts,*.tsx FormatWrite")
+vim.api.nvim_command("autocmd BufWritePost *.ts,*.tsx,*.mts FormatWrite")
 vim.api.nvim_command("augroup END")
 
 ----------------------------
