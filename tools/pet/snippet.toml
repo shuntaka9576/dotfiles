@@ -393,6 +393,12 @@ hashicorp/terraform:0.12.5 <command>
   tag = ["typescript"]
   output = ""
 
+[[snippets]]
+  description = "再起的にnode_modulesを削除"
+  command = "find . -name 'node_modules' -type d -prune -exec rm -rf '{}' +"
+  tag = ["typescript"]
+  output = ""
+
 # Encode/Decode
 [[snippets]]
   description = "base64にエンコード"
@@ -641,8 +647,6 @@ tag = ['zig']
 description = "LINE AT期限確認"
 command = 'curl -v -X GET "https://api.line.me/oauth2/v2.1/verify?access_token=$AT"'
 tag = ['line']
-
-
 
 [[snippets]]
 description = "LSPの切り替え"
