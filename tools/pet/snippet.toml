@@ -585,6 +585,10 @@ description = "syscallの確認"
 command = 'sudo strace -e network curl https://wwww.google.com'
 tag = ['strace']
 
+[[snippets]]
+description = ".DS_Storeの再起的削除"
+command = "find . -name '.DS_Store' -type f -delete"
+tag = ['.DS_Store']
 
 # rust
 [[snippets]]
