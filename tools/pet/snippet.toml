@@ -221,6 +221,13 @@ aws s3 ls | grep "hoge" | awk '{print $3}'| xargs -I {} cls3 -b {} -f
 """
 tag = ['aws']
 
+[[snippets]]
+description = "データ量を計測する"
+command = """
+du -sh <dirname>
+"""
+tag = ['data', 'du']
+
 # Git
 [[snippets]]
   description = "Author指定でステップ数カウント"
