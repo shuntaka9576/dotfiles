@@ -62,7 +62,7 @@ vim.api.nvim_command("autocmd BufNewFile,BufRead *.php set filetype=php")
 vim.api.nvim_command("autocmd FileType php setlocal expandtab tabstop=4 softtabstop=4 shiftwidth=4 autoindent")
 vim.api.nvim_command("autocmd BufNewFile,BufRead Makefile setlocal noexpandtab")
 -- vim.api.nvim_command("autocmd BufWritePre *.ts,*.tsx :Prettier")
-vim.api.nvim_command("autocmd BufWritePost *.ts,*.tsx,*.mts FormatWrite")
+-- vim.api.nvim_command("autocmd BufWritePost *.ts,*.tsx,*.mts FormatWrite")
 vim.api.nvim_command("augroup END")
 
 ----------------------------
@@ -358,19 +358,19 @@ require("lazy").setup({
     }
   },
 
-  {
-    "mhartington/formatter.nvim",
-    config = function()
-      require("formatter").setup({
-        filetype = {
-          javascript = { require("formatter.filetypes.javascript").biome },
-          javascriptreact = { require("formatter.filetypes.javascriptreact").biome },
-          typescript = { require("formatter.filetypes.typescript").biome },
-          typescriptreact = { require("formatter.filetypes.typescriptreact").biome },
-        },
-      })
-    end,
-  },
+  -- {
+  --   "mhartington/formatter.nvim",
+  --   config = function()
+  --     require("formatter").setup({
+  --       filetype = {
+  --         javascript = { require("formatter.filetypes.javascript").biome },
+  --         javascriptreact = { require("formatter.filetypes.javascriptreact").biome },
+  --         typescript = { require("formatter.filetypes.typescript").biome },
+  --         typescriptreact = { require("formatter.filetypes.typescriptreact").biome },
+  --       },
+  --     })
+  --   end,
+  -- },
 
   {
     "alexghergh/nvim-tmux-navigation",
@@ -506,88 +506,19 @@ require("lazy").setup({
   },
   { 'lambdalisue/kensaku.vim', lazy = false },
 
-  {
-    "vim-skk/skkeleton",
-    config = function()
-      vim.cmd([[
-call skkeleton#config({ 'globalJisyo': '~/.skk/SKK-JISYO.L' })
+  -- {
+  --   "shuntaka9576/preview-asciidoc.vim",
+  --   dependencies = {
+  --     "vim-denops/denops.vim",
+  --   }
+  -- },
 
-imap <C-j> <Plug>(skkeleton-toggle)
-cmap <C-j> <Plug>(skkeleton-toggle)
-
-call skkeleton#config({
-\'eggLikeNewline':v:true
-\})
-
-augroup skkeleton-coc
-  autocmd!
-  autocmd User skkeleton-enable-pre let b:coc_suggest_disable = v:true
-  autocmd User skkeleton-disable-pre let b:coc_suggest_disable = v:false
-augroup END
-
-call ddc#custom#patch_global('sources', ['skkeleton'])
-call ddc#custom#patch_global('sourceOptions', {
-    \   '_': {
-    \     'matchers': ['matcher_head'],
-    \     'sorters': ['sorter_rank']
-    \   },
-    \   'skkeleton': {
-    \     'mark': 'skkeleton',
-    \     'matchers': ['skkeleton'],
-    \     'sorters': [],
-    \     'minAutoCompleteLength': 2,
-    \   },
-    \ })
-call ddc#enable()
-]]
-      )
-    end,
-    dependencies = {
-      "Shougo/ddc.vim",
-      "Shougo/ddc-matcher_head",
-      "Shougo/ddc-sorter_rank",
-      "Shougo/pum.vim",
-      "vim-denops/denops.vim",
-    }
-  },
-
-  {
-    "Shougo/pum.vim",
-  },
-
-  {
-    "Shougo/ddc.vim",
-    dependencies = {
-      "vim-denops/denops.vim",
-    }
-  },
-  {
-    "Shougo/ddc-matcher_head"
-  },
-  {
-    "Shougo/ddc-sorter_rank"
-  },
-
-  {
-    "shuntaka9576/preview-hozi-dev",
-    dependencies = {
-      "vim-denops/denops.vim",
-    }
-  },
-
-  {
-    "shuntaka9576/preview-asciidoc.vim",
-    dependencies = {
-      "vim-denops/denops.vim",
-    }
-  },
-
-  {
-    "shuntaka9576/deno-fmt.vim",
-    dependencies = {
-      "vim-denops/denops.vim",
-    }
-  },
+  -- {
+  --   "shuntaka9576/deno-fmt.vim",
+  --   dependencies = {
+  --     "vim-denops/denops.vim",
+  --   }
+  -- },
 
   {
     "ziglang/zig.vim",

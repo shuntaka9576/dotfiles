@@ -14,7 +14,7 @@
         "editor.insertSpaces": false,
         "editor.formatOnSave": true,
         "editor.codeActionsOnSave": {
-            "source.organizeImports": true
+            "source.organizeImports": "explicit"
         }
     },
     "go.formatTool": "goimports",
@@ -245,7 +245,7 @@
     "asciidoc.preview.useEditorStyle": false,
     "asciidoc.use_asciidoctor_js": false,
     "editor.codeActionsOnSave": {
-        "source.fixAll.eslint": true
+        "source.fixAll.eslint": "explicit"
     },
     "typescript.updateImportsOnFileMove.enabled": "always",
     "javascript.updateImportsOnFileMove.enabled": "always",
@@ -256,4 +256,5 @@
     "terminal.integrated.tabs.enabled": true,
     "tabnine.experimentalAutoImports": true,
     "search.searchOnType": false,
+    "plantuml.render": "PlantUMLServer"
 }
