@@ -665,3 +665,8 @@ command= """
 cat .vim/coc-settings.json | jq '.["tsserver.enable"] = (.["tsserver.enable"] | not) | .["prettier.enable"] = (.["prettier.enable"] | not) | .["deno.enable"] = (.["deno.enable"] | not)' | tee .vim/coc-settings.json
 """
 tag = ['lsp', 'coc']
+
+[[snippets]]
+description = "lsでgit ignoreとtree表示"
+command= "exa -L 2 -T --git-ignore"
+tag = ['ls', 'exa', 'tree']
