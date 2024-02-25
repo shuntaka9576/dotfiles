@@ -506,12 +506,18 @@ require("lazy").setup({
   },
   { 'lambdalisue/kensaku.vim', lazy = false },
 
-  -- {
-  --   "shuntaka9576/preview-asciidoc.vim",
-  --   dependencies = {
-  --     "vim-denops/denops.vim",
-  --   }
-  -- },
+  {
+    "shuntaka9576/preview-asciidoc.vim",
+    dependencies = {
+      "vim-denops/denops.vim",
+    }
+  },
+  {
+    "shuntaka9576/preview-shuntaka-dev.vim",
+    dependencies = {
+      "vim-denops/denops.vim",
+    }
+  },
 
   -- {
   --   "shuntaka9576/deno-fmt.vim",
