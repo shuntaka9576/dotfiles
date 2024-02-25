@@ -23,6 +23,12 @@
   output = ""
 
 [[snippets]]
+  description = "go.modのモジュール更新コマンド生成"
+  command = "go list -m -u -f '{{if (and .Update (not .Indirect))}}go get {{.Path}}@{{.Update.Version}}{{end}}' all"
+  tag = ["go", "modules", "version"]
+  output = ""
+
+[[snippets]]
   description = "ディレクトリ内のファイル分実行するコマンドを生成する"
   command = "ls -al tests/e2e |awk '{print $7}' | xargs -I {} echo 'yarn test-e2e --runTestsByPath ./tests/e2e/{}'"
   tag = ["xargs", "awk"]
