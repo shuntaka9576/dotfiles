@@ -72,7 +72,7 @@ cdk deploy -c stageName=$STAGE_NAME $STAGE_NAME-{}' \
   <stack1> \
   <stack2>
 """
-  tag = ["xpanes", "cdk"]
+  tag = ["xpanes", "cdk", "perl"]
 
 [[snippets]]
   description = "ファイル名を[]に括る、GHAのmatrixに渡せる値に変換する"
@@ -682,4 +682,11 @@ description = "jqでjsonファイルをCSVに置換しつつ、ファイル名�
 command= """
 ls ~/dotfiles/tools/testdata | xargs -I{} jq -r --arg filename "{}" '(.data.history.list[] | [$filename, .user.id, .user.displayName, .count]) | @csv' {}
 """
-tag = ['ls', 'xargs', 'jq']
+tag = ['jq']
+
+[[snippets]]
+description = "cspellの結果を単語だけ出力する"
+command = """
+npx cspell lint . --cache --gitignore | perl -nle 'print "\\"$1\\"," if /.*\\((.*?)\\).*/' | sort | tr '[:upper:]' '[:lower:]' | uniq
+"""
+tag = ['cspell', 'perl']
