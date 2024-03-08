@@ -676,3 +676,10 @@ tag = ['lsp', 'coc']
 description = "lsでgit ignoreとtree表示"
 command= "exa -L 2 -T --git-ignore"
 tag = ['ls', 'exa', 'tree']
+
+[[snippets]]
+description = "jqでjsonファイルをCSVに置換しつつ、ファイル名を埋め込む"
+command= """
+ls ~/dotfiles/tools/testdata | xargs -I{} jq -r --arg filename "{}" '(.data.history.list[] | [$filename, .user.id, .user.displayName, .count]) | @csv' {}
+"""
+tag = ['ls', 'xargs', 'jq']

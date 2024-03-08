@@ -1,0 +1,22 @@
+{
+  "data": {
+    "history": {
+      "list": [
+        {
+          "count": 1,
+          "user": {
+            "id": "A",
+            "displayName": "foo"
+          }
+        },
+        {
+          "count": 2,
+          "user": {
+            "id": "B",
+            "displayName": "foo2"
+          }
+        }
+      ]
+    }
+  }
+}
