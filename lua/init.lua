@@ -62,7 +62,7 @@ vim.api.nvim_command("autocmd BufNewFile,BufRead *.php set filetype=php")
 vim.api.nvim_command("autocmd FileType php setlocal expandtab tabstop=4 softtabstop=4 shiftwidth=4 autoindent")
 vim.api.nvim_command("autocmd BufNewFile,BufRead Makefile setlocal noexpandtab")
 -- vim.api.nvim_command("autocmd BufWritePre *.ts,*.tsx :Prettier")
--- vim.api.nvim_command("autocmd BufWritePost *.ts,*.tsx,*.mts FormatWrite")
+vim.api.nvim_command("autocmd BufWritePost *.ts,*.tsx,*.mts FormatWrite")
 vim.api.nvim_command("augroup END")
 
 ----------------------------
@@ -358,19 +358,19 @@ require("lazy").setup({
     }
   },
 
-  -- {
-  --   "mhartington/formatter.nvim",
-  --   config = function()
-  --     require("formatter").setup({
-  --       filetype = {
-  --         javascript = { require("formatter.filetypes.javascript").biome },
-  --         javascriptreact = { require("formatter.filetypes.javascriptreact").biome },
-  --         typescript = { require("formatter.filetypes.typescript").biome },
-  --         typescriptreact = { require("formatter.filetypes.typescriptreact").biome },
-  --       },
-  --     })
-  --   end,
-  -- },
+  {
+    "mhartington/formatter.nvim",
+    config = function()
+      require("formatter").setup({
+        filetype = {
+          javascript = { require("formatter.filetypes.javascript").biome },
+          javascriptreact = { require("formatter.filetypes.javascriptreact").biome },
+          typescript = { require("formatter.filetypes.typescript").biome },
+          typescriptreact = { require("formatter.filetypes.typescriptreact").biome },
+        },
+      })
+    end,
+  },
 
   {
     "alexghergh/nvim-tmux-navigation",
