@@ -18,7 +18,8 @@
     "coc-zig": "0.6.1",
     "which": "4.0.0",
     "coc-java": ">=1.15.2",
-    "coc-prettier": ">=9.3.2"
+    "coc-prettier": ">=9.3.2",
+    "coc-biome": ">=1.4.1"
   },
   "disabled": [],
   "locked": [],
