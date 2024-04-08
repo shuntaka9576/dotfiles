@@ -116,14 +116,14 @@ RPROMPT=$'%{\e[38;5;001m%}%(?..✘$(echo $?)😈)%{\e[0m%} %{\e[30;48;5;237m%}%{
 # ------------------------------------------------------------------------------
 # Alias
 # Base command
-alias ll='exa -ahl --git'
-alias ls='exa'
+alias ll='eza -ahl --git'
+alias ls='eza'
 alias t='tmux -2'
 alias cr='cargo run'
 # alias docker='finch'
 
 # exec ls(exa) after cd
-# chpwd() { exa -ahl --git }
+# chpwd() { eza -ahl --git }
 
 # git alias
 alias gs='git status'

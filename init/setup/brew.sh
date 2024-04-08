@@ -33,7 +33,7 @@ brew install --HEAD pyenv-virtualenvwrapper
 # brew install fd
 # brew install bat
 # brew install rg
-# brew install exa
+# brew install eza
 
 # for cpp enviroment settings
 brew install llvm

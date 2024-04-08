@@ -50,7 +50,7 @@ else
 fi
 export PATH="$HOME/.cargo/bin:$PATH"
 cargo install ripgrep
-cargo install exa
+cargo install eza
 cargo install fd-find
 cargo install bat
 cargo install gitui

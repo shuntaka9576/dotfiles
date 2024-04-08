@@ -674,8 +674,8 @@ tag = ['lsp', 'coc']
 
 [[snippets]]
 description = "lsでgit ignoreとtree表示"
-command= "exa -L 2 -T --git-ignore"
-tag = ['ls', 'exa', 'tree']
+command= "eza -L 2 -T --git-ignore"
+tag = ['ls', 'eza', 'tree']
 
 [[snippets]]
 description = "jqでjsonファイルをCSVに置換しつつ、ファイル名を埋め込む"
