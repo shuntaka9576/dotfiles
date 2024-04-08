@@ -61,6 +61,9 @@ export PATH="$HOME/.bun/bin:$PATH"
 # Zig
 export PATH="$HOME/zls:$PATH" # LSP
 
+# trino
+export PATH="$HOME/repos/github.com/shuntaka9576/trino-playground/bin:$PATH"
+
 # tivew
 export LC_CTYPE="en_US.UTF-8"
 
