@@ -412,6 +412,13 @@ hashicorp/terraform:0.12.5 <command>
   tag = ["typescript"]
   output = ""
 
+[[snippets]]
+description = "biome fix"
+command = """
+npx @biomejs/biome check . --apply-unsafe
+"""
+tag = ['biome', 'ts', 'typescript']
+
 # Encode/Decode
 [[snippets]]
   description = "base64にエンコード"
