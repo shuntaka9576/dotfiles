@@ -11,6 +11,7 @@ brew install python3
 brew install --HEAD neovim
 brew install make
 brew install jq
+brew install yq
 brew install shellcheck
 brew install tree
 brew install ren
