@@ -52,8 +52,7 @@ export PATH="/usr/local/opt/android-sdk/cmdline-tools/tools/bin:$PATH"
 export ANDROID_SDK_ROOT=/usr/local/opt/android-sdk
 
 # Java
-export JAVA_HOME=$HOME/.sdkman/candidates/java/current
-export PATH=$JAVA_HOME/bin:$PATH
+export JAVA_HOME="$HOME/java/amazon-corretto-8.jdk/Contents/Home"
 
 # Bun
 export PATH="$HOME/.bun/bin:$PATH"

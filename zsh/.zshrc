@@ -22,6 +22,9 @@ export PATH="/opt/homebrew/opt/vim/bin:$PATH"
 # wasmer
 export PATH="$HOME/.wasmer/bin:$PATH"
 
+# Java(Corretto)
+export PATH="$JAVA_HOME/bin:$PATH"
+
 # ------------------------------------------------------------------------------
 # zplug settings
 export ZPLUG_HOME="$ZDOTDIR/.zplug"
