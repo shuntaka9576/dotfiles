@@ -114,9 +114,7 @@ require("lazy").setup({
       vim.cmd([[colorscheme tokyonight]])
     end,
   },
-
   { "mattn/vim-goimports" },
-
   {
     "nvim-telescope/telescope.nvim",
     dependencies = {
@@ -155,7 +153,6 @@ require("lazy").setup({
       ]])
     end,
   },
-
   {
     "kyazdani42/nvim-tree.lua",
     requires = "kyazdani42/nvim-web-devicons",
@@ -240,7 +237,6 @@ require("lazy").setup({
       vim.api.nvim_set_keymap("n", "<Leader>d", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
     end,
   },
-
   {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
@@ -251,53 +247,6 @@ require("lazy").setup({
       })
     end,
   },
-
-  -- conflict coc.nvim <CR> settings
-  -- {
-  --   "windwp/nvim-autopairs",
-  --   config = function()
-  --     require("nvim-autopairs").setup({})
-  --   end,
-  -- },
-
-  -- easy motion
-  -- {
-  --   "phaazon/hop.nvim",
-  --   name = "hop",
-  --   config = function()
-  --     require("hop").setup({ keys = "etovxqpdygfblzhckisuran" })
-  --     vim.api.nvim_set_keymap("n", "f", ":HopChar1<CR>", { noremap = true, silent = true })
-  --   end,
-  -- },
-  -- {
-  --   "folke/flash.nvim",
-  --   event = "VeryLazy",
-  --   opts = {},
-  --   config = function()
-  --     require("flash").jump {
-  --       mode = vim.fn["kensaku#query"]
-  --     }
-  --   end,
-  --   keys = {
-  --     { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end,       desc = "Flash" },
-  --     { "S", mode = { "n", "o", "x" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
-  --     { "r", mode = "o",               function() require("flash").remote() end,     desc = "Remote Flash" },
-  --     {
-  --       "R",
-  --       mode = { "o", "x" },
-  --       function() require("flash").treesitter_search() end,
-  --       desc =
-  --       "Treesitter Search"
-  --     },
-  --     {
-  --       "<c-s>",
-  --       mode = { "c" },
-  --       function() require("flash").toggle() end,
-  --       desc =
-  --       "Toggle Flash Search"
-  --     },
-  --   },
-  -- },
   {
     "yuki-yano/fuzzy-motion.vim",
     config = function()
@@ -308,7 +257,6 @@ require("lazy").setup({
       "lambdalisue/kensaku.vim"
     }
   },
-
   {
     "mhartington/formatter.nvim",
     config = function()
@@ -322,7 +270,6 @@ require("lazy").setup({
       })
     end,
   },
-
   {
     "alexghergh/nvim-tmux-navigation",
     config = function()
@@ -356,7 +303,6 @@ require("lazy").setup({
       )
     end,
   },
-
   {
     "akinsho/toggleterm.nvim",
     config = function()
@@ -380,11 +326,9 @@ require("lazy").setup({
       vim.api.nvim_set_keymap("n", "<leader>g", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", { noremap = true, silent = true })
     end,
   },
-
   { "airblade/vim-gitgutter" },
   { "tpope/vim-fugitive" },
   { "simeji/winresizer" },
-
   { "kyazdani42/nvim-web-devicons" },
   {
     "akinsho/bufferline.nvim",
@@ -431,7 +375,6 @@ require("lazy").setup({
       })
     end,
   },
-
   {
     "iamcco/markdown-preview.nvim",
     build = "cd app && npm install && cd - && git restore .",
@@ -440,7 +383,6 @@ require("lazy").setup({
     end,
     ft = { "markdown" },
   },
-
   {
     "vim-denops/denops.vim",
     lazy = false
@@ -469,14 +411,6 @@ require("lazy").setup({
       "vim-denops/denops.vim",
     }
   },
-
-  -- {
-  --   "shuntaka9576/deno-fmt.vim",
-  --   dependencies = {
-  --     "vim-denops/denops.vim",
-  --   }
-  -- },
-
   {
     "ziglang/zig.vim",
     config = function()
