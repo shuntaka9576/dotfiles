@@ -115,55 +115,6 @@ require("lazy").setup({
     end,
   },
 
-  {
-    "neoclide/coc.nvim",
-    build = "yarn install --frozen-lockfile",
-    config = function()
-      vim.cmd([[
-        " nodeのPATHを指定
-        let g:os = substitute(system('arch -arm64e uname'), '\n', '', '')
-        let g:arch = substitute(system('arch -arm64e uname -m'), '\n', '', '')
-        if g:os ==# 'Darwin' && g:arch ==# 'x86_64'
-          let g:coc_node_path = expand('~/.anyenv/envs/nodenv/shims/node')
-        elseif g:os ==# 'Darwin' && g:arch ==# 'arm64'
-          let g:coc_node_path = expand('~/.anyenv/envs/nodenv/shims/node')
-        endif
-
-        inoremap <silent><expr> <TAB>
-              \ coc#pum#visible() ? coc#pum#next(1) :
-              \ CheckBackspace() ? "\<Tab>" :
-              \ coc#refresh()
-        inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
-        " Make <CR> to accept selected completion item or notify coc.nvim to format
-        " <C-g>u breaks current undo, please make your own choice
-        inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
-
-        function! CheckBackspace() abort
-          let col = col('.') - 1
-          return !col || getline('.')[col - 1]  =~# '\s'
-        endfunction
-
-        " リファクタリング機能
-        nmap <silent>gr <Plug>(coc-rename)
-        " コードジャンプ
-        nmap <silent>gd <Plug>(coc-definition)
-        " 型情報の表示
-        nmap <silent>gy <Plug>(coc-type-definition)
-        " 実装の表示
-        nmap <silent>gi <Plug>(coc-implementation)
-        " リファレンス表示
-        nmap <silent>gf <Plug>(coc-references)
-        " diagnosticジャンプ
-        nmap <silent><C-n> <Plug>(coc-diagnostic-next)
-        nmap <silent><C-p> <Plug>(coc-diagnostic-prev)
-        " 警告の一覧表示
-        nnoremap <silent><space>a :<C-u>CocList diagnostics<cr>
-        nnoremap <silent><space>t :CocList floaterm<CR>
-        " command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument
-      ]])
-    end,
-  },
-
   { "mattn/vim-goimports" },
 
   {
@@ -533,5 +484,30 @@ require("lazy").setup({
         let g:zig_fmt_autosave = 1
       ]])
     end,
+  },
+  {
+    "scalameta/nvim-metals",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    ft = { "scala", "sbt", "java" },
+    opts = function()
+      local metals_config = require("metals").bare_config()
+      metals_config.on_attach = function(client, bufnr)
+        -- your on_attach function
+      end
+
+      return metals_config
+    end,
+    config = function(self, metals_config)
+      local nvim_metals_group = vim.api.nvim_create_augroup("nvim-metals", { clear = true })
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = self.ft,
+        callback = function()
+          require("metals").initialize_or_attach(metals_config)
+        end,
+        group = nvim_metals_group,
+      })
+    end
   }
 })
