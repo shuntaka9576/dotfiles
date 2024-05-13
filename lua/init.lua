@@ -420,6 +420,48 @@ require("lazy").setup({
     end,
   },
   {
+    "williamboman/mason.nvim"
+  },
+  {
+    "williamboman/mason-lspconfig.nvim"
+  },
+  {
+    "neovim/nvim-lspconfig",
+    config = function()
+      local lspconfig = require("lspconfig")
+      lspconfig.lua_ls.setup({
+        settings = {
+          Lua = {
+            completion = {
+              callSnippet = "Replace"
+            }
+          }
+        }
+      })
+      lspconfig.jsonls.setup({})
+      local on_attach = function(client, bufnr)
+        local set = vim.keymap.set
+        set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>")
+        set("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>")
+        set("n", "<C-m>", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
+        set("n", "rn", "<cmd>lua vim.lsp.buf.rename()<CR>")
+        set("n", "<space>e", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>")
+        set("n", "<C-p>", "<cmd>lua vim.diagnostic.goto_prev()<CR>")
+        set("n", "<C-n>", "<cmd>lua vim.diagnostic.goto_next()<CR>")
+      end
+
+      require("mason").setup()
+      require("mason-lspconfig").setup()
+      require("mason-lspconfig").setup_handlers {
+        function(server_name)
+          require("lspconfig")[server_name].setup {
+            on_attach = on_attach,
+          }
+        end,
+      }
+    end
+  },
+  {
     "hrsh7th/nvim-cmp",
     event = "InsertEnter",
     dependencies = {
