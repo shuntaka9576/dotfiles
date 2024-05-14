@@ -27,6 +27,19 @@ vim.api.nvim_set_keymap("n", "<Up>", "gk", { noremap = true })
 -- devlopment plugin
 vim.api.nvim_set_keymap("n", "<leader>r", ":luafile dev/init.lua<cr>", { noremap = true, silent = false })
 
+-- lsp keymap
+local on_attach = function(client, bufnr)
+  local set = vim.keymap.set
+  set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>")
+  set("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>")
+  set("n", "<C-m>", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
+  set("n", "rn", "<cmd>lua vim.lsp.buf.rename()<CR>")
+  set("n", "<space>e", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>")
+  set("n", "<C-p>", "<cmd>lua vim.diagnostic.goto_prev()<CR>")
+  set("n", "<C-n>", "<cmd>lua vim.diagnostic.goto_next()<CR>")
+end
+
+
 ----------------------------
 -- filetype settings
 ----------------------------
@@ -439,17 +452,6 @@ require("lazy").setup({
         }
       })
       lspconfig.jsonls.setup({})
-      local on_attach = function(client, bufnr)
-        local set = vim.keymap.set
-        set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>")
-        set("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>")
-        set("n", "<C-m>", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
-        set("n", "rn", "<cmd>lua vim.lsp.buf.rename()<CR>")
-        set("n", "<space>e", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>")
-        set("n", "<C-p>", "<cmd>lua vim.diagnostic.goto_prev()<CR>")
-        set("n", "<C-n>", "<cmd>lua vim.diagnostic.goto_next()<CR>")
-      end
-
       require("mason").setup()
       require("mason-lspconfig").setup()
       require("mason-lspconfig").setup_handlers {
@@ -533,81 +535,7 @@ require("lazy").setup({
       }
       metals_config.init_options.statusBarProvider = "off"
       metals_config.capabilities = require("cmp_nvim_lsp").default_capabilities()
-
-      metals_config.on_attach = function(client, bufnr)
-        require("metals").setup_dap()
-
-        -- LSP mappings
-        vim.keymap.set("n", "gd", vim.lsp.buf.definition)
-        vim.keymap.set("n", "K", vim.lsp.buf.hover)
-        vim.keymap.set("n", "gi", vim.lsp.buf.implementation)
-        vim.keymap.set("n", "gr", vim.lsp.buf.references)
-        vim.keymap.set("n", "gds", vim.lsp.buf.document_symbol)
-        vim.keymap.set("n", "gws", vim.lsp.buf.workspace_symbol)
-        vim.keymap.set("n", "<leader>cl", vim.lsp.codelens.run)
-        vim.keymap.set("n", "<leader>sh", vim.lsp.buf.signature_help)
-        vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename)
-        vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
-        vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action)
-
-        vim.keymap.set("n", "<leader>ws", function()
-          require("metals").hover_worksheet()
-        end)
-
-        -- all workspace diagnostics
-        vim.keymap.set("n", "<leader>aa", vim.diagnostic.setqflist)
-
-        -- all workspace errors
-        vim.keymap.set("n", "<leader>ae", function()
-          vim.diagnostic.setqflist({ severity = "E" })
-        end)
-
-        -- all workspace warnings
-        vim.keymap.set("n", "<leader>aw", function()
-          vim.diagnostic.setqflist({ severity = "W" })
-        end)
-
-        -- buffer diagnostics only
-        vim.keymap.set("n", "<leader>d", vim.diagnostic.setloclist)
-
-        vim.keymap.set("n", "[c", function()
-          vim.diagnostic.goto_prev({ wrap = false })
-        end)
-
-        vim.keymap.set("n", "]c", function()
-          vim.diagnostic.goto_next({ wrap = false })
-        end)
-
-        -- Example mappings for usage with nvim-dap. If you don't use that, you can
-        -- skip these
-        vim.keymap.set("n", "<leader>dc", function()
-          require("dap").continue()
-        end)
-
-        vim.keymap.set("n", "<leader>dr", function()
-          require("dap").repl.toggle()
-        end)
-
-        vim.keymap.set("n", "<leader>dK", function()
-          require("dap.ui.widgets").hover()
-        end)
-
-        vim.keymap.set("n", "<leader>dt", function()
-          require("dap").toggle_breakpoint()
-        end)
-
-        vim.keymap.set("n", "<leader>dso", function()
-          require("dap").step_over()
-        end)
-
-        vim.keymap.set("n", "<leader>dsi", function()
-          require("dap").step_into()
-        end)
-
-        vim.keymap.set("n", "<leader>dl", function()
-          require("dap").run_last()
-        end)
-      end
+      metals_config.on_attach = on_attach
 
       return metals_config
     end,
