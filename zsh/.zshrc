@@ -275,6 +275,9 @@ source $HOME/.rye/env
 export DENO_INSTALL="$HOME/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
 
+# scala settings
+export PATH="$HOME/Library/Application Support/Coursier/bin:$PATH"
+
 # gh alias
 # gh alias set see 'browse'
 
