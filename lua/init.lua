@@ -76,6 +76,7 @@ vim.api.nvim_command("autocmd FileType php setlocal expandtab tabstop=4 softtabs
 vim.api.nvim_command("autocmd BufNewFile,BufRead Makefile setlocal noexpandtab")
 -- vim.api.nvim_command("autocmd BufWritePre *.ts,*.tsx :Prettier")
 vim.api.nvim_command("autocmd BufWritePost *.ts,*.tsx,*.mts FormatWrite")
+vim.api.nvim_command("autocmd BufWritePost *.scala FormatWrite")
 vim.api.nvim_command("augroup END")
 
 ----------------------------
@@ -279,6 +280,13 @@ require("lazy").setup({
           javascriptreact = { require("formatter.filetypes.javascriptreact").biome },
           typescript = { require("formatter.filetypes.typescript").biome },
           typescriptreact = { require("formatter.filetypes.typescriptreact").biome },
+          scala = {
+            function ()
+              return {
+                exe = "scalafmt",
+              }
+            end
+          }
         },
       })
     end,
