@@ -15,7 +15,6 @@ vim.api.nvim_set_keymap("n", "te", ":tabedit<CR>", { noremap = true, silent = tr
 vim.api.nvim_set_keymap("n", "<tab>", ":tabnext<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<S-tab>", ":tabprevious<CR>", { noremap = true, silent = true })
 
-
 -- move when one line is wrapped
 vim.api.nvim_set_keymap("n", "k", "gk", { noremap = true })
 vim.api.nvim_set_keymap("n", "j", "gj", { noremap = true })
@@ -28,7 +27,7 @@ vim.api.nvim_set_keymap("n", "<Up>", "gk", { noremap = true })
 vim.api.nvim_set_keymap("n", "<leader>r", ":luafile dev/init.lua<cr>", { noremap = true, silent = false })
 
 -- lsp keymap
-local on_attach = function(client, bufnr)
+local lsp_on_attach = function(client, bufnr)
   local set = vim.keymap.set
   set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>")
   set("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>")
@@ -38,7 +37,6 @@ local on_attach = function(client, bufnr)
   set("n", "<C-p>", "<cmd>lua vim.diagnostic.goto_prev()<CR>")
   set("n", "<C-n>", "<cmd>lua vim.diagnostic.goto_next()<CR>")
 end
-
 
 ----------------------------
 -- filetype settings
@@ -108,6 +106,16 @@ vim.api.nvim_command("set clipboard+=unnamed")
 ----------------------------
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
+local function file_exists(name)
+  local f = io.open(name, "r")
+  if f ~= nil then
+    io.close(f)
+    return true
+  else
+    return false
+  end
+end
+
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
     "git",
@@ -174,74 +182,74 @@ require("lazy").setup({
     event = { "VimEnter" },
     config = function()
       local function on_attach(bufnr)
-        local api = require('nvim-tree.api')
+        local api = require("nvim-tree.api")
 
         local function opts(desc)
-          return { desc = 'nvim-tree: ' .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+          return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
         end
 
         -- BEGIN_DEFAULT_ON_ATTACH
-        vim.keymap.set('n', '<C-]>', api.tree.change_root_to_node, opts('CD'))
+        vim.keymap.set("n", "<C-]>", api.tree.change_root_to_node, opts("CD"))
         -- conflict winresizer
         -- vim.keymap.set('n', '<C-e>', api.node.open.replace_tree_buffer, opts('Open: In Place'))
-        vim.keymap.set('n', '<C-k>', api.node.show_info_popup, opts('Info'))
-        vim.keymap.set('n', '<C-r>', api.fs.rename_sub, opts('Rename: Omit Filename'))
-        vim.keymap.set('n', '<C-t>', api.node.open.tab, opts('Open: New Tab'))
-        vim.keymap.set('n', '<C-v>', api.node.open.vertical, opts('Open: Vertical Split'))
-        vim.keymap.set('n', '<C-x>', api.node.open.horizontal, opts('Open: Horizontal Split'))
-        vim.keymap.set('n', '<BS>', api.node.navigate.parent_close, opts('Close Directory'))
-        vim.keymap.set('n', '<CR>', api.node.open.edit, opts('Open'))
-        vim.keymap.set('n', '<Tab>', api.node.open.preview, opts('Open Preview'))
-        vim.keymap.set('n', '>', api.node.navigate.sibling.next, opts('Next Sibling'))
-        vim.keymap.set('n', '<', api.node.navigate.sibling.prev, opts('Previous Sibling'))
-        vim.keymap.set('n', '.', api.node.run.cmd, opts('Run Command'))
-        vim.keymap.set('n', '-', api.tree.change_root_to_parent, opts('Up'))
-        vim.keymap.set('n', 'a', api.fs.create, opts('Create'))
-        vim.keymap.set('n', 'bmv', api.marks.bulk.move, opts('Move Bookmarked'))
-        vim.keymap.set('n', 'B', api.tree.toggle_no_buffer_filter, opts('Toggle No Buffer'))
-        vim.keymap.set('n', 'c', api.fs.copy.node, opts('Copy'))
-        vim.keymap.set('n', 'C', api.tree.toggle_git_clean_filter, opts('Toggle Git Clean'))
-        vim.keymap.set('n', '[c', api.node.navigate.git.prev, opts('Prev Git'))
-        vim.keymap.set('n', ']c', api.node.navigate.git.next, opts('Next Git'))
-        vim.keymap.set('n', 'd', api.fs.remove, opts('Delete'))
-        vim.keymap.set('n', 'D', api.fs.trash, opts('Trash'))
-        vim.keymap.set('n', 'E', api.tree.expand_all, opts('Expand All'))
-        vim.keymap.set('n', 'e', api.fs.rename_basename, opts('Rename: Basename'))
-        vim.keymap.set('n', ']e', api.node.navigate.diagnostics.next, opts('Next Diagnostic'))
-        vim.keymap.set('n', '[e', api.node.navigate.diagnostics.prev, opts('Prev Diagnostic'))
-        vim.keymap.set('n', 'F', api.live_filter.clear, opts('Clean Filter'))
-        vim.keymap.set('n', 'f', api.live_filter.start, opts('Filter'))
-        vim.keymap.set('n', 'g?', api.tree.toggle_help, opts('Help'))
-        vim.keymap.set('n', 'gy', api.fs.copy.absolute_path, opts('Copy Absolute Path'))
-        vim.keymap.set('n', 'H', api.tree.toggle_hidden_filter, opts('Toggle Dotfiles'))
-        vim.keymap.set('n', 'I', api.tree.toggle_gitignore_filter, opts('Toggle Git Ignore'))
-        vim.keymap.set('n', 'J', api.node.navigate.sibling.last, opts('Last Sibling'))
-        vim.keymap.set('n', 'K', api.node.navigate.sibling.first, opts('First Sibling'))
-        vim.keymap.set('n', 'm', api.marks.toggle, opts('Toggle Bookmark'))
-        vim.keymap.set('n', 'o', api.node.open.edit, opts('Open'))
-        vim.keymap.set('n', 'O', api.node.open.no_window_picker, opts('Open: No Window Picker'))
-        vim.keymap.set('n', 'p', api.fs.paste, opts('Paste'))
-        vim.keymap.set('n', 'P', api.node.navigate.parent, opts('Parent Directory'))
-        vim.keymap.set('n', 'q', api.tree.close, opts('Close'))
-        vim.keymap.set('n', 'r', api.fs.rename, opts('Rename'))
-        vim.keymap.set('n', 'R', api.tree.reload, opts('Refresh'))
-        vim.keymap.set('n', 's', api.node.run.system, opts('Run System'))
-        vim.keymap.set('n', 'S', api.tree.search_node, opts('Search'))
-        vim.keymap.set('n', 'U', api.tree.toggle_custom_filter, opts('Toggle Hidden'))
-        vim.keymap.set('n', 'W', api.tree.collapse_all, opts('Collapse'))
-        vim.keymap.set('n', 'x', api.fs.cut, opts('Cut'))
-        vim.keymap.set('n', 'y', api.fs.copy.filename, opts('Copy Name'))
-        vim.keymap.set('n', 'Y', api.fs.copy.relative_path, opts('Copy Relative Path'))
-        vim.keymap.set('n', '<2-LeftMouse>', api.node.open.edit, opts('Open'))
-        vim.keymap.set('n', '<2-RightMouse>', api.tree.change_root_to_node, opts('CD'))
+        vim.keymap.set("n", "<C-k>", api.node.show_info_popup, opts("Info"))
+        vim.keymap.set("n", "<C-r>", api.fs.rename_sub, opts("Rename: Omit Filename"))
+        vim.keymap.set("n", "<C-t>", api.node.open.tab, opts("Open: New Tab"))
+        vim.keymap.set("n", "<C-v>", api.node.open.vertical, opts("Open: Vertical Split"))
+        vim.keymap.set("n", "<C-x>", api.node.open.horizontal, opts("Open: Horizontal Split"))
+        vim.keymap.set("n", "<BS>", api.node.navigate.parent_close, opts("Close Directory"))
+        vim.keymap.set("n", "<CR>", api.node.open.edit, opts("Open"))
+        vim.keymap.set("n", "<Tab>", api.node.open.preview, opts("Open Preview"))
+        vim.keymap.set("n", ">", api.node.navigate.sibling.next, opts("Next Sibling"))
+        vim.keymap.set("n", "<", api.node.navigate.sibling.prev, opts("Previous Sibling"))
+        vim.keymap.set("n", ".", api.node.run.cmd, opts("Run Command"))
+        vim.keymap.set("n", "-", api.tree.change_root_to_parent, opts("Up"))
+        vim.keymap.set("n", "a", api.fs.create, opts("Create"))
+        vim.keymap.set("n", "bmv", api.marks.bulk.move, opts("Move Bookmarked"))
+        vim.keymap.set("n", "B", api.tree.toggle_no_buffer_filter, opts("Toggle No Buffer"))
+        vim.keymap.set("n", "c", api.fs.copy.node, opts("Copy"))
+        vim.keymap.set("n", "C", api.tree.toggle_git_clean_filter, opts("Toggle Git Clean"))
+        vim.keymap.set("n", "[c", api.node.navigate.git.prev, opts("Prev Git"))
+        vim.keymap.set("n", "]c", api.node.navigate.git.next, opts("Next Git"))
+        vim.keymap.set("n", "d", api.fs.remove, opts("Delete"))
+        vim.keymap.set("n", "D", api.fs.trash, opts("Trash"))
+        vim.keymap.set("n", "E", api.tree.expand_all, opts("Expand All"))
+        vim.keymap.set("n", "e", api.fs.rename_basename, opts("Rename: Basename"))
+        vim.keymap.set("n", "]e", api.node.navigate.diagnostics.next, opts("Next Diagnostic"))
+        vim.keymap.set("n", "[e", api.node.navigate.diagnostics.prev, opts("Prev Diagnostic"))
+        vim.keymap.set("n", "F", api.live_filter.clear, opts("Clean Filter"))
+        vim.keymap.set("n", "f", api.live_filter.start, opts("Filter"))
+        vim.keymap.set("n", "g?", api.tree.toggle_help, opts("Help"))
+        vim.keymap.set("n", "gy", api.fs.copy.absolute_path, opts("Copy Absolute Path"))
+        vim.keymap.set("n", "H", api.tree.toggle_hidden_filter, opts("Toggle Dotfiles"))
+        vim.keymap.set("n", "I", api.tree.toggle_gitignore_filter, opts("Toggle Git Ignore"))
+        vim.keymap.set("n", "J", api.node.navigate.sibling.last, opts("Last Sibling"))
+        vim.keymap.set("n", "K", api.node.navigate.sibling.first, opts("First Sibling"))
+        vim.keymap.set("n", "m", api.marks.toggle, opts("Toggle Bookmark"))
+        vim.keymap.set("n", "o", api.node.open.edit, opts("Open"))
+        vim.keymap.set("n", "O", api.node.open.no_window_picker, opts("Open: No Window Picker"))
+        vim.keymap.set("n", "p", api.fs.paste, opts("Paste"))
+        vim.keymap.set("n", "P", api.node.navigate.parent, opts("Parent Directory"))
+        vim.keymap.set("n", "q", api.tree.close, opts("Close"))
+        vim.keymap.set("n", "r", api.fs.rename, opts("Rename"))
+        vim.keymap.set("n", "R", api.tree.reload, opts("Refresh"))
+        vim.keymap.set("n", "s", api.node.run.system, opts("Run System"))
+        vim.keymap.set("n", "S", api.tree.search_node, opts("Search"))
+        vim.keymap.set("n", "U", api.tree.toggle_custom_filter, opts("Toggle Hidden"))
+        vim.keymap.set("n", "W", api.tree.collapse_all, opts("Collapse"))
+        vim.keymap.set("n", "x", api.fs.cut, opts("Cut"))
+        vim.keymap.set("n", "y", api.fs.copy.filename, opts("Copy Name"))
+        vim.keymap.set("n", "Y", api.fs.copy.relative_path, opts("Copy Relative Path"))
+        vim.keymap.set("n", "<2-LeftMouse>", api.node.open.edit, opts("Open"))
+        vim.keymap.set("n", "<2-RightMouse>", api.tree.change_root_to_node, opts("CD"))
         -- END_DEFAULT_ON_ATTACH
 
         -- Mappings migrated from view.mappings.list
-        vim.keymap.set('n', 'A', api.tree.expand_all, opts('Expand All'))
-        vim.keymap.set('n', '?', api.tree.toggle_help, opts('Help'))
-        vim.keymap.set('n', 'C', api.tree.change_root_to_node, opts('CD'))
+        vim.keymap.set("n", "A", api.tree.expand_all, opts("Expand All"))
+        vim.keymap.set("n", "?", api.tree.toggle_help, opts("Help"))
+        vim.keymap.set("n", "C", api.tree.change_root_to_node, opts("CD"))
 
-        vim.keymap.set('n', 'Z', api.node.run.system, opts('Run System'))
+        vim.keymap.set("n", "Z", api.node.run.system, opts("Run System"))
       end
 
       local nvim_tree = require("nvim-tree")
@@ -264,29 +272,29 @@ require("lazy").setup({
   {
     "yuki-yano/fuzzy-motion.vim",
     config = function()
-      vim.keymap.set('n', 'f', '<cmd>FuzzyMotion<CR>')
+      vim.keymap.set("n", "f", "<cmd>FuzzyMotion<CR>")
       vim.cmd("let g:fuzzy_motion_matchers = ['kensaku', 'fzf']")
     end,
     dependencies = {
-      "lambdalisue/kensaku.vim"
-    }
+      "lambdalisue/kensaku.vim",
+    },
   },
   {
     "mhartington/formatter.nvim",
     config = function()
       require("formatter").setup({
         filetype = {
-          javascript = { require("formatter.filetypes.javascript").biome },
-          javascriptreact = { require("formatter.filetypes.javascriptreact").biome },
-          typescript = { require("formatter.filetypes.typescript").biome },
-          typescriptreact = { require("formatter.filetypes.typescriptreact").biome },
+          -- javascript = { require("formatter.filetypes.javascript").biome },
+          -- javascriptreact = { require("formatter.filetypes.javascriptreact").biome },
+          -- typescript = { require("formatter.filetypes.typescript").biome },
+          -- typescriptreact = { require("formatter.filetypes.typescriptreact").biome },
           scala = {
-            function ()
+            function()
               return {
                 exe = "scalafmt",
               }
-            end
-          }
+            end,
+          },
         },
       })
     end,
@@ -406,31 +414,31 @@ require("lazy").setup({
   },
   {
     "vim-denops/denops.vim",
-    lazy = false
+    lazy = false,
   },
   {
-    'lambdalisue/kensaku-search.vim',
+    "lambdalisue/kensaku-search.vim",
     lazy = false,
     config = function()
-      vim.keymap.set('c', '<CR>', '<Plug>(kensaku-search-replace)<CR>')
+      vim.keymap.set("c", "<CR>", "<Plug>(kensaku-search-replace)<CR>")
     end,
     dependencies = {
-      "lambdalisue/kensaku.vim"
-    }
+      "lambdalisue/kensaku.vim",
+    },
   },
-  { 'lambdalisue/kensaku.vim', lazy = false },
+  { "lambdalisue/kensaku.vim", lazy = false },
 
   {
     "shuntaka9576/preview-asciidoc.vim",
     dependencies = {
       "vim-denops/denops.vim",
-    }
+    },
   },
   {
     "shuntaka9576/preview-shuntaka-dev.vim",
     dependencies = {
       "vim-denops/denops.vim",
-    }
+    },
   },
   {
     "ziglang/zig.vim",
@@ -441,10 +449,10 @@ require("lazy").setup({
     end,
   },
   {
-    "williamboman/mason.nvim"
+    "williamboman/mason.nvim",
   },
   {
-    "williamboman/mason-lspconfig.nvim"
+    "williamboman/mason-lspconfig.nvim",
   },
   {
     "neovim/nvim-lspconfig",
@@ -454,22 +462,63 @@ require("lazy").setup({
         settings = {
           Lua = {
             completion = {
-              callSnippet = "Replace"
-            }
-          }
-        }
+              callSnippet = "Replace",
+            },
+          },
+        },
       })
       lspconfig.jsonls.setup({})
       require("mason").setup()
       require("mason-lspconfig").setup()
-      require("mason-lspconfig").setup_handlers {
+      require("mason-lspconfig").setup_handlers({
         function(server_name)
-          require("lspconfig")[server_name].setup {
-            on_attach = on_attach,
-          }
+          local nvim_lsp = require("lspconfig")
+          vim.lsp.handlers["textDocument/publishDiagnostics"] =
+            vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+              update_in_insert = false,
+              virtual_text = {
+                format = function(diagnostic)
+                  return string.format("%s (%s: %s)", diagnostic.message, diagnostic.source, diagnostic.code)
+                end,
+              },
+            })
+
+          local opts = {}
+
+          if server_name == "tsserver" then
+            if file_exists(os.getenv("PWD") .. "/deno.jsonc") then
+              return
+            end
+
+            opts.root_dir = nvim_lsp.util.root_pattern("package.json", "node_modules")
+          elseif server_name == "eslint" then
+            opts.root_dir = nvim_lsp.util.root_pattern("package.json", "node_modules")
+          elseif server_name == "denols" then
+            if file_exists(os.getenv("PWD") .. "/package.json") then
+              return
+            end
+
+            opts.root_dir = nvim_lsp.util.root_pattern("deno.json", "deno.jsonc")
+            opts.settings = {
+              deno = {
+                suggest = {
+                  imports = {
+                    hosts = {
+                      ["https://deno.land"] = true,
+                      ["https://cdn.nest.land"] = true,
+                      ["https://crux.land"] = true,
+                    },
+                  },
+                },
+              },
+            }
+          end
+
+          opts.on_attach = lsp_on_attach
+          nvim_lsp[server_name].setup(opts)
         end,
-      }
-    end
+      })
+    end,
   },
   {
     "hrsh7th/nvim-cmp",
@@ -477,7 +526,7 @@ require("lazy").setup({
     dependencies = {
       { "hrsh7th/cmp-nvim-lsp" },
       { "hrsh7th/cmp-vsnip" },
-      { "hrsh7th/vim-vsnip" }
+      { "hrsh7th/vim-vsnip" },
     },
     opts = function()
       local cmp = require("cmp")
@@ -492,11 +541,11 @@ require("lazy").setup({
           end,
         },
         mapping = cmp.mapping.preset.insert({
-          ["<CR>"] = cmp.mapping.confirm({ select = true })
-        })
+          ["<CR>"] = cmp.mapping.confirm({ select = true }),
+        }),
       }
       return conf
-    end
+    end,
   },
   {
     "scalameta/nvim-metals",
@@ -531,7 +580,7 @@ require("lazy").setup({
               },
             },
           }
-        end
+        end,
       },
     },
     ft = { "scala", "sbt", "java" },
@@ -543,7 +592,7 @@ require("lazy").setup({
       }
       metals_config.init_options.statusBarProvider = "off"
       metals_config.capabilities = require("cmp_nvim_lsp").default_capabilities()
-      metals_config.on_attach = on_attach
+      metals_config.on_attach = lsp_on_attach
 
       return metals_config
     end,
@@ -556,7 +605,6 @@ require("lazy").setup({
         end,
         group = nvim_metals_group,
       })
-    end
-
-  }
+    end,
+  },
 })
