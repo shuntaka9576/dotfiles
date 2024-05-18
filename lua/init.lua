@@ -512,6 +512,9 @@ require("lazy").setup({
                 },
               },
             }
+            -- opts.handlers = {
+            --   ["textDocument/publishDiagnostics"] = function() end,
+            -- }
           end
 
           opts.on_attach = lsp_on_attach

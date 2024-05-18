@@ -30,3 +30,4 @@ export RUST_BACKTRACE=1
 alias t='tmux -2'
 
 export PATH="$HOME/.poetry/bin:$PATH"
+export PATH="$HOME/.rd/bin:$PATH"

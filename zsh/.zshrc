@@ -282,7 +282,7 @@ export PATH="$HOME/Library/Application Support/Coursier/bin:$PATH"
 # gh alias set see 'browse'
 
 # lima
-export DOCKER_HOST=unix://$HOME/.lima/aarch64/sock/docker.sock
+# export DOCKER_HOST=unix://$HOME/.lima/aarch64/sock/docker.sock
 
 # bun completions
 [ -s "/Users/shuntaka/.bun/_bun" ] && source "/Users/shuntaka/.bun/_bun"
