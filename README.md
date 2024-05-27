@@ -61,3 +61,16 @@ Set install branch name:master
 bash <(curl -sL raw.github.com/shuntaka9576/dotfiles/{contribute branch name}/init/install.sh)
 Set install branch name:{contribute branch name}
 ```
+
+## Other
+
+### LSP
+
+|lang|lsp|install plugin|
+|---|---|---|
+|typescript|typescript-language-server|mason
+|lua|lua-language-server|mason
+|java|jdtls|mason
+|json|json-lsp|mason
+|scala|metals|nvim-metals
+
