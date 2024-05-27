@@ -69,7 +69,6 @@ export LC_CTYPE="en_US.UTF-8"
 # Docker
 # export DOCKER_HOST=unix:///$HOME/.lima/aarch64/sock/docker.sock
 export PATH="$HOME/.rd/bin:$PATH"
-export TESTCONTAINERS_HOST_OVERRIDE=$(rdctl shell ip a show eth0 | awk '/inet / {sub("/.*",""); print $2}')
 
 # ------------------------------------------------------------------------------
 # Read plugins settings
