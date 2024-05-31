@@ -284,10 +284,10 @@ require("lazy").setup({
     config = function()
       require("formatter").setup({
         filetype = {
-          -- javascript = { require("formatter.filetypes.javascript").biome },
-          -- javascriptreact = { require("formatter.filetypes.javascriptreact").biome },
-          -- typescript = { require("formatter.filetypes.typescript").biome },
-          -- typescriptreact = { require("formatter.filetypes.typescriptreact").biome },
+          javascript = { require("formatter.filetypes.javascript").biome },
+          javascriptreact = { require("formatter.filetypes.javascriptreact").biome },
+          typescript = { require("formatter.filetypes.typescript").biome },
+          typescriptreact = { require("formatter.filetypes.typescriptreact").biome },
           scala = {
             function()
               return {
@@ -434,12 +434,13 @@ require("lazy").setup({
       "vim-denops/denops.vim",
     },
   },
-  {
-    "shuntaka9576/preview-shuntaka-dev.vim",
-    dependencies = {
-      "vim-denops/denops.vim",
-    },
-  },
+  -- hono trouble
+  -- {
+  --   "shuntaka9576/preview-shuntaka-dev.vim",
+  --   dependencies = {
+  --     "vim-denops/denops.vim",
+  --   },
+  -- },
   {
     "ziglang/zig.vim",
     config = function()
@@ -512,9 +513,6 @@ require("lazy").setup({
                 },
               },
             }
-            -- opts.handlers = {
-            --   ["textDocument/publishDiagnostics"] = function() end,
-            -- }
           end
 
           opts.on_attach = lsp_on_attach
@@ -586,7 +584,7 @@ require("lazy").setup({
         end,
       },
     },
-    ft = { "scala", "sbt", "java" },
+    ft = { "scala", "sbt" },
     opts = function()
       local metals_config = require("metals").bare_config()
       metals_config.settings = {
@@ -610,4 +608,36 @@ require("lazy").setup({
       })
     end,
   },
+  -- {
+  --   "mfussenegger/nvim-jdtls",
+  --   ft = { "java" },
+  --   opts = function()
+  --     local jdtls_bin = vim.fn.stdpath("data") .. "/mason/bin/jdtls"
+  --     local config = {
+  --       cmd = { jdtls_bin },
+  --       root_dir = vim.fs.dirname(vim.fs.find({ "gradlew", ".git", "mvnw" }, { upward = true })[1]),
+  --     }
+  --     require("jdtls").start_or_attach(config)
+
+  --     -- local jdtls_setup = function()
+  --     --   local jdtls = require('jdtls')
+  --     --   local jdtls_bin = vim.fn.stdpath("data") .. "/mason/bin/jdtls"
+  --     --   -- local root_dir = vim.fs.root(0, {".git", "mvnw", "gradlew"})
+
+  --     --   local config = {
+  --     --       cmd = { jdtls_bin },
+  --     --       -- root_dir = root_dir,
+  --     --       -- on_attach = lsp_on_attach,
+  --     --   }
+  --     --   jdtls.start_or_attach(config)
+  --     -- end
+
+  --     -- vim.api.nvim_create_autocmd('FileType', {
+  --     --   -- group = java_cmds,
+  --     --   pattern = {'java'},
+  --     --   desc = 'Setup jdtls',
+  --     --   callback = jdtls_setup,
+  --     -- })
+  --   end,
+  -- },
 })
