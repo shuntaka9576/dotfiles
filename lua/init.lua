@@ -73,7 +73,7 @@ vim.api.nvim_command("autocmd BufNewFile,BufRead *.php set filetype=php")
 vim.api.nvim_command("autocmd FileType php setlocal expandtab tabstop=4 softtabstop=4 shiftwidth=4 autoindent")
 vim.api.nvim_command("autocmd BufNewFile,BufRead Makefile setlocal noexpandtab")
 -- vim.api.nvim_command("autocmd BufWritePre *.ts,*.tsx :Prettier")
-vim.api.nvim_command("autocmd BufWritePost *.ts,*.tsx,*.mts FormatWrite")
+vim.api.nvim_command("autocmd BufWritePost *.ts,*.tsx,*.mts,*.rs FormatWrite")
 vim.api.nvim_command("autocmd BufWritePost *.scala FormatWrite")
 vim.api.nvim_command("augroup END")
 
@@ -281,13 +281,78 @@ require("lazy").setup({
   },
   {
     "mhartington/formatter.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
+      local Path = require("plenary.path")
+
+      -- Function to check if deno.jsonc exists in the project root
+      local function use_deno_fmt()
+        local current_dir = vim.fn.getcwd()
+        local deno_config_path = Path:new(current_dir, "deno.jsonc")
+        return deno_config_path:exists()
+      end
+
       require("formatter").setup({
         filetype = {
-          javascript = { require("formatter.filetypes.javascript").biome },
-          javascriptreact = { require("formatter.filetypes.javascriptreact").biome },
-          typescript = { require("formatter.filetypes.typescript").biome },
-          typescriptreact = { require("formatter.filetypes.typescriptreact").biome },
+          javascript = {
+            function()
+              if use_deno_fmt() then
+                return {
+                  exe = "deno",
+                  args = { "fmt", "-" },
+                  stdin = true,
+                }
+              else
+                return require("formatter.filetypes.javascript").biome()
+              end
+            end,
+          },
+          javascriptreact = {
+            function()
+              if use_deno_fmt() then
+                return {
+                  exe = "deno",
+                  args = { "fmt", "-" },
+                  stdin = true,
+                }
+              else
+                return require("formatter.filetypes.javascriptreact").biome()
+              end
+            end,
+          },
+          typescript = {
+            function()
+              if use_deno_fmt() then
+                return {
+                  exe = "deno",
+                  args = { "fmt", "-" },
+                  stdin = true,
+                }
+              else
+                return require("formatter.filetypes.typescript").biome()
+              end
+            end,
+          },
+          typescriptreact = {
+            function()
+              if use_deno_fmt() then
+                return {
+                  exe = "deno",
+                  args = { "fmt", "-" },
+                  stdin = true,
+                }
+              else
+                return require("formatter.filetypes.typescriptreact").biome()
+              end
+            end,
+          },
+          rust = {
+            function()
+              return {
+                exe = "rustfmt",
+              }
+            end,
+          },
           scala = {
             function()
               return {
