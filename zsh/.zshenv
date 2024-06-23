@@ -84,3 +84,5 @@ case ${OSTYPE} in
 	eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
         ;;
 esac
+
+[ -f "/Users/shuntaka/.ghcup/env" ] && . "/Users/shuntaka/.ghcup/env" # ghcup-env

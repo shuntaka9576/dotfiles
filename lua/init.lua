@@ -586,6 +586,17 @@ require("lazy").setup({
       })
     end,
   },
+  -- {
+  --   "mrcjkb/haskell-tools.nvim",
+  --   dependencies = {
+  --     "nvim-lua/plenary.nvim",
+  --   },
+  --   version = "^3", -- Recommended
+  --   ft = { "haskell", "lhaskell", "cabal", "cabalproject" },
+  --   init = function()
+  --     vim.g.haskell_tools = {}
+  --   end,
+  -- },
   {
     "hrsh7th/nvim-cmp",
     event = "InsertEnter",
