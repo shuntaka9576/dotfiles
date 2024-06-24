@@ -73,7 +73,7 @@ vim.api.nvim_command("autocmd BufNewFile,BufRead *.php set filetype=php")
 vim.api.nvim_command("autocmd FileType php setlocal expandtab tabstop=4 softtabstop=4 shiftwidth=4 autoindent")
 vim.api.nvim_command("autocmd BufNewFile,BufRead Makefile setlocal noexpandtab")
 -- vim.api.nvim_command("autocmd BufWritePre *.ts,*.tsx :Prettier")
-vim.api.nvim_command("autocmd BufWritePost *.ts,*.tsx,*.mts,*.rs FormatWrite")
+vim.api.nvim_command("autocmd BufWritePost *.ts,*.tsx,*.mts,*.rs,*.hs,*.lua FormatWrite")
 vim.api.nvim_command("autocmd BufWritePost *.scala FormatWrite")
 vim.api.nvim_command("augroup END")
 
@@ -346,6 +346,20 @@ require("lazy").setup({
               end
             end,
           },
+          haskell = {
+            function()
+              return {
+                exe = "ormolu",
+              }
+            end,
+          },
+          lua = {
+            function()
+              return {
+                exe = "stylua",
+              }
+            end,
+          },
           rust = {
             function()
               return {
@@ -586,17 +600,17 @@ require("lazy").setup({
       })
     end,
   },
-  -- {
-  --   "mrcjkb/haskell-tools.nvim",
-  --   dependencies = {
-  --     "nvim-lua/plenary.nvim",
-  --   },
-  --   version = "^3", -- Recommended
-  --   ft = { "haskell", "lhaskell", "cabal", "cabalproject" },
-  --   init = function()
-  --     vim.g.haskell_tools = {}
-  --   end,
-  -- },
+  {
+    "mrcjkb/haskell-tools.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    version = "^3", -- Recommended
+    ft = { "haskell", "lhaskell", "cabal", "cabalproject" },
+    init = function()
+      vim.g.haskell_tools = {}
+    end,
+  },
   {
     "hrsh7th/nvim-cmp",
     event = "InsertEnter",
