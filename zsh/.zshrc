@@ -275,11 +275,17 @@ source $HOME/.rye/env
 export DENO_INSTALL="$HOME/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
 
+# scala settings
+export PATH="$HOME/Library/Application Support/Coursier/bin:$PATH"
+
 # gh alias
 # gh alias set see 'browse'
 
 # lima
-export DOCKER_HOST=unix://$HOME/.lima/aarch64/sock/docker.sock
+# export DOCKER_HOST=unix://$HOME/.lima/aarch64/sock/docker.sock
+
+# testcontainer settings
+export TESTCONTAINERS_HOST_OVERRIDE=$(rdctl shell ip a show eth0 | awk '/inet / {sub("/.*",""); print $2}')
 
 # bun completions
 [ -s "/Users/shuntaka/.bun/_bun" ] && source "/Users/shuntaka/.bun/_bun"

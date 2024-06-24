@@ -52,7 +52,8 @@ export PATH="/usr/local/opt/android-sdk/cmdline-tools/tools/bin:$PATH"
 export ANDROID_SDK_ROOT=/usr/local/opt/android-sdk
 
 # Java
-export JAVA_HOME="$HOME/java/amazon-corretto-8.jdk/Contents/Home"
+# export JAVA_HOME="$HOME/java/amazon-corretto-8.jdk/Contents/Home"
+export JAVA_HOME=$(/usr/libexec/java_home -v 17)
 
 # Bun
 export PATH="$HOME/.bun/bin:$PATH"
@@ -67,7 +68,8 @@ export PATH="$HOME/repos/github.com/shuntaka9576/trino-playground/bin:$PATH"
 export LC_CTYPE="en_US.UTF-8"
 
 # Docker
-export DOCKER_HOST=unix:///$HOME/.lima/aarch64/sock/docker.sock
+# export DOCKER_HOST=unix:///$HOME/.lima/aarch64/sock/docker.sock
+export PATH="$HOME/.rd/bin:$PATH"
 
 # ------------------------------------------------------------------------------
 # Read plugins settings
@@ -82,3 +84,5 @@ case ${OSTYPE} in
 	eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
         ;;
 esac
+
+[ -f "/Users/shuntaka/.ghcup/env" ] && . "/Users/shuntaka/.ghcup/env" # ghcup-env
