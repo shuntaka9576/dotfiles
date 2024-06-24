@@ -85,4 +85,6 @@ case ${OSTYPE} in
         ;;
 esac
 
+# For Haskell
 [ -f "/Users/shuntaka/.ghcup/env" ] && . "/Users/shuntaka/.ghcup/env" # ghcup-env
+export PATH="$HOME/.local/bin:$PATH" # stack install path(ex: ormolu)

@@ -350,6 +350,7 @@ require("lazy").setup({
             function()
               return {
                 exe = "ormolu",
+                args = { "--mode", "inplace" },
               }
             end,
           },
