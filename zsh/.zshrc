@@ -289,3 +289,4 @@ export TESTCONTAINERS_HOST_OVERRIDE=$(rdctl shell ip a show eth0 | awk '/inet / 
 
 # bun completions
 [ -s "/Users/shuntaka/.bun/_bun" ] && source "/Users/shuntaka/.bun/_bun"
+alias r='runghc'
