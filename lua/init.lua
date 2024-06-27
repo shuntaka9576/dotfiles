@@ -302,6 +302,7 @@ require("lazy").setup({
           return "biome" -- fallback to global biome if local not found
         end
       end
+
       local util = require("formatter.util")
 
       require("formatter").setup({
@@ -315,6 +316,7 @@ require("lazy").setup({
                   stdin = true,
                 }
               else
+                local file_path = util.get_current_buffer_file_path()
                 return {
                   exe = get_biome_exe(),
                   args = {
@@ -322,9 +324,10 @@ require("lazy").setup({
                     "--write",
                     "--unsafe",
                     "--stdin-file-path",
-                    util.escape_path(util.get_current_buffer_file_path()),
+                    util.escape_path(file_path),
                   },
                   stdin = true,
+                  cwd = vim.fn.fnamemodify(file_path, ":h"), -- Set the working directory to the file's directory
                 }
               end
             end,
@@ -338,6 +341,7 @@ require("lazy").setup({
                   stdin = true,
                 }
               else
+                local file_path = util.get_current_buffer_file_path()
                 return {
                   exe = get_biome_exe(),
                   args = {
@@ -345,9 +349,10 @@ require("lazy").setup({
                     "--write",
                     "--unsafe",
                     "--stdin-file-path",
-                    util.escape_path(util.get_current_buffer_file_path()),
+                    util.escape_path(file_path),
                   },
                   stdin = true,
+                  cwd = vim.fn.fnamemodify(file_path, ":h"), -- Set the working directory to the file's directory
                 }
               end
             end,
@@ -361,6 +366,7 @@ require("lazy").setup({
                   stdin = true,
                 }
               else
+                local file_path = util.get_current_buffer_file_path()
                 return {
                   exe = get_biome_exe(),
                   args = {
@@ -368,9 +374,10 @@ require("lazy").setup({
                     "--write",
                     "--unsafe",
                     "--stdin-file-path",
-                    util.escape_path(util.get_current_buffer_file_path()),
+                    util.escape_path(file_path),
                   },
                   stdin = true,
+                  cwd = vim.fn.fnamemodify(file_path, ":h"), -- Set the working directory to the file's directory
                 }
               end
             end,
@@ -384,6 +391,7 @@ require("lazy").setup({
                   stdin = true,
                 }
               else
+                local file_path = util.get_current_buffer_file_path()
                 return {
                   exe = get_biome_exe(),
                   args = {
@@ -391,9 +399,10 @@ require("lazy").setup({
                     "--write",
                     "--unsafe",
                     "--stdin-file-path",
-                    util.escape_path(util.get_current_buffer_file_path()),
+                    util.escape_path(file_path),
                   },
                   stdin = true,
+                  cwd = vim.fn.fnamemodify(file_path, ":h"), -- Set the working directory to the file's directory
                 }
               end
             end,
