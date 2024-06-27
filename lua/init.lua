@@ -292,6 +292,18 @@ require("lazy").setup({
         return deno_config_path:exists()
       end
 
+      -- Function to get the local biome executable path
+      local function get_biome_exe()
+        local current_dir = vim.fn.getcwd()
+        local biome_path = Path:new(current_dir, "node_modules", ".bin", "biome")
+        if biome_path:exists() then
+          return biome_path:absolute()
+        else
+          return "biome" -- fallback to global biome if local not found
+        end
+      end
+      local util = require("formatter.util")
+
       require("formatter").setup({
         filetype = {
           javascript = {
@@ -303,7 +315,17 @@ require("lazy").setup({
                   stdin = true,
                 }
               else
-                return require("formatter.filetypes.javascript").biome()
+                return {
+                  exe = get_biome_exe(),
+                  args = {
+                    "check",
+                    "--write",
+                    "--unsafe",
+                    "--stdin-file-path",
+                    util.escape_path(util.get_current_buffer_file_path()),
+                  },
+                  stdin = true,
+                }
               end
             end,
           },
@@ -316,7 +338,17 @@ require("lazy").setup({
                   stdin = true,
                 }
               else
-                return require("formatter.filetypes.javascriptreact").biome()
+                return {
+                  exe = get_biome_exe(),
+                  args = {
+                    "check",
+                    "--write",
+                    "--unsafe",
+                    "--stdin-file-path",
+                    util.escape_path(util.get_current_buffer_file_path()),
+                  },
+                  stdin = true,
+                }
               end
             end,
           },
@@ -329,7 +361,17 @@ require("lazy").setup({
                   stdin = true,
                 }
               else
-                return require("formatter.filetypes.typescript").biome()
+                return {
+                  exe = get_biome_exe(),
+                  args = {
+                    "check",
+                    "--write",
+                    "--unsafe",
+                    "--stdin-file-path",
+                    util.escape_path(util.get_current_buffer_file_path()),
+                  },
+                  stdin = true,
+                }
               end
             end,
           },
@@ -342,7 +384,17 @@ require("lazy").setup({
                   stdin = true,
                 }
               else
-                return require("formatter.filetypes.typescriptreact").biome()
+                return {
+                  exe = get_biome_exe(),
+                  args = {
+                    "check",
+                    "--write",
+                    "--unsafe",
+                    "--stdin-file-path",
+                    util.escape_path(util.get_current_buffer_file_path()),
+                  },
+                  stdin = true,
+                }
               end
             end,
           },
