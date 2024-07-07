@@ -322,7 +322,7 @@ require("lazy").setup({
                   args = {
                     "check",
                     "--write",
-                    "--unsafe",
+                    -- "--unsafe",
                     "--stdin-file-path",
                     util.escape_path(file_path),
                   },
@@ -347,7 +347,7 @@ require("lazy").setup({
                   args = {
                     "check",
                     "--write",
-                    "--unsafe",
+                    -- "--unsafe",
                     "--stdin-file-path",
                     util.escape_path(file_path),
                   },
@@ -372,7 +372,7 @@ require("lazy").setup({
                   args = {
                     "check",
                     "--write",
-                    "--unsafe",
+                    -- "--unsafe",
                     "--stdin-file-path",
                     util.escape_path(file_path),
                   },
@@ -397,7 +397,7 @@ require("lazy").setup({
                   args = {
                     "check",
                     "--write",
-                    "--unsafe",
+                    -- "--unsafe",
                     "--stdin-file-path",
                     util.escape_path(file_path),
                   },
