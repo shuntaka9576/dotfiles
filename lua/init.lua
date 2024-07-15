@@ -576,12 +576,12 @@ require("lazy").setup({
     },
   },
   -- hono trouble
-  -- {
-  --   "shuntaka9576/preview-shuntaka-dev.vim",
-  --   dependencies = {
-  --     "vim-denops/denops.vim",
-  --   },
-  -- },
+  {
+    "shuntaka9576/preview-shuntaka-dev.vim",
+    dependencies = {
+      "vim-denops/denops.vim",
+    },
+  },
   {
     "ziglang/zig.vim",
     config = function()
