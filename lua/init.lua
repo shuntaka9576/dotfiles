@@ -22,9 +22,19 @@ vim.api.nvim_set_keymap("n", "gk", "k", { noremap = true })
 vim.api.nvim_set_keymap("n", "gj", "j", { noremap = true })
 vim.api.nvim_set_keymap("n", "<Down>", "gj", { noremap = true })
 vim.api.nvim_set_keymap("n", "<Up>", "gk", { noremap = true })
+vim.o.cmdheight = 0
 
 -- devlopment plugin
 vim.api.nvim_set_keymap("n", "<leader>r", ":luafile dev/init.lua<cr>", { noremap = true, silent = false })
+vim.api.nvim_exec(
+  [[
+  augroup QuickFixEnter
+    autocmd!
+    autocmd FileType qf nnoremap <buffer> <CR> <CR>:cclose<CR>
+  augroup END
+]],
+  false
+)
 
 -- lsp keymap
 local lsp_on_attach = function(client, bufnr)
@@ -531,14 +541,40 @@ require("lazy").setup({
       vim.api.nvim_set_keymap("n", "<leader>g", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", { noremap = true, silent = true })
     end,
   },
-  { "monaqa/dial.nvim" },
+  {
+    -- FIXME: not work
+    "monaqa/dial.nvim",
+    config = function()
+      local augend = require("dial.augend")
+      require("dial.config").augends:register_group({
+        default = {
+          augend.integer.alias.decimal,
+          augend.integer.alias.hex,
+          augend.date.alias["%Y/%m/%d"],
+        },
+        typescript = {
+          augend.integer.alias.decimal,
+          augend.integer.alias.hex,
+          augend.constant.new({ elements = { "let", "const" } }),
+        },
+        visual = {
+          augend.integer.alias.decimal,
+          augend.integer.alias.hex,
+          augend.date.alias["%Y/%m/%d"],
+          augend.constant.alias.alpha,
+          augend.constant.alias.Alpha,
+        },
+      })
+
+      vim.keymap.set("v", "<C-a>", require("dial.map").inc_visual("visual"), { noremap = true })
+      vim.keymap.set("v", "<C-x>", require("dial.map").dec_visual("visual"), { noremap = true })
+    end,
+  },
   { "sindrets/diffview.nvim" },
   {
     "folke/noice.nvim",
     event = "VeryLazy",
-    opts = {
-      -- add any options here
-    },
+    opts = {},
     dependencies = {
       -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
       "MunifTanjim/nui.nvim",
@@ -813,6 +849,15 @@ require("lazy").setup({
           require("metals").initialize_or_attach(metals_config)
         end,
         group = nvim_metals_group,
+      })
+    end,
+  },
+  {
+    "Wansmer/treesj",
+    keys = { "<space>m", "<space>j", "<space>s" },
+    dependencies = { "nvim-treesitter/nvim-treesitter" }, -- if you install parsers with `nvim-treesitter`
+    config = function()
+      require("treesj").setup({--[[ your config ]]
       })
     end,
   },
