@@ -300,6 +300,15 @@ require("lazy").setup({
     end,
   },
   {
+    "linrongbin16/gitlinker.nvim",
+    cmd = "GitLink",
+    opts = {},
+    keys = {
+      { "<leader>gy", "<cmd>GitLink<cr>", mode = { "n", "v" }, desc = "Yank git link" },
+      { "<leader>gY", "<cmd>GitLink!<cr>", mode = { "n", "v" }, desc = "Open git link" },
+    },
+  },
+  {
     "mhartington/formatter.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
@@ -595,7 +604,6 @@ require("lazy").setup({
       "vim-denops/denops.vim",
     },
   },
-  -- hono trouble
   {
     "ziglang/zig.vim",
     config = function()
