@@ -280,6 +280,20 @@ require("lazy").setup({
     },
   },
   {
+    "shellRaining/hlchunk.nvim",
+    event = { "BufReadPre", "BufNewFile" },
+    config = function()
+      require("hlchunk").setup({
+        chunk = {
+          enable = true,
+        },
+        indent = {
+          enable = false,
+        },
+      })
+    end,
+  },
+  {
     "mhartington/formatter.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
@@ -678,6 +692,8 @@ require("lazy").setup({
     event = "InsertEnter",
     dependencies = {
       { "hrsh7th/cmp-nvim-lsp" },
+      { "hrsh7th/cmp-buffer" },
+      { "hrsh7th/cmp-path" },
       { "hrsh7th/cmp-vsnip" },
       { "hrsh7th/vim-vsnip" },
     },
@@ -685,7 +701,9 @@ require("lazy").setup({
       local cmp = require("cmp")
       local conf = {
         sources = {
+          { name = "buffer" },
           { name = "nvim_lsp" },
+          { name = "path" },
           { name = "vsnip" },
         },
         snippet = {
