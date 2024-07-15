@@ -294,6 +294,12 @@ require("lazy").setup({
     end,
   },
   {
+    "kevinhwang91/nvim-hlslens",
+    config = function()
+      require("hlslens").setup()
+    end,
+  },
+  {
     "mhartington/formatter.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
@@ -590,12 +596,6 @@ require("lazy").setup({
     },
   },
   -- hono trouble
-  {
-    "shuntaka9576/preview-shuntaka-dev.vim",
-    dependencies = {
-      "vim-denops/denops.vim",
-    },
-  },
   {
     "ziglang/zig.vim",
     config = function()
