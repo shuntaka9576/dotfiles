@@ -309,6 +309,12 @@ require("lazy").setup({
     },
   },
   {
+    "ahmedkhalf/project.nvim",
+    config = function()
+      require("project_nvim").setup({})
+    end,
+  },
+  {
     "mhartington/formatter.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
@@ -525,8 +531,31 @@ require("lazy").setup({
       vim.api.nvim_set_keymap("n", "<leader>g", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", { noremap = true, silent = true })
     end,
   },
-  { "airblade/vim-gitgutter" },
-  { "tpope/vim-fugitive" },
+  { "monaqa/dial.nvim" },
+  { "sindrets/diffview.nvim" },
+  {
+    "folke/noice.nvim",
+    event = "VeryLazy",
+    opts = {
+      -- add any options here
+    },
+    dependencies = {
+      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+      "MunifTanjim/nui.nvim",
+      -- OPTIONAL:
+      --   `nvim-notify` is only needed, if you want to use the notification view.
+      --   If not available, we use `mini` as the fallback
+      "rcarriga/nvim-notify",
+    },
+  },
+  -- { "airblade/vim-gitgutter" },
+  -- { "tpope/vim-fugitive" },
+  {
+    "lewis6991/gitsigns.nvim",
+    config = function()
+      require("gitsigns").setup()
+    end,
+  },
   { "simeji/winresizer" },
   { "kyazdani42/nvim-web-devicons" },
   {
@@ -639,12 +668,13 @@ require("lazy").setup({
           local nvim_lsp = require("lspconfig")
           vim.lsp.handlers["textDocument/publishDiagnostics"] =
             vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-              update_in_insert = false,
-              virtual_text = {
-                format = function(diagnostic)
-                  return string.format("%s (%s: %s)", diagnostic.message, diagnostic.source, diagnostic.code)
-                end,
-              },
+              -- update_in_insert = false,
+              virtual_text = false,
+              -- virtual_text = {
+              --   format = function(diagnostic)
+              --     return string.format("%s (%s: %s)", diagnostic.message, diagnostic.source, diagnostic.code)
+              --   end,
+              -- },
             })
 
           local opts = {}
