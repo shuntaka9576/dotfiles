@@ -1,3 +1,6 @@
+import = [
+  "~/.config/alacritty/catppuccin-mocha.toml"
+]
 live_config_reload = true
 
 [window]
@@ -24,3 +27,4 @@ offset = { x = 0, y = 0 }
 [[keyboard.bindings]]
 key = "¥"
 chars = "\\"
+
