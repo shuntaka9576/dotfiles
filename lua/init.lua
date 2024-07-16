@@ -575,6 +575,14 @@ require("lazy").setup({
     "folke/noice.nvim",
     event = "VeryLazy",
     opts = {
+      messages = {
+        enabled = true,
+        view = "mini",
+        view_error = "notify",
+        view_warn = "notify",
+        view_history = "messages",
+        view_search = false,
+      },
       lsp = {
         progress = {
           enabled = false,
