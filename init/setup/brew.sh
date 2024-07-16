@@ -42,3 +42,4 @@ brew install llvm
 # aws tools
 brew tap aws/tap
 brew install aws-sam-cli
+brew install font-hack-nerd-font

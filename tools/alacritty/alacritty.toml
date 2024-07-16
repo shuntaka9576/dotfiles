@@ -1,0 +1,22 @@
+live_config_reload = true
+
+[window]
+dimensions = { columns = 200, lines = 60 }
+padding = { x = 10, y = 0 }
+opacity = 0.85
+option_as_alt = "Both"
+
+[cursor]
+style = "Beam"
+
+[scrolling]
+history = 100000
+multiplier = 3
+
+[font]
+normal = { family = "Hack Nerd Font", style = "Regular" }
+bold = { family = "Hack Nerd Font", style = "Bold" }
+italic = { family = "Hack Nerd Font", style = "Italic" }
+bold_italic = { family = "Hack Nerd Font", style = "Bold Italic" }
+size = 13.0
+offset = { x = 0, y = 0 }
