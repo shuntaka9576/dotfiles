@@ -6,7 +6,7 @@ live_config_reload = true
 [window]
 dimensions = { columns = 200, lines = 60 }
 padding = { x = 10, y = 0 }
-opacity = 0.85
+opacity = 1
 option_as_alt = "Both"
 
 [cursor]
