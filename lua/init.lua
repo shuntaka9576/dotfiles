@@ -289,9 +289,9 @@ require("lazy").setup({
       vim.keymap.set("n", "f", "<cmd>FuzzyMotion<CR>")
       vim.cmd("let g:fuzzy_motion_matchers = ['kensaku', 'fzf']")
     end,
-    dependencies = {
-      "lambdalisue/kensaku.vim",
-    },
+    -- dependencies = {
+    --   "lambdalisue/kensaku.vim",
+    -- },
   },
   {
     "shellRaining/hlchunk.nvim",
@@ -683,6 +683,12 @@ require("lazy").setup({
 
   {
     "shuntaka9576/preview-asciidoc.vim",
+    dependencies = {
+      "vim-denops/denops.vim",
+    },
+  },
+  {
+    "skanehira/denops-docker.vim",
     dependencies = {
       "vim-denops/denops.vim",
     },
