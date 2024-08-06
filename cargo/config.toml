@@ -1,0 +1,5 @@
+[registries.crates-io]
+protocol = "git"
+
+[net]
+git-fetch-with-cli = true

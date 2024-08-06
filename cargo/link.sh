@@ -1,3 +1,3 @@
 #!/bin/bash
 
-ln -sf ~/dotfiles/cargo/config ~/.cargo/config
+ln -sf ~/dotfiles/cargo/config.toml ~/.cargo/config.toml
