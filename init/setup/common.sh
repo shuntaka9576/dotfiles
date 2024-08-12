@@ -55,6 +55,7 @@ cargo install fd-find
 cargo install bat
 cargo install gitui
 cargo install stylua
+cargo install taplo-cli --locked
 
 # install nerd-fonts
 if [ "$(uname)" == 'Darwin' ]  && [ "$(uname -m)" == 'arm64' ]; then

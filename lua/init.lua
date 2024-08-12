@@ -83,7 +83,7 @@ vim.api.nvim_command("autocmd BufNewFile,BufRead *.php set filetype=php")
 vim.api.nvim_command("autocmd FileType php setlocal expandtab tabstop=4 softtabstop=4 shiftwidth=4 autoindent")
 vim.api.nvim_command("autocmd BufNewFile,BufRead Makefile setlocal noexpandtab")
 -- vim.api.nvim_command("autocmd BufWritePre *.ts,*.tsx :Prettier")
-vim.api.nvim_command("autocmd BufWritePost *.ts,*.tsx,*.mts,*.rs,*.hs,*.lua FormatWrite")
+vim.api.nvim_command("autocmd BufWritePost *.ts,*.tsx,*.mts,*.rs,*.hs,*.lua,*.toml FormatWrite")
 vim.api.nvim_command("autocmd BufWritePost *.scala FormatWrite")
 vim.api.nvim_command("augroup END")
 
@@ -284,15 +284,35 @@ require("lazy").setup({
     end,
   },
   {
-    "yuki-yano/fuzzy-motion.vim",
-    config = function()
-      vim.keymap.set("n", "f", "<cmd>FuzzyMotion<CR>")
-      vim.cmd("let g:fuzzy_motion_matchers = ['kensaku', 'fzf']")
-    end,
-    -- dependencies = {
-    --   "lambdalisue/kensaku.vim",
-    -- },
+    "folke/flash.nvim",
+    event = "VeryLazy",
+    opts = {
+      -- Flash.nvimのデフォルトマッピングを無効化
+      modes = {
+        char = {
+          enabled = false,
+        },
+      },
+    },
+  -- stylua: ignore
+  keys = {
+    { "f", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
+    { "F", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
+    { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
+    { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
+    { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
   },
+  },
+  -- {
+  --   "yuki-yano/fuzzy-motion.vim",
+  --   config = function()
+  --     vim.keymap.set("n", "f", "<cmd>FuzzyMotion<CR>")
+  --     vim.cmd("let g:fuzzy_motion_matchers = ['kensaku', 'fzf']")
+  --   end,
+  --   -- dependencies = {
+  --   --   "lambdalisue/kensaku.vim",
+  --   -- },
+  -- },
   {
     "shellRaining/hlchunk.nvim",
     event = { "BufReadPre", "BufNewFile" },
@@ -454,6 +474,14 @@ require("lazy").setup({
                   cwd = vim.fn.fnamemodify(file_path, ":h"), -- Set the working directory to the file's directory
                 }
               end
+            end,
+          },
+          toml = {
+            function()
+              return {
+                exe = "taplo",
+                args = { "format" },
+              }
             end,
           },
           haskell = {
