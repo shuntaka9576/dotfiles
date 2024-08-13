@@ -766,7 +766,10 @@ require("lazy").setup({
               -- },
             })
 
-          local opts = {}
+          local capabilities = require("cmp_nvim_lsp").default_capabilities()
+          local opts = {
+            capabilities = capabilities,
+          }
 
           if server_name == "tsserver" then
             if file_exists(os.getenv("PWD") .. "/deno.jsonc") then
@@ -776,6 +779,8 @@ require("lazy").setup({
             opts.root_dir = nvim_lsp.util.root_pattern("package.json", "node_modules")
           elseif server_name == "eslint" then
             opts.root_dir = nvim_lsp.util.root_pattern("package.json", "node_modules")
+          elseif server_name == "rust_analyzer" then
+            -- opts.cmd = { vim.fn.expand("~/.rustup/toolchains/stable-aarch64-apple-darwin/bin/rust-analyzer") }
           elseif server_name == "denols" then
             if file_exists(os.getenv("PWD") .. "/package.json") then
               return
