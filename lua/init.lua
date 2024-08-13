@@ -503,6 +503,7 @@ require("lazy").setup({
             function()
               return {
                 exe = "rustfmt",
+                args = { "--edition=2021" },
               }
             end,
           },
