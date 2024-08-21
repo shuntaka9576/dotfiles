@@ -1,102 +1,102 @@
 [[snippets]]
-  description = "特定行表示"
-  command = "ls -al |awk '{print $1,$9}'"
-  tag = ["awk"]
-  output = ""
+description = "特定行表示"
+command = "ls -al |awk '{print $1,$9}'"
+tag = ["awk"]
+output = ""
 
 [[snippets]]
-  description = "マージされたPR一覧"
-  command = "gh pr list -L 100 --state merged | awk -F '\\t' '{print \"#\" $1,$2}'"
-  tag = ["awk"]
-  output = ""
+description = "マージされたPR一覧"
+command = "gh pr list -L 100 --state merged | awk -F '\\t' '{print \"#\" $1,$2}'"
+tag = ["awk"]
+output = ""
 
 [[snippets]]
-  description = "特定カラムの値一致行を取得する"
-  command = """awk -v RS="\\r\\n" '{FS=","; if($8 == 0){print $0}else if(NR == 1){print $0}}' <ファイル名>"""
-  tag = ["awk"]
-  output = ""
+description = "特定カラムの値一致行を取得する"
+command = """awk -v RS="\\r\\n" '{FS=","; if($8 == 0){print $0}else if(NR == 1){print $0}}' <ファイル名>"""
+tag = ["awk"]
+output = ""
 
 [[snippets]]
-  description = "GOPATH modeに変更"
-  command = "set --export GO111MODULE off"
-  tag = ["go"]
-  output = ""
+description = "GOPATH modeに変更"
+command = "set --export GO111MODULE off"
+tag = ["go"]
+output = ""
 
 [[snippets]]
-  description = "go.modのモジュール更新コマンド生成"
-  command = "go list -m -u -f '{{if (and .Update (not .Indirect))}}go get {{.Path}}@{{.Update.Version}}{{end}}' all"
-  tag = ["go", "modules", "version"]
-  output = ""
+description = "go.modのモジュール更新コマンド生成"
+command = "go list -m -u -f '{{if (and .Update (not .Indirect))}}go get {{.Path}}@{{.Update.Version}}{{end}}' all"
+tag = ["go", "modules", "version"]
+output = ""
 
 [[snippets]]
-  description = "ディレクトリ内のファイル分実行するコマンドを生成する"
-  command = "ls -al tests/e2e |awk '{print $7}' | xargs -I {} echo 'yarn test-e2e --runTestsByPath ./tests/e2e/{}'"
-  tag = ["xargs", "awk"]
-  output = ""
+description = "ディレクトリ内のファイル分実行するコマンドを生成する"
+command = "ls -al tests/e2e |awk '{print $7}' | xargs -I {} echo 'yarn test-e2e --runTestsByPath ./tests/e2e/{}'"
+tag = ["xargs", "awk"]
+output = ""
 
 [[snippets]]
-  description = "Proxy環境下で、curl"
-  command = "curl -v --proxy http://{adress}:{port} -o /dev/null https://www.google.com"
-  tag = ["curl"]
-  output = ""
+description = "Proxy環境下で、curl"
+command = "curl -v --proxy http://{adress}:{port} -o /dev/null https://www.google.com"
+tag = ["curl"]
+output = ""
 
 [[snippets]]
-  description = "curlでnoproxyを設定"
-  command = 'curl -v --noproxy localhost http://localhost:3000'
-  tag = ["curl"]
-  output = ""
+description = "curlでnoproxyを設定"
+command = 'curl -v --noproxy localhost http://localhost:3000'
+tag = ["curl"]
+output = ""
 
 [[snippets]]
-  description = "npm workspaceでライブラリ追加"
-  command = 'npm install -w packages/<workspace> --save <lib名>'
-  tag = ["npm"]
+description = "npm workspaceでライブラリ追加"
+command = 'npm install -w packages/<workspace> --save <lib名>'
+tag = ["npm"]
 
 [[snippets]]
-  description = "curlでヘッダーのみ表示"
-  command = 'curl -D - -s  -o /dev/null "https://api.hozi.dev/v1/users/hozi576/articles?type=tech"'
-  tag = ["curl"]
-  output = ""
+description = "curlでヘッダーのみ表示"
+command = 'curl -D - -s  -o /dev/null "https://api.hozi.dev/v1/users/hozi576/articles?type=tech"'
+tag = ["curl"]
+output = ""
 
 [[snippets]]
-  description = "module modeをoffにする"
-  command = 'export GO111MODULE=off'
-  tag = ["go"]
-  output = ""
+description = "module modeをoffにする"
+command = 'export GO111MODULE=off'
+tag = ["go"]
+output = ""
 
 [[snippets]]
-  description = "並列にスタックデプロイ"
-  command = """
+description = "並列にスタックデプロイ"
+command = """
 env | perl -nle 'print "export $1;" if /(AWS.*?)$/';
 xpanes -stc 'export STAGE_NAME=<STAGE_NAME>;
 cdk deploy -c stageName=$STAGE_NAME $STAGE_NAME-{}' \
   <stack1> \
   <stack2>
 """
-  tag = ["xpanes", "cdk", "perl"]
+tag = ["xpanes", "cdk", "perl"]
 
 [[snippets]]
-  description = "ファイル名を[]に括る、GHAのmatrixに渡せる値に変換する"
-  command = """
+description = "ファイル名を[]に括る、GHAのmatrixに渡せる値に変換する"
+command = """
 echo "a.ts\nb.ts\nc.ts" |\
   grep ".ts" |\
   perl -nle '$i++;if ($i==1){print "[\\"$_\\", "}elsif(!eof){print "\\"$_\\", "}elsif(eof){print "\\"$_\\"]"}' |\
   perl -pe 's/\n//g' |\
   jq -c
 """
-  tag = ["perl", "GitHub Actions"]
+tag = ["perl", "GitHub Actions"]
 
 [[snippets]]
-  description = "セキュア文字列の削除"
-  command = """
+description = "セキュア文字列の削除"
+command = """
 cat ファイル名 |\
 perl -pe 's/(.*?)(""X-API-Key"": "")(.*?)("".?)$/$1$2MASKED$4/g' |\
 perl -pe 's/(.*?)(""Authorization"": ""Bearer )(.*?)("".?)$/$1$2MASKED$4/g'
 """
-  tag = ["perl", "CloudWatch Logs"]
+tag = ["perl", "CloudWatch Logs"]
 
 [[snippets]]
-  description = "curlで速度を測る"
-  command = '''
+description = "curlで速度を測る"
+command = '''
 cat <(echo "time\thttp_code\ttime_namelookup\ttime_connect\ttime_pretransfer\ttime_starttransfer\ttime_total") \
 <(for i in $(seq 1 5); do
   TIME_STAMP=$(date '+%y/%m/%d %H:%M:%S')
@@ -110,99 +110,99 @@ cat <(echo "time\thttp_code\ttime_namelookup\ttime_connect\ttime_pretransfer\tti
   sleep 5
 done) | tee >(pbcopy)
 '''
-  tag = ["curl"]
-  output = ""
+tag = ["curl"]
+output = ""
 
 # --data '{"test": {"test": true}}' \
 # --header "authorization: Bearer $token"'
 
 [[snippets]]
-  description = "Check listening port"
-  command = "lsof -i -P | grep 8888"
-  tag = ["port"]
-  output = ""
+description = "Check listening port"
+command = "lsof -i -P | grep 8888"
+tag = ["port"]
+output = ""
 
 [[snippets]]
-  description = "Check process"
-  command="ps auxfww"
-  tag = ["ps"]
-  output = ""
+description = "Check process"
+command = "ps auxfww"
+tag = ["ps"]
+output = ""
 
 [[snippets]]
-  description = "1行目を非表示で出力"
-  command = "sed 1d {f}"
-  tag = ["sed"]
-  output = ""
+description = "1行目を非表示で出力"
+command = "sed 1d {f}"
+tag = ["sed"]
+output = ""
 
 [[snippets]]
-  description = "1〜3行目を非表示で出力"
-  command = "sed 1,3d {f}"
-  tag = ["sed"]
-  output = ""
+description = "1〜3行目を非表示で出力"
+command = "sed 1,3d {f}"
+tag = ["sed"]
+output = ""
 
 [[snippets]]
-  description = "Pythonプロジェクトを初期化"
-  command = "echo '.venv'>>.gitignore;pipenv install --dev black flake8 isort python-language-server --pre;prn"
-  tag = ["python"]
-  output = ""
+description = "Pythonプロジェクトを初期化"
+command = "echo '.venv'>>.gitignore;pipenv install --dev black flake8 isort python-language-server --pre;prn"
+tag = ["python"]
+output = ""
 
 [[snippets]]
-  description = "Neovimのswapファイルを削除"
-  command = ' rm -rf ~/.local/share/nvim/swap'
-  tag = ["nvim"]
-  output = ""
+description = "Neovimのswapファイルを削除"
+command = ' rm -rf ~/.local/share/nvim/swap'
+tag = ["nvim"]
+output = ""
 
 [[snippets]]
-  description = "カレントのプラグインを読み込む"
-  command = 'nvim --cmd "set rtp+=."'
-  tag = ["nvim"]
-  output = ""
+description = "カレントのプラグインを読み込む"
+command = 'nvim --cmd "set rtp+=."'
+tag = ["nvim"]
+output = ""
 
 [[snippets]]
-  description = "packerプラグインの管理パスへ移動"
-  command = 'cd ~/.local/share/nvim/site/pack/packer/start'
-  tag = ["nvim"]
-  output = ""
+description = "packerプラグインの管理パスへ移動"
+command = 'cd ~/.local/share/nvim/site/pack/packer/start'
+tag = ["nvim"]
+output = ""
 
 [[snippets]]
-  description = "コンテナ全停止削除"
-  command = 'docker ps -aq| xargs docker stop;docker ps -aq| xargs docker rm;docker images -aq| xargs docker rmi -f;docker ps -a;docker images -a;'
-  tag = ["docker"]
-  output = ""
+description = "コンテナ全停止削除"
+command = 'docker ps -aq| xargs docker stop;docker ps -aq| xargs docker rm;docker images -aq| xargs docker rmi -f;docker ps -a;docker images -a;'
+tag = ["docker"]
+output = ""
 
 [[snippets]]
-  description = "サービスリソース削除"
-  command = 'docker compose down --rmi all --volumes --remove-orphans'
-  tag = ["docker", "compose"]
-  output = ""
+description = "サービスリソース削除"
+command = 'docker compose down --rmi all --volumes --remove-orphans'
+tag = ["docker", "compose"]
+output = ""
 
 [[snippets]]
-  description = "x86_64イメージビルド"
-  command = "export DOCKER_HOST=unix:///$HOME/.lima/x86_64/sock/docker.sock"
-  tag = ["docker", "x86"]
-  output = ""
+description = "x86_64イメージビルド"
+command = "export DOCKER_HOST=unix:///$HOME/.lima/x86_64/sock/docker.sock"
+tag = ["docker", "x86"]
+output = ""
 
 [[snippets]]
-  description = "aarch64イメージビルド"
-  command = "export DOCKER_HOST=unix:///$HOME/.lima/aarch64/sock/docker.sock"
-  tag = ["docker", "aarch64"]
-  output = ""
+description = "aarch64イメージビルド"
+command = "export DOCKER_HOST=unix:///$HOME/.lima/aarch64/sock/docker.sock"
+tag = ["docker", "aarch64"]
+output = ""
 
 [[snippets]]
-  description = "vm起動"
-  command = "finch vm start"
-  tag = ["docker", "finch"]
-  output = ""
+description = "vm起動"
+command = "finch vm start"
+tag = ["docker", "finch"]
+output = ""
 
 [[snippets]]
-  description = "Auroraバージョン取得"
-  command = "select AURORA_VERSION();"
-  tag = ["docker", "aurora"]
-  output = ""
+description = "Auroraバージョン取得"
+command = "select AURORA_VERSION();"
+tag = ["docker", "aurora"]
+output = ""
 
 [[snippets]]
-  description = "SessionMangerのポートフォワード"
-  command="""
+description = "SessionMangerのポートフォワード"
+command = """
 export INSTANCE_ID=""
 export CLUSTER_ENDPOINT=""
 aws ssm start-session \
@@ -210,15 +210,15 @@ aws ssm start-session \
     --document-name AWS-StartPortForwardingSessionToRemoteHost \
     --parameters "{\\"host\\":[\\"$CLUSTER_ENDPOINT\\"],\\"portNumber\\":[\\"3306\\"], \\"localPortNumber\\":[\\"3306\\"]}"
 """
-  tag = ["docker", "aurora"]
+tag = ["docker", "aurora"]
 
 
 [[snippets]]
-  description = "s3のリージョン一覧"
-  command="""
+description = "s3のリージョン一覧"
+command = """
 aws s3 ls | awk '{print $3}' | xargs -I {} aws s3api get-bucket-location --bucket '{}' | jq -r ".LocationConstraint"
 """
-  tag = ["aws"]
+tag = ["aws"]
 
 [[snippets]]
 description = "s3一掃"
@@ -236,181 +236,181 @@ tag = ['data', 'du']
 
 # Git
 [[snippets]]
-  description = "Author指定でステップ数カウント"
-  command = 'git ls-files | xargs -n1 git --no-pager blame -f -w | grep <username> | wc -l'
-  tag = ["git"]
-  output = ""
+description = "Author指定でステップ数カウント"
+command = 'git ls-files | xargs -n1 git --no-pager blame -f -w | grep <username> | wc -l'
+tag = ["git"]
+output = ""
 
 [[snippets]]
-  description = "submoduleをclone"
-  command = 'git submodule update --init --recursive'
-  tag = ["git"]
-  output = ""
+description = "submoduleをclone"
+command = 'git submodule update --init --recursive'
+tag = ["git"]
+output = ""
 
 [[snippets]]
-  description = "amend時にコミット時刻を変更"
-  command = 'git commit --amend --date="Thu Mar 27 17:20:22 2020 +0900";git rebase HEAD~1 --committer-date-is-author-date;git log --pretty=fuller'
-  tag = ["git"]
-  output = ""
+description = "amend時にコミット時刻を変更"
+command = 'git commit --amend --date="Thu Mar 27 17:20:22 2020 +0900";git rebase HEAD~1 --committer-date-is-author-date;git log --pretty=fuller'
+tag = ["git"]
+output = ""
 
 [[snippets]]
-  description = "git logでコミット時刻を取得"
-  command = 'git log --pretty=fuller'
-  tag = ["git"]
-  output = ""
+description = "git logでコミット時刻を取得"
+command = 'git log --pretty=fuller'
+tag = ["git"]
+output = ""
 
 [[snippets]]
-  description = "git tagの削除コマンド"
-  command = 'git tag -d tag_name;git push origin :refs/tags/tag_name'
-  tag = ["git"]
-  output = ""
+description = "git tagの削除コマンド"
+command = 'git tag -d tag_name;git push origin :refs/tags/tag_name'
+tag = ["git"]
+output = ""
 
 [[snippets]]
-  description = "gitでタグづけ"
-  command = 'git tag v0.1.0;git push --tags'
-  tag = ["git"]
-  output = ""
+description = "gitでタグづけ"
+command = 'git tag v0.1.0;git push --tags'
+tag = ["git"]
+output = ""
 
 [[snippets]]
-  description = "HEADを取得"
-  command = 'git rev-parse --short HEAD'
-  tag = ["git"]
-  output = ""
+description = "HEADを取得"
+command = 'git rev-parse --short HEAD'
+tag = ["git"]
+output = ""
 
 # Perlワンライナー
 # -e 'スクリプト'： 実行するPerlスクリプトを指定
 [[snippets]]
-  description = "改行をつける(-l)"
-  command = "perl -le 'print \"Hello\"'"
-  tag = ["perl"]
-  output = ""
+description = "改行をつける(-l)"
+command = "perl -le 'print \"Hello\"'"
+tag = ["perl"]
+output = ""
 
 [[snippets]]
-  description = "if elseを使った置換"
-  command = "echo \"\\`\\`\\`bash\\n\\`\\`\\`\\\\n\\`\\`\\`toml\\n\\`\\`\\`\" | perl -nle '$i++;if (/^```(\\w+)$/){$a=$1; print \"[$1]\";}elsif(/```/){print \"[/$a]\"}else{print $_}'"
-  tag = ["perl"]
+description = "if elseを使った置換"
+command = "echo \"\\`\\`\\`bash\\n\\`\\`\\`\\\\n\\`\\`\\`toml\\n\\`\\`\\`\" | perl -nle '$i++;if (/^```(\\w+)$/){$a=$1; print \"[$1]\";}elsif(/```/){print \"[/$a]\"}else{print $_}'"
+tag = ["perl"]
 
 [[snippets]]
-  description = "標準入力の最後に行を追加する"
-  command = "echo \"foo.log\\nfoo.log.2021-07-16\\nfoo.log.2021-07-17\\nfoo.log.2021-07-18\" | perl -nle 'if(eof){print \"$_\\nfoo.log\"}elsif(/foo.log..*/){print $_}'"
-  tag = ["perl"]
+description = "標準入力の最後に行を追加する"
+command = "echo \"foo.log\\nfoo.log.2021-07-16\\nfoo.log.2021-07-17\\nfoo.log.2021-07-18\" | perl -nle 'if(eof){print \"$_\\nfoo.log\"}elsif(/foo.log..*/){print $_}'"
+tag = ["perl"]
 
 [[snippets]]
-  description = "ファイルごとにきまった文字をカウントする"
-  command = "find nvim -type f |sort | xargs -I{} perl -nle '$i++ while /vim/g}{print \"$ARGV: $i回\"' {}"
-  tag = ["perl"]
+description = "ファイルごとにきまった文字をカウントする"
+command = "find nvim -type f |sort | xargs -I{} perl -nle '$i++ while /vim/g}{print \"$ARGV: $i回\"' {}"
+tag = ["perl"]
 
 [[snippets]]
-  description = "ファイルを読み込んで1行ずつ処理する(-n)"
-  command = "perl -nle '$i++;print \"$i: $_\"' README.md"
-  tag = ["perl"]
-  output = ""
+description = "ファイルを読み込んで1行ずつ処理する(-n)"
+command = "perl -nle '$i++;print \"$i: $_\"' README.md"
+tag = ["perl"]
+output = ""
 
 [[snippets]]
-  description = "-nの機能に加えて$_をprintする(-p)"
-  command = "perl -pe 's/dotfiles/aaaa/g' README.md"
-  tag = ["perl"]
-  output = ""
+description = "-nの機能に加えて$_をprintする(-p)"
+command = "perl -pe 's/dotfiles/aaaa/g' README.md"
+tag = ["perl"]
+output = ""
 
 [[snippets]]
-  description = "最短マッチで文字列抽出(?無しで最長マッチ)"
-  command = "echo 'aaaa(cccc)aaaaa' |perl -ne 'print \"$1\" if /.*\\((.*?)\\).*/'"
-  tag = ["perl"]
-  output = ""
+description = "最短マッチで文字列抽出(?無しで最長マッチ)"
+command = "echo 'aaaa(cccc)aaaaa' |perl -ne 'print \"$1\" if /.*\\((.*?)\\).*/'"
+tag = ["perl"]
+output = ""
 
 [[snippets]]
-  description = "tab区切りの出力処理"
-  command = "echo \"col1\\tcol2\\tcol3\" |perl -F'\\t' -lne 'print \"$F[1]\"'"
-  tag = ["perl"]
-  output = ""
+description = "tab区切りの出力処理"
+command = "echo \"col1\\tcol2\\tcol3\" |perl -F'\\t' -lne 'print \"$F[1]\"'"
+tag = ["perl"]
+output = ""
 
 [[snippets]]
-  description = "シンボリックリンク"
-  command = "ln -s backend/Dockerfile Dockerfile.heroku"
-  tag = ["ln"]
-  output = ""
+description = "シンボリックリンク"
+command = "ln -s backend/Dockerfile Dockerfile.heroku"
+tag = ["ln"]
+output = ""
 
 [[snippets]]
-  description = "標準入力からの置換"
-  command = "echo \"1(2100), 2(1900), 3(1800)\" | perl -pe 's/\\(.*?\\)//g'"
-  tag = ["perl"]
-  output = ""
+description = "標準入力からの置換"
+command = "echo \"1(2100), 2(1900), 3(1800)\" | perl -pe 's/\\(.*?\\)//g'"
+tag = ["perl"]
+output = ""
 
 [[snippets]]
-  description = "ディレクトリ指定一括置換"
-  command = "find dir1 dir2 | xargs perl -i -pe 's/foo/hoge/g'"
-  tag = ["perl"]
-  output = ""
+description = "ディレクトリ指定一括置換"
+command = "find dir1 dir2 | xargs perl -i -pe 's/foo/hoge/g'"
+tag = ["perl"]
+output = ""
 
 [[snippets]]
-  description = "配列形式に変換"
-  command = '''
+description = "配列形式に変換"
+command = '''
 ls | grep ".ts" | perl -nle '$i++;if ($i==1){print "[\"$_\", "}elsif(!eof){print "\"$_\", "}elsif(eof){print "\"$_\"]"}' |  perl -pe 's/\n//g' | jq -c
 '''
-  tag = ["perl"]
-  output = ""
+tag = ["perl"]
+output = ""
 
 # aws
 [[snippets]]
-  description = "codecommitのリポジトリ一覧出力"
-  command = "aws codecommit list-repositories | jq -r '.repositories[].repositoryName'"
-  tag = ["aws"]
-  output = ""
+description = "codecommitのリポジトリ一覧出力"
+command = "aws codecommit list-repositories | jq -r '.repositories[].repositoryName'"
+tag = ["aws"]
+output = ""
 [[snippets]]
-  description = "codecommitのリポジトリを全てクローン"
-  command = "aws codecommit list-repositories | jq -r '.repositories[].repositoryName'| xargs -I{} ghq get https://git-codecommit.ap-northeast-1.amazonaws.com/v1/repos/{}" # -Iで改行区切りで一つ一つコマンドを実行してくれる
-  tag = ["aws"]
-  output = ""
+description = "codecommitのリポジトリを全てクローン"
+command = "aws codecommit list-repositories | jq -r '.repositories[].repositoryName'| xargs -I{} ghq get https://git-codecommit.ap-northeast-1.amazonaws.com/v1/repos/{}" # -Iで改行区切りで一つ一つコマンドを実行してくれる
+tag = ["aws"]
+output = ""
 [[snippets]]
-  description = "codecommitのリポジトリを全て更新"
-  command = "aws codecommit list-repositories | jq -r '.repositories[].repositoryName'| xargs -I{} ghq get -u https://git-codecommit.ap-northeast-1.amazonaws.com/v1/repos/{}"
-  tag = ["aws"]
-  output = ""
+description = "codecommitのリポジトリを全て更新"
+command = "aws codecommit list-repositories | jq -r '.repositories[].repositoryName'| xargs -I{} ghq get -u https://git-codecommit.ap-northeast-1.amazonaws.com/v1/repos/{}"
+tag = ["aws"]
+output = ""
 [[snippets]]
-  description = "AWSの環境変数出力"
-  command = "env | perl -nle 'print \"export $1;\" if /(AWS.*?)$/';"
-  tag = ["aws"]
-  output = ""
+description = "AWSの環境変数出力"
+command = "env | perl -nle 'print \"export $1;\" if /(AWS.*?)$/';"
+tag = ["aws"]
+output = ""
 
 # jq
 [[snippets]]
-  description = "jsonのcsv変換"
-  command = """
+description = "jsonのcsv変換"
+command = """
 echo '{"persons": [{"attributes": {"filedName": "namevalue", "filedAge": 20}}]}' | jq -r '["name", "age"], (.persons[] |[.attributes.filedName, .attributes.filedAge]) | @csv'
 """
-  tag = ["jq"]
+tag = ["jq"]
 
 # Terraform
 [[snippets]]
-  description = "setup dokernized terraform"
-  command = "docker pull hashicorp/terraform:0.12.5;docker run --rm hashicorp/terraform:0.12.5 --version"
-  tag = ["terraform"]
-  output = ""
+description = "setup dokernized terraform"
+command = "docker pull hashicorp/terraform:0.12.5;docker run --rm hashicorp/terraform:0.12.5 --version"
+tag = ["terraform"]
+output = ""
 
 [[snippets]]
-  description = "start dokernized terraform"
-  command = """
+description = "start dokernized terraform"
+command = """
 docker run --rm -i -v $PWD:/work -w /work \
 -e AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID \
 -e AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY \
 -e AWS_DEFAULT_REGION=$AWS_DEFAULT_REGION \
 hashicorp/terraform:0.12.5 <command>
   """
-  tag = ["terraform"]
-  output = ""
+tag = ["terraform"]
+output = ""
 
 # TypeScirpt
 [[snippets]]
-  description = "TypeScriptをスクリプト実行"
-  command = "ts-node --project ~/dotfiles/nvim/languages/ts/tsconfig.json"
-  tag = ["typescript"]
-  output = ""
+description = "TypeScriptをスクリプト実行"
+command = "ts-node --project ~/dotfiles/nvim/languages/ts/tsconfig.json"
+tag = ["typescript"]
+output = ""
 
 [[snippets]]
-  description = "再起的にnode_modulesを削除"
-  command = "find . -name 'node_modules' -type d -prune -exec rm -rf '{}' +"
-  tag = ["typescript"]
-  output = ""
+description = "再起的にnode_modulesを削除"
+command = "find . -name 'node_modules' -type d -prune -exec rm -rf '{}' +"
+tag = ["typescript"]
+output = ""
 
 [[snippets]]
 description = "biome fix"
@@ -421,58 +421,58 @@ tag = ['biome', 'ts', 'typescript']
 
 # Encode/Decode
 [[snippets]]
-  description = "base64にエンコード"
-  command = "echo -n 'テスト' | base64"
-  tag = ["base64", "encode"]
+description = "base64にエンコード"
+command = "echo -n 'テスト' | base64"
+tag = ["base64", "encode"]
 
 [[snippets]]
-  description = "base64にデコード"
-  command = "echo -n '44OG44K544OI' | base64 -D"
-  tag = ["base64", "decode"]
+description = "base64にデコード"
+command = "echo -n '44OG44K544OI' | base64 -D"
+tag = ["base64", "decode"]
 
 [[snippets]]
-  description = "sha256 digestを取得"
-  command = "openssl dgst -sha256 ~/Downloads/kanban_darwin_x86_64.tar.gz"
-  tag = ["openssl", "sha256"]
+description = "sha256 digestを取得"
+command = "openssl dgst -sha256 ~/Downloads/kanban_darwin_x86_64.tar.gz"
+tag = ["openssl", "sha256"]
 
 # ----------------------------------------------------------------
 # blog
 [[snippets]]
-  description = "blog"
-  command = "ulid| tr A-Z a-z | xargs -I {} touch 'articles/{}.md'"
-  tag = ["blog"]
+description = "blog"
+command = "ulid| tr A-Z a-z | xargs -I {} touch 'articles/{}.md'"
+tag = ["blog"]
 
 # web
 [[snippets]]
-  description = "lighthouse"
-  command = "lighthouse http://localhost:3000 --view"
-  tag = ["lighthouse"]
+description = "lighthouse"
+command = "lighthouse http://localhost:3000 --view"
+tag = ["lighthouse"]
 
 # nvim/vim
 [[snippets]]
-  description = "development nvim plugin"
-  command = "nvim -u ~/repos/github.com/shuntaka9576/init.vim/init.vim"
-  tag = ["nvim"]
+description = "development nvim plugin"
+command = "nvim -u ~/repos/github.com/shuntaka9576/init.vim/init.vim"
+tag = ["nvim"]
 
 [[snippets]]
-  description = "development vim plugin"
-  command = "vim -u ~/repos/github.com/shuntaka9576/init.vim/init.vim"
-  tag = ["vim"]
+description = "development vim plugin"
+command = "vim -u ~/repos/github.com/shuntaka9576/init.vim/init.vim"
+tag = ["vim"]
 
 # deno
 [[snippets]]
-  description = "deno fmt"
-  command = "deno fmt --ext ts --unstable --watch"
-  tag = ["deno"]
+description = "deno fmt"
+command = "deno fmt --ext ts --unstable --watch"
+tag = ["deno"]
 
 [[snippets]]
-  description = "deno run all privilege"
-  command = "deno run -A"
-  tag = ["deno"]
+description = "deno run all privilege"
+command = "deno run -A"
+tag = ["deno"]
 
 [[snippets]]
-  description = "deno vim setting for coc"
-  command = '''
+description = "deno vim setting for coc"
+command = '''
 echo -n '{
   "deno.enable": true,
   "deno.lint": false,
@@ -480,58 +480,58 @@ echo -n '{
   "tsserver.enable": false
 }'> .vim/coc-settings.json
 '''
-  tag = ["deno"]
+tag = ["deno"]
 
 # openssl
 [[snippets]]
-  description = "証明書チェーンを確認する"
-  command = "openssl s_client -connect www.google.com:443 -showcerts"
-  tag = ["openssl"]
+description = "証明書チェーンを確認する"
+command = "openssl s_client -connect www.google.com:443 -showcerts"
+tag = ["openssl"]
 
 [[snippets]]
-  description = "証明書のデコード"
-  command = "openssl x509 -text -noout -in rootCA.pem"
-  tag = ["openssl"]
+description = "証明書のデコード"
+command = "openssl x509 -text -noout -in rootCA.pem"
+tag = ["openssl"]
 
 [[snippets]]
-  description = "secretを利用したSHA256ハッシュダイジェストの取得"
-  command = 'echo "test" | openssl dgst -sha256 -hmac "secret_token" | perl -pe "s/\\(stdin\\)= //g"'
-  tag = ["openssl"]
+description = "secretを利用したSHA256ハッシュダイジェストの取得"
+command = 'echo "test" | openssl dgst -sha256 -hmac "secret_token" | perl -pe "s/\\(stdin\\)= //g"'
+tag = ["openssl"]
 
 [[snippets]]
-  description = "ポートスキャン"
-  command = "nmap 192.168.1.5 -p 1-65535"
-  tag = ["network"]
+description = "ポートスキャン"
+command = "nmap 192.168.1.5 -p 1-65535"
+tag = ["network"]
 
 [[snippets]]
-  description = "ARP(IPレンジに対して、応答したデバイスのMACアドレス取得)"
-  command = "ip neigh"
-  tag = ["network", "linux"]
+description = "ARP(IPレンジに対して、応答したデバイスのMACアドレス取得)"
+command = "ip neigh"
+tag = ["network", "linux"]
 
 [[snippets]]
-  description = "ARP(IPレンジに対して、応答したデバイスのMACアドレス取得)"
-  command = " sudo arp-scan -I en0 -l"
-  tag = ["network", "mac"]
+description = "ARP(IPレンジに対して、応答したデバイスのMACアドレス取得)"
+command = " sudo arp-scan -I en0 -l"
+tag = ["network", "mac"]
 
 [[snippets]]
-  description = "PlatformIOでccls定義ファイルを吐き出す"
-  command = "pio init --board=m5stack-core2 --project-option=\"framework=espidf\" --ide vim"
-  tag = ["PlatformIO"]
+description = "PlatformIOでccls定義ファイルを吐き出す"
+command = "pio init --board=m5stack-core2 --project-option=\"framework=espidf\" --ide vim"
+tag = ["PlatformIO"]
 
 [[snippets]]
-  description = "ファームウェアの削除,アップロード,転送"
-  command = "pio run --upload-port /dev/cu.SLAB_USBtoUART -t upload;pio device monitor -p /dev/cu.SLAB_USBtoUART --raw"
-  tag = ["PlatformIO"]
+description = "ファームウェアの削除,アップロード,転送"
+command = "pio run --upload-port /dev/cu.SLAB_USBtoUART -t upload;pio device monitor -p /dev/cu.SLAB_USBtoUART --raw"
+tag = ["PlatformIO"]
 
 [[snippets]]
-  description = "Cのビルド"
-  command = "gcc -std=c99 -o main main.c; ./main"
-  tag = ["C"]
+description = "Cのビルド"
+command = "gcc -std=c99 -o main main.c; ./main"
+tag = ["C"]
 
 [[snippets]]
-  description = "google/zxの実行"
-  command = "zx --quiet http://zxsh.dev/hello.mjs"
-  tag = ["zx"]
+description = "google/zxの実行"
+command = "zx --quiet http://zxsh.dev/hello.mjs"
+tag = ["zx"]
 
 [[snippets]]
 description = "preview cloudflare pages"
@@ -614,7 +614,7 @@ tag = ['.DS_Store']
 [[snippets]]
 description = "cargoテストで標準出力を表示"
 command = "cargo test -- --nocapture"
-tag = ["rust"]
+tag = ["rust", "cargo"]
 output = ""
 
 [[snippets]]
@@ -626,13 +626,13 @@ output = ""
 [[snippets]]
 description = "run with hot reload"
 command = "cargo watch -x run"
-tag = ["rust"]
+tag = ["rust", "cargo"]
 output = ""
 
 [[snippets]]
 description = "最速の場合を計測したい場合"
 command = "cargo run --release"
-tag = ["rust"]
+tag = ["rust", "cargo"]
 output = """
 速度計測などに利用
 """
@@ -640,19 +640,19 @@ output = """
 [[snippets]]
 description = "プライベートモジュールも含むドキュメント化"
 command = "cargo doc --document-private-items && open ./target/doc"
-tag = ["rust"]
+tag = ["rust", "cargo"]
 output = ""
 
 [[snippets]]
 description = "ベンチマーク"
 command = "cargo criterion"
-tag = ["rust", "benchmark"]
+tag = ["rust", "benchmark", "cargo"]
 output = ""
 
 [[snippets]]
 description = "ベンチマークのHTML結果"
 command = "open ./target/criterion/reports/index.html"
-tag = ["rust", "benchmark"]
+tag = ["rust", "benchmark", "cargo"]
 output = ""
 
 # zig
@@ -674,19 +674,19 @@ tag = ['line']
 
 [[snippets]]
 description = "LSPの切り替え"
-command= """
+command = """
 cat .vim/coc-settings.json | jq '.["tsserver.enable"] = (.["tsserver.enable"] | not) | .["prettier.enable"] = (.["prettier.enable"] | not) | .["deno.enable"] = (.["deno.enable"] | not)' | tee .vim/coc-settings.json
 """
 tag = ['lsp', 'coc']
 
 [[snippets]]
 description = "lsでgit ignoreとtree表示"
-command= "eza -L 2 -T --git-ignore"
+command = "eza -L 2 -T --git-ignore"
 tag = ['ls', 'eza', 'tree']
 
 [[snippets]]
 description = "jqでjsonファイルをCSVに置換しつつ、ファイル名を埋め込む"
-command= """
+command = """
 ls ~/dotfiles/tools/testdata | xargs -I{} jq -r --arg filename "{}" '(.data.history.list[] | [$filename, .user.id, .user.displayName, .count]) | @csv' {}
 """
 tag = ['jq']
