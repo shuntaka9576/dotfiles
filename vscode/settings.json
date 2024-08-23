@@ -256,5 +256,5 @@
     "terminal.integrated.tabs.enabled": true,
     "tabnine.experimentalAutoImports": true,
     "search.searchOnType": false,
-    "plantuml.render": "PlantUMLServer"
+    "plantuml.render": "Local"
 }
