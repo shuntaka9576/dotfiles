@@ -5,12 +5,6 @@
 # 下記のPATHに重複するコマンドがあり、優先させたい場合
 # /usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin
 
-# /usr/bin/python < ~/.anyenv/envs/pyenv/shims/python
-export PATH="$HOME/.anyenv/bin:$PATH"
-eval "$(anyenv init -)"
-# eval "$(pyenv virtualenv-init -)"
-export PATH="$HOME/.anyenv/envs/pyenv/shims:$PATH"
-
 # nvim nightly
 if [ -d $HOME/nvim-osx64 ]; then
   export PATH="$HOME/nvim-osx64/bin:$PATH"
@@ -232,26 +226,6 @@ compinit
 # zstyle ':completion:*' menu true
 # zstyle ':completion:yarn:test-unit' menu true
 
-# ------------------------------------------------------------------------------
-# Kye mapping
-# bindkey -v # setting viins
-# tabtab source for serverless package
-# uninstall by removing these lines or running `tabtab uninstall serverless`
-[[ -f $HOME/.anyenv/envs/nodenv/versions/12.6.0/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . $HOME/.anyenv/envs/nodenv/versions/12.6.0/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
-# tabtab source for sls package
-# uninstall by removing these lines or running `tabtab uninstall sls`
-[[ -f $HOME/.anyenv/envs/nodenv/versions/12.6.0/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . $HOME/.anyenv/envs/nodenv/versions/12.6.0/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
-# tabtab source for slss package
-# uninstall by removing these lines or running `tabtab uninstall slss`
-[[ -f $HOME/.anyenv/envs/nodenv/versions/12.6.0/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh ]] && . $HOME/.anyenv/envs/nodenv/versions/12.6.0/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/google-cloud-sdk/path.zsh.inc"; fi
-
-# The next line enables shell command completion for gcloud.
 
 export PATH="$HOME/.poetry/bin:$PATH"
 
