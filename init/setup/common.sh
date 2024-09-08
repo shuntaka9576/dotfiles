@@ -58,6 +58,7 @@ cargo install stylua
 cargo install taplo-cli --locked
 cargo install cargo-edit
 cargo install cargo-watch
+cargo install cargo-compete
 cargo install sqlx-cli
 
 # install nerd-fonts
