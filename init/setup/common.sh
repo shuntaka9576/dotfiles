@@ -3,9 +3,6 @@
 # add +w ~./cache for install dein and bingo
 sudo chmod o+w ~/.cache
 
-# install fisher
-curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish
-
 # install dein
 curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh >~/installer.sh
 sh ~/installer.sh ~/.cache/dein
