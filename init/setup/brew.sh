@@ -24,6 +24,7 @@ brew install gnu-sed # replace \t
 brew install asciidoctor
 brew install --HEAD pyenv-virtualenv
 brew install --HEAD pyenv-virtualenvwrapper
+brew install asdf
 
 # brew install tig
 # brew install terraform

@@ -3,6 +3,10 @@
 # add +w ~./cache for install dein and bingo
 sudo chmod o+w ~/.cache
 
+# asdf setting
+asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
+asdf install nodejs latest
+
 # install dein
 curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh >~/installer.sh
 sh ~/installer.sh ~/.cache/dein

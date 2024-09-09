@@ -1,5 +1,8 @@
 #!/usr/bin/zsh
 
+# asdf setting
+. $(brew --prefix asdf)/libexec/asdf.sh
+
 # ------------------------------------------------------------------------------
 # lazy path settings
 # 下記のPATHに重複するコマンドがあり、優先させたい場合
@@ -146,7 +149,6 @@ alias tka='tmux kill-server'
 alias memoi='cd ~/repos/github.com/shuntaka9576/memo;tmux rename-window "memo";tmux new-window -n "ar" -c ~/repos/github.com/hozi-dev/article lazygit;tmux new-window -n "n" -c ~/repos/github.com/hozi-dev/article nvim;tmux new-window -n "do" -c ~/repos/github.com/hozi-dev/docs lazygit;tmux new-window -n "n" -c ~/repos/github.com/hozi-dev/docs nvim;memo new'
 
 # python alias
-alias prn='pipenv run nvim'
 # __pycache__を生成しない
 export PYTHONDONTWRITEBYTECODE=1
 
