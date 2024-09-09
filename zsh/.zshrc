@@ -1,7 +1,10 @@
 #!/usr/bin/zsh
 
+autoload -U +X bashcompinit && bashcompinit
+
 # asdf setting
-. $(brew --prefix asdf)/libexec/asdf.sh
+. "$(brew --prefix asdf)/libexec/asdf.sh" # path
+fpath=($(brew --prefix asdf)/etc/bash_completion.d $fpath) # complete
 
 # ------------------------------------------------------------------------------
 # lazy path settings
@@ -223,8 +226,7 @@ bindkey '^s' pet-select
 alias assume-role='function(){eval $(command assume $@);}'
 
 # auto complete
-autoload -U compinit
-compinit
+autoload -Uz compinit && compinit
 # zstyle ':completion:*' menu true
 # zstyle ':completion:yarn:test-unit' menu true
 
@@ -268,3 +270,5 @@ export TESTCONTAINERS_HOST_OVERRIDE=$(rdctl shell ip a show eth0 | awk '/inet / 
 alias r='runghc'
 
 alias flutter="fvm flutter"
+
+source "$(brew --prefix asdf)/etc/bash_completion.d/asdf.bash" # autoloadの関係でこの行じゃないと補完が動作しない
