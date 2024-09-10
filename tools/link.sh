@@ -10,3 +10,5 @@ ln -sf ~/dotfiles/tools/pet/snippet.toml ~/.config/pet/snippet.toml
 mkdir -p ~/.config/alacritty
 ln -sf ~/dotfiles/tools/alacritty/alacritty.toml ~/.config/alacritty/alacritty.toml
 
+
+ln -sf ~/dotfiles/tools/asdf/.tool-versions ~/.tool-versions

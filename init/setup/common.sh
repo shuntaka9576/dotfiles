@@ -3,19 +3,9 @@
 # add +w ~./cache for install dein and bingo
 sudo chmod o+w ~/.cache
 
-# install fisher
-curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish
-
-# install anyenv
-export PATH="$HOME/.anyenv/bin:$PATH"
-git clone https://github.com/anyenv/anyenv ~/.anyenv
-anyenv install --init
-
-# install anyenv
-anyenv install pyenv
-
-# install nodenv
-anyenv install nodenv
+# asdf setting
+asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
+asdf install nodejs latest
 
 # install dein
 curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh >~/installer.sh
