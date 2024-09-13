@@ -428,29 +428,42 @@ require("lazy").setup({
           },
           typescript = {
             function()
-              if use_deno_fmt() then
-                return {
-                  exe = "deno",
-                  args = { "fmt", "-" },
-                  stdin = true,
-                }
-              else
-                local file_path = util.get_current_buffer_file_path()
-                return {
-                  exe = get_biome_exe(),
-                  args = {
-                    "check",
-                    "--write",
-                    -- "--unsafe",
-                    "--stdin-file-path",
-                    util.escape_path(file_path),
-                  },
-                  stdin = true,
-                  cwd = vim.fn.fnamemodify(file_path, ":h"), -- Set the working directory to the file's directory
-                }
-              end
+              return { exe = "prettier", args = { "--stdin-filepath", vim.api.nvim_buf_get_name(0) }, stdin = true }
             end,
           },
+          -- typescript = {
+          --   function()
+          --     if use_deno_fmt() then
+          --       return {
+          --         exe = "deno",
+          --         args = { "fmt", "-" },
+          --         stdin = true,
+          --       }
+          --     else
+          --       -- local file_path = util.get_current_buffer_file_path()
+          --       return {
+          --         exe = "deno",
+          --         args = { "fmt", "-" },
+          --         stdin = true,
+          --       }
+
+          --       --[[ biome
+          --       return {
+          --         exe = get_biome_exe(),
+          --         args = {
+          --           "check",
+          --           "--write",
+          --           -- "--unsafe",
+          --           "--stdin-file-path",
+          --           util.escape_path(file_path),
+          --         },
+          --         stdin = true,
+          --         cwd = vim.fn.fnamemodify(file_path, ":h"), -- Set the working directory to the file's directory
+          --       }
+          --       ]]
+          --     end
+          --   end,
+          -- },
           typescriptreact = {
             function()
               if use_deno_fmt() then
