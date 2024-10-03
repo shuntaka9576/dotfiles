@@ -272,3 +272,6 @@ alias r='runghc'
 alias flutter="fvm flutter"
 
 source "$(brew --prefix asdf)/etc/bash_completion.d/asdf.bash" # autoloadの関係でこの行じゃないと補完が動作しない
+
+# For psql
+export PATH="/opt/homebrew/opt/libpq/bin:$PATH"

@@ -32,3 +32,5 @@ brew install --cask 1password
 brew install --cask figma
 brew install --cask kindle
 brew install visual-studio-code --cask
+brew install redis
+brew install libpq
