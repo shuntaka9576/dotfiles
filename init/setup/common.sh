@@ -50,6 +50,7 @@ cargo install cargo-edit
 cargo install cargo-watch
 cargo install cargo-compete
 cargo install sqlx-cli
+cargo install cargo-make
 
 # install nerd-fonts
 if [ "$(uname)" == 'Darwin' ]  && [ "$(uname -m)" == 'arm64' ]; then
