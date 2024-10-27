@@ -275,3 +275,5 @@ source "$(brew --prefix asdf)/etc/bash_completion.d/asdf.bash" # autoloadの関�
 
 # For psql
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+
+alias draw.io="/Applications/draw.io.app/Contents/MacOS/draw.io"

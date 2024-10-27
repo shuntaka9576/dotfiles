@@ -99,7 +99,7 @@ vim.api.nvim_command("set listchars=tab:»-,extends:»,precedes:«,nbsp:%,eol:�
 -- display vertical and horizontal cursors
 vim.api.nvim_command("set cursorline")
 vim.api.nvim_command("set cursorcolumn")
-vim.api.nvim_command("set cmdheight=1")
+-- vim.api.nvim_command("set cmdheight=1")
 -- tab title always display
 vim.api.nvim_command("set showtabline=2")
 -- clear search result
@@ -269,6 +269,46 @@ require("lazy").setup({
       local nvim_tree = require("nvim-tree")
       nvim_tree.setup({
         on_attach = on_attach,
+        actions = {
+          use_system_clipboard = true,
+          change_dir = {
+            enable = true,
+            global = false,
+            restrict_above_cwd = false,
+          },
+          expand_all = {
+            max_folder_discovery = 300,
+            exclude = {},
+          },
+          file_popup = {
+            open_win_config = {
+              col = 1,
+              row = 1,
+              relative = "cursor",
+              border = "shadow",
+              style = "minimal",
+            },
+          },
+          open_file = {
+            quit_on_open = false,
+            eject = true,
+            resize_window = true,
+            window_picker = {
+              enable = true,
+              picker = require("window-picker").pick_window({
+                hint = "floating-big-letter",
+              }),
+              chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
+              exclude = {
+                filetype = { "notify", "packer", "qf", "diff", "fugitive", "fugitiveblame" },
+                buftype = { "nofile", "terminal", "help" },
+              },
+            },
+          },
+          remove_file = {
+            close_window = true,
+          },
+        },
       })
       vim.api.nvim_set_keymap("n", "<Leader>d", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
     end,
@@ -440,14 +480,8 @@ require("lazy").setup({
           --         stdin = true,
           --       }
           --     else
-          --       -- local file_path = util.get_current_buffer_file_path()
-          --       return {
-          --         exe = "deno",
-          --         args = { "fmt", "-" },
-          --         stdin = true,
-          --       }
+          --       local file_path = util.get_current_buffer_file_path()
 
-          --       --[[ biome
           --       return {
           --         exe = get_biome_exe(),
           --         args = {
@@ -460,7 +494,6 @@ require("lazy").setup({
           --         stdin = true,
           --         cwd = vim.fn.fnamemodify(file_path, ":h"), -- Set the working directory to the file's directory
           --       }
-          --       ]]
           --     end
           --   end,
           -- },
@@ -618,35 +651,44 @@ require("lazy").setup({
     end,
   },
   { "sindrets/diffview.nvim" },
+  -- {
+  --   "folke/noice.nvim",
+  --   event = "VeryLazy",
+  --   opts = {
+  --     messages = {
+  --       enabled = true,
+  --       view = "mini",
+  --       view_error = "mini",
+  --       view_warn = "mini",
+  --       view_history = "messages",
+  --       view_search = false,
+  --     },
+  --     lsp = {
+  --       progress = {
+  --         enabled = false,
+  --       },
+  --     },
+  --   },
+  --   dependencies = {
+  --     -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+  --     "MunifTanjim/nui.nvim",
+  --     -- OPTIONAL:
+  --     --   `nvim-notify` is only needed, if you want to use the notification view.
+  --     --   If not available, we use `mini` as the fallback
+  --     "rcarriga/nvim-notify",
+  --   },
+  -- },
   {
-    "folke/noice.nvim",
-    event = "VeryLazy",
-    opts = {
-      messages = {
-        enabled = true,
-        view = "mini",
-        view_error = "mini",
-        view_warn = "mini",
-        view_history = "messages",
-        view_search = false,
-      },
-      lsp = {
-        progress = {
-          enabled = false,
-        },
-      },
-    },
-    dependencies = {
-      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-      "MunifTanjim/nui.nvim",
-      -- OPTIONAL:
-      --   `nvim-notify` is only needed, if you want to use the notification view.
-      --   If not available, we use `mini` as the fallback
-      "rcarriga/nvim-notify",
-    },
+    "s1n7ax/nvim-window-picker",
+    name = "window-picker",
+    version = "2.*",
+    config = function()
+      require("window-picker").setup({
+        hint = "floating-big-letter",
+      })
+    end,
   },
-  -- { "airblade/vim-gitgutter" },
-  -- { "tpope/vim-fugitive" },
+  { "airblade/vim-gitgutter" },
   {
     "lewis6991/gitsigns.nvim",
     config = function()
