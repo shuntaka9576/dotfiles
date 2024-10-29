@@ -382,12 +382,12 @@ require("lazy").setup({
       { "<leader>gY", "<cmd>GitLink!<cr>", mode = { "n", "v" }, desc = "Open git link" },
     },
   },
-  {
-    "ahmedkhalf/project.nvim",
-    config = function()
-      require("project_nvim").setup({})
-    end,
-  },
+  -- {
+  --   "ahmedkhalf/project.nvim",
+  --   config = function()
+  --     require("project_nvim").setup({})
+  --   end,
+  -- },
   {
     "mhartington/formatter.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
@@ -688,7 +688,6 @@ require("lazy").setup({
       })
     end,
   },
-  { "airblade/vim-gitgutter" },
   {
     "lewis6991/gitsigns.nvim",
     config = function()
@@ -705,7 +704,6 @@ require("lazy").setup({
       require("bufferline").setup({
         options = {
           close_command = "bdelete! %d",
-          diagnostics = "coc",
           diagnostics_indicator = function(count, level, _, _)
             local icon = level:match("error") and " " or " "
             return " " .. icon .. count
@@ -736,8 +734,12 @@ require("lazy").setup({
           theme = "gruvbox",
         },
         sections = {
-          lualine_a = { "g:coc_status", "bo:filetype" },
-          lualine_c = { "%=", "%t%m", "%3p" },
+          lualine_a = { "bo:filetype" },
+          lualine_c = { { "filename", path = 1 } },
+        },
+        inactive_sections = { -- 非アクティブウィンドウの設定を追加
+          lualine_a = { "bo:filetype" },
+          lualine_c = { { "filename", path = 1 } },
         },
       })
     end,
