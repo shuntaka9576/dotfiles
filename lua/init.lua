@@ -948,12 +948,6 @@ require("lazy").setup({
     end,
   },
   {
-    "zbirenbaum/copilot-cmp",
-    config = function()
-      require("copilot_cmp").setup()
-    end,
-  },
-  {
     "hrsh7th/nvim-cmp",
     event = "InsertEnter",
     dependencies = {
@@ -963,13 +957,30 @@ require("lazy").setup({
       { "hrsh7th/cmp-vsnip" },
       { "hrsh7th/vim-vsnip" },
       { "zbirenbaum/copilot-cmp" },
+      { "zbirenbaum/copilot.lua" },
       { "onsails/lspkind.nvim" },
     },
     opts = function()
       local cmp = require("cmp")
+      require("copilot_cmp").setup()
+      -- please setup :Copilot auth
+      require("copilot").setup({
+        suggestion = { enabled = false },
+        panel = { enabled = false },
+      })
+
+      local lspkind = require("lspkind")
+      lspkind.init({
+        symbol_map = {
+          Copilot = "",
+        },
+      })
+
+      vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
+
       local conf = {
         sources = {
-          { name = "copilot", group_index = 2 },
+          { name = "copilot" },
           { name = "buffer" },
           { name = "nvim_lsp" },
           { name = "path" },
@@ -983,7 +994,15 @@ require("lazy").setup({
         mapping = cmp.mapping.preset.insert({
           ["<CR>"] = cmp.mapping.confirm({ select = true }),
         }),
+        formatting = {
+          format = lspkind.cmp_format({
+            mode = "symbol",
+            maxwidth = 50,
+            ellipsis_char = "...",
+          }),
+        },
       }
+
       return conf
     end,
   },
