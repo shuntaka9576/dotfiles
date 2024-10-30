@@ -34,3 +34,5 @@ brew install --cask kindle
 brew install visual-studio-code --cask
 brew install redis
 brew install libpq
+
+gh extension install github/gh-copilot

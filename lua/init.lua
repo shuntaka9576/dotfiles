@@ -948,6 +948,12 @@ require("lazy").setup({
     end,
   },
   {
+    "zbirenbaum/copilot-cmp",
+    config = function()
+      require("copilot_cmp").setup()
+    end,
+  },
+  {
     "hrsh7th/nvim-cmp",
     event = "InsertEnter",
     dependencies = {
@@ -956,11 +962,14 @@ require("lazy").setup({
       { "hrsh7th/cmp-path" },
       { "hrsh7th/cmp-vsnip" },
       { "hrsh7th/vim-vsnip" },
+      { "zbirenbaum/copilot-cmp" },
+      { "onsails/lspkind.nvim" },
     },
     opts = function()
       local cmp = require("cmp")
       local conf = {
         sources = {
+          { name = "copilot", group_index = 2 },
           { name = "buffer" },
           { name = "nvim_lsp" },
           { name = "path" },
