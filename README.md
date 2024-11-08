@@ -74,3 +74,13 @@ Set install branch name:{contribute branch name}
 |json|json-lsp|mason
 |scala|metals|nvim-metals
 
+* biome
+* deno denols
+* dprint
+* jdtls
+* json-lsp jsonls
+* lua-language-server lua_ls
+* rust-analyzer rust_analyzer
+* svelte-language-server svelte
+* tailwindcss-language-server tailwindcss
+* typescript-language-server ts_ls
