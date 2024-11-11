@@ -1,0 +1,13 @@
+{
+  "recommendations": [
+    // AIエディタ補助
+    "github.copilot",
+    "github.copilot-chat",
+    // keybinding
+    "vscodevim.vim",
+    // rust
+    "rust-lang.rust-analyzer",
+    // svelte
+    "svelte.svelte-vscode"
+  ]
+}

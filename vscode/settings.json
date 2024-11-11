@@ -233,7 +233,6 @@
     // workbench settings
     "workbench.editor.enablePreview": false,
     "workbench.startupEditor": "newUntitledFile",
-    "workbench.iconTheme": "vscode-icons",
     // file settings
     "files.eol": "\n",
     "files.autoSave": "onFocusChange",
@@ -256,5 +255,6 @@
     "terminal.integrated.tabs.enabled": true,
     "tabnine.experimentalAutoImports": true,
     "search.searchOnType": false,
-    "plantuml.render": "Local"
+    "plantuml.render": "Local",
+    "git.openRepositoryInParentFolders": "never"
 }
