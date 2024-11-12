@@ -94,15 +94,16 @@
         "command": "-workbench.action.toggleSidebarVisibility"
     },
     {
-        "key": "cmd+shift+g",
-        "command": "workbench.view.scm"
-    },
-    {
         "key": "ctrl+t",
         "command": "workbench.action.terminal.toggleTerminal"
     },
     {
         "key": "ctrl+shift+t",
         "command": "workbench.action.terminal.new"
+    },
+    {
+        "key": "shift+cmd+k",
+        "command": "-editor.action.deleteLines",
+        "when": "textInputFocus && !editorReadonly"
     }
 ]
