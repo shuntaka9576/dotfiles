@@ -90,25 +90,6 @@
         "command": "workbench.action.terminal.focusNext"
     },
     {
-        "key": "cmd+r",
-        "command": "-workbench.action.reloadWindow",
-        "when": "isDevelopment"
-    },
-    {
-        "key": "cmd+r",
-        "command": "-workbench.action.reloadWindow",
-        "when": "isDevelopment"
-    },
-    {
-        "key": "cmd+r",
-        "command": "-workbench.action.reloadWindow",
-        "when": "isDevelopment"
-    },
-    {
-        "key": "cmd+r",
-        "command": "editor.action.rename"
-    },
-    {
         "key": "cmd+shift+m",
         "command": "workbench.action.toggleMaximizedPanel"
     },
