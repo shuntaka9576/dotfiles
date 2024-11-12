@@ -256,5 +256,6 @@
     "tabnine.experimentalAutoImports": true,
     "search.searchOnType": false,
     "plantuml.render": "Local",
-    "git.openRepositoryInParentFolders": "never"
+    "git.openRepositoryInParentFolders": "never",
+    "terminal.integrated.fontFamily": "Hack Nerd Font"
 }
