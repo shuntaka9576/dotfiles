@@ -106,11 +106,11 @@
         "command": "workbench.view.scm"
     },
     {
-        "key": "ctrl+`",
+        "key": "ctrl+t",
         "command": "workbench.action.terminal.toggleTerminal"
     },
     {
-        "key": "ctrl+shift+`",
+        "key": "ctrl+shift+t",
         "command": "workbench.action.terminal.new"
     }
 ]
