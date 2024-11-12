@@ -8,6 +8,9 @@
     // rust
     "rust-lang.rust-analyzer",
     // svelte
-    "svelte.svelte-vscode"
+    "svelte.svelte-vscode",
+    "svelte.svelte-vscode",
+    // git
+    "mhutchie.git-graph"
   ]
 }
