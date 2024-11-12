@@ -78,14 +78,6 @@
         "command": "-workbench.action.terminal.toggleTerminal"
     },
     {
-        "key": "shift+cmd+i",
-        "command": "workbench.action.output.toggleOutput"
-    },
-    {
-        "key": "shift+cmd+u",
-        "command": "-workbench.action.output.toggleOutput"
-    },
-    {
         "key": "alt+0",
         "command": "workbench.action.terminal.focusNext"
     },
@@ -102,7 +94,7 @@
         "command": "-workbench.action.toggleSidebarVisibility"
     },
     {
-        "key": "ctrl+shift+g",
+        "key": "cmd+shift+g",
         "command": "workbench.view.scm"
     },
     {
