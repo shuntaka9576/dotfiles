@@ -100,5 +100,9 @@
     {
         "key": "cmd+b",
         "command": "-workbench.action.toggleSidebarVisibility"
+    },
+    {
+        "key": "ctrl+shift+g",
+        "command": "workbench.view.scm"
     }
 ]
