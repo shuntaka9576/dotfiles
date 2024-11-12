@@ -7,7 +7,7 @@
         "**/CVS": true,
         "**/.DS_Store": true,
         "**/*.js.map": true,
-        "**/*.d.ts": true,
+        "**/*.d.ts": true
     },
     // golang settings
     "[go]": {
@@ -47,7 +47,7 @@
     "[rust]": {
         "editor.formatOnSave": true
     },
-    "[javascirpt]": {
+    "[javascript]": {
         "editor.tabSize": 2
     },
     // vue.js settings
@@ -84,7 +84,7 @@
         {
             "language": "vue",
             "autoFix": true
-        },
+        }
     ],
     // javascirpt settings
     "javascript.format.insertSpaceBeforeFunctionParenthesis": true,
@@ -130,7 +130,7 @@
                     "args": []
                 }
             ]
-        },
+        }
     ],
     "vim.normalModeKeyBindings": [
         {
