@@ -12,6 +12,8 @@
     "svelte.svelte-vscode",
     "svelte.svelte-vscode",
     // git
-    "mhutchie.git-graph"
+    "mhutchie.git-graph",
+    // .gitignoreしたファイルを非表示
+    "chrisbibby.hide-git-ignored"
   ]
 }
