@@ -3,6 +3,7 @@
     // AIエディタ補助
     "github.copilot",
     "github.copilot-chat",
+    "saoudrizwan.claude-dev",
     // keybinding
     "vscodevim.vim",
     // rust
