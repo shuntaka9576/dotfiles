@@ -105,5 +105,13 @@
         "key": "shift+cmd+k",
         "command": "-editor.action.deleteLines",
         "when": "textInputFocus && !editorReadonly"
+    },
+    {
+        "key": "shift+cmd+i",
+        "command": "-hide-git-ignored.show"
+    },
+    {
+        "key": "shift+cmd+k",
+        "command": "hide-git-ignored.show"
     }
 ]
