@@ -257,5 +257,11 @@
     "search.searchOnType": false,
     "plantuml.render": "Local",
     "git.openRepositoryInParentFolders": "never",
-    "terminal.integrated.fontFamily": "Hack Nerd Font"
+    "terminal.integrated.fontFamily": "Hack Nerd Font",
+    "github.copilot.enable": {
+        "*": true,
+        "plaintext": false,
+        "markdown": false,
+        "scminput": false
+    }
 }
