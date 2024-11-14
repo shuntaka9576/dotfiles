@@ -41,6 +41,7 @@
     // "python.jediEnabled": true,
     "python.pythonPath": "${workspaceFolder}/.venv/bin/python",
     "python.venvPath": "${workspaceFolder}/.venv",
+    "editor.defaultFormatter": "charliermarsh.ruff",
     "python.linting.flake8Args": ["--max-line-length", "88"],
     "python.sortImports.path": "${workspaceFolder}/.venv/bin/isort",
     // rust settings
