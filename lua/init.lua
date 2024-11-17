@@ -84,7 +84,7 @@ vim.api.nvim_command("autocmd BufNewFile,BufRead *.php set filetype=php")
 vim.api.nvim_command("autocmd FileType php setlocal expandtab tabstop=4 softtabstop=4 shiftwidth=4 autoindent")
 vim.api.nvim_command("autocmd BufNewFile,BufRead Makefile setlocal noexpandtab")
 -- vim.api.nvim_command("autocmd BufWritePre *.ts,*.tsx :Prettier")
-vim.api.nvim_command("autocmd BufWritePost *.ts,*.tsx,*.mts,*.rs,*.hs,*.lua,*.toml,*.svelte FormatWrite")
+vim.api.nvim_command("autocmd BufWritePost *.ts,*.tsx,*.mts,*.rs,*.hs,*.lua,*.toml,*.svelte,*.py FormatWrite")
 vim.api.nvim_command("autocmd BufWritePost *.scala FormatWrite")
 vim.api.nvim_command("augroup END")
 
@@ -442,6 +442,15 @@ require("lazy").setup({
               end
             end,
           },
+          python = {
+            function()
+              return {
+                exe = "uv",
+                args = { "run", "ruff", "format", "-" },
+                stdin = true,
+              }
+            end,
+          },
           javascriptreact = {
             function()
               if use_deno_fmt() then
@@ -513,6 +522,7 @@ require("lazy").setup({
                 }
               else
                 local file_path = util.get_current_buffer_file_path()
+
                 return {
                   exe = get_biome_exe(),
                   args = {
