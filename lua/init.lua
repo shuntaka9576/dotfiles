@@ -37,7 +37,7 @@ vim.api.nvim_exec(
 )
 
 -- lsp keymap
-local lsp_on_attach = function(client, bufnr)
+local lsp_on_attach = function()
   local set = vim.keymap.set
   set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>")
   set("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>")
