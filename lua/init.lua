@@ -127,17 +127,6 @@ local function file_exists(name)
   end
 end
 
-if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "--single-branch",
-    "https://github.com/folke/lazy.nvim.git",
-    lazypath,
-  })
-end
-
 vim.opt.runtimepath:prepend(lazypath)
 
 require("lazy").setup({
@@ -580,6 +569,15 @@ require("lazy").setup({
         },
       })
     end,
+  },
+  {
+    "folke/lazydev.nvim",
+    ft = "lua",
+    opts = {
+      library = {
+        { path = "luvit-meta/library", words = { "vim%.uv" } },
+      },
+    },
   },
   {
     "alexghergh/nvim-tmux-navigation",
