@@ -147,6 +147,12 @@ tag = ["python"]
 output = ""
 
 [[snippets]]
+description = "uvのunsafe fix"
+command = "uv run ruff check --unsafe-fixes --fix"
+tag = ["python", "uv"]
+output = ""
+
+[[snippets]]
 description = "Neovimのswapファイルを削除"
 command = ' rm -rf ~/.local/share/nvim/swap'
 tag = ["nvim"]

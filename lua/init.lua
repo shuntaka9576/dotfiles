@@ -952,6 +952,16 @@ require("lazy").setup({
       vim.keymap.set("n", "<leader>cC", "<cmd>CopilotChatClose<CR>", { noremap = true, silent = true })
     end,
   },
+  -- {
+  --   "olimorris/codecompanion.nvim",
+  --   dependencies = {
+  --     "nvim-lua/plenary.nvim",
+  --     "nvim-treesitter/nvim-treesitter",
+  --     -- The following are optional:
+  --     { "MeanderingProgrammer/render-markdown.nvim", ft = { "markdown", "codecompanion" } },
+  --   },
+  --   config = true,
+  -- },
   { "lambdalisue/vim-gin" },
   {
     "hrsh7th/nvim-cmp",
@@ -1080,6 +1090,15 @@ require("lazy").setup({
       require("treesj").setup({--[[ your config ]]
       })
     end,
+  },
+  {
+    "stevearc/oil.nvim",
+    ---@module 'oil'
+    ---@type oil.SetupOpts
+    opts = {},
+    -- Optional dependencies
+    dependencies = { { "echasnovski/mini.icons", opts = {} } },
+    -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons
   },
   -- {
   --   "mfussenegger/nvim-jdtls",
