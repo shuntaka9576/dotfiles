@@ -25,6 +25,9 @@ brew install asciidoctor
 brew install --HEAD pyenv-virtualenv
 brew install --HEAD pyenv-virtualenvwrapper
 brew install asdf
+brew install duckdb
+brew install dotenvx/brew/dotenvx
+brew install vhs
 
 # brew install tig
 # brew install terraform
