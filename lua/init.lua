@@ -68,6 +68,7 @@ local extension_list = {
   "dart",
   "java",
   "svelte",
+  "hs",
   "mts",
   "mjs",
 }
@@ -665,33 +666,33 @@ require("lazy").setup({
     end,
   },
   { "sindrets/diffview.nvim" },
-  -- {
-  --   "folke/noice.nvim",
-  --   event = "VeryLazy",
-  --   opts = {
-  --     messages = {
-  --       enabled = true,
-  --       view = "mini",
-  --       view_error = "mini",
-  --       view_warn = "mini",
-  --       view_history = "messages",
-  --       view_search = false,
-  --     },
-  --     lsp = {
-  --       progress = {
-  --         enabled = false,
-  --       },
-  --     },
-  --   },
-  --   dependencies = {
-  --     -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-  --     "MunifTanjim/nui.nvim",
-  --     -- OPTIONAL:
-  --     --   `nvim-notify` is only needed, if you want to use the notification view.
-  --     --   If not available, we use `mini` as the fallback
-  --     "rcarriga/nvim-notify",
-  --   },
-  -- },
+  {
+    "folke/noice.nvim",
+    event = "VeryLazy",
+    opts = {
+      messages = {
+        enabled = true,
+        view = "mini",
+        view_error = "mini",
+        view_warn = "mini",
+        view_history = "messages",
+        view_search = false,
+      },
+      lsp = {
+        progress = {
+          enabled = false,
+        },
+      },
+    },
+    dependencies = {
+      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+      "MunifTanjim/nui.nvim",
+      -- OPTIONAL:
+      --   `nvim-notify` is only needed, if you want to use the notification view.
+      --   If not available, we use `mini` as the fallback
+      "rcarriga/nvim-notify",
+    },
+  },
   {
     "s1n7ax/nvim-window-picker",
     name = "window-picker",
@@ -937,7 +938,7 @@ require("lazy").setup({
   },
   {
     "CopilotC-Nvim/CopilotChat.nvim",
-    branch = "canary",
+    branch = "main",
     dependencies = {
       { "zbirenbaum/copilot.lua" },
       { "nvim-lua/plenary.nvim" },
@@ -996,7 +997,7 @@ require("lazy").setup({
 
       local conf = {
         sources = {
-          { name = "copilot" },
+          -- { name = "copilot" },
           { name = "buffer" },
           { name = "nvim_lsp" },
           { name = "path" },
