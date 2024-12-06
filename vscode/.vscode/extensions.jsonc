@@ -18,6 +18,8 @@
     "ms-azuretools.vscode-docker",
     // python
     "ms-python.python",
-    "charliermarsh.ruff"
+    "charliermarsh.ruff",
+    // 作図
+    "hediet.vscode-drawio"
   ]
 }
