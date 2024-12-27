@@ -85,7 +85,7 @@ vim.api.nvim_command("autocmd BufNewFile,BufRead *.php set filetype=php")
 vim.api.nvim_command("autocmd FileType php setlocal expandtab tabstop=4 softtabstop=4 shiftwidth=4 autoindent")
 vim.api.nvim_command("autocmd BufNewFile,BufRead Makefile setlocal noexpandtab")
 -- vim.api.nvim_command("autocmd BufWritePre *.ts,*.tsx :Prettier")
-vim.api.nvim_command("autocmd BufWritePost *.ts,*.tsx,*.mts,*.rs,*.hs,*.lua,*.toml,*.svelte,*.py FormatWrite")
+vim.api.nvim_command("autocmd BufWritePost *.ts,*.tsx,*.mts,*.rs,*.hs,*.lua,*.toml,*.svelte,*.py,*.java FormatWrite")
 vim.api.nvim_command("autocmd BufWritePost *.scala FormatWrite")
 vim.api.nvim_command("augroup END")
 
@@ -432,6 +432,17 @@ require("lazy").setup({
               end
             end,
           },
+          java = {
+            function()
+              return {
+                exe = "google-java-format",
+                args = {
+                  "-",
+                },
+                stdin = true,
+              }
+            end,
+          },
           python = {
             function()
               return {
@@ -450,19 +461,19 @@ require("lazy").setup({
                   stdin = true,
                 }
               else
-                local file_path = util.get_current_buffer_file_path()
-                return {
-                  exe = get_biome_exe(),
-                  args = {
-                    "check",
-                    "--write",
-                    -- "--unsafe",
-                    "--stdin-file-path",
-                    util.escape_path(file_path),
-                  },
-                  stdin = true,
-                  cwd = vim.fn.fnamemodify(file_path, ":h"), -- Set the working directory to the file's directory
-                }
+                -- local file_path = util.get_current_buffer_file_path()
+                -- return {
+                --   exe = get_biome_exe(),
+                --   args = {
+                --     "check",
+                --     "--write",
+                --     -- "--unsafe",
+                --     "--stdin-file-path",
+                --     util.escape_path(file_path),
+                --   },
+                --   stdin = true,
+                --   cwd = vim.fn.fnamemodify(file_path, ":h"), -- Set the working directory to the file's directory
+                -- }
               end
             end,
           },
@@ -476,6 +487,16 @@ require("lazy").setup({
           --     return { exe = "prettier", args = { "--stdin-filepath", vim.api.nvim_buf_get_name(0) }, stdin = true }
           --   end,
           -- },
+          go = {
+            function()
+              return {
+                exe = "go",
+                args = { "fmt", "-" },
+                stdin = true,
+                cwd = vim.fn.fnamemodify(file_path, ":h"), -- Set the working directory to the file's directory
+              }
+            end,
+          },
           typescript = {
             function()
               if use_deno_fmt() then
@@ -502,32 +523,32 @@ require("lazy").setup({
               end
             end,
           },
-          typescriptreact = {
-            function()
-              if use_deno_fmt() then
-                return {
-                  exe = "deno",
-                  args = { "fmt", "-" },
-                  stdin = true,
-                }
-              else
-                local file_path = util.get_current_buffer_file_path()
+          -- typescriptreact = {
+          --   function()
+          --     if use_deno_fmt() then
+          --       return {
+          --         exe = "deno",
+          --         args = { "fmt", "-" },
+          --         stdin = true,
+          --       }
+          --     else
+          --       local file_path = util.get_current_buffer_file_path()
 
-                return {
-                  exe = get_biome_exe(),
-                  args = {
-                    "check",
-                    "--write",
-                    -- "--unsafe",
-                    "--stdin-file-path",
-                    util.escape_path(file_path),
-                  },
-                  stdin = true,
-                  cwd = vim.fn.fnamemodify(file_path, ":h"), -- Set the working directory to the file's directory
-                }
-              end
-            end,
-          },
+          --       return {
+          --         exe = get_biome_exe(),
+          --         args = {
+          --           "check",
+          --           "--write",
+          --           -- "--unsafe",
+          --           "--stdin-file-path",
+          --           util.escape_path(file_path),
+          --         },
+          --         stdin = true,
+          --         cwd = vim.fn.fnamemodify(file_path, ":h"), -- Set the working directory to the file's directory
+          --       }
+          --     end
+          --   end,
+          -- },
           toml = {
             function()
               return {
