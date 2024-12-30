@@ -56,7 +56,7 @@ local extension_list = {
   "pl",
   "lua",
   "c",
-  "cpp",
+  "cpp", -- apply .h file
   "tsx",
   "html",
   "css",
@@ -85,7 +85,9 @@ vim.api.nvim_command("autocmd BufNewFile,BufRead *.php set filetype=php")
 vim.api.nvim_command("autocmd FileType php setlocal expandtab tabstop=4 softtabstop=4 shiftwidth=4 autoindent")
 vim.api.nvim_command("autocmd BufNewFile,BufRead Makefile setlocal noexpandtab")
 -- vim.api.nvim_command("autocmd BufWritePre *.ts,*.tsx :Prettier")
-vim.api.nvim_command("autocmd BufWritePost *.ts,*.tsx,*.mts,*.rs,*.hs,*.lua,*.toml,*.svelte,*.py,*.java FormatWrite")
+vim.api.nvim_command(
+  "autocmd BufWritePost *.ts,*.tsx,*.mts,*.rs,*.hs,*.lua,*.toml,*.svelte,*.py,*.java,*.c,*.h FormatWrite"
+)
 vim.api.nvim_command("autocmd BufWritePost *.scala FormatWrite")
 vim.api.nvim_command("augroup END")
 
@@ -549,6 +551,22 @@ require("lazy").setup({
           --     end
           --   end,
           -- },
+          c = {
+            function()
+              return {
+                exe = "clang-format",
+                args = { "-i" },
+              }
+            end,
+          },
+          cpp = {
+            function()
+              return {
+                exe = "clang-format",
+                args = { "-i" },
+              }
+            end,
+          },
           toml = {
             function()
               return {
