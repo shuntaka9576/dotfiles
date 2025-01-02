@@ -9,61 +9,6 @@ bash <(curl -sL raw.github.com/shuntaka9576/dotfiles/master/init/install.sh)
 Set install branch name:master
 ```
 
-### Ubuntu
-#### AWS
-```
-# set password for default user created by aws
-sudo su -
-passwd ubuntu
-su ubuntu
-
-# install dotfiles
-bash <(curl -sL raw.github.com/shuntaka9576/dotfiles/master/init/install.sh)
-Set install branch name:master
-```
-
-#### DigitalOcean
-```
-# create and check user
-adduser ubuntu
-usermod -G sudo ubuntu
-cat /etc/group | grep ubuntu
-
-# change user
-su ubuntu
-cd
-
-# install dotfiles
-bash <(curl -sL raw.github.com/shuntaka9576/dotfiles/master/init/install.sh)
-Set install branch name:master
-```
-
-#### WSL
-```
-bash <(curl -sL raw.github.com/shuntaka9576/dotfiles/master/init/install.sh)
-Set install branch name:master
-```
-
-### AmazonLinux
-```
-bash <(curl -sL raw.github.com/shuntaka9576/dotfiles/master/init/install.sh)
-Set install branch name:master
-```
-
-## Update
-```
-bash <(curl -sL raw.github.com/shuntaka9576/dotfiles/master/init/install.sh)
-Set install branch name:master
-```
-
-## Contribution
-```
-bash <(curl -sL raw.github.com/shuntaka9576/dotfiles/{contribute branch name}/init/install.sh)
-Set install branch name:{contribute branch name}
-```
-
-## Other
-
 ### LSP
 
 |lang|lsp|install plugin|
@@ -84,3 +29,17 @@ Set install branch name:{contribute branch name}
 * svelte-language-server svelte
 * tailwindcss-language-server tailwindcss
 * typescript-language-server ts_ls
+
+## Experimental
+
+Nix(Mac)
+
+```bash
+./install.sh
+```
+
+Not supported by Cask
+
+* Happy Hacking Keyboard.app
+* CompareMerge.app
+* Testcontainers Desktop.app
