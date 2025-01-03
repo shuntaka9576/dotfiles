@@ -23,13 +23,14 @@
     ./programs/fzf/default.nix
     ./programs/gh/default.nix
     ./programs/git/default.nix
-    ./programs/memo/default.nix
     ./programs/lazygit/default.nix
+    ./programs/memo/default.nix
     ./programs/nvim/default.nix
     ./programs/packages/default.nix
     ./programs/pet/default.nix
-    ./programs/zsh/default.nix
     ./programs/tmux/default.nix
+    ./programs/wezterm/default.nix
+    ./programs/zsh/default.nix
   ];
 
   programs.home-manager.enable = true;

@@ -18,4 +18,5 @@ in
     pet
   ];
   home.file.".config/pet/snippet.toml".text = builtins.readFile ./snippet.toml;
+  home.file.".config/pet/config.toml".text = builtins.readFile ./config.toml;
 }

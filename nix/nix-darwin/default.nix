@@ -44,6 +44,7 @@
       "claude"
       "cleanshot"
       "alacritty"
+      "wezterm"
     ];
   };
 
