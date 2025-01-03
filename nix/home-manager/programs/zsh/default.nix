@@ -6,6 +6,7 @@
     shellAliases = {
       n = "nvim";
       l = "lazygit";
+      ls = "eza";
       ll = "eza -ahl --git";
       t = "tmux -2";
       tree = "eza -T --git-ignore";
