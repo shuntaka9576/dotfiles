@@ -30,11 +30,12 @@ Set install branch name:master
 * tailwindcss-language-server tailwindcss
 * typescript-language-server ts_ls
 
-## Experimental
+## Experimental(Nix)
 
-Nix(Mac)
+### Mac
 
 ```bash
+cd ./nix
 ./install.sh
 ```
 
@@ -43,3 +44,13 @@ Not supported by Cask
 * Happy Hacking Keyboard.app
 * CompareMerge.app
 * Testcontainers Desktop.app
+
+### Manjaro
+
+```bash
+pacman -S wezterm
+pacman -S alacritty
+
+cd ./nix
+./install.sh
+```
