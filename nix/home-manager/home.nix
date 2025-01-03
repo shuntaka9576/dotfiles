@@ -20,6 +20,7 @@
     ./programs/alacritty/default.nix
     ./programs/cargo/default.nix
     ./programs/deno/default.nix
+    ./programs/fzf/default.nix
     ./programs/gh/default.nix
     ./programs/git/default.nix
     ./programs/memo/default.nix
