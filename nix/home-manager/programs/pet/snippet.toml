@@ -703,3 +703,10 @@ command = """
 npx cspell lint . --cache --gitignore | perl -nle 'print "\\"$1\\"," if /.*\\((.*?)\\).*/' | sort | tr '[:upper:]' '[:lower:]' | uniq
 """
 tag = ['cspell', 'perl']
+
+[[snippets]]
+description = "PATHのpretty print"
+command = """
+echo $PATH | perl -pe 's/:/\\n/g'
+"""
+tag = ['PATH']

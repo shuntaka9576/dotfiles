@@ -14,9 +14,10 @@
       mn = "memo new";
       tka = "tmux kill-server";
       x = ''
-        tmux rename-window "$(basename `pwd` | cut -c1-4)"
-        tmux new-window -n "n" nvim
-        tmux new-window -n "p" lazygit
+        tmux rename-window "$(basename `pwd` | cut -c1-4)";
+        tmux new-window -n "n" nvim;
+        tmux new-window -n "p";
+        lazygit
       '';
     };
     autosuggestion.enable = true;
@@ -26,6 +27,8 @@
         theme = "pure";
       };
     };
-    initExtra = builtins.readFile ./.zshrc;
+    initExtra = ''
+      ${builtins.readFile ./.zshrc}
+    '';
   };
 }
