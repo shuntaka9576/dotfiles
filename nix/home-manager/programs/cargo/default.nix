@@ -1,4 +1,4 @@
 { pkgs, lib, ... }:
 {
-  home.file.".cargo/config".text = builtins.readFile ./config.toml;
+  home.file.".cargo/config.toml".text = builtins.readFile ./config.toml;
 }

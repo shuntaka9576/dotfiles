@@ -1,5 +1,9 @@
 export GHQ_ROOT=~/repos
 
+if [[ "$(uname)" == "Darwin" ]]; then
+  export LIBRARY_PATH="$LIBRARY_PATH:/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib"
+fi
+
 function ghq-fzf() {
   local target_dir=$(ghq list | fzf-tmux --reverse --query="$LBUFFER")
   local ghq_root=$(ghq root)
