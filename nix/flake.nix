@@ -13,9 +13,6 @@
       url = "github:oxalica/rust-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixgl = {
-      url = "github:nix-community/nixGL";
-    };
   };
 
   outputs =
@@ -25,7 +22,6 @@
       home-manager,
       darwin,
       rust-overlay,
-      nixgl,
       ...
     }:
     let
@@ -40,13 +36,12 @@
       pkgs = import nixpkgs {
         system = platform;
         config.allowUnfree = true;
-        overlays = [ rust-overlay.overlays.default nixgl.overlay ];
+        overlays = [ rust-overlay.overlays.default ];
       };
 
       specialArgs = {
         inherit username platform homeDirectory;
         inherit (pkgs) rust-bin;
-        inherit (pkgs) nixgl;
       };
     in
     {
