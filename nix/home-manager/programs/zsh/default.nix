@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, username, ... }:
 {
   programs.zsh = {
     enable = true;
@@ -6,16 +6,19 @@
     shellAliases = {
       n = "nvim";
       l = "lazygit";
+      ls = "eza";
       ll = "eza -ahl --git";
       t = "tmux -2";
       tree = "eza -T --git-ignore";
       me = "memo e";
       mn = "memo new";
       tka = "tmux kill-server";
+      u = "nix run github:LnL7/nix-darwin -- switch --flake \".#${username}\"";
       x = ''
-        tmux rename-window "$(basename `pwd` | cut -c1-4)"
-        tmux new-window -n "n" nvim
-        tmux new-window -n "p" lazygit
+        tmux rename-window "$(basename `pwd` | cut -c1-4)";
+        tmux new-window -n "n" nvim;
+        tmux new-window -n "p";
+        lazygit
       '';
     };
     autosuggestion.enable = true;
@@ -25,6 +28,8 @@
         theme = "pure";
       };
     };
-    initExtra = builtins.readFile ./.zshrc;
+    initExtra = ''
+      ${builtins.readFile ./.zshrc}
+    '';
   };
 }

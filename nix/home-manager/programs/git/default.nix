@@ -9,8 +9,33 @@
       ".DS_Store"
     ];
     extraConfig = {
+      ghq = {
+        root = "~/repos";
+      };
+      user = {
+        name = "shuntaka9576";
+        email = "shuntaka9576@gmail.com";
+      };
+      core = {
+        editor = "nvim -c \"set fenc=utf-8\"";
+      };
+      push = {
+        default = "current";
+      };
+      alias = {
+        see = "browse";
+      };
+      hub = {
+        protocol = "https";
+      };
+      credential = {
+        helper = "osxkeychain";
+      };
       pull = {
-        rebase = false;
+        ff = "only";
+      };
+      init = {
+        defaultBranch = "main";
       };
     };
   };

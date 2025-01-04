@@ -25,8 +25,8 @@
       ...
     }:
     let
-      platform = "__SYSTEM__";
-      username = "__USERNAME__";
+      username = "shuntaka";
+      platform = "aarch64-darwin";
 
       homeDirectory =
         if platform == "aarch64-darwin" then "/Users/${username}"

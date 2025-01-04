@@ -1,8 +1,9 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
-  programs.tmux = {
-    enable = true;
-    extraConfig = builtins.readFile ./.tmux.conf;
-    shell = "${pkgs.zsh}/bin/zsh";
+  home.packages = with pkgs; [
+    tmux
+  ];
+  home.file.".tmux.conf" = {
+    source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/nix/home-manager/programs/tmux/.tmux.conf";
   };
 }
