@@ -29,7 +29,7 @@ return {
   window_padding = {
     left = "0.5cell",
     right = "0.5cell",
-    top = 0,
+    top = "0.1cell",
     bottom = 0,
   },
   keys = keys,
