@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, config, ... }:
 let
   pet = pkgs.buildGoModule rec {
     pname = "pet";
@@ -17,6 +17,10 @@ in
   home.packages = [
     pet
   ];
-  home.file.".config/pet/snippet.toml".text = builtins.readFile ./snippet.toml;
-  home.file.".config/pet/config.toml".text = builtins.readFile ./config.toml;
+  home.file.".config/pet/snippet.toml" = {
+    source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/nix/home-manager/programs/pet/snippet.toml";
+  };
+  home.file.".config/pet/config.toml" = {
+    source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/nix/home-manager/programs/pet/config.toml";
+  };
 }

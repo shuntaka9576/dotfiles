@@ -32,7 +32,6 @@ return {
     top = 0,
     bottom = 0,
   },
-  default_prog = { prog, "-l" },
   keys = keys,
   font_size = 14.0,
   enable_wayland = false,
