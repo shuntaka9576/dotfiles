@@ -16,5 +16,8 @@ nix経由だと正常に動作しないケース(GPU周り)があるため、pac
 
 ```bash
 pacman -S wezterm
-pacman -S alacritty
+```
+
+```bash
+pacman -S yay
 ```
