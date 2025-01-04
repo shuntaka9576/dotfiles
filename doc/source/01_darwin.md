@@ -5,14 +5,20 @@
 :caption: architecture
 ```
 
-## 環境構築
+## Install
 
 ```bash
 cd ./nix
 nix run github:LnL7/nix-darwin -- switch --flake ".#shuntaka"
 ```
 
-Cask未サポートのGUIツールを手動インストール
+## gh
+
+```bash
+gh auth login
+```
+
+## Install cask Unsupported apps
 
 * Kindle
 * Happy Hacking Keyboard.app
