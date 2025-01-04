@@ -2,16 +2,10 @@
 {
   system.stateVersion = 5;
   services.nix-daemon.enable = true;
-
-  # nix = {
-  #   optimise.automatic = true;
-  #   settings = {
-  #     experimental-features = "nix-command flakes";
-  #     max-jobs = 8;
-  #   };
-  # };
-
-
+  security.sudo.extraConfig = ''
+    shuntaka ALL = (ALL) NOPASSWD: ALL
+  '';
+  security.pam.enableSudoTouchIdAuth = true;
   homebrew = {
     enable = true;
     onActivation = {
@@ -19,7 +13,6 @@
     };
     casks = [
       "figma"
-      # "kindle" # Error: Cask 'kindle' has been disabled because it is discontinued upstream! It was disabled on 2024-12-16.
       "oracle-jdk"
       "visual-studio-code"
       "aws-vault"

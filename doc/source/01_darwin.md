@@ -14,6 +14,7 @@ cd ./nix
 
 Cask未サポートのGUIツールを手動インストール
 
+* Kindle
 * Happy Hacking Keyboard.app
 * CompareMerge.app
 * Testcontainers Desktop.app

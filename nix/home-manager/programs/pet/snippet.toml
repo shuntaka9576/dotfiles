@@ -716,4 +716,4 @@ description = "watch sphinx"
 command = """
 uv run sphinx-autobuild source build
 """
-tag = ['python', 'sphinx']
+tag = ['python', 'sphinx', 'doc']

@@ -2,6 +2,9 @@
 import = ["~/.config/alacritty/catppuccin-mocha.toml"]
 live_config_reload = true
 
+[env]
+TERM = "xterm-256color"
+
 [window]
 dimensions = { columns = 200, lines = 60 }
 padding = { x = 10, y = 0 }
