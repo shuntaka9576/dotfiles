@@ -9,7 +9,7 @@
 
 ```bash
 cd ./nix
-./install.sh
+nix run github:LnL7/nix-darwin -- switch --flake ".#shuntaka"
 ```
 
 Cask未サポートのGUIツールを手動インストール
