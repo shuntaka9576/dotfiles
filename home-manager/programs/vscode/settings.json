@@ -1,268 +1,229 @@
 {
-    // exclude files
-    "files.exclude": {
-        "**/.git": true,
-        "**/.svn": true,
-        "**/.hg": true,
-        "**/CVS": true,
-        "**/.DS_Store": true,
-        "**/*.js.map": true,
-        "**/*.d.ts": true
-    },
-    // golang settings
-    "[go]": {
-        "editor.insertSpaces": false,
-        "editor.formatOnSave": true,
-        "editor.codeActionsOnSave": {
-            "source.organizeImports": "explicit"
-        }
-    },
-    "go.formatTool": "goimports",
-    "go.formatFlags": [
-        "-w"
-    ],
-    "go.lintTool": "golangci-lint",
-    "go.toolsEnvVars": {
-        "GO111MODULE": "on"
-    },
-    "go.useLanguageServer": true,
-    "go.alternateTools": {
-        "go-langserver": "gopls"
-    },
-    // python settings
-    "[python]": {
-        "editor.formatOnSave": true,
-        "editor.formatOnType": true
-    },
-    "python.linting.pylintEnabled": false,
-    "python.linting.flake8Enabled": false,
-    "python.formatting.provider": "black",
-    "python.linting.mypyEnabled": false,
-    // "python.jediEnabled": true,
-    "python.pythonPath": "${workspaceFolder}/.venv/bin/python",
-    "python.venvPath": "${workspaceFolder}/.venv",
-    "editor.defaultFormatter": "charliermarsh.ruff",
-    "python.linting.flake8Args": ["--max-line-length", "88"],
-    "python.sortImports.path": "${workspaceFolder}/.venv/bin/isort",
-    // rust settings
-    "[rust]": {
-        "editor.formatOnSave": true
-    },
-    "[javascript]": {
-        "editor.tabSize": 2
-    },
-    // vue.js settings
-    "[vue]": {
-        "editor.formatOnSave": false
-    },
-    "vetur.format.defaultFormatter.js": "prettier",
-    "vetur.format.defaultFormatter.css": "prettier",
-    "vetur.format.defaultFormatter.less": "prettier",
-    "vetur.format.defaultFormatter.postcss": "prettier",
-    "vetur.format.defaultFormatter.scss": "prettier",
-    "vetur.format.defaultFormatter.stylus": "stylus-supremacy",
-    "vetur.format.defaultFormatter.ts": "prettier",
-    "vetur.validation.style": true,
-    "vetur.validation.template": true,
-    // eslint settings
-    "eslint.run": "onType",
-    "eslint.enable": true,
-    "eslint.autoFixOnSave": true,
-    "eslint.validate": [
-        {
-            "language": "javascript",
-            "autoFix": true
-        },
-        "javascriptreact",
-        {
-            "language": "typescript",
-            "autoFix": true
-        },
-        {
-            "language": "typescriptreact",
-            "autoFix": true
-        },
-        {
-            "language": "vue",
-            "autoFix": true
-        }
-    ],
-    // javascirpt settings
-    "javascript.format.insertSpaceBeforeFunctionParenthesis": true,
-    // typescirpt settings
-    "typescript.format.insertSpaceBeforeFunctionParenthesis": true,
-    // vim settings
-    "vim.useSystemClipboard": true,
-    "vim.hlsearch": true,
-    "vim.leader": ",",
-    "vim.easymotion": true,
-    "vim.easymotionKeys": "hklasdgjf",
-    "vim.normalModeKeyBindingsNonRecursive": [
-        {
-            "before": [
-                "f"
-            ],
-            "after": [
-                "leader",
-                "leader",
-                "s"
-            ]
-        }
-    ],
-    "vim.insertModeKeyBindings": [
-        {
-            "before": [
-                "j",
-                "j"
-            ],
-            "after": [
-                "<Esc>"
-            ]
-        },
-        {
-            "before": [
-                "leader",
-                "w"
-            ],
-            "after": [],
-            "commands": [
-                {
-                    "command": "workbench.action.files.save",
-                    "args": []
-                }
-            ]
-        }
-    ],
-    "vim.normalModeKeyBindings": [
-        {
-            "before": [
-                "leader",
-                "a"
-            ],
-            "after": [],
-            "commands": [
-                {
-                    "command": "workbench.debug.viewlet.action.removeAllBreakpoints",
-                    "args": []
-                }
-            ]
-        },
-        {
-            "before": [
-                "leader",
-                "r",
-                "n"
-            ],
-            "after": [],
-            "commands": [
-                {
-                    "command": "editor.action.rename",
-                    "args": []
-                }
-            ]
-        },
-        {
-            "before": [
-                "leader",
-                "b",
-                "p"
-            ],
-            "after": [],
-            "commands": [
-                {
-                    "command": "editor.debug.action.conditionalBreakpoint",
-                    "args": []
-                }
-            ]
-        },
-        {
-            "before": [
-                "leader",
-                "b",
-                "b"
-            ],
-            "after": [],
-            "commands": [
-                {
-                    "command": "workbench.action.debug.start",
-                    "args": []
-                }
-            ]
-        },
-        {
-            "before": [
-                "leader",
-                "b",
-                "n"
-            ],
-            "after": [],
-            "commands": [
-                {
-                    "command": "workbench.action.debug.stepOver",
-                    "args": []
-                }
-            ]
-        },
-        {
-            "before": [
-                "leader",
-                "b",
-                "s"
-            ],
-            "after": [],
-            "commands": [
-                {
-                    "command": "workbench.action.debug.stop",
-                    "args": []
-                }
-            ]
-        }
-    ],
-    // editor settings
-    "editor.fontFamily": "Monaco Nerd Font Mono",
-    "editor.formatOnSave": false,
-    "editor.fontSize": 13,
-    "editor.minimap.enabled": false,
-    "editor.suggestSelection": "first",
-    "editor.minimap.showSlider": "always",
-    "editor.minimap.renderCharacters": false,
-    "explorer.openEditors.visible": 0,
-    // terminal settings
-    "terminal.integrated.shell.osx": "/bin/zsh",
-    "terminal.integrated.shell.windows": "cmd.exe",
-    "terminal.integrated.macOptionIsMeta": true,
-    // workbench settings
-    "workbench.editor.enablePreview": false,
-    "workbench.startupEditor": "newUntitledFile",
-    // file settings
-    "files.eol": "\n",
-    "files.autoSave": "onFocusChange",
-    "files.autoGuessEncoding": true,
-    "explorer.confirmDragAndDrop": false,
-    "explorer.confirmDelete": false,
-    "julia.enableCrashReporter": true,
-    "asciidoc.asciidoctor_command": "asciidoctor -r asciidoctor-diagram",
-    "asciidoc.preview.useEditorStyle": false,
-    "asciidoc.use_asciidoctor_js": false,
+  // exclude files
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/*.js.map": true,
+    "**/*.d.ts": true
+  },
+  // golang settings
+  "[go]": {
+    "editor.insertSpaces": false,
+    "editor.formatOnSave": true,
     "editor.codeActionsOnSave": {
-        "source.fixAll.eslint": "explicit"
-    },
-    "typescript.updateImportsOnFileMove.enabled": "always",
-    "javascript.updateImportsOnFileMove.enabled": "always",
-    "hediet.vscode-drawio.local-storage": "eyIuZHJhd2lvLWNvbmZpZyI6IntcImxhbmd1YWdlXCI6XCJcIixcImN1c3RvbUZvbnRzXCI6W10sXCJsaWJyYXJpZXNcIjpcImdlbmVyYWw7YXdzNFwiLFwiY3VzdG9tTGlicmFyaWVzXCI6W1wiTC5zY3JhdGNocGFkXCJdLFwicGx1Z2luc1wiOltdLFwicmVjZW50Q29sb3JzXCI6W1wibm9uZVwiLFwiRkZGRkZGXCJdLFwiZm9ybWF0V2lkdGhcIjoyNDAsXCJjcmVhdGVUYXJnZXRcIjpmYWxzZSxcInBhZ2VGb3JtYXRcIjp7XCJ4XCI6MCxcInlcIjowLFwid2lkdGhcIjo4MjcsXCJoZWlnaHRcIjoxMTY5fSxcInNlYXJjaFwiOnRydWUsXCJzaG93U3RhcnRTY3JlZW5cIjp0cnVlLFwiZ3JpZENvbG9yXCI6XCIjZDBkMGQwXCIsXCJkYXJrR3JpZENvbG9yXCI6XCIjNmU2ZTZlXCIsXCJhdXRvc2F2ZVwiOnRydWUsXCJyZXNpemVJbWFnZXNcIjpudWxsLFwib3BlbkNvdW50ZXJcIjowLFwidmVyc2lvblwiOjE4LFwidW5pdFwiOjEsXCJpc1J1bGVyT25cIjpmYWxzZSxcInVpXCI6XCJcIn0ifQ==",
-    "workbench.editorAssociations": {
-        "*.ipynb": "jupyter.notebook.ipynb"
-    },
-    "terminal.integrated.tabs.enabled": true,
-    "tabnine.experimentalAutoImports": true,
-    "search.searchOnType": false,
-    "plantuml.render": "Local",
-    "git.openRepositoryInParentFolders": "never",
-    "terminal.integrated.fontFamily": "Hack Nerd Font",
-    "github.copilot.enable": {
-        "*": true,
-        "plaintext": false,
-        "markdown": false,
-        "scminput": false
+      "source.organizeImports": "explicit"
     }
+  },
+  "go.formatTool": "goimports",
+  "go.formatFlags": ["-w"],
+  "go.lintTool": "golangci-lint",
+  "go.toolsEnvVars": {
+    "GO111MODULE": "on"
+  },
+  "go.useLanguageServer": true,
+  "go.alternateTools": {
+    "go-langserver": "gopls"
+  },
+  // python settings
+  "[python]": {
+    "editor.formatOnSave": true,
+    "editor.formatOnType": true
+  },
+  "python.linting.pylintEnabled": false,
+  "python.linting.flake8Enabled": false,
+  "python.formatting.provider": "black",
+  "python.linting.mypyEnabled": false,
+  // "python.jediEnabled": true,
+  "python.pythonPath": "${workspaceFolder}/.venv/bin/python",
+  "python.venvPath": "${workspaceFolder}/.venv",
+  "editor.defaultFormatter": "charliermarsh.ruff",
+  "python.linting.flake8Args": ["--max-line-length", "88"],
+  "python.sortImports.path": "${workspaceFolder}/.venv/bin/isort",
+  // rust settings
+  "[rust]": {
+    "editor.formatOnSave": true
+  },
+  "[javascript]": {
+    "editor.tabSize": 2
+  },
+  // vue.js settings
+  "[vue]": {
+    "editor.formatOnSave": false
+  },
+  "vetur.format.defaultFormatter.js": "prettier",
+  "vetur.format.defaultFormatter.css": "prettier",
+  "vetur.format.defaultFormatter.less": "prettier",
+  "vetur.format.defaultFormatter.postcss": "prettier",
+  "vetur.format.defaultFormatter.scss": "prettier",
+  "vetur.format.defaultFormatter.stylus": "stylus-supremacy",
+  "vetur.format.defaultFormatter.ts": "prettier",
+  "vetur.validation.style": true,
+  "vetur.validation.template": true,
+  // eslint settings
+  "eslint.run": "onType",
+  "eslint.enable": true,
+  "eslint.autoFixOnSave": true,
+  "eslint.validate": [
+    {
+      "language": "javascript",
+      "autoFix": true
+    },
+    "javascriptreact",
+    {
+      "language": "typescript",
+      "autoFix": true
+    },
+    {
+      "language": "typescriptreact",
+      "autoFix": true
+    },
+    {
+      "language": "vue",
+      "autoFix": true
+    }
+  ],
+  // javascirpt settings
+  "javascript.format.insertSpaceBeforeFunctionParenthesis": true,
+  // typescirpt settings
+  "typescript.format.insertSpaceBeforeFunctionParenthesis": true,
+  // vim settings
+  "vim.useSystemClipboard": true,
+  "vim.hlsearch": true,
+  "vim.leader": ",",
+  "vim.easymotion": true,
+  "vim.easymotionKeys": "hklasdgjf",
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["f"],
+      "after": ["leader", "leader", "s"]
+    }
+  ],
+  "vim.insertModeKeyBindings": [
+    {
+      "before": ["j", "j"],
+      "after": ["<Esc>"]
+    },
+    {
+      "before": ["leader", "w"],
+      "after": [],
+      "commands": [
+        {
+          "command": "workbench.action.files.save",
+          "args": []
+        }
+      ]
+    }
+  ],
+  "vim.normalModeKeyBindings": [
+    {
+      "before": ["leader", "a"],
+      "after": [],
+      "commands": [
+        {
+          "command": "workbench.debug.viewlet.action.removeAllBreakpoints",
+          "args": []
+        }
+      ]
+    },
+    {
+      "before": ["leader", "r", "n"],
+      "after": [],
+      "commands": [
+        {
+          "command": "editor.action.rename",
+          "args": []
+        }
+      ]
+    },
+    {
+      "before": ["leader", "b", "p"],
+      "after": [],
+      "commands": [
+        {
+          "command": "editor.debug.action.conditionalBreakpoint",
+          "args": []
+        }
+      ]
+    },
+    {
+      "before": ["leader", "b", "b"],
+      "after": [],
+      "commands": [
+        {
+          "command": "workbench.action.debug.start",
+          "args": []
+        }
+      ]
+    },
+    {
+      "before": ["leader", "b", "n"],
+      "after": [],
+      "commands": [
+        {
+          "command": "workbench.action.debug.stepOver",
+          "args": []
+        }
+      ]
+    },
+    {
+      "before": ["leader", "b", "s"],
+      "after": [],
+      "commands": [
+        {
+          "command": "workbench.action.debug.stop",
+          "args": []
+        }
+      ]
+    }
+  ],
+  // editor settings
+  "editor.fontFamily": "Monaco Nerd Font Mono",
+  "editor.formatOnSave": false,
+  "editor.fontSize": 13,
+  "editor.minimap.enabled": false,
+  "editor.suggestSelection": "first",
+  "editor.minimap.showSlider": "always",
+  "editor.minimap.renderCharacters": false,
+  "explorer.openEditors.visible": 0,
+  // terminal settings
+  "terminal.integrated.shell.osx": "/bin/zsh",
+  "terminal.integrated.shell.windows": "cmd.exe",
+  "terminal.integrated.macOptionIsMeta": true,
+  // workbench settings
+  "workbench.editor.enablePreview": false,
+  "workbench.startupEditor": "newUntitledFile",
+  // file settings
+  "files.eol": "\n",
+  "files.autoSave": "onFocusChange",
+  "files.autoGuessEncoding": true,
+  "explorer.confirmDragAndDrop": false,
+  "explorer.confirmDelete": false,
+  "julia.enableCrashReporter": true,
+  "asciidoc.asciidoctor_command": "asciidoctor -r asciidoctor-diagram",
+  "asciidoc.preview.useEditorStyle": false,
+  "asciidoc.use_asciidoctor_js": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "hediet.vscode-drawio.local-storage": "eyIuZHJhd2lvLWNvbmZpZyI6IntcImxhbmd1YWdlXCI6XCJcIixcImN1c3RvbUZvbnRzXCI6W10sXCJsaWJyYXJpZXNcIjpcImdlbmVyYWw7YXdzNFwiLFwiY3VzdG9tTGlicmFyaWVzXCI6W1wiTC5zY3JhdGNocGFkXCJdLFwicGx1Z2luc1wiOltdLFwicmVjZW50Q29sb3JzXCI6W1wibm9uZVwiLFwiRkZGRkZGXCJdLFwiZm9ybWF0V2lkdGhcIjoyNDAsXCJjcmVhdGVUYXJnZXRcIjpmYWxzZSxcInBhZ2VGb3JtYXRcIjp7XCJ4XCI6MCxcInlcIjowLFwid2lkdGhcIjo4MjcsXCJoZWlnaHRcIjoxMTY5fSxcInNlYXJjaFwiOnRydWUsXCJzaG93U3RhcnRTY3JlZW5cIjp0cnVlLFwiZ3JpZENvbG9yXCI6XCIjZDBkMGQwXCIsXCJkYXJrR3JpZENvbG9yXCI6XCIjNmU2ZTZlXCIsXCJhdXRvc2F2ZVwiOnRydWUsXCJyZXNpemVJbWFnZXNcIjpudWxsLFwib3BlbkNvdW50ZXJcIjowLFwidmVyc2lvblwiOjE4LFwidW5pdFwiOjEsXCJpc1J1bGVyT25cIjpmYWxzZSxcInVpXCI6XCJcIn0ifQ==",
+  "workbench.editorAssociations": {
+    "*.ipynb": "jupyter.notebook.ipynb"
+  },
+  "terminal.integrated.tabs.enabled": true,
+  "tabnine.experimentalAutoImports": true,
+  "search.searchOnType": false,
+  "plantuml.render": "Local",
+  "git.openRepositoryInParentFolders": "never",
+  "terminal.integrated.fontFamily": "Hack Nerd Font",
+  "github.copilot.enable": {
+    "*": true,
+    "plaintext": false,
+    "markdown": false,
+    "scminput": false
+  }
 }

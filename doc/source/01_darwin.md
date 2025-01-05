@@ -20,7 +20,7 @@ gh auth login
 
 ## Install cask Unsupported apps
 
-* Kindle
-* Happy Hacking Keyboard.app
-* CompareMerge.app
-* Testcontainers Desktop.app
+- Kindle
+- Happy Hacking Keyboard.app
+- CompareMerge.app
+- Testcontainers Desktop.app

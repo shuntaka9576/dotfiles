@@ -51,9 +51,12 @@
       );
 
       homeDirectory =
-        if platform == "aarch64-darwin" then "/Users/${username}"
-        else if platform == "x86_64-linux" then "/home/${username}"
-        else throw "Unsupported platform: ${platform}";
+        if platform == "aarch64-darwin" then
+          "/Users/${username}"
+        else if platform == "x86_64-linux" then
+          "/home/${username}"
+        else
+          throw "Unsupported platform: ${platform}";
 
       pkgs = import nixpkgs {
         system = platform;
@@ -67,7 +70,7 @@
       };
     in
     {
-      overlays.default = [];
+      overlays.default = [ ];
       formatter = forAllSystems (
         system:
         let

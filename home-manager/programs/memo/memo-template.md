@@ -1,8 +1,6 @@
 ---
-title: {{.Title}}
-date: {{.Date}}
+title: { { .Title } }
+date: { { .Date } }
 ---
 
-{{.Title}}
-===========
-
+# {{.Title}}

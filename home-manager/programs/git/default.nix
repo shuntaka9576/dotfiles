@@ -1,8 +1,8 @@
-{ ... }:
+_:
 {
   programs.git = {
     enable = true;
-    userName  = "shuntaka9576";
+    userName = "shuntaka9576";
     userEmail = "shuntaka9576@gmail.com";
     ignores = [
       ".vim"

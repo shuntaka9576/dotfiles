@@ -9,7 +9,7 @@
 }:
 {
   home = {
-    username = username;
+    inherit username;
     homeDirectory = lib.mkForce homeDirectory;
     stateVersion = "24.11";
   };

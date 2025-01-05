@@ -9,6 +9,9 @@
     prettier.enable = true;
     statix.enable = true;
   };
-  settings.global.excludes = [ "_sources/*" ];
+  settings.global.excludes = [
+    "_sources/*"
+    "home-manager/programs/vscode/.vscode/extensions.json"
+  ];
   settings.formatter.shfmt.includes = [ "*/zshrc" ];
 }
