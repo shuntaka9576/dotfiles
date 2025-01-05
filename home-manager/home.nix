@@ -1,7 +1,7 @@
 {
   pkgs,
   username,
-  platform,
+  system,
   homeDirectory,
   rust-bin,
   lib,

@@ -1,5 +1,4 @@
-_:
-{
+_: {
   programs.gh = {
     enable = true;
     settings = {

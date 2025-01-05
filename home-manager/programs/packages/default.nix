@@ -1,6 +1,6 @@
 {
   pkgs,
-  platform,
+  system,
   rust-bin,
   ...
 }:
@@ -42,7 +42,7 @@
       nerd-fonts.hack
       plemoljp-nf
     ]
-    ++ lib.optionals (platform == "aarch64-darwin") [
+    ++ lib.optionals (system == "aarch64-darwin") [
       reattach-to-user-namespace
     ];
 

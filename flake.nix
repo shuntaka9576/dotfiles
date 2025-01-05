@@ -1,5 +1,6 @@
 {
   description = "dotfiles";
+
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     home-manager = {
@@ -31,53 +32,56 @@
       ...
     }:
     let
-      username = "shuntaka";
-      platform = "aarch64-darwin";
-
       supportedSystems = [
         "x86_64-linux"
         "aarch64-linux"
         "x86_64-darwin"
         "aarch64-darwin"
       ];
+
       forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
-      nixpkgsFor = forAllSystems (
+
+      baseOverlays = [
+        rust-overlay.overlays.default
+      ];
+
+      pkgsFor =
         system:
         import nixpkgs {
           inherit system;
-          overlays = self.overlays.default;
           config.allowUnfree = true;
-        }
-      );
+          overlays = baseOverlays;
+        };
+
+      system = "aarch64-darwin";
+      username = "shuntaka";
 
       homeDirectory =
-        if platform == "aarch64-darwin" then
+        if system == "aarch64-darwin" then
           "/Users/${username}"
-        else if platform == "x86_64-linux" then
+        else if system == "x86_64-linux" then
           "/home/${username}"
         else
-          throw "Unsupported platform: ${platform}";
+          throw "Unsupported system: ${system}";
 
-      pkgs = import nixpkgs {
-        system = platform;
-        config.allowUnfree = true;
-        overlays = [ rust-overlay.overlays.default ];
-      };
+      pkgs = pkgsFor system;
 
       specialArgs = {
-        inherit username platform homeDirectory;
+        inherit username system homeDirectory;
         inherit (pkgs) rust-bin;
       };
     in
     {
-      overlays.default = [ ];
+      overlays.default = baseOverlays;
+
       formatter = forAllSystems (
-        system:
+        sys:
         let
-          pkgs = nixpkgsFor.${platform};
+          sysPkgs = pkgsFor sys;
         in
-        (treefmt-nix.lib.evalModule pkgs ./treefmt.nix).config.build.wrapper
+        (treefmt-nix.lib.evalModule sysPkgs ./treefmt.nix).config.build.wrapper
       );
+
       darwinConfigurations.${username} = darwin.lib.darwinSystem {
         inherit pkgs specialArgs;
         modules = [
@@ -91,11 +95,14 @@
           }
         ];
       };
+
       homeConfigurations.${username} = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         extraSpecialArgs = specialArgs;
         modules = [
-          { nix.package = pkgs.nix; }
+          {
+            nix.package = pkgs.nix;
+          }
           (import ./home-manager/home.nix)
         ];
       };
