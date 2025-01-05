@@ -28,6 +28,7 @@
     ./programs/python/default.nix
     ./programs/tmux/default.nix
     ./programs/wezterm/default.nix
+    ./programs/zellij/default.nix
     ./programs/zsh/default.nix
   ];
 
