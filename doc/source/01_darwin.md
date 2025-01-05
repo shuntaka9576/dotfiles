@@ -8,7 +8,7 @@
 ## Install
 
 ```bash
-cd ./nix
+export NIX_CONFIG="experimental-features = nix-command flakes"
 nix run github:LnL7/nix-darwin -- switch --flake ".#shuntaka"
 ```
 
