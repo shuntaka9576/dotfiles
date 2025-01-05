@@ -23,11 +23,12 @@
 
   outputs =
     {
+      self,
       nixpkgs,
       home-manager,
       darwin,
-      rust-overlay,
       treefmt-nix,
+      rust-overlay,
       ...
     }:
     let
@@ -40,14 +41,12 @@
 
       forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
 
-      baseOverlays = [ rust-overlay.overlays.default ];
-
       pkgsFor =
         system:
         import nixpkgs {
           inherit system;
+          overlays = self.overlays.default;
           config.allowUnfree = true;
-          overlays = baseOverlays;
         };
 
       system = "aarch64-darwin";
@@ -65,11 +64,13 @@
 
       specialArgs = {
         inherit username system homeDirectory;
-        inherit (pkgs) rust-bin;
       };
     in
     {
-      overlays.default = baseOverlays;
+      overlays.default = [
+        (import ./overlays { inherit self; })
+        rust-overlay.overlays.default
+      ];
 
       formatter = forAllSystems (
         sys:

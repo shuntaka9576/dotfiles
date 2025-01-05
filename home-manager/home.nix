@@ -1,9 +1,6 @@
 {
-  pkgs,
   username,
-  system,
   homeDirectory,
-  rust-bin,
   lib,
   ...
 }:
