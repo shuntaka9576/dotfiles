@@ -3,12 +3,12 @@
 ## Mac
 
 ### Initial Setup
-Install Nix package manager:
+Install Nix package manager
 ```bash
 sh <(curl -L https://nixos.org/nix/install)
 ```
 
-Use nix-darwin to configure your macOS system with declarative configuration:
+Use nix-darwin to configure your macOS system with declarative configuration
 ```bash
 export NIX_CONFIG="experimental-features = nix-command flakes"
 nix run github:LnL7/nix-darwin -- switch --flake ".#shuntaka"
