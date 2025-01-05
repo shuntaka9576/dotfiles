@@ -4,18 +4,19 @@ local keys = {
   { key = "=", mods = "CTRL", action = wezterm.action.IncreaseFontSize },
   { key = "-", mods = "CTRL", action = wezterm.action.DecreaseFontSize },
   { key = "0", mods = "CTRL", action = wezterm.action.ResetFontSize },
-  { key = "n", mods = "SHIFT|CTRL", action = wezterm.action.ToggleFullScreen },
+  { key = "f", mods = "CMD|CTRL", action = wezterm.action.ToggleFullScreen },
 }
 
 return {
   enable_tab_bar = false,
-  color_scheme = "Dracula (Official)",
+  window_decorations = "RESIZE",
+  native_macos_fullscreen_mode = true,
   automatically_reload_config = true,
+  color_scheme = "Dracula (Official)",
   initial_cols = 200,
   initial_rows = 60,
   window_background_opacity = 1.0,
   default_cursor_style = "SteadyBlock",
-  window_decorations = "RESIZE",
   front_end = "WebGpu",
   font = wezterm.font_with_fallback({
     { family = "PlemolJP Console NF", assume_emoji_presentation = false },
