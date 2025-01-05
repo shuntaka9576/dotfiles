@@ -35,6 +35,8 @@
       zenn-cli
       fontconfig
       lua
+      # nixfmt
+      nixfmt-rfc-style
       noto-fonts
       noto-fonts-cjk-sans
       noto-fonts-cjk-serif
@@ -42,9 +44,7 @@
       nerd-fonts.hack
       plemoljp-nf
     ]
-    ++ lib.optionals (system == "aarch64-darwin") [
-      reattach-to-user-namespace
-    ];
+    ++ lib.optionals (system == "aarch64-darwin") [ reattach-to-user-namespace ];
 
   fonts.fontconfig = {
     enable = true;

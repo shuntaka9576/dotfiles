@@ -23,7 +23,6 @@
 
   outputs =
     {
-      self,
       nixpkgs,
       home-manager,
       darwin,
@@ -41,9 +40,7 @@
 
       forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
 
-      baseOverlays = [
-        rust-overlay.overlays.default
-      ];
+      baseOverlays = [ rust-overlay.overlays.default ];
 
       pkgsFor =
         system:
@@ -100,9 +97,7 @@
         inherit pkgs;
         extraSpecialArgs = specialArgs;
         modules = [
-          {
-            nix.package = pkgs.nix;
-          }
+          { nix.package = pkgs.nix; }
           (import ./home-manager/home.nix)
         ];
       };

@@ -69,6 +69,7 @@ local extension_list = {
   "java",
   "svelte",
   "hs",
+  "nix",
   "mts",
   "mjs",
 }
@@ -86,7 +87,7 @@ vim.api.nvim_command("autocmd FileType php setlocal expandtab tabstop=4 softtabs
 vim.api.nvim_command("autocmd BufNewFile,BufRead Makefile setlocal noexpandtab")
 -- vim.api.nvim_command("autocmd BufWritePre *.ts,*.tsx :Prettier")
 vim.api.nvim_command(
-  "autocmd BufWritePost *.ts,*.tsx,*.mts,*.rs,*.hs,*.lua,*.toml,*.svelte,*.py,*.java,*.c,*.h FormatWrite"
+  "autocmd BufWritePost *.ts,*.tsx,*.mts,*.rs,*.hs,*.lua,*.toml,*.svelte,*.py,*.java,*.c,*.h,*.nix FormatWrite"
 )
 vim.api.nvim_command("autocmd BufWritePost *.scala FormatWrite")
 vim.api.nvim_command("augroup END")
@@ -432,6 +433,14 @@ require("lazy").setup({
                   cwd = vim.fn.fnamemodify(file_path, ":h"), -- Set the working directory to the file's directory
                 }
               end
+            end,
+          },
+          nix = {
+            function()
+              return {
+                exe = "nixfmt",
+                stdin = true,
+              }
             end,
           },
           java = {
@@ -856,6 +865,7 @@ require("lazy").setup({
           "gopls",
           "rust-analyzer",
           "haskell-language-server",
+          "nil",
           "jdtls",
           "json-lsp",
           "svelte-language-server",
