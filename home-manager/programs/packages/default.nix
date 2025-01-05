@@ -1,7 +1,6 @@
 {
   pkgs,
   system,
-  rust-bin,
   ...
 }:
 {
@@ -24,10 +23,9 @@
       taplo-cli
       cargo-edit
       cargo-watch
-      # cargo-compete
       sqlx-cli
       cargo-make
-      rust-bin.stable.latest.default
+      pkgs.rust-bin.stable.latest.default
       docker
       ghq
       awscli2
@@ -35,7 +33,6 @@
       zenn-cli
       fontconfig
       lua
-      # nixfmt
       nixfmt-rfc-style
       noto-fonts
       noto-fonts-cjk-sans

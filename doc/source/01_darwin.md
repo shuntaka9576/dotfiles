@@ -8,6 +8,10 @@
 ## Install
 
 ```bash
+nix run github:berberman/nvfetcher -- -c "$HOME/dotfiles/nvfetcher.toml" -o "_sources"
+```
+
+```bash
 export NIX_CONFIG="experimental-features = nix-command flakes"
 nix run github:LnL7/nix-darwin -- switch --flake ".#shuntaka"
 ```

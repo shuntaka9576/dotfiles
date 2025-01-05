@@ -1,0 +1,7 @@
+[pet]
+src.github = "knqyf263/pet"
+fetch.github = "knqyf263/pet"
+
+[memo]
+src.github = "mattn/memo"
+fetch.github = "mattn/memo"

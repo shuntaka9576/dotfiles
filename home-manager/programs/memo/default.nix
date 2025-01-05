@@ -1,15 +1,7 @@
-{ pkgs, lib, ... }:
+{ pkgs, ... }:
 let
   memo = pkgs.buildGoModule rec {
-    pname = "memo";
-    version = "0.0.17";
-
-    src = pkgs.fetchFromGitHub {
-      owner = "mattn";
-      repo = "memo";
-      rev = "refs/tags/v${version}";
-      sha256 = "sha256-f6BHKA/G5WhYBh1ruCVb1BwVK6vvmC3XVakqnshFfmk=";
-    };
+    inherit (pkgs.sources.memo) pname version src;
     vendorHash = "sha256-aO6Bf8omdePK1vV9uxfTJyjdzAykCfOibY5zWbOlJCg=";
   };
 in
