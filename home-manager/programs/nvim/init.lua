@@ -714,33 +714,33 @@ require("lazy").setup({
     end,
   },
   { "sindrets/diffview.nvim" },
-  {
-    "folke/noice.nvim",
-    event = "VeryLazy",
-    opts = {
-      messages = {
-        enabled = true,
-        view = "mini",
-        view_error = "mini",
-        view_warn = "mini",
-        view_history = "messages",
-        view_search = false,
-      },
-      lsp = {
-        progress = {
-          enabled = false,
-        },
-      },
-    },
-    dependencies = {
-      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-      "MunifTanjim/nui.nvim",
-      -- OPTIONAL:
-      --   `nvim-notify` is only needed, if you want to use the notification view.
-      --   If not available, we use `mini` as the fallback
-      "rcarriga/nvim-notify",
-    },
-  },
+  -- {
+  --   "folke/noice.nvim",
+  --   event = "VeryLazy",
+  --   opts = {
+  --     messages = {
+  --       enabled = true,
+  --       view = "mini",
+  --       view_error = "mini",
+  --       view_warn = "mini",
+  --       view_history = "messages",
+  --       view_search = false,
+  --     },
+  --     lsp = {
+  --       progress = {
+  --         enabled = false,
+  --       },
+  --     },
+  --   },
+  --   dependencies = {
+  --     -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+  --     "MunifTanjim/nui.nvim",
+  --     -- OPTIONAL:
+  --     --   `nvim-notify` is only needed, if you want to use the notification view.
+  --     --   If not available, we use `mini` as the fallback
+  --     "rcarriga/nvim-notify",
+  --   },
+  -- },
   {
     "s1n7ax/nvim-window-picker",
     name = "window-picker",
@@ -972,6 +972,8 @@ require("lazy").setup({
             opts.root_dir = nvim_lsp.util.root_pattern("package.json", "node_modules")
           elseif server_name == "rust_analyzer" then
             -- opts.cmd = { vim.fn.expand("~/.rustup/toolchains/stable-aarch64-apple-darwin/bin/rust-analyzer") }
+          elseif server_name == "hls" then
+            opts.cmd = { vim.fn.expand("~/.ghcup/bin/haskell-language-server-wrapper"), "lsp" } -- use ghcup hls lsp
           elseif server_name == "denols" then
             if file_exists(os.getenv("PWD") .. "/package.json") then
               return
@@ -999,17 +1001,17 @@ require("lazy").setup({
       })
     end,
   },
-  {
-    "mrcjkb/haskell-tools.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-    },
-    version = "^3", -- Recommended
-    ft = { "haskell", "lhaskell", "cabal", "cabalproject" },
-    init = function()
-      vim.g.haskell_tools = {}
-    end,
-  },
+  -- {
+  --   "mrcjkb/haskell-tools.nvim",
+  --   dependencies = {
+  --     "nvim-lua/plenary.nvim",
+  --   },
+  --   version = "^3", -- Recommended
+  --   ft = { "haskell", "lhaskell", "cabal", "cabalproject" },
+  --   init = function()
+  --     vim.g.haskell_tools = {}
+  --   end,
+  -- },
   {
     "CopilotC-Nvim/CopilotChat.nvim",
     branch = "main",
