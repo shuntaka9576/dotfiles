@@ -19,7 +19,7 @@
     ./programs/deno/default.nix
     ./programs/fzf/default.nix
     ./programs/gh/default.nix
-    # ./programs/haskell/default.nix
+    ./programs/haskell/default.nix
     ./programs/git/default.nix
     ./programs/lazygit/default.nix
     ./programs/memo/default.nix
