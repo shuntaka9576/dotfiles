@@ -27,6 +27,7 @@
       cargo-make
       pkgs.rust-bin.stable.latest.default
       docker
+      tokei
       ghq
       awscli2
       google-java-format
