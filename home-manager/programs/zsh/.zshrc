@@ -51,3 +51,5 @@ function pet-select() {
 zle -N pet-select
 stty -ixon
 bindkey '^s' pet-select
+
+[ -f "$HOME/.ghcup/env" ] && . "$HOME/.ghcup/env" # ghcup-env

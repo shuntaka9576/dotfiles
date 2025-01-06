@@ -2,6 +2,9 @@
 
 ## Mac
 
+<details>
+<summary>Click to open</summary>
+
 ### Initial Setup
 Install Nix package manager
 ```bash
@@ -25,6 +28,19 @@ Manual Application Installation
 - CompareMerge.app
 - Testcontainers Desktop.app
 
+Install Haskell (nix package unstable)
+```bash
+curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
+```
+
+```bash
+ghcup tui
+```
+
+Install Neovim plugin and Mason LSPs
+```bash
+nvim
+```
 
 ### Develop
 
@@ -34,3 +50,4 @@ Update package versions when needed:
 nix run github:berberman/nvfetcher -- -c "$HOME/dotfiles/nvfetcher.toml" -o "_sources"
 ```
 
+</details>
