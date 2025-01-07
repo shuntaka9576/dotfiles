@@ -11,7 +11,7 @@ in
   ];
   home.file.".config/memo/config.toml".text = ''
     memodir = "$GHQ_ROOT/github.com/shuntaka9576/memo"
-    memotemplate = "~/dotfiles/nix/home-manager/programs/memo/memo-template.md"
+    memotemplate = "~/dotfiles/home-manager/programs/memo/template.md"
     editor = "nvim"
     column = 20
     width = 0

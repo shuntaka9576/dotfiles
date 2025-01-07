@@ -5,3 +5,7 @@ fetch.github = "knqyf263/pet"
 [memo]
 src.github = "mattn/memo"
 fetch.github = "mattn/memo"
+
+[fd]
+src.github = "sharkdp/fd"
+fetch.github = "sharkdp/fd"

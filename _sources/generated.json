@@ -1,4 +1,25 @@
 {
+    "fd": {
+        "cargoLocks": null,
+        "date": null,
+        "extract": null,
+        "name": "fd",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "sharkdp",
+            "repo": "fd",
+            "rev": "v10.2.0",
+            "sha256": "sha256-B+lOohoPH7UkRxRNTzSVt0SDrqEwh4hIvBF3uWliDEI=",
+            "sparseCheckout": [],
+            "type": "github"
+        },
+        "version": "v10.2.0"
+    },
     "memo": {
         "cargoLocks": null,
         "date": null,
