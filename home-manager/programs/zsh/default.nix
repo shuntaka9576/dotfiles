@@ -10,6 +10,7 @@
       ll = "eza -ahl --git";
       t = "tmux -2";
       tree = "eza -T --git-ignore";
+      ne = "nix eval -f";
       me = "memo e";
       mn = "memo new";
       tka = "tmux kill-server";
