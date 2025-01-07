@@ -12,6 +12,7 @@
   settings.global.excludes = [
     "_sources/*"
     "home-manager/programs/vscode/.vscode/extensions.json"
+    "home-manager/programs/memo/template.md"
   ];
   settings.formatter.shfmt.includes = [ "*/zshrc" ];
 }

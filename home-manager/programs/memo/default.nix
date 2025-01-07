@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 let
   memo = pkgs.buildGoModule rec {
     inherit (pkgs.sources.memo) pname version src;
@@ -9,17 +9,7 @@ in
   home.packages = [
     memo
   ];
-  home.file.".config/memo/config.toml".text = ''
-    memodir = "$GHQ_ROOT/github.com/shuntaka9576/memo"
-    memotemplate = "~/dotfiles/home-manager/programs/memo/template.md"
-    editor = "nvim"
-    column = 20
-    width = 0
-    selectcmd = 'find $GHQ_ROOT/github.com/shuntaka9576/memo -type f |sort -r |grep -v "/\.git/" | grep -v -e "ignore" -v -e "^\.gitkeep" |sed -e "s|$GHQ_ROOT/github.com/shuntaka9576/memo/||g" |fzf'
-    grepcmd = "grep -nH ''${PATTERN} ''${FILES}"
-    assetsdir = "."
-    pluginsdir = "~/.config/memo/plugins"
-    templatedirfile = ""
-    templatebodyfile = ""
-  '';
+  home.file.".config/memo/config.toml" = {
+    source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/home-manager/programs/memo/config.toml";
+  };
 }
