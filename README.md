@@ -49,6 +49,12 @@ Install Neovim plugin and Mason LSPs
 nvim
 ```
 
+Install mise tools
+
+```bash
+mise install
+```
+
 ### Develop
 
 Update package versions when needed:

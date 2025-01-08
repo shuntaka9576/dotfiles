@@ -23,6 +23,7 @@
     ./programs/git/default.nix
     ./programs/lazygit/default.nix
     ./programs/memo/default.nix
+    ./programs/mise/default.nix
     ./programs/nvim/default.nix
     ./programs/packages/default.nix
     ./programs/pet/default.nix
