@@ -1,11 +1,10 @@
 {
   pkgs,
-  lib,
   config,
   ...
 }:
 let
-  pet = pkgs.buildGoModule rec {
+  pet = pkgs.buildGoModule {
     inherit (pkgs.sources.pet) pname version src;
     vendorHash = "sha256-+ieBk7uMzgeM45uvLfljenNvhGVv1mEazErf4YHPNWQ=";
   };

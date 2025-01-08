@@ -1,5 +1,6 @@
 [tools]
 node = ["18", "20", "22"]
+python = ["3.12", "3.13"]
 
 [settings]
 trusted_config_paths = ["~"]

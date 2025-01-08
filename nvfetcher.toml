@@ -9,3 +9,7 @@ fetch.github = "mattn/memo"
 [fd]
 src.github = "sharkdp/fd"
 fetch.github = "sharkdp/fd"
+
+[vhs]
+src.github = "charmbracelet/vhs"
+fetch.github = "charmbracelet/vhs"

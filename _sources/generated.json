@@ -61,5 +61,26 @@
             "type": "github"
         },
         "version": "v1.0.1"
+    },
+    "vhs": {
+        "cargoLocks": null,
+        "date": null,
+        "extract": null,
+        "name": "vhs",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "charmbracelet",
+            "repo": "vhs",
+            "rev": "v0.8.0",
+            "sha256": "sha256-kUsh+jy4dXYW1uAUfFv/HKBqIIyVogLKUYNjBhIKlls=",
+            "sparseCheckout": [],
+            "type": "github"
+        },
+        "version": "v0.8.0"
     }
 }

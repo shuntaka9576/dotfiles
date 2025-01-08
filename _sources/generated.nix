@@ -34,4 +34,15 @@
       sha256 = "sha256-B0ilobUlp6UUXu6+lVqIHkbFnxVu33eXZFf+F7ODoQU=";
     };
   };
+  vhs = {
+    pname = "vhs";
+    version = "v0.8.0";
+    src = fetchFromGitHub {
+      owner = "charmbracelet";
+      repo = "vhs";
+      rev = "v0.8.0";
+      fetchSubmodules = false;
+      sha256 = "sha256-kUsh+jy4dXYW1uAUfFv/HKBqIIyVogLKUYNjBhIKlls=";
+    };
+  };
 }
