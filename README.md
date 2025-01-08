@@ -63,4 +63,11 @@ Update package versions when needed:
 nix run github:berberman/nvfetcher -- -c "$HOME/dotfiles/nvfetcher.toml" -o "_sources"
 ```
 
+mise reset
+
+```bash
+mise uninstall node --all
+mise uninstall python --all
+```
+
 </details>
