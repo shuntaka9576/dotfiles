@@ -10,6 +10,7 @@
       gnumake
       gcc
       code2prompt
+      duckdb
       go
       jq
       shellcheck
