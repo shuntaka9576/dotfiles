@@ -55,6 +55,12 @@ Install mise tools
 mise install
 ```
 
+Setting rust tools
+
+```bash
+rust up update
+```
+
 ### Develop
 
 Update package versions when needed:

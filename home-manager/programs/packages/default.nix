@@ -26,7 +26,7 @@
       cargo-watch
       sqlx-cli
       cargo-make
-      pkgs.rust-bin.stable.latest.default
+      rustup
       docker
       tokei
       ghq
