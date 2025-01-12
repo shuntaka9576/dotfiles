@@ -32,6 +32,7 @@
       ghq
       awscli2
       google-java-format
+      goreleaser
       zenn-cli
       fontconfig
       lua
