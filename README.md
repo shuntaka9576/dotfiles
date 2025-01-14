@@ -61,6 +61,10 @@ Setting rust tools
 rust up update
 ```
 
+```bash
+cargo install mini-redis
+```
+
 ### Develop
 
 Update package versions when needed:
