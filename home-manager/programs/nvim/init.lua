@@ -348,6 +348,13 @@ require("lazy").setup({
   --   -- },
   -- },
   {
+    "FabijanZulj/blame.nvim",
+    lazy = false,
+    config = function()
+      require("blame").setup({})
+    end,
+  },
+  {
     "shellRaining/hlchunk.nvim",
     event = { "BufReadPre", "BufNewFile" },
     config = function()
