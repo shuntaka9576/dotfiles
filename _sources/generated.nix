@@ -34,6 +34,17 @@
       sha256 = "sha256-B0ilobUlp6UUXu6+lVqIHkbFnxVu33eXZFf+F7ODoQU=";
     };
   };
+  television = {
+    pname = "television";
+    version = "0.9.2";
+    src = fetchFromGitHub {
+      owner = "alexpasmantier";
+      repo = "television";
+      rev = "0.9.2";
+      fetchSubmodules = false;
+      sha256 = "sha256-XMANif4WbI+imSYeQRlvZJYjtaVbKrD4wVx2mQ1HYHg=";
+    };
+  };
   vhs = {
     pname = "vhs";
     version = "v0.8.0";

@@ -13,3 +13,7 @@ fetch.github = "sharkdp/fd"
 [vhs]
 src.github = "charmbracelet/vhs"
 fetch.github = "charmbracelet/vhs"
+
+[television]
+src.github = "alexpasmantier/television"
+fetch.github = "alexpasmantier/television"
