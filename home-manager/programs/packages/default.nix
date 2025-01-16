@@ -26,7 +26,6 @@
       cargo-watch
       sqlx-cli
       cargo-make
-      rustup
       docker
       tokei
       ghq
@@ -36,6 +35,7 @@
       zenn-cli
       fontconfig
       lua
+      # rust-bin.beta.latest.default
       nixfmt-rfc-style
       noto-fonts
       noto-fonts-cjk-sans

@@ -55,9 +55,17 @@ Install mise tools
 mise install
 ```
 
-Setting rust tools
+Setting rust tools.(When installing rustup through Nix, rust-analyzer may not function properly.)
 
 ```bash
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+# custom install
+#    default host triple: aarch64-apple-darwin
+#      default toolchain: nightly
+#                profile: default
+#   modify PATH variable: no
+
 rust up update
 ```
 

@@ -978,7 +978,8 @@ require("lazy").setup({
           elseif server_name == "eslint" then
             opts.root_dir = nvim_lsp.util.root_pattern("package.json", "node_modules")
           elseif server_name == "rust_analyzer" then
-            opts.cmd = { "/etc/profiles/per-user/shuntaka/bin/rust-analyzer" }
+            -- opts.cmd = { "/etc/profiles/per-user/shuntaka/bin/rust-analyzer" }
+            opts.cmd = { "/Users/shuntaka/.cargo/bin/rust-analyzer" }
           elseif server_name == "hls" then
             opts.cmd = { vim.fn.expand("~/.ghcup/bin/haskell-language-server-wrapper"), "lsp" } -- use ghcup hls lsp
           elseif server_name == "denols" then
