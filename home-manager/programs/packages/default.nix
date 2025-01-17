@@ -36,6 +36,7 @@
       fontconfig
       lua
       # rust-bin.beta.latest.default
+      # rustup
       nixfmt-rfc-style
       noto-fonts
       noto-fonts-cjk-sans

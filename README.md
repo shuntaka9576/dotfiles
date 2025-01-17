@@ -62,7 +62,7 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 # custom install
 #    default host triple: aarch64-apple-darwin
-#      default toolchain: nightly
+#      default toolchain: stable
 #                profile: default
 #   modify PATH variable: no
 

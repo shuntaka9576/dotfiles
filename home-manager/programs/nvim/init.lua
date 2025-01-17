@@ -881,7 +881,7 @@ require("lazy").setup({
           "denols",
           "biome",
           "ruff",
-          "dprint",
+          -- "dprint",
         },
       })
     end,
@@ -1020,23 +1020,23 @@ require("lazy").setup({
   --     vim.g.haskell_tools = {}
   --   end,
   -- },
-  {
-    "CopilotC-Nvim/CopilotChat.nvim",
-    branch = "main",
-    dependencies = {
-      { "zbirenbaum/copilot.lua" },
-      { "nvim-lua/plenary.nvim" },
-    },
-    build = "make tiktoken",
-    opts = {
-      debug = true,
-    },
-    opts = function()
-      vim.keymap.set("n", "<leader>cA", "<cmd>CopilotChat<CR>", { noremap = true, silent = true })
-      vim.keymap.set("n", "<leader>cS", "<cmd>CopilotChatCommitStaged<CR>", { noremap = true, silent = true })
-      vim.keymap.set("n", "<leader>cC", "<cmd>CopilotChatClose<CR>", { noremap = true, silent = true })
-    end,
-  },
+  -- {
+  --   "CopilotC-Nvim/CopilotChat.nvim",
+  --   branch = "main",
+  --   dependencies = {
+  --     { "zbirenbaum/copilot.lua" },
+  --     { "nvim-lua/plenary.nvim" },
+  --   },
+  --   build = "make tiktoken",
+  --   opts = {
+  --     debug = true,
+  --   },
+  --   opts = function()
+  --     vim.keymap.set("n", "<leader>cA", "<cmd>CopilotChat<CR>", { noremap = true, silent = true })
+  --     vim.keymap.set("n", "<leader>cS", "<cmd>CopilotChatCommitStaged<CR>", { noremap = true, silent = true })
+  --     vim.keymap.set("n", "<leader>cC", "<cmd>CopilotChatClose<CR>", { noremap = true, silent = true })
+  --   end,
+  -- },
   -- {
   --   "olimorris/codecompanion.nvim",
   --   dependencies = {
