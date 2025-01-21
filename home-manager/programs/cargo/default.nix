@@ -15,6 +15,11 @@ let
     cargoHash = "sha256-jTa+kNO7EbSv4XEgkGHzqsGbjWlD+NeOIPUZOqCILkE=";
     useFetchCargoVendor = true;
   };
+  code2prompt = pkgs.rustPlatform.buildRustPackage {
+    inherit (pkgs.sources.code2prompt) pname version src;
+    cargoHash = "sha256-jTa+kNO7EbSv4XEgkGHzqsGbjWlD+NeOIPUZOqCILkE=";
+    useFetchCargoVendor = true;
+  };
 in
 {
   home.packages = [

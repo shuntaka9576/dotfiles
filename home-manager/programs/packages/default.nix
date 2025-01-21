@@ -35,6 +35,8 @@
       zenn-cli
       fontconfig
       lua
+      typst
+      luarocks
       # rust-bin.beta.latest.default
       # rustup
       nixfmt-rfc-style
