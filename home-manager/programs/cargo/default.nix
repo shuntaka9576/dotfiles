@@ -12,12 +12,7 @@ let
   };
   television = pkgs.rustPlatform.buildRustPackage {
     inherit (pkgs.sources.television) pname version src;
-    cargoHash = "sha256-jTa+kNO7EbSv4XEgkGHzqsGbjWlD+NeOIPUZOqCILkE=";
-    useFetchCargoVendor = true;
-  };
-  code2prompt = pkgs.rustPlatform.buildRustPackage {
-    inherit (pkgs.sources.code2prompt) pname version src;
-    cargoHash = "sha256-jTa+kNO7EbSv4XEgkGHzqsGbjWlD+NeOIPUZOqCILkE=";
+    cargoHash = "sha256-7M/PMKyvnQnebY+VXstBJ3jNgqW1ycI/8eJF9r3RslQ=";
     useFetchCargoVendor = true;
   };
 in

@@ -2,7 +2,7 @@
 let
   vhs = pkgs.buildGoModule {
     inherit (pkgs.sources.vhs) pname version src;
-    vendorHash = "sha256-1UBhiRemJ+dQNm20+8pbOJus5abvTwVcuzxNMzrniN8=";
+    vendorHash = "sha256-2vRAI+Mm8Pzk3u4rndtwYnUlrAtjffe0kpoA1EHprQk=";
   };
 in
 {

@@ -81,6 +81,11 @@ Update package versions when needed:
 nix run github:berberman/nvfetcher -- -c "$HOME/dotfiles/nvfetcher.toml" -o "_sources"
 ```
 
+Update nvfetcher tools hash
+```bash
+nix run github:Mic92/nix-update
+```
+
 mise reset
 
 ```bash
