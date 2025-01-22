@@ -6,6 +6,7 @@ _: {
     ignores = [
       ".vim"
       ".DS_Store"
+      ".config"
     ];
     extraConfig = {
       ghq = {
