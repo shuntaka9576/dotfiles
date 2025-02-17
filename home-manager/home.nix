@@ -29,6 +29,7 @@
     ./programs/pet/default.nix
     ./programs/tmux/default.nix
     ./programs/vhs/default.nix
+    ./programs/vscode/default.nix
     ./programs/wezterm/default.nix
     ./programs/zellij/default.nix
     ./programs/zsh/default.nix
