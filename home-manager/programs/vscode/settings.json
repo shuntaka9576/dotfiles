@@ -136,7 +136,7 @@
     }
   ],
   // editor settings
-  "editor.fontFamily": "Monaco Nerd Font Mono",
+  "editor.fontFamily": "PlemolJP Console NF",
   "editor.formatOnSave": false,
   "editor.fontSize": 13,
   "editor.minimap.enabled": false,
@@ -176,5 +176,6 @@
     "plaintext": false,
     "markdown": false,
     "scminput": false
-  }
+  },
+  "editor.fontLigatures": false
 }

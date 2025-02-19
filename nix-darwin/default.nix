@@ -1,7 +1,6 @@
 { pkgs, ... }:
 {
   system.stateVersion = 5;
-  services.nix-daemon.enable = true;
   security.sudo.extraConfig = ''
     shuntaka ALL = (ALL) NOPASSWD: ALL
   '';

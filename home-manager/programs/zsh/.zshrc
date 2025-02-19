@@ -55,6 +55,7 @@ bindkey '^s' pet-select
 [ -f "$HOME/.ghcup/env" ] && . "$HOME/.ghcup/env"
 
 export PATH="$PATH:$HOME/.cargo/bin"
+export PATH="$PATH:$HOME/.rd/bin"
 
 # for rustup
 # . "$HOME/.cargo/env"
