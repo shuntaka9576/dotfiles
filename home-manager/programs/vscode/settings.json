@@ -177,5 +177,6 @@
     "markdown": false,
     "scminput": false
   },
-  "editor.fontLigatures": false
+  "editor.fontLigatures": false,
+  "git.confirmSync": false
 }

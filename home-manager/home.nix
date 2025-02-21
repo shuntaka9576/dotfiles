@@ -22,6 +22,7 @@
     ./programs/haskell/default.nix
     ./programs/git/default.nix
     ./programs/lazygit/default.nix
+    ./programs/mcp/default.nix
     ./programs/memo/default.nix
     ./programs/mise/default.nix
     ./programs/nvim/default.nix
