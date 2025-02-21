@@ -11,6 +11,7 @@
       autoUpdate = true;
     };
     casks = [
+      "windsurf"
       "figma"
       "oracle-jdk"
       "visual-studio-code"
