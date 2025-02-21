@@ -1,6 +1,4 @@
-{ pkgs, config, ... }:
-let
-in
+{ config, ... }:
 {
   home.file."Library/Application Support/Cursor/User/keybindings.json" = {
     source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/home-manager/programs/vscode/keybindings.json";

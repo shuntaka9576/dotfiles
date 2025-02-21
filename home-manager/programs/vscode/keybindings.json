@@ -138,5 +138,42 @@
     "key": "cmd+r",
     "command": "editor.action.rename",
     "when": "editorHasRenameProvider && editorTextFocus && !editorReadonly"
-  }
+  },
+  {
+    "key": "cmd+/",
+    "command": "-notebook.commentSelectedCells",
+    "when": "notebookEditable && notebookEditorFocused && !inputFocus"
+  },
+  {
+    "key": "cmd+/",
+    "command": "-editor.action.commentLine",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "cmd+/",
+    "command": "-workbench.action.chat.attachContext",
+    "when": "inChatInput && chatLocation == 'editing-session' || inChatInput && chatLocation == 'editor' || inChatInput && chatLocation == 'notebook' || inChatInput && chatLocation == 'panel' || inChatInput && chatLocation == 'terminal'"
+  },
+  {
+    "key": "cmd+/",
+    "command": "-toggleExplainMode",
+    "when": "suggestWidgetVisible"
+  },
+  {
+    "key": "shift+cmd+t",
+    "command": "-workbench.action.reopenClosedEditor"
+  },
+  {
+    "key": "shift+cmd+t",
+    "command": "workbench.action.terminal.focus",
+    "when": "terminalHasBeenCreated || terminalProcessSupported"
+  },
+  {
+    "key": "ctrl+[",
+    "command": "workbench.action.previousEditor"
+  },
+  {
+    "key": "ctrl+]",
+    "command": "workbench.action.nextEditor"
+  },
 ]

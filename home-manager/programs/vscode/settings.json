@@ -13,6 +13,7 @@
   "[go]": {
     "editor.insertSpaces": false,
     "editor.formatOnSave": true,
+    "editor.tabSize": 2,
     "editor.codeActionsOnSave": {
       "source.organizeImports": "explicit"
     }
@@ -33,7 +34,9 @@
   "editor.defaultFormatter": "charliermarsh.ruff",
   // rust settings
   "[rust]": {
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "rust-lang.rust-analyzer",
+    "editor.insertSpaces": true
   },
   // vue.js settings
   "[vue]": {
@@ -177,5 +180,8 @@
     "markdown": false,
     "scminput": false
   },
-  "editor.fontLigatures": false
+  "editor.fontLigatures": false,
+  "git.confirmSync": false,
+  "cursor.terminal.usePreviewBox": true,
+  "vscode-markdown-github.theme.dark": "dark"
 }
