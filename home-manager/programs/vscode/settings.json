@@ -174,14 +174,21 @@
   "plantuml.render": "Local",
   "git.openRepositoryInParentFolders": "never",
   "terminal.integrated.fontFamily": "Hack Nerd Font",
-  "github.copilot.enable": {
-    "*": true,
-    "plaintext": false,
-    "markdown": false,
-    "scminput": false
-  },
+  // "github.copilot.enable": {
+  //   "*": true,
+  //   "plaintext": false,
+  //   "markdown": false,
+  //   "scminput": false
+  // },
   "editor.fontLigatures": false,
   "git.confirmSync": false,
   "cursor.terminal.usePreviewBox": true,
-  "vscode-markdown-github.theme.dark": "dark"
+  "vscode-markdown-github.theme.dark": "dark",
+  "window.commandCenter": true,
+  "windsurf.autocompleteSpeed": "default",
+  "windsurf.autoExecutionPolicy": "auto",
+  "windsurf.chatFontSize": "default",
+  "windsurf.rememberLastModelSelection": true,
+  "windsurf.openRecentConversation": true,
+  "windsurf.explainAndFixInCurrentConversation": true
 }
