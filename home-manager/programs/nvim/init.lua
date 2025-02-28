@@ -515,32 +515,32 @@ require("lazy").setup({
               }
             end,
           },
-          typescript = {
-            function()
-              if use_deno_fmt() then
-                return {
-                  exe = "deno",
-                  args = { "fmt", "-" },
-                  stdin = true,
-                }
-              else
-                local file_path = util.get_current_buffer_file_path()
+          -- typescript = {
+          --   function()
+          --     if use_deno_fmt() then
+          --       return {
+          --         exe = "deno",
+          --         args = { "fmt", "-" },
+          --         stdin = true,
+          --       }
+          --     else
+          --       local file_path = util.get_current_buffer_file_path()
 
-                return {
-                  exe = get_biome_exe(),
-                  args = {
-                    "check",
-                    "--write",
-                    -- "--unsafe",
-                    "--stdin-file-path",
-                    util.escape_path(file_path),
-                  },
-                  stdin = true,
-                  cwd = vim.fn.fnamemodify(file_path, ":h"), -- Set the working directory to the file's directory
-                }
-              end
-            end,
-          },
+          --       return {
+          --         exe = get_biome_exe(),
+          --         args = {
+          --           "check",
+          --           "--write",
+          --           -- "--unsafe",
+          --           "--stdin-file-path",
+          --           util.escape_path(file_path),
+          --         },
+          --         stdin = true,
+          --         cwd = vim.fn.fnamemodify(file_path, ":h"), -- Set the working directory to the file's directory
+          --       }
+          --     end
+          --   end,
+          -- },
           -- typescriptreact = {
           --   function()
           --     if use_deno_fmt() then
@@ -1176,15 +1176,15 @@ require("lazy").setup({
       })
     end,
   },
-  {
-    "stevearc/oil.nvim",
-    ---@module 'oil'
-    ---@type oil.SetupOpts
-    opts = {},
-    -- Optional dependencies
-    dependencies = { { "echasnovski/mini.icons", opts = {} } },
-    -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons
-  },
+  -- {
+  --   "stevearc/oil.nvim",
+  --   ---@module 'oil'
+  --   ---@type oil.SetupOpts
+  --   opts = {},
+  --   -- Optional dependencies
+  --   dependencies = { { "echasnovski/mini.icons", opts = {} } },
+  --   -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons
+  -- },
   -- {
   --   "mfussenegger/nvim-jdtls",
   --   ft = { "java" },
