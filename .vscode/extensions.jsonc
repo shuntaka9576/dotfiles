@@ -8,8 +8,6 @@
     "vscodevim.vim",
     // rust
     "rust-lang.rust-analyzer",
-    // svelte
-    "svelte.svelte-vscode",
     // git
     "mhutchie.git-graph",
     // .gitignoreしたファイルを非表示
@@ -20,6 +18,13 @@
     "ms-python.python",
     "charliermarsh.ruff",
     // 作図
-    "hediet.vscode-drawio"
+    "hediet.vscode-drawio",
+    // cline
+    "rooveterinaryinc.roo-cline",
+    "saoudrizwan.claude-dev",
+    // nix
+    "bbenoist.nix",
+    // filer
+    "tomrijndorp.find-it-faster"
   ]
 }
