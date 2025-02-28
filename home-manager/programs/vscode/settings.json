@@ -54,20 +54,25 @@
   "vim.leader": ",",
   "vim.easymotion": true,
   "vim.easymotionKeys": "hklasdgjf",
+  "vim.incsearch": true,
+  "vim.inccommand": "nosplit",
+  "vim.handleKeys": {
+    "<Esc>": false
+  },
   "vim.normalModeKeyBindingsNonRecursive": [
     {
       "before": ["f"],
       "after": ["leader", "leader", "s"]
+    },
+    {
+      "before": ["<Esc>"],
+      "commands": [":noh"]
     }
   ],
   "vim.insertModeKeyBindings": [
     {
       "before": ["j", "j"],
-      "after": ["<Esc>"]
-    },
-    {
-      "before": ["leader", "w"],
-      "after": [],
+      "after": ["<Esc>"],
       "commands": [
         {
           "command": "workbench.action.files.save",
@@ -174,21 +179,23 @@
   "plantuml.render": "Local",
   "git.openRepositoryInParentFolders": "never",
   "terminal.integrated.fontFamily": "Hack Nerd Font",
-  // "github.copilot.enable": {
-  //   "*": true,
-  //   "plaintext": false,
-  //   "markdown": false,
-  //   "scminput": false
-  // },
+  "github.copilot.enable": {
+    "*": true,
+    "plaintext": false,
+    "markdown": false,
+    "scminput": false
+  },
   "editor.fontLigatures": false,
   "git.confirmSync": false,
   "cursor.terminal.usePreviewBox": true,
   "vscode-markdown-github.theme.dark": "dark",
   "window.commandCenter": true,
-  "windsurf.autocompleteSpeed": "default",
+  "windsurf.autocompleteSpeed": "fast",
   "windsurf.autoExecutionPolicy": "auto",
   "windsurf.chatFontSize": "default",
   "windsurf.rememberLastModelSelection": true,
   "windsurf.openRecentConversation": true,
-  "windsurf.explainAndFixInCurrentConversation": true
+  "windsurf.explainAndFixInCurrentConversation": true,
+  "vscode-markdown-github.theme.light": "light",
+  "git.ignoreRebaseWarning": true
 }
