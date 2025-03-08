@@ -37,6 +37,7 @@
       "claude"
       "cleanshot"
       "alacritty"
+      "obsidian"
       "wezterm"
     ];
   };
