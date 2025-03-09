@@ -176,4 +176,9 @@
     "key": "ctrl+]",
     "command": "workbench.action.nextEditor"
   },
+  {
+    "key": "shift+escape",
+    "command": "workbench.action.togglePanel",
+    "when": "panelVisible"
+  }
 ]
