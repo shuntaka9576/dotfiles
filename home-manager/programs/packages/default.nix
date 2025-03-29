@@ -46,6 +46,7 @@
       noto-fonts-color-emoji
       nerd-fonts.hack
       plemoljp-nf
+      ngrok
     ]
     ++ lib.optionals (system == "aarch64-darwin") [ reattach-to-user-namespace ];
 

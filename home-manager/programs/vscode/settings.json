@@ -7,7 +7,7 @@
     "**/CVS": true,
     "**/.DS_Store": true,
     "**/*.js.map": true,
-    "**/*.d.ts": true
+    // "**/*.d.ts": true
   },
   // golang settings
   "[go]": {
@@ -197,5 +197,9 @@
   "windsurf.openRecentConversation": true,
   "windsurf.explainAndFixInCurrentConversation": true,
   "vscode-markdown-github.theme.light": "light",
-  "git.ignoreRebaseWarning": true
+  "git.ignoreRebaseWarning": true,
+  "hediet.vscode-drawio.resizeImages": null,
+  "cursor.cpp.disabledLanguages": [
+    "plaintext"
+  ]
 }
