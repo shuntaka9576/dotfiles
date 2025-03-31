@@ -11,6 +11,12 @@
       "command": "/Users/shuntaka/.local/share/mise/installs/node/22.13.0/bin/node",
       "args": ["/Users/shuntaka/.local/share/mise/installs/node/22.13.0/bin/claude", "mcp", "serve"],
       "env": {}
+    },
+    "playwright": {
+      "command": "/Users/shuntaka/.local/share/mise/installs/node/22.13.0/bin/npx",
+      "args": [
+        "@playwright/mcp@latest"
+      ]
     }
   }
 }
