@@ -82,6 +82,7 @@ nix run github:berberman/nvfetcher -- -c "$HOME/dotfiles/nvfetcher.toml" -o "_so
 ```
 
 Update nvfetcher tools hash
+
 ```bash
 nix run github:Mic92/nix-update
 ```

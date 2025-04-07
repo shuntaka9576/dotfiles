@@ -6,7 +6,7 @@
     "**/.hg": true,
     "**/CVS": true,
     "**/.DS_Store": true,
-    "**/*.js.map": true,
+    "**/*.js.map": true
     // "**/*.d.ts": true
   },
   // golang settings
@@ -23,7 +23,7 @@
     "editor.formatOnSave": true
   },
   "[javascript]": {
-      "editor.defaultFormatter": "biomejs.biome"
+    "editor.defaultFormatter": "biomejs.biome"
   },
   // python settings
   "[python]": {
@@ -192,6 +192,15 @@
   "vscode-markdown-github.theme.light": "light",
   "git.ignoreRebaseWarning": true,
   "hediet.vscode-drawio.resizeImages": null,
+  "mcp": {
+    "inputs": [],
+    "servers": {
+      "playwright": {
+        "command": "npx",
+        "args": ["@playwright/mcp@latest"]
+      }
+    }
+  },
   // curosr settings
   "cursor.terminal.usePreviewBox": true,
   "cursor.cpp.disabledLanguages": [],
@@ -202,5 +211,5 @@
   "windsurf.chatFontSize": "default",
   "windsurf.rememberLastModelSelection": true,
   "windsurf.openRecentConversation": true,
-  "windsurf.explainAndFixInCurrentConversation": true,
+  "windsurf.explainAndFixInCurrentConversation": true
 }
