@@ -23,7 +23,7 @@ local secrets = import 'secrets.jsonnet';
       args: ['@playwright/mcp@latest'],
     },
     github: {
-      command: 'docker',
+      command: '/etc/profiles/per-user/shuntaka/bin/docker',
       args: [
         'run',
         '-i',
