@@ -198,9 +198,19 @@
       "playwright": {
         "command": "npx",
         "args": ["@playwright/mcp@latest"]
+      },
+      "mymcp": {
+        "command": "/Users/shuntaka/.local/share/mise/installs/node/22.13.0/bin/node",
+        "args": [
+          "--experimental-transform-types",
+          "/Users/shuntaka/repos/github.com/shuntaka9576/my-mcp/src/index.mts"
+        ]
       }
     }
   },
+  "chat.agent.enabled": true,
+  "locale": "ja",
+  "github.copilot.chat.localeOverride": "ja",
   // curosr settings
   "cursor.terminal.usePreviewBox": true,
   "cursor.cpp.disabledLanguages": [],
