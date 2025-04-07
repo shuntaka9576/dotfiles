@@ -13,6 +13,11 @@ Install Nix package manager
 sh <(curl -L https://nixos.org/nix/install)
 ```
 
+```bash
+# TODO: install jsonnet method
+jsonnet ~/dotfiles/home-manager/programs/mcp/config.jsonnet > ~/dotfiles/home-manager/programs/mcp/config.json
+```
+
 Use nix-darwin to configure your macOS system with declarative configuration
 
 ```bash

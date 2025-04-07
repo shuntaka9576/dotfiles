@@ -47,6 +47,7 @@
       nerd-fonts.hack
       plemoljp-nf
       ngrok
+      go-jsonnet
     ]
     ++ lib.optionals (system == "aarch64-darwin") [ reattach-to-user-namespace ];
 
