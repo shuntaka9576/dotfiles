@@ -180,5 +180,13 @@
     "key": "shift+escape",
     "command": "workbench.action.togglePanel",
     "when": "panelVisible"
+  },
+  {
+    "key": "cmd+i",
+    "command": "composerMode.agent"
+  },
+  {
+    "key": "cmd+l",
+    "command": "composerMode.chat"
   }
 ]
