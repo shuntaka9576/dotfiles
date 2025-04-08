@@ -22,6 +22,17 @@ local secrets = import 'secrets.jsonnet';
       command: '/Users/shuntaka/.local/share/mise/installs/node/22.13.0/bin/npx',
       args: ['@playwright/mcp@latest'],
     },
+    mymcp: {
+      command: "/Users/shuntaka/.local/share/mise/installs/node/22.13.0/bin/node",
+      args: ["--experimental-transform-types", "/Users/shuntaka/repos/github.com/shuntaka9576/my-mcp/src/index.mts"]
+    },
+    "awslabs.aws-documentation-mcp-server": {
+      command: "/Users/shuntaka/.local/share/mise/installs/python/3.13.2/bin/uvx",
+      args: ["awslabs.aws-documentation-mcp-server@latest"],
+      env: {
+        "FASTMCP_LOG_LEVEL": "ERROR"
+      }
+    },
     github: {
       command: '/etc/profiles/per-user/shuntaka/bin/docker',
       args: [
