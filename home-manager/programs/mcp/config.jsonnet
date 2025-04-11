@@ -2,30 +2,43 @@ local secrets = import 'secrets.jsonnet';
 
 {
   mcpServers: {
-    cal2prompt: {
-      command: '/Users/shuntaka/.cargo/bin/cal2prompt',
-      args: ['mcp'],
-      env: {
-        HOME: '/Users/shuntaka',
-      },
-    },
-    claude_code: {
-      command: '/Users/shuntaka/.local/share/mise/installs/node/22.13.0/bin/node',
-      args: [
-        '/Users/shuntaka/.local/share/mise/installs/node/22.13.0/bin/claude',
-        'mcp',
-        'serve',
-      ],
-      env: {},
-    },
-    playwright: {
+    // cal2prompt: {
+    //   command: '/Users/shuntaka/.cargo/bin/cal2prompt',
+    //   args: ['mcp'],
+    //   env: {
+    //     HOME: '/Users/shuntaka',
+    //   },
+    // },
+    // claude_code: {
+    //   command: '/Users/shuntaka/.local/share/mise/installs/node/22.13.0/bin/node',
+    //   args: [
+    //     '/Users/shuntaka/.local/share/mise/installs/node/22.13.0/bin/claude',
+    //     'mcp',
+    //     'serve',
+    //   ],
+    //   env: {},
+    // },
+    fetchMcp: {
       command: '/Users/shuntaka/.local/share/mise/installs/node/22.13.0/bin/npx',
-      args: ['@playwright/mcp@latest'],
+      args: ['-y', 'fetch-mcp'],
     },
-    mymcp: {
-      command: "/Users/shuntaka/.local/share/mise/installs/node/22.13.0/bin/node",
-      args: ["--experimental-transform-types", "/Users/shuntaka/repos/github.com/shuntaka9576/my-mcp/src/index.mts"]
-    },
+    // playwright: {
+    //   command: '/Users/shuntaka/.local/share/mise/installs/node/22.13.0/bin/npx',
+    //   args: ['@playwright/mcp@latest'],
+    // },
+    // "shuntaka.dev": {
+    //   "command": "npx",
+    //   "args": [
+    //     "-m",
+    //     "-y",
+    //     "sitemcp",
+    //     "https://shuntaka.dev"
+    //   ]
+    // },
+    // mymcp: {
+    //   command: "/Users/shuntaka/.local/share/mise/installs/node/22.13.0/bin/node",
+    //   args: ["--experimental-transform-types", "/Users/shuntaka/repos/github.com/shuntaka9576/my-mcp/src/index.mts"]
+    // },
     "awslabs.aws-documentation-mcp-server": {
       command: "/Users/shuntaka/.local/share/mise/installs/python/3.13.2/bin/uvx",
       args: ["awslabs.aws-documentation-mcp-server@latest"],

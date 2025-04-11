@@ -242,5 +242,6 @@
   "windsurf.chatFontSize": "default",
   "windsurf.rememberLastModelSelection": true,
   "windsurf.openRecentConversation": true,
-  "windsurf.explainAndFixInCurrentConversation": true
+  "windsurf.explainAndFixInCurrentConversation": true,
+  "workbench.activityBar.orientation": "vertical"
 }
