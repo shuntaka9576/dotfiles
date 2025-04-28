@@ -25,6 +25,8 @@
     // nix
     "bbenoist.nix",
     // filer
-    "tomrijndorp.find-it-faster"
+    "tomrijndorp.find-it-faster",
+    // frontend
+    "bradlc.vscode-tailwindcss"
   ]
 }

@@ -232,6 +232,9 @@
   "chat.agent.enabled": true,
   "locale": "ja",
   "github.copilot.chat.localeOverride": "ja",
+  "files.associations": {
+    "*.css": "tailwindcss"
+  },
   // curosr settings
   "cursor.terminal.usePreviewBox": true,
   "cursor.cpp.disabledLanguages": [],
@@ -243,5 +246,13 @@
   "windsurf.rememberLastModelSelection": true,
   "windsurf.openRecentConversation": true,
   "windsurf.explainAndFixInCurrentConversation": true,
-  "workbench.activityBar.orientation": "vertical"
+  "workbench.activityBar.orientation": "vertical",
+  "roo-cline.allowedCommands": [
+    "npm test",
+    "npm install",
+    "tsc",
+    "git log",
+    "git diff",
+    "git show"
+  ]
 }
