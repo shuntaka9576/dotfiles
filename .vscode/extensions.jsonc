@@ -27,6 +27,8 @@
     // filer
     "tomrijndorp.find-it-faster",
     // frontend
-    "bradlc.vscode-tailwindcss"
+    "bradlc.vscode-tailwindcss",
+    // dev tools
+    "typespec.typespec-vscode"
   ]
 }
