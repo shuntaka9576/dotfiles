@@ -36,18 +36,6 @@ vim.api.nvim_exec(
   false
 )
 
--- lsp keymap
-local lsp_on_attach = function()
-  local set = vim.keymap.set
-  set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>")
-  set("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>")
-  set("n", "<C-m>", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
-  set("n", "rn", "<cmd>lua vim.lsp.buf.rename()<CR>")
-  set("n", "<space>e", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>")
-  set("n", "<C-p>", "<cmd>lua vim.diagnostic.goto_prev()<CR>")
-  set("n", "<C-n>", "<cmd>lua vim.diagnostic.goto_next()<CR>")
-end
-
 ----------------------------
 -- filetype settings
 ----------------------------
@@ -116,20 +104,116 @@ vim.api.nvim_set_keymap("n", "<Space><Space>", ":nohlsearch<CR><Esc>", { noremap
 -- save yank results to clipboard
 vim.api.nvim_command("set clipboard+=unnamed")
 
+vim.lsp.config("ts_ls", {
+  init_options = { hostInfo = "neovim" },
+  cmd = { "typescript-language-server", "--stdio" },
+  filetypes = {
+    "javascript",
+    "javascriptreact",
+    "javascript.jsx",
+    "typescript",
+    "typescriptreact",
+    "typescript.tsx",
+  },
+  root_markers = { "tsconfig.json", "jsconfig.json", "package.json", ".git" },
+})
+vim.lsp.enable("ts_ls")
+
+vim.lsp.config("rust_analyzer", {
+  cmd = { "rust-analyzer" },
+  filetypes = { "rust" },
+})
+vim.lsp.enable("rust_analyzer")
+
+vim.lsp.config("hls", {
+  cmd = { "haskell-language-server-wrapper", "--lsp" },
+  filetypes = { "haskell", "lhaskell", "cabal" },
+})
+vim.lsp.enable("hls")
+
+vim.lsp.config("pyre", {
+  cmd = { "pyre", "persistent" },
+  filetypes = { "python" },
+  root_markers = { ".pyre_configuration" },
+})
+vim.lsp.enable("pyre")
+
+vim.lsp.config("pylsp", {
+  cmd = { "pylsp" },
+  filetypes = { "python" },
+  root_markers = {
+    "pyproject.toml",
+    "setup.py",
+    "setup.cfg",
+    "requirements.txt",
+    "Pipfile",
+    ".git",
+  },
+})
+vim.lsp.enable("pylsp")
+
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(ev)
+    vim.bo[ev.buf].omnifunc = nil
+    vim.bo[ev.buf].tagfunc = nil
+    vim.bo[ev.buf].formatexpr = nil
+
+    local set = vim.keymap.set
+
+    set("n", "<C-p>", "<cmd>lua vim.diagnostic.goto_prev()<CR>")
+    set("n", "<C-n>", "<cmd>lua vim.diagnostic.goto_next()<CR>")
+
+    local client = assert(vim.lsp.get_client_by_id(ev.data.client_id))
+    local keyopts = { remap = true, silent = true }
+    if client:supports_method("textDocument/implementation") then
+      set("n", "gD", vim.lsp.buf.implementation, keyopts)
+    end
+    if client:supports_method("textDocument/hover") then
+      set("n", "K", vim.lsp.buf.hover, keyopts)
+    end
+    if client:supports_method("textDocument/definition") then
+      set("n", "gd", vim.lsp.buf.definition, keyopts)
+    end
+    if client:supports_method("textDocument/typeDefinition*") then
+      set("n", "gt", vim.lsp.buf.type_definition, keyopts)
+    end
+    if client:supports_method("textDocument/references") then
+      set("n", "gr", vim.lsp.buf.references, keyopts)
+    end
+    if client:supports_method("textDocument/rename") then
+      set("n", "rn", vim.lsp.buf.rename, keyopts)
+    end
+    if client:supports_method("textDocument/codeAction") then
+      set("n", "<Leader>k", vim.lsp.buf.code_action, keyopts)
+    end
+    if client:supports_method("textDocument/signatureHelp") then
+      vim.api.nvim_create_autocmd("CursorHoldI", {
+        pattern = "*",
+        callback = function()
+          vim.lsp.buf.signature_help({ focus = false, silent = true })
+        end,
+      })
+    end
+  end,
+})
+
+vim.diagnostic.config({
+  virtual_lines = true,
+})
+
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(args)
+    local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
+    if client:supports_method("textDocument/completion") then
+      vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = false })
+    end
+  end,
+})
+
 ----------------------------
 -- Package manager settings
 ----------------------------
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-
-local function file_exists(name)
-  local f = io.open(name, "r")
-  if f ~= nil then
-    io.close(f)
-    return true
-  else
-    return false
-  end
-end
 
 vim.opt.runtimepath:prepend(lazypath)
 
@@ -337,21 +421,20 @@ require("lazy").setup({
     { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
   },
   },
-  -- {
-  --   "yuki-yano/fuzzy-motion.vim",
-  --   config = function()
-  --     vim.keymap.set("n", "f", "<cmd>FuzzyMotion<CR>")
-  --     vim.cmd("let g:fuzzy_motion_matchers = ['kensaku', 'fzf']")
-  --   end,
-  --   -- dependencies = {
-  --   --   "lambdalisue/kensaku.vim",
-  --   -- },
-  -- },
   {
     "FabijanZulj/blame.nvim",
     lazy = false,
     config = function()
       require("blame").setup({})
+    end,
+  },
+  {
+    "greggh/claude-code.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    config = function()
+      require("claude-code").setup()
     end,
   },
   {
@@ -383,12 +466,6 @@ require("lazy").setup({
       { "<leader>gY", "<cmd>GitLink!<cr>", mode = { "n", "v" }, desc = "Open git link" },
     },
   },
-  -- {
-  --   "ahmedkhalf/project.nvim",
-  --   config = function()
-  --     require("project_nvim").setup({})
-  --   end,
-  -- },
   {
     "mhartington/formatter.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
@@ -721,33 +798,6 @@ require("lazy").setup({
     end,
   },
   { "sindrets/diffview.nvim" },
-  -- {
-  --   "folke/noice.nvim",
-  --   event = "VeryLazy",
-  --   opts = {
-  --     messages = {
-  --       enabled = true,
-  --       view = "mini",
-  --       view_error = "mini",
-  --       view_warn = "mini",
-  --       view_history = "messages",
-  --       view_search = false,
-  --     },
-  --     lsp = {
-  --       progress = {
-  --         enabled = false,
-  --       },
-  --     },
-  --   },
-  --   dependencies = {
-  --     -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-  --     "MunifTanjim/nui.nvim",
-  --     -- OPTIONAL:
-  --     --   `nvim-notify` is only needed, if you want to use the notification view.
-  --     --   If not available, we use `mini` as the fallback
-  --     "rcarriga/nvim-notify",
-  --   },
-  -- },
   {
     "s1n7ax/nvim-window-picker",
     name = "window-picker",
@@ -858,157 +908,27 @@ require("lazy").setup({
       ]])
     end,
   },
-  {
-    "williamboman/mason.nvim",
-    dependencies = {
-      "WhoIsSethDaniel/mason-tool-installer.nvim",
-    },
-    config = function()
-      require("mason").setup()
-      require("mason-tool-installer").setup({
-        ensure_installed = {
-          "lua-language-server",
-          "typescript-language-server",
-          "gopls",
-          "rust-analyzer",
-          "haskell-language-server",
-          "nil",
-          "jdtls",
-          "json-lsp",
-          "svelte-language-server",
-          "tailwindcss-language-server",
-          "clangd",
-          "denols",
-          "biome",
-          "ruff",
-          -- "dprint",
-        },
-      })
-    end,
-  },
+  -- {
+  --   "neovim/nvim-lspconfig",
+  --   config = function()
+  --     local lspconfig = require("lspconfig")
+  --     lspconfig.lua_ls.setup({
+  --       settings = {
+  --         Lua = {
+  --           completion = {
+  --             callSnippet = "Replace",
+  --           },
+  --         },
+  --       },
+  --     })
+  --     lspconfig.jsonls.setup({})
+  --     lspconfig.ts_ls.setup({})
 
-  {
-    "williamboman/mason-lspconfig.nvim",
-  },
-  {
-    "akinsho/flutter-tools.nvim",
-    event = "VeryLazy",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "stevearc/dressing.nvim",
-    },
-    config = function()
-      require("flutter-tools").setup({
-        -- flutter_path = nil,
-        -- flutter_lookup_cmd = "asdf where flutter",
-        fvm = true,
-        widget_guides = { enabled = true },
-        lsp = {
-          settings = {
-            showtodos = true,
-            completefunctioncalls = true,
-            analysisexcludedfolders = {
-              vim.fn.expand("$Home/.pub-cache"),
-            },
-            renamefileswithclasses = "prompt",
-            updateimportsonrename = true,
-            enablesnippets = false,
-          },
-          on_attach = lsp_on_attach,
-        },
-        debugger = {
-          enabled = true,
-          run_via_dap = true,
-          exception_breakpoints = {},
-          register_configurations = function(paths)
-            local dap = require("dap")
-            dap.adapters.dart = {
-              type = "executable",
-              command = paths.flutter_bin,
-              args = { "debug-adapter" },
-            }
-            dap.configurations.dart = {}
-            require("dap.ext.vscode").load_launchjs()
-          end,
-        },
-      })
-    end,
-  },
-  {
-    "neovim/nvim-lspconfig",
-    config = function()
-      local lspconfig = require("lspconfig")
-      lspconfig.lua_ls.setup({
-        settings = {
-          Lua = {
-            completion = {
-              callSnippet = "Replace",
-            },
-          },
-        },
-      })
-      lspconfig.jsonls.setup({})
-      require("mason").setup()
-      require("mason-lspconfig").setup()
-      require("mason-lspconfig").setup_handlers({
-        function(server_name)
-          local nvim_lsp = require("lspconfig")
-          vim.lsp.handlers["textDocument/publishDiagnostics"] =
-            vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-              -- update_in_insert = false,
-              virtual_text = false,
-              -- virtual_text = {
-              --   format = function(diagnostic)
-              --     return string.format("%s (%s: %s)", diagnostic.message, diagnostic.source, diagnostic.code)
-              --   end,
-              -- },
-            })
-
-          local capabilities = require("cmp_nvim_lsp").default_capabilities()
-          local opts = {
-            capabilities = capabilities,
-          }
-
-          if server_name == "tsserver" then
-            if file_exists(os.getenv("PWD") .. "/deno.jsonc") then
-              return
-            end
-
-            opts.root_dir = nvim_lsp.util.root_pattern("package.json", "node_modules")
-          elseif server_name == "eslint" then
-            opts.root_dir = nvim_lsp.util.root_pattern("package.json", "node_modules")
-          elseif server_name == "rust_analyzer" then
-            -- opts.cmd = { "/etc/profiles/per-user/shuntaka/bin/rust-analyzer" }
-            opts.cmd = { "/Users/shuntaka/.cargo/bin/rust-analyzer" }
-          elseif server_name == "hls" then
-            opts.cmd = { vim.fn.expand("~/.ghcup/bin/haskell-language-server-wrapper"), "lsp" } -- use ghcup hls lsp
-          elseif server_name == "denols" then
-            if file_exists(os.getenv("PWD") .. "/package.json") then
-              return
-            end
-
-            opts.root_dir = nvim_lsp.util.root_pattern("deno.json", "deno.jsonc")
-            opts.settings = {
-              deno = {
-                suggest = {
-                  imports = {
-                    hosts = {
-                      ["https://deno.land"] = true,
-                      ["https://cdn.nest.land"] = true,
-                      ["https://crux.land"] = true,
-                    },
-                  },
-                },
-              },
-            }
-          end
-
-          opts.on_attach = lsp_on_attach
-          nvim_lsp[server_name].setup(opts)
-        end,
-      })
-    end,
-  },
+  --     vim.lsp.config("*", {
+  --       capabilities = require("cmp_nvim_lsp").default_capabilities(),
+  --     })
+  --   end,
+  -- },
   -- {
   --   "mrcjkb/haskell-tools.nvim",
   --   dependencies = {
@@ -1063,6 +983,7 @@ require("lazy").setup({
     },
     opts = function()
       local cmp = require("cmp")
+
       require("copilot_cmp").setup()
       -- please setup :Copilot auth
       require("copilot").setup({
@@ -1104,67 +1025,11 @@ require("lazy").setup({
         },
       }
 
-      return conf
-    end,
-  },
-  {
-    "scalameta/nvim-metals",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      {
-        "j-hui/fidget.nvim",
-        opts = {},
-      },
-      {
-        "mfussenegger/nvim-dap",
-        config = function(self, opts)
-          -- Debug settings if you're using nvim-dap
-          local dap = require("dap")
-
-          dap.configurations.scala = {
-            {
-              type = "scala",
-              request = "launch",
-              name = "RunOrTest",
-              metals = {
-                runType = "runOrTestFile",
-                --args = { "firstArg", "secondArg", "thirdArg" }, -- here just as an example
-              },
-            },
-            {
-              type = "scala",
-              request = "launch",
-              name = "Test Target",
-              metals = {
-                runType = "testTarget",
-              },
-            },
-          }
-        end,
-      },
-    },
-    ft = { "scala", "sbt" },
-    opts = function()
-      local metals_config = require("metals").bare_config()
-      metals_config.settings = {
-        showImplicitArguments = true,
-        excludedPackages = { "akka.actor.typed.javadsl", "com.github.swagger.akka.javadsl" },
-      }
-      metals_config.init_options.statusBarProvider = "off"
-      metals_config.capabilities = require("cmp_nvim_lsp").default_capabilities()
-      metals_config.on_attach = lsp_on_attach
-
-      return metals_config
-    end,
-    config = function(self, metals_config)
-      local nvim_metals_group = vim.api.nvim_create_augroup("nvim-metals", { clear = true })
-      vim.api.nvim_create_autocmd("FileType", {
-        pattern = self.ft,
-        callback = function()
-          require("metals").initialize_or_attach(metals_config)
-        end,
-        group = nvim_metals_group,
+      vim.lsp.config("*", {
+        capabilities = require("cmp_nvim_lsp").default_capabilities(),
       })
+
+      return conf
     end,
   },
   {
@@ -1176,45 +1041,4 @@ require("lazy").setup({
       })
     end,
   },
-  -- {
-  --   "stevearc/oil.nvim",
-  --   ---@module 'oil'
-  --   ---@type oil.SetupOpts
-  --   opts = {},
-  --   -- Optional dependencies
-  --   dependencies = { { "echasnovski/mini.icons", opts = {} } },
-  --   -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons
-  -- },
-  -- {
-  --   "mfussenegger/nvim-jdtls",
-  --   ft = { "java" },
-  --   opts = function()
-  --     local jdtls_bin = vim.fn.stdpath("data") .. "/mason/bin/jdtls"
-  --     local config = {
-  --       cmd = { jdtls_bin },
-  --       root_dir = vim.fs.dirname(vim.fs.find({ "gradlew", ".git", "mvnw" }, { upward = true })[1]),
-  --     }
-  --     require("jdtls").start_or_attach(config)
-
-  --     -- local jdtls_setup = function()
-  --     --   local jdtls = require('jdtls')
-  --     --   local jdtls_bin = vim.fn.stdpath("data") .. "/mason/bin/jdtls"
-  --     --   -- local root_dir = vim.fs.root(0, {".git", "mvnw", "gradlew"})
-
-  --     --   local config = {
-  --     --       cmd = { jdtls_bin },
-  --     --       -- root_dir = root_dir,
-  --     --       -- on_attach = lsp_on_attach,
-  --     --   }
-  --     --   jdtls.start_or_attach(config)
-  --     -- end
-
-  --     -- vim.api.nvim_create_autocmd('FileType', {
-  --     --   -- group = java_cmds,
-  --     --   pattern = {'java'},
-  --     --   desc = 'Setup jdtls',
-  --     --   callback = jdtls_setup,
-  --     -- })
-  --   end,
-  -- },
 })

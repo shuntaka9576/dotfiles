@@ -78,6 +78,11 @@ rust up update
 cargo install mini-redis
 ```
 
+install python lsps
+```bash
+pip install python-lsp-server pyre-check
+```
+
 ### Develop
 
 Update package versions when needed:
