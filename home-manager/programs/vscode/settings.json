@@ -254,5 +254,8 @@
     "git log",
     "git diff",
     "git show"
-  ]
+  ],
+  "terminal.integrated.env.osx": {
+    "Q_NEW_SESSION": "1"
+  }
 }
