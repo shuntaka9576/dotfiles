@@ -4,6 +4,7 @@
     "github.copilot",
     "github.copilot-chat",
     "saoudrizwan.claude-dev",
+    "anthropic.claude-code",
     // keybinding
     "vscodevim.vim",
     // rust

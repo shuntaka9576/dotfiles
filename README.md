@@ -79,6 +79,7 @@ cargo install mini-redis
 ```
 
 install python lsps
+
 ```bash
 pip install python-lsp-server pyre-check
 ```

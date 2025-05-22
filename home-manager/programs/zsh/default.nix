@@ -14,7 +14,7 @@
       me = "memo e";
       mn = "memo new";
       tka = "tmux kill-server";
-      u = "nix run github:LnL7/nix-darwin -- switch --flake \".#${username}\"";
+      u = "sudo nix run github:LnL7/nix-darwin --extra-experimental-features 'flakes nix-command' -- switch --flake \".#${username}\"";
       x = ''
         tmux rename-window "$(basename `pwd` | cut -c1-4)";
         tmux new-window -n "n" nvim;
