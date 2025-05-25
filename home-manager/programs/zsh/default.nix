@@ -5,6 +5,7 @@
     enableCompletion = true;
     shellAliases = {
       c = "claude";
+      cgm = "c -p 'コミット'";
       n = "nvim";
       l = "lazygit";
       ls = "eza";
