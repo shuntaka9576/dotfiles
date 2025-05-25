@@ -2,7 +2,9 @@
   "env": {},
   "permissions": {
     "allow": [
-      "WebFetch"
+      "WebFetch",
+      "Bash"
     ]
-  }
+  },
+  "includeCoAuthoredBy": false
 }
