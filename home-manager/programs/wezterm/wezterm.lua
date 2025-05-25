@@ -5,6 +5,7 @@ local keys = {
   { key = "-", mods = "CTRL", action = wezterm.action.DecreaseFontSize },
   { key = "0", mods = "CTRL", action = wezterm.action.ResetFontSize },
   { key = "f", mods = "CMD|CTRL", action = wezterm.action.ToggleFullScreen },
+  { key = "Enter", mods = "SHIFT", action = wezterm.action.SendString("\n") },
 }
 
 return {
