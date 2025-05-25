@@ -4,6 +4,7 @@
     enable = true;
     enableCompletion = true;
     shellAliases = {
+      c = "claude";
       n = "nvim";
       l = "lazygit";
       ls = "eza";

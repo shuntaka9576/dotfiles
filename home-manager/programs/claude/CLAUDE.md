@@ -1,1 +1,1 @@
-回答は日本語
+Speak in Japanese
