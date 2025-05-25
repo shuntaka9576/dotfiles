@@ -1,4 +1,8 @@
 {
   "env": {},
-  "permissions": {}
+  "permissions": {
+    "allow": [
+      "WebFetch"
+    ]
+  }
 }
