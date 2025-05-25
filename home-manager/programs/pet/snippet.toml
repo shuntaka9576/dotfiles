@@ -724,3 +724,15 @@ command = """
 curl -s https://gist.githubusercontent.com/lifepillar/09a44b8cf0f9397465614e622979107f/raw/24-bit-color.sh | bash
 """
 tag = ['truecolor']
+
+[[snippets]]
+description = "全てのMCPサーバーを削除"
+command = """
+claude mcp list | perl -ne 'print "$1\\n" if /^(\\w+):/' | xargs -I {} claude mcp remove {}
+"""
+tag = ['claude', 'mcp']
+
+[[snippets]]
+description = "claude-desktopからMCPサーバーを追加"
+command = "claude mcp add-from-claude-desktop"
+tag = ['claude', 'mcp']
