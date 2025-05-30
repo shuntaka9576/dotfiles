@@ -14,8 +14,7 @@ sh <(curl -L https://nixos.org/nix/install)
 ```
 
 ```bash
-# TODO: install jsonnet method
-jsonnet ~/dotfiles/home-manager/programs/mcp/config.jsonnet > ~/dotfiles/home-manager/programs/mcp/config.json
+make build
 ```
 
 Use nix-darwin to configure your macOS system with declarative configuration
@@ -82,6 +81,14 @@ install python lsps
 
 ```bash
 pip install python-lsp-server pyre-check
+```
+
+### Usage
+
+Update
+
+```bash
+make
 ```
 
 ### Develop

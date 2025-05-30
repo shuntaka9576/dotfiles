@@ -5,7 +5,7 @@
     enableCompletion = true;
     shellAliases = {
       c = "claude";
-      cgm = "c -p 'コミット'";
+      cgm = "c -p '過去のコミットメッセージを参考に、フォーマットを揃えてコミットを作ってください'";
       n = "nvim";
       l = "lazygit";
       ls = "eza";
