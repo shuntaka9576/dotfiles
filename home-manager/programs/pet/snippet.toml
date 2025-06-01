@@ -736,3 +736,23 @@ tag = ['claude', 'mcp']
 description = "claude-desktopからMCPサーバーを追加"
 command = "claude mcp add-from-claude-desktop"
 tag = ['claude', 'mcp']
+
+[[snippets]]
+description = "worktreeを.worktreesディレクトリに作成"
+command = "git worktree add .worktrees/<branch-name>"
+tag = ['git', 'worktree']
+
+[[snippets]]
+description = "worktreeの一覧表示"
+command = "git worktree list"
+tag = ['git', 'worktree']
+
+[[snippets]]
+description = "worktreeを削除"
+command = "git worktree remove .worktrees/<branch-name>"
+tag = ['git', 'worktree']
+
+[[snippets]]
+description = "worktreeでリモートブランチをチェックアウト"
+command = "git worktree add .worktrees/<branch-name> <branch-name>"
+tag = ['git', 'worktree']

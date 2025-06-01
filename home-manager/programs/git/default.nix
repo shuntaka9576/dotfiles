@@ -7,6 +7,7 @@ _: {
       ".vim"
       ".DS_Store"
       ".config"
+      ".worktrees"
     ];
     extraConfig = {
       ghq = {

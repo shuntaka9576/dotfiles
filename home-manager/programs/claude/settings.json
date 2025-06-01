@@ -1,7 +1,11 @@
 {
   "env": {},
+  "includeCoAuthoredBy": false,
   "permissions": {
-    "allow": ["WebFetch", "Bash"]
+    "allow": [
+      "WebFetch",
+      "Bash"
+    ]
   },
-  "includeCoAuthoredBy": false
+  "model": "opus"
 }
