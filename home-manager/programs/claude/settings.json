@@ -7,5 +7,6 @@
       "Bash"
     ]
   },
-  "model": "opus"
+  "model": "opus",
+  "autoUpdaterStatus": false
 }

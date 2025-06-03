@@ -13,6 +13,7 @@ return {
   window_decorations = "RESIZE",
   native_macos_fullscreen_mode = true,
   automatically_reload_config = true,
+  audible_bell = "SystemBeep",
   color_scheme = "Dracula (Official)",
   initial_cols = 200,
   initial_rows = 60,
