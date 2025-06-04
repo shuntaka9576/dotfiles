@@ -57,6 +57,7 @@ bindkey '^s' pet-select
 export PATH="$PATH:$HOME/.cargo/bin"
 export PATH="$PATH:$HOME/.rd/bin"
 export VISUAL="nvim"
+export CLAUDE_CONFIG_DIR="$HOME/.config/claude"
 
 # for rustup
 # . "$HOME/.cargo/env"
