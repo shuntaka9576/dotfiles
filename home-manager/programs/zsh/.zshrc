@@ -56,6 +56,7 @@ bindkey '^s' pet-select
 
 export PATH="$PATH:$HOME/.cargo/bin"
 export PATH="$PATH:$HOME/.rd/bin"
+export PATH="$HOME/.local/bin:$PATH"
 export VISUAL="nvim"
 export CLAUDE_CONFIG_DIR="$HOME/.config/claude"
 
