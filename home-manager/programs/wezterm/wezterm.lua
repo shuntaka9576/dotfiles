@@ -8,18 +8,26 @@ local keys = {
   { key = "Enter", mods = "SHIFT", action = wezterm.action.SendString("\n") },
 }
 
+wezterm.on("bell", function(window, pane)
+  window:toast_notification("Claude Code", "Task completed", nil, 4000)
+end)
+
 return {
   enable_tab_bar = false,
   window_decorations = "RESIZE",
   native_macos_fullscreen_mode = true,
   automatically_reload_config = true,
-  audible_bell = "SystemBeep",
+  audible_bell = "Disabled",
   color_scheme = "Dracula (Official)",
   initial_cols = 200,
   initial_rows = 60,
   window_background_opacity = 1.0,
-  default_cursor_style = "SteadyBlock",
+  default_cursor_style = "BlinkingBlock",
+  cursor_blink_rate = 480,
+  cursor_blink_ease_in = "Constant",
+  cursor_blink_ease_out = "Constant",
   front_end = "WebGpu",
+  notification_handling = "AlwaysShow",
   font = wezterm.font_with_fallback({
     { family = "PlemolJP Console NF", assume_emoji_presentation = false },
     { family = "Symbols Nerd Font Mono", assume_emoji_presentation = false },

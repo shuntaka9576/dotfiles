@@ -2,10 +2,8 @@
   "env": {},
   "includeCoAuthoredBy": false,
   "permissions": {
-    "allow": [
-      "WebFetch",
-      "Bash"
-    ]
+    "defaultMode": "acceptEdits",
+    "allow": ["WebFetch", "Bash"]
   },
   "hooks": {
     "PostToolUse": [
@@ -18,7 +16,17 @@
           }
         ]
       }
+    ],
+    "Notification": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '\\a'"
+          }
+        ]
+      }
     ]
-  },
-  "autoUpdaterStatus": false
+  }
 }

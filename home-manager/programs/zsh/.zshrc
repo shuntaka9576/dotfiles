@@ -60,5 +60,8 @@ export PATH="$HOME/.local/bin:$PATH"
 export VISUAL="nvim"
 export CLAUDE_CONFIG_DIR="$HOME/.config/claude"
 
+# tab complete disable
+unsetopt BEEP
+
 # for rustup
 # . "$HOME/.cargo/env"
