@@ -7,6 +7,18 @@
       "Bash"
     ]
   },
-  "model": "opus",
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/shuntaka/dotfiles/home-manager/programs/claude/hooks/format.ts >> ~/.config/claude/debug/format.log"
+          }
+        ]
+      }
+    ]
+  },
   "autoUpdaterStatus": false
 }
