@@ -6,13 +6,13 @@
     "allow": ["WebFetch", "Bash"]
   },
   "hooks": {
-    "PostToolUse": [
+    "Stop": [
       {
-        "matcher": "Write|Edit|MultiEdit",
+        "matcher": "",
         "hooks": [
           {
             "type": "command",
-            "command": "/Users/shuntaka/dotfiles/home-manager/programs/claude/hooks/format.ts >> ~/.config/claude/debug/format.log"
+            "command": "echo \\a"
           }
         ]
       }
@@ -23,7 +23,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "echo '\\a'"
+            "command": "echo \"\\a\""
           }
         ]
       }

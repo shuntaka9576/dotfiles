@@ -977,19 +977,19 @@ require("lazy").setup({
       { "hrsh7th/cmp-path" },
       { "hrsh7th/cmp-vsnip" },
       { "hrsh7th/vim-vsnip" },
-      { "zbirenbaum/copilot-cmp" },
-      { "zbirenbaum/copilot.lua" },
+      -- { "zbirenbaum/copilot-cmp" },
+      -- { "zbirenbaum/copilot.lua" },
       { "onsails/lspkind.nvim" },
     },
     opts = function()
       local cmp = require("cmp")
 
-      require("copilot_cmp").setup()
+      -- require("copilot_cmp").setup()
       -- please setup :Copilot auth
-      require("copilot").setup({
-        suggestion = { enabled = false },
-        panel = { enabled = false },
-      })
+      -- require("copilot").setup({
+      --   suggestion = { enabled = false },
+      --   panel = { enabled = false },
+      -- })
 
       local lspkind = require("lspkind")
       lspkind.init({
