@@ -8,6 +8,7 @@ _: {
       ".DS_Store"
       ".config"
       ".worktrees"
+      "CLAUDE.md"
     ];
     extraConfig = {
       ghq = {

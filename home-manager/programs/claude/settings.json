@@ -1,32 +1,24 @@
 {
-  "env": {},
+  "env": {
+    "MAX_THINKING_TOKENS": "31999"
+  },
   "includeCoAuthoredBy": false,
   "permissions": {
-    "defaultMode": "acceptEdits",
-    "allow": ["WebFetch", "Bash"]
+    "allow": ["WebFetch", "Bash"],
+    "defaultMode": "acceptEdits"
   },
   "hooks": {
-    "PostToolUse": [
-      {
-        "matcher": "Write|Edit|MultiEdit",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "/Users/shuntaka/dotfiles/home-manager/programs/claude/hooks/format.ts >> ~/.config/claude/debug/format.log"
-          }
-        ]
-      }
-    ],
-    "Notification": [
+    "Stop": [
       {
         "matcher": "",
         "hooks": [
           {
             "type": "command",
-            "command": "echo '\\a'"
+            "command": "~/dotfiles/home-manager/programs/claude/hooks/stop.ts"
           }
         ]
       }
     ]
-  }
+  },
+  "model": "opus"
 }
