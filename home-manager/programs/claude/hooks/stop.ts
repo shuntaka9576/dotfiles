@@ -13,9 +13,8 @@ const main = async () => {
   try {
     const data: HookStopData = JSON.parse(input);
 
-    const parentDir = data.transcript_path.split("/").slice(-2)[0];
-    const homePattern = Deno.env.get("HOME")?.replace(/\//g, "-") || "";
-    const repoName = parentDir.replace(new RegExp(`^-?${homePattern}-`), "");
+    const currentDir = Deno.cwd();
+    const repoName = currentDir.split("/").pop() || "";
 
     const process = new Deno.Command("osascript", {
       args: [
