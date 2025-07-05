@@ -1,6 +1,7 @@
 { pkgs, ... }:
 {
   system.stateVersion = 5;
+  system.primaryUser = "shuntaka";
   security.sudo.extraConfig = ''
     shuntaka ALL = (ALL) NOPASSWD: ALL
   '';

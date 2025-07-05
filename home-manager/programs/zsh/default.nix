@@ -31,7 +31,7 @@
         theme = "pure";
       };
     };
-    initExtra = ''
+    initContent = ''
       ${builtins.readFile ./.zshrc}
     '';
   };
