@@ -9,6 +9,7 @@ _: {
       ".config"
       ".worktrees"
       "CLAUDE.md"
+      ".trr"
     ];
     extraConfig = {
       ghq = {
