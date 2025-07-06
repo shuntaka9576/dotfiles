@@ -8,6 +8,7 @@
 4. 適切なタイトルと説明でPRを作成
 
 PR作成時の手順：
+
 - `git status`でコミットされていない変更を確認
 - `git log main..HEAD`でPRに含まれるコミットを確認
 - `git diff main...HEAD`ですべての変更内容を把握

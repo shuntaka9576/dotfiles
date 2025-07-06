@@ -8,6 +8,7 @@ Create a GitHub pull request with the following steps:
 4. Create PR with appropriate title and description
 
 When creating a PR:
+
 - Run `git status` to check for uncommitted changes
 - Run `git log main..HEAD` to see commits to be included
 - Run `git diff main...HEAD` to understand all changes

@@ -16,10 +16,22 @@ const main = async () => {
     const currentDir = Deno.cwd();
     const repoName = currentDir.split("/").pop() || "";
 
+    // Get current branch name
+    const branchProcess = new Deno.Command("git", {
+      args: ["branch", "--show-current"],
+      stdout: "piped",
+      stderr: "piped",
+    });
+
+    const branchResult = await branchProcess.output();
+    const branchName = new TextDecoder().decode(branchResult.stdout).trim();
+
+    const repoInfo = branchName ? `${repoName} (${branchName})` : repoName;
+
     const process = new Deno.Command("osascript", {
       args: [
         "-e",
-        `display notification "Task Completed 🚀" with title "⚡ Claude Code" subtitle "${repoName} 📦"`,
+        `display notification "Task Completed 🚀" with title "⚡ Claude Code" subtitle "${repoInfo} 📦"`,
       ],
       stdout: "piped",
       stderr: "piped",
