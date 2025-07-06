@@ -14,7 +14,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/Users/shuntaka/dotfiles/home-manager/programs/claude/hooks/format.ts >> ~/.config/claude/debug/format.log"
+            "command": "/Users/shuntaka/dotfiles/home-manager/programs/claude/hooks/format.ts"
           }
         ]
       }

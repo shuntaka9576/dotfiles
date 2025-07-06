@@ -32,9 +32,19 @@ interface HookPostToolUseData {
   tool_response: ToolResponse;
 }
 
-const runCargoCommand = async (args: string[], cwd: string) => {
-  const command = new Deno.Command("cargo", { args, cwd });
-  await command.output();
+const runCommand = async (cmd: string, args: string[], cwd: string) => {
+  const command = new Deno.Command(cmd, {
+    args,
+    cwd,
+    stdout: "piped",
+    stderr: "piped",
+  });
+  const { stdout, stderr } = await command.output();
+
+  return {
+    stdout: new TextDecoder().decode(stdout),
+    stderr: new TextDecoder().decode(stderr),
+  };
 };
 
 const main = async () => {
@@ -44,27 +54,45 @@ const main = async () => {
   const currentDir = Deno.cwd();
   const homeDir = Deno.env.get("HOME");
 
+  let allOutput = "";
+  let allError = "";
+
   // dotfilesディレクトリの場合はnix fmtを実行
   if (currentDir === `${homeDir}/dotfiles`) {
-    const command = new Deno.Command("nix", { args: ["fmt"], cwd: currentDir });
-    await command.output();
-    return;
+    const result = await runCommand("nix", ["fmt"], currentDir);
+    allOutput += result.stdout;
+    allError += result.stderr;
+  } else {
+    const filePath = data.tool_response.filePath;
+    const extension = filePath.substring(filePath.lastIndexOf("."));
+
+    if (extension === ".rs") {
+      const hasMakefile = await Deno.stat(`${currentDir}/Makefile.toml`)
+        .then(() => true)
+        .catch(() => false);
+
+      if (hasMakefile) {
+        const result = await runCommand("cargo", ["make", "ci"], currentDir);
+        allOutput += result.stdout;
+        allError += result.stderr;
+      } else {
+        const checkResult = await runCommand("cargo", ["check"], currentDir);
+        allOutput += checkResult.stdout;
+        allError += checkResult.stderr;
+
+        const fmtResult = await runCommand("cargo", ["fmt"], currentDir);
+        allOutput += fmtResult.stdout;
+        allError += fmtResult.stderr;
+      }
+    }
   }
 
-  const filePath = data.tool_response.filePath;
-  const extension = filePath.substring(filePath.lastIndexOf("."));
-
-  if (extension === ".rs") {
-    const hasMakefile = await Deno.stat(`${currentDir}/Makefile.toml`)
-      .then(() => true)
-      .catch(() => false);
-
-    if (hasMakefile) {
-      await runCargoCommand(["make", "ci"], currentDir);
-    } else {
-      await runCargoCommand(["check"], currentDir);
-      await runCargoCommand(["fmt"], currentDir);
-    }
+  // 最後にまとめて出力
+  if (allOutput) {
+    console.log(allOutput);
+  }
+  if (allError) {
+    console.error(allError);
   }
 };
 
