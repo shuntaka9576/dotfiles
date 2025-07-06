@@ -14,7 +14,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "~/dotfiles/home-manager/programs/claude/hooks/stop.ts"
+            "command": "~/dotfiles/home-manager/programs/claude/hooks/notify.ts"
           }
         ]
       }
