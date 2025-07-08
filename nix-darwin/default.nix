@@ -40,6 +40,7 @@
       "alacritty"
       "obsidian"
       "wezterm"
+      "screen-studio"
     ];
   };
 

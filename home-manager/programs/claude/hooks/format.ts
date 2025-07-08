@@ -32,67 +32,103 @@ interface HookPostToolUseData {
   tool_response: ToolResponse;
 }
 
-const runCommand = async (cmd: string, args: string[], cwd: string) => {
+interface CommandResult {
+  code: number;
+  stdout: string;
+  stderr: string;
+}
+
+interface Command {
+  cmd: string;
+  args: string[];
+  cwd: string;
+}
+
+const runCommand = async (
+  cmd: string,
+  args: string[],
+  cwd: string,
+): Promise<CommandResult> => {
   const command = new Deno.Command(cmd, {
     args,
     cwd,
     stdout: "piped",
     stderr: "piped",
   });
-  const { stdout, stderr } = await command.output();
 
-  return {
+  const { code, stdout, stderr } = await command.output();
+  const result = {
+    code,
     stdout: new TextDecoder().decode(stdout),
     stderr: new TextDecoder().decode(stderr),
   };
+
+  return result;
 };
 
 const main = async () => {
-  const input = await new Response(Deno.stdin.readable).text();
-  const data: HookPostToolUseData = JSON.parse(input);
+  try {
+    const input = await new Response(Deno.stdin.readable).text();
+    const data: HookPostToolUseData = JSON.parse(input);
 
-  const currentDir = Deno.cwd();
-  const homeDir = Deno.env.get("HOME");
+    const currentDir = Deno.cwd();
+    const homeDir = Deno.env.get("HOME");
 
-  let allOutput = "";
-  let allError = "";
+    const commands: Command[] = [];
 
-  // dotfilesディレクトリの場合はnix fmtを実行
-  if (currentDir === `${homeDir}/dotfiles`) {
-    const result = await runCommand("nix", ["fmt"], currentDir);
-    allOutput += result.stdout;
-    allError += result.stderr;
-  } else {
-    const filePath = data.tool_response.filePath;
-    const extension = filePath.substring(filePath.lastIndexOf("."));
+    if (currentDir === `${homeDir}/dotfiles`) {
+      commands.push({ cmd: "nix", args: ["fmt"], cwd: currentDir });
+    } else {
+      const filePath = data.tool_response.filePath;
+      const extension = filePath.substring(filePath.lastIndexOf("."));
 
-    if (extension === ".rs") {
-      const hasMakefile = await Deno.stat(`${currentDir}/Makefile.toml`)
-        .then(() => true)
-        .catch(() => false);
+      if (extension === ".rs") {
+        const hasMakefile = await Deno.stat(`${currentDir}/Makefile.toml`)
+          .then(() => true)
+          .catch(() => false);
 
-      if (hasMakefile) {
-        const result = await runCommand("cargo", ["make", "ci"], currentDir);
-        allOutput += result.stdout;
-        allError += result.stderr;
-      } else {
-        const checkResult = await runCommand("cargo", ["check"], currentDir);
-        allOutput += checkResult.stdout;
-        allError += checkResult.stderr;
-
-        const fmtResult = await runCommand("cargo", ["fmt"], currentDir);
-        allOutput += fmtResult.stdout;
-        allError += fmtResult.stderr;
+        if (hasMakefile) {
+          commands.push({ cmd: "cargo", args: ["fmt"], cwd: currentDir });
+          commands.push({
+            cmd: "cargo",
+            args: ["make", "ci"],
+            cwd: currentDir,
+          });
+        } else {
+          commands.push({ cmd: "cargo", args: ["check"], cwd: currentDir });
+          commands.push({ cmd: "cargo", args: ["fmt"], cwd: currentDir });
+        }
       }
     }
-  }
 
-  // 最後にまとめて出力
-  if (allOutput) {
-    console.log(allOutput);
-  }
-  if (allError) {
-    console.error(allError);
+    const results: CommandResult[] = [];
+    for (const command of commands) {
+      const result = await runCommand(command.cmd, command.args, command.cwd);
+      results.push(result);
+    }
+
+    const failedCommands = commands
+      .map((cmd, index) => ({
+        command: `${cmd.cmd} ${cmd.args.join(" ")}`,
+        cwd: cmd.cwd,
+        exitCode: results[index].code,
+        stdout: results[index].stdout,
+        stderr: results[index].stderr,
+      }))
+      .filter((cmd) => cmd.exitCode !== 0);
+
+    if (failedCommands.length > 0) {
+      const output = {
+        message:
+          "Hook execution completed with errors. Please address the following issues:",
+        failedCommands: failedCommands,
+      };
+      console.error(JSON.stringify(output));
+      Deno.exit(2);
+    }
+  } catch (error) {
+    console.error(`[ERROR] Format hook failed: ${error}`);
+    throw error;
   }
 };
 
