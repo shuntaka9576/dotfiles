@@ -152,6 +152,16 @@ vim.lsp.config("pylsp", {
 })
 vim.lsp.enable("pylsp")
 
+vim.lsp.config("gopls", {
+  cmd = { "gopls" },
+  filetypes = { "go" },
+  root_markers = { "go.mod" },
+  init_options = {
+    gofumpt = true,
+  },
+})
+vim.lsp.enable("gopls")
+
 vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(ev)
     vim.bo[ev.buf].omnifunc = nil

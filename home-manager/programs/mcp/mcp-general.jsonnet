@@ -31,5 +31,21 @@ local secrets = import 'secrets.jsonnet';
         GITHUB_PERSONAL_ACCESS_TOKEN: secrets.github.token,
       },
     },
+    "backlog": {
+      "command": "/etc/profiles/per-user/shuntaka/bin/docker",
+      "args": [
+        "run",
+        "--pull", "always",
+        "-i",
+        "--rm",
+        "-e", "BACKLOG_DOMAIN",
+        "-e", "BACKLOG_API_KEY",
+        "ghcr.io/nulab/backlog-mcp-server"
+      ],
+      "env": {
+        "BACKLOG_DOMAIN": secrets.backlog.domain,
+        "BACKLOG_API_KEY": secrets.backlog.token
+      }
+    }
   },
 }
