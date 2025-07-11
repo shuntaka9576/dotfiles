@@ -9,6 +9,7 @@
     [
       gnumake
       gcc
+      mysql84
       code2prompt
       duckdb
       go
