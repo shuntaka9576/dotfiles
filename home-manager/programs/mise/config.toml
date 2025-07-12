@@ -1,5 +1,5 @@
 [tools]
-node = ["18", "20", "22"]
+node = "latest"
 python = "3.13"
 
 [settings]

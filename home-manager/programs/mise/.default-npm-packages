@@ -3,3 +3,4 @@ lighthouse
 npm-check-updates
 @biomejs/biome
 pnpm
+@anthropic-ai/claude-code

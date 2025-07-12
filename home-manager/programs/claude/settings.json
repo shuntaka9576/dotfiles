@@ -7,29 +7,5 @@
     "allow": ["WebFetch", "Bash"],
     "defaultMode": "acceptEdits"
   },
-  "hooks": {
-    "PostToolUse": [
-      {
-        "matcher": "Write|Edit|MultiEdit",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "/Users/shuntaka/dotfiles/home-manager/programs/claude/hooks/format.ts"
-          }
-        ]
-      }
-    ],
-    "Stop": [
-      {
-        "matcher": "",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "~/dotfiles/home-manager/programs/claude/hooks/notify.ts"
-          }
-        ]
-      }
-    ]
-  },
   "model": "opus"
 }
