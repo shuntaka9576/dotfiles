@@ -1,7 +1,2 @@
-[tools]
-node = "latest"
-python = "3.13"
-
 [settings]
-trusted_config_paths = ["~"]
-idiomatic_version_file_enable_tools = []
+idiomatic_version_file_enable_tools = ["node", "python", "go"]
