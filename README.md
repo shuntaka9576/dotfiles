@@ -9,6 +9,8 @@
 bash <(curl -sSL https://raw.githubusercontent.com/shuntaka9576/dotfiles/main/install.sh)
 ```
 
+**Note**: On first run, the script may fail due to missing git. If the Xcode Command Line Developer Tools installation GUI appears, complete the installation and then run the command again.
+
 This script will:
 
 - Install Xcode Command Line Tools (if not already installed)
