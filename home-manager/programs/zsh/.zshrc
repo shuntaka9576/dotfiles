@@ -54,12 +54,11 @@ bindkey '^s' pet-select
 
 [ -f "$HOME/.ghcup/env" ] && . "$HOME/.ghcup/env"
 
-export PATH="$PATH:$HOME/.cargo/bin"
-export PATH="$PATH:$HOME/.rd/bin"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
 export VISUAL="nvim"
 export CLAUDE_CONFIG_DIR="$HOME/.config/claude"
+# export PATH="$HOME/.cargo/bin:$PATH"
 
 # tab complete disable
 unsetopt BEEP

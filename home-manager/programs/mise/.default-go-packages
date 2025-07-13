@@ -1,0 +1,3 @@
+github.com/golangci/golangci-lint/cmd/golangci-lint@latest
+golang.org/x/tools/gopls@latest
+honnef.co/go/tools/cmd/staticcheck@latest

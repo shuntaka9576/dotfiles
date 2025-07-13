@@ -1,3 +1,5 @@
 [tools]
 node = "latest"
 python = "latest"
+rust = { version = "latest", targets = "aarch64-apple-darwin", components = "rust-src,clippy,rust-analyzer,llvm-tools" }
+go = "latest"
