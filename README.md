@@ -3,65 +3,48 @@
 <details>
 <summary><h2>Initial Setup</h2></summary>
 
-### Install Nix package manager
+### Installation (macOS)
 
 ```bash
-sh <(curl -L https://nixos.org/nix/install)
+bash <(curl -sSL https://raw.githubusercontent.com/shuntaka9576/dotfiles/main/install.sh)
 ```
 
-Use nix-darwin to configure your macOS system with declarative configuration
+This script will:
 
-```bash
-make init
-```
+- Install Nix package manager
+- Clone this repository to `~/dotfiles`
+- Set up nix-darwin
+- Install mise tools
 
-### Runtime Setup
+### Post-Installation Setup
 
-Install mise tools
+After running the installation script, complete the following steps:
 
-```bash
-mise install
-```
+1. **Restart your terminal** or run `source ~/.zshrc`
 
-### Neovim Setup
+2. **Neovim Setup**
 
-```bash
-nvim
-```
+   ```bash
+   nvim
+   ```
 
-nvim
+   Inside Neovim:
 
-```nvim
-:Lazy update
-```
+   ```nvim
+   :Lazy update
+   ```
 
-### Authentication Tools
+3. **GitHub Authentication**
 
-Claude Code Authentication
+   ```bash
+   gh auth login
+   ```
 
-```bash
-gh auth login
-```
-
-GitHub Authentication
-
-```bash
-gh auth login
-```
-
-### Install Haskell
-
-Install Haskell (nix package unstable)
-
-```bash
-curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
-```
-
-Install recommended tools
-
-```bash
-ghcup tui
-```
+4. **Install Haskell** (optional)
+   ```bash
+   curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
+   ghcup tui
+   ```
 
 ### Manual Application Installation
 
