@@ -32,7 +32,7 @@ nvim
 nvim
 
 ```nvim
-:Lazy
+:Lazy update
 ```
 
 ### Authentication Tools

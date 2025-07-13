@@ -13,6 +13,7 @@
     "_sources/*"
     "home-manager/programs/vscode/.vscode/extensions.json"
     "home-manager/programs/memo/template.md"
+    "home-manager/programs/nvim/lazy-lock.json"
   ];
   settings.formatter.shfmt.includes = [ "*/zshrc" ];
 }
