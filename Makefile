@@ -1,4 +1,4 @@
-all: mcp switch
+all: fmt mcp switch
 
 init: switch
 
@@ -22,4 +22,7 @@ clean-mcp:
 gc:
 	nix-collect-garbage -d
 
-.PHONY: all init update switch mcp clean-mcp gc
+fmt:
+	nix fmt
+
+.PHONY: all init update switch mcp clean-mcp gc fmt
