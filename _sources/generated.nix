@@ -36,24 +36,24 @@
   };
   television = {
     pname = "television";
-    version = "0.9.4";
+    version = "0.12.3";
     src = fetchFromGitHub {
       owner = "alexpasmantier";
       repo = "television";
-      rev = "0.9.4";
+      rev = "0.12.3";
       fetchSubmodules = false;
-      sha256 = "sha256-S0at9qiPaHtFSag/DjJxczcjuQwPIWQBqxrRwrWIPk0=";
+      sha256 = "sha256-ttKOJ46W10HoawQNQlUtDuQh/WbvEakJx2QghOJD8wE=";
     };
   };
   vhs = {
     pname = "vhs";
-    version = "v0.9.0";
+    version = "v0.10.0";
     src = fetchFromGitHub {
       owner = "charmbracelet";
       repo = "vhs";
-      rev = "v0.9.0";
+      rev = "v0.10.0";
       fetchSubmodules = false;
-      sha256 = "sha256-ceY4zLd+4EwXpwunKiWnaAB25qutSK1b1SyIriAbAI0=";
+      sha256 = "sha256-ZnE5G8kfj7qScsT+bZg90ze4scpUxeC6xF8dAhdUUCo=";
     };
   };
 }

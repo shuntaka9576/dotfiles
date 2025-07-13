@@ -76,12 +76,12 @@
             "name": null,
             "owner": "alexpasmantier",
             "repo": "television",
-            "rev": "0.9.4",
-            "sha256": "sha256-S0at9qiPaHtFSag/DjJxczcjuQwPIWQBqxrRwrWIPk0=",
+            "rev": "0.12.3",
+            "sha256": "sha256-ttKOJ46W10HoawQNQlUtDuQh/WbvEakJx2QghOJD8wE=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "0.9.4"
+        "version": "0.12.3"
     },
     "vhs": {
         "cargoLocks": null,
@@ -97,11 +97,11 @@
             "name": null,
             "owner": "charmbracelet",
             "repo": "vhs",
-            "rev": "v0.9.0",
-            "sha256": "sha256-ceY4zLd+4EwXpwunKiWnaAB25qutSK1b1SyIriAbAI0=",
+            "rev": "v0.10.0",
+            "sha256": "sha256-ZnE5G8kfj7qScsT+bZg90ze4scpUxeC6xF8dAhdUUCo=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "v0.9.0"
+        "version": "v0.10.0"
     }
 }

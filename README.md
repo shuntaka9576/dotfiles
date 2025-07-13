@@ -1,27 +1,46 @@
 # dotfiles
 
-## Mac
-
 <details>
-<summary>Click to open</summary>
+<summary><h2>Initial Setup</h2></summary>
 
-### Initial Setup
-
-Install Nix package manager
+### Install Nix package manager
 
 ```bash
 sh <(curl -L https://nixos.org/nix/install)
 ```
 
-```bash
-make build
-```
-
 Use nix-darwin to configure your macOS system with declarative configuration
 
 ```bash
-export NIX_CONFIG="experimental-features = nix-command flakes"
-nix run github:LnL7/nix-darwin -- switch --flake ".#shuntaka"
+make init
+```
+
+### Runtime Setup
+
+Install mise tools
+
+```bash
+mise install
+```
+
+### Neovim Setup
+
+```bash
+nvim
+```
+
+nvim
+
+```nvim
+:Lazy
+```
+
+### Authentication Tools
+
+Claude Code Authentication
+
+```bash
+gh auth login
 ```
 
 GitHub Authentication
@@ -30,12 +49,7 @@ GitHub Authentication
 gh auth login
 ```
 
-Manual Application Installation
-
-- Kindle
-- Happy Hacking Keyboard.app
-- CompareMerge.app
-- Testcontainers Desktop.app
+### Install Haskell
 
 Install Haskell (nix package unstable)
 
@@ -43,67 +57,54 @@ Install Haskell (nix package unstable)
 curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
 ```
 
+Install recommended tools
+
 ```bash
 ghcup tui
 ```
 
-Install Neovim plugin and Mason LSPs
+### Manual Application Installation
 
-```bash
-nvim
-```
+- Kindle
+- Happy Hacking Keyboard.app
+- CompareMerge.app
+- Testcontainers Desktop.app
 
-Install mise tools
+</details>
 
-```bash
-mise install
-```
+## Usage
 
-Setting rust tools.(When installing rustup through Nix, rust-analyzer may not function properly.)
-
-```bash
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-
-# custom install
-#    default host triple: aarch64-apple-darwin
-#      default toolchain: stable
-#                profile: default
-#   modify PATH variable: no
-
-rust up update
-```
-
-```bash
-cargo install mini-redis
-```
-
-### Usage
-
-Update
+Daily update (MCP configuration and nix-darwin)
 
 ```bash
 make
 ```
 
-### Develop
-
-Update package versions when needed:
+Update all dependencies and apply changes (flake.lock + nvfetcher + MCP + nix-darwin)
 
 ```bash
-nix run github:berberman/nvfetcher -- -c "$HOME/dotfiles/nvfetcher.toml" -o "_sources"
+make update
 ```
 
-Update nvfetcher tools hash
+Clean up old Nix generations and free up disk space
 
 ```bash
-nix run github:Mic92/nix-update
+make gc
 ```
 
-mise reset
+## Troubleshooting
+
+reset mise
 
 ```bash
 mise uninstall node --all
 mise uninstall python --all
+mise uninstall go --all
+mise uninstall rust --all
 ```
 
-</details>
+reset homebrew
+
+```bash
+brew list --formula | xargs brew uninstall --force
+```
