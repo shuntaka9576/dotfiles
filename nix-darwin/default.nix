@@ -65,6 +65,13 @@
       autohide = true;
       show-recents = false;
       orientation = "left";
+      tilesize = 48;
+      magnification = true;
+      largesize = 64;
+      mineffect = "genie";
+      minimize-to-application = true;
+      launchanim = true;
+      show-process-indicators = true;
       persistent-apps = [
         "/System/Library/CoreServices/Finder.app"
         "/System/Applications/App Store.app"
