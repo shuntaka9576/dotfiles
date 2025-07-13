@@ -65,6 +65,14 @@
       autohide = true;
       show-recents = false;
       orientation = "left";
+      persistent-apps = [
+        "/System/Library/CoreServices/Finder.app"
+        "/System/Applications/App Store.app"
+        "/System/Applications/System Settings.app"
+        "/System/Applications/Utilities/Activity Monitor.app"
+        "/Applications/WezTerm.app"
+        "/Applications/Google Chrome.app"
+      ];
     };
   };
 }
