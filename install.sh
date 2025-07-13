@@ -73,6 +73,13 @@ main() {
   # Change to dotfiles directory
   cd "$DOTFILES_DIR"
 
+  # Create or fix synthetic.conf
+  if [[ ! -f /etc/synthetic.conf ]]; then
+    print_info "Creating /etc/synthetic.conf..."
+    echo -e "nix\nrun\tprivate/var/run" | sudo tee /etc/synthetic.conf > /dev/null
+  fi
+  sudo chmod 644 /etc/synthetic.conf
+
   # Run make init
   print_info "Running nix-darwin setup..."
   make init || {
