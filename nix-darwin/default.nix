@@ -11,6 +11,17 @@
     onActivation = {
       autoUpdate = true;
     };
+    taps = [
+      {
+        name = "shuntaka9576/tap";
+        clone_target = "https://github.com/shuntaka9576/homebrew-tap.git";
+        force_auto_update = true;
+      }
+    ];
+    brews = [
+      "shuntaka9576/tap/blocc"
+      "shuntaka9576/tap/trr"
+    ];
     casks = [
       "windsurf"
       "figma"
