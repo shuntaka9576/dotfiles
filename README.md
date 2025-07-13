@@ -3,17 +3,24 @@
 <details>
 <summary><h2>Initial Setup</h2></summary>
 
+### Setup PC
+
+This config assumes username `shuntaka`. Update if different.
+
 ### Installation (macOS)
 
-```bash
-bash <(curl -sSL https://raw.githubusercontent.com/shuntaka9576/dotfiles/main/install.sh)
-```
+1. Install Xcode Command Line Tools first:
+   ```bash
+   xcode-select --install
+   ```
 
-**Note**: On first run, the script may fail due to missing git. If the Xcode Command Line Developer Tools installation GUI appears, complete the installation and then run the command again.
+2. Run installation script:
+   ```bash
+   bash <(curl -sSL https://raw.githubusercontent.com/shuntaka9576/dotfiles/main/install.sh)
+   ```
 
 This script will:
 
-- Install Xcode Command Line Tools (if not already installed)
 - Install Nix package manager
 - Clone this repository to `~/dotfiles`
 - Set up nix-darwin

@@ -35,21 +35,6 @@ main() {
     exit 1
   fi
 
-  # Check if git is available
-  if ! command_exists git; then
-    print_error "Git is not installed. Installing Xcode Command Line Tools..."
-    print_info "This may take a few minutes..."
-    xcode-select --install 2>/dev/null || {
-      print_error "Failed to install Xcode Command Line Tools"
-      print_error "Please install manually by running: xcode-select --install"
-      exit 1
-    }
-
-    # Wait for installation to complete
-    print_info "Please complete the Xcode Command Line Tools installation in the popup window"
-    print_info "After installation is complete, run this script again"
-    exit 0
-  fi
 
   # Check and install Nix
   if ! command_exists nix; then
