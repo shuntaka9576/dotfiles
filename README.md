@@ -11,6 +11,7 @@ bash <(curl -sSL https://raw.githubusercontent.com/shuntaka9576/dotfiles/main/in
 
 This script will:
 
+- Install Xcode Command Line Tools (if not already installed)
 - Install Nix package manager
 - Clone this repository to `~/dotfiles`
 - Set up nix-darwin

@@ -15,5 +15,8 @@
     "home-manager/programs/memo/template.md"
     "home-manager/programs/nvim/lazy-lock.json"
   ];
-  settings.formatter.shfmt.includes = [ "*/zshrc" ];
+  settings.formatter.shfmt.includes = [
+    "*/zshrc"
+    "./install.sh"
+  ];
 }
