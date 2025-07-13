@@ -14,7 +14,12 @@ This config assumes username `shuntaka`. Update if different.
    xcode-select --install
    ```
 
-2. Run installation script:
+2. Install Homebrew:
+   ```bash
+   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+   ```
+
+3. Run installation script:
    ```bash
    bash <(curl -sSL https://raw.githubusercontent.com/shuntaka9576/dotfiles/main/install.sh)
    ```
