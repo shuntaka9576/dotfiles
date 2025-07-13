@@ -10,11 +10,13 @@ This config assumes username `shuntaka`. Update if different.
 ### Installation (macOS)
 
 1. Install Xcode Command Line Tools first:
+
    ```bash
    xcode-select --install
    ```
 
 2. Install Homebrew:
+
    ```bash
    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
    ```

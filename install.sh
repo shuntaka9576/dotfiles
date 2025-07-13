@@ -35,7 +35,6 @@ main() {
     exit 1
   fi
 
-
   # Check and install Nix
   if ! command_exists nix; then
     print_info "Installing Nix package manager..."
@@ -76,7 +75,7 @@ main() {
   # Create or fix synthetic.conf
   if [[ ! -f /etc/synthetic.conf ]]; then
     print_info "Creating /etc/synthetic.conf..."
-    echo -e "nix\nrun\tprivate/var/run" | sudo tee /etc/synthetic.conf > /dev/null
+    echo -e "nix\nrun\tprivate/var/run" | sudo tee /etc/synthetic.conf >/dev/null
   fi
   sudo chmod 644 /etc/synthetic.conf
 
