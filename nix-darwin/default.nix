@@ -52,6 +52,7 @@
       "obsidian"
       "wezterm"
       "screen-studio"
+      "termius"
     ];
   };
 
