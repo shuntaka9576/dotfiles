@@ -9,35 +9,29 @@ This config assumes username `shuntaka`. Update if different.
 
 ### Installation (macOS)
 
-1. Install Xcode Command Line Tools first:
+<details>
+<summary>Xcode Command Line Tools (if not already installed)</summary>
 
-   ```bash
-   xcode-select --install
-   ```
+```bash
+xcode-select --install
+```
+</details>
 
-2. Install Homebrew:
-
-   ```bash
-   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-   ```
-
-3. Run installation script:
-   ```bash
-   bash <(curl -sSL https://raw.githubusercontent.com/shuntaka9576/dotfiles/main/install.sh)
-   ```
+Run installation script:
+```bash
+bash <(curl -sSL https://raw.githubusercontent.com/shuntaka9576/dotfiles/main/install.sh)
+```
 
 This script will:
 
 - Install Nix package manager
-- Clone this repository to `~/dotfiles`
-- Set up nix-darwin
+- Clone this repository to `~/dotfiles` (using nix-shell)
+- Set up nix-darwin with home-manager
 - Install mise tools
 
 ### Post-Installation Setup
 
 After running the installation script, complete the following steps:
-
-1. **Restart your terminal** or run `source ~/.zshrc`
 
 2. **Neovim Setup**
 
