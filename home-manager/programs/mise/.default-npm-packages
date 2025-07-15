@@ -5,3 +5,4 @@ npm-check-updates
 pnpm
 @anthropic-ai/claude-code
 typescript-language-server
+@benborla29/mcp-server-mysql
