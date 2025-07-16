@@ -6,20 +6,45 @@ local secrets = import 'secrets.jsonnet';
     //   "command": "/Users/shuntaka/.local/share/mise/installs/node/24.4.0/bin/npx",
     //   "args": ["-y", "figma-developer-mcp", "--figma-api-key=" + secrets.figma.token, "--stdio"]
     // },
-    "mcp_server_mysql": {
-      "command": "/Users/shuntaka/.local/share/mise/installs/node/24.4.0/bin/node",
-      "args": [
-        "/Users/shuntaka/.local/share/mise/installs/node/24.4.0/bin/mcp-server-mysql"
-      ],
+    // "mcp_server_mysql": {
+    //   "command": "/Users/shuntaka/.local/share/mise/installs/node/24.4.0/bin/node",
+    //   "args": [
+    //     "/Users/shuntaka/.local/share/mise/installs/node/24.4.0/bin/mcp-server-mysql"
+    //   ],
+    //   "env": {
+    //     "MYSQL_HOST": secrets.mcp_server_mysql.host,
+    //     "MYSQL_PORT": secrets.mcp_server_mysql.port,
+    //     "MYSQL_USER": secrets.mcp_server_mysql.mysqlUser,
+    //     "MYSQL_PASS": secrets.mcp_server_mysql.mysqlPass,
+    //     "MYSQL_DB": secrets.mcp_server_mysql.database,
+    //     "ALLOW_INSERT_OPERATION": "false",
+    //     "ALLOW_UPDATE_OPERATION": "false",
+    //     "ALLOW_DELETE_OPERATION": "false",
+    //   }
+    // },
+    // "mysql": {
+    //   "command": "/Users/shuntaka/.local/share/mise/installs/node/24.4.0/bin/npx",
+    //   "args": [
+    //     "-y",
+    //     "@modelcontextprotocol/server-mysql"
+    //   ],
+    //   "env": {
+    //     "MYSQL_HOST": secrets.mcp_server_mysql.host,
+    //     "MYSQL_PORT": secrets.mcp_server_mysql.port,
+    //     "MYSQL_USER": secrets.mcp_server_mysql.mysqlUser,
+    //     "MYSQL_PASSWORD": secrets.mcp_server_mysql.mysqlPass,
+    //     "MYSQL_DATABASE": secrets.mcp_server_mysql.database
+    //   }
+    // },
+    "mysql": {
+      "command": "/Users/shuntaka/.local/share/mise/installs/python/3.13.5/bin/mysql_mcp_server",
+      "args": [],
       "env": {
         "MYSQL_HOST": secrets.mcp_server_mysql.host,
         "MYSQL_PORT": secrets.mcp_server_mysql.port,
         "MYSQL_USER": secrets.mcp_server_mysql.mysqlUser,
-        "MYSQL_PASS": secrets.mcp_server_mysql.mysqlPass,
-        "MYSQL_DB": secrets.mcp_server_mysql.database,
-        "ALLOW_INSERT_OPERATION": "false",
-        "ALLOW_UPDATE_OPERATION": "false",
-        "ALLOW_DELETE_OPERATION": "false"
+        "MYSQL_PASSWORD": secrets.mcp_server_mysql.mysqlPass,
+        "MYSQL_DATABASE": secrets.mcp_server_mysql.database
       }
     },
     // playwright: {

@@ -1,3 +1,4 @@
 uv
 python-lsp-server
 pyre-check
+mysql-mcp-server

@@ -12,6 +12,12 @@
   home.file."Library/Application Support/Windsurf/User/settings.json" = {
     source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/home-manager/programs/vscode/settings.json";
   };
+  home.file."Library/Application Support/Kiro/User/keybindings.json" = {
+    source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/home-manager/programs/vscode/keybindings.json";
+  };
+  home.file."/Library/Application Support/Kiro/User/settings.json" = {
+    source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/home-manager/programs/vscode/settings.json";
+  };
   home.file."Library/Application Support/Code/User/keybindings.json" = {
     source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/home-manager/programs/vscode/keybindings.json";
   };

@@ -14,4 +14,7 @@
     {
       source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/home-manager/programs/mcp/.mcp-general.json";
     };
+  home.file.".kiro/settings/mcp.json" = {
+    source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/home-manager/programs/mcp/.mcp-general.json";
+  };
 }
