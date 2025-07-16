@@ -65,9 +65,7 @@ After running the installation script, complete the following steps:
 
 ### Manual Application Installation
 
-- Kindle
 - Happy Hacking Keyboard.app
-- CompareMerge.app
 - Testcontainers Desktop.app
 
 </details>

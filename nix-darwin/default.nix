@@ -54,6 +54,10 @@
       "screen-studio"
       "termius"
     ];
+    masApps = {
+      "Kindle" = 302584613;
+      "CompareMerge" = 478570084;
+    };
   };
 
   system.defaults = {
