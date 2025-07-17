@@ -36,6 +36,17 @@ local secrets = import 'secrets.jsonnet';
     //     "MYSQL_DATABASE": secrets.mcp_server_mysql.database
     //   }
     // },
+    "aws-knowledge-mcp-server": {
+      "command": "/Users/shuntaka/.local/share/mise/installs/node/24.4.0/bin/npx",
+      "args": [
+        "-y",
+        "mcp-remote",
+        "https://knowledge-mcp.global.api.aws"
+      ],
+      "env": {
+        "PATH": "/Users/shuntaka/.local/share/mise/installs/node/24.4.0/bin:/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+      }
+    },
     "mysql": {
       "command": "/Users/shuntaka/.local/share/mise/installs/python/3.13.5/bin/mysql_mcp_server",
       "args": [],

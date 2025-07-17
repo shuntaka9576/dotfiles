@@ -6,6 +6,5 @@
   "permissions": {
     "allow": ["WebFetch", "Bash"],
     "defaultMode": "acceptEdits"
-  },
-  "model": "opus"
+  }
 }
