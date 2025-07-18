@@ -6,5 +6,18 @@
   "permissions": {
     "allow": ["WebFetch", "Bash"],
     "defaultMode": "acceptEdits"
+  },
+  "hooks": {
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/dotfiles/home-manager/programs/claude/hooks/notify.ts"
+          }
+        ]
+      }
+    ]
   }
 }
