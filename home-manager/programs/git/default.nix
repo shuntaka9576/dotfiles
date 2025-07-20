@@ -10,6 +10,7 @@ _: {
       ".worktrees"
       "CLAUDE.md"
       ".trr"
+      ".claude/settings.local.json"
     ];
     extraConfig = {
       ghq = {
