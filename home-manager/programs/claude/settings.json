@@ -4,7 +4,7 @@
   },
   "includeCoAuthoredBy": false,
   "permissions": {
-    "allow": ["WebFetch", "Bash"],
+    "allow": ["*"],
     "defaultMode": "acceptEdits"
   },
   "hooks": {
