@@ -118,7 +118,7 @@ output = ""
 
 [[snippets]]
 description = "Check listening port"
-command = "lsof -i -P | grep 8888"
+command = "lsof -i :3001"
 tag = ["port"]
 output = ""
 

@@ -22,6 +22,7 @@
       "shuntaka9576/tap/blocc"
       "shuntaka9576/tap/trr"
       "docker-credential-helper"
+      "ccusage"
     ];
     casks = [
       "windsurf"
