@@ -192,43 +192,6 @@
   "vscode-markdown-github.theme.light": "light",
   "git.ignoreRebaseWarning": true,
   "hediet.vscode-drawio.resizeImages": null,
-  "mcp": {
-    "inputs": [
-      {
-        "type": "promptString",
-        "id": "github_token",
-        "description": "GitHub Personal Access Token",
-        "password": true
-      }
-    ],
-    "servers": {
-      "playwright": {
-        "command": "npx",
-        "args": ["@playwright/mcp@latest"]
-      },
-      "mymcp": {
-        "command": "/Users/shuntaka/.local/share/mise/installs/node/22.13.0/bin/node",
-        "args": [
-          "--experimental-transform-types",
-          "/Users/shuntaka/repos/github.com/shuntaka9576/my-mcp/src/index.mts"
-        ]
-      },
-      "github": {
-        "command": "/etc/profiles/per-user/shuntaka/bin/docker",
-        "args": [
-          "run",
-          "-i",
-          "--rm",
-          "-e",
-          "GITHUB_PERSONAL_ACCESS_TOKEN",
-          "ghcr.io/github/github-mcp-server"
-        ],
-        "env": {
-          "GITHUB_PERSONAL_ACCESS_TOKEN": "${input:github_token}"
-        }
-      }
-    }
-  },
   "chat.agent.enabled": true,
   "locale": "ja",
   "github.copilot.chat.localeOverride": "ja",

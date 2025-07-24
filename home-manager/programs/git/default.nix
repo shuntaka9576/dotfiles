@@ -10,6 +10,7 @@ _: {
       ".worktrees"
       "CLAUDE.md"
       ".trr"
+      ".pyre"
       ".claude/settings.local.json"
     ];
     extraConfig = {
