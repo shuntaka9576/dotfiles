@@ -43,30 +43,37 @@ main() {
       exit 1
     }
 
-    # Source Nix environment
-    if [[ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]]; then
-      . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
-    elif [[ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ]]; then
-      . "$HOME/.nix-profile/etc/profile.d/nix.sh"
-    fi
+    # Set Nix binary path
+    NIX_BIN="/nix/var/nix/profiles/default/bin"
   else
     print_info "Nix is already installed"
+    # Set Nix binary path if not already set
+    NIX_BIN="/nix/var/nix/profiles/default/bin"
   fi
 
   # Set dotfiles directory
   DOTFILES_DIR="$HOME/dotfiles"
 
-  # Clone or update dotfiles repository
+  # Clone or update dotfiles repository using nix-shell
   if [[ ! -d $DOTFILES_DIR ]]; then
     print_info "Cloning dotfiles repository..."
-    git clone https://github.com/shuntaka9576/dotfiles.git "$DOTFILES_DIR" || {
-      print_error "Failed to clone dotfiles repository"
+    if [[ -f "$NIX_BIN/nix-shell" ]]; then
+      $NIX_BIN/nix-shell -p git --run "git clone https://github.com/shuntaka9576/dotfiles.git '$DOTFILES_DIR'" || {
+        print_error "Failed to clone dotfiles repository"
+        exit 1
+      }
+    else
+      print_error "Nix is not properly installed"
       exit 1
-    }
+    fi
   else
     print_info "Dotfiles directory already exists, pulling latest changes..."
     cd "$DOTFILES_DIR"
-    git pull || print_warning "Failed to pull latest changes"
+    if [[ -f "$NIX_BIN/nix-shell" ]]; then
+      $NIX_BIN/nix-shell -p git --run "git pull" || print_warning "Failed to pull latest changes"
+    else
+      print_warning "Nix not found, skipping git pull"
+    fi
   fi
 
   # Change to dotfiles directory
@@ -79,17 +86,22 @@ main() {
   fi
   sudo chmod 644 /etc/synthetic.conf
 
-  # Run make init
+  # Run nix-darwin setup with full path
   print_info "Running nix-darwin setup..."
-  make init || {
-    print_error "Failed to run make init"
+  if [[ -f "$NIX_BIN/nix" ]]; then
+    sudo $NIX_BIN/nix run github:LnL7/nix-darwin --extra-experimental-features 'flakes nix-command' -- switch --flake ".#shuntaka" || {
+      print_error "Failed to run nix-darwin setup"
+      exit 1
+    }
+  else
+    print_error "Nix binary not found at $NIX_BIN/nix"
     exit 1
-  }
+  fi
 
   # Install mise tools
-  if command_exists mise; then
-    print_info "Installing mise tools..."
-    mise install || print_warning "Failed to install some mise tools"
+  print_info "Installing mise tools..."
+  if [[ -f "$HOME/.local/bin/mise" ]]; then
+    $HOME/.local/bin/mise install || print_warning "Failed to install some mise tools"
   else
     print_warning "mise is not installed yet. Run 'mise install' after restarting your shell"
   fi
@@ -97,7 +109,7 @@ main() {
   print_info "Installation completed!"
   print_info ""
   print_info "Next steps:"
-  print_info "1. Restart your terminal or run: source ~/.zshrc"
+  print_info "1. Open a new terminal"
   print_info "2. Run: nvim (to install Neovim plugins)"
   print_info "3. Run: gh auth login (for GitHub authentication)"
   print_info "4. Check README.md for additional manual setup steps"
