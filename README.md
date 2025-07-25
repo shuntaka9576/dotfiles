@@ -23,6 +23,8 @@ bash <(curl -sSL https://raw.githubusercontent.com/shuntaka9576/dotfiles/main/in
 
 This script will:
 
+- Check for Xcode Command Line Tools (will exit if missing)
+- Install Homebrew (if not already installed)
 - Install Nix package manager
 - Clone this repository to `~/dotfiles` (using nix-shell)
 - Set up nix-darwin with home-manager

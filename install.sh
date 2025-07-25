@@ -35,6 +35,29 @@ main() {
     exit 1
   fi
 
+  # Check Xcode Command Line Tools
+  if ! xcode-select -p &>/dev/null; then
+    print_error "Xcode Command Line Tools are not installed"
+    print_info "Please install them by running: xcode-select --install"
+    print_info "After installation, run this script again"
+    exit 1
+  else
+    print_info "Xcode Command Line Tools are already installed"
+  fi
+
+  # Check and install Homebrew
+  if ! command_exists brew; then
+    print_info "Installing Homebrew..."
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" || {
+      print_error "Failed to install Homebrew"
+      exit 1
+    }
+    # Add Homebrew to PATH for current session
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+  else
+    print_info "Homebrew is already installed"
+  fi
+
   # Check and install Nix
   if ! command_exists nix; then
     print_info "Installing Nix package manager..."
