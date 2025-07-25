@@ -9,15 +9,14 @@ This config assumes username `shuntaka`. Update if different.
 
 ### Installation (macOS)
 
-<details>
-<summary>Xcode Command Line Tools (if not already installed)</summary>
+Xcode Command Line Tools (if not already installed)
 
 ```bash
 xcode-select --install
 ```
-</details>
 
 Run installation script:
+
 ```bash
 bash <(curl -sSL https://raw.githubusercontent.com/shuntaka9576/dotfiles/main/install.sh)
 ```
