@@ -79,6 +79,23 @@ main() {
   # Change to dotfiles directory
   cd "$DOTFILES_DIR"
 
+  # Create MCP configuration dummy files
+  print_info "Creating MCP configuration dummy files..."
+  MCP_DIR="$DOTFILES_DIR/home-manager/programs/mcp"
+  mkdir -p "$MCP_DIR"
+
+  # Create .mcp-general.json if it doesn't exist
+  if [[ ! -f "$MCP_DIR/.mcp-general.json" ]]; then
+    echo '{}' >"$MCP_DIR/.mcp-general.json"
+    print_info "Created $MCP_DIR/.mcp-general.json"
+  fi
+
+  # Create .mcp-claude-code.json if it doesn't exist
+  if [[ ! -f "$MCP_DIR/.mcp-claude-code.json" ]]; then
+    echo '{}' >"$MCP_DIR/.mcp-claude-code.json"
+    print_info "Created $MCP_DIR/.mcp-claude-code.json"
+  fi
+
   # Create or fix synthetic.conf
   if [[ ! -f /etc/synthetic.conf ]]; then
     print_info "Creating /etc/synthetic.conf..."

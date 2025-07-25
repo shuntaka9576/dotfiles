@@ -5,7 +5,7 @@
   "includeCoAuthoredBy": false,
   "permissions": {
     "allow": ["*"],
-    "defaultMode": "acceptEdits"
+    "defaultMode": "bypassPermissions"
   },
   "hooks": {
     "Stop": [
