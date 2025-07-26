@@ -62,6 +62,11 @@
     };
   };
 
+  system.keyboard = {
+    enableKeyMapping = true;
+    remapCapsLockToControl = true;
+  };
+
   system.defaults = {
     NSGlobalDomain.AppleShowAllExtensions = true;
     finder = {
