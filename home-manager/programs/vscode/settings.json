@@ -220,5 +220,6 @@
   ],
   "terminal.integrated.env.osx": {
     "Q_NEW_SESSION": "1"
-  }
+  },
+  "kiroAgent.trustedCommands": ["*"]
 }

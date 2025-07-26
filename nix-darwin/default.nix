@@ -67,6 +67,7 @@
     finder = {
       AppleShowAllFiles = true;
       AppleShowAllExtensions = true;
+      CreateDesktop = false;
     };
     dock = {
       autohide = true;

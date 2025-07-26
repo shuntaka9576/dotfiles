@@ -4,7 +4,6 @@
   },
   "includeCoAuthoredBy": false,
   "permissions": {
-    "allow": ["*"],
     "defaultMode": "bypassPermissions"
   },
   "hooks": {
@@ -19,5 +18,6 @@
         ]
       }
     ]
-  }
+  },
+  "model": "sonnet"
 }
