@@ -37,6 +37,7 @@
       "daisydisk"
       "cursor"
       "insomnia"
+      "kiro"
       "instantview"
       "ollama"
       "rancher"
