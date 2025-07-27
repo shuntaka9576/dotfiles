@@ -75,6 +75,10 @@
       AppleShowAllExtensions = true;
       CreateDesktop = false;
     };
+    WindowManager = {
+      EnableStandardClickToShowDesktop = false;
+      StandardHideDesktopIcons = true;
+    };
     dock = {
       autohide = true;
       show-recents = false;
