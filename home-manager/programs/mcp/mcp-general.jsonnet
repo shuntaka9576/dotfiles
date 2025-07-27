@@ -37,14 +37,14 @@ local secrets = import 'secrets.jsonnet';
     //   }
     // },
     "aws-knowledge-mcp-server": {
-      "command": "/Users/shuntaka/.local/share/mise/installs/node/24.4.0/bin/npx",
+      "command": "/Users/shuntaka/.local/share/mise/installs/node/24.4.1/bin/npx",
       "args": [
         "-y",
         "mcp-remote",
         "https://knowledge-mcp.global.api.aws"
       ],
       "env": {
-        "PATH": "/Users/shuntaka/.local/share/mise/installs/node/24.4.0/bin:/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+        "PATH": "/Users/shuntaka/.local/share/mise/installs/node/24.4.1/bin:/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin"
       }
     },
     "mysql": {
