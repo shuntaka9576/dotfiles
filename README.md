@@ -34,6 +34,15 @@ This script will:
 
 After running the installation script, complete the following steps:
 
+1. **Configure Secrets**
+
+   Copy the example secrets file and fill in your actual values:
+
+   ```bash
+   cp home-manager/programs/mcp/secrets.jsonnet.example home-manager/programs/mcp/secrets.jsonnet
+   # Edit home-manager/programs/mcp/secrets.jsonnet with your actual tokens and credentials
+   ```
+
 2. **Neovim Setup**
 
    ```bash
