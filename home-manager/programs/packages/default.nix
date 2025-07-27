@@ -38,6 +38,7 @@
       lua
       typst
       luarocks
+      yamlfmt
       # rust-bin.beta.latest.default
       # rustup
       nixfmt-rfc-style

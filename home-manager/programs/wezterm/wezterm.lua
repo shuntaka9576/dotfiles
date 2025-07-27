@@ -8,10 +8,6 @@ local keys = {
   { key = "Enter", mods = "SHIFT", action = wezterm.action.SendString("\n") },
 }
 
-wezterm.on("bell", function(window, pane)
-  window:toast_notification("Claude Code", "Task completed", nil, 4000)
-end)
-
 return {
   enable_tab_bar = false,
   window_decorations = "RESIZE",
