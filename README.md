@@ -61,7 +61,17 @@ After running the installation script, complete the following steps:
    gh auth login
    ```
 
-4. **Install Haskell** (optional)
+4. **Script Editor Notification Setup**
+
+   Open Script Editor and run the following command to enable notifications:
+
+   ```applescript
+   display notification "Hello" with title "Script Editor"
+   ```
+
+   Grant permission when prompted.
+
+5. **Install Haskell** (optional)
    ```bash
    curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
    ghcup tui
