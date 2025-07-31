@@ -1,11 +1,13 @@
 {
   "env": {
-    "MAX_THINKING_TOKENS": "31999"
+    "MAX_THINKING_TOKENS": "31999",
+    "DISABLE_AUTOUPDATER": "1"
   },
   "includeCoAuthoredBy": false,
   "permissions": {
     "defaultMode": "bypassPermissions"
   },
+  "model": "opus",
   "hooks": {
     "Stop": [
       {
@@ -19,5 +21,7 @@
       }
     ]
   },
-  "model": "sonnet"
+  "feedbackSurveyState": {
+    "lastShownTime": 1753950926578
+  }
 }

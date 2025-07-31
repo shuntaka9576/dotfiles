@@ -1,4 +1,5 @@
 {
+  "chat.tools.autoApprove": true,
   // exclude files
   "files.exclude": {
     "**/.git": true,
@@ -221,5 +222,6 @@
   "terminal.integrated.env.osx": {
     "Q_NEW_SESSION": "1"
   },
-  "kiroAgent.trustedCommands": ["*"]
+  "kiroAgent.trustedCommands": ["*"],
+  "github.copilot.nextEditSuggestions.enabled": true
 }
