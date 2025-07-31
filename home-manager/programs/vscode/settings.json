@@ -223,5 +223,6 @@
     "Q_NEW_SESSION": "1"
   },
   "kiroAgent.trustedCommands": ["*"],
-  "github.copilot.nextEditSuggestions.enabled": true
+  "github.copilot.nextEditSuggestions.enabled": true,
+  "git.autofetch": true
 }

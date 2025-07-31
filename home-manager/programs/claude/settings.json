@@ -1,7 +1,6 @@
 {
   "env": {
-    "MAX_THINKING_TOKENS": "31999",
-    "DISABLE_AUTOUPDATER": "1"
+    "MAX_THINKING_TOKENS": "31999"
   },
   "includeCoAuthoredBy": false,
   "permissions": {
