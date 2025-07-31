@@ -53,5 +53,14 @@ local secrets = import 'secrets.jsonnet';
         GITHUB_PERSONAL_ACCESS_TOKEN: secrets.github.token,
       },
     },
+    serena: {
+      command: '/Users/shuntaka/.local/share/mise/installs/python/3.13.5/bin/uvx',
+      args: [
+        '--from',
+        'git+https://github.com/oraios/serena',
+        'serena',
+        'start-mcp-server'
+      ],
+    },
   },
 }

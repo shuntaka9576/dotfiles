@@ -98,6 +98,15 @@ local secrets = import 'secrets.jsonnet';
         "BACKLOG_DOMAIN": secrets.backlog.domain,
         "BACKLOG_API_KEY": secrets.backlog.token
       }
+    },
+    serena: {
+      command: '/Users/shuntaka/.local/share/mise/installs/python/3.13.5/bin/uvx',
+      args: [
+        '--from',
+        'git+https://github.com/oraios/serena',
+        'serena',
+        'start-mcp-server'
+      ],
     }
   },
 }
