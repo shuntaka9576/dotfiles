@@ -12,6 +12,7 @@ _: {
       ".trr"
       ".pyre"
       ".claude/settings.local.json"
+      ".serena"
     ];
     extraConfig = {
       ghq = {
