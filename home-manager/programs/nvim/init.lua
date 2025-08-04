@@ -131,12 +131,24 @@ vim.lsp.config("hls", {
 })
 vim.lsp.enable("hls")
 
-vim.lsp.config("pyre", {
-  cmd = { "pyre", "persistent" },
-  filetypes = { "python" },
-  root_markers = { ".pyre_configuration" },
+-- vim.lsp.config("pyre", {
+--   cmd = { "pyre", "persistent" },
+--   filetypes = { "python" },
+--   root_markers = { ".pyre_configuration" },
+-- })
+-- vim.lsp.enable("pyre")
+vim.diagnostic.config({
+  virtual_lines = true,
+  virtual_text = true,
+  signs = true,
+  underline = true,
+  update_in_insert = false,
+  severity_sort = true,
+  float = {
+    source = "always",
+    border = "rounded",
+  },
 })
-vim.lsp.enable("pyre")
 
 vim.lsp.config("pylsp", {
   cmd = { "pylsp" },
@@ -148,6 +160,32 @@ vim.lsp.config("pylsp", {
     "requirements.txt",
     "Pipfile",
     ".git",
+  },
+  settings = {
+    pylsp = {
+      plugins = {
+        pycodestyle = {
+          enabled = true,
+          maxLineLength = 88,
+        },
+        flake8 = {
+          enabled = true,
+          maxLineLength = 88,
+        },
+        pylint = {
+          enabled = true,
+        },
+        pyflakes = {
+          enabled = true,
+        },
+        pydocstyle = {
+          enabled = true,
+        },
+        mypy = {
+          enabled = true,
+        },
+      },
+    },
   },
 })
 vim.lsp.enable("pylsp")
