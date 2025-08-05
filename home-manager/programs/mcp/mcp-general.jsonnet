@@ -37,7 +37,7 @@ local secrets = import 'secrets.jsonnet';
     //   }
     // },
     "aws-knowledge-mcp-server": {
-      "command": "/Users/shuntaka/.local/share/mise/installs/node/24.4.1/bin/npx",
+      "command": "/Users/shuntaka/.local/share/mise/installs/node/24.5.0/bin/npx",
       "args": [
         "-y",
         "mcp-remote",

@@ -162,33 +162,51 @@ vim.lsp.config("pylsp", {
     ".git",
   },
   settings = {
-    pylsp = {
-      plugins = {
-        pycodestyle = {
-          enabled = true,
-          maxLineLength = 88,
-        },
-        flake8 = {
-          enabled = true,
-          maxLineLength = 88,
-        },
-        pylint = {
-          enabled = true,
-        },
-        pyflakes = {
-          enabled = true,
-        },
-        pydocstyle = {
-          enabled = true,
-        },
-        mypy = {
-          enabled = true,
-        },
+    -- pylsp = {
+    --   plugins = {
+    --     pycodestyle = {
+    --       enabled = false,
+    --       maxLineLength = 88,
+    --     },
+    --     mccabe = {
+    --       enabled = false,
+    --     },
+    --     pyflakes = {
+    --       enabled = false,
+    --     },
+    --   },
+    -- },
+  },
+})
+vim.lsp.enable("pylsp")
+
+vim.lsp.config("ruff_lsp", {
+  cmd = { "ruff-lsp" },
+  filetypes = { "python" },
+  root_markers = {
+    "pyproject.toml",
+    "ruff.toml",
+    ".ruff.toml",
+    "setup.py",
+    "setup.cfg",
+    "requirements.txt",
+    ".git",
+  },
+  init_options = {
+    settings = {
+      organizeImports = true,
+      fixAll = true,
+      lint = {
+        enable = true,
+        run = "onType",
+      },
+      format = {
+        enable = true,
       },
     },
   },
 })
-vim.lsp.enable("pylsp")
+vim.lsp.enable("ruff_lsp")
 
 vim.lsp.config("gopls", {
   cmd = { "gopls" },
@@ -205,6 +223,13 @@ vim.api.nvim_create_autocmd("LspAttach", {
     vim.bo[ev.buf].omnifunc = nil
     vim.bo[ev.buf].tagfunc = nil
     vim.bo[ev.buf].formatexpr = nil
+
+    local client = assert(vim.lsp.get_client_by_id(ev.data.client_id))
+
+    -- pylspの場合はdiagnosticを無効化
+    if client.name == "pylsp" then
+      vim.diagnostic.enable(false, { bufnr = ev.buf })
+    end
 
     local set = vim.keymap.set
 

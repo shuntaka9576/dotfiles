@@ -29,7 +29,7 @@ local secrets = import 'secrets.jsonnet';
       }
     },
     "aws-knowledge-mcp-server": {
-      "command": "/Users/shuntaka/.local/share/mise/installs/node/24.4.1/bin/npx",
+      "command": "/Users/shuntaka/.local/share/mise/installs/node/24.5.0/bin/npx",
       "args": [
         "-y",
         "mcp-remote",
@@ -39,19 +39,26 @@ local secrets = import 'secrets.jsonnet';
         "PATH": "/Users/shuntaka/.local/share/mise/installs/node/24.4.1/bin:/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin"
       }
     },
-    github: {
-      command: '/etc/profiles/per-user/shuntaka/bin/docker',
-      args: [
-        'run',
-        '-i',
-        '--rm',
-        '-e',
-        'GITHUB_PERSONAL_ACCESS_TOKEN',
-        'ghcr.io/github/github-mcp-server'
-      ],
-      env: {
-        GITHUB_PERSONAL_ACCESS_TOKEN: secrets.github.token,
-      },
+    // github: {
+    //   command: '/etc/profiles/per-user/shuntaka/bin/docker',
+    //   args: [
+    //     'run',
+    //     '-i',
+    //     '--rm',
+    //     '-e',
+    //     'GITHUB_PERSONAL_ACCESS_TOKEN',
+    //     'ghcr.io/github/github-mcp-server'
+    //   ],
+    //   env: {
+    //     GITHUB_PERSONAL_ACCESS_TOKEN: secrets.github.token,
+    //   },
+    // },
+    "github": {
+      "type": "http",
+      "url": "https://api.githubcopilot.com/mcp/",
+      "headers": {
+        "Authorization": "Bearer " + secrets.github.token
+      }
     },
     serena: {
       command: '/Users/shuntaka/.local/share/mise/installs/python/3.13.5/bin/uvx',

@@ -2,3 +2,4 @@ uv
 python-lsp-server[all]
 pyre-check
 mysql-mcp-server
+ruff-lsp
