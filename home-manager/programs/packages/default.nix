@@ -50,6 +50,7 @@
       plemoljp-nf
       ngrok
       go-jsonnet
+      ssm-session-manager-plugin
     ]
     ++ lib.optionals (system == "aarch64-darwin") [ reattach-to-user-namespace ];
 
