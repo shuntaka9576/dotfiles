@@ -1,8 +1,4 @@
 {
-  "permissions": {
-    "allow": ["mcp__serena"],
-    "deny": []
-  },
   "hooks": {
     "PostToolUse": [
       {

@@ -2,7 +2,11 @@
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
   "includeCoAuthoredBy": false,
   "permissions": {
+    "allow": ["mcp__serena", "mcp__github"],
     "defaultMode": "bypassPermissions"
+  },
+  "env": {
+    "DISABLE_AUTOUPDATER": "1"
   },
   "model": "opus",
   "hooks": {
