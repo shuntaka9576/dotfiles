@@ -1,17 +1,17 @@
 #!/etc/profiles/per-user/shuntaka/bin/deno run --allow-run --allow-env
 
-interface HookStopData {
+interface HookData {
   session_id: string;
   transcript_path: string;
-  hook_event_name: "Stop";
-  stop_hook_active: boolean;
+  hook_event_name: "Stop" | "Notification";
+  stop_hook_active?: boolean;
 }
 
 const main = async () => {
   const input = await new Response(Deno.stdin.readable).text();
 
   try {
-    const data: HookStopData = JSON.parse(input);
+    const data: HookData = JSON.parse(input);
 
     const currentDir = Deno.cwd();
 
@@ -43,7 +43,7 @@ const main = async () => {
       let repoName = "";
       if (remoteUrl && remoteResult.success) {
         // Extract repo name from URL (supports both HTTPS and SSH formats)
-        const match = remoteUrl.match(/[\/:]([^\/]+?)(?:\.git)?$/);
+        const match = remoteUrl.match(/[/:]([^/]+?)(?:\.git)?$/);
         repoName = match ? match[1] : "";
       }
 
@@ -68,14 +68,26 @@ const main = async () => {
       repoInfo = currentDir.split("/").pop() || "";
     }
 
-    const process = new Deno.Command("osascript", {
-      args: [
-        "-e",
-        `display notification "Task Completed 🚀" with title "⚡ Claude Code" subtitle "${repoInfo} 📦"`,
-      ],
-      stdout: "piped",
-      stderr: "piped",
-    });
+    let process;
+    if (data.hook_event_name == "Stop") {
+      process = new Deno.Command("osascript", {
+        args: [
+          "-e",
+          `display notification "Task Completed 🚀" with title "⚡ Claude Code" subtitle "${repoInfo} 📦"`,
+        ],
+        stdout: "piped",
+        stderr: "piped",
+      });
+    } else if (data.hook_event_name == "Notification") {
+      process = new Deno.Command("osascript", {
+        args: [
+          "-e",
+          `display notification "Awaiting Confirmation 🔔" with title "⚡ Claude Code" subtitle "${repoInfo} 📦"`,
+        ],
+        stdout: "piped",
+        stderr: "piped",
+      });
+    }
 
     await process.output();
 

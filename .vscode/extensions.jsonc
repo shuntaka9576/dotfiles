@@ -30,6 +30,8 @@
     // frontend
     "bradlc.vscode-tailwindcss",
     // dev tools
-    "typespec.typespec-vscode"
+    "typespec.typespec-vscode",
+    // json schema
+    "remcohaszing.schemastore"
   ]
 }
