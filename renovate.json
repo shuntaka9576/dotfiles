@@ -15,5 +15,18 @@
   "automergeStrategy": "squash",
   "nix": {
     "enabled": true
-  }
+  },
+  "customManagers": [
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "home-manager/programs/mise/\\.default-npm-packages$"
+      ],
+      "matchStrings": [
+        "^(?<depName>@?[^@\\s]+)(?:@(?<currentValue>[^\\s]+))?$"
+      ],
+      "datasourceTemplate": "npm",
+      "versioningTemplate": "npm"
+    }
+  ]
 }
