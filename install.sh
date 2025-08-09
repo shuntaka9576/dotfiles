@@ -119,6 +119,14 @@ main() {
     print_info "Created $MCP_DIR/.mcp-claude-code.json"
   fi
 
+  # Create Serena projects.nix from example if it doesn't exist
+  print_info "Setting up Serena configuration..."
+  SERENA_DIR="$DOTFILES_DIR/home-manager/programs/serena"
+  if [[ ! -f "$SERENA_DIR/projects.nix" ]]; then
+    cp "$SERENA_DIR/projects.nix.example" "$SERENA_DIR/projects.nix"
+    print_info "Created $SERENA_DIR/projects.nix from example"
+  fi
+
   # Create or fix synthetic.conf
   if [[ ! -f /etc/synthetic.conf ]]; then
     print_info "Creating /etc/synthetic.conf..."

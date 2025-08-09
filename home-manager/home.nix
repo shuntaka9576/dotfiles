@@ -29,6 +29,7 @@
     ./programs/nvim/default.nix
     ./programs/packages/default.nix
     ./programs/pet/default.nix
+    ./programs/serena/default.nix
     ./programs/tmux/default.nix
     ./programs/vhs/default.nix
     ./programs/vscode/default.nix

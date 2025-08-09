@@ -36,7 +36,7 @@ local secrets = import 'secrets.jsonnet';
         "https://knowledge-mcp.global.api.aws"
       ],
       "env": {
-        "PATH": "/Users/shuntaka/.local/share/mise/installs/node/24.4.1/bin:/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+        "PATH": "/Users/shuntaka/.local/share/mise/installs/node/24.5.0/bin:/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin"
       }
     },
     // github: {
