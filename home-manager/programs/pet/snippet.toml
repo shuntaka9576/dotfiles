@@ -756,3 +756,13 @@ tag = ['git', 'worktree']
 description = "worktreeでリモートブランチをチェックアウト"
 command = "git worktree add .worktrees/<branch-name> <branch-name>"
 tag = ['git', 'worktree']
+
+[[snippets]]
+description = "aws-vaultのセッションのみ削除 (プロファイル: shunichi)"
+command = "aws-vault remove shunichi --sessions-only"
+tag = ['aws', 'aws-vault']
+
+[[snippets]]
+description = "aws-vaultのセッション一覧表示"
+command = "aws-vault list --sessions"
+tag = ['aws', 'aws-vault']

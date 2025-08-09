@@ -61,6 +61,9 @@ export CLAUDE_CONFIG_DIR="$HOME/.config/claude"
 export PATH="/opt/homebrew/opt/php@7.4/bin:$PATH"
 # export PATH="$HOME/.cargo/bin:$PATH"
 
+export AWS_ASSUME_ROLE_TTL=12h
+eval "$(aws-vault --completion-script-zsh)"
+
 # tab complete disable
 unsetopt BEEP
 
