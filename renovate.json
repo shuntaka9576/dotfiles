@@ -12,7 +12,7 @@
   "major": {
     "enabled": false
   },
-  "automergeStrategy": "rebase",
+  "automergeStrategy": "squash",
   "nix": {
     "enabled": true
   }
