@@ -3,7 +3,8 @@ lighthouse
 npm-check-updates
 @biomejs/biome
 pnpm
-@anthropic-ai/claude-code@1.0.71
+@anthropic-ai/claude-code@1.0.72
 typescript-language-server
 @benborla29/mcp-server-mysql
 cspell
+ccusage

@@ -32,6 +32,7 @@
     // dev tools
     "typespec.typespec-vscode",
     // json schema
-    "remcohaszing.schemastore"
+    "remcohaszing.schemastore",
+    "ms-vscode-remote.remote-ssh"
   ]
 }
