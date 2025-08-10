@@ -1064,8 +1064,73 @@ require("lazy").setup({
         end
       end)
 
+      -- Hook for CREATE to set default path
+      Hooks.register(Hooks.type.CREATE, function(path, branch, upstream)
+        vim.notify("Created worktree: " .. branch .. " at " .. path)
+      end)
+
       -- Load Telescope extension
       require("telescope").load_extension("git_worktree")
+
+      -- Custom function to create worktree in .git directory
+      _G.create_worktree_in_git_dir = function()
+        -- Get git root directory
+        local git_root = vim.fn.systemlist("git rev-parse --show-toplevel")[1]
+        if not git_root then
+          vim.notify("Not in a git repository", vim.log.levels.ERROR)
+          return
+        end
+
+        -- Input branch name
+        vim.ui.input({ prompt = "Branch name: " }, function(branch_name)
+          if not branch_name or branch_name == "" then
+            return
+          end
+
+          -- Set worktree path to .git/.wt/<branch_name>
+          local worktree_path = git_root .. "/.git/.wt/" .. branch_name
+
+          -- Create .git/.wt directory if it doesn't exist
+          vim.fn.system("mkdir -p " .. vim.fn.shellescape(git_root .. "/.git/.wt"))
+
+          -- Check if branch exists
+          local branch_exists =
+            vim.fn.system("git rev-parse --verify " .. vim.fn.shellescape(branch_name) .. " 2>/dev/null")
+
+          -- Create worktree using git command directly
+          local cmd
+          if vim.v.shell_error ~= 0 then
+            -- Branch doesn't exist, create new branch
+            cmd = string.format(
+              "git worktree add -b %s %s",
+              vim.fn.shellescape(branch_name),
+              vim.fn.shellescape(worktree_path)
+            )
+          else
+            -- Branch exists, use existing branch
+            cmd = string.format(
+              "git worktree add %s %s",
+              vim.fn.shellescape(worktree_path),
+              vim.fn.shellescape(branch_name)
+            )
+          end
+          local result = vim.fn.system(cmd)
+
+          if vim.v.shell_error == 0 then
+            vim.notify("Created worktree: " .. branch_name .. " at " .. worktree_path)
+            -- Switch to the new worktree
+            vim.cmd("cd " .. worktree_path)
+            -- Update nvim-tree if available
+            local ok, api = pcall(require, "nvim-tree.api")
+            if ok then
+              pcall(api.tree.change_root, worktree_path)
+              pcall(api.tree.reload)
+            end
+          else
+            vim.notify("Failed to create worktree: " .. result, vim.log.levels.ERROR)
+          end
+        end)
+      end
 
       -- Key mapping configuration
       vim.api.nvim_set_keymap(
@@ -1077,8 +1142,8 @@ require("lazy").setup({
       vim.api.nvim_set_keymap(
         "n",
         "<Leader>wa",
-        "<cmd>Telescope git_worktree create<cr>",
-        { noremap = true, silent = true, desc = "Create git worktree" }
+        "<cmd>lua _G.create_worktree_in_git_dir()<cr>",
+        { noremap = true, silent = true, desc = "Create git worktree in .git directory" }
       )
     end,
     dependencies = {
