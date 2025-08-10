@@ -1,12 +1,15 @@
 local secrets = import 'secrets.jsonnet';
+local home = std.extVar('HOME');
+local nodepath = home + '/.local/share/mise/installs/node/24.5.0';
+local pythonpath = home + '/.local/share/mise/installs/python/3.13.5';
 
 {
   mcpServers: {
     cal2prompt: {
-      command: '/Users/shuntaka/.cargo/bin/cal2prompt',
+      command: home + '/.cargo/bin/cal2prompt',
       args: ['mcp'],
       env: {
-        HOME: '/Users/shuntaka',
+        HOME: home,
       },
     },
     "slack": {
@@ -25,20 +28,20 @@ local secrets = import 'secrets.jsonnet';
       "args": ["-y", "figma-developer-mcp", "--figma-api-key=" + secrets.figma.token, "--stdio"]
     },
     // claude_code: {
-    //   command: '/Users/shuntaka/.local/share/mise/installs/node/22.13.0/bin/node',
+    //   command: nodepath + '/bin/node',
     //   args: [
-    //     '/Users/shuntaka/.local/share/mise/installs/node/22.13.0/bin/claude',
+    //     nodepath + '/bin/claude',
     //     'mcp',
     //     'serve',
     //   ],
     //   env: {},
     // },
     fetchMcp: {
-      command: '/Users/shuntaka/.local/share/mise/installs/node/22.13.0/bin/npx',
+      command: nodepath + '/bin/npx',
       args: ['-y', 'fetch-mcp'],
     },
     // playwright: {
-    //   command: '/Users/shuntaka/.local/share/mise/installs/node/22.13.0/bin/npx',
+    //   command: nodepath + '/bin/npx',
     //   args: ['@playwright/mcp@latest'],
     // },
     // "shuntaka.dev": {
@@ -51,11 +54,11 @@ local secrets = import 'secrets.jsonnet';
     //   ]
     // },
     // mymcp: {
-    //   command: "/Users/shuntaka/.local/share/mise/installs/node/22.13.0/bin/node",
-    //   args: ["--experimental-transform-types", "/Users/shuntaka/repos/github.com/shuntaka9576/my-mcp/src/index.mts"]
+    //   command: nodepath + '/bin/node',
+    //   args: ["--experimental-transform-types", home + "/repos/github.com/shuntaka9576/my-mcp/src/index.mts"]
     // },
     // "awslabs.aws-documentation-mcp-server": {
-    //   command: "/Users/shuntaka/.local/share/mise/installs/python/3.13.2/bin/uvx",
+    //   command: pythonpath + '/bin/uvx',
     //   args: ["awslabs.aws-documentation-mcp-server@latest"],
     //   env: {
     //     "FASTMCP_LOG_LEVEL": "ERROR"

@@ -1,4 +1,7 @@
 local secrets = import 'secrets.jsonnet';
+local home = std.extVar('HOME');
+local nodepath = home + '/.local/share/mise/installs/node/24.5.0';
+local pythonpath = home + '/.local/share/mise/installs/python/3.13.5';
 
 {
   mcpServers: {
@@ -7,18 +10,18 @@ local secrets = import 'secrets.jsonnet';
     //   "args": ["-y", "figma-developer-mcp", "--figma-api-key=" + secrets.figma.token, "--stdio"]
     // },
     // playwright: {
-    //   command: '/Users/shuntaka/.local/share/mise/installs/node/22.13.0/bin/npx',
+    //   command: nodepath + '/bin/npx',
     //   args: ['@playwright/mcp@latest'],
     // },
     // "awslabs.aws-documentation-mcp-server": {
-    //   command: "/Users/shuntaka/.local/share/mise/installs/python/3.13.2/bin/uvx",
+    //   command: pythonpath + '/bin/uvx',
     //   args: ["awslabs.aws-documentation-mcp-server@latest"],
     //   env: {
     //     "FASTMCP_LOG_LEVEL": "ERROR"
     //   }
     // },
     "mysql": {
-      "command": "/Users/shuntaka/.local/share/mise/installs/python/3.13.5/bin/mysql_mcp_server",
+      "command": pythonpath + '/bin/mysql_mcp_server',
       "args": [],
       "env": {
         "MYSQL_HOST": secrets.mcp_server_mysql.host,
@@ -29,14 +32,14 @@ local secrets = import 'secrets.jsonnet';
       }
     },
     "aws-knowledge-mcp-server": {
-      "command": "/Users/shuntaka/.local/share/mise/installs/node/24.5.0/bin/npx",
+      "command": nodepath + '/bin/npx',
       "args": [
         "-y",
         "mcp-remote",
         "https://knowledge-mcp.global.api.aws"
       ],
       "env": {
-        "PATH": "/Users/shuntaka/.local/share/mise/installs/node/24.5.0/bin:/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+        "PATH": nodepath + '/bin:/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin'
       }
     },
     // github: {
@@ -61,12 +64,19 @@ local secrets = import 'secrets.jsonnet';
       }
     },
     serena: {
-      command: '/Users/shuntaka/.local/share/mise/installs/python/3.13.5/bin/uvx',
+      command: pythonpath + '/bin/uvx',
       args: [
         '--from',
         'git+https://github.com/oraios/serena',
         'serena',
         'start-mcp-server'
+      ],
+    },
+    'slash-command-mcp-example': {
+      command: 'node',
+      args: [
+        '--experimental-strip-types',
+        home + '/repos/github.com/shuntaka9576/slash-command-mcp-example/src/index.ts',
       ],
     },
   },
