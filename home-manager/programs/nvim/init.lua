@@ -12,8 +12,10 @@ vim.api.nvim_set_keymap("n", "<C-k>w", "<C-w>w", { noremap = true })
 
 -- tab control
 vim.api.nvim_set_keymap("n", "te", ":tabedit<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<tab>", ":tabnext<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<S-tab>", ":tabprevious<CR>", { noremap = true, silent = true })
+
+-- Use Tab for buffer (tab) switching with bufferline
+vim.api.nvim_set_keymap("n", "<tab>", "<cmd>BufferLineCycleNext<cr>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<S-tab>", "<cmd>BufferLineCyclePrev<cr>", { noremap = true, silent = true })
 
 -- move when one line is wrapped
 vim.api.nvim_set_keymap("n", "k", "gk", { noremap = true })
@@ -364,7 +366,7 @@ require("lazy").setup({
         vim.keymap.set("n", "<C-x>", api.node.open.horizontal, opts("Open: Horizontal Split"))
         vim.keymap.set("n", "<BS>", api.node.navigate.parent_close, opts("Close Directory"))
         vim.keymap.set("n", "<CR>", api.node.open.edit, opts("Open"))
-        vim.keymap.set("n", "<Tab>", api.node.open.preview, opts("Open Preview"))
+        -- vim.keymap.set("n", "<Tab>", api.node.open.preview, opts("Open Preview"))  -- Disable Tab in nvim-tree
         vim.keymap.set("n", ">", api.node.navigate.sibling.next, opts("Next Sibling"))
         vim.keymap.set("n", "<", api.node.navigate.sibling.prev, opts("Previous Sibling"))
         vim.keymap.set("n", ".", api.node.run.cmd, opts("Run Command"))
