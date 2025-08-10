@@ -15,8 +15,8 @@ const modelDisplay = data.model.display_name;
 const currentDir = data.workspace.current_dir;
 
 // Get ccusage status
-const ccusageProcess = new Deno.Command("npx", {
-  args: ["ccusage@latest", "statusline"],
+const ccusageProcess = new Deno.Command("ccusage", {
+  args: ["statusline"],
   stdin: "piped",
   stdout: "piped",
   stderr: "piped",
@@ -29,6 +29,26 @@ await writer.close();
 
 const ccusageOutput = await ccusageChild.output();
 const ccusage = new TextDecoder().decode(ccusageOutput.stdout).trim();
+
+// Get Claude Code version
+let claudeVersion = "";
+try {
+  const versionProcess = new Deno.Command("claude", {
+    args: ["--version"],
+    stdout: "piped",
+    stderr: "piped",
+  });
+
+  const versionOutput = await versionProcess.output();
+  const versionText = new TextDecoder().decode(versionOutput.stdout).trim();
+  // Extract version number (e.g., "1.0.72" from "1.0.72 (Claude Code)")
+  const versionMatch = versionText.match(/^([\d.]+)/);
+  if (versionMatch) {
+    claudeVersion = versionMatch[1];
+  }
+} catch {
+  // Claude command not available, ignore
+}
 
 // Get git branch if in a git repo
 let gitBranch = "";
@@ -61,8 +81,12 @@ try {
 const dirName = currentDir.split("/").pop() || currentDir;
 
 // Output the statusline
+// Build the output parts
+let output = `${ccusage} | 📁 ${dirName}`;
 if (gitBranch) {
-  console.log(`${ccusage} | 📁 ${dirName} | 🌿 ${gitBranch}`);
-} else {
-  console.log(`${ccusage} | 📁 ${dirName}`);
+  output += ` | 🌿 ${gitBranch}`;
 }
+if (claudeVersion) {
+  output += ` | ⚡ v${claudeVersion}`;
+}
+console.log(output);
