@@ -822,19 +822,22 @@ require("lazy").setup({
     "akinsho/toggleterm.nvim",
     config = function()
       local Terminal = require("toggleterm.terminal").Terminal
-      local lazygit = Terminal:new({
-        cmd = "lazygit",
-        dir = "git_dir",
-        direction = "float",
-        on_close = function(_)
-          local nvim_tree_reloader = require("nvim-tree.actions.reloaders")
-          nvim_tree_reloader.reload_explorer()
-        end,
-        float_opts = {
-          border = "double",
-        },
-      })
+
+      -- Create lazygit dynamically to use current directory
       function _LAZYGIT_TOGGLE()
+        local lazygit = Terminal:new({
+          cmd = "lazygit",
+          -- Use current working directory instead of git_dir
+          dir = vim.fn.getcwd(),
+          direction = "float",
+          on_close = function(_)
+            local nvim_tree_reloader = require("nvim-tree.actions.reloaders")
+            nvim_tree_reloader.reload_explorer()
+          end,
+          float_opts = {
+            border = "double",
+          },
+        })
         lazygit:toggle()
       end
 
