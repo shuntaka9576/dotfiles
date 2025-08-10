@@ -831,8 +831,11 @@ require("lazy").setup({
           dir = vim.fn.getcwd(),
           direction = "float",
           on_close = function(_)
-            local nvim_tree_reloader = require("nvim-tree.actions.reloaders")
-            nvim_tree_reloader.reload_explorer()
+            -- nvim-treeをリロード（利用可能な場合）
+            local ok, api = pcall(require, "nvim-tree.api")
+            if ok then
+              pcall(api.tree.reload)
+            end
           end,
           float_opts = {
             border = "double",
