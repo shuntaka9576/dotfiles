@@ -1042,6 +1042,51 @@ require("lazy").setup({
   -- },
   { "lambdalisue/vim-gin" },
   {
+    "polarmutex/git-worktree.nvim",
+    version = "^2",
+    config = function()
+      -- Hooks configuration (optional)
+      local Hooks = require("git-worktree.hooks")
+
+      Hooks.register(Hooks.type.SWITCH, function(path, prev_path)
+        vim.notify("Switched to " .. path)
+        -- Change directory
+        vim.cmd("cd " .. path)
+        -- Update nvim-tree if available
+        local ok, api = pcall(require, "nvim-tree.api")
+        if ok then
+          pcall(api.tree.change_root, path)
+          pcall(api.tree.reload)
+        end
+        -- Reload buffer only if it has a filename
+        if vim.fn.expand("%") ~= "" then
+          vim.cmd("e!")
+        end
+      end)
+
+      -- Load Telescope extension
+      require("telescope").load_extension("git_worktree")
+
+      -- Key mapping configuration
+      vim.api.nvim_set_keymap(
+        "n",
+        "<Leader>wt",
+        "<cmd>Telescope git_worktree<cr>",
+        { noremap = true, silent = true, desc = "List git worktrees" }
+      )
+      vim.api.nvim_set_keymap(
+        "n",
+        "<Leader>wa",
+        "<cmd>Telescope git_worktree create<cr>",
+        { noremap = true, silent = true, desc = "Create git worktree" }
+      )
+    end,
+    dependencies = {
+      "nvim-telescope/telescope.nvim",
+      "nvim-lua/plenary.nvim",
+    },
+  },
+  {
     "hrsh7th/nvim-cmp",
     event = "InsertEnter",
     dependencies = {
