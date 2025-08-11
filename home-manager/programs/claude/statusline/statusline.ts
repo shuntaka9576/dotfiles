@@ -92,7 +92,7 @@ const ccusage = new TextDecoder().decode(ccusageOutput.stdout).trim()
 let totalTokens = 0
 let tokenDisplay = "0"
 let percentageWithColor = "0%"
-const tokenEmoji = "🟢" // Default green circle
+let tokenEmoji = "🟢" // Default green circle
 
 // Try to get tokens from transcript file
 if (transcriptPath) {
@@ -139,18 +139,17 @@ if (totalTokens > 0) {
   const percentage = Math.min(100, Math.round((totalTokens / COMPACTION_THRESHOLD) * 100))
 
   // Color coding and emoji for percentage
-  let percentageColor = "\x1b[32m" // Green
-  let tokenEmoji = "🟢" // Green circle
+  const { color: percentageColor, emoji } = (() => {
+    if (percentage >= 90) {
+      return { color: "\x1b[31m", emoji: "🔴" } // Red
+    }
+    if (percentage >= 70) {
+      return { color: "\x1b[33m", emoji: "🟡" } // Yellow
+    }
+    return { color: "\x1b[32m", emoji: "🟢" } // Green
+  })()
 
-  if (percentage >= 70) {
-    percentageColor = "\x1b[33m" // Yellow
-    tokenEmoji = "🟡" // Yellow circle
-  }
-  if (percentage >= 90) {
-    percentageColor = "\x1b[31m" // Red
-    tokenEmoji = "🔴" // Red circle
-  }
-
+  tokenEmoji = emoji
   percentageWithColor = `${percentageColor}${percentage}%\x1b[0m`
 }
 
