@@ -19,12 +19,8 @@
   "customManagers": [
     {
       "customType": "regex",
-      "managerFilePatterns": [
-        "home-manager/programs/mise/\\.default-npm-packages$"
-      ],
-      "matchStrings": [
-        "^(?<depName>@?[^@\\s]+)(?:@(?<currentValue>[^\\s]+))?$"
-      ],
+      "managerFilePatterns": ["home-manager/programs/mise/\\.default-npm-packages$"],
+      "matchStrings": ["^(?<depName>@?[^@\\s]+)(?:@(?<currentValue>[^\\s]+))?$"],
       "datasourceTemplate": "npm",
       "versioningTemplate": "npm"
     }

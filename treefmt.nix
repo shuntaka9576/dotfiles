@@ -6,13 +6,15 @@
     stylua.enable = true;
     black.enable = true;
     taplo.enable = true;
-    prettier.enable = true;
+    biome = {
+      enable = true;
+      formatCommand = "check";
+      settings = builtins.fromJSON (builtins.readFile ./biome.jsonc);
+    };
     statix.enable = true;
   };
   settings.global.excludes = [
     "_sources/*"
-    "home-manager/programs/vscode/.vscode/extensions.json"
-    "home-manager/programs/memo/template.md"
     "home-manager/programs/nvim/lazy-lock.json"
   ];
   settings.formatter.shfmt.includes = [

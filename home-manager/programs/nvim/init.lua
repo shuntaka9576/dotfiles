@@ -106,6 +106,80 @@ vim.api.nvim_set_keymap("n", "<Space><Space>", ":nohlsearch<CR><Esc>", { noremap
 -- save yank results to clipboard
 vim.api.nvim_command("set clipboard+=unnamed")
 
+-- Configure Deno LSP (runs when package.json doesn't exist)
+vim.lsp.config("denols", {
+  cmd = { "deno", "lsp" },
+  filetypes = {
+    "javascript",
+    "javascriptreact",
+    "javascript.jsx",
+    "typescript",
+    "typescriptreact",
+    "typescript.tsx",
+  },
+  -- Use current directory as root
+  root_markers = { "deno.json", "deno.jsonc", ".git", "." },
+  single_file_support = true,
+  init_options = {
+    enable = true,
+    lint = true,
+    unstable = true,
+    suggest = {
+      completeFunctionCalls = true,
+      names = true,
+      paths = true,
+      autoImports = true,
+      imports = {
+        autoDiscover = true,
+        hosts = {
+          ["https://deno.land"] = true,
+          ["https://cdn.skypack.dev"] = true,
+          ["https://esm.sh"] = true,
+        },
+      },
+    },
+    documentPreload = {
+      enable = true,
+      limit = 10,
+    },
+    inlayHints = {
+      parameterNames = {
+        enabled = "all",
+      },
+      parameterTypes = {
+        enabled = true,
+      },
+      variableTypes = {
+        enabled = true,
+      },
+      propertyDeclarationTypes = {
+        enabled = true,
+      },
+      functionLikeReturnTypes = {
+        enabled = true,
+      },
+      enumMemberValues = {
+        enabled = true,
+      },
+    },
+  },
+  settings = {
+    deno = {
+      enable = true,
+      lint = true,
+      unstable = true,
+      suggest = {
+        imports = {
+          hosts = {
+            ["https://deno.land"] = true,
+          },
+        },
+      },
+    },
+  },
+})
+
+-- Configure TypeScript LSP (only runs when package.json exists)
 vim.lsp.config("ts_ls", {
   init_options = { hostInfo = "neovim" },
   cmd = { "typescript-language-server", "--stdio" },
@@ -117,9 +191,30 @@ vim.lsp.config("ts_ls", {
     "typescriptreact",
     "typescript.tsx",
   },
-  root_markers = { "tsconfig.json", "jsconfig.json", "package.json", ".git" },
+  -- package.json is required for ts_ls to start
+  root_markers = { "package.json" },
 })
-vim.lsp.enable("ts_ls")
+
+-- Function to check and enable appropriate LSP
+local function setup_lsp_for_buffer()
+  local root_dir = vim.fn.getcwd()
+  local package_json = root_dir .. "/package.json"
+  if vim.fn.filereadable(package_json) == 1 then
+    -- Only try to enable ts_ls if package.json exists
+    pcall(function()
+      vim.lsp.enable("ts_ls")
+    end)
+  else
+    -- Enable Deno LSP when no package.json
+    vim.lsp.enable("denols")
+  end
+end
+
+-- Setup LSP when entering TypeScript/JavaScript files
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+  callback = setup_lsp_for_buffer,
+})
 
 vim.lsp.config("rust_analyzer", {
   cmd = { "rust-analyzer" },
@@ -247,7 +342,46 @@ vim.api.nvim_create_autocmd("LspAttach", {
       set("n", "K", vim.lsp.buf.hover, keyopts)
     end
     if client:supports_method("textDocument/definition") then
-      set("n", "gd", vim.lsp.buf.definition, keyopts)
+      -- Deno LSPの場合は特別な処理
+      if client.name == "denols" then
+        set("n", "gd", function()
+          -- まず通常の定義ジャンプを試みる
+          local params = vim.lsp.util.make_position_params()
+          vim.lsp.buf_request(0, "textDocument/definition", params, function(err, result, ctx, config)
+            if err or not result or (vim.tbl_islist(result) and #result == 0) then
+              -- 定義が見つからない場合はホバーで情報を表示
+              vim.lsp.buf.hover()
+              return
+            end
+
+            -- 結果を確認
+            local locations = result
+            if not vim.tbl_islist(locations) then
+              locations = { locations }
+            end
+
+            -- deno:スキームのURIをチェック
+            local has_deno_uri = false
+            for _, loc in ipairs(locations) do
+              if loc.uri and vim.startswith(loc.uri, "deno:") then
+                has_deno_uri = true
+                break
+              end
+            end
+
+            if has_deno_uri then
+              -- 組み込み型の場合はホバーで型情報を表示
+              vim.lsp.buf.hover()
+              vim.notify("Built-in type - showing hover info instead", vim.log.levels.INFO)
+            else
+              -- 通常のファイルの場合は定義にジャンプ
+              vim.lsp.handlers["textDocument/definition"](err, result, ctx, config)
+            end
+          end)
+        end, keyopts)
+      else
+        set("n", "gd", vim.lsp.buf.definition, keyopts)
+      end
     end
     if client:supports_method("textDocument/typeDefinition*") then
       set("n", "gt", vim.lsp.buf.type_definition, keyopts)

@@ -5,7 +5,8 @@
   },
   "includeCoAuthoredBy": false,
   "permissions": {
-    "defaultMode": "bypassPermissions"
+    "defaultMode": "bypassPermissions",
+    "allow": ["mcp__serena", "mcp__aws-knowledge-mcp-server", "mcp__github"]
   },
   "model": "opus",
   "hooks": {
