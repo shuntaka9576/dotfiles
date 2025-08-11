@@ -16,10 +16,10 @@
       me = "memo e";
       mn = "memo new";
       tka = "tmux kill-server";
-      u = "sudo nix run github:LnL7/nix-darwin --extra-experimental-features 'flakes nix-command' -- switch --flake \".#${username}\"";
       x = ''
         tmux rename-window "$(basename `pwd` | cut -c1-4)";
-        tmux new-window -n "n" nvim;
+        tmux new-window -n "n" -c "#{pane_current_path}";
+        tmux send-keys -t "n" "nvim" C-m;
         tmux new-window -n "p";
         lazygit
       '';
