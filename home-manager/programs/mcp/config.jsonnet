@@ -1,6 +1,6 @@
 local secrets = import 'secrets.jsonnet';
 local home = std.extVar('HOME');
-local nodepath = home + '/.local/share/mise/installs/node/24.5.0';
+local nodepath = home + '/.local/share/mise/installs/node/24.6.0';
 local pythonpath = home + '/.local/share/mise/installs/python/3.13.5';
 
 {
