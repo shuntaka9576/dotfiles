@@ -26,7 +26,9 @@
   "customManagers": [
     {
       "customType": "regex",
-      "fileMatch": ["home-manager/programs/mise/.default-npm-packages"],
+      "managerFilePatterns": [
+        "/home-manager/programs/mise/.default-npm-packages/"
+      ],
       "matchStrings": [
         "^(?<depName>@?[\\w-]+(?:/[\\w-]+)?)(?:@(?<currentValue>[\\w.-]+))?$"
       ],
