@@ -26,13 +26,14 @@
   "customManagers": [
     {
       "customType": "regex",
-      "managerFilePatterns": [
-        "/(^|/)\\.default-npm-packages$/"
+      "fileMatch": [
+        "\\.default-npm-packages$"
       ],
       "matchStrings": [
-        "^(?<depName>@?[^@]+)@(?<currentValue>.+)$"
+        "^(?<depName>.+?)@(?<currentValue>.+?)$"
       ],
-      "datasourceTemplate": "npm"
+      "datasourceTemplate": "npm",
+      "versioningTemplate": "npm"
     }
   ]
 }
