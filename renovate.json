@@ -1,7 +1,8 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": ["config:recommended"],
-  "dependencyDashboard": false,
+  "timezone": "Asia/Tokyo",
+  "dependencyDashboard": true,
   "requiredStatusChecks": null,
   "lockFileMaintenance": {
     "enabled": true,
