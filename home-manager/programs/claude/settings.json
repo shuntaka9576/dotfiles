@@ -5,10 +5,10 @@
   },
   "includeCoAuthoredBy": false,
   "permissions": {
-    "defaultMode": "bypassPermissions",
-    "allow": ["mcp__serena", "mcp__aws-knowledge-mcp-server", "mcp__github"]
+    "allow": ["mcp__serena", "mcp__aws-knowledge-mcp-server", "mcp__github"],
+    "defaultMode": "bypassPermissions"
   },
-  "model": "opus",
+  "model": "opusplan",
   "hooks": {
     "Stop": [
       {
