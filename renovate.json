@@ -27,7 +27,7 @@
     {
       "customType": "regex",
       "managerFilePatterns": [
-        "^\\.default-npm-packages$"
+        "/(^|/)\\.default-npm-packages$/"
       ],
       "matchStrings": [
         "^(?<depName>@?[^@]+)@(?<currentValue>.+)$"
