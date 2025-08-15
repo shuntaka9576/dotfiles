@@ -1,21 +1,15 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:recommended"
-  ],
+  "extends": ["config:recommended"],
   "timezone": "Asia/Tokyo",
   "dependencyDashboard": false,
   "ignoreTests": true,
   "lockFileMaintenance": {
     "enabled": true,
-    "extends": [
-      "schedule:daily"
-    ]
+    "extends": ["schedule:daily"]
   },
   "automerge": true,
-  "automergeSchedule": [
-    "every 1 hour after 00:00 and before 23:59 every day"
-  ],
+  "automergeSchedule": ["every 1 hour after 00:00 and before 23:59 every day"],
   "major": {
     "enabled": false
   },
@@ -26,12 +20,8 @@
   "customManagers": [
     {
       "customType": "regex",
-      "fileMatch": [
-        "\\.default-npm-packages$"
-      ],
-      "matchStrings": [
-        "(?<depName>\\S+?)@(?<currentValue>\\S+)"
-      ],
+      "fileMatch": ["\\.default-npm-packages$"],
+      "matchStrings": ["(?<depName>\\S+?)@(?<currentValue>\\S+)"],
       "datasourceTemplate": "npm",
       "versioningTemplate": "npm"
     }

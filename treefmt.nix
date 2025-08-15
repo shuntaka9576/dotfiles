@@ -16,7 +16,6 @@
   settings.global.excludes = [
     "_sources/*"
     "home-manager/programs/nvim/lazy-lock.json"
-    "renovate.json"
   ];
   settings.formatter.shfmt.includes = [
     "*/zshrc"
