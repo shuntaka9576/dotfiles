@@ -33,7 +33,7 @@
     {
       "customType": "regex",
       "managerFilePatterns": [
-        "/home-manager/programs/mise/.default-npm-packages/"
+        ".default-npm-packages"
       ],
       "matchStrings": [
         "^(?<depName>(?:@[^/]+/)?[^@\\s]+?)(?:@(?<currentValue>[^\\s]+))?$"
