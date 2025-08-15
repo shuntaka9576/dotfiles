@@ -32,11 +32,11 @@
   "customManagers": [
     {
       "customType": "regex",
-      "managerFilePatterns": [
-        "/^home-manager/programs/mise/\\.default-npm-packages$/"
+      "fileMatch": [
+        "home-manager/programs/mise/.default-npm-packages"
       ],
       "matchStrings": [
-        "^(?<depName>@?[^@\\s]+)@(?<currentValue>[^\\s]+)$"
+        "^(?<depName>(?:@[^/]+/)?[^@\\s]+?)(?:@(?<currentValue>[^\\s]+))?$"
       ],
       "datasourceTemplate": "npm",
       "versioningTemplate": "npm"
