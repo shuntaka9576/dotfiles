@@ -27,15 +27,15 @@
     "npm",
     "nix",
     "mise",
-    "regex"
+    "custom.regex"
   ],
   "customManagers": [
     {
       "customType": "regex",
       "description": "Update npm packages in .default-npm-packages",
-      "fileMatch": [
-        "(^|/)home-manager/programs/mise/\\.default-npm-packages$",
-        "(^|/)\\.default-npm-packages$"
+      "managerFilePatterns": [
+        "/(^|/)home-manager/programs/mise/\\.default-npm-packages$/",
+        "/(^|/)\\.default-npm-packages$/"
       ],
       "matchStrings": [
         "^(?<depName>@?[\\w-]+(?:@[\\w-]+)?[\\w.-]*)(?:@(?<currentValue>[\\w.-]+))?$"
@@ -48,8 +48,12 @@
   "packageRules": [
     {
       "description": "Automerge npm packages in .default-npm-packages",
-      "matchManagers": ["regex"],
-      "matchFileNames": ["**/.default-npm-packages"],
+      "matchManagers": [
+        "custom.regex"
+      ],
+      "matchFileNames": [
+        "**/.default-npm-packages"
+      ],
       "automerge": true
     }
   ]
