@@ -25,4 +25,8 @@ gc:
 fmt:
 	nix fmt
 
-.PHONY: all init update switch mcp clean-mcp gc fmt
+node:
+	mise uninstall node --all
+	mise install node
+
+.PHONY: all init update switch mcp clean-mcp gc fmt node
