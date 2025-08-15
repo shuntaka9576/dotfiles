@@ -1,21 +1,15 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:recommended"
-  ],
+  "extends": ["config:recommended"],
   "timezone": "Asia/Tokyo",
   "dependencyDashboard": true,
   "ignoreTests": true,
   "lockFileMaintenance": {
     "enabled": true,
-    "extends": [
-      "schedule:daily"
-    ]
+    "extends": ["schedule:daily"]
   },
   "automerge": true,
-  "automergeSchedule": [
-    "every 1 hour after 00:00 and before 23:59 every day"
-  ],
+  "automergeSchedule": ["every 1 hour after 00:00 and before 23:59 every day"],
   "major": {
     "enabled": false
   },
@@ -23,15 +17,12 @@
   "nix": {
     "enabled": true
   },
+  "enabledManagers": ["npm", "nix", "mise", "custom.regex"],
   "customManagers": [
     {
       "customType": "regex",
-      "managerFilePatterns": [
-        "home-manager/programs/mise/.default-npm-packages"
-      ],
-      "matchStrings": [
-        "^(?<depName>@?[^@\\s]+)(?:@(?<currentValue>[^\\s]+))?$"
-      ],
+      "fileMatch": ["^home-manager/programs/mise/\\.default-npm-packages$"],
+      "matchStrings": ["^(?<depName>@?[^@\\s]+)@(?<currentValue>[^\\s]+)$"],
       "datasourceTemplate": "npm",
       "versioningTemplate": "npm"
     }
