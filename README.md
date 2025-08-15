@@ -106,7 +106,17 @@ make gc
 
 ## Troubleshooting
 
-reset mise
+### Renovate Debugging
+
+```bash
+# Test locally
+npx renovate --platform=local
+
+# Debug mode
+npx renovate --platform=local --log-level=debug
+```
+
+### Reset mise
 
 ```bash
 mise uninstall node --all
@@ -115,7 +125,7 @@ mise uninstall go --all
 mise uninstall rust --all
 ```
 
-reset homebrew
+### Reset homebrew
 
 ```bash
 brew list --formula | xargs brew uninstall --force
