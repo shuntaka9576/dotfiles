@@ -30,7 +30,7 @@
         "\\.default-npm-packages$"
       ],
       "matchStrings": [
-        "^(?<depName>.+?)@(?<currentValue>.+?)$"
+        "(?<depName>\\S+?)@(?<currentValue>\\S+)"
       ],
       "datasourceTemplate": "npm",
       "versioningTemplate": "npm"
