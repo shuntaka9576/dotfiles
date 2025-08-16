@@ -278,7 +278,7 @@ vim.lsp.config("pylsp", {
 vim.lsp.enable("pylsp")
 
 vim.lsp.config("ruff_lsp", {
-  cmd = { "ruff-lsp" },
+  cmd = { "ruff", "server" },
   filetypes = { "python" },
   root_markers = {
     "pyproject.toml",
