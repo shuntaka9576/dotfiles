@@ -63,6 +63,18 @@ local pythonpath = home + '/.local/share/mise/installs/python/3.13.5';
         "Authorization": "Bearer " + secrets.github.token
       }
     },
+    "aws.dp-mcp": {
+      command: pythonpath + '/bin/uvx',
+      args: [
+        "awslabs.aws-dataprocessing-mcp-server@latest",
+        "--allow-write",
+        "--allow-sensitive-data-access"
+      ],
+      env: {
+        "AWS_PROFILE": "iot-demo",
+        "AWS_REGION": "ap-northeast-1"
+      }
+    },
     serena: {
       command: pythonpath + '/bin/uvx',
       args: [
@@ -71,13 +83,6 @@ local pythonpath = home + '/.local/share/mise/installs/python/3.13.5';
         'serena',
         'start-mcp-server'
       ],
-    },
-    'slash-command-mcp-example': {
-      command: 'node',
-      args: [
-        '--experimental-strip-types',
-        home + '/repos/github.com/shuntaka9576/slash-command-mcp-example/src/index.ts',
-      ],
-    },
+    }
   },
 }
