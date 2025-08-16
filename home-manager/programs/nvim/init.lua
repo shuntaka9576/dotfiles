@@ -791,16 +791,17 @@ require("lazy").setup({
           --     return { exe = "prettier", args = { "--stdin-filepath", vim.api.nvim_buf_get_name(0) }, stdin = true }
           --   end,
           -- },
-          go = {
-            function()
-              return {
-                exe = "go",
-                args = { "fmt", "-" },
-                stdin = true,
-                cwd = vim.fn.fnamemodify(file_path, ":h"), -- Set the working directory to the file's directory
-              }
-            end,
-          },
+          -- go = {
+          --   function()
+          --     local file_path = util.get_current_buffer_file_path()
+          --     return {
+          --       exe = "go",
+          --       args = { "fmt", "-" },
+          --       stdin = true,
+          --       cwd = vim.fn.fnamemodify(file_path, ":h"), -- Set the working directory to the file's directory
+          --     }
+          --   end,
+          -- },
           typescript = {
             function()
               if use_deno_fmt() then
