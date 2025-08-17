@@ -12,20 +12,20 @@ local pythonpath = home + '/.local/share/mise/installs/python/3.13.5';
         HOME: home,
       },
     },
-    "slack": {
-      "command": "npx",
-      "args": [
-        "-y",
-        "@modelcontextprotocol/server-slack"
+    slack: {
+      command: 'npx',
+      args: [
+        '-y',
+        '@modelcontextprotocol/server-slack',
       ],
-      "env": {
-        "SLACK_BOT_TOKEN": secrets.slack.token,
-        "SLACK_TEAM_ID": secrets.slack.teamID
-      }
+      env: {
+        SLACK_BOT_TOKEN: secrets.slack.token,
+        SLACK_TEAM_ID: secrets.slack.teamID,
+      },
     },
-    "Framelink Figma MCP": {
-      "command": "npx",
-      "args": ["-y", "figma-developer-mcp", "--figma-api-key=" + secrets.figma.token, "--stdio"]
+    'Framelink Figma MCP': {
+      command: 'npx',
+      args: ['-y', 'figma-developer-mcp', '--figma-api-key=' + secrets.figma.token, '--stdio'],
     },
     // claude_code: {
     //   command: nodepath + '/bin/node',
@@ -72,7 +72,7 @@ local pythonpath = home + '/.local/share/mise/installs/python/3.13.5';
         '--rm',
         '-e',
         'GITHUB_PERSONAL_ACCESS_TOKEN',
-        'ghcr.io/github/github-mcp-server'
+        'ghcr.io/github/github-mcp-server',
       ],
       env: {
         GITHUB_PERSONAL_ACCESS_TOKEN: secrets.github.token,

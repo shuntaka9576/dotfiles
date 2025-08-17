@@ -6,6 +6,7 @@
     stylua.enable = true;
     black.enable = true;
     taplo.enable = true;
+    jsonnetfmt.enable = true;
     biome = {
       enable = true;
       formatCommand = "check";
