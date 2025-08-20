@@ -86,7 +86,9 @@ await writer.write(new TextEncoder().encode(input))
 await writer.close()
 
 const ccusageOutput = await ccusageChild.output()
-const ccusage = new TextDecoder().decode(ccusageOutput.stdout).trim()
+const ccusageFullOutput = new TextDecoder().decode(ccusageOutput.stdout).trim()
+const blockMatch = ccusageFullOutput.match(/\$[\d.]+\s+block[^|]*/)
+const ccusage = blockMatch ? blockMatch[0].trim() : ""
 
 // Calculate token usage for current session
 let totalTokens = 0
