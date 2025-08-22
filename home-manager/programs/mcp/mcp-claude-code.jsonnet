@@ -63,18 +63,18 @@ local pythonpath = home + '/.local/share/mise/installs/python/3.13.5';
         Authorization: 'Bearer ' + secrets.github.token,
       },
     },
-    'aws.dp-mcp': {
-      command: pythonpath + '/bin/uvx',
-      args: [
-        'awslabs.aws-dataprocessing-mcp-server@latest',
-        '--allow-write',
-        '--allow-sensitive-data-access',
-      ],
-      env: {
-        AWS_PROFILE: 'iot-demo',
-        AWS_REGION: 'ap-northeast-1',
-      },
-    },
+    // 'aws.dp-mcp': {
+    //   command: pythonpath + '/bin/uvx',
+    //   args: [
+    //     'awslabs.aws-dataprocessing-mcp-server@latest',
+    //     '--allow-write',
+    //     '--allow-sensitive-data-access',
+    //   ],
+    //   env: {
+    //     AWS_PROFILE: 'iot-demo',
+    //     AWS_REGION: 'ap-northeast-1',
+    //   },
+    // },
     serena: {
       command: pythonpath + '/bin/uvx',
       args: [
