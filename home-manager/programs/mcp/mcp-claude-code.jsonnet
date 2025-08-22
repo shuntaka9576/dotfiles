@@ -56,25 +56,25 @@ local pythonpath = home + '/.local/share/mise/installs/python/3.13.5';
     //     GITHUB_PERSONAL_ACCESS_TOKEN: secrets.github.token,
     //   },
     // },
-    // github: {
-    //   type: 'http',
-    //   url: 'https://api.githubcopilot.com/mcp/',
-    //   headers: {
-    //     Authorization: 'Bearer ' + secrets.github.token,
-    //   },
-    // },
-    // 'aws.dp-mcp': {
-    //   command: pythonpath + '/bin/uvx',
-    //   args: [
-    //     'awslabs.aws-dataprocessing-mcp-server@latest',
-    //     '--allow-write',
-    //     '--allow-sensitive-data-access',
-    //   ],
-    //   env: {
-    //     AWS_PROFILE: 'iot-demo',
-    //     AWS_REGION: 'ap-northeast-1',
-    //   },
-    // },
+    github: {
+      type: 'http',
+      url: 'https://api.githubcopilot.com/mcp/',
+      headers: {
+        Authorization: 'Bearer ' + secrets.github.token,
+      },
+    },
+    'aws.dp-mcp': {
+      command: pythonpath + '/bin/uvx',
+      args: [
+        'awslabs.aws-dataprocessing-mcp-server@latest',
+        '--allow-write',
+        '--allow-sensitive-data-access',
+      ],
+      env: {
+        AWS_PROFILE: 'iot-demo',
+        AWS_REGION: 'ap-northeast-1',
+      },
+    },
     serena: {
       command: pythonpath + '/bin/uvx',
       args: [
