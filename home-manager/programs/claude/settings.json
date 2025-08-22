@@ -1,6 +1,5 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
-  "enableAllProjectMcpServers": true,
   "env": {
     "DISABLE_AUTOUPDATER": "1"
   },
@@ -10,6 +9,7 @@
     "defaultMode": "bypassPermissions"
   },
   "model": "opusplan",
+  "enableAllProjectMcpServers": true,
   "hooks": {
     "Stop": [
       {
