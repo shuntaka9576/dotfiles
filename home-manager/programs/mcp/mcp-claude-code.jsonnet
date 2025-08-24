@@ -1,10 +1,37 @@
 local secrets = import 'secrets.jsonnet';
 local home = std.extVar('HOME');
 local nodepath = home + '/.local/share/mise/installs/node/24.6.0';
-local pythonpath = home + '/.local/share/mise/installs/python/3.13.5';
+local pythonpath = home + '/.local/share/mise/installs/python/3.13.7';
 
 {
   mcpServers: {
+    'aws-knowledge-mcp-server': {
+      command: nodepath + '/bin/npx',
+      args: [
+        '-y',
+        'mcp-remote',
+        'https://knowledge-mcp.global.api.aws',
+      ],
+      env: {
+        PATH: nodepath + '/bin:/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin',
+      },
+    },
+    serena: {
+      command: pythonpath + '/bin/uvx',
+      args: [
+        '--from',
+        'git+https://github.com/oraios/serena',
+        'serena',
+        'start-mcp-server',
+      ],
+    },
+    github: {
+      type: 'http',
+      url: 'https://api.githubcopilot.com/mcp/',
+      headers: {
+        Authorization: 'Bearer ' + secrets.github.token,
+      },
+    },
     // "Framelink Figma MCP": {
     //   "command": "npx",
     //   "args": ["-y", "figma-developer-mcp", "--figma-api-key=" + secrets.figma.token, "--stdio"]
@@ -31,17 +58,6 @@ local pythonpath = home + '/.local/share/mise/installs/python/3.13.5';
     //     MYSQL_DATABASE: secrets.mcp_server_mysql.database,
     //   },
     // },
-    'aws-knowledge-mcp-server': {
-      command: nodepath + '/bin/npx',
-      args: [
-        '-y',
-        'mcp-remote',
-        'https://knowledge-mcp.global.api.aws',
-      ],
-      env: {
-        PATH: nodepath + '/bin:/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin',
-      },
-    },
     // github: {
     //   command: '/etc/profiles/per-user/shuntaka/bin/docker',
     //   args: [
@@ -56,11 +72,15 @@ local pythonpath = home + '/.local/share/mise/installs/python/3.13.5';
     //     GITHUB_PERSONAL_ACCESS_TOKEN: secrets.github.token,
     //   },
     // },
-    // github: {
-    //   type: 'http',
-    //   url: 'https://api.githubcopilot.com/mcp/',
-    //   headers: {
-    //     Authorization: 'Bearer ' + secrets.github.token,
+    // postgres: {
+    //   command: pythonpath + '/bin/uvx',
+    //   args: ['postgres-mcp-server'],
+    //   env: {
+    //     POSTGRES_HOST: secrets.postgres.host,
+    //     POSTGRES_PORT: secrets.postgres.port,
+    //     POSTGRES_USER: secrets.postgres.user,
+    //     POSTGRES_PASSWORD: secrets.postgres.password,
+    //     POSTGRES_DATABASE: secrets.postgres.database,
     //   },
     // },
     // 'aws.dp-mcp': {
@@ -75,14 +95,5 @@ local pythonpath = home + '/.local/share/mise/installs/python/3.13.5';
     //     AWS_REGION: 'ap-northeast-1',
     //   },
     // },
-    serena: {
-      command: pythonpath + '/bin/uvx',
-      args: [
-        '--from',
-        'git+https://github.com/oraios/serena',
-        'serena',
-        'start-mcp-server',
-      ],
-    },
   },
 }

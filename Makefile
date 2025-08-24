@@ -29,4 +29,8 @@ node:
 	mise uninstall node --all
 	mise install node
 
-.PHONY: all init update switch mcp clean-mcp gc fmt node
+python:
+	mise uninstall python --all
+	mise install python
+
+.PHONY: all init update switch mcp clean-mcp gc fmt node python
