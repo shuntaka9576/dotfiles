@@ -20,7 +20,7 @@
       ripgrep
       eza
       bat
-      gitui
+      # gitui
       stylua
       taplo-cli
       cargo-edit

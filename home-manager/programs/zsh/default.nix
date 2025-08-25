@@ -18,8 +18,7 @@
       tka = "tmux kill-server";
       x = ''
         tmux rename-window "$(basename `pwd` | cut -c1-4)";
-        tmux new-window -n "n" -c "#{pane_current_path}";
-        tmux send-keys -t "n" "nvim" C-m;
+        tmux new-window -n "n" nvim;
         tmux new-window -n "p";
         lazygit
       '';
