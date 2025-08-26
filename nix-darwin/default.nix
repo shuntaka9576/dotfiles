@@ -21,6 +21,7 @@
     brews = [
       "shuntaka9576/tap/blocc"
       "shuntaka9576/tap/trr"
+      "atomicjar/tap/testcontainers-desktop"
       "docker-credential-helper"
       "postgresql"
     ];
