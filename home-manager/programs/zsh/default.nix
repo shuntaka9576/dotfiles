@@ -20,6 +20,16 @@
         tmux rename-window "$(basename `pwd` | cut -c1-4)";
         tmux new-window -n "n" "zsh -c 'nvim; exec zsh'";
         tmux new-window -n "p";
+        WIN_NAME="cc-$(basename `pwd` | cut -c1-4)";
+        tmux new-window -n "$WIN_NAME";
+        sleep 0.1;
+        tmux split-window -h -t "$WIN_NAME";
+        sleep 0.1;
+        tmux split-window -h -t "$WIN_NAME.1";
+        sleep 0.1;
+        tmux select-layout -t "$WIN_NAME" even-horizontal;
+        sleep 0.1;
+        tmux send-keys -t "$WIN_NAME.0" "c" C-m;
         lazygit
       '';
     };

@@ -17,11 +17,15 @@
         clone_target = "https://github.com/shuntaka9576/homebrew-tap.git";
         force_auto_update = true;
       }
+      {
+        name = "atomicjar/tap";
+        clone_target = "https://github.com/AtomicJar/homebrew-tap.git";
+        force_auto_update = true;
+      }
     ];
     brews = [
       "shuntaka9576/tap/blocc"
       "shuntaka9576/tap/trr"
-      "atomicjar/tap/testcontainers-desktop"
       "docker-credential-helper"
       "postgresql"
     ];
