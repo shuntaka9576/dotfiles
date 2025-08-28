@@ -16,15 +16,15 @@ local pythonpath = home + '/.local/share/mise/installs/python/3.13.7';
         PATH: nodepath + '/bin:/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin',
       },
     },
-    serena: {
-      command: pythonpath + '/bin/uvx',
-      args: [
-        '--from',
-        'git+https://github.com/oraios/serena',
-        'serena',
-        'start-mcp-server',
-      ],
-    },
+    // serena: {
+    //   command: pythonpath + '/bin/uvx',
+    //   args: [
+    //     '--from',
+    //     'git+https://github.com/oraios/serena',
+    //     'serena',
+    //     'start-mcp-server',
+    //   ],
+    // },
     github: {
       type: 'http',
       url: 'https://api.githubcopilot.com/mcp/',
