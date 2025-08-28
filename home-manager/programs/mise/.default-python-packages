@@ -4,3 +4,4 @@ pyre-check
 mysql-mcp-server
 ruff-lsp
 awscurl
+plamo-translate-cli
