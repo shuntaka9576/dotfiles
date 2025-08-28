@@ -8,3 +8,4 @@ typescript-language-server@4.4.0
 @benborla29/mcp-server-mysql@2.0.5
 cspell@9.2.0
 ccusage@15.10.0
+@github/copilot-language-server@1.363.0
