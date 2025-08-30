@@ -766,3 +766,8 @@ tag = ['aws', 'aws-vault']
 description = "aws-vaultのセッション一覧表示"
 command = "aws-vault list --sessions"
 tag = ['aws', 'aws-vault']
+
+[[snippets]]
+description = "メインディレクトリ以外のworktreeをすべて削除"
+command = "git worktree list --porcelain | grep \"^worktree\" | cut -d' ' -f2 | grep -v \"$(git rev-parse --show-toplevel)\" | xargs -I {} git worktree remove {}"
+tag = ['git', 'worktree']
