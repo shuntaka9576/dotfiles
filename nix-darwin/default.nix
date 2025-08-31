@@ -18,14 +18,15 @@
         force_auto_update = true;
       }
       {
-        name = "atomicjar/tap";
-        clone_target = "https://github.com/AtomicJar/homebrew-tap.git";
+        name = "kayac/tap";
+        clone_target = "https://github.com/kayac/homebrew-tap";
         force_auto_update = true;
       }
     ];
     brews = [
       "shuntaka9576/tap/blocc"
       "shuntaka9576/tap/trr"
+      "kayac/tap/ecspresso"
       "docker-credential-helper"
       "postgresql"
       "pstree"
