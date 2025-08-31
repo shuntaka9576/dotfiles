@@ -28,6 +28,10 @@
       "shuntaka9576/tap/trr"
       "docker-credential-helper"
       "postgresql"
+      "pstree"
+      "watch"
+      "btop"
+      "htop"
     ];
     casks = [
       "windsurf"
