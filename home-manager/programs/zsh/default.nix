@@ -16,6 +16,7 @@
       me = "memo e";
       mn = "memo new";
       tka = "tmux kill-server";
+      ecs = "ecspresso";
       x = ''
         tmux rename-window "$(basename `pwd` | cut -c1-4)";
         tmux new-window -n "n" "zsh -c 'nvim; exec zsh'";
