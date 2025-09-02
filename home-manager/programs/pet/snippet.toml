@@ -771,3 +771,8 @@ tag = ['aws', 'aws-vault']
 description = "メインディレクトリ以外のworktreeをすべて削除"
 command = "git worktree list --porcelain | grep \"^worktree\" | cut -d' ' -f2 | grep -v \"$(git rev-parse --show-toplevel)\" | xargs -I {} git worktree remove {}"
 tag = ['git', 'worktree']
+
+[[snippets]]
+description = "URLのヘルスチェック監視"
+command = 'while true; do echo "$(date): $(curl -s -o /dev/null -w "%{http_code}" https://)";sleep 10; done'
+tag = ['curl', 'health']
