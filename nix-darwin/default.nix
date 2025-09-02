@@ -33,6 +33,7 @@
       "watch"
       "btop"
       "htop"
+      "actionlint"
     ];
     casks = [
       "windsurf"
