@@ -17,6 +17,7 @@
     ./programs/alacritty/default.nix
     ./programs/cargo/default.nix
     ./programs/claude/default.nix
+    ./programs/codex/default.nix
     ./programs/deno/default.nix
     ./programs/fzf/default.nix
     ./programs/gh/default.nix
