@@ -24,6 +24,7 @@ _: {
       };
       core = {
         editor = "nvim -c \"set fenc=utf-8\"";
+        pager = "cat";
       };
       push = {
         default = "current";
