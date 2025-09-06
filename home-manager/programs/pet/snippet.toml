@@ -776,3 +776,13 @@ tag = ['git', 'worktree']
 description = "URLのヘルスチェック監視"
 command = 'while true; do echo "$(date): $(curl -s -o /dev/null -w "%{http_code}" https://)";sleep 10; done'
 tag = ['curl', 'health']
+
+[[snippets]]
+description = "JSONの制御文字削除とjq整形"
+command = "echo '<JSON>' | tr -d '\\000-\\037' | jq"
+tag = ['json', 'jq', 'format']
+
+[[snippets]]
+description = "GitHub Actionsのactionバージョンをハッシュ固定"
+command = "go run github.com/suzuki-shunsuke/pinact/cmd/pinact@latest run"
+tag = ['github', 'actions', 'pinact', 'security']
