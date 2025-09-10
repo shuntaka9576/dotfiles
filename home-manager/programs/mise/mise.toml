@@ -1,5 +1,5 @@
 [tools]
-node = "24.7.0"
+node = "24.8.0"
 python = "3.13.7"
 rust = { version = "latest", targets = "aarch64-apple-darwin", components = "rust-src,clippy,rust-analyzer,llvm-tools" }
 go = "1.25.1"
