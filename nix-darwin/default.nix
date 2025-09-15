@@ -34,7 +34,6 @@
       "btop"
       "htop"
       "actionlint"
-      "codex"
     ];
     casks = [
       "windsurf"
