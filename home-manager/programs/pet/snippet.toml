@@ -786,3 +786,8 @@ tag = ['json', 'jq', 'format']
 description = "GitHub Actionsのactionバージョンをハッシュ固定"
 command = "go run github.com/suzuki-shunsuke/pinact/cmd/pinact@latest run"
 tag = ['github', 'actions', 'pinact', 'security']
+
+[[snippets]]
+description = "codexでGPT-5モデルを中程度の推論努力で実行"
+command = "codex -m gpt-5-codex -c model_reasoning_effort=\"high\""
+tag = ['codex', 'gpt', 'ai']
