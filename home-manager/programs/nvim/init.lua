@@ -12,10 +12,12 @@ vim.api.nvim_set_keymap("n", "<C-k>w", "<C-w>w", { noremap = true })
 
 -- tab control
 vim.api.nvim_set_keymap("n", "te", ":tabedit<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<Tab>", ":tabnext<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<S-Tab>", ":tabprevious<CR>", { noremap = true, silent = true })
 
 -- Use Tab for buffer (tab) switching with bufferline
-vim.api.nvim_set_keymap("n", "<tab>", "<cmd>BufferLineCycleNext<cr>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<S-tab>", "<cmd>BufferLineCyclePrev<cr>", { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap("n", "<tab>", "<cmd>BufferLineCycleNext<cr>", { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap("n", "<S-tab>", "<cmd>BufferLineCyclePrev<cr>", { noremap = true, silent = true })
 
 -- move when one line is wrapped
 vim.api.nvim_set_keymap("n", "k", "gk", { noremap = true })
