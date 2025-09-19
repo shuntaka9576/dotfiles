@@ -71,3 +71,5 @@ unsetopt BEEP
 
 # for rustup
 # . "$HOME/.cargo/env"
+
+source ~/.safe-chain/scripts/init-posix.sh

@@ -11,3 +11,4 @@ ccusage@15.10.0
 @github/copilot-language-server@1.372.0
 vibe-kanban@0.0.87
 @openai/codex@0.36.0
+@aikidosec/safe-chain@1.0.23
