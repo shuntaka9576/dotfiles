@@ -9,6 +9,6 @@ typescript-language-server@4.4.1
 cspell@9.2.1
 ccusage@15.10.0
 @github/copilot-language-server@1.373.0
-vibe-kanban@0.0.91
+vibe-kanban@0.0.92
 @openai/codex@0.38.0
 @aikidosec/safe-chain@1.0.23
