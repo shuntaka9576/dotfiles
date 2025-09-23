@@ -1,6 +1,6 @@
 jwt-cli@2.0.0
 lighthouse@12.8.2
-npm-check-updates@18.2.1
+npm-check-updates@18.3.0
 @biomejs/biome@2.2.4
 pnpm@10.17.0
 @anthropic-ai/claude-code@1.0.120
