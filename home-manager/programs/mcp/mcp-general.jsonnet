@@ -39,28 +39,28 @@ local pythonpath = home + '/.local/share/mise/installs/python/3.13.7';
     //     "MYSQL_DATABASE": secrets.mcp_server_mysql.database
     //   }
     // },
-    'aws-knowledge-mcp-server': {
-      command: nodepath + '/bin/npx',
-      args: [
-        '-y',
-        'mcp-remote',
-        'https://knowledge-mcp.global.api.aws',
-      ],
-      env: {
-        PATH: nodepath + '/bin:/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin',
-      },
-    },
-    mysql: {
-      command: pythonpath + '/bin/mysql_mcp_server',
-      args: [],
-      env: {
-        MYSQL_HOST: secrets.mcp_server_mysql.host,
-        MYSQL_PORT: secrets.mcp_server_mysql.port,
-        MYSQL_USER: secrets.mcp_server_mysql.mysqlUser,
-        MYSQL_PASSWORD: secrets.mcp_server_mysql.mysqlPass,
-        MYSQL_DATABASE: secrets.mcp_server_mysql.database,
-      },
-    },
+    // 'aws-knowledge-mcp-server': {
+    //   command: nodepath + '/bin/npx',
+    //   args: [
+    //     '-y',
+    //     'mcp-remote',
+    //     'https://knowledge-mcp.global.api.aws',
+    //   ],
+    //   env: {
+    //     PATH: nodepath + '/bin:/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin',
+    //   },
+    // },
+    // mysql: {
+    //   command: pythonpath + '/bin/mysql_mcp_server',
+    //   args: [],
+    //   env: {
+    //     MYSQL_HOST: secrets.mcp_server_mysql.host,
+    //     MYSQL_PORT: secrets.mcp_server_mysql.port,
+    //     MYSQL_USER: secrets.mcp_server_mysql.mysqlUser,
+    //     MYSQL_PASSWORD: secrets.mcp_server_mysql.mysqlPass,
+    //     MYSQL_DATABASE: secrets.mcp_server_mysql.database,
+    //   },
+    // },
     // playwright: {
     //   command: nodepath + '/bin/npx',
     //   args: ['@playwright/mcp@latest'],
@@ -72,59 +72,59 @@ local pythonpath = home + '/.local/share/mise/installs/python/3.13.7';
     //     "FASTMCP_LOG_LEVEL": "ERROR"
     //   }
     // },
-    github: {
-      command: '/etc/profiles/per-user/shuntaka/bin/docker',
-      args: [
-        'run',
-        '-i',
-        '--rm',
-        '-e',
-        'GITHUB_PERSONAL_ACCESS_TOKEN',
-        'ghcr.io/github/github-mcp-server',
-      ],
-      env: {
-        GITHUB_PERSONAL_ACCESS_TOKEN: secrets.github.token,
-      },
-    },
-    backlog: {
-      command: '/etc/profiles/per-user/shuntaka/bin/docker',
-      args: [
-        'run',
-        '--pull',
-        'always',
-        '-i',
-        '--rm',
-        '-e',
-        'BACKLOG_DOMAIN',
-        '-e',
-        'BACKLOG_API_KEY',
-        'ghcr.io/nulab/backlog-mcp-server',
-      ],
-      env: {
-        BACKLOG_DOMAIN: secrets.backlog.domain,
-        BACKLOG_API_KEY: secrets.backlog.token,
-      },
-    },
-    'aws.dp-mcp': {
-      command: pythonpath + '/bin/uvx',
-      args: [
-        'awslabs.aws-dataprocessing-mcp-server@latest',
-        '--allow-write',
-        '--allow-sensitive-data-access',
-      ],
-      env: {
-        AWS_PROFILE: 'iot-demo',
-        AWS_REGION: 'ap-northeast-1',
-      },
-    },
-    serena: {
-      command: pythonpath + '/bin/uvx',
-      args: [
-        '--from',
-        'git+https://github.com/oraios/serena',
-        'serena',
-        'start-mcp-server',
-      ],
-    },
+    // github: {
+    //   command: '/etc/profiles/per-user/shuntaka/bin/docker',
+    //   args: [
+    //     'run',
+    //     '-i',
+    //     '--rm',
+    //     '-e',
+    //     'GITHUB_PERSONAL_ACCESS_TOKEN',
+    //     'ghcr.io/github/github-mcp-server',
+    //   ],
+    //   env: {
+    //     GITHUB_PERSONAL_ACCESS_TOKEN: secrets.github.token,
+    //   },
+    // },
+    // backlog: {
+    //   command: '/etc/profiles/per-user/shuntaka/bin/docker',
+    //   args: [
+    //     'run',
+    //     '--pull',
+    //     'always',
+    //     '-i',
+    //     '--rm',
+    //     '-e',
+    //     'BACKLOG_DOMAIN',
+    //     '-e',
+    //     'BACKLOG_API_KEY',
+    //     'ghcr.io/nulab/backlog-mcp-server',
+    //   ],
+    //   env: {
+    //     BACKLOG_DOMAIN: secrets.backlog.domain,
+    //     BACKLOG_API_KEY: secrets.backlog.token,
+    //   },
+    // },
+    // 'aws.dp-mcp': {
+    //   command: pythonpath + '/bin/uvx',
+    //   args: [
+    //     'awslabs.aws-dataprocessing-mcp-server@latest',
+    //     '--allow-write',
+    //     '--allow-sensitive-data-access',
+    //   ],
+    //   env: {
+    //     AWS_PROFILE: 'iot-demo',
+    //     AWS_REGION: 'ap-northeast-1',
+    //   },
+    // },
+    // serena: {
+    //   command: pythonpath + '/bin/uvx',
+    //   args: [
+    //     '--from',
+    //     'git+https://github.com/oraios/serena',
+    //     'serena',
+    //     'start-mcp-server',
+    //   ],
+    // },
   },
 }

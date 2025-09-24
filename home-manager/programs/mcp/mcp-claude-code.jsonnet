@@ -5,17 +5,29 @@ local pythonpath = home + '/.local/share/mise/installs/python/3.13.7';
 
 {
   mcpServers: {
+    // 'aws-knowledge-mcp-server': {
+    //   command: nodepath + '/bin/npx',
+    //   args: [
+    //     '-y',
+    //     'mcp-remote',
+    //     'https://knowledge-mcp.global.api.aws',
+    //   ],
+    //   env: {
+    //     PATH: nodepath + '/bin:/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin',
+    //   },
+    // },
+    'chrome-devtools': {
+      command: 'chrome-devtools-mcp',
+    },
     'aws-knowledge-mcp-server': {
-      command: nodepath + '/bin/npx',
+      command: 'mcp-remote',
       args: [
-        '-y',
-        'mcp-remote',
         'https://knowledge-mcp.global.api.aws',
       ],
-      env: {
-        PATH: nodepath + '/bin:/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin',
-      },
     },
+    // 'aws-knowledge-mcp-server': {
+    //   url: 'https://knowledge-mcp.global.api.aws',
+    // },
     // serena: {
     //   command: pythonpath + '/bin/uvx',
     //   args: [
@@ -25,13 +37,13 @@ local pythonpath = home + '/.local/share/mise/installs/python/3.13.7';
     //     'start-mcp-server',
     //   ],
     // },
-    github: {
-      type: 'http',
-      url: 'https://api.githubcopilot.com/mcp/',
-      headers: {
-        Authorization: 'Bearer ' + secrets.github.token,
-      },
-    },
+    // github: {
+    //   type: 'http',
+    //   url: 'https://api.githubcopilot.com/mcp/',
+    //   headers: {
+    //     Authorization: 'Bearer ' + secrets.github.token,
+    //   },
+    // },
     // "Framelink Figma MCP": {
     //   "command": "npx",
     //   "args": ["-y", "figma-developer-mcp", "--figma-api-key=" + secrets.figma.token, "--stdio"]
