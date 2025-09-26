@@ -10,7 +10,7 @@ cspell@9.2.1
 ccusage@15.10.0
 @github/copilot-language-server@1.374.0
 vibe-kanban@0.0.94
-@openai/codex@0.39.0
+@openai/codex@0.40.0
 @aikidosec/safe-chain@1.0.23
 chrome-devtools-mcp@0.2.7
 mcp-remote@0.1.29
