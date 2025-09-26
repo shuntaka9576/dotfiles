@@ -52,6 +52,7 @@
       go-jsonnet
       ssm-session-manager-plugin
       shfmt
+      nkf
     ]
     ++ lib.optionals (system == "aarch64-darwin") [ reattach-to-user-namespace ];
 
