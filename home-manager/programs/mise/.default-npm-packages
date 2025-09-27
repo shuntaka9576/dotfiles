@@ -11,6 +11,6 @@ ccusage@15.10.0
 @github/copilot-language-server@1.375.0
 vibe-kanban@0.0.95
 @openai/codex@0.40.0
-@aikidosec/safe-chain@1.0.23
+@aikidosec/safe-chain@1.0.24
 chrome-devtools-mcp@0.2.7
 mcp-remote@0.1.29
