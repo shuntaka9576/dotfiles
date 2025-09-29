@@ -73,3 +73,6 @@ unsetopt BEEP
 # . "$HOME/.cargo/env"
 
 source ~/.safe-chain/scripts/init-posix.sh
+
+# awscli2
+export AWS_PAGER=""

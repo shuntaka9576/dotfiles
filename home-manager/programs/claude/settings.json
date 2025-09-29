@@ -5,10 +5,14 @@
   },
   "includeCoAuthoredBy": false,
   "permissions": {
-    "allow": ["mcp__serena", "mcp__aws-knowledge-mcp-server", "mcp__github", "mcp__aws.dp-mcp"],
+    "allow": [
+      "mcp__serena",
+      "mcp__aws-knowledge-mcp-server",
+      "mcp__github",
+      "mcp__aws.dp-mcp"
+    ],
     "defaultMode": "bypassPermissions"
   },
-  "model": "opusplan",
   "enableAllProjectMcpServers": true,
   "hooks": {
     "Stop": [
@@ -38,6 +42,7 @@
     "type": "command",
     "command": "~/dotfiles/home-manager/programs/claude/statusline/statusline.ts"
   },
+  "alwaysThinkingEnabled": false,
   "feedbackSurveyState": {
     "lastShownTime": 1754030471611
   }

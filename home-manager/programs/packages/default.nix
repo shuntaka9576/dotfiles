@@ -31,6 +31,7 @@
       tokei
       ghq
       awscli2
+      hey
       google-java-format
       goreleaser
       zenn-cli
