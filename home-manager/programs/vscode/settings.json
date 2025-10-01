@@ -201,11 +201,7 @@
   },
   // curosr settings
   "cursor.terminal.usePreviewBox": true,
-  "cursor.cpp.disabledLanguages": [
-    "plaintext",
-    "markdown",
-    "scminput"
-  ],
+  "cursor.cpp.disabledLanguages": ["plaintext", "markdown", "scminput"],
   // windsurf settings
   "windsurf.enableTabToJump": true,
   "windsurf.autocompleteSpeed": "fast",

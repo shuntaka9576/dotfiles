@@ -791,3 +791,9 @@ tag = ['github', 'actions', 'pinact', 'security']
 description = "codexでGPT-5モデルを中程度の推論努力で実行"
 command = "codex -m gpt-5-codex -c model_reasoning_effort=\"high\""
 tag = ['codex', 'gpt', 'ai']
+
+[[snippets]]
+description = "ECSサービスを強制削除(タスク終了含む)"
+command = "ecspresso delete --terminate --force"
+tag = ['aws', 'ecs', 'ecspresso']
+output = ""
