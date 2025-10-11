@@ -12,5 +12,5 @@ ccusage@15.10.0
 vibe-kanban@0.0.105
 @openai/codex@0.45.0
 @aikidosec/safe-chain@1.0.24
-chrome-devtools-mcp@0.6.0
+chrome-devtools-mcp@0.6.1
 mcp-remote@0.1.29
