@@ -34,6 +34,7 @@
       "btop"
       "htop"
       "actionlint"
+      "libsixel"
     ];
     casks = [
       "windsurf"

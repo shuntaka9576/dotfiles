@@ -16,15 +16,15 @@ local pythonpath = home + '/.local/share/mise/installs/python/3.13.7';
     //     PATH: nodepath + '/bin:/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin',
     //   },
     // },
-    'chrome-devtools': {
-      command: 'chrome-devtools-mcp',
-    },
-    'aws-knowledge-mcp-server': {
-      command: 'mcp-remote',
-      args: [
-        'https://knowledge-mcp.global.api.aws',
-      ],
-    },
+    // 'chrome-devtools': {
+    //   command: 'chrome-devtools-mcp',
+    // },
+    // 'aws-knowledge-mcp-server': {
+    //   command: 'mcp-remote',
+    //   args: [
+    //     'https://knowledge-mcp.global.api.aws',
+    //   ],
+    // },
     // 'aws-knowledge-mcp-server': {
     //   url: 'https://knowledge-mcp.global.api.aws',
     // },

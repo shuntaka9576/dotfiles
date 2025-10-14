@@ -37,7 +37,7 @@
     "type": "command",
     "command": "~/dotfiles/home-manager/programs/claude/statusline/statusline.ts"
   },
-  "alwaysThinkingEnabled": false,
+  "alwaysThinkingEnabled": true,
   "feedbackSurveyState": {
     "lastShownTime": 1754030471611
   }
