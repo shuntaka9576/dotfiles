@@ -2,7 +2,7 @@ jwt-cli@2.0.0
 lighthouse@12.8.2
 npm-check-updates@18.3.1
 @biomejs/biome@2.2.6
-pnpm@10.18.2
+pnpm@10.18.3
 @anthropic-ai/claude-code@2.0.14
 typescript-language-server@4.4.1
 @benborla29/mcp-server-mysql@2.0.5
