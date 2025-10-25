@@ -6,7 +6,7 @@ pnpm@10.19.0
 @anthropic-ai/claude-code@2.0.25
 typescript-language-server@4.4.1
 @benborla29/mcp-server-mysql@2.0.5
-cspell@9.2.1
+cspell@9.2.2
 ccusage@15.10.0
 @github/copilot-language-server@1.387.0
 vibe-kanban@0.0.110
