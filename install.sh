@@ -227,7 +227,7 @@ main() {
     # Run home-manager setup with full path
     print_info "Running home-manager setup..."
     if [[ -f "$NIX_BIN/nix" ]]; then
-      $NIX_BIN/nix run home-manager -- switch --flake ".#shuntaka" || {
+      $NIX_BIN/nix --extra-experimental-features 'flakes nix-command' run home-manager -- switch --flake ".#shuntaka" || {
         print_error "Failed to run home-manager setup"
         exit 1
       }
