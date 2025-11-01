@@ -224,10 +224,18 @@ main() {
       exit 1
     fi
   elif is_linux; then
+    # Enable experimental features for Nix
+    print_info "Enabling Nix experimental features..."
+    mkdir -p "$HOME/.config/nix"
+    if [[ ! -f "$HOME/.config/nix/nix.conf" ]] || ! grep -q "experimental-features" "$HOME/.config/nix/nix.conf"; then
+      echo "experimental-features = nix-command flakes" >>"$HOME/.config/nix/nix.conf"
+      print_info "Enabled experimental features in ~/.config/nix/nix.conf"
+    fi
+
     # Run home-manager setup with full path
     print_info "Running home-manager setup..."
     if [[ -f "$NIX_BIN/nix" ]]; then
-      $NIX_BIN/nix --experimental-features 'nix-command flakes' run home-manager -- switch --flake ".#shuntaka" || {
+      $NIX_BIN/nix run home-manager -- switch --flake ".#shuntaka" || {
         print_error "Failed to run home-manager setup"
         exit 1
       }
