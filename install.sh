@@ -25,37 +25,96 @@ command_exists() {
   command -v "$1" >/dev/null 2>&1
 }
 
+# Function to detect OS
+is_macos() {
+  [[ $OSTYPE == "darwin"* ]]
+}
+
+is_linux() {
+  [[ $OSTYPE == "linux-gnu"* ]] || [[ -f /etc/os-release ]]
+}
+
+get_linux_distro() {
+  if [[ -f /etc/os-release ]]; then
+    . /etc/os-release
+    echo "$ID"
+  else
+    echo "unknown"
+  fi
+}
+
+# Function to check Linux dependencies
+check_linux_dependencies() {
+  local missing_deps=()
+
+  # Check for base-devel or build-essential
+  if ! pacman -Qq base-devel &>/dev/null; then
+    missing_deps+=("base-devel")
+  fi
+
+  # Check for curl
+  if ! command_exists curl; then
+    missing_deps+=("curl")
+  fi
+
+  # Check for git
+  if ! command_exists git; then
+    missing_deps+=("git")
+  fi
+
+  if [[ ${#missing_deps[@]} -gt 0 ]]; then
+    print_warning "Missing required dependencies: ${missing_deps[*]}"
+    print_info "Please install them with: sudo pacman -S ${missing_deps[*]}"
+    return 1
+  fi
+
+  return 0
+}
+
 # Main installation function
 main() {
   print_info "Starting dotfiles installation..."
 
   # Check OS
-  if [[ $OSTYPE != "darwin"* ]]; then
-    print_error "This script is only for macOS"
+  if ! is_macos && ! is_linux; then
+    print_error "This script only supports macOS and Linux"
     exit 1
   fi
 
-  # Check Xcode Command Line Tools
-  if ! xcode-select -p &>/dev/null; then
-    print_error "Xcode Command Line Tools are not installed"
-    print_info "Please install them by running: xcode-select --install"
-    print_info "After installation, run this script again"
-    exit 1
-  else
-    print_info "Xcode Command Line Tools are already installed"
-  fi
+  if is_macos; then
+    print_info "Detected macOS"
 
-  # Check and install Homebrew
-  if ! command_exists brew; then
-    print_info "Installing Homebrew..."
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" || {
-      print_error "Failed to install Homebrew"
+    # Check Xcode Command Line Tools
+    if ! xcode-select -p &>/dev/null; then
+      print_error "Xcode Command Line Tools are not installed"
+      print_info "Please install them by running: xcode-select --install"
+      print_info "After installation, run this script again"
       exit 1
-    }
-    # Add Homebrew to PATH for current session
-    eval "$(/opt/homebrew/bin/brew shellenv)"
-  else
-    print_info "Homebrew is already installed"
+    else
+      print_info "Xcode Command Line Tools are already installed"
+    fi
+
+    # Check and install Homebrew
+    if ! command_exists brew; then
+      print_info "Installing Homebrew..."
+      /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" || {
+        print_error "Failed to install Homebrew"
+        exit 1
+      }
+      # Add Homebrew to PATH for current session
+      eval "$(/opt/homebrew/bin/brew shellenv)"
+    else
+      print_info "Homebrew is already installed"
+    fi
+  elif is_linux; then
+    DISTRO=$(get_linux_distro)
+    print_info "Detected Linux (distro: $DISTRO)"
+
+    # Check Linux dependencies
+    if ! check_linux_dependencies; then
+      exit 1
+    fi
+    print_info "All required dependencies are installed"
   fi
 
   # Check and install Nix
@@ -127,23 +186,40 @@ main() {
     print_info "Created $SERENA_DIR/projects.nix from example"
   fi
 
-  # Create or fix synthetic.conf
-  if [[ ! -f /etc/synthetic.conf ]]; then
-    print_info "Creating /etc/synthetic.conf..."
-    echo -e "nix\nrun\tprivate/var/run" | sudo tee /etc/synthetic.conf >/dev/null
+  # macOS specific: Create or fix synthetic.conf
+  if is_macos; then
+    if [[ ! -f /etc/synthetic.conf ]]; then
+      print_info "Creating /etc/synthetic.conf..."
+      echo -e "nix\nrun\tprivate/var/run" | sudo tee /etc/synthetic.conf >/dev/null
+    fi
+    sudo chmod 644 /etc/synthetic.conf
   fi
-  sudo chmod 644 /etc/synthetic.conf
 
-  # Run nix-darwin setup with full path
-  print_info "Running nix-darwin setup..."
-  if [[ -f "$NIX_BIN/nix" ]]; then
-    sudo $NIX_BIN/nix run github:LnL7/nix-darwin --extra-experimental-features 'flakes nix-command' -- switch --flake ".#shuntaka" || {
-      print_error "Failed to run nix-darwin setup"
+  # Apply configuration based on OS
+  if is_macos; then
+    # Run nix-darwin setup with full path
+    print_info "Running nix-darwin setup..."
+    if [[ -f "$NIX_BIN/nix" ]]; then
+      sudo $NIX_BIN/nix run github:LnL7/nix-darwin --extra-experimental-features 'flakes nix-command' -- switch --flake ".#shuntaka" || {
+        print_error "Failed to run nix-darwin setup"
+        exit 1
+      }
+    else
+      print_error "Nix binary not found at $NIX_BIN/nix"
       exit 1
-    }
-  else
-    print_error "Nix binary not found at $NIX_BIN/nix"
-    exit 1
+    fi
+  elif is_linux; then
+    # Run home-manager setup with full path
+    print_info "Running home-manager setup..."
+    if [[ -f "$NIX_BIN/nix" ]]; then
+      $NIX_BIN/nix run home-manager -- switch --flake ".#shuntaka" || {
+        print_error "Failed to run home-manager setup"
+        exit 1
+      }
+    else
+      print_error "Nix binary not found at $NIX_BIN/nix"
+      exit 1
+    fi
   fi
 
   # Install mise tools
