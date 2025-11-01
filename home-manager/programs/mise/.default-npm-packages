@@ -14,3 +14,4 @@ vibe-kanban@0.0.111
 @aikidosec/safe-chain@1.1.5
 chrome-devtools-mcp@0.9.0
 mcp-remote@0.1.29
+uuid@13.0.0

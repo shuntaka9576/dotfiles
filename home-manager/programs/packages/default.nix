@@ -54,6 +54,7 @@
       ssm-session-manager-plugin
       shfmt
       nkf
+      bruno
     ]
     ++ lib.optionals (system == "aarch64-darwin") [ reattach-to-user-namespace ];
 
