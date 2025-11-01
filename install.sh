@@ -125,12 +125,27 @@ main() {
       exit 1
     }
 
-    # Set Nix binary path
-    NIX_BIN="/nix/var/nix/profiles/default/bin"
+    # Source Nix profile to make it available in current shell
+    if [[ -f "$HOME/.nix-profile/etc/profile.d/nix.sh" ]]; then
+      . "$HOME/.nix-profile/etc/profile.d/nix.sh"
+    fi
   else
     print_info "Nix is already installed"
-    # Set Nix binary path if not already set
+  fi
+
+  # Determine Nix binary path based on OS and installation type
+  if is_macos; then
     NIX_BIN="/nix/var/nix/profiles/default/bin"
+  elif is_linux; then
+    # On Linux, check for single-user install first, then multi-user
+    if [[ -f "$HOME/.nix-profile/bin/nix" ]]; then
+      NIX_BIN="$HOME/.nix-profile/bin"
+    elif [[ -f "/nix/var/nix/profiles/default/bin/nix" ]]; then
+      NIX_BIN="/nix/var/nix/profiles/default/bin"
+    else
+      print_error "Cannot find Nix binary. Please check your Nix installation."
+      exit 1
+    fi
   fi
 
   # Set dotfiles directory
