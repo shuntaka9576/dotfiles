@@ -2,4 +2,4 @@
 node = "24.11.0"
 python = "3.14.0"
 rust = { version = "latest", targets = "aarch64-apple-darwin", components = "rust-src,clippy,rust-analyzer,llvm-tools" }
-go = "1.25.3"
+go = "1.25.4"
