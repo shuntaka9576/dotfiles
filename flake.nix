@@ -49,22 +49,36 @@
           config.allowUnfree = true;
         };
 
-      system = "aarch64-darwin";
       username = "shuntaka";
 
-      homeDirectory =
-        if system == "aarch64-darwin" then
-          "/Users/${username}"
-        else if system == "x86_64-linux" then
-          "/home/${username}"
-        else
-          throw "Unsupported system: ${system}";
-
-      pkgs = pkgsFor system;
-
-      specialArgs = {
-        inherit username system homeDirectory;
+      # macOS configuration
+      darwinSystem = "aarch64-darwin";
+      darwinHomeDirectory = "/Users/${username}";
+      darwinPkgs = pkgsFor darwinSystem;
+      darwinSpecialArgs = {
+        inherit username;
+        system = darwinSystem;
+        homeDirectory = darwinHomeDirectory;
       };
+
+      # Linux configuration helper
+      mkHomeConfig =
+        system:
+        let
+          homeDirectory = "/home/${username}";
+          pkgs = pkgsFor system;
+          specialArgs = {
+            inherit username system homeDirectory;
+          };
+        in
+        home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          extraSpecialArgs = specialArgs;
+          modules = [
+            { nix.package = pkgs.nix; }
+            (import ./home-manager/home.nix)
+          ];
+        };
     in
     {
       overlays.default = [
@@ -80,8 +94,10 @@
         (treefmt-nix.lib.evalModule sysPkgs ./treefmt.nix).config.build.wrapper
       );
 
+      # macOS configuration using nix-darwin
       darwinConfigurations.${username} = darwin.lib.darwinSystem {
-        inherit pkgs specialArgs;
+        pkgs = darwinPkgs;
+        specialArgs = darwinSpecialArgs;
         modules = [
           ./nix-darwin/default.nix
           home-manager.darwinModules.home-manager
@@ -89,18 +105,16 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.${username} = import ./home-manager/home.nix;
-            home-manager.extraSpecialArgs = specialArgs;
+            home-manager.extraSpecialArgs = darwinSpecialArgs;
           }
         ];
       };
 
-      homeConfigurations.${username} = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        extraSpecialArgs = specialArgs;
-        modules = [
-          { nix.package = pkgs.nix; }
-          (import ./home-manager/home.nix)
-        ];
+      # Linux configurations using home-manager
+      homeConfigurations = {
+        ${username} = mkHomeConfig "x86_64-linux";
+        "${username}@x86_64-linux" = mkHomeConfig "x86_64-linux";
+        "${username}@aarch64-linux" = mkHomeConfig "aarch64-linux";
       };
     };
 }
