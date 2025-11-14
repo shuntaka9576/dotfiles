@@ -5,8 +5,8 @@
   },
   "includeCoAuthoredBy": false,
   "permissions": {
-    "allow": ["mcp__serena", "mcp__aws-knowledge-mcp-server", "mcp__github", "mcp__aws.dp-mcp"],
-    "defaultMode": "bypassPermissions"
+    "allow": [],
+    "defaultMode": "plan"
   },
   "enableAllProjectMcpServers": true,
   "hooks": {

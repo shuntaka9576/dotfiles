@@ -377,6 +377,11 @@ description = "AWSの環境変数出力"
 command = "env | perl -nle 'print \"export $1;\" if /(AWS.*?)$/';"
 tag = ["aws"]
 output = ""
+[[snippets]]
+description = "AWS_ASSUME_ROLE_TTLを1hに設定"
+command = "export AWS_ASSUME_ROLE_TTL=1h"
+tag = ["aws", "aws-vault"]
+output = ""
 
 # jq
 [[snippets]]
