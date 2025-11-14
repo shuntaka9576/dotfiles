@@ -22,7 +22,7 @@
       bat
       # gitui
       stylua
-      taplo-cli
+      taplo
       cargo-edit
       cargo-watch
       sqlx-cli
