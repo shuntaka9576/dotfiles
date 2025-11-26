@@ -46,6 +46,7 @@
       "ghostty"
       "google-chrome"
       "1password"
+      "1password-cli"
       "daisydisk"
       "cursor"
       "insomnia"

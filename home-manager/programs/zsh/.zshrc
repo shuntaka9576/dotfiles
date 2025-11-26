@@ -54,6 +54,9 @@ bindkey '^s' pet-select
 
 [ -f "$HOME/.ghcup/env" ] && . "$HOME/.ghcup/env"
 
+export PNPM_HOME="$HOME/.local/share/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+alias npm="pnpm"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
 export VISUAL="nvim"
@@ -73,6 +76,7 @@ unsetopt BEEP
 # . "$HOME/.cargo/env"
 
 source ~/.safe-chain/scripts/init-posix.sh
+# source ~/.config/op/plugins.sh
 
 # awscli2
 export AWS_PAGER=""

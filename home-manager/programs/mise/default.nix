@@ -13,9 +13,6 @@
   home.file.".default-python-packages" = {
     source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/home-manager/programs/mise/.default-python-packages";
   };
-  home.file.".default-npm-packages" = {
-    source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/home-manager/programs/mise/.default-npm-packages";
-  };
   home.file.".default-go-packages" = {
     source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/home-manager/programs/mise/.default-go-packages";
   };

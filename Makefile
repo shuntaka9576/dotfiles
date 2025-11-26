@@ -33,4 +33,10 @@ python:
 	mise uninstall python --all
 	mise install python
 
-.PHONY: all init update switch mcp clean-mcp gc fmt node python
+pnpm-global:
+	@while IFS= read -r pkg || [ -n "$$pkg" ]; do \
+		[ -z "$$pkg" ] && continue; \
+		pnpm add -g "$$pkg"; \
+	done < home-manager/programs/pnpm/global-packages
+
+.PHONY: all init update switch mcp clean-mcp gc fmt node python pnpm-global

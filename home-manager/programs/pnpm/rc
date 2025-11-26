@@ -1,0 +1,3 @@
+minReleaseAge=7d
+ignore-scripts=true
+verify-store-integrity=true
