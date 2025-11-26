@@ -21,7 +21,7 @@
   "customManagers": [
     {
       "customType": "regex",
-      "fileMatch": ["\\.default-npm-packages$"],
+      "fileMatch": ["global-packages"],
       "matchStrings": ["(?<depName>\\S+?)@(?<currentValue>\\S+)"],
       "datasourceTemplate": "npm",
       "versioningTemplate": "npm"

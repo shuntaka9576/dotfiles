@@ -110,10 +110,10 @@ make gc
 
 ```bash
 # Test locally
-npx renovate --platform=local
+renovate --platform=local
 
 # Debug mode
-npx renovate --platform=local --log-level=debug
+renovate --platform=local --log-level=debug
 ```
 
 ### Reset mise
