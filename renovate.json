@@ -14,7 +14,7 @@
     "enabled": false
   },
   "automergeStrategy": "squash",
-  "minimumReleaseAge": "14 days",
+  "minimumReleaseAge": "21 days",
   "nix": {
     "enabled": true
   },
