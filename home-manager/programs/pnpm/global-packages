@@ -6,7 +6,6 @@ npm-check-updates@19.1.2
 typescript-language-server@5.1.1
 @benborla29/mcp-server-mysql@2.0.7
 cspell@9.3.2
-ccusage@17.1.3
 @github/copilot-language-server@1.397.0
 vibe-kanban@0.0.122
 @openai/codex@0.63.0
