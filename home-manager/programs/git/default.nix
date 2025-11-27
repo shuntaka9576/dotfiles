@@ -1,20 +1,18 @@
 _: {
   programs.git = {
     enable = true;
-    userName = "shuntaka9576";
-    userEmail = "shuntaka9576@gmail.com";
     ignores = [
       ".vim"
       ".DS_Store"
       ".claude/settings.local.json"
     ];
-    extraConfig = {
-      ghq = {
-        root = "~/repos";
-      };
+    settings = {
       user = {
         name = "shuntaka9576";
         email = "shuntaka9576@gmail.com";
+      };
+      ghq = {
+        root = "~/repos";
       };
       core = {
         editor = "nvim -c \"set fenc=utf-8\"";
