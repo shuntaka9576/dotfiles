@@ -1,5 +1,6 @@
 git:
   parseEmoji: true
+  autoFetch: false
 
 gui:
   showIcons: true

@@ -6,11 +6,6 @@ _: {
     ignores = [
       ".vim"
       ".DS_Store"
-      ".config"
-      ".worktrees"
-      "CLAUDE.md"
-      ".trr"
-      ".pyre"
       ".claude/settings.local.json"
     ];
     extraConfig = {
@@ -27,15 +22,7 @@ _: {
       };
       push = {
         default = "current";
-      };
-      alias = {
-        see = "browse";
-      };
-      hub = {
-        protocol = "https";
-      };
-      credential = {
-        helper = "osxkeychain";
+        autoSetupRemote = true;
       };
       pull = {
         ff = "only";

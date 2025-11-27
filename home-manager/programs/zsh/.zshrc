@@ -76,7 +76,7 @@ unsetopt BEEP
 # . "$HOME/.cargo/env"
 
 source ~/.safe-chain/scripts/init-posix.sh
-# source ~/.config/op/plugins.sh
+export SSH_AUTH_SOCK=~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
 
 # awscli2
 export AWS_PAGER=""
