@@ -34,7 +34,7 @@ python:
 	mise install python
 
 pnpm-global:
-	@while IFS= read -r pkg || [ -n "$$pkg" ]; do \
+	while IFS= read -r pkg || [ -n "$$pkg" ]; do \
 		[ -z "$$pkg" ] && continue; \
 		pnpm add -g "$$pkg"; \
 	done < home-manager/programs/pnpm/global-packages
