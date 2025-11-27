@@ -1,3 +1,1 @@
-minReleaseAge=21d
-ignore-scripts=true
-verify-store-integrity=true
+minimumReleaseAge=30240
