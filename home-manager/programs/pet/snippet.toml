@@ -808,3 +808,15 @@ description = "op plugin ghキャッシュ削除"
 command = "op plugin clear gh"
 tag = ["op", "gh"]
 output = ""
+
+[[snippets]]
+description = "op plugin gh初期化"
+command = "op plugin init gh"
+tag = ["op", "gh"]
+output = ""
+
+[[snippets]]
+description = "op plugin gh情報表示"
+command = "op plugin inspect gh"
+tag = ["op", "gh"]
+output = ""
