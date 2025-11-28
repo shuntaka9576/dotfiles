@@ -1,11 +1,11 @@
 _: {
   programs.gh = {
-    enable = false;
+    enable = true;
     gitCredentialHelper = {
       enable = false;
     };
     settings = {
-      git_protocol = "ssh";
+      git_protocol = "https";
       aliases = {
         co = "pr checkout";
         pv = "pr view";

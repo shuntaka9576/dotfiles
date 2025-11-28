@@ -76,7 +76,18 @@ unsetopt BEEP
 # . "$HOME/.cargo/env"
 
 source ~/.safe-chain/scripts/init-posix.sh
-export SSH_AUTH_SOCK=~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
+# export SSH_AUTH_SOCK=~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
+source ~/.config/op/plugins.sh
 
 # awscli2
 export AWS_PAGER=""
+
+# 1password signin with fzf
+function ops() {
+  local selected=$(op account list --format=json | jq -r '.[] | "\(.url) - \(.email)"' | fzf-tmux --reverse)
+
+  if [ -n "$selected" ]; then
+    local account=$(echo "$selected" | cut -d'.' -f1)
+    op signin --account "$account"
+  fi
+}

@@ -35,47 +35,46 @@ This script will:
 After running the installation script, complete the following steps:
 
 1. **Configure Secrets**
+Copy the example secrets file and fill in your actual values:
 
-   Copy the example secrets file and fill in your actual values:
-
-   ```bash
-   cp home-manager/programs/mcp/secrets.jsonnet.example home-manager/programs/mcp/secrets.jsonnet
-   # Edit home-manager/programs/mcp/secrets.jsonnet with your actual tokens and credentials
-   ```
+```bash
+cp home-manager/programs/mcp/secrets.jsonnet.example home-manager/programs/mcp/secrets.jsonnet
+# Edit home-manager/programs/mcp/secrets.jsonnet with your actual tokens and credentials
+```
 
 2. **Neovim Setup**
 
-   ```bash
-   nvim
-   ```
+```bash
+nvim
+```
 
-   Inside Neovim:
+Inside Neovim:
 
-   ```nvim
-   :Lazy update
-   ```
+```nvim
+:Lazy update
+```
 
-3. **GitHub Authentication**
+3. **Script Editor Notification Setup**
 
-   ```bash
-   gh auth login
-   ```
+Open Script Editor and run the following command to enable notifications:
 
-4. **Script Editor Notification Setup**
+```applescript
+display notification "Hello" with title "Script Editor"
+```
 
-   Open Script Editor and run the following command to enable notifications:
+Grant permission when prompted.
 
-   ```applescript
-   display notification "Hello" with title "Script Editor"
-   ```
+4. **Install Haskell** (optional)
+```bash
+curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
+ghcup tui
+```
 
-   Grant permission when prompted.
+5. **GitHub CLI**
 
-5. **Install Haskell** (optional)
-   ```bash
-   curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
-   ghcup tui
-   ```
+```bash
+op plugin init gh
+```
 
 ### Manual Application Installation
 

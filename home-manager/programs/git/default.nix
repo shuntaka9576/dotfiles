@@ -18,6 +18,9 @@ _: {
         editor = "nvim -c \"set fenc=utf-8\"";
         pager = "cat";
       };
+      credential = {
+        helper = "!op plugin run -- gh auth git-credential";
+      };
       push = {
         default = "current";
         autoSetupRemote = true;

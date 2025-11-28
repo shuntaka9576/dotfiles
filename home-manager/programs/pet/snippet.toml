@@ -802,3 +802,9 @@ description = "ECSサービスを強制削除(タスク終了含む)"
 command = "ecspresso delete --terminate --force"
 tag = ['aws', 'ecs', 'ecspresso']
 output = ""
+
+[[snippets]]
+description = "op plugin ghキャッシュ削除"
+command = "op plugin clear gh"
+tag = ["op", "gh"]
+output = ""
