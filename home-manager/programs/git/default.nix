@@ -19,7 +19,10 @@ _: {
         pager = "cat";
       };
       credential = {
-        helper = "!op plugin run -- gh auth git-credential";
+        helper = [
+          ""
+          "!/opt/homebrew/bin/op plugin run -- gh auth git-credential"
+        ];
       };
       push = {
         default = "current";
