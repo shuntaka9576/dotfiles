@@ -56,7 +56,6 @@ bindkey '^s' pet-select
 
 export PNPM_HOME="$HOME/.local/share/pnpm"
 export PATH="$PNPM_HOME:$PATH"
-alias npm="pnpm"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
 export VISUAL="nvim"
