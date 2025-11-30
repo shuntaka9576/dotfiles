@@ -2,6 +2,8 @@
 setopt PROMPT_SUBST
 zmodload zsh/datetime
 
+_prompt_exec_time=""
+
 _get_branch() {
   git branch --show-current 2>/dev/null
 }
@@ -10,8 +12,26 @@ _get_time_ms() {
   printf '%s' "$(date +%H:%M:%S).$(printf '%03d' $((EPOCHREALTIME * 1000 % 1000)))"
 }
 
+preexec() {
+  _prompt_start_time=$EPOCHREALTIME
+}
+
+precmd() {
+  if [[ -n $_prompt_start_time ]]; then
+    local elapsed_ms=$(printf '%.0f' $(( (EPOCHREALTIME - _prompt_start_time) * 1000 )))
+    if [[ $elapsed_ms -ge 1000 ]]; then
+      _prompt_exec_time="$(printf '%.3f' $(( elapsed_ms / 1000.0 )))s "
+    else
+      _prompt_exec_time="${elapsed_ms}ms "
+    fi
+  else
+    _prompt_exec_time=""
+  fi
+  unset _prompt_start_time
+}
+
 PROMPT='
-%F{blue}%~%f %F{yellow}$(_get_branch)%f %F{242}$(_get_time_ms)%f
+%F{blue}%~%f %F{yellow}$(_get_branch)%f %F{242}$(_get_time_ms)%f %F{magenta}${_prompt_exec_time}%f
 %F{magenta}$%f '
 RPROMPT=''
 
