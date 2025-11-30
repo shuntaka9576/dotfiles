@@ -8,7 +8,7 @@ _get_time_ms() {
 
 PROMPT='
 %F{blue}%~%f %F{yellow}$(_get_time_ms)%f
-%F{magenta}❯%f '
+%F{magenta}$%f '
 RPROMPT=''
 
 export GHQ_ROOT=~/repos
