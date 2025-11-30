@@ -2,12 +2,16 @@
 setopt PROMPT_SUBST
 zmodload zsh/datetime
 
+_get_branch() {
+  git branch --show-current 2>/dev/null
+}
+
 _get_time_ms() {
   printf '%s' "$(date +%H:%M:%S).$(printf '%03d' $((EPOCHREALTIME * 1000 % 1000)))"
 }
 
 PROMPT='
-%F{blue}%~%f %F{yellow}$(_get_time_ms)%f
+%F{blue}%~%f %F{yellow}$(_get_branch)%f %F{242}$(_get_time_ms)%f
 %F{magenta}$%f '
 RPROMPT=''
 
