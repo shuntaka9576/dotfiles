@@ -1,3 +1,16 @@
+# Custom prompt (Pure-like without git)
+setopt PROMPT_SUBST
+zmodload zsh/datetime
+
+_get_time_ms() {
+  printf '%s' "$(date +%H:%M:%S).$(printf '%03d' $((EPOCHREALTIME * 1000 % 1000)))"
+}
+
+PROMPT='
+%F{blue}%~%f %F{yellow}$(_get_time_ms)%f
+%F{magenta}❯%f '
+RPROMPT=''
+
 export GHQ_ROOT=~/repos
 
 if [[ "$(uname)" == "Darwin" ]]; then

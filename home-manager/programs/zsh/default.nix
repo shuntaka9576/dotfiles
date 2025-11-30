@@ -38,7 +38,7 @@
     prezto = {
       enable = true;
       prompt = {
-        theme = "pure";
+        theme = "off";
       };
     };
     initContent = ''
