@@ -1,7 +1,7 @@
 #!/usr/bin/env -S deno run --allow-read --allow-env
 
 // Constants
-const COMPACTION_THRESHOLD = 200000 * 0.8 // 160,000 tokens
+const COMPACTION_THRESHOLD = 200000 // opsu 4.5
 
 // Helper function to format token count
 function formatTokenCount(tokens: number): string {
