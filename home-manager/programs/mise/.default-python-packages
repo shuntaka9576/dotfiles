@@ -5,3 +5,4 @@ mysql-mcp-server
 ruff-lsp
 awscurl
 plamo-translate-cli
+awscli==1.43.7
