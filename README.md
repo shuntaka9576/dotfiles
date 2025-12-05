@@ -64,16 +64,17 @@ display notification "Hello" with title "Script Editor"
 
 Grant permission when prompted.
 
-4. **Install Haskell** (optional)
+4. **1Password SSH Agent Setup**
+
+```bash
+mkdir -p ~/.ssh && touch ~/.ssh/config
+echo 'Host *\n  IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"' >> ~/.ssh/config
+```
+
+5. **Install Haskell** (optional)
 ```bash
 curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
 ghcup tui
-```
-
-5. **GitHub CLI**
-
-```bash
-op plugin init gh
 ```
 
 ### Manual Application Installation

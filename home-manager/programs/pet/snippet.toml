@@ -820,3 +820,9 @@ description = "op plugin gh情報表示"
 command = "op plugin inspect gh"
 tag = ["op", "gh"]
 output = ""
+
+[[snippets]]
+description = "git remoteをHTTPSからSSHに変換"
+command = "git remote set-url origin $(git remote get-url origin | sed 's|https://github.com/|git@github.com:|')"
+tag = ["git", "ssh"]
+output = ""
