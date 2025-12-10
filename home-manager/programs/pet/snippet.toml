@@ -826,3 +826,9 @@ description = "git remoteをHTTPSからSSHに変換"
 command = "git remote set-url origin $(git remote get-url origin | sed 's|https://github.com/|git@github.com:|')"
 tag = ["git", "ssh"]
 output = ""
+
+[[snippets]]
+description = "マイナーバージョンまで更新"
+command = "ncu -u -t minor"
+tag = ["npm", "ncu"]
+output = ""
