@@ -1,2 +1,2 @@
 minimum-release-age=30240
-minimum-release-age-exclude=pnpm,pnpm/macos-arm64,aws-cdk,aws-cdk-lib
+minimum-release-age-exclude=pnpm,pnpm/macos-arm64,aws-cdk,aws-cdk-lib,@openai/codex,@anthropic-ai/claude-code,@google/gemini-cli

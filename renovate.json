@@ -18,6 +18,20 @@
   "nix": {
     "enabled": true
   },
+  "packageRules": [
+    {
+      "matchPackageNames": [
+        "pnpm",
+        "pnpm/macos-arm64",
+        "aws-cdk",
+        "aws-cdk-lib",
+        "@openai/codex",
+        "@anthropic-ai/claude-code",
+        "@google/gemini-cli"
+      ],
+      "minimumReleaseAge": "0 days"
+    }
+  ],
   "customManagers": [
     {
       "customType": "regex",
