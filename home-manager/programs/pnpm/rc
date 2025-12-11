@@ -1,2 +1,11 @@
 minimum-release-age=30240
-minimum-release-age-exclude=pnpm,pnpm/macos-arm64,aws-cdk,aws-cdk-lib,@openai/codex,@anthropic-ai/claude-code,@google/gemini-cli
+minimum-release-age-exclude[]=pnpm
+minimum-release-age-exclude[]=pnpm/macos-arm64
+minimum-release-age-exclude[]=aws-cdk
+minimum-release-age-exclude[]=aws-cdk-lib
+minimum-release-age-exclude[]=@openai/codex
+minimum-release-age-exclude[]=@anthropic-ai/claude-code
+minimum-release-age-exclude[]=@google/gemini-cli
+minimum-release-age-exclude[]=@google/gemini-cli-core
+minimum-release-age-exclude[]=@jrichman/ink
+minimum-release-age-exclude[]=@modelcontextprotocol/sdk
