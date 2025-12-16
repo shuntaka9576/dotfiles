@@ -7,7 +7,7 @@ typescript-language-server@5.1.3
 cspell@9.3.2
 @github/copilot-language-server@1.397.0
 vibe-kanban@0.0.122
-@openai/codex@0.71.0
+@openai/codex@0.73.0
 @anthropic-ai/claude-code@2.0.65
 @google/gemini-cli@0.20.0
 @aikidosec/safe-chain@1.1.9
