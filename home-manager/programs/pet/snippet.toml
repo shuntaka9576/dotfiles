@@ -832,3 +832,15 @@ description = "マイナーバージョンまで更新"
 command = "ncu -u -t minor"
 tag = ["npm", "ncu"]
 output = ""
+
+[[snippets]]
+description = "ローカルのcrateをインストール"
+command = "cargo install --path ."
+tag = ["rust", "cargo"]
+output = ""
+
+[[snippets]]
+description = "AIチャット履歴を取得して選択"
+command = "chathist list | fzf-tmux --multi --with-nth=2.. | cut -f1 | chathist pick"
+tag = ["chathist", "ai", "fzf"]
+output = ""
