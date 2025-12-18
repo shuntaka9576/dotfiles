@@ -10,7 +10,7 @@ vibe-kanban@0.0.122
 @openai/codex@0.73.0
 @anthropic-ai/claude-code@2.0.72
 @google/gemini-cli@0.20.2
-@aikidosec/safe-chain@1.1.9
+@aikidosec/safe-chain@1.1.10
 chrome-devtools-mcp@0.10.2
 mcp-remote@0.1.31
 uuid@13.0.0
