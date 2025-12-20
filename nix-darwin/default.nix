@@ -69,6 +69,7 @@
       "wezterm"
       "screen-studio"
       "termius"
+      "aqua-voice"
     ];
     masApps = {
       "Kindle" = 302584613;

@@ -584,9 +584,6 @@ require("lazy").setup({
             resize_window = true,
             window_picker = {
               enable = true,
-              picker = require("window-picker").pick_window({
-                hint = "floating-big-letter",
-              }),
               chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
               exclude = {
                 filetype = { "notify", "packer", "qf", "diff", "fugitive", "fugitiveblame" },
