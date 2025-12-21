@@ -225,5 +225,6 @@
   "kiroAgent.trustedCommands": ["*"],
   "github.copilot.nextEditSuggestions.enabled": true,
   "git.autofetch": false,
-  "extensions.autoUpdate": false
+  "extensions.autoUpdate": false,
+  "editor.unicodeHighlight.nonBasicASCII": false
 }

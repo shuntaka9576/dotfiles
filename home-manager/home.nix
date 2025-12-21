@@ -31,6 +31,7 @@
     ./programs/packages/default.nix
     ./programs/pet/default.nix
     ./programs/pnpm/default.nix
+    ./programs/stylua/default.nix
     ./programs/tmux/default.nix
     ./programs/vhs/default.nix
     ./programs/vibe-kanban/default.nix

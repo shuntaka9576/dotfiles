@@ -71,6 +71,23 @@ function fd-fzf() {
 zle -N fd-fzf
 bindkey "^n" fd-fzf
 
+function chathist-widget() {
+  while true; do
+    local selection=$(chathist list | fzf-tmux --multi --with-nth=2.. \
+      --preview 'chathist pick {1} --stdout' \
+      --preview-window 'right:45%:wrap' | cut -f1)
+
+    [ -z "$selection" ] && break
+
+    echo "$selection" | chathist pick
+  done
+
+  zle reset-prompt
+}
+
+zle -N chathist-widget
+bindkey "^h" chathist-widget
+
 # select history
 function select-history() {
   BUFFER=$(history -n -r 1 | fzf-tmux --reverse --no-sort +m --query "$LBUFFER" --prompt="History > ")
