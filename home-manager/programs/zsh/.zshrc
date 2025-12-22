@@ -79,7 +79,10 @@ function chathist-widget() {
 
     [ -z "$selection" ] && break
 
-    echo "$selection" | chathist pick
+    local template=$(chathist pick --list-templates | fzf-tmux --prompt="Select template: ")
+    [ -z "$template" ] && continue
+
+    echo "$selection" | chathist pick -t "$template"
   done
 
   zle reset-prompt

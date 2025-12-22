@@ -844,3 +844,9 @@ description = "AIチャット履歴を取得して選択"
 command = "chathist list | fzf-tmux --multi --with-nth=2.. | cut -f1 | chathist pick"
 tag = ["chathist", "ai", "fzf"]
 output = ""
+
+[[snippets]]
+description = "ツリー表示(.gitとnode_modulesを除外)"
+command = "exa -T -a --ignore-glob='.git|node_modules'"
+tag = ["exa", "tree"]
+output = ""
