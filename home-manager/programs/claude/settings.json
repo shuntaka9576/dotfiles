@@ -37,6 +37,10 @@
     "type": "command",
     "command": "~/dotfiles/home-manager/programs/claude/statusline/statusline.ts"
   },
+  "fileSuggestion": {
+    "type": "command",
+    "command": "~/dotfiles/home-manager/programs/claude/file-suggestion.sh"
+  },
   "alwaysThinkingEnabled": true,
   "feedbackSurveyState": {
     "lastShownTime": 1754030471611
