@@ -1,5 +1,9 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "fileSuggestion": {
+    "type": "command",
+    "command": "~/dotfiles/home-manager/programs/claude/file-suggestion.sh"
+  },
   "env": {
     "DISABLE_AUTOUPDATER": "1"
   },
@@ -37,12 +41,11 @@
     "type": "command",
     "command": "~/dotfiles/home-manager/programs/claude/statusline/statusline.ts"
   },
-  "fileSuggestion": {
-    "type": "command",
-    "command": "~/dotfiles/home-manager/programs/claude/file-suggestion.sh"
-  },
   "alwaysThinkingEnabled": true,
   "feedbackSurveyState": {
     "lastShownTime": 1754030471611
+  },
+  "enabledPlugins": {
+    "typescript-lsp@claude-plugins-official": true
   }
 }
