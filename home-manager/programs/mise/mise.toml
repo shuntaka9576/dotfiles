@@ -3,4 +3,4 @@ node = "24.11.1"
 python = "3.13.1"
 rust = { version = "latest", targets = "aarch64-apple-darwin", components = "rust-src,clippy,rust-analyzer,llvm-tools" }
 go = "1.25.5"
-"npm:pnpm" = "10.26.2"
+"npm:pnpm" = "10.27.0"
