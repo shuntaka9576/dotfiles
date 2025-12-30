@@ -26,6 +26,7 @@
     brews = [
       "shuntaka9576/tap/blocc"
       "shuntaka9576/tap/trr"
+      "shuntaka9576/tap/ddbrew"
       "kayac/tap/ecspresso"
       "docker-credential-helper"
       "postgresql"
