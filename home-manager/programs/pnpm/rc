@@ -9,3 +9,4 @@ minimum-release-age-exclude[]=@google/gemini-cli
 minimum-release-age-exclude[]=@google/gemini-cli-core
 minimum-release-age-exclude[]=@jrichman/ink
 minimum-release-age-exclude[]=@modelcontextprotocol/sdk
+minimum-release-age-exclude[]=@aikidosec/safe-chain
