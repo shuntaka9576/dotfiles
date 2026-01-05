@@ -850,3 +850,9 @@ description = "ツリー表示(.gitとnode_modulesを除外)"
 command = "exa -T -a --ignore-glob='.git|node_modules'"
 tag = ["exa", "tree"]
 output = ""
+
+[[snippets]]
+description = "マージ済みローカルブランチを削除"
+command = "git branch --merged | grep -v '\\*\\|main\\|master' | xargs -n 1 git branch -d"
+tag = ["git", "branch", "cleanup"]
+output = ""
