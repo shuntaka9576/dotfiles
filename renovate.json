@@ -30,6 +30,11 @@
         "@google/gemini-cli"
       ],
       "minimumReleaseAge": "0 days"
+    },
+    {
+      "matchFileNames": ["**/global-packages"],
+      "groupName": "global-packages dependencies",
+      "groupSlug": "global-packages"
     }
   ],
   "customManagers": [
