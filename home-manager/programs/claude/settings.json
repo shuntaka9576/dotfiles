@@ -5,7 +5,8 @@
     "command": "~/dotfiles/home-manager/programs/claude/file-suggestion.sh"
   },
   "env": {
-    "DISABLE_AUTOUPDATER": "1"
+    "DISABLE_AUTOUPDATER": "1",
+    "ENABLE_TOOL_SEARCH": "true"
   },
   "includeCoAuthoredBy": false,
   "permissions": {
