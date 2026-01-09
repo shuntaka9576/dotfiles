@@ -1,6 +1,9 @@
 _: {
   programs.git = {
     enable = true;
+    lfs = {
+      enable = true;
+    };
     ignores = [
       ".vim"
       ".DS_Store"
