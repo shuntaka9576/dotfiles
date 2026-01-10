@@ -1,4 +1,5 @@
-minimum-release-age=30240
+# minimum-release-age=30240
+minimum-release-age=0
 minimum-release-age-exclude[]=pnpm
 minimum-release-age-exclude[]=pnpm/macos-arm64
 minimum-release-age-exclude[]=aws-cdk

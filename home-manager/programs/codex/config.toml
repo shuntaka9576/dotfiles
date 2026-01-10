@@ -4,5 +4,5 @@ network_access = true
 
 notify = ["bash", "-lc", "afplay /System/Library/Sounds/Ping.aiff"]
 
-[tools]
-web_search = true
+[features]
+web_search_request = true

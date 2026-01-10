@@ -88,6 +88,7 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
+            home-manager.backupFileExtension = "backup";
             home-manager.users.${username} = import ./home-manager/home.nix;
             home-manager.extraSpecialArgs = specialArgs;
           }
@@ -99,6 +100,7 @@
         extraSpecialArgs = specialArgs;
         modules = [
           { nix.package = pkgs.nix; }
+          { home-manager.backupFileExtension = "backup"; }
           (import ./home-manager/home.nix)
         ];
       };
