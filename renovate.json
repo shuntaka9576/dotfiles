@@ -20,21 +20,20 @@
   },
   "packageRules": [
     {
-      "matchPackageNames": [
-        "pnpm",
-        "pnpm/macos-arm64",
-        "aws-cdk",
-        "aws-cdk-lib",
-        "@openai/codex",
-        "@anthropic-ai/claude-code",
-        "@google/gemini-cli"
-      ],
+      "matchPackageNames": ["pnpm"],
       "minimumReleaseAge": "0 days"
     },
     {
       "matchFileNames": ["**/global-packages"],
+      "matchPackageNames": ["@openai/codex", "@anthropic-ai/claude-code", "opencode-ai"],
+      "minimumReleaseAge": "0 days"
+    },
+    {
+      "matchFileNames": ["**/global-packages"],
+      "excludePackageNames": ["@openai/codex", "@anthropic-ai/claude-code", "opencode-ai"],
       "groupName": "global-packages dependencies",
-      "groupSlug": "global-packages"
+      "groupSlug": "global-packages",
+      "schedule": ["every weekend"]
     }
   ],
   "customManagers": [
