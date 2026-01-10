@@ -30,7 +30,7 @@
       docker
       tokei
       ghq
-      # awscli2
+      awscli2
       hey
       google-java-format
       goreleaser
