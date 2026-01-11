@@ -1,9 +1,6 @@
 {
   "recommendations": [
     // AIエディタ補助
-    "github.copilot",
-    "github.copilot-chat",
-    "saoudrizwan.claude-dev",
     "anthropic.claude-code",
     // keybinding
     "vscodevim.vim",
@@ -20,17 +17,12 @@
     "charliermarsh.ruff",
     // 作図
     "hediet.vscode-drawio",
-    // cline
-    "rooveterinaryinc.roo-cline",
-    "saoudrizwan.claude-dev",
     // nix
     "bbenoist.nix",
     // filer
     "tomrijndorp.find-it-faster",
     // frontend
     "bradlc.vscode-tailwindcss",
-    // dev tools
-    "typespec.typespec-vscode",
     // json schema
     "remcohaszing.schemastore",
     "ms-vscode-remote.remote-ssh"
