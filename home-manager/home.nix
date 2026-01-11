@@ -29,6 +29,7 @@
     ./programs/memo/default.nix
     ./programs/mise/default.nix
     ./programs/nvim/default.nix
+    ./programs/opencode/default.nix
     ./programs/packages/default.nix
     ./programs/pet/default.nix
     ./programs/pnpm/default.nix
