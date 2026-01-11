@@ -4,6 +4,7 @@
     enable = true;
     enableCompletion = true;
     shellAliases = {
+      rm = "rm";
       c = "claude --dangerously-skip-permissions";
       cgm = "c -p '過去のコミットメッセージを参考に、フォーマットを揃えてコミットを作ってください'";
       n = "nvim";
