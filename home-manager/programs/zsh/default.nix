@@ -5,7 +5,7 @@
     enableCompletion = true;
     shellAliases = {
       rm = "rm";
-      c = "claude --dangerously-skip-permissions";
+      c = "claude --allow-dangerously-skip-permissions --permission-mode plan";
       cgm = "c -p '過去のコミットメッセージを参考に、フォーマットを揃えてコミットを作ってください'";
       n = "nvim";
       l = "lazygit";
