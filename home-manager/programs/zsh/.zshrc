@@ -138,6 +138,16 @@ export SSH_AUTH_SOCK=~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agen
 # awscli2
 export AWS_PAGER=""
 
+# dev: claude code + nvim split window
+function dev() {
+  local dir=${1:-$(pwd)}
+  local worktree_name=$(basename "$dir")
+
+  tmux new-window -n "$worktree_name" -c "$dir" "claude --allow-dangerously-skip-permissions --permission-mode plan"
+  tmux split-window -h -p 50 -c "$dir" "nvim"
+  tmux select-pane -L
+}
+
 # 1password signin with fzf
 # function ops() {
 #   local selected=$(op account list --format=json | jq -r '.[] | "\(.url) - \(.email)"' | fzf-tmux --reverse)
