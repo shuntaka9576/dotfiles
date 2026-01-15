@@ -5,7 +5,7 @@
     enableCompletion = true;
     shellAliases = {
       rm = "rm";
-      c = "claude --allow-dangerously-skip-permissions --permission-mode plan";
+      c = "echo '/plan' | claude --dangerously-skip-permissions";
       cgm = "c -p '過去のコミットメッセージを参考に、フォーマットを揃えてコミットを作ってください'";
       n = "nvim";
       l = "lazygit";
@@ -33,6 +33,21 @@
         sleep 0.1;
         tmux send-keys -t "$WIN_NAME.0" "c" C-m;
         lazygit
+      '';
+      d = ''
+        WIN_NAME="$(basename "$(pwd)")";
+        tmux new-window -n "$WIN_NAME";
+        sleep 0.1;
+        tmux split-window -h -p 60 -t "$WIN_NAME";
+        sleep 0.1;
+        tmux split-window -v -p 50 -t "$WIN_NAME.1";
+        sleep 0.1;
+        tmux split-window -v -p 50 -t "$WIN_NAME.2";
+        sleep 0.1;
+        tmux send-keys -t "$WIN_NAME.0" "c" C-m;
+        tmux send-keys -t "$WIN_NAME.1" "nvim" C-m;
+        tmux send-keys -t "$WIN_NAME.2" "lazygit" C-m;
+        tmux select-pane -t "$WIN_NAME.0"
       '';
     };
     autosuggestion.enable = true;
