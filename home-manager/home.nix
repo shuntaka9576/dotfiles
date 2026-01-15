@@ -19,6 +19,7 @@
     ./programs/claude/default.nix
     ./programs/codex/default.nix
     ./programs/deno/default.nix
+    ./programs/direnv/default.nix
     ./programs/fzf/default.nix
     ./programs/gh/default.nix
     ./programs/haskell/default.nix
