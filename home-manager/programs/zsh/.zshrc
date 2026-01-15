@@ -148,6 +148,18 @@ function dev() {
   tmux select-pane -L
 }
 
+# dev2: claude code + nvim/lazygit/zsh split window
+function dev2() {
+  local dir=${1:-$(pwd)}
+  local worktree_name=$(basename "$dir")
+
+  tmux new-window -n "$worktree_name" -c "$dir" "claude --allow-dangerously-skip-permissions --permission-mode plan"
+  tmux split-window -h -p 60 -c "$dir" "nvim"
+  tmux split-window -v -p 50 -c "$dir" "lazygit"
+  tmux split-window -v -p 50 -c "$dir"
+  tmux select-pane -t 0
+}
+
 # 1password signin with fzf
 # function ops() {
 #   local selected=$(op account list --format=json | jq -r '.[] | "\(.url) - \(.email)"' | fzf-tmux --reverse)
