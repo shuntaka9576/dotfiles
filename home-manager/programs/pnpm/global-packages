@@ -13,6 +13,6 @@ chrome-devtools-mcp@0.12.1
 mcp-remote@0.1.37
 uuid@13.0.0
 renovate@42.64.1
-@openai/codex@0.80.0
+@openai/codex@0.84.0
 @anthropic-ai/claude-code@2.1.6
 opencode-ai@1.1.21
