@@ -26,7 +26,9 @@
     {
       "matchFileNames": ["**/global-packages"],
       "matchPackageNames": ["@openai/codex", "@anthropic-ai/claude-code", "opencode-ai"],
-      "minimumReleaseAge": "0 days"
+      "minimumReleaseAge": "0 days",
+      "groupName": "immediate updates",
+      "groupSlug": "immediate-updates"
     },
     {
       "matchFileNames": ["**/global-packages"],
