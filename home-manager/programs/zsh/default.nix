@@ -5,7 +5,7 @@
     enableCompletion = true;
     shellAliases = {
       rm = "rm";
-      c = "echo '/plan' | claude --dangerously-skip-permissions";
+      c = "claude --dangerously-skip-permissions <<< '/plan'";
       cgm = "c -p '過去のコミットメッセージを参考に、フォーマットを揃えてコミットを作ってください'";
       n = "nvim";
       l = "lazygit";
@@ -38,7 +38,7 @@
         WIN_NAME="$(basename "$(pwd)")";
         tmux new-window -n "$WIN_NAME";
         sleep 0.1;
-        tmux split-window -h -p 60 -t "$WIN_NAME";
+        tmux split-window -h -p 60 -t "$WIN_NAME.0";
         sleep 0.1;
         tmux split-window -v -p 50 -t "$WIN_NAME.1";
         sleep 0.1;
