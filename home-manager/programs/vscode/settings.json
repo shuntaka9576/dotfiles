@@ -226,5 +226,7 @@
   "github.copilot.nextEditSuggestions.enabled": true,
   "git.autofetch": false,
   "extensions.autoUpdate": false,
-  "editor.unicodeHighlight.nonBasicASCII": false
+  "editor.unicodeHighlight.nonBasicASCII": false,
+  "kiroAgent.agentAutonomy": "Autopilot",
+  "kiroAgent.modelSelection": "claude-opus-4.5"
 }
