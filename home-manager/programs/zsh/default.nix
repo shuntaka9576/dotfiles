@@ -47,12 +47,10 @@
         sleep 0.1;
         tmux split-window -h -p 60 -t "$WIN_NAME.0";
         sleep 0.1;
-        tmux split-window -v -p 50 -t "$WIN_NAME.1";
-        sleep 0.1;
-        tmux split-window -v -p 50 -t "$WIN_NAME.2";
+        tmux split-window -v -p 40 -t "$WIN_NAME.1";
         sleep 0.1;
         tmux send-keys -t "$WIN_NAME.0" "c" C-m;
-        tmux send-keys -t "$WIN_NAME.1" "nvim" C-m;
+        tmux send-keys -t "$WIN_NAME.1" "nvim +DiffviewOpen" C-m;
         tmux send-keys -t "$WIN_NAME.2" "lazygit" C-m;
         tmux select-pane -t "$WIN_NAME.0"
       '';
