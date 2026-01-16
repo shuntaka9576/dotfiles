@@ -35,7 +35,14 @@
         lazygit
       '';
       d = ''
-        WIN_NAME="$(basename "$(pwd)")";
+        _dir="$(basename "$(pwd)")";
+        _toplevel="$(git rev-parse --show-toplevel 2>/dev/null)";
+        _repo="$(basename "$(dirname "$_toplevel")")";
+        if [[ "$_dir" == "$_repo" ]]; then
+          WIN_NAME="$(echo "$_dir" | cut -c1-15)";
+        else
+          WIN_NAME="$(echo "$(echo "$_repo" | cut -c1-3)|$_dir" | cut -c1-15)";
+        fi
         tmux new-window -n "$WIN_NAME";
         sleep 0.1;
         tmux split-window -h -p 60 -t "$WIN_NAME.0";
