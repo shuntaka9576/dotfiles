@@ -16,3 +16,4 @@ renovate@42.64.1
 @openai/codex@0.85.0
 @anthropic-ai/claude-code@2.1.7
 opencode-ai@1.1.22
+agent-browser@0.5.0
