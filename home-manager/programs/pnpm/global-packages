@@ -15,5 +15,5 @@ uuid@13.0.0
 renovate@42.66.10
 @openai/codex@0.87.0
 @anthropic-ai/claude-code@2.1.12
-opencode-ai@1.1.25
+opencode-ai@1.1.26
 agent-browser@0.5.0
