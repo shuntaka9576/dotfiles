@@ -25,14 +25,21 @@
     },
     {
       "matchFileNames": ["**/global-packages"],
-      "matchPackageNames": ["@openai/codex", "@anthropic-ai/claude-code", "opencode-ai"],
+      "matchPackageNames": ["@openai/codex", "opencode-ai"],
+      "minimumReleaseAge": "0 days",
+      "groupName": "immediate updates",
+      "groupSlug": "immediate-updates"
+    },
+    {
+      "matchFileNames": ["**/.claude-version"],
+      "matchPackageNames": ["@anthropic-ai/claude-code"],
       "minimumReleaseAge": "0 days",
       "groupName": "immediate updates",
       "groupSlug": "immediate-updates"
     },
     {
       "matchFileNames": ["**/global-packages"],
-      "excludePackageNames": ["@openai/codex", "@anthropic-ai/claude-code", "opencode-ai"],
+      "excludePackageNames": ["@openai/codex", "opencode-ai"],
       "groupName": "global-packages dependencies",
       "groupSlug": "global-packages",
       "schedule": ["every weekend"]
@@ -43,6 +50,14 @@
       "customType": "regex",
       "fileMatch": ["global-packages"],
       "matchStrings": ["(?<depName>\\S+?)@(?<currentValue>\\S+)"],
+      "datasourceTemplate": "npm",
+      "versioningTemplate": "npm"
+    },
+    {
+      "customType": "regex",
+      "fileMatch": ["\\.claude-version$"],
+      "matchStrings": ["(?<currentValue>\\d+\\.\\d+\\.\\d+)"],
+      "depNameTemplate": "@anthropic-ai/claude-code",
       "datasourceTemplate": "npm",
       "versioningTemplate": "npm"
     }

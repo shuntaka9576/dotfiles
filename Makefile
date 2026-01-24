@@ -25,18 +25,13 @@ gc:
 fmt:
 	nix fmt
 
-node:
-	mise uninstall node --all
-	mise install node
-
-python:
-	mise uninstall python --all
-	mise install python
-
-pnpm-global:
-	while IFS= read -r pkg || [ -n "$$pkg" ]; do \
+tools:
+	mise uninstall node --all && mise install node
+	mise uninstall python --all && mise install python
+	@while IFS= read -r pkg || [ -n "$$pkg" ]; do \
 		[ -z "$$pkg" ] && continue; \
 		pnpm add -g "$$pkg"; \
 	done < home-manager/programs/pnpm/global-packages
+	@bash home-manager/programs/claude/install.sh
 
-.PHONY: all init update switch mcp clean-mcp gc fmt node python pnpm-global
+.PHONY: all init update switch mcp clean-mcp gc fmt tools
