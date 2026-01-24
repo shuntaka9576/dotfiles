@@ -138,6 +138,24 @@ export SSH_AUTH_SOCK=~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agen
 # awscli2
 export AWS_PAGER=""
 
+# git push -f を --force-with-lease に置き換え
+function git() {
+  if [[ "$1" == "push" ]]; then
+    shift
+    local args=()
+    for arg in "$@"; do
+      if [[ "$arg" == "-f" || "$arg" == "--force" ]]; then
+        args+=("--force-with-lease")
+      else
+        args+=("$arg")
+      fi
+    done
+    command git push "${args[@]}"
+  else
+    command git "$@"
+  fi
+}
+
 
 # 1password signin with fzf
 # function ops() {
