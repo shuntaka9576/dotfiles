@@ -55,7 +55,7 @@
         tmux send-keys -t "$WIN_ID.1" "lazygit" C-m;
         tmux send-keys -t "$WIN_ID.2" "c" C-m;
         tmux send-keys -t "$WIN_ID.3" "nvim +DiffviewOpen" C-m;
-        tmux select-pane -t "$WIN_ID.0"
+        tmux select-pane -t "$WIN_ID.2"
       '';
     };
     autosuggestion.enable = true;
