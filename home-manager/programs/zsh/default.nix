@@ -45,13 +45,11 @@
         fi
         WIN_ID=$(tmux new-window -n "$WIN_NAME" -P -F "#{window_id}");
         sleep 0.1;
-        tmux split-window -h -t "$WIN_ID";
+        tmux split-window -h -p 90 -t "$WIN_ID";
         sleep 0.1;
-        tmux split-window -h -t "$WIN_ID";
+        tmux split-window -h -p 88 -t "$WIN_ID.1";
         sleep 0.1;
-        tmux split-window -h -t "$WIN_ID";
-        sleep 0.1;
-        tmux select-layout -t "$WIN_ID" even-horizontal;
+        tmux split-window -h -p 13 -t "$WIN_ID.2";
         sleep 0.1;
         tmux send-keys -t "$WIN_ID.0" "c" C-m;
         tmux send-keys -t "$WIN_ID.1" "c" C-m;

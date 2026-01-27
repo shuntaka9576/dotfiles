@@ -4,7 +4,8 @@ git:
 
 gui:
   showIcons: true
-  screenMode: "half"
+  screenMode: "normal"
+  sidePanelWidth: 1.0
 
 os:
   editPreset: "nvim"
