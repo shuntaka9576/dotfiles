@@ -78,10 +78,43 @@ vim.api.nvim_command("autocmd BufNewFile,BufRead *.php set filetype=php")
 vim.api.nvim_command("autocmd FileType php setlocal expandtab tabstop=4 softtabstop=4 shiftwidth=4 autoindent")
 vim.api.nvim_command("autocmd BufNewFile,BufRead Makefile setlocal noexpandtab")
 -- vim.api.nvim_command("autocmd BufWritePre *.ts,*.tsx :Prettier")
-vim.api.nvim_command(
-  "autocmd BufWritePost *.ts,*.tsx,*.mts,*.rs,*.hs,*.lua,*.toml,*.svelte,*.py,*.java,*.c,*.h,*.nix FormatWrite"
-)
-vim.api.nvim_command("autocmd BufWritePost *.scala FormatWrite")
+-- JS/TS 以外は従来通り formatter.nvim でフォーマット
+vim.api.nvim_create_autocmd("BufWritePost", {
+  pattern = { "*.rs", "*.hs", "*.lua", "*.toml", "*.svelte", "*.py", "*.java", "*.c", "*.h", "*.nix", "*.scala" },
+  callback = function()
+    vim.cmd("FormatWrite")
+  end,
+})
+
+-- JS/TS 系は設定ファイルがある場合のみ LSP でフォーマット
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = { "*.ts", "*.tsx", "*.mts", "*.js", "*.jsx" },
+  callback = function()
+    local root_dir = vim.fn.getcwd()
+    -- biome, oxfmt, deno のいずれかの設定ファイルがある場合のみフォーマット
+    if
+      vim.fn.filereadable(root_dir .. "/biome.jsonc") == 1
+      or vim.fn.filereadable(root_dir .. "/biome.json") == 1
+      or vim.fn.filereadable(root_dir .. "/.oxfmtrc.json") == 1
+      or vim.fn.filereadable(root_dir .. "/deno.jsonc") == 1
+      or vim.fn.filereadable(root_dir .. "/deno.json") == 1
+    then
+      vim.lsp.buf.format({
+        async = false,
+        filter = function(client)
+          -- oxfmt > biome > denols の優先順位
+          local formatters = { "oxfmt", "biome", "denols" }
+          for _, name in ipairs(formatters) do
+            if client.name == name then
+              return true
+            end
+          end
+          return false
+        end,
+      })
+    end
+  end,
+})
 vim.api.nvim_command("augroup END")
 
 ----------------------------
@@ -212,10 +245,74 @@ local function setup_lsp_for_buffer()
   end
 end
 
+-- Helper function to find local executable or fallback to global
+local function get_local_or_global_cmd(root_dir, cmd_name)
+  local local_cmd = root_dir .. "/node_modules/.bin/" .. cmd_name
+  if vim.fn.executable(local_cmd) == 1 then
+    return local_cmd
+  end
+  return cmd_name
+end
+
+-- Function to check and enable oxlint/oxfmt/biome based on config files
+local function setup_js_tools_lsp()
+  local root_dir = vim.fn.getcwd()
+
+  if vim.fn.filereadable(root_dir .. "/.oxlintrc.json") == 1 then
+    vim.lsp.config("oxlint", {
+      cmd = { get_local_or_global_cmd(root_dir, "oxlint"), "--lsp" },
+      filetypes = {
+        "javascript",
+        "javascriptreact",
+        "javascript.jsx",
+        "typescript",
+        "typescriptreact",
+        "typescript.tsx",
+      },
+      root_markers = { ".oxlintrc.json" },
+      init_options = {
+        settings = {
+          fixKind = "all",
+          typeAware = true,
+        },
+      },
+    })
+    vim.lsp.enable("oxlint")
+  end
+
+  if vim.fn.filereadable(root_dir .. "/.oxfmtrc.json") == 1 then
+    vim.lsp.config("oxfmt", {
+      cmd = { get_local_or_global_cmd(root_dir, "oxfmt"), "--lsp" },
+      filetypes = {
+        "javascript",
+        "javascriptreact",
+        "javascript.jsx",
+        "typescript",
+        "typescriptreact",
+        "typescript.tsx",
+      },
+      root_markers = { ".oxfmtrc.json" },
+      init_options = {
+        options = {
+          ["fmt.experimental"] = true,
+        },
+      },
+    })
+    vim.lsp.enable("oxfmt")
+  end
+
+  if vim.fn.filereadable(root_dir .. "/biome.jsonc") == 1 or vim.fn.filereadable(root_dir .. "/biome.json") == 1 then
+    vim.lsp.enable("biome")
+  end
+end
+
 -- Setup LSP when entering TypeScript/JavaScript files
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
-  callback = setup_lsp_for_buffer,
+  callback = function()
+    setup_lsp_for_buffer()
+    setup_js_tools_lsp()
+  end,
 })
 
 vim.lsp.config("rust_analyzer", {
@@ -317,6 +414,30 @@ vim.lsp.config("gopls", {
 })
 vim.lsp.enable("gopls")
 
+-- oxlint LSP (linter) - configured dynamically in setup_js_tools_lsp
+-- oxfmt LSP (formatter) - configured dynamically in setup_js_tools_lsp
+
+-- biome LSP (linter + formatter)
+vim.lsp.config("biome", {
+  cmd = { "biome", "lsp-proxy" },
+  filetypes = {
+    "javascript",
+    "javascriptreact",
+    "javascript.jsx",
+    "typescript",
+    "typescriptreact",
+    "typescript.tsx",
+    "json",
+    "jsonc",
+  },
+  root_markers = { "biome.jsonc", "biome.json" },
+  capabilities = {
+    general = {
+      positionEncodings = { "utf-16" },
+    },
+  },
+})
+
 vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(ev)
     vim.bo[ev.buf].omnifunc = nil
@@ -328,6 +449,19 @@ vim.api.nvim_create_autocmd("LspAttach", {
     -- pylspの場合はdiagnosticを無効化
     if client.name == "pylsp" then
       vim.diagnostic.enable(false, { bufnr = ev.buf })
+    end
+
+    -- Add oxlint fix all command
+    if client.name == "oxlint" then
+      vim.api.nvim_buf_create_user_command(ev.buf, "LspOxlintFixAll", function()
+        client:exec_cmd({
+          title = "Apply Oxlint automatic fixes",
+          command = "oxc.fixAll",
+          arguments = { { uri = vim.uri_from_bufnr(ev.buf) } },
+        })
+      end, {
+        desc = "Apply Oxlint automatic fixes",
+      })
     end
 
     local set = vim.keymap.set
@@ -801,32 +935,32 @@ require("lazy").setup({
           --     }
           --   end,
           -- },
-          typescript = {
-            function()
-              if use_deno_fmt() then
-                return {
-                  exe = "deno",
-                  args = { "fmt", "-" },
-                  stdin = true,
-                }
-              else
-                local file_path = util.get_current_buffer_file_path()
+          -- typescript = {
+          --   function()
+          --     if use_deno_fmt() then
+          --       return {
+          --         exe = "deno",
+          --         args = { "fmt", "-" },
+          --         stdin = true,
+          --       }
+          --     else
+          --       local file_path = util.get_current_buffer_file_path()
 
-                return {
-                  exe = get_biome_exe(),
-                  args = {
-                    "check",
-                    "--write",
-                    -- "--unsafe",
-                    "--stdin-file-path",
-                    util.escape_path(file_path),
-                  },
-                  stdin = true,
-                  cwd = vim.fn.fnamemodify(file_path, ":h"), -- Set the working directory to the file's directory
-                }
-              end
-            end,
-          },
+          --       return {
+          --         exe = get_biome_exe(),
+          --         args = {
+          --           "check",
+          --           "--write",
+          --           -- "--unsafe",
+          --           "--stdin-file-path",
+          --           util.escape_path(file_path),
+          --         },
+          --         stdin = true,
+          --         cwd = vim.fn.fnamemodify(file_path, ":h"), -- Set the working directory to the file's directory
+          --       }
+          --     end
+          --   end,
+          -- },
           typescriptreact = {
             function()
               if use_deno_fmt() then
