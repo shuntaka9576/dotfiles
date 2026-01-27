@@ -4,6 +4,7 @@ git:
 
 gui:
   showIcons: true
+  screenMode: "half"
 
 os:
   editPreset: "nvim"

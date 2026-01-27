@@ -41,18 +41,23 @@
         if [[ "$_dir" == "$_repo" ]]; then
           WIN_NAME="$(echo "$_dir" | cut -c1-15)";
         else
-          WIN_NAME="$(echo "$(echo "$_repo" | cut -c1-3)|$(echo "$_dir" | sed 's/^wip-//')" | cut -c1-15)";
+          WIN_NAME="$(echo "$(echo "$_repo" | cut -c1-3)-$(echo "$_dir" | sed 's/^wip-//')" | cut -c1-15)";
         fi
-        tmux new-window -n "$WIN_NAME";
+        WIN_ID=$(tmux new-window -n "$WIN_NAME" -P -F "#{window_id}");
         sleep 0.1;
-        tmux split-window -h -p 60 -t "=$WIN_NAME.0";
+        tmux split-window -h -t "$WIN_ID";
         sleep 0.1;
-        tmux split-window -v -p 40 -t "=$WIN_NAME.1";
+        tmux split-window -h -t "$WIN_ID";
         sleep 0.1;
-        tmux send-keys -t "=$WIN_NAME.0" "c" C-m;
-        tmux send-keys -t "=$WIN_NAME.1" "nvim +DiffviewOpen" C-m;
-        tmux send-keys -t "=$WIN_NAME.2" "lazygit" C-m;
-        tmux select-pane -t "=$WIN_NAME.0"
+        tmux split-window -h -t "$WIN_ID";
+        sleep 0.1;
+        tmux select-layout -t "$WIN_ID" even-horizontal;
+        sleep 0.1;
+        tmux send-keys -t "$WIN_ID.0" "c" C-m;
+        tmux send-keys -t "$WIN_ID.1" "c" C-m;
+        tmux send-keys -t "$WIN_ID.2" "nvim +DiffviewOpen" C-m;
+        tmux send-keys -t "$WIN_ID.3" "lazygit" C-m;
+        tmux select-pane -t "$WIN_ID.1"
       '';
     };
     autosuggestion.enable = true;
