@@ -60,6 +60,13 @@
       "depNameTemplate": "@anthropic-ai/claude-code",
       "datasourceTemplate": "npm",
       "versioningTemplate": "npm"
+    },
+    {
+      "customType": "regex",
+      "fileMatch": ["\\.default-python-packages$"],
+      "matchStrings": ["(?<depName>\\S+)==(?<currentValue>\\S+)"],
+      "datasourceTemplate": "pypi",
+      "versioningTemplate": "pep440"
     }
   ]
 }
