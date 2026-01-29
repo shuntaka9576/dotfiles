@@ -1,10 +1,22 @@
 local secrets = import 'secrets.jsonnet';
 local home = std.extVar('HOME');
-local nodepath = home + '/.local/share/mise/installs/node/24.7.0';
+local nodepath = home + '/.local/share/mise/installs/node/24.12.0';
 local pythonpath = home + '/.local/share/mise/installs/python/3.13.7';
+local defaultPath = nodepath + '/bin:/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin';
 
 {
   mcpServers: {
+    'ask-user': {
+      command: '/Users/shuntaka/.local/share/pnpm/mcp-ask-user',
+      args: ['--stdio'],
+      env: {
+        PATH: '/Users/shuntaka/.local/share/mise/installs/node/24.13.0/bin:/usr/bin:/bin',
+      },
+    },
+    // 'color-picker': {
+    //   command: nodepath + '/bin/node',
+    //   args: ['--experimental-strip-types', '/Users/shuntaka/repos/github.com/shuntaka9576/mcp-apps-practice/server.ts'],
+    // },
     // "Framelink Figma MCP": {
     //   "command": nodepath + '/bin/npx',
     //   "args": ["-y", "figma-developer-mcp", "--figma-api-key=" + secrets.figma.token, "--stdio"]
