@@ -74,7 +74,7 @@
         tmux send-keys -t "$WIN1_ID.0" "lazygit" C-m;
         tmux send-keys -t "$WIN1_ID.1" "nvim +'autocmd VimEnter * ++once NvimTreeToggle'" C-m;
         # window2: claude(25) + claude(25) + zsh(50)
-        WIN2_ID=$(tmux new-window -n "p" -P -F "#{window_id}");
+        WIN2_ID=$(tmux new-window -P -F "#{window_id}");
         tmux rename-window -t "$WIN2_ID" "p";
         sleep 0.1;
         tmux split-window -h -p 75 -t "$WIN2_ID";
