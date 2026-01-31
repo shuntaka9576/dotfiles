@@ -12,7 +12,7 @@ vibe-kanban@0.0.148
 chrome-devtools-mcp@0.12.1
 mcp-remote@0.1.37
 uuid@13.0.0
-renovate@42.76.2
+renovate@42.76.4
 @openai/codex@0.92.0
 opencode-ai@1.1.47
 agent-browser@0.5.0
