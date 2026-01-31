@@ -6,7 +6,8 @@
   },
   "env": {
     "DISABLE_AUTOUPDATER": "1",
-    "ENABLE_TOOL_SEARCH": "true"
+    "ENABLE_TOOL_SEARCH": "true",
+    "CLAUDE_CODE_DISABLE_TERMINAL_TITLE": "1"
   },
   "includeCoAuthoredBy": false,
   "permissions": {
