@@ -346,35 +346,27 @@ vim.diagnostic.config({
   },
 })
 
-vim.lsp.config("pylsp", {
-  cmd = { "pylsp" },
+vim.lsp.config("pyright", {
+  cmd = { "pyright-langserver", "--stdio" },
   filetypes = { "python" },
   root_markers = {
     "pyproject.toml",
+    "pyrightconfig.json",
+    ".venv",
     "setup.py",
-    "setup.cfg",
-    "requirements.txt",
-    "Pipfile",
     ".git",
   },
   settings = {
-    -- pylsp = {
-    --   plugins = {
-    --     pycodestyle = {
-    --       enabled = false,
-    --       maxLineLength = 88,
-    --     },
-    --     mccabe = {
-    --       enabled = false,
-    --     },
-    --     pyflakes = {
-    --       enabled = false,
-    --     },
-    --   },
-    -- },
+    python = {
+      analysis = {
+        autoSearchPaths = true,
+        useLibraryCodeForTypes = true,
+        diagnosticMode = "openFilesOnly",
+      },
+    },
   },
 })
-vim.lsp.enable("pylsp")
+vim.lsp.enable("pyright")
 
 vim.lsp.config("ruff_lsp", {
   cmd = { "ruff", "server" },
@@ -445,11 +437,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
     vim.bo[ev.buf].formatexpr = nil
 
     local client = assert(vim.lsp.get_client_by_id(ev.data.client_id))
-
-    -- pylspの場合はdiagnosticを無効化
-    if client.name == "pylsp" then
-      vim.diagnostic.enable(false, { bufnr = ev.buf })
-    end
 
     -- Add oxlint fix all command
     if client.name == "oxlint" then
