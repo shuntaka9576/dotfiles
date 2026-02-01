@@ -25,13 +25,10 @@ gc:
 fmt:
 	nix fmt
 
-tools: tools-install tools-prune tools-default-packages tools-claude
+tools: tools-install tools-default-packages tools-claude
 
 tools-install:
 	mise install
-
-tools-prune:
-	mise prune
 
 tools-upgrade:
 	mise upgrade
@@ -43,4 +40,4 @@ tools-default-packages:
 tools-claude:
 	@bash home-manager/programs/claude/install.sh
 
-.PHONY: all init update switch mcp clean-mcp gc fmt tools tools-install tools-prune tools-upgrade tools-default-packages tools-claude
+.PHONY: all init update switch mcp clean-mcp gc fmt tools tools-install tools-upgrade tools-default-packages tools-claude
