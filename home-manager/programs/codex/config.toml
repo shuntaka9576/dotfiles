@@ -4,5 +4,14 @@ network_access = true
 
 notify = ["bash", "-lc", "afplay /System/Library/Sounds/Ping.aiff"]
 
+web_search = "live"
+suppress_unstable_features_warning = true
+
 [features]
-web_search_request = true
+collaboration_modes = true
+
+[projects."/Users/shuntaka/repos/github.com/shuntaka9576/memo"]
+trust_level = "trusted"
+
+[projects."/Users/shuntaka/dotfiles"]
+trust_level = "trusted"
