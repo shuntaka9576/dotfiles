@@ -1,0 +1,16 @@
+# Supply chain attack protection
+# Only install packages published at least 3 days ago (259200 seconds)
+minimumReleaseAge = 259200 # 3 days in seconds
+
+# Exclude trusted packages from the age gate
+minimumReleaseAgeExcludes = [
+  "pnpm",
+  "aws-cdk",
+  "aws-cdk-lib",
+  "@google/gemini-cli",
+  "@google/gemini-cli-core",
+  "@modelcontextprotocol/sdk",
+  "@aikidosec/safe-chain",
+  "@openai/codex",
+  "@anthropic-ai/claude-code",
+]

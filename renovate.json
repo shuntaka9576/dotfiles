@@ -24,7 +24,7 @@
       "minimumReleaseAge": "0 days"
     },
     {
-      "matchFileNames": ["**/global-packages"],
+      "matchFileNames": ["**/mise.toml"],
       "matchPackageNames": ["@openai/codex", "opencode-ai"],
       "minimumReleaseAge": "0 days",
       "groupName": "immediate updates",
@@ -38,21 +38,16 @@
       "groupSlug": "immediate-updates"
     },
     {
-      "matchFileNames": ["**/global-packages"],
+      "matchFileNames": ["**/mise.toml"],
+      "matchManagers": ["mise"],
+      "matchDatasources": ["npm"],
       "excludePackageNames": ["@openai/codex", "opencode-ai"],
-      "groupName": "global-packages dependencies",
-      "groupSlug": "global-packages",
+      "groupName": "mise npm packages",
+      "groupSlug": "mise-npm",
       "schedule": ["every weekend"]
     }
   ],
   "customManagers": [
-    {
-      "customType": "regex",
-      "fileMatch": ["global-packages"],
-      "matchStrings": ["(?<depName>\\S+?)@(?<currentValue>\\S+)"],
-      "datasourceTemplate": "npm",
-      "versioningTemplate": "npm"
-    },
     {
       "customType": "regex",
       "fileMatch": ["\\.claude-version$"],

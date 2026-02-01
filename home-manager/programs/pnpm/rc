@@ -1,3 +1,7 @@
+# NOTE: This configuration is currently unused.
+# Global npm packages are now managed via mise with bun backend.
+# Keeping this file for reference in case pnpm is used in local projects.
+
 # minimum-release-age=30240
 minimum-release-age=0
 minimum-release-age-exclude[]=pnpm

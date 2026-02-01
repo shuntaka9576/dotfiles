@@ -15,6 +15,7 @@
 
   imports = [
     ./programs/alacritty/default.nix
+    ./programs/bun/default.nix
     ./programs/cargo/default.nix
     ./programs/claude/default.nix
     ./programs/codex/default.nix

@@ -7,7 +7,7 @@ local defaultPath = nodepath + '/bin:/usr/local/bin:/opt/homebrew/bin:/usr/bin:/
 {
   mcpServers: {
     'ask-user': {
-      command: '/Users/shuntaka/.local/share/pnpm/mcp-ask-user',
+      command: home + '/.local/share/mise/shims/mcp-ask-user',
       args: ['--stdio'],
       env: {
         PATH: '/Users/shuntaka/.local/share/mise/installs/node/24.13.0/bin:/usr/bin:/bin',

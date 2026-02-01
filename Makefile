@@ -25,7 +25,7 @@ gc:
 fmt:
 	nix fmt
 
-tools: tools-install tools-prune tools-pnpm-packages tools-claude
+tools: tools-install tools-prune tools-default-packages tools-claude
 
 tools-install:
 	mise install
@@ -40,13 +40,7 @@ tools-default-packages:
 	mise install python --force
 	mise install go --force
 
-tools-pnpm-packages:
-	@while IFS= read -r pkg || [ -n "$$pkg" ]; do \
-		[ -z "$$pkg" ] && continue; \
-		pnpm add -g "$$pkg"; \
-	done < home-manager/programs/pnpm/global-packages
-
 tools-claude:
 	@bash home-manager/programs/claude/install.sh
 
-.PHONY: all init update switch mcp clean-mcp gc fmt tools tools-install tools-prune tools-upgrade tools-default-packages tools-pnpm-packages tools-claude
+.PHONY: all init update switch mcp clean-mcp gc fmt tools tools-install tools-prune tools-upgrade tools-default-packages tools-claude
