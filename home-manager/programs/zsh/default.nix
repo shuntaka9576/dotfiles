@@ -81,7 +81,7 @@
         sleep 0.1;
         tmux split-window -h -p 67 -t "$WIN2_ID.1" -c "$PWD";
         sleep 0.1;
-        tmux send-keys -t "$WIN2_ID.0" "c" C-m;
+        tmux send-keys -t "$WIN2_ID.0" "co" C-m;
         tmux send-keys -t "$WIN2_ID.1" "c" C-m;
         tmux select-pane -t "$WIN2_ID.1";
         # Run lazygit directly in the current pane (left side of the original window)
