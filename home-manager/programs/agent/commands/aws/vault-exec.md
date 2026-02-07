@@ -7,7 +7,7 @@
 以下のスクリプトを実行して、AWS プロファイル情報を取得する:
 
 ```bash
-~/dotfiles/home-manager/programs/claude/scripts/parse-aws-config.ts
+~/dotfiles/home-manager/programs/agent/scripts/parse-aws-config.ts
 ```
 
 JSON 出力の `profiles` 配列からプロファイル一覧を取得する。

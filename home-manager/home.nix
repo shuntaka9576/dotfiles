@@ -14,6 +14,7 @@
   xdg.enable = true;
 
   imports = [
+    ./programs/agent/default.nix
     ./programs/alacritty/default.nix
     ./programs/bun/default.nix
     ./programs/cargo/default.nix

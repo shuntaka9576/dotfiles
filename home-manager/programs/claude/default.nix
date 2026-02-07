@@ -6,12 +6,6 @@
   home.file.".config/claude/settings.json" = {
     source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/home-manager/programs/claude/settings.json";
   };
-  home.file.".config/claude/commands" = {
-    source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/home-manager/programs/claude/commands";
-  };
-  home.file.".config/claude/skills" = {
-    source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/home-manager/programs/claude/skills";
-  };
   # home.file.".claude.json" = {
   #   source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/home-manager/programs/mcp/.mcp-claude-code.json";
   # };
