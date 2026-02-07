@@ -45,8 +45,8 @@ aws-vault exec <profile> -- aws sts get-caller-identity
 認証成功を確認したら、以下を案内する:
 
 - 認証されたアカウント情報（`get-caller-identity` の結果）を表示
-- 以降の AWS CLI 呼び出しでは以下の形式で実行するよう説明:
+- セッションが確立されたため、以降は通常の AWS CLI コマンドを直接実行できることを説明:
   ```
-  aws-vault exec <profile> -- <aws-command>
+  aws <command>
   ```
 - セッションがキャッシュ済みのため、以降の実行では MFA 入力は不要であることを伝える
