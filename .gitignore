@@ -1,3 +1,4 @@
 home-manager/programs/mcp/secrets.jsonnet
 home-manager/programs/mcp/.mcp-claude-code.json
 home-manager/programs/mcp/.mcp-general.json
+home-manager/programs/agent/skills/.system/
