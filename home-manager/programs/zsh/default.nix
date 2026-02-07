@@ -8,6 +8,7 @@
       # NOTE: Stopped passing /plan because it pollutes conversation history
       # c = "claude --chrome --dangerously-skip-permissions <<< '/plan'";
       c = "claude --chrome --dangerously-skip-permissions";
+      co = "codex";
       n = "nvim";
       l = "lazygit";
       ls = "eza";
