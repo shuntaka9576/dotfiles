@@ -16,7 +16,7 @@
       tree = "eza -T --git-ignore";
       ne = "nix eval -f";
       me = "memo e";
-      mn = "memo new && cd /Users/shuntaka/repos/github.com/shuntaka9576/memo";
+      mn = "cd ~/repos/github.com/shuntaka9576/memo && memo new";
       tka = "tmux kill-server";
       ecs = "ecspresso";
       x = ''
