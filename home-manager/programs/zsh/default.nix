@@ -36,6 +36,29 @@
         tmux send-keys -t "$WIN_NAME.0" "c" C-m;
         lazygit
       '';
+      # d = ''
+      #   _dir="$(basename "$(pwd)")";
+      #   _toplevel="$(git rev-parse --show-toplevel 2>/dev/null)";
+      #   _repo="$(basename "$(dirname "$_toplevel")")";
+      #   if [[ "$_dir" == "$_repo" ]]; then
+      #     WIN_NAME="$(echo "$_dir" | cut -c1-15)";
+      #   else
+      #     WIN_NAME="$(echo "$(echo "$_repo" | cut -c1-3)-$(echo "$_dir" | sed 's/^wip-//'))" | cut -c1-15)";
+      #   fi
+      #   WIN_ID=$(tmux new-window -n "$WIN_NAME" -P -F "#{window_id}");
+      #   sleep 0.1;
+      #   tmux split-window -h -p 75 -t "$WIN_ID";
+      #   sleep 0.1;
+      #   tmux split-window -h -p 87 -t "$WIN_ID.1";
+      #   sleep 0.1;
+      #   tmux split-window -h -p 61 -t "$WIN_ID.2";
+      #   sleep 0.1;
+      #   tmux send-keys -t "$WIN_ID.0" "c" C-m;
+      #   tmux send-keys -t "$WIN_ID.1" "lazygit" C-m;
+      #   tmux send-keys -t "$WIN_ID.2" "c" C-m;
+      #   tmux send-keys -t "$WIN_ID.3" "nvim +DiffviewOpen" C-m;
+      #   tmux select-pane -t "$WIN_ID.2"
+      # '';
       d = ''
         _dir="$(basename "$(pwd)")";
         _toplevel="$(git rev-parse --show-toplevel 2>/dev/null)";
@@ -43,30 +66,7 @@
         if [[ "$_dir" == "$_repo" ]]; then
           WIN_NAME="$(echo "$_dir" | cut -c1-15)";
         else
-          WIN_NAME="$(echo "$(echo "$_repo" | cut -c1-3)-$(echo "$_dir" | sed 's/^wip-//')" | cut -c1-15)";
-        fi
-        WIN_ID=$(tmux new-window -n "$WIN_NAME" -P -F "#{window_id}");
-        sleep 0.1;
-        tmux split-window -h -p 75 -t "$WIN_ID";
-        sleep 0.1;
-        tmux split-window -h -p 87 -t "$WIN_ID.1";
-        sleep 0.1;
-        tmux split-window -h -p 61 -t "$WIN_ID.2";
-        sleep 0.1;
-        tmux send-keys -t "$WIN_ID.0" "c" C-m;
-        tmux send-keys -t "$WIN_ID.1" "lazygit" C-m;
-        tmux send-keys -t "$WIN_ID.2" "c" C-m;
-        tmux send-keys -t "$WIN_ID.3" "nvim +DiffviewOpen" C-m;
-        tmux select-pane -t "$WIN_ID.2"
-      '';
-      d2 = ''
-        _dir="$(basename "$(pwd)")";
-        _toplevel="$(git rev-parse --show-toplevel 2>/dev/null)";
-        _repo="$(basename "$(dirname "$_toplevel")")";
-        if [[ "$_dir" == "$_repo" ]]; then
-          WIN_NAME="$(echo "$_dir" | cut -c1-15)";
-        else
-          WIN_NAME="$(echo "$(echo "$_repo" | cut -c1-3)-$(echo "$_dir" | sed 's/^wip-//')" | cut -c1-15)";
+          WIN_NAME="$(echo "$(echo "$_repo" | cut -c1-3)-$(echo "$_dir" | sed 's/^wip-//'))" | cut -c1-15)";
         fi
         # Rename current window and split for nvim
         tmux rename-window "$WIN_NAME";
