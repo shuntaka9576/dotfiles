@@ -1,4 +1,5 @@
 ---
+name: github:analyze-dependabot-alerts
 description: Dependabotアラート解析
 ---
 

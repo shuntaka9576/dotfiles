@@ -1,4 +1,5 @@
 ---
+name: git:git-commit
 description: Git コミット
 ---
 

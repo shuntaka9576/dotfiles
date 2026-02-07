@@ -1,4 +1,5 @@
 ---
+name: aws:vault-exec
 description: aws-vault exec によるAWS認証
 ---
 

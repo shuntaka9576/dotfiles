@@ -1,4 +1,5 @@
 ---
+name: git:create-pr
 description: プルリクエスト作成
 ---
 
