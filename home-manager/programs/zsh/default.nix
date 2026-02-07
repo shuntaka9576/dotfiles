@@ -5,7 +5,9 @@
     enableCompletion = true;
     shellAliases = {
       rm = "rm";
-      c = "claude --chrome --dangerously-skip-permissions <<< '/plan'";
+      # NOTE: Stopped passing /plan because it pollutes conversation history
+      # c = "claude --chrome --dangerously-skip-permissions <<< '/plan'";
+      c = "claude --chrome --dangerously-skip-permissions";
       cgm = "c -p '過去のコミットメッセージを参考に、フォーマットを揃えてコミットを作ってください'";
       n = "nvim";
       l = "lazygit";
