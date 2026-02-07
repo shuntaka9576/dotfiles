@@ -8,7 +8,6 @@
       # NOTE: Stopped passing /plan because it pollutes conversation history
       # c = "claude --chrome --dangerously-skip-permissions <<< '/plan'";
       c = "claude --chrome --dangerously-skip-permissions";
-      cgm = "c -p '過去のコミットメッセージを参考に、フォーマットを揃えてコミットを作ってください'";
       n = "nvim";
       l = "lazygit";
       ls = "eza";
@@ -68,25 +67,24 @@
         else
           WIN_NAME="$(echo "$(echo "$_repo" | cut -c1-3)-$(echo "$_dir" | sed 's/^wip-//')" | cut -c1-15)";
         fi
-        # window1: lazygit + nvim
-        WIN1_ID=$(tmux new-window -n "$WIN_NAME" -P -F "#{window_id}");
+        # Rename current window and split for nvim
+        tmux rename-window "$WIN_NAME";
+        tmux split-window -h -p 64 -c "$PWD";
         sleep 0.1;
-        tmux split-window -h -p 60 -t "$WIN1_ID";
-        sleep 0.1;
-        tmux send-keys -t "$WIN1_ID.0" "lazygit" C-m;
-        tmux send-keys -t "$WIN1_ID.1" "nvim +'autocmd VimEnter * ++once NvimTreeToggle'" C-m;
-        # window2: claude(25) + claude(25) + zsh(50)
-        WIN2_ID=$(tmux new-window -P -F "#{window_id}");
+        tmux send-keys "nvim +'autocmd VimEnter * ++once NvimTreeToggle'" C-m;
+        # Window 2: claude(25) + claude(25) + zsh(50)
+        WIN2_ID=$(tmux new-window -P -F "#{window_id}" -c "$PWD");
         tmux rename-window -t "$WIN2_ID" "p";
         sleep 0.1;
-        tmux split-window -h -p 75 -t "$WIN2_ID";
+        tmux split-window -h -p 75 -t "$WIN2_ID" -c "$PWD";
         sleep 0.1;
-        tmux split-window -h -p 67 -t "$WIN2_ID.1";
+        tmux split-window -h -p 67 -t "$WIN2_ID.1" -c "$PWD";
         sleep 0.1;
         tmux send-keys -t "$WIN2_ID.0" "c" C-m;
         tmux send-keys -t "$WIN2_ID.1" "c" C-m;
-        # WIN2_ID.2 は zsh のまま
-        tmux select-pane -t "$WIN2_ID.1"
+        tmux select-pane -t "$WIN2_ID.1";
+        # Run lazygit directly in the current pane (left side of the original window)
+        lazygit
       '';
     };
     autosuggestion.enable = true;
