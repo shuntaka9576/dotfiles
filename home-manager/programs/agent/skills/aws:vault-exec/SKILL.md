@@ -1,3 +1,7 @@
+---
+description: aws-vault exec によるAWS認証
+---
+
 # aws-vault exec によるAWS認証
 
 ## ワークフロー

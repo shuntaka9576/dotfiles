@@ -1,3 +1,7 @@
+---
+description: Dependabotアラート解析
+---
+
 # Dependabotアラート解析
 
 ## 概要
