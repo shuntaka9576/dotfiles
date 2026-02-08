@@ -1,4 +1,4 @@
-all: fmt mcp switch
+all: fmt switch mcp
 
 init: switch
 
@@ -12,12 +12,12 @@ switch:
 
 mcp: clean-mcp
 	jsonnet --ext-str HOME="$$HOME" home-manager/programs/mcp/mcp-general.jsonnet > home-manager/programs/mcp/.mcp-general.json
-	jsonnet --ext-str HOME="$$HOME" home-manager/programs/mcp/mcp-claude-code.jsonnet > home-manager/programs/mcp/.mcp-claude-code.json
-	jq 'del(.mcpServers) + $$mcp[0]' ~/.config/claude/.claude.json --slurpfile mcp ~/dotfiles/home-manager/programs/mcp/.mcp-claude-code.json > ~/.config/claude/.claude.json.tmp && mv ~/.config/claude/.claude.json.tmp ~/.config/claude/.claude.json
+	jsonnet --ext-str HOME="$$HOME" home-manager/programs/mcp/mcp-code.jsonnet > home-manager/programs/mcp/.mcp-code.json
+	bun run home-manager/programs/mcp/sync-mcp.ts
 
 clean-mcp:
 	rm -f home-manager/programs/mcp/.mcp-general.json
-	rm -f home-manager/programs/mcp/.mcp-claude-code.json
+	rm -f home-manager/programs/mcp/.mcp-code.json
 
 gc:
 	nix-collect-garbage -d

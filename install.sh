@@ -113,10 +113,10 @@ main() {
     print_info "Created $MCP_DIR/.mcp-general.json"
   fi
 
-  # Create .mcp-claude-code.json if it doesn't exist
-  if [[ ! -f "$MCP_DIR/.mcp-claude-code.json" ]]; then
-    echo '{}' >"$MCP_DIR/.mcp-claude-code.json"
-    print_info "Created $MCP_DIR/.mcp-claude-code.json"
+  # Create .mcp-code.json if it doesn't exist
+  if [[ ! -f "$MCP_DIR/.mcp-code.json" ]]; then
+    echo '{}' >"$MCP_DIR/.mcp-code.json"
+    print_info "Created $MCP_DIR/.mcp-code.json"
   fi
 
   # Create Serena projects.nix from example if it doesn't exist
