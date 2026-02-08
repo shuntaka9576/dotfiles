@@ -11,7 +11,13 @@
   },
   "includeCoAuthoredBy": false,
   "permissions": {
-    "allow": [],
+    "allow": [
+      "Bash(aws logs get-*)",
+      "Bash(aws logs describe-*)",
+      "Bash(aws logs filter-*)",
+      "Bash(aws logs tail *)",
+      "Bash(aws logs start-query *)"
+    ],
     "defaultMode": "plan"
   },
   "enableAllProjectMcpServers": true,

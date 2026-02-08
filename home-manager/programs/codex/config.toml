@@ -1,4 +1,6 @@
 model_reasoning_effort = "high"
+approval_policy = "on-request"
+sandbox_mode = "workspace-write"
 hide_agent_reasoning = true
 network_access = true
 
@@ -6,6 +8,8 @@ notify = ["bash", "-lc", "afplay /System/Library/Sounds/Ping.aiff"]
 
 web_search = "live"
 suppress_unstable_features_warning = true
+model = "gpt-5.3-codex"
+personality = "pragmatic"
 
 [features]
 collaboration_modes = true
