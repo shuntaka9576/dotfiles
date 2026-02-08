@@ -1,34 +1,33 @@
 ---
 name: aws:vault-exec
 description: aws-vault exec によるAWS認証
+argument-hint: "<profile>"
 ---
 
 # aws-vault exec によるAWS認証
 
+## 引数
+
+`$ARGUMENTS` として AWS プロファイル名が渡される。
+
+プロファイル名が未指定の場合は、`~/dotfiles/home-manager/programs/agent/scripts/parse-aws-config.ts` を実行してプロファイル一覧を取得し、AskUserQuestion でユーザーにプロファイルを選択させる。
+
 ## ワークフロー
 
-### ステップ 1: プロファイル一覧取得
+### ステップ 1: MFA トークン入力（必要な場合のみ）
 
-以下のスクリプトを実行して、AWS プロファイル情報を取得する:
+まず以下のスクリプトを実行してプロファイル情報を取得する:
 
 ```bash
 ~/dotfiles/home-manager/programs/agent/scripts/parse-aws-config.ts
 ```
 
-JSON 出力の `profiles` 配列からプロファイル一覧を取得する。
-
-### ステップ 2: プロファイル選択
-
-取得したプロファイル名を一覧表示し、AskUserQuestion でユーザーにプロファイルを選択させる。
-
-### ステップ 3: MFA トークン入力（必要な場合のみ）
-
-選択されたプロファイルの `requiresMfa` が `true` の場合のみ:
+指定されたプロファイルの `requiresMfa` が `true` の場合のみ:
 - AskUserQuestion でユーザーに「MFA トークン（6桁の数字）を入力してください」と問い合わせる
 - 選択肢は不要（テキスト入力のみ）。options には以下のように MFA デバイスの確認を促す選択肢を提示する:
   - "MFA デバイスを確認して入力します"（ユーザーは "Other" からトークンを直接入力）
 
-### ステップ 4: セッション認証
+### ステップ 2: セッション認証
 
 MFA が必要な場合:
 ```bash
@@ -45,7 +44,7 @@ aws-vault exec <profile> -- aws sts get-caller-identity
 - 初回実行時に macOS の keychain パスワードダイアログが表示される場合がある（Bash ツールの実行には影響しない）
 - 認証成功するとセッションがキャッシュされる
 
-### ステップ 5: 結果案内
+### ステップ 3: 結果案内
 
 認証成功を確認したら、以下を案内する:
 
