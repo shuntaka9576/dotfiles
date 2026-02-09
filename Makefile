@@ -11,13 +11,13 @@ switch:
 	sudo nix run github:LnL7/nix-darwin --extra-experimental-features 'flakes nix-command' -- switch --flake "path:.#shuntaka"
 
 mcp: clean-mcp
-	jsonnet --ext-str HOME="$$HOME" home-manager/programs/mcp/mcp-general.jsonnet > home-manager/programs/mcp/.mcp-general.json
-	jsonnet --ext-str HOME="$$HOME" home-manager/programs/mcp/mcp-code.jsonnet > home-manager/programs/mcp/.mcp-code.json
-	bun run home-manager/programs/mcp/sync-mcp.ts
+	jsonnet --ext-str HOME="$$HOME" home-manager/programs/agent/mcp/mcp-general.jsonnet > home-manager/programs/agent/mcp/.mcp-general.json
+	jsonnet --ext-str HOME="$$HOME" home-manager/programs/agent/mcp/mcp-code.jsonnet > home-manager/programs/agent/mcp/.mcp-code.json
+	bun run home-manager/programs/agent/mcp/sync-mcp.ts
 
 clean-mcp:
-	rm -f home-manager/programs/mcp/.mcp-general.json
-	rm -f home-manager/programs/mcp/.mcp-code.json
+	rm -f home-manager/programs/agent/mcp/.mcp-general.json
+	rm -f home-manager/programs/agent/mcp/.mcp-code.json
 
 gc:
 	nix-collect-garbage -d

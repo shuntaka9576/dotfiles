@@ -38,8 +38,8 @@ After running the installation script, complete the following steps:
 Copy the example secrets file and fill in your actual values:
 
 ```bash
-cp home-manager/programs/mcp/secrets.jsonnet.example home-manager/programs/mcp/secrets.jsonnet
-# Edit home-manager/programs/mcp/secrets.jsonnet with your actual tokens and credentials
+cp home-manager/programs/agent/mcp/secrets.jsonnet.example home-manager/programs/agent/mcp/secrets.jsonnet
+# Edit home-manager/programs/agent/mcp/secrets.jsonnet with your actual tokens and credentials
 ```
 
 2. **Neovim Setup**

@@ -5,7 +5,7 @@ import { dirname, resolve } from "path"
 const HOME = process.env.HOME!
 const DOTFILES = `${HOME}/dotfiles`
 
-const mcpCodePath = resolve(DOTFILES, "home-manager/programs/mcp/.mcp-code.json")
+const mcpCodePath = resolve(DOTFILES, "home-manager/programs/agent/mcp/.mcp-code.json")
 const mcpCode = JSON.parse(readFileSync(mcpCodePath, "utf-8"))
 
 // --- Claude Code ---

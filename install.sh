@@ -104,7 +104,7 @@ main() {
 
   # Create MCP configuration dummy files
   print_info "Creating MCP configuration dummy files..."
-  MCP_DIR="$DOTFILES_DIR/home-manager/programs/mcp"
+  MCP_DIR="$DOTFILES_DIR/home-manager/programs/agent/mcp"
   mkdir -p "$MCP_DIR"
 
   # Create .mcp-general.json if it doesn't exist

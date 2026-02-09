@@ -1,4 +1,4 @@
-home-manager/programs/mcp/secrets.jsonnet
-home-manager/programs/mcp/.mcp-code.json
-home-manager/programs/mcp/.mcp-general.json
+home-manager/programs/agent/mcp/secrets.jsonnet
+home-manager/programs/agent/mcp/.mcp-code.json
+home-manager/programs/agent/mcp/.mcp-general.json
 home-manager/programs/agent/skills/.system/
