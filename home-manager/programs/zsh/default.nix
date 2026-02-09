@@ -9,6 +9,7 @@
       # c = "claude --chrome --dangerously-skip-permissions <<< '/plan'";
       c = "claude --chrome --dangerously-skip-permissions";
       co = "codex";
+      cm = "cargo make";
       o = "opencode";
       n = "nvim";
       l = "lazygit";
