@@ -67,7 +67,7 @@
         if [[ "$_dir" == "$_repo" ]]; then
           WIN_NAME="$(echo "$_dir" | cut -c1-15)";
         else
-          WIN_NAME="$(echo "$(echo "$_repo" | cut -c1-3)-$(echo "$_dir" | sed 's/^wip-//'))" | cut -c1-15)";
+          WIN_NAME="$(echo "$(echo "$_repo" | cut -c1-3)-$(echo "$_dir" | sed 's/^wip-//')" | cut -c1-15)";
         fi
         # Rename current window and split for nvim
         tmux rename-window "$WIN_NAME";
