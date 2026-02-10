@@ -26,7 +26,8 @@ const main = async () => {
     const isGitRepo =
       gitCheckResult.success && new TextDecoder().decode(gitCheckResult.stdout).trim() === "true"
 
-    let repoInfo = ""
+    let repoName = ""
+    let branchName = ""
 
     if (isGitRepo) {
       // Get repository name from git remote
@@ -39,7 +40,6 @@ const main = async () => {
       const remoteResult = await remoteProcess.output()
       const remoteUrl = new TextDecoder().decode(remoteResult.stdout).trim()
 
-      let repoName = ""
       if (remoteUrl && remoteResult.success) {
         // Extract repo name from URL (supports both HTTPS and SSH formats)
         const match = remoteUrl.match(/[/:]([^/]+?)(?:\.git)?$/)
@@ -59,37 +59,33 @@ const main = async () => {
       })
 
       const branchResult = await branchProcess.output()
-      const branchName = new TextDecoder().decode(branchResult.stdout).trim()
-
-      repoInfo = branchName ? `${repoName} (${branchName})` : repoName
+      branchName = new TextDecoder().decode(branchResult.stdout).trim()
     } else {
       // Not a git repository, use directory name
-      repoInfo = currentDir.split("/").pop() || ""
+      repoName = currentDir.split("/").pop() || ""
     }
 
-    const process: Deno.Command = (() => {
-      if (data.hook_event_name === "Stop") {
-        return new Deno.Command("osascript", {
-          args: [
-            "-e",
-            `display notification "Task Completed 🚀" with title "⚡ Claude Code" subtitle "${repoInfo} 📦"`,
-          ],
-          stdout: "piped",
-          stderr: "piped",
-        })
-      } else if (data.hook_event_name === "Notification") {
-        return new Deno.Command("osascript", {
-          args: [
-            "-e",
-            `display notification "Awaiting Confirmation 🔔" with title "⚡ Claude Code" subtitle "${repoInfo} 📦"`,
-          ],
-          stdout: "piped",
-          stderr: "piped",
-        })
-      } else {
-        throw new Error("unknown error")
-      }
-    })()
+    const message = data.hook_event_name === "Stop" ? "Task Completed" : "Awaiting Confirmation"
+
+    const process = new Deno.Command("notibar", {
+      args: [
+        "send",
+        "--source",
+        "claude-code",
+        "--event",
+        data.hook_event_name,
+        "--repo",
+        repoName,
+        "--branch",
+        branchName,
+        "--session-id",
+        data.session_id,
+        "--message",
+        message,
+      ],
+      stdout: "piped",
+      stderr: "piped",
+    })
 
     await process.output()
 
