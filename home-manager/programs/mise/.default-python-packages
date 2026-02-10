@@ -3,4 +3,4 @@ mysql-mcp-server
 ruff-lsp
 awscurl
 plamo-translate-cli
-bedrock-agentcore-starter-toolkit==0.2.6
+bedrock-agentcore-starter-toolkit==0.2.7
