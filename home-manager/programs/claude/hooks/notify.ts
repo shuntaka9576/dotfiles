@@ -67,22 +67,35 @@ const main = async () => {
 
     const message = data.hook_event_name === "Stop" ? "Task Completed" : "Awaiting Confirmation"
 
+    const tmuxPane = Deno.env.get("TMUX_PANE") || ""
+    const terminalApp = Deno.env.get("TERM_PROGRAM") || ""
+
+    const args = [
+      "send",
+      "--source",
+      "claude-code",
+      "--event",
+      data.hook_event_name,
+      "--repo",
+      repoName,
+      "--branch",
+      branchName,
+      "--session-id",
+      data.session_id,
+      "--message",
+      message,
+    ]
+
+    if (terminalApp) {
+      args.push("--terminal-app", terminalApp)
+    }
+
+    if (tmuxPane) {
+      args.push("--tmux-pane", tmuxPane)
+    }
+
     const process = new Deno.Command("notibar", {
-      args: [
-        "send",
-        "--source",
-        "claude-code",
-        "--event",
-        data.hook_event_name,
-        "--repo",
-        repoName,
-        "--branch",
-        branchName,
-        "--session-id",
-        data.session_id,
-        "--message",
-        message,
-      ],
+      args,
       stdout: "piped",
       stderr: "piped",
     })
