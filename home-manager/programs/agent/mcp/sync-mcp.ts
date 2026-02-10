@@ -158,9 +158,10 @@ function splitTomlSectionKey(section: string): string[] {
 function parseSimpleToml(text: string): Record<string, unknown> {
   const result: Record<string, unknown> = {}
   let currentSection: string | null = null
+  const lines = text.split("\n")
 
-  for (const line of text.split("\n")) {
-    const trimmed = line.trim()
+  for (let i = 0; i < lines.length; i++) {
+    const trimmed = lines[i].trim()
     if (!trimmed || trimmed.startsWith("#")) continue
 
     const sectionMatch = trimmed.match(/^\[(.+)\]$/)
@@ -172,7 +173,18 @@ function parseSimpleToml(text: string): Record<string, unknown> {
     const kvMatch = trimmed.match(/^([^=]+?)\s*=\s*(.+)$/)
     if (kvMatch) {
       const key = kvMatch[1].trim()
-      const rawValue = kvMatch[2].trim()
+      let rawValue = kvMatch[2].trim()
+
+      // 複数行配列の結合: [ で始まるが ] で終わらない場合、後続行を結合
+      if (rawValue.startsWith("[") && !rawValue.endsWith("]")) {
+        while (i + 1 < lines.length) {
+          i++
+          const nextLine = lines[i].trim()
+          rawValue += " " + nextLine
+          if (nextLine.endsWith("]")) break
+        }
+      }
+
       const value = parseTomlValue(rawValue)
 
       if (currentSection) {
@@ -201,7 +213,11 @@ function parseTomlValue(raw: string): unknown {
   if (raw.startsWith("[") && raw.endsWith("]")) {
     const inner = raw.slice(1, -1).trim()
     if (!inner) return []
-    return inner.split(",").map((s) => parseTomlValue(s.trim()))
+    return inner
+      .split(",")
+      .map((s) => s.trim())
+      .filter((s) => s !== "")
+      .map((s) => parseTomlValue(s))
   }
   return raw
 }

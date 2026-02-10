@@ -4,7 +4,9 @@ sandbox_mode = "workspace-write"
 hide_agent_reasoning = true
 network_access = true
 
-notify = ["notibar", "send", "--source", "codex"]
+notify = [
+  "/Users/shuntaka/dotfiles/home-manager/programs/codex/scripts/notify.ts",
+]
 
 web_search = "live"
 suppress_unstable_features_warning = true
