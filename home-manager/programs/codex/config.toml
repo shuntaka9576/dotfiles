@@ -5,7 +5,9 @@ hide_agent_reasoning = true
 network_access = true
 
 notify = [
-  "/Users/shuntaka/dotfiles/home-manager/programs/codex/scripts/notify.ts",
+  "/Users/shuntaka/dotfiles/home-manager/shared/scripts/notify.ts",
+  "--source",
+  "codex",
 ]
 
 web_search = "live"

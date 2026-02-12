@@ -16,7 +16,8 @@
       "Bash(aws logs describe-*)",
       "Bash(aws logs filter-*)",
       "Bash(aws logs tail *)",
-      "Bash(aws logs start-query *)"
+      "Bash(aws logs start-query *)",
+      "WebSearch"
     ],
     "defaultMode": "plan"
   },
@@ -28,7 +29,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "~/dotfiles/home-manager/programs/claude/hooks/notify.ts"
+            "command": "~/dotfiles/home-manager/shared/scripts/notify.ts --source claude-code"
           }
         ]
       }
@@ -39,7 +40,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "~/dotfiles/home-manager/programs/claude/hooks/notify.ts"
+            "command": "~/dotfiles/home-manager/shared/scripts/notify.ts --source claude-code"
           }
         ]
       }
