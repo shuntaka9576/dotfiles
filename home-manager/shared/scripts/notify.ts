@@ -6,8 +6,11 @@ interface HookData {
   session_id: string
   transcript_path: string
   hook_event_name: "Stop" | "Notification"
+  notification_type?: "permission_prompt" | "idle_prompt" | "auth_success" | "elicitation_dialog"
   stop_hook_active?: boolean
 }
+
+const FOCUS_EVENTS = new Set(["Stop", "permission_prompt", "elicitation_dialog"])
 
 interface CodexPayload {
   type: string
@@ -79,6 +82,7 @@ const main = async () => {
 
   let title: string
   let color: string
+  let focus = false
   let cwd = Deno.cwd()
 
   if (source === "claude-code") {
@@ -87,6 +91,8 @@ const main = async () => {
     const isStop = data.hook_event_name === "Stop"
     title = data.hook_event_name
     color = isStop ? "red" : "blue"
+    const eventKey = data.notification_type || data.hook_event_name
+    focus = FOCUS_EVENTS.has(eventKey)
   } else {
     const jsonArg = Deno.args[Deno.args.length - 1]
     const data: CodexPayload = JSON.parse(jsonArg)
@@ -118,7 +124,11 @@ const main = async () => {
     args.push("--meta", `branch=${branchName}`)
   }
 
-  await runCommand("notibar", args)
+  if (focus) {
+    args.push("--focus")
+  }
+
+  await runCommand("agentoast", args)
 
   console.log(JSON.stringify({ success: true }))
 }
