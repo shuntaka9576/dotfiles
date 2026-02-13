@@ -10,6 +10,9 @@ interface HookData {
   stop_hook_active?: boolean
 }
 
+// Set to true to auto-focus terminal on Stop/permission_prompt/elicitation_dialog events
+// When enabled, these notifications will silently focus the terminal without showing a toast
+const ENABLE_FOCUS = true
 const FOCUS_EVENTS = new Set(["Stop", "permission_prompt", "elicitation_dialog"])
 
 interface CodexPayload {
@@ -92,7 +95,7 @@ const main = async () => {
     title = data.hook_event_name
     color = isStop ? "red" : "blue"
     const eventKey = data.notification_type || data.hook_event_name
-    focus = FOCUS_EVENTS.has(eventKey)
+    focus = ENABLE_FOCUS && FOCUS_EVENTS.has(eventKey)
   } else {
     const jsonArg = Deno.args[Deno.args.length - 1]
     const data: CodexPayload = JSON.parse(jsonArg)
