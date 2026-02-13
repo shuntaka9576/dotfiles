@@ -14,6 +14,7 @@ web_search = "live"
 suppress_unstable_features_warning = true
 model = "gpt-5.3-codex"
 personality = "pragmatic"
+project_doc_fallback_filenames = ["CLAUDE.md"]
 
 [features]
 collaboration_modes = true

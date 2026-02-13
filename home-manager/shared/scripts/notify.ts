@@ -1,8 +1,8 @@
-#!/etc/profiles/per-user/shuntaka/bin/deno run --allow-run --allow-env
+#!/etc/profiles/per-user/shuntaka/bin/deno run --allow-run --allow-env --allow-read
 
 type Source = "claude-code" | "codex"
 
-interface ClaudeHookData {
+interface HookData {
   session_id: string
   transcript_path: string
   hook_event_name: "Stop" | "Notification"
@@ -77,53 +77,45 @@ const getGitInfo = async (cwd: string): Promise<{ repoName: string; branchName: 
 const main = async () => {
   const source = parseSource()
 
-  let event: string
-  let message: string
-  let sessionId = ""
+  let title: string
+  let color: string
   let cwd = Deno.cwd()
 
   if (source === "claude-code") {
     const input = await new Response(Deno.stdin.readable).text()
-    const data: ClaudeHookData = JSON.parse(input)
-    event = data.hook_event_name
-    sessionId = data.session_id
-    message = data.hook_event_name === "Stop" ? "Task Completed" : "Awaiting Confirmation"
+    const data: HookData = JSON.parse(input)
+    const isStop = data.hook_event_name === "Stop"
+    title = data.hook_event_name
+    color = isStop ? "red" : "blue"
   } else {
     const jsonArg = Deno.args[Deno.args.length - 1]
     const data: CodexPayload = JSON.parse(jsonArg)
     cwd = data.cwd || Deno.cwd()
-    event = "Notification"
-    message = "Task Completed"
+    title = "Notification"
+    color = "blue"
   }
 
   const { repoName, branchName } = await getGitInfo(cwd)
   const tmuxPane = Deno.env.get("TMUX_PANE") || ""
-  const terminalApp = Deno.env.get("TERM_PROGRAM") || ""
 
   const args = [
     "send",
-    "--source",
-    source === "claude-code" ? "claude-code" : "openai",
-    "--event",
-    event,
-    "--repo",
+    "--title",
+    title,
+    "--color",
+    color,
+    "--icon",
+    source === "claude-code" ? "claude-code" : "codex",
+    "--group",
     repoName,
-    "--branch",
-    branchName,
-    "--message",
-    message,
   ]
-
-  if (sessionId) {
-    args.push("--session-id", sessionId)
-  }
-
-  if (terminalApp) {
-    args.push("--terminal-app", terminalApp)
-  }
 
   if (tmuxPane) {
     args.push("--tmux-pane", tmuxPane)
+  }
+
+  if (branchName) {
+    args.push("--meta", `branch=${branchName}`)
   }
 
   await runCommand("notibar", args)
@@ -140,9 +132,4 @@ try {
       error: error instanceof Error ? error.message : String(error),
     }),
   )
-
-  await runCommand("osascript", [
-    "-e",
-    'display notification "Hook Failed !" with title "Notify Error"',
-  ])
 }
