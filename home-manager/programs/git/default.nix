@@ -7,6 +7,7 @@ _: {
     ignores = [
       ".vim"
       ".DS_Store"
+      ".fdignore"
       ".claude/settings.local.json"
     ];
     settings = {

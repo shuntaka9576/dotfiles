@@ -57,6 +57,7 @@
   },
   "language": "Japanese",
   "alwaysThinkingEnabled": true,
+  "skipDangerousModePermissionPrompt": true,
   "feedbackSurveyState": {
     "lastShownTime": 1754030471611
   }
