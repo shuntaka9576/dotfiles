@@ -15,6 +15,13 @@ interface HookData {
 const ENABLE_FOCUS = true
 const FOCUS_EVENTS = new Set(["Stop", "permission_prompt", "elicitation_dialog"])
 
+const NOTIFICATION_TITLES: Record<string, string> = {
+  permission_prompt: "Permission",
+  idle_prompt: "Idle",
+  auth_success: "Auth Success",
+  elicitation_dialog: "Elicitation",
+}
+
 interface CodexPayload {
   type: string
   "turn-id"?: string
@@ -22,16 +29,12 @@ interface CodexPayload {
   [key: string]: unknown
 }
 
-const parseSource = (): Source => {
-  const idx = Deno.args.indexOf("--source")
-  if (idx === -1 || !Deno.args[idx + 1]) {
-    throw new Error("--source argument is required (claude-code | codex)")
+const detectSource = (): Source => {
+  const lastArg = Deno.args[Deno.args.length - 1]
+  if (lastArg?.startsWith("{")) {
+    return "codex"
   }
-  const source = Deno.args[idx + 1]
-  if (source !== "claude-code" && source !== "codex") {
-    throw new Error(`Invalid source: ${source}`)
-  }
-  return source
+  return "claude-code"
 }
 
 const runCommand = async (
@@ -81,10 +84,11 @@ const getGitInfo = async (cwd: string): Promise<{ repoName: string; branchName: 
 }
 
 const main = async () => {
-  const source = parseSource()
+  const source = detectSource()
 
   let title: string
   let color: string
+  let body = ""
   let focus = false
   let cwd = Deno.cwd()
 
@@ -92,7 +96,9 @@ const main = async () => {
     const input = await new Response(Deno.stdin.readable).text()
     const data: HookData = JSON.parse(input)
     const isStop = data.hook_event_name === "Stop"
-    title = data.hook_event_name
+    title = data.notification_type
+      ? (NOTIFICATION_TITLES[data.notification_type] ?? data.notification_type)
+      : data.hook_event_name
     color = isStop ? "red" : "blue"
     const eventKey = data.notification_type || data.hook_event_name
     focus = ENABLE_FOCUS && FOCUS_EVENTS.has(eventKey)
@@ -102,6 +108,12 @@ const main = async () => {
     cwd = data.cwd || Deno.cwd()
     title = "Notification"
     color = "blue"
+
+    const inputMessages = data["input-messages"] as string[] | undefined
+    if (inputMessages && inputMessages.length > 0) {
+      const lastMessage = inputMessages[inputMessages.length - 1]
+      body = lastMessage.length > 100 ? `${lastMessage.slice(0, 100)}…` : lastMessage
+    }
   }
 
   const { repoName, branchName } = await getGitInfo(cwd)
@@ -125,6 +137,10 @@ const main = async () => {
 
   if (branchName) {
     args.push("--meta", `branch=${branchName}`)
+  }
+
+  if (body) {
+    args.push("--body", body)
   }
 
   if (focus) {

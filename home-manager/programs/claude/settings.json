@@ -29,7 +29,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "~/dotfiles/home-manager/shared/scripts/notify.ts --source claude-code"
+            "command": "~/dotfiles/home-manager/shared/scripts/notify.ts"
           }
         ]
       }
@@ -40,7 +40,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "~/dotfiles/home-manager/shared/scripts/notify.ts --source claude-code"
+            "command": "~/dotfiles/home-manager/shared/scripts/notify.ts"
           }
         ]
       }
