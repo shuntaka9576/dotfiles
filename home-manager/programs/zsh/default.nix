@@ -22,6 +22,7 @@
       mn = "cd ~/repos/github.com/shuntaka9576/memo && memo new";
       tka = "tmux kill-server";
       ecs = "ecspresso";
+      an = "agentoast send --title Done --color green --group default --tmux-pane $(tmux display-message -p '#{pane_id}')";
       x = ''
         tmux rename-window "$(basename `pwd` | cut -c1-4)";
         tmux new-window -n "n" "zsh -c 'nvim; exec zsh'";
