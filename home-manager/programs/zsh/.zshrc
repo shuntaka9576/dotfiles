@@ -155,6 +155,7 @@ function git() {
   fi
 }
 
+eval "$(git wt --init zsh)"
 
 # 1password signin with fzf
 # function ops() {

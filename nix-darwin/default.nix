@@ -27,6 +27,7 @@
       "shuntaka9576/tap/blocc"
       "shuntaka9576/tap/trr"
       "shuntaka9576/tap/ddbrew"
+      "k1LoW/tap/git-wt"
       "kayac/tap/ecspresso"
       "docker-credential-helper"
       "postgresql"
