@@ -12,7 +12,7 @@ interface HookData {
 
 // Set to true to auto-focus terminal on Stop/permission_prompt/elicitation_dialog events
 // When enabled, these notifications will silently focus the terminal without showing a toast
-const ENABLE_FOCUS = true
+const ENABLE_FOCUS = false
 const FOCUS_EVENTS = new Set(["Stop", "permission_prompt", "elicitation_dialog"])
 
 const NOTIFICATION_TITLES: Record<string, string> = {

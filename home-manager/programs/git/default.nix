@@ -8,6 +8,7 @@ _: {
       ".vim"
       ".DS_Store"
       ".fdignore"
+      "CLAUDE.local.md"
       ".claude/settings.local.json"
     ];
     settings = {
