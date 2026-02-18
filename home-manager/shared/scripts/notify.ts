@@ -116,19 +116,17 @@ const main = async () => {
     }
   }
 
-  const { repoName, branchName } = await getGitInfo(cwd)
+  const { branchName } = await getGitInfo(cwd)
   const tmuxPane = Deno.env.get("TMUX_PANE") || ""
 
   const args = [
     "send",
-    "--title",
+    "--badge",
     title,
-    "--color",
+    "--badge-color",
     color,
     "--icon",
     source === "claude-code" ? "claude-code" : "codex",
-    "--group",
-    repoName,
   ]
 
   if (tmuxPane) {

@@ -69,19 +69,17 @@ export const NotifyPlugin = async ({
       if (!config) return
       log(`matched: ${JSON.stringify(config)}`)
 
-      const { repoName, branchName } = await getGitInfo(directory)
+      const { branchName } = await getGitInfo(directory)
       const tmuxPane = process.env.TMUX_PANE || ""
 
       const args = [
         "send",
-        "--title",
+        "--badge",
         config.title,
-        "--color",
+        "--badge-color",
         config.color,
         "--icon",
         "opencode",
-        "--group",
-        repoName,
       ]
 
       if (tmuxPane) {

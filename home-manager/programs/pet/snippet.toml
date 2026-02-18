@@ -852,7 +852,13 @@ tag = ["exa", "tree"]
 output = ""
 
 [[snippets]]
-description = "マージ済みローカルブランチを削除"
-command = "git branch --merged | grep -v '\\*\\|main\\|master' | xargs -n 1 git branch -d"
-tag = ["git", "branch", "cleanup"]
+description = "マージ済みローカルブランチを削除(squash/rebase merge対応)"
+command = """
+for b in $(git branch | grep -v '\\*\\|main\\|master'); do
+  if gh pr list --head "$b" --state merged --json number -q '.[0].number' 2>/dev/null | grep -q .; then
+    git branch -D "$b"
+  fi
+done
+"""
+tag = ["git", "branch", "cleanup", "gh"]
 output = ""

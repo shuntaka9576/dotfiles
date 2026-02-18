@@ -29,7 +29,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "~/dotfiles/home-manager/shared/scripts/notify.ts"
+            "command": "agentoast hook claude"
           }
         ]
       }
@@ -40,7 +40,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "~/dotfiles/home-manager/shared/scripts/notify.ts"
+            "command": "agentoast hook claude"
           }
         ]
       }
