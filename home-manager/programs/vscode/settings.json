@@ -180,12 +180,6 @@
   "plantuml.render": "Local",
   "git.openRepositoryInParentFolders": "never",
   "terminal.integrated.fontFamily": "Hack Nerd Font",
-  "github.copilot.enable": {
-    "*": true,
-    "plaintext": false,
-    "markdown": false,
-    "scminput": false
-  },
   "editor.fontLigatures": false,
   "git.confirmSync": false,
   "vscode-markdown-github.theme.dark": "dark",
