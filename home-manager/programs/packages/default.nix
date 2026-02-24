@@ -42,7 +42,7 @@
       yamlfmt
       # rust-bin.beta.latest.default
       # rustup
-      nixfmt-rfc-style
+      nixfmt
       noto-fonts
       noto-fonts-cjk-sans
       noto-fonts-cjk-serif

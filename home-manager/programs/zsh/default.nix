@@ -1,7 +1,13 @@
-{ pkgs, username, ... }:
+{
+  pkgs,
+  username,
+  config,
+  ...
+}:
 {
   programs.zsh = {
     enable = true;
+    dotDir = config.home.homeDirectory;
     enableCompletion = true;
     shellAliases = {
       rm = "rm";

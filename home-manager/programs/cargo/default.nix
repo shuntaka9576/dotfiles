@@ -8,12 +8,10 @@ let
   fd = pkgs.rustPlatform.buildRustPackage {
     inherit (pkgs.sources.fd) pname version src;
     cargoHash = "sha256-0LzraGDujLMs60/Ytq2hcG/3RYbo8sJkurYVhRpa2D8=";
-    useFetchCargoVendor = true;
   };
   television = pkgs.rustPlatform.buildRustPackage {
     inherit (pkgs.sources.television) pname version src;
     cargoHash = "sha256-XsVc0LP1QDio1EjJi42YiBjTZbG5fWNVdRJUMvUntzs=";
-    useFetchCargoVendor = true;
     doCheck = false;
   };
 in
