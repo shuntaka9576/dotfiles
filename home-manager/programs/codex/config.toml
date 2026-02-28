@@ -1,3 +1,4 @@
+check_for_update_on_startup = false
 model_reasoning_effort = "high"
 approval_policy = "on-request"
 sandbox_mode = "workspace-write"

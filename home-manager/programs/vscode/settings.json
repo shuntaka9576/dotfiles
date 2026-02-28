@@ -222,5 +222,5 @@
   "extensions.autoUpdate": false,
   "editor.unicodeHighlight.nonBasicASCII": false,
   "kiroAgent.agentAutonomy": "Autopilot",
-  "kiroAgent.modelSelection": "claude-opus-4.5"
+  "kiroAgent.modelSelection": "claude-opus-4.6"
 }
