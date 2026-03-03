@@ -73,7 +73,9 @@ bindkey "^n" fd-fzf
 
 function chathist-widget() {
   while true; do
-    local selection=$(chathist list | fzf-tmux --multi --with-nth=2.. \
+    local selection=$(chathist list | fzf-tmux --multi \
+      --delimiter=$'\t' \
+      --with-nth=2.. \
       --preview 'chathist pick {1} --stdout' \
       --preview-window 'right:45%:wrap' | cut -f1)
 
