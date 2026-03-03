@@ -29,7 +29,7 @@
       tka = "tmux kill-server";
       "..." = "cd ../..";
       ecs = "ecspresso";
-      an = "agentoast send --badge Done --badge-color green --tmux-pane $(tmux display-message -p '$TMUX_PANE')";
+      an = "agentoast send --badge Done --badge-color green --tmux-pane $TMUX_PANE";
       x = ''
         tmux rename-window "$(basename `pwd` | cut -c1-4)";
         tmux new-window -n "n" "zsh -c 'nvim; exec zsh'";
