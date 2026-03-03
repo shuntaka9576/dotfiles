@@ -27,6 +27,7 @@
       me = "memo e";
       mn = "cd ~/repos/github.com/shuntaka9576/memo && memo new";
       tka = "tmux kill-server";
+      "..." = "cd ../..";
       ecs = "ecspresso";
       an = "agentoast send --badge Done --badge-color green --tmux-pane $(tmux display-message -p '$TMUX_PANE')";
       x = ''

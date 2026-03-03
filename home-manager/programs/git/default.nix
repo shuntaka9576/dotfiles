@@ -33,6 +33,10 @@ _: {
       init = {
         defaultBranch = "main";
       };
+      alias = {
+        sync-main = "!git remote update --prune && git branch -f main origin/main";
+        rbsync = "!sh -c ''\n          set -e\n          git diff --quiet || { echo \"Working tree dirty\"; exit 1; }\n          git fetch --prune origin\n          base=$(git rev-parse --abbrev-ref --symbolic-full-name @{upstream} 2>/dev/null || (git remote set-head origin --auto >/dev/null; echo origin/HEAD))\n          echo \"Rebasing onto $base\"\n          git rebase \"$base\"\n        ''";
+      };
     };
   };
 }
