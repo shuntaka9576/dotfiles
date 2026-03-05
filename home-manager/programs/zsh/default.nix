@@ -13,7 +13,7 @@
       rm = "rm";
       # NOTE: Stopped passing /plan because it pollutes conversation history
       # c = "claude --chrome --dangerously-skip-permissions <<< '/plan'";
-      c = "claude --chrome --dangerously-skip-permissions";
+      c = "claude --chrome --dangerously-skip-permissions --teammate-mode tmux";
       co = "codex";
       cm = "cargo make";
       o = "opencode";
