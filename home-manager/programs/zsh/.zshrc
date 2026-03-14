@@ -118,6 +118,7 @@ export PATH="$HOME/go/bin:$PATH"
 export VISUAL="nvim"
 export CLAUDE_CONFIG_DIR="$HOME/.config/claude"
 export CLAUDE_CODE_DISABLE_TERMINAL_TITLE=1
+export PLAYWRIGHT_MCP_OUTPUT_DIR="/tmp/playwright-cli"
 export PATH="/opt/homebrew/opt/php@7.4/bin:$PATH"
 # export PATH="$HOME/.cargo/bin:$PATH"
 
