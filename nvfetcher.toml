@@ -21,3 +21,7 @@ fetch.github = "alexpasmantier/television"
 [playwright-cli]
 src.github = "microsoft/playwright-cli"
 fetch.github = "microsoft/playwright-cli"
+
+[google-workspace-cli]
+src.github = "googleworkspace/cli"
+fetch.github = "googleworkspace/cli"

@@ -15,6 +15,51 @@ let
     "aws:vault-exec"
   ];
 
+  # Third-party gws skills (shared + services + helpers, excluding recipes/personas)
+  gwsSkills = [
+    "gws-shared"
+    "gws-admin-reports"
+    "gws-calendar"
+    "gws-calendar-agenda"
+    "gws-calendar-insert"
+    "gws-chat"
+    "gws-chat-send"
+    "gws-classroom"
+    "gws-docs"
+    "gws-docs-write"
+    "gws-drive"
+    "gws-drive-upload"
+    "gws-events"
+    "gws-events-renew"
+    "gws-events-subscribe"
+    "gws-forms"
+    "gws-gmail"
+    "gws-gmail-forward"
+    "gws-gmail-reply"
+    "gws-gmail-reply-all"
+    "gws-gmail-send"
+    "gws-gmail-triage"
+    "gws-gmail-watch"
+    "gws-keep"
+    "gws-meet"
+    "gws-modelarmor"
+    "gws-modelarmor-create-template"
+    "gws-modelarmor-sanitize-prompt"
+    "gws-modelarmor-sanitize-response"
+    "gws-people"
+    "gws-sheets"
+    "gws-sheets-append"
+    "gws-sheets-read"
+    "gws-slides"
+    "gws-tasks"
+    "gws-workflow"
+    "gws-workflow-email-to-task"
+    "gws-workflow-file-announce"
+    "gws-workflow-meeting-prep"
+    "gws-workflow-standup-report"
+    "gws-workflow-weekly-digest"
+  ];
+
   # Deploy targets for agent skills
   skillTargets = [
     ".config/claude/skills"
@@ -36,11 +81,18 @@ let
         }) localSkills
       );
 
+      gwsEntries = builtins.listToAttrs (
+        map (name: {
+          name = "${target}/${name}";
+          value.source = "${pkgs.sources.google-workspace-cli.src}/skills/${name}";
+        }) gwsSkills
+      );
+
       thirdPartyEntries = {
         "${target}/playwright-cli".source = "${pkgs.sources.playwright-cli.src}/skills/playwright-cli";
       };
     in
-    localEntries // thirdPartyEntries;
+    localEntries // gwsEntries // thirdPartyEntries;
 in
 {
   imports = [ ./mcp/default.nix ];

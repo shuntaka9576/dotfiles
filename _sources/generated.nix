@@ -12,6 +12,17 @@
       sha256 = "sha256-B+lOohoPH7UkRxRNTzSVt0SDrqEwh4hIvBF3uWliDEI=";
     };
   };
+  google-workspace-cli = {
+    pname = "google-workspace-cli";
+    version = "v0.16.0";
+    src = fetchFromGitHub {
+      owner = "googleworkspace";
+      repo = "cli";
+      rev = "v0.16.0";
+      fetchSubmodules = false;
+      sha256 = "sha256-yirGdRHIexO9I0KLyU5jnNqWUG7Xw/iQ0F93SkkzNi0=";
+    };
+  };
   memo = {
     pname = "memo";
     version = "v0.0.17";
