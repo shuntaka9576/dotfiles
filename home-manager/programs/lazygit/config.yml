@@ -116,3 +116,10 @@ customCommands:
         body: "Commit with the message '{{.Form.Type}}: {{.Form.Message}}{{.Form.Emoji}}'. Is this okay?"
     command: 'bash -c ''type="{{.Form.Type}}"; message="{{.Form.Message}}"; emoji="{{.Form.Emoji}}"; commit_message="$type: $message $emoji"; git commit -m "$commit_message"'''
     loadingText: "Commiting..."
+  - key: "<c-g>"
+    context: "files"
+    description: "AI commit message (Claude haiku)"
+    output: "terminal"
+    command: |-
+      bash -c 'MSG=$(git diff --cached | claude --no-session-persistence --print --model haiku "Generate ONLY a one-line Git commit message following Conventional Commits format (type(scope): description). Types: feat, fix, docs, style, refactor, test, chore. Based strictly on the diff from stdin. Output ONLY the message, nothing else. Do NOT wrap the output in backticks or any markdown formatting.") && git commit -e -m "$MSG"'
+    loadingText: "Generating commit message with Claude..."
