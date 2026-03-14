@@ -1,6 +1,6 @@
 {
     "fd": {
-        "cargoLocks": null,
+        "cargoLock": null,
         "date": null,
         "extract": null,
         "name": "fd",
@@ -13,15 +13,15 @@
             "name": null,
             "owner": "sharkdp",
             "repo": "fd",
-            "rev": "v10.2.0",
-            "sha256": "sha256-B+lOohoPH7UkRxRNTzSVt0SDrqEwh4hIvBF3uWliDEI=",
+            "rev": "v10.4.2",
+            "sha256": "sha256-D1FCry69KqXgLxU4rVmgKjkM3JqeBRQDfbp3sJtVAbU=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "v10.2.0"
+        "version": "v10.4.2"
     },
     "memo": {
-        "cargoLocks": null,
+        "cargoLock": null,
         "date": null,
         "extract": null,
         "name": "memo",
@@ -34,15 +34,15 @@
             "name": null,
             "owner": "mattn",
             "repo": "memo",
-            "rev": "v0.0.17",
-            "sha256": "sha256-f6BHKA/G5WhYBh1ruCVb1BwVK6vvmC3XVakqnshFfmk=",
+            "rev": "v0.0.20",
+            "sha256": "sha256-9lYlxzT87tTDOXSifMF90Dytl6YHXtJIxJDH1enmXRA=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "v0.0.17"
+        "version": "v0.0.20"
     },
     "pet": {
-        "cargoLocks": null,
+        "cargoLock": null,
         "date": null,
         "extract": null,
         "name": "pet",
@@ -62,8 +62,29 @@
         },
         "version": "v1.0.1"
     },
+    "playwright-cli": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "playwright-cli",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "microsoft",
+            "repo": "playwright-cli",
+            "rev": "v0.1.1",
+            "sha256": "sha256-Ao3phIPinliFDK04u/V3ouuOfwMDVf/qBUpQPESziFQ=",
+            "sparseCheckout": [],
+            "type": "github"
+        },
+        "version": "v0.1.1"
+    },
     "television": {
-        "cargoLocks": null,
+        "cargoLock": null,
         "date": null,
         "extract": null,
         "name": "television",
@@ -76,15 +97,15 @@
             "name": null,
             "owner": "alexpasmantier",
             "repo": "television",
-            "rev": "0.12.3",
-            "sha256": "sha256-ttKOJ46W10HoawQNQlUtDuQh/WbvEakJx2QghOJD8wE=",
+            "rev": "0.15.3",
+            "sha256": "sha256-ZVQdh9C0kd6O+PDcSSCPvzPa66Cl3J+2so1sTKjSM1I=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "0.12.3"
+        "version": "0.15.3"
     },
     "vhs": {
-        "cargoLocks": null,
+        "cargoLock": null,
         "date": null,
         "extract": null,
         "name": "vhs",
@@ -97,11 +118,11 @@
             "name": null,
             "owner": "charmbracelet",
             "repo": "vhs",
-            "rev": "v0.10.0",
-            "sha256": "sha256-ZnE5G8kfj7qScsT+bZg90ze4scpUxeC6xF8dAhdUUCo=",
+            "rev": "v0.11.0",
+            "sha256": "sha256-VOiI+ddiax04QtCcDr6ze53kd/HHGbfQE3j/32iq4Ro=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "v0.10.0"
+        "version": "v0.11.0"
     }
 }

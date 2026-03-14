@@ -34,6 +34,17 @@
       sha256 = "sha256-B0ilobUlp6UUXu6+lVqIHkbFnxVu33eXZFf+F7ODoQU=";
     };
   };
+  playwright-cli = {
+    pname = "playwright-cli";
+    version = "v0.1.1";
+    src = fetchFromGitHub {
+      owner = "microsoft";
+      repo = "playwright-cli";
+      rev = "v0.1.1";
+      fetchSubmodules = false;
+      sha256 = "sha256-Ao3phIPinliFDK04u/V3ouuOfwMDVf/qBUpQPESziFQ=";
+    };
+  };
   television = {
     pname = "television";
     version = "0.12.3";

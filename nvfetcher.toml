@@ -17,3 +17,7 @@ fetch.github = "charmbracelet/vhs"
 [television]
 src.github = "alexpasmantier/television"
 fetch.github = "alexpasmantier/television"
+
+[playwright-cli]
+src.github = "microsoft/playwright-cli"
+fetch.github = "microsoft/playwright-cli"
