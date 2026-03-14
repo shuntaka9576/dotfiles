@@ -8,16 +8,14 @@ description: PRマージ
 ## ワークフロー
 
 ### ステップ 1: PR特定
-1. 引数でPR番号が指定されていればそれを使用
-2. 指定がなければ現在のブランチに紐づくPRを取得: `gh pr view --json number,title,state`
-3. PRが見つからない場合は処理を中断
+1. 引数でPR番号が指定されている場合はそれを使用（複数指定可）
+2. 引数がなければ、現在のブランチに紐づくPRを自動取得: `gh pr view --json number,title,state`
+   - PRが1件見つかればそれを使用
+3. PRが見つからない、または複数PRの候補から選びたい場合は、オープンなPR一覧を取得: `gh pr list --json number,title,headRefName,author --limit 20`
+   - 一覧をユーザーに提示し、AskUserQuestion でマージ対象を選択してもらう（複数選択可）
 
-### ステップ 2: PR状態確認
-1. PRの状態を確認: `gh pr view <PR番号> --json title,state,mergeable,mergeStateStatus,reviewDecision,statusCheckRollup`
-2. マージ可能でない場合はユーザーに報告して中断
-
-### ステップ 3: ユーザー確認
-AskUserQuestion ツールを使い、以下の2点をユーザーに確認する。
+### ステップ 2: マージオプション確認
+AskUserQuestion ツールを使い、以下の2点をユーザーに確認する。全PRに共通で適用する。
 
 **質問1: CIの状態確認**
 - CIの完了を待ってからマージする
@@ -28,11 +26,18 @@ AskUserQuestion ツールを使い、以下の2点をユーザーに確認する
 - `--rebase`: コミットをリベースしてマージ
 - `--merge`: マージコミットを作成してマージ
 
-### ステップ 4: マージ実行
-1. 選択されたマージ方法で実行:
+### ステップ 3: マージ実行（対象PRごとに繰り返す）
+対象PRそれぞれについて以下を実行する。
+
+1. PRの状態を確認: `gh pr view <PR番号> --json title,state,mergeable,mergeStateStatus,reviewDecision,statusCheckRollup`
+2. マージ可能でない場合はスキップし、理由を記録して次のPRへ進む
+3. マージ実行:
 
 ```bash
 gh pr merge <PR番号> <マージオプション> --delete-branch
 ```
 
-2. マージ結果を報告
+### ステップ 4: 結果報告
+全PRの処理結果をまとめて報告する。
+- 成功: マージされたPR一覧
+- スキップ: マージできなかったPRとその理由

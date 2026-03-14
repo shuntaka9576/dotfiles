@@ -221,6 +221,6 @@
   "git.autofetch": false,
   "extensions.autoUpdate": false,
   "editor.unicodeHighlight.nonBasicASCII": false,
-  "kiroAgent.agentAutonomy": "Autopilot",
+  "kiroAgent.agentAutonomy": "Supervised",
   "kiroAgent.modelSelection": "claude-opus-4.6"
 }
