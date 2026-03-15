@@ -9,7 +9,7 @@ notify = ["agentoast hook codex"]
 
 web_search = "live"
 suppress_unstable_features_warning = true
-model = "gpt-5.3-codex"
+model = "gpt-5.4"
 personality = "pragmatic"
 project_doc_fallback_filenames = ["CLAUDE.md"]
 
