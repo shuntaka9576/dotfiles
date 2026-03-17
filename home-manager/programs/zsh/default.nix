@@ -4,6 +4,9 @@
   config,
   ...
 }:
+let
+  claudeBase = "claude --chrome --dangerously-skip-permissions --teammate-mode tmux";
+in
 {
   programs.zsh = {
     enable = true;
@@ -13,8 +16,8 @@
       rm = "rm";
       # NOTE: Stopped passing /plan because it pollutes conversation history
       # c = "claude --chrome --dangerously-skip-permissions <<< '/plan'";
-      c = "claude --chrome --dangerously-skip-permissions --teammate-mode tmux";
-      cr = "claude --resume $(chathist list | fzf --with-nth=2.. --preview 'chathist pick {1} --stdout' --preview-window 'right:45%:wrap' | cut -f1)";
+      c = claudeBase;
+      cr = "${claudeBase} --resume $(chathist list | fzf --with-nth=2.. --preview 'chathist pick {1} --stdout' --preview-window 'right:45%:wrap' | cut -f1)";
       co = "codex";
       cm = "cargo make";
       o = "opencode";
