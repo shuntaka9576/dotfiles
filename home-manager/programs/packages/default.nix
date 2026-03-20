@@ -27,6 +27,7 @@
       cargo-watch
       sqlx-cli
       cargo-make
+      lefthook
       docker
       tokei
       ghq
