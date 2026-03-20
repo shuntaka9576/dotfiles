@@ -3,5 +3,11 @@
   "theme": "opencode",
   "model": "glm-4.7-free",
   "autoupdate": false,
+  "plugin": ["opencode-cursor-oauth"],
+  "provider": {
+    "cursor": {
+      "name": "Cursor"
+    }
+  },
   "mcp": {}
 }
