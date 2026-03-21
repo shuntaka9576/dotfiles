@@ -1,10 +1,10 @@
 #!/usr/bin/env -S deno run --allow-read --allow-env
 
 // Helper function to get color based on percentage
-function getColor(percentage: number): { color: string; emoji: string } {
-  if (percentage >= 90) return { color: "\x1b[31m", emoji: "🔴" }
-  if (percentage >= 70) return { color: "\x1b[33m", emoji: "🟡" }
-  return { color: "\x1b[32m", emoji: "🟢" }
+function getColor(percentage: number): string {
+  if (percentage >= 90) return "\x1b[31m"
+  if (percentage >= 70) return "\x1b[33m"
+  return "\x1b[32m"
 }
 
 // Helper function to format token count
@@ -32,14 +32,14 @@ const contextWindow = data.context_window
 const rateLimits = data.rate_limits
 
 // Build context window part
-let ctxPart = "🟢 0 (0%)"
+let ctxPart = "0 (0%)"
 if (contextWindow) {
   const totalTokens =
     (contextWindow.total_input_tokens || 0) + (contextWindow.total_output_tokens || 0)
   const tokenDisplay = formatTokenCount(totalTokens)
   const percentage = contextWindow.used_percentage ?? 0
-  const { color, emoji } = getColor(percentage)
-  ctxPart = `${emoji} ${tokenDisplay} (${color}${percentage}%\x1b[0m)`
+  const color = getColor(percentage)
+  ctxPart = `${tokenDisplay} (${color}${percentage}%\x1b[0m)`
 }
 
 // Build rate limits part
