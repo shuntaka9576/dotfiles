@@ -1,20 +1,39 @@
 #!/usr/bin/env -S deno run --allow-read --allow-env
 
-// Helper function to get color based on percentage
-function getColor(percentage: number): string {
-  if (percentage >= 90) return "\x1b[31m"
-  if (percentage >= 70) return "\x1b[33m"
-  return "\x1b[32m"
+const BAR_CHAR = "⣿"
+const R = "\x1b[0m"
+const DIM = "\x1b[2m"
+function dimGradient(pct: number): string {
+  if (pct < 50) {
+    return "\x1b[38;2;0;60;24m"
+  } else if (pct < 80) {
+    return "\x1b[38;2;76;60;0m"
+  } else {
+    return "\x1b[38;2;76;18;18m"
+  }
 }
 
-// Helper function to format token count
-function formatTokenCount(tokens: number): string {
-  if (tokens >= 1000000) {
-    return `${(tokens / 1000000).toFixed(1)}M`
-  } else if (tokens >= 1000) {
-    return `${(tokens / 1000).toFixed(1)}K`
+function gradient(pct: number): string {
+  if (pct < 50) {
+    return "\x1b[38;2;0;200;80m"
+  } else if (pct < 80) {
+    return "\x1b[38;2;255;200;0m"
+  } else {
+    return "\x1b[38;2;255;60;60m"
   }
-  return tokens.toString()
+}
+
+function bar(pct: number, width = 10): string {
+  pct = Math.min(Math.max(pct, 0), 100)
+  const full = Math.round((pct * width) / 100)
+  const filled = gradient(pct) + "█".repeat(full) + R
+  const empty = dimGradient(pct) + BAR_CHAR.repeat(width - full) + R
+  return filled + empty
+}
+
+function fmt(label: string, pct: number): string {
+  const p = Math.round(pct)
+  return `${label} ${bar(pct)} ${gradient(pct)}${p}%${R}`
 }
 
 // Read JSON input from stdin
@@ -27,39 +46,22 @@ const input = decoder.decode(
 )
 const data = JSON.parse(input)
 
-// Extract values
-const contextWindow = data.context_window
-const rateLimits = data.rate_limits
+const parts: string[] = []
 
-// Build context window part
-let ctxPart = "0 (0%)"
-if (contextWindow) {
-  const totalTokens =
-    (contextWindow.total_input_tokens || 0) + (contextWindow.total_output_tokens || 0)
-  const tokenDisplay = formatTokenCount(totalTokens)
-  const percentage = contextWindow.used_percentage ?? 0
-  const color = getColor(percentage)
-  ctxPart = `${tokenDisplay} (${color}${percentage}%\x1b[0m)`
+const ctx = data.context_window?.used_percentage
+if (ctx != null) {
+  parts.push(fmt("ctx", ctx))
 }
 
-// Build rate limits part
-let rateLimitPart = ""
-if (rateLimits) {
-  const parts: string[] = []
-  if (rateLimits.five_hour) {
-    const pct = Math.round(rateLimits.five_hour.used_percentage)
-    const { color } = getColor(pct)
-    parts.push(`5h: ${color}${pct}%\x1b[0m`)
-  }
-  if (rateLimits.seven_day) {
-    const pct = Math.round(rateLimits.seven_day.used_percentage)
-    const { color } = getColor(pct)
-    parts.push(`7d: ${color}${pct}%\x1b[0m`)
-  }
-  if (parts.length > 0) {
-    rateLimitPart = ` | ${parts.join(" ")}`
-  }
+const five = data.rate_limits?.five_hour?.used_percentage
+if (five != null) {
+  parts.push(fmt("5h", five))
 }
 
-// Output
-console.log(`${ctxPart}${rateLimitPart}`)
+const week = data.rate_limits?.seven_day?.used_percentage
+if (week != null) {
+  parts.push(fmt("7d", week))
+}
+
+const output = parts.map((p) => ` ${p} `).join(`${DIM}│${R}`)
+console.log(output)
