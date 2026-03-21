@@ -1,5 +1,6 @@
 [settings]
 node.gpg_verify = false
+python.compile = true
 
 [tools]
 node = "24.14.0"
