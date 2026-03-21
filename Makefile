@@ -25,10 +25,34 @@ gc:
 fmt:
 	nix fmt
 
-tools: tools-install tools-default-packages tools-claude
+STAMPS_DIR := .stamps
+MISE_TOML := home-manager/programs/mise/mise.toml
+DEFAULT_PYTHON_PKGS := home-manager/programs/mise/.default-python-packages
+DEFAULT_GO_PKGS := home-manager/programs/mise/.default-go-packages
+CLAUDE_VERSION := home-manager/programs/claude/.claude-version
+
+tools: $(STAMPS_DIR)/tools-install $(STAMPS_DIR)/tools-default-packages $(STAMPS_DIR)/tools-claude
+
+$(STAMPS_DIR)/tools-install: $(MISE_TOML)
+	mise install
+	@mkdir -p $(STAMPS_DIR)
+	@touch $@
+
+$(STAMPS_DIR)/tools-default-packages: $(DEFAULT_PYTHON_PKGS) $(DEFAULT_GO_PKGS) $(STAMPS_DIR)/tools-install
+	mise install python --force
+	mise install go --force
+	@mkdir -p $(STAMPS_DIR)
+	@touch $(STAMPS_DIR)/tools-install $@
+
+$(STAMPS_DIR)/tools-claude: $(CLAUDE_VERSION)
+	@bash home-manager/programs/claude/install.sh
+	@mkdir -p $(STAMPS_DIR)
+	@touch $@
 
 tools-install:
 	mise install
+	@mkdir -p $(STAMPS_DIR)
+	@touch $(STAMPS_DIR)/tools-install
 
 tools-upgrade:
 	mise upgrade
@@ -36,8 +60,15 @@ tools-upgrade:
 tools-default-packages:
 	mise install python --force
 	mise install go --force
+	@mkdir -p $(STAMPS_DIR)
+	@touch $(STAMPS_DIR)/tools-install $(STAMPS_DIR)/tools-default-packages
 
 tools-claude:
 	@bash home-manager/programs/claude/install.sh
+	@mkdir -p $(STAMPS_DIR)
+	@touch $(STAMPS_DIR)/tools-claude
 
-.PHONY: all init update switch mcp clean-mcp gc fmt tools tools-install tools-upgrade tools-default-packages tools-claude
+clean-stamps:
+	rm -rf $(STAMPS_DIR)
+
+.PHONY: all init update switch mcp clean-mcp gc fmt tools tools-install tools-upgrade tools-default-packages tools-claude clean-stamps
