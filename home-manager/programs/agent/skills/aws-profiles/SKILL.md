@@ -1,5 +1,5 @@
 ---
-name: aws:profiles
+name: aws-profiles
 description: AWS プロファイル一覧の表示
 user-invocable: false
 ---

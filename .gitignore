@@ -2,5 +2,5 @@ home-manager/programs/agent/mcp/secrets.jsonnet
 home-manager/programs/agent/mcp/.mcp-code.json
 home-manager/programs/agent/mcp/.mcp-general.json
 home-manager/programs/agent/skills/.system/
-home-manager/programs/agent/skills/cm:*
+home-manager/programs/agent/skills/cm-*
 .stamps/

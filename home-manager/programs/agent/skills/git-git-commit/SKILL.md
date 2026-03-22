@@ -1,5 +1,5 @@
 ---
-name: git:git-commit
+name: git-git-commit
 description: Git Commit
 ---
 

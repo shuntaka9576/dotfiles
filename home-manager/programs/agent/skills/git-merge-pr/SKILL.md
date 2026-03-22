@@ -1,5 +1,5 @@
 ---
-name: git:merge-pr
+name: git-merge-pr
 description: PRマージ
 ---
 

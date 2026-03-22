@@ -6,14 +6,14 @@
 let
   # Local skills managed in this repo
   localSkills = [
-    "git:git-commit"
-    "git:create-pr"
-    "git:merge-pr"
-    "github:analyze-dependabot-alerts"
-    "aws:logs-investigate"
-    "aws:profiles"
-    "aws:vault-exec"
-    "codex:plan-review"
+    "git-git-commit"
+    "git-create-pr"
+    "git-merge-pr"
+    "github-analyze-dependabot-alerts"
+    "aws-logs-investigate"
+    "aws-profiles"
+    "aws-vault-exec"
+    "codex-plan-review"
   ];
 
   # Third-party gws skills (shared + services + helpers, excluding recipes/personas)
@@ -66,6 +66,7 @@ let
     ".config/claude/skills"
     ".codex/skills"
     ".config/opencode/skills"
+    ".copilot/skills"
   ];
 
   skillsDir = "${config.home.homeDirectory}/dotfiles/home-manager/programs/agent/skills";

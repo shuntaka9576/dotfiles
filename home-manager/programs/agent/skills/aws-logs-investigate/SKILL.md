@@ -1,5 +1,5 @@
 ---
-name: aws:logs-investigate
+name: aws-logs-investigate
 description: CloudWatch Logs の調査・分析。ログの検索、フィルタリング、Insights クエリの実行を行い、結果を要約して返す。
 context: fork
 agent: general-purpose

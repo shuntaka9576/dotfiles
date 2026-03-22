@@ -1,5 +1,5 @@
 ---
-name: aws:vault-exec
+name: aws-vault-exec
 description: aws-vault exec によるAWS認証
 argument-hint: "<profile>"
 ---

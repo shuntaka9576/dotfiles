@@ -1,5 +1,5 @@
 ---
-name: git:create-pr
+name: git-create-pr
 description: プルリクエスト作成
 argument-hint: "<ベースブランチ名（省略可）>"
 ---

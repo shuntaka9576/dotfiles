@@ -1,5 +1,5 @@
 ---
-name: codex:plan-review
+name: codex-plan-review
 description: 現在のプランファイルを OpenAI Codex CLI に送ってレビューさせる。プランの問題点・リスク・見落としを検出する。
 argument-hint: "<プランファイルのパス（省略時は自動検出）>"
 ---
