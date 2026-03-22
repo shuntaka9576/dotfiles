@@ -13,6 +13,7 @@ let
     "aws:logs-investigate"
     "aws:profiles"
     "aws:vault-exec"
+    "codex:plan-review"
   ];
 
   # Third-party gws skills (shared + services + helpers, excluding recipes/personas)
