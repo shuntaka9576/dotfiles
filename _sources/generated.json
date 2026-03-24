@@ -1,4 +1,25 @@
 {
+    "anthropic-skills": {
+        "cargoLock": null,
+        "date": "2026-03-22",
+        "extract": null,
+        "name": "anthropic-skills",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "anthropics",
+            "repo": "skills",
+            "rev": "887114fd09f8f24a7e6c907f9ee505348498ab6a",
+            "sha256": "sha256-QAy9ulbKaK5QWiGiXYsxav+bMhhmqU8pCS7P0fWxLlk=",
+            "sparseCheckout": [],
+            "type": "github"
+        },
+        "version": "887114fd09f8f24a7e6c907f9ee505348498ab6a"
+    },
     "fd": {
         "cargoLock": null,
         "date": null,
@@ -34,12 +55,12 @@
             "name": null,
             "owner": "googleworkspace",
             "repo": "cli",
-            "rev": "v0.16.0",
-            "sha256": "sha256-yirGdRHIexO9I0KLyU5jnNqWUG7Xw/iQ0F93SkkzNi0=",
+            "rev": "v0.19.0",
+            "sha256": "sha256-r1BrDoZ3EzSW/CGLjuOsCeMRnZTzpcaIP+snQfsuXxc=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "v0.16.0"
+        "version": "v0.19.0"
     },
     "memo": {
         "cargoLock": null,
@@ -118,32 +139,11 @@
             "name": null,
             "owner": "alexpasmantier",
             "repo": "television",
-            "rev": "0.15.3",
-            "sha256": "sha256-ZVQdh9C0kd6O+PDcSSCPvzPa66Cl3J+2so1sTKjSM1I=",
+            "rev": "0.15.4",
+            "sha256": "sha256-0tZx6UgXlB6rVAtf10gEFcHGzGpI6vfWBAYxvfOa5MM=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "0.15.3"
-    },
-    "vhs": {
-        "cargoLock": null,
-        "date": null,
-        "extract": null,
-        "name": "vhs",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "deepClone": false,
-            "fetchSubmodules": false,
-            "leaveDotGit": false,
-            "name": null,
-            "owner": "charmbracelet",
-            "repo": "vhs",
-            "rev": "v0.11.0",
-            "sha256": "sha256-VOiI+ddiax04QtCcDr6ze53kd/HHGbfQE3j/32iq4Ro=",
-            "sparseCheckout": [],
-            "type": "github"
-        },
-        "version": "v0.11.0"
+        "version": "0.15.4"
     }
 }

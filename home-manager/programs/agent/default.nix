@@ -92,6 +92,7 @@ let
 
       thirdPartyEntries = {
         "${target}/playwright-cli".source = "${pkgs.sources.playwright-cli.src}/skills/playwright-cli";
+        "${target}/skill-creator".source = "${pkgs.sources.anthropic-skills.src}/skills/skill-creator";
       };
     in
     localEntries // gwsEntries // thirdPartyEntries;

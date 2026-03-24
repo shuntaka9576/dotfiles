@@ -10,10 +10,6 @@ fetch.github = "mattn/memo"
 src.github = "sharkdp/fd"
 fetch.github = "sharkdp/fd"
 
-[vhs]
-src.github = "charmbracelet/vhs"
-fetch.github = "charmbracelet/vhs"
-
 [television]
 src.github = "alexpasmantier/television"
 fetch.github = "alexpasmantier/television"
@@ -21,6 +17,11 @@ fetch.github = "alexpasmantier/television"
 [playwright-cli]
 src.github = "microsoft/playwright-cli"
 fetch.github = "microsoft/playwright-cli"
+
+[anthropic-skills]
+src.git = "https://github.com/anthropics/skills.git"
+src.branch = "main"
+fetch.github = "anthropics/skills"
 
 [google-workspace-cli]
 src.github = "googleworkspace/cli"

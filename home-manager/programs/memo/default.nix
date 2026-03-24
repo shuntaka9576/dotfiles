@@ -2,7 +2,7 @@
 let
   memo = pkgs.buildGoModule rec {
     inherit (pkgs.sources.memo) pname version src;
-    vendorHash = "sha256-aO6Bf8omdePK1vV9uxfTJyjdzAykCfOibY5zWbOlJCg=";
+    vendorHash = "sha256-aPjQBm5wPN61lv77zp0GDpPSX+9EJ2fDg15qcQQ9b1o=";
   };
 in
 {
