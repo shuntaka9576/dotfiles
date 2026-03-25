@@ -8,6 +8,7 @@ let
   localSkills = [
     "git-git-commit"
     "git-create-pr"
+    "git-ci-watch"
     "git-merge-pr"
     "github-analyze-dependabot-alerts"
     "aws-logs-investigate"
