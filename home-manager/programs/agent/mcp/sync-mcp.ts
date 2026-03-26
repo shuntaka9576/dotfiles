@@ -27,29 +27,42 @@ const opencodeBasePath = resolve(DOTFILES, "home-manager/programs/opencode/openc
 const opencodeOutPath = `${HOME}/.config/opencode/opencode.jsonc`
 
 type McpServer = {
-  command: string
+  command?: string
   args?: string[]
   env?: Record<string, string>
+  type?: string
+  url?: string
 }
 
-type OpencodeMcpServer = {
+type OpencodeMcpServerLocal = {
   type: "local"
   command: string[]
   environment?: Record<string, string>
 }
 
+type OpencodeMcpServerRemote = {
+  type: "remote"
+  url: string
+}
+
+type OpencodeMcpServer = OpencodeMcpServerLocal | OpencodeMcpServerRemote
+
 function toOpencodeFormat(servers: Record<string, McpServer>) {
   const result: Record<string, OpencodeMcpServer> = {}
   for (const [name, server] of Object.entries(servers)) {
-    const cmd = [server.command, ...(server.args ?? [])]
-    const entry: OpencodeMcpServer = {
-      type: "local",
-      command: cmd,
+    if (server.url) {
+      result[name] = { type: "remote", url: server.url }
+    } else if (server.command) {
+      const cmd = [server.command, ...(server.args ?? [])]
+      const entry: OpencodeMcpServerLocal = {
+        type: "local",
+        command: cmd,
+      }
+      if (server.env && Object.keys(server.env).length > 0) {
+        entry.environment = server.env
+      }
+      result[name] = entry
     }
-    if (server.env && Object.keys(server.env).length > 0) {
-      entry.environment = server.env
-    }
-    result[name] = entry
   }
   return result
 }
@@ -222,25 +235,35 @@ function parseTomlValue(raw: string): unknown {
   return raw
 }
 
-type CodexMcpServer = {
+type CodexMcpServerStdio = {
   command: string
   args?: string[]
   env?: Record<string, string>
 }
 
+type CodexMcpServerRemote = {
+  url: string
+}
+
+type CodexMcpServer = CodexMcpServerStdio | CodexMcpServerRemote
+
 function toCodexFormat(servers: Record<string, McpServer>) {
   const result: Record<string, CodexMcpServer> = {}
   for (const [name, server] of Object.entries(servers)) {
-    const entry: CodexMcpServer = {
-      command: server.command,
+    if (server.url) {
+      result[name] = { url: server.url }
+    } else if (server.command) {
+      const entry: CodexMcpServerStdio = {
+        command: server.command,
+      }
+      if (server.args && server.args.length > 0) {
+        entry.args = server.args
+      }
+      if (server.env && Object.keys(server.env).length > 0) {
+        entry.env = server.env
+      }
+      result[name] = entry
     }
-    if (server.args && server.args.length > 0) {
-      entry.args = server.args
-    }
-    if (server.env && Object.keys(server.env).length > 0) {
-      entry.env = server.env
-    }
-    result[name] = entry
   }
   return result
 }

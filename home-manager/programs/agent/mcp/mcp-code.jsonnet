@@ -5,6 +5,10 @@ local pythonpath = home + '/.local/share/mise/installs/python/3.13.7';
 
 {
   mcpServers: {
+    'figma-remote': {
+      type: 'http',
+      url: 'https://mcp.figma.com/mcp',
+    },
     // 'aws-knowledge-mcp-server': {
     //   command: nodepath + '/bin/npx',
     //   args: [
