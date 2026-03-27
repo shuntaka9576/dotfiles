@@ -20,6 +20,7 @@
     ./programs/cargo/default.nix
     ./programs/claude/default.nix
     ./programs/codex/default.nix
+    ./programs/copilot/default.nix
     ./programs/deno/default.nix
     ./programs/direnv/default.nix
     ./programs/fzf/default.nix

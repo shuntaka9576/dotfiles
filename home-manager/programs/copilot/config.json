@@ -1,0 +1,21 @@
+{
+  "firstLaunchAt": "2026-03-22T09:10:34.014Z",
+  "banner": "never",
+  "show_reasoning": false,
+  "hooks": {
+    "agentStop": [
+      {
+        "type": "command",
+        "bash": "agentoast hook copilot --event agentStop",
+        "timeoutSec": 10
+      }
+    ],
+    "errorOccurred": [
+      {
+        "type": "command",
+        "bash": "agentoast hook copilot --event errorOccurred",
+        "timeoutSec": 10
+      }
+    ]
+  }
+}
