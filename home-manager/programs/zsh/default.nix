@@ -87,7 +87,7 @@ in
         tmux split-window -h -p 64 -c "$PWD";
         sleep 0.1;
         tmux send-keys "nvim +'autocmd VimEnter * ++once NvimTreeToggle'" C-m;
-        # Window 2: codex(33) + zsh(17) + claude(50)
+        # Window 2: zsh(33) + zsh(17) + claude(50)
         WIN2_ID=$(tmux new-window -P -F "#{window_id}" -c "$PWD");
         tmux rename-window -t "$WIN2_ID" "p";
         sleep 0.1;
@@ -95,7 +95,6 @@ in
         sleep 0.1;
         tmux split-window -h -p 75 -t "$WIN2_ID.1" -c "$PWD";
         sleep 0.1;
-        tmux send-keys -t "$WIN2_ID.0" "co" C-m;
         tmux send-keys -t "$WIN2_ID.2" "c" C-m;
         tmux select-pane -t "$WIN2_ID.2";
         # Run lazygit directly in the current pane (left side of the original window)
