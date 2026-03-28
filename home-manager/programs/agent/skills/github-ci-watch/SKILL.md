@@ -1,5 +1,5 @@
 ---
-name: git-ci-watch
+name: github-ci-watch
 description: CI監視 & Draft PR Ready化。PRのCIチェックを監視し、成功したらDraft PRをReadyにする。CI失敗時はログを分析してコードと紐付けた修正提案を行う。CIを見ておいて、CI待って、PR ready にして、のような依頼で使用する。
 argument-hint: "<PR番号（省略可）>"
 ---
