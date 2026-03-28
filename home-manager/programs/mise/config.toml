@@ -1,5 +1,5 @@
 [settings]
 idiomatic_version_file_enable_tools = ["node", "python", "go", "rust"]
 trusted_config_paths = ["~"]
-npm.package_manager = "bun"
+npm.bun = true
 python.precompiled_flavor = "install_only"
