@@ -72,6 +72,7 @@
       "screen-studio"
       "termius"
       "aqua-voice"
+      "nani"
     ];
     masApps = {
       "Kindle" = 302584613;
