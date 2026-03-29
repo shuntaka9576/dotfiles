@@ -15,6 +15,7 @@ let
     "aws-profiles"
     "aws-vault-exec"
     "codex-plan-review"
+    "it-news-digest"
   ];
 
   # Third-party gws skills (shared + services + helpers, excluding recipes/personas)
