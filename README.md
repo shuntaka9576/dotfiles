@@ -77,6 +77,21 @@ curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
 ghcup tui
 ```
 
+6. **Claude Code Codex Plugin Setup**
+
+```bash
+/plugin marketplace add openai/codex-plugin-cc
+/plugin install codex@openai-codex
+/reload-plugins
+/codex:setup
+```
+
+Authenticate if needed:
+
+```bash
+!codex login
+```
+
 ### Manual Application Installation
 
 - Happy Hacking Keyboard.app
