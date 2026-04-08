@@ -42,6 +42,7 @@
     ./programs/vibe-kanban/default.nix
     ./programs/vscode/default.nix
     ./programs/wezterm/default.nix
+    ./programs/worktrunk/default.nix
     ./programs/zellij/default.nix
     ./programs/zsh/default.nix
   ];

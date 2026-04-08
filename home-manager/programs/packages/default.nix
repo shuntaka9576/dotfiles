@@ -31,7 +31,7 @@
       docker
       tokei
       ghq
-      worktrunk
+
       awscli2
       hey
       google-java-format
@@ -41,6 +41,7 @@
       lua
       typst
       luarocks
+      tree-sitter
       yamlfmt
       # rust-bin.beta.latest.default
       # rustup

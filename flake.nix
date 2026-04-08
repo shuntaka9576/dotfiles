@@ -12,6 +12,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixpkgs-deno-pinned.url = "github:NixOS/nixpkgs/dfd9566f82a6e1d55c30f861879186440614696e";
+    git-wt = {
+      url = "github:ahmedelgabri/git-wt";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     rust-overlay = {
       url = "github:oxalica/rust-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -31,6 +35,7 @@
       darwin,
       treefmt-nix,
       rust-overlay,
+      git-wt,
       ...
     }:
     let
@@ -64,8 +69,15 @@
 
       pkgs = pkgsFor system;
 
+      git-wt-pkg = git-wt.packages.${system}.default;
+
       specialArgs = {
-        inherit username system homeDirectory;
+        inherit
+          username
+          system
+          homeDirectory
+          git-wt-pkg
+          ;
       };
     in
     {
