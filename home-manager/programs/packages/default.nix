@@ -31,6 +31,7 @@
       docker
       tokei
       ghq
+      worktrunk
       awscli2
       hey
       google-java-format

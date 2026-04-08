@@ -11,6 +11,7 @@
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixpkgs-deno-pinned.url = "github:NixOS/nixpkgs/dfd9566f82a6e1d55c30f861879186440614696e";
     rust-overlay = {
       url = "github:oxalica/rust-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -25,6 +26,7 @@
     {
       self,
       nixpkgs,
+      nixpkgs-deno-pinned,
       home-manager,
       darwin,
       treefmt-nix,
@@ -68,7 +70,7 @@
     in
     {
       overlays.default = [
-        (import ./overlays { inherit self; })
+        (import ./overlays { inherit self nixpkgs-deno-pinned; })
         rust-overlay.overlays.default
       ];
 
