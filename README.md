@@ -92,6 +92,14 @@ Authenticate if needed:
 !codex login
 ```
 
+7. **Claude Code PR Review Toolkit Plugin Setup**
+
+```bash
+/plugin marketplace add anthropics/claude-code
+/plugin install pr-review-toolkit@anthropics-claude-code
+/reload-plugins
+```
+
 ### Manual Application Installation
 
 - Happy Hacking Keyboard.app
