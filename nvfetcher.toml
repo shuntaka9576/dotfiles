@@ -26,3 +26,7 @@ fetch.github = "anthropics/skills"
 [google-workspace-cli]
 src.github = "googleworkspace/cli"
 fetch.github = "googleworkspace/cli"
+
+[worktrunk]
+src.github = "max-sixty/worktrunk"
+fetch.github = "max-sixty/worktrunk"

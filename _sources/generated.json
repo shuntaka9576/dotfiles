@@ -1,7 +1,7 @@
 {
     "anthropic-skills": {
         "cargoLock": null,
-        "date": "2026-03-22",
+        "date": "2026-04-08",
         "extract": null,
         "name": "anthropic-skills",
         "passthru": null,
@@ -13,12 +13,12 @@
             "name": null,
             "owner": "anthropics",
             "repo": "skills",
-            "rev": "887114fd09f8f24a7e6c907f9ee505348498ab6a",
-            "sha256": "sha256-QAy9ulbKaK5QWiGiXYsxav+bMhhmqU8pCS7P0fWxLlk=",
+            "rev": "ca1e7dc13c0ab5e2dfaa6de71991cd951b8f1cf2",
+            "sha256": "sha256-m2d2noYYLm62j4PKbQguZxy6OjenVM5EEQ8GkNVKFHo=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "887114fd09f8f24a7e6c907f9ee505348498ab6a"
+        "version": "ca1e7dc13c0ab5e2dfaa6de71991cd951b8f1cf2"
     },
     "fd": {
         "cargoLock": null,
@@ -55,12 +55,12 @@
             "name": null,
             "owner": "googleworkspace",
             "repo": "cli",
-            "rev": "v0.19.0",
-            "sha256": "sha256-r1BrDoZ3EzSW/CGLjuOsCeMRnZTzpcaIP+snQfsuXxc=",
+            "rev": "v0.22.5",
+            "sha256": "sha256-Bj4gPklufU6p2JpvN6j7QViv7ghSn52jemeXPVXkhlk=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "v0.19.0"
+        "version": "v0.22.5"
     },
     "memo": {
         "cargoLock": null,
@@ -118,12 +118,12 @@
             "name": null,
             "owner": "microsoft",
             "repo": "playwright-cli",
-            "rev": "v0.1.1",
-            "sha256": "sha256-Ao3phIPinliFDK04u/V3ouuOfwMDVf/qBUpQPESziFQ=",
+            "rev": "v0.1.6",
+            "sha256": "sha256-TUzWI0uOsm5HP4RKlMwm4bcYdS0fUkO6ceH82o1zSmU=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "v0.1.1"
+        "version": "v0.1.6"
     },
     "television": {
         "cargoLock": null,
@@ -139,11 +139,32 @@
             "name": null,
             "owner": "alexpasmantier",
             "repo": "television",
-            "rev": "0.15.4",
-            "sha256": "sha256-0tZx6UgXlB6rVAtf10gEFcHGzGpI6vfWBAYxvfOa5MM=",
+            "rev": "0.15.5",
+            "sha256": "sha256-p0FRLc55Ly6pkQfse1kNGpJhoXjMZIYVbNzDfjWW85Q=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "0.15.4"
+        "version": "0.15.5"
+    },
+    "worktrunk": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "worktrunk",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "max-sixty",
+            "repo": "worktrunk",
+            "rev": "v0.35.2",
+            "sha256": "sha256-+4cYuoMnwk7D5lPYbLO6TRUzuvPZvFo+Msh2Y78PaDI=",
+            "sparseCheckout": [],
+            "type": "github"
+        },
+        "version": "v0.35.2"
     }
 }

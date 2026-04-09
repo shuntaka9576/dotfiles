@@ -8,15 +8,15 @@
 {
   anthropic-skills = {
     pname = "anthropic-skills";
-    version = "887114fd09f8f24a7e6c907f9ee505348498ab6a";
+    version = "ca1e7dc13c0ab5e2dfaa6de71991cd951b8f1cf2";
     src = fetchFromGitHub {
       owner = "anthropics";
       repo = "skills";
-      rev = "887114fd09f8f24a7e6c907f9ee505348498ab6a";
+      rev = "ca1e7dc13c0ab5e2dfaa6de71991cd951b8f1cf2";
       fetchSubmodules = false;
-      sha256 = "sha256-QAy9ulbKaK5QWiGiXYsxav+bMhhmqU8pCS7P0fWxLlk=";
+      sha256 = "sha256-m2d2noYYLm62j4PKbQguZxy6OjenVM5EEQ8GkNVKFHo=";
     };
-    date = "2026-03-22";
+    date = "2026-04-08";
   };
   fd = {
     pname = "fd";
@@ -31,13 +31,13 @@
   };
   google-workspace-cli = {
     pname = "google-workspace-cli";
-    version = "v0.19.0";
+    version = "v0.22.5";
     src = fetchFromGitHub {
       owner = "googleworkspace";
       repo = "cli";
-      rev = "v0.19.0";
+      rev = "v0.22.5";
       fetchSubmodules = false;
-      sha256 = "sha256-r1BrDoZ3EzSW/CGLjuOsCeMRnZTzpcaIP+snQfsuXxc=";
+      sha256 = "sha256-Bj4gPklufU6p2JpvN6j7QViv7ghSn52jemeXPVXkhlk=";
     };
   };
   memo = {
@@ -64,24 +64,35 @@
   };
   playwright-cli = {
     pname = "playwright-cli";
-    version = "v0.1.1";
+    version = "v0.1.6";
     src = fetchFromGitHub {
       owner = "microsoft";
       repo = "playwright-cli";
-      rev = "v0.1.1";
+      rev = "v0.1.6";
       fetchSubmodules = false;
-      sha256 = "sha256-Ao3phIPinliFDK04u/V3ouuOfwMDVf/qBUpQPESziFQ=";
+      sha256 = "sha256-TUzWI0uOsm5HP4RKlMwm4bcYdS0fUkO6ceH82o1zSmU=";
     };
   };
   television = {
     pname = "television";
-    version = "0.15.4";
+    version = "0.15.5";
     src = fetchFromGitHub {
       owner = "alexpasmantier";
       repo = "television";
-      rev = "0.15.4";
+      rev = "0.15.5";
       fetchSubmodules = false;
-      sha256 = "sha256-0tZx6UgXlB6rVAtf10gEFcHGzGpI6vfWBAYxvfOa5MM=";
+      sha256 = "sha256-p0FRLc55Ly6pkQfse1kNGpJhoXjMZIYVbNzDfjWW85Q=";
+    };
+  };
+  worktrunk = {
+    pname = "worktrunk";
+    version = "v0.35.2";
+    src = fetchFromGitHub {
+      owner = "max-sixty";
+      repo = "worktrunk";
+      rev = "v0.35.2";
+      fetchSubmodules = false;
+      sha256 = "sha256-+4cYuoMnwk7D5lPYbLO6TRUzuvPZvFo+Msh2Y78PaDI=";
     };
   };
 }
