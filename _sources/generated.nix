@@ -8,15 +8,15 @@
 {
   anthropic-skills = {
     pname = "anthropic-skills";
-    version = "ca1e7dc13c0ab5e2dfaa6de71991cd951b8f1cf2";
+    version = "12ab35c2eb5668c95810e6a6066f40f4218adc39";
     src = fetchFromGitHub {
       owner = "anthropics";
       repo = "skills";
-      rev = "ca1e7dc13c0ab5e2dfaa6de71991cd951b8f1cf2";
+      rev = "12ab35c2eb5668c95810e6a6066f40f4218adc39";
       fetchSubmodules = false;
-      sha256 = "sha256-m2d2noYYLm62j4PKbQguZxy6OjenVM5EEQ8GkNVKFHo=";
+      sha256 = "sha256-H/oorOl5cch7bnziDz7gHNBv5Q0OAwFbk9w1WLku2kk=";
     };
-    date = "2026-04-08";
+    date = "2026-04-09";
   };
   fd = {
     pname = "fd";
@@ -84,15 +84,27 @@
       sha256 = "sha256-p0FRLc55Ly6pkQfse1kNGpJhoXjMZIYVbNzDfjWW85Q=";
     };
   };
+  tmux-file-picker = {
+    pname = "tmux-file-picker";
+    version = "439aeb5b45f016c59969b8db0ac8d347444153b5";
+    src = fetchFromGitHub {
+      owner = "raine";
+      repo = "tmux-file-picker";
+      rev = "439aeb5b45f016c59969b8db0ac8d347444153b5";
+      fetchSubmodules = false;
+      sha256 = "sha256-qyf1hBYjC3TRadyyuLQO+P/gNccEUo+03NnMeuSVjuE=";
+    };
+    date = "2026-04-04";
+  };
   worktrunk = {
     pname = "worktrunk";
-    version = "v0.35.2";
+    version = "v0.35.3";
     src = fetchFromGitHub {
       owner = "max-sixty";
       repo = "worktrunk";
-      rev = "v0.35.2";
+      rev = "v0.35.3";
       fetchSubmodules = false;
-      sha256 = "sha256-+4cYuoMnwk7D5lPYbLO6TRUzuvPZvFo+Msh2Y78PaDI=";
+      sha256 = "sha256-ngal+DA2TW2K9P8HZYjICoCFZUuQT2WirwBMpZoybS0=";
     };
   };
 }
