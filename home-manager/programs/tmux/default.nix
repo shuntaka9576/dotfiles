@@ -31,4 +31,10 @@ in
   home.file.".tmux.conf" = {
     source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/home-manager/programs/tmux/.tmux.conf";
   };
+  home.file.".tmux/plugins/resurrect" = {
+    source = "${pkgs.tmuxPlugins.resurrect}/share/tmux-plugins/resurrect";
+  };
+  home.file.".tmux/plugins/continuum" = {
+    source = "${pkgs.tmuxPlugins.continuum}/share/tmux-plugins/continuum";
+  };
 }

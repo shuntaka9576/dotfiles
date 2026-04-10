@@ -28,6 +28,10 @@ vim.api.nvim_set_keymap("n", "<Down>", "gj", { noremap = true })
 vim.api.nvim_set_keymap("n", "<Up>", "gk", { noremap = true })
 vim.o.cmdheight = 0
 
+vim.keymap.set("n", "<leader>g", function()
+  vim.fn.system("tmux display-popup -E -d " .. vim.fn.shellescape(vim.fn.getcwd()) .. " -w 90% -h 90% lazygit")
+end, { noremap = true, silent = true })
+
 -- devlopment plugin
 -- vim.api.nvim_set_keymap("n", "<leader>r", ":luafile dev/init.lua<cr>", { noremap = true, silent = false })
 vim.api.nvim_exec(
@@ -83,6 +87,15 @@ vim.api.nvim_create_autocmd("BufWritePost", {
   pattern = { "*.rs", "*.hs", "*.lua", "*.toml", "*.svelte", "*.py", "*.java", "*.c", "*.h", "*.nix", "*.scala" },
   callback = function()
     vim.cmd("FormatWrite")
+  end,
+})
+
+vim.api.nvim_create_autocmd("FocusGained", {
+  callback = function()
+    local ok, api = pcall(require, "nvim-tree.api")
+    if ok then
+      pcall(api.tree.reload)
+    end
   end,
 })
 
@@ -726,6 +739,7 @@ require("lazy").setup({
     lazy = false,
     build = ":TSUpdate",
     config = function()
+      require("nvim-treesitter").setup()
       vim.api.nvim_create_autocmd("FileType", {
         callback = function()
           pcall(vim.treesitter.start)
@@ -1076,35 +1090,6 @@ require("lazy").setup({
         ":lua require'nvim-tmux-navigation'.NvimTmuxNavigateLeft()<CR>",
         { noremap = true, silent = true }
       )
-    end,
-  },
-  {
-    "akinsho/toggleterm.nvim",
-    config = function()
-      local Terminal = require("toggleterm.terminal").Terminal
-
-      -- Create lazygit dynamically to use current directory
-      function _LAZYGIT_TOGGLE()
-        local lazygit = Terminal:new({
-          cmd = "lazygit",
-          -- Use current working directory instead of git_dir
-          dir = vim.fn.getcwd(),
-          direction = "float",
-          on_close = function(_)
-            -- nvim-treeをリロード（利用可能な場合）
-            local ok, api = pcall(require, "nvim-tree.api")
-            if ok then
-              pcall(api.tree.reload)
-            end
-          end,
-          float_opts = {
-            border = "double",
-          },
-        })
-        lazygit:toggle()
-      end
-
-      vim.api.nvim_set_keymap("n", "<leader>g", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", { noremap = true, silent = true })
     end,
   },
   {
