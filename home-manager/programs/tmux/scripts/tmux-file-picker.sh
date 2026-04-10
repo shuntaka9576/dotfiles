@@ -180,15 +180,15 @@ main() {
       preview_cmd='ls -ap --color=always {}'
     fi
   else
-    # File selection mode (default)
-    fd_flags="${TMUX_FILE_PICKER_FD_FLAGS:--H --follow --type f --exclude .git}"
+    # File and directory selection mode (default)
+    fd_flags="${TMUX_FILE_PICKER_FD_FLAGS:--H --follow --type f --type d --exclude .git --exclude .DS_Store}"
 
     if command -v bat >/dev/null 2>&1; then
-      preview_cmd="bat --style=numbers --color=always {}"
+      preview_cmd='[[ -d {} ]] && tree -C {} | head -n 30 || bat --style=numbers --color=always {}'
     elif command -v batcat >/dev/null 2>&1; then
-      preview_cmd="batcat --style=numbers --color=always {}"
+      preview_cmd='[[ -d {} ]] && tree -C {} | head -n 30 || batcat --style=numbers --color=always {}'
     else
-      preview_cmd="cat {}"
+      preview_cmd='[[ -d {} ]] && tree -C {} | head -n 30 || cat {}'
     fi
 
     # Grep mode toggle (C-s to switch between file search and content grep)
