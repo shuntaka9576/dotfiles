@@ -78,12 +78,12 @@
   },
   "language": "Japanese",
   "alwaysThinkingEnabled": true,
-  "showThinkingSummaries": true,
   "effortLevel": "high",
   "autoMemoryEnabled": false,
+  "showThinkingSummaries": true,
   "skipDangerousModePermissionPrompt": true,
+  "skipAutoPermissionPrompt": true,
   "feedbackSurveyState": {
     "lastShownTime": 1754030471611
-  },
-  "skipAutoPermissionPrompt": true
+  }
 }
