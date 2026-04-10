@@ -32,6 +32,7 @@ in
       tka = "tmux kill-server";
       "..." = "cd ../..";
       ecs = "ecspresso";
+      aic = "bash ~/dotfiles/home-manager/programs/lazygit/ai-commit.sh";
       an = "agentoast send --badge Done --badge-color green --tmux-pane $TMUX_PANE";
       x = ''
         tmux rename-window "$(basename `pwd` | cut -c1-4)";
