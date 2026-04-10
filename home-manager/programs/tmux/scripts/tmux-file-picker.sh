@@ -206,10 +206,10 @@ main() {
   local selected_files_str
   if [[ ${#search_dirs[@]} -eq 1 ]]; then
     # Single directory: cd into it for cleaner relative paths in fzf
-    selected_files_str=$(cd "${search_dirs[0]}" && $fd_cmd $fd_flags | fzf --multi --reverse --freeze-right=1 --preview "$preview_cmd" "${grep_toggle_flags[@]}" || true)
+    selected_files_str=$(cd "${search_dirs[0]}" && $fd_cmd $fd_flags | fzf --multi --reverse --freeze-right=1 --bind 'tab:toggle' --preview "$preview_cmd" "${grep_toggle_flags[@]}" || true)
   else
     # Multiple directories: pass them as arguments to fd (returns absolute paths)
-    selected_files_str=$($fd_cmd $fd_flags "${search_dirs[@]}" | fzf --multi --reverse --freeze-right=1 --preview "$preview_cmd" "${grep_toggle_flags[@]}" || true)
+    selected_files_str=$($fd_cmd $fd_flags "${search_dirs[@]}" | fzf --multi --reverse --freeze-right=1 --bind 'tab:toggle' --preview "$preview_cmd" "${grep_toggle_flags[@]}" || true)
   fi
 
   if [[ -z $selected_files_str ]]; then
