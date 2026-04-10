@@ -81,24 +81,26 @@ in
         else
           WIN_NAME="$(echo "$(echo "$_repo" | cut -c1-3)-$(echo "$_dir" | sed 's/^wip-//')" | cut -c1-15)";
         fi
-        WIN_ID=$(tmux display-message -p "#{window_id}");
+        NVIM_PANE=$(tmux display-message -p "#{pane_id}");
         tmux rename-window "$WIN_NAME";
         # 1. Split full-width terminal at bottom (20%)
         tmux split-window -v -p 20 -c "$PWD";
         sleep 0.1;
         # 2. Split top pane into NeoVim (left 50%) and AI (right 50%)
-        tmux select-pane -t "$WIN_ID.0";
+        tmux select-pane -t "$NVIM_PANE";
         tmux split-window -h -p 50 -c "$PWD";
+        CLAUDE_TOP=$(tmux display-message -p "#{pane_id}");
         sleep 0.1;
         # 3. Split right pane into Claude (top 50%) and Claude (bottom 50%)
         tmux split-window -v -p 50 -c "$PWD";
+        CLAUDE_BOTTOM=$(tmux display-message -p "#{pane_id}");
         sleep 0.1;
         # Launch apps
-        tmux send-keys -t "$WIN_ID.0" "nvim +'autocmd VimEnter * ++once NvimTreeToggle'" C-m;
-        tmux send-keys -t "$WIN_ID.2" "c" C-m;
-        tmux send-keys -t "$WIN_ID.3" "c" C-m;
+        tmux send-keys -t "$NVIM_PANE" "nvim +'autocmd VimEnter * ++once NvimTreeToggle'" C-m;
+        tmux send-keys -t "$CLAUDE_TOP" "c" C-m;
+        tmux send-keys -t "$CLAUDE_BOTTOM" "c" C-m;
         # Focus on top-right Claude pane
-        tmux select-pane -t "$WIN_ID.2";
+        tmux select-pane -t "$CLAUDE_TOP";
       '';
       d = ''
         _dir="$(basename "$(pwd)")";

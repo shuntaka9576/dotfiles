@@ -28,10 +28,6 @@ vim.api.nvim_set_keymap("n", "<Down>", "gj", { noremap = true })
 vim.api.nvim_set_keymap("n", "<Up>", "gk", { noremap = true })
 vim.o.cmdheight = 0
 
-vim.keymap.set("n", "<leader>g", function()
-  vim.fn.system("tmux display-popup -E -d " .. vim.fn.shellescape(vim.fn.getcwd()) .. " -w 90% -h 90% lazygit")
-end, { noremap = true, silent = true })
-
 -- devlopment plugin
 -- vim.api.nvim_set_keymap("n", "<leader>r", ":luafile dev/init.lua<cr>", { noremap = true, silent = false })
 vim.api.nvim_exec(

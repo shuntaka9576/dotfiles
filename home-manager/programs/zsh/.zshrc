@@ -54,7 +54,7 @@ function ghq-fzf() {
 }
 
 zle -N ghq-fzf
-bindkey "^g" ghq-fzf
+bindkey "^q" ghq-fzf
 
 # fd cd
 function fd-fzf() {
