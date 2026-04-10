@@ -146,27 +146,6 @@
         },
         "version": "0.15.5"
     },
-    "tmux-file-picker": {
-        "cargoLock": null,
-        "date": "2026-04-04",
-        "extract": null,
-        "name": "tmux-file-picker",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "deepClone": false,
-            "fetchSubmodules": false,
-            "leaveDotGit": false,
-            "name": null,
-            "owner": "raine",
-            "repo": "tmux-file-picker",
-            "rev": "439aeb5b45f016c59969b8db0ac8d347444153b5",
-            "sha256": "sha256-qyf1hBYjC3TRadyyuLQO+P/gNccEUo+03NnMeuSVjuE=",
-            "sparseCheckout": [],
-            "type": "github"
-        },
-        "version": "439aeb5b45f016c59969b8db0ac8d347444153b5"
-    },
     "worktrunk": {
         "cargoLock": null,
         "date": null,

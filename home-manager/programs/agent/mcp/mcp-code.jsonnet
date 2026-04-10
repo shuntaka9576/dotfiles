@@ -20,9 +20,10 @@ local pythonpath = home + '/.local/share/mise/installs/python/3.13.7';
     //     PATH: nodepath + '/bin:/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin',
     //   },
     // },
-    // 'chrome-devtools': {
-    //   command: 'chrome-devtools-mcp',
-    // },
+    'chrome-devtools': {
+      command: home + '/.local/share/mise/shims/chrome-devtools-mcp',
+      args: ['--autoConnect'],
+    },
     // 'aws-knowledge-mcp-server': {
     //   command: 'mcp-remote',
     //   args: [

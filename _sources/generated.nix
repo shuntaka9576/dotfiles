@@ -84,18 +84,6 @@
       sha256 = "sha256-p0FRLc55Ly6pkQfse1kNGpJhoXjMZIYVbNzDfjWW85Q=";
     };
   };
-  tmux-file-picker = {
-    pname = "tmux-file-picker";
-    version = "439aeb5b45f016c59969b8db0ac8d347444153b5";
-    src = fetchFromGitHub {
-      owner = "raine";
-      repo = "tmux-file-picker";
-      rev = "439aeb5b45f016c59969b8db0ac8d347444153b5";
-      fetchSubmodules = false;
-      sha256 = "sha256-qyf1hBYjC3TRadyyuLQO+P/gNccEUo+03NnMeuSVjuE=";
-    };
-    date = "2026-04-04";
-  };
   worktrunk = {
     pname = "worktrunk";
     version = "v0.35.3";

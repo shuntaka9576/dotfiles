@@ -27,11 +27,6 @@ fetch.github = "anthropics/skills"
 src.github = "googleworkspace/cli"
 fetch.github = "googleworkspace/cli"
 
-[tmux-file-picker]
-src.git = "https://github.com/raine/tmux-file-picker.git"
-src.branch = "main"
-fetch.github = "raine/tmux-file-picker"
-
 [worktrunk]
 src.github = "max-sixty/worktrunk"
 fetch.github = "max-sixty/worktrunk"

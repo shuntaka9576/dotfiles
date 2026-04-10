@@ -2,12 +2,13 @@
 let
   tmux-file-picker = pkgs.stdenv.mkDerivation {
     pname = "tmux-file-picker";
-    inherit (pkgs.sources.tmux-file-picker) version;
-    inherit (pkgs.sources.tmux-file-picker) src;
+    version = "local";
+    src = ./scripts;
     installPhase = ''
       mkdir -p $out/bin
-      cp tmux-file-picker $out/bin/tmux-file-picker
-      chmod +x $out/bin/tmux-file-picker
+      cp tmux-file-picker.sh $out/bin/tmux-file-picker
+      cp grep-preview.sh $out/bin/grep-preview
+      chmod +x $out/bin/tmux-file-picker $out/bin/grep-preview
     '';
     postFixup = ''
       wrapProgram $out/bin/tmux-file-picker \
@@ -16,6 +17,7 @@ let
             pkgs.fzf
             pkgs.fd
             pkgs.bat
+            pkgs.ripgrep
             pkgs.coreutils
           ]
         }
