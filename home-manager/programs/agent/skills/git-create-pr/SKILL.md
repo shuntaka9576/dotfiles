@@ -1,30 +1,54 @@
 ---
 name: git-create-pr
 description: プルリクエスト作成
-argument-hint: "<ベースブランチ名（省略可）>"
+argument-hint: ""
 ---
 
 # プルリクエスト作成
 
+## 注意事項
+- Bashツール実行時の description は日本語で簡潔に書くこと
+- **ベースブランチ（main/master）への直接プッシュは絶対に禁止。** ステップ4のガードレールを必ず通過すること
+
 ## ワークフロー
 
 ### ステップ 1: ベースブランチ決定
-- 引数でブランチ名が指定されていればそれをベースブランチとして使用
-- 指定がなければデフォルトブランチ（`main` or `master`）を使用
+- デフォルトブランチ（`main` or `master`）をデフォルト値とする
+- AskUserQuestion でユーザーに確認: 「ベースブランチはどれにしますか？」（デフォルト値を提示）
 
 ### ステップ 2: 言語選択
-ユーザーに確認: 「PRを日本語で作成しますか、英語で作成しますか？（日本語/英語）」
+
+AskUserQuestion でユーザーに確認: 「PRを日本語で作成しますか、英語で作成しますか？」（選択肢: 日本語 / 英語）
 
 ### ステップ 3: 状態確認
-1. 現在のブランチを確認: `git branch --show-current`
-2. **ベースブランチと同じ場合**: ユーザーに確認「ベースブランチです。ブランチを作成してコミットしますか？（はい/いいえ）」
-   - はい → `/git-commit` スキルを実行
-   - いいえ → 処理を中断
-3. コミット状況を確認: `git log <ベースブランチ>..HEAD`
-4. 変更内容を確認: `git diff <ベースブランチ>...HEAD`
 
-### ステップ 4: プッシュ
-1. `git push -u origin <branch-name>` でリモートにプッシュ
+1. 現在のブランチを確認: `git branch --show-current`
+
+2. **ベースブランチと同じ場合:**
+   - AskUserQuestion でユーザーに確認: 「現在ベースブランチ上にいます。新しいブランチを作成してコミットしますか？」（選択肢: はい / いいえ）
+   - **いいえ** → 「ベースブランチに直接プッシュはできません。処理を中断します」と報告して終了
+   - **はい** → `/git-git-commit` スキルを実行（このスキル内でブランチ作成が行われる）
+   - `/git-git-commit` 完了後、再度 `git branch --show-current` でブランチを確認
+   - **まだベースブランチ上にいる場合 → 処理を中断する（絶対にプッシュしない）**
+
+3. **コミット状況と差分の確認:**
+
+   リモートの最新ベースブランチを取得してから差分を確認する。これにより、スカッシュマージ済みブランチを再利用した場合でも、新規変更分のみが正しく表示される。
+
+   ```bash
+   git fetch origin <ベースブランチ>
+   git log origin/<ベースブランチ>..HEAD --oneline
+   git diff origin/<ベースブランチ> HEAD
+   ```
+
+4. コミットが0件の場合: 「コミットがありません。先にコミットしてください」と報告して終了
+
+### ステップ 4: プッシュ（ベースブランチ保護ガード付き）
+
+1. **再度ブランチを確認**: `git branch --show-current`
+2. **ベースブランチ（main/master）でないことを必ず確認する**
+   - ベースブランチの場合 → **絶対にプッシュせず、エラーメッセージを表示して処理を中断する**
+3. `git push -u origin <現在のブランチ名>` でリモートにプッシュ
 
 ### ステップ 5: PR 作成
 1. PRテンプレート（`.github/PULL_REQUEST_TEMPLATE.md`）があれば読み込む
@@ -32,14 +56,8 @@ argument-hint: "<ベースブランチ名（省略可）>"
 3. 以下のコマンドで Draft PR を作成:
 
 ```bash
-# PR作成コマンドを実行し、URLを変数に保存（自分自身をアサインに設定）
-# ベースブランチが指定されている場合は --base <ベースブランチ> を付与
 PR_URL=$(gh pr create --draft --assignee @me --base <ベースブランチ>)
-
-# URLからPR番号を抽出（URLの最後の数字部分）
 PR_NUMBER=$(echo $PR_URL | grep -o '[0-9]*$')
-
-# PRをブラウザで開く
 gh browse $PR_NUMBER
 ```
 
@@ -59,20 +77,10 @@ gh browse $PR_NUMBER
 PRテンプレートを使用する際は、Readツールでテンプレートファイルを読み込み、内容を一時ファイルに書き込んでから作成:
 
 ```bash
-# ユニークな一時ファイル名を生成
 TEMP_FILE="/tmp/pr-body-$(date +%s).md"
-
-# PR作成コマンドを実行し、URLを変数に保存（自分自身をアサインに設定）
-# ベースブランチが指定されている場合は --base <ベースブランチ> を付与
 PR_URL=$(gh pr create --body-file "$TEMP_FILE" --draft --assignee @me --base <ベースブランチ>)
-
-# URLからPR番号を抽出（URLの最後の数字部分）
 PR_NUMBER=$(echo $PR_URL | grep -o '[0-9]*$')
-
-# 一時ファイルを削除
 rm -f "$TEMP_FILE"
-
-# PRをブラウザで開く
 gh browse $PR_NUMBER
 ```
 
@@ -81,14 +89,8 @@ gh browse $PR_NUMBER
 HTMLコメントを保持するため、**必ず一時ファイル経由で更新**:
 
 ```bash
-# ユニークな一時ファイル名を生成
 TEMP_FILE="/tmp/pr-body-<PR番号>-$(date +%s).md"
-
-# PR説明文を一時ファイルに書き込む（Writeツールを使用）
-# gh pr edit を実行
 gh pr edit <PR番号> --body-file "$TEMP_FILE"
-
-# 一時ファイルを削除
 rm -f "$TEMP_FILE"
 ```
 
