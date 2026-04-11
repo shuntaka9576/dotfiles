@@ -46,7 +46,36 @@ function ghq-fzf() {
   local ghq_root=$(ghq root)
 
   if [ -n "$target_dir" ]; then
-    BUFFER="cd ${ghq_root}/${target_dir}"
+    local full_path="${ghq_root}/${target_dir}"
+
+    if [ -d "${full_path}/.bare" ]; then
+      local default_branch=$(git -C "${full_path}/.bare" symbolic-ref HEAD 2>/dev/null | sed 's|refs/heads/||')
+      local target=""
+
+      if [ -n "$default_branch" ] && [ -d "${full_path}/${default_branch}" ]; then
+        target="${full_path}/${default_branch}"
+      else
+        local worktrees=()
+        while IFS= read -r line; do
+          [ -n "$line" ] && worktrees+=("$line")
+        done < <(git -C "${full_path}/.bare" worktree list --porcelain \
+          | awk '/^worktree /{ path=substr($0,10) } /^bare$/{ path="" } /^$/ && path{ print path }')
+
+        if [ ${#worktrees[@]} -eq 1 ]; then
+          target="${worktrees[1]}"
+        elif [ ${#worktrees[@]} -gt 1 ]; then
+          target=$(printf '%s\n' "${worktrees[@]}" | fzf-tmux --reverse --prompt="worktree> ")
+        fi
+      fi
+
+      if [ -n "$target" ]; then
+        BUFFER="cd ${target}"
+      else
+        BUFFER="cd ${full_path}"
+      fi
+    else
+      BUFFER="cd ${full_path}"
+    fi
     zle accept-line
   fi
 
