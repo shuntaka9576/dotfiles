@@ -92,8 +92,8 @@ in
         tmux split-window -h -p 50 -c "$PWD";
         CLAUDE_TOP=$(tmux display-message -p "#{pane_id}");
         sleep 0.1;
-        # 3. Split right pane into Claude (top 50%) and Claude (bottom 50%)
-        tmux split-window -v -p 50 -c "$PWD";
+        # 3. Split right pane into Claude (left 50%) and Claude (right 50%)
+        tmux split-window -h -p 50 -c "$PWD";
         CLAUDE_BOTTOM=$(tmux display-message -p "#{pane_id}");
         sleep 0.1;
         # Launch apps
