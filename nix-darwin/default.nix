@@ -72,6 +72,7 @@
       "screen-studio"
       "termius"
       "aqua-voice"
+      "codex-app"
       "nani"
     ];
     masApps = {
