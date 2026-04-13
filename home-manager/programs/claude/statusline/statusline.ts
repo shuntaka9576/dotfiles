@@ -48,6 +48,11 @@ const data = JSON.parse(input)
 
 const parts: string[] = []
 
+const modelName = data.model?.display_name
+if (modelName != null) {
+  parts.push(modelName)
+}
+
 const ctx = data.context_window?.used_percentage
 if (ctx != null) {
   parts.push(fmt("ctx", ctx))
