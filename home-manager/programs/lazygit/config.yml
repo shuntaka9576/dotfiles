@@ -14,6 +14,5 @@ customCommands:
   - key: "<c-g>"
     context: "files"
     description: "AI commit message (Claude haiku)"
-    output: "terminal"
-    command: "bash ~/dotfiles/home-manager/programs/lazygit/ai-commit.sh"
+    command: "nohup bash ~/dotfiles/home-manager/programs/lazygit/ai-commit.sh > /dev/null 2>&1 &"
     loadingText: "Generating commit message with Claude..."
