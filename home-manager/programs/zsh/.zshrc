@@ -121,7 +121,7 @@ function chathist-widget() {
     resume)
       local session_id=$(echo "$selection" | head -1)
       chathist insert --all "$session_id" 2>/dev/null
-      BUFFER="claude --resume $session_id"
+      BUFFER="c --resume $session_id"
       zle accept-line
       return
       ;;
