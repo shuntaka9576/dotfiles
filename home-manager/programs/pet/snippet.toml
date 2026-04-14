@@ -862,3 +862,9 @@ done
 """
 tag = ["git", "branch", "cleanup", "gh"]
 output = ""
+
+[[snippets]]
+description = "AWS Bedrock Anthropicの推論プロファイル一覧"
+command = "aws bedrock list-inference-profiles --type-equals SYSTEM_DEFINED --query \"inferenceProfileSummaries[?contains(inferenceProfileId, 'anthropic')].[inferenceProfileId, status]\" --output table"
+tag = ['aws', 'bedrock', 'anthropic']
+output = ""
