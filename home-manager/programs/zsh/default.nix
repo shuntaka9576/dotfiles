@@ -34,6 +34,15 @@ in
       ecs = "ecspresso";
       aic = "bash ~/dotfiles/home-manager/programs/lazygit/ai-commit.sh";
       wsc = "wt switch --create";
+      wd = ''
+        DEPLOY_PATH=$(wt list --format=json | jq -r '.[] | select(.branch == "deploy") | .path')
+        if [ -z "$DEPLOY_PATH" ]; then
+          echo "deploy worktree not found. Creating..."
+          wt switch --create deploy --no-cd -y
+          DEPLOY_PATH=$(wt list --format=json | jq -r '.[] | select(.branch == "deploy") | .path')
+        fi
+        git -C "$DEPLOY_PATH" checkout --detach "$(git rev-parse HEAD)"
+      '';
       an = "agentoast send --badge Done --badge-color green --tmux-pane $TMUX_PANE";
       x = ''
         tmux rename-window "$(basename `pwd` | cut -c1-4)";
