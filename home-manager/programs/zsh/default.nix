@@ -84,31 +84,20 @@ in
       #   tmux select-pane -t "$WIN_ID.2"
       # '';
       dhh = ''
-        _dir="$(basename "$(pwd)")";
+        _dir=''${PWD:t};
         _toplevel="$(git rev-parse --show-toplevel 2>/dev/null)";
-        _repo="$(basename "$(dirname "$_toplevel")")";
+        _repo=''${_toplevel:h:t};
         if [[ "$_dir" == "$_repo" ]]; then
-          WIN_NAME="$(echo "$_dir" | cut -c1-15)";
+          WIN_NAME=''${_dir[1,15]};
         else
-          WIN_NAME="$(echo "$(echo "$_repo" | cut -c1-3)-$(echo "$_dir" | sed 's/^wip-//')" | cut -c1-15)";
+          WIN_NAME="''${_repo[1,3]}-''${_dir#wip-}";
+          WIN_NAME=''${WIN_NAME[1,15]};
         fi
         NVIM_PANE=$(tmux display-message -p "#{pane_id}");
-        tmux rename-window "$WIN_NAME";
-        # 1. Split full-width terminal at bottom (20%)
-        tmux split-window -v -p 20 -c "$PWD";
-        # 2. Split top pane into NeoVim (left 50%) and AI (right 50%)
-        tmux select-pane -t "$NVIM_PANE";
-        tmux split-window -h -p 50 -c "$PWD";
-        CLAUDE_TOP=$(tmux display-message -p "#{pane_id}");
-        # 3. Split right pane into Claude (left 50%) and Claude (right 50%)
-        tmux split-window -h -p 50 -c "$PWD";
-        CLAUDE_BOTTOM=$(tmux display-message -p "#{pane_id}");
-        # Launch apps
-        tmux send-keys -t "$NVIM_PANE" "nvim +'autocmd VimEnter * ++once NvimTreeToggle'" C-m;
-        tmux send-keys -t "$CLAUDE_TOP" "c" C-m;
-        tmux send-keys -t "$CLAUDE_BOTTOM" "c" C-m;
-        # Focus on top-right Claude pane
-        tmux select-pane -t "$CLAUDE_TOP";
+        tmux rename-window "$WIN_NAME" \; split-window -v -p 20 -c "$PWD" \; select-pane -t "$NVIM_PANE";
+        CLAUDE_TOP=$(tmux split-window -h -p 50 -c "$PWD" -P -F "#{pane_id}");
+        CLAUDE_BOTTOM=$(tmux split-window -h -p 50 -c "$PWD" -P -F "#{pane_id}");
+        tmux send-keys -t "$NVIM_PANE" "nvim +'autocmd VimEnter * ++once NvimTreeToggle'" C-m \; send-keys -t "$CLAUDE_TOP" "c" C-m \; send-keys -t "$CLAUDE_BOTTOM" "c" C-m \; select-pane -t "$CLAUDE_TOP";
       '';
       d = ''
         _dir="$(basename "$(pwd)")";
