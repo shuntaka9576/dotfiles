@@ -1,3 +1,23 @@
+# Cache shell init scripts for faster startup (~600ms saved)
+_zsh_cache_dir="$HOME/.cache/zsh-init"
+[[ -d "$_zsh_cache_dir" ]] || mkdir -p "$_zsh_cache_dir"
+
+# fzf (cached)
+if [[ $options[zle] = on ]]; then
+  _fzf_cache="$_zsh_cache_dir/fzf.zsh"
+  if [[ ! -s "$_fzf_cache" ]]; then
+    fzf --zsh > "$_fzf_cache"
+  fi
+  source "$_fzf_cache"
+fi
+
+# mise (cached)
+_mise_cache="$_zsh_cache_dir/mise.zsh"
+if [[ ! -s "$_mise_cache" ]]; then
+  mise activate zsh > "$_mise_cache"
+fi
+source "$_mise_cache"
+
 # Custom prompt (Pure-like without git)
 setopt PROMPT_SUBST
 zmodload zsh/datetime

@@ -36,10 +36,4 @@ in
   home.file.".config/tmux/scripts/tmux-sort-windows.sh" = {
     source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/home-manager/programs/tmux/scripts/tmux-sort-windows.sh";
   };
-  home.file.".tmux/plugins/resurrect" = {
-    source = "${pkgs.tmuxPlugins.resurrect}/share/tmux-plugins/resurrect";
-  };
-  home.file.".tmux/plugins/continuum" = {
-    source = "${pkgs.tmuxPlugins.continuum}/share/tmux-plugins/continuum";
-  };
 }

@@ -2,7 +2,7 @@
 {
   programs.mise = {
     enable = true;
-    enableZshIntegration = true;
+    enableZshIntegration = false;
   };
   home.file.".config/mise/config.toml" = {
     source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/home-manager/programs/mise/config.toml";
