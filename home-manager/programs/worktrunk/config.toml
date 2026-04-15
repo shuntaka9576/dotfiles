@@ -1,1 +1,4 @@
 worktree-path = "{{ repo_path }}/../{{ branch | sanitize }}"
+
+[pre-start]
+set-upstream = "git branch --set-upstream-to={{ remote }}/{{ branch }} {{ branch }} 2>/dev/null || true"
