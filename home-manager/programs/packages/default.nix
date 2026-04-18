@@ -20,6 +20,7 @@
       ripgrep
       eza
       bat
+      glow
       # gitui
       stylua
       taplo
