@@ -124,49 +124,45 @@ function chathist-widget() {
   local preview_cmd='chathist pick {1} --stdout | glow -s dark -w ${FZF_PREVIEW_COLUMNS:-80}'
   local preview_cmd_w='chathist pick -w {1} --stdout | glow -s dark -w ${FZF_PREVIEW_COLUMNS:-80}'
   local preview_cmd_all='chathist pick --all {1} --stdout | glow -s dark -w ${FZF_PREVIEW_COLUMNS:-80}'
+  local h='enter:resume / ctrl-o:open-slack / ctrl-t:template'
 
   while true; do
-    local selection=$(chathist list | fzf --tmux center,90%,90% --multi --reverse --freeze-right=1 \
+    local result=$(chathist list | fzf --tmux center,90%,90% --multi --reverse --freeze-right=1 \
       --delimiter=$'\t' \
       --with-nth=2.. \
-      --header 'ctrl-s: cross-worktree / ctrl-a: all repos / ctrl-r: current project' \
+      --expect=ctrl-o,ctrl-t \
+      --header "$h | mode: current-project / ctrl-s:worktree / ctrl-a:all" \
       --preview "$preview_cmd" \
       --preview-window 'right:60%:wrap' \
-      --bind "ctrl-s:reload(chathist list -w)+change-preview($preview_cmd_w)+change-header(cross-worktree | ctrl-a: all repos | ctrl-r: current project)" \
-      --bind "ctrl-a:reload(chathist list --all)+change-preview($preview_cmd_all)+change-header(all repos | ctrl-s: cross-worktree | ctrl-r: current project)" \
-      --bind "ctrl-r:reload(chathist list)+change-preview($preview_cmd)+change-header(current project | ctrl-s: cross-worktree | ctrl-a: all repos)" \
+      --bind "ctrl-s:reload(chathist list -w)+change-preview($preview_cmd_w)+change-header($h | mode: cross-worktree / ctrl-a:all / ctrl-r:project)" \
+      --bind "ctrl-a:reload(chathist list --all)+change-preview($preview_cmd_all)+change-header($h | mode: all-repos / ctrl-s:worktree / ctrl-r:project)" \
+      --bind "ctrl-r:reload(chathist list)+change-preview($preview_cmd)+change-header($h | mode: current-project / ctrl-s:worktree / ctrl-a:all)" \
       --bind 'shift-up:preview-up,shift-down:preview-down' \
-      --bind 'ctrl-u:preview-half-page-up,ctrl-d:preview-half-page-down' \
-      | cut -f1)
+      --bind 'ctrl-u:preview-half-page-up,ctrl-d:preview-half-page-down')
 
+    [ -z "$result" ] && break
+
+    local key=$(echo "$result" | head -1)
+    local selection=$(echo "$result" | tail -n +2 | cut -f1)
     [ -z "$selection" ] && break
 
-    while true; do
-      local result=$(printf 'resume\nopen' | fzf --tmux center,30%,20% --reverse --sync --prompt="Action: " --header 'ctrl-t: select template (open)' --expect=ctrl-t --bind 'load:down')
-      local key=$(echo "$result" | head -1)
-      local action=$(echo "$result" | sed -n 2p)
-      [ -z "$action" ] && break
-
-      case "$action" in
-        resume)
-          local session_id=$(echo "$selection" | head -1)
-          chathist insert --all "$session_id" 2>/dev/null
-          BUFFER="c --resume $session_id"
-          zle accept-line
-          break 2
-          ;;
-        open)
-          if [ "$key" = "ctrl-t" ]; then
-            local template=$(chathist pick --list-templates | fzf --tmux center,30%,30% --reverse --prompt="Template: ")
-            [ -z "$template" ] && continue
-            echo "$selection" | chathist pick -w -t "$template"
-          else
-            echo "$selection" | chathist pick -w -t slack
-          fi
-          continue
-          ;;
-      esac
-    done
+    case "$key" in
+      "")
+        local session_id=$(echo "$selection" | head -1)
+        chathist insert --all "$session_id" 2>/dev/null
+        BUFFER="c --resume $session_id"
+        zle accept-line
+        break
+        ;;
+      ctrl-o)
+        echo "$selection" | chathist pick -w -t slack
+        ;;
+      ctrl-t)
+        local template=$(chathist pick --list-templates | fzf --tmux center,30%,30% --reverse --prompt="Template: ")
+        [ -z "$template" ] && continue
+        echo "$selection" | chathist pick -w -t "$template"
+        ;;
+    esac
   done
 
   zle reset-prompt
