@@ -23,7 +23,7 @@
       "Bash(aws logs start-query *)",
       "WebSearch"
     ],
-    "defaultMode": "plan"
+    "defaultMode": "auto"
   },
   "enableAllProjectMcpServers": true,
   "hooks": {
@@ -82,8 +82,8 @@
   "autoMemoryEnabled": false,
   "showThinkingSummaries": true,
   "skipDangerousModePermissionPrompt": true,
-  "skipAutoPermissionPrompt": true,
   "feedbackSurveyState": {
     "lastShownTime": 1754030471611
-  }
+  },
+  "skipAutoPermissionPrompt": true
 }
