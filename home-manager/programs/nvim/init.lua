@@ -150,6 +150,30 @@ vim.api.nvim_set_keymap("n", "<Space><Space>", ":nohlsearch<CR><Esc>", { noremap
 -- save yank results to clipboard
 vim.api.nvim_command("set clipboard+=unnamed")
 
+-- Copy "path:Lstart-end" reference for the current visual selection (to hand to agents that can Read the file).
+vim.keymap.set("x", "<leader>Y", function()
+  local s_line = vim.fn.line("v")
+  local e_line = vim.fn.line(".")
+  if s_line > e_line then
+    s_line, e_line = e_line, s_line
+  end
+
+  local path = vim.fn.expand("%")
+  local cwd = vim.fn.getcwd()
+  if path ~= "" and path:sub(1, #cwd) == cwd then
+    path = path:sub(#cwd + 2)
+  end
+  if path == "" then
+    path = "[No Name]"
+  end
+
+  local ref = string.format("@%s:L%d-%d", path, s_line, e_line)
+  vim.fn.setreg("+", ref)
+  vim.notify("Copied " .. ref, vim.log.levels.INFO)
+
+  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", false)
+end, { noremap = true, silent = true, desc = "Copy path:Lstart-end reference for AI" })
+
 -- Configure Deno LSP (runs when package.json doesn't exist)
 vim.lsp.config("denols", {
   cmd = { "deno", "lsp" },
