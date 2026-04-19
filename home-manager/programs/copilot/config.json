@@ -17,5 +17,9 @@
         "timeoutSec": 10
       }
     ]
+  },
+  "lastLoggedInUser": {
+    "host": "https://github.com",
+    "login": "shuntaka9576"
   }
 }
