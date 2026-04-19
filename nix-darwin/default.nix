@@ -74,6 +74,7 @@
       "aqua-voice"
       "codex-app"
       "nani"
+      "google-gemini"
     ];
     masApps = {
       "Kindle" = 302584613;
