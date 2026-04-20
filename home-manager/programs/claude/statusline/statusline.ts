@@ -48,9 +48,24 @@ const data = JSON.parse(input)
 
 const parts: string[] = []
 
-const modelName = data.model?.display_name
-if (modelName != null) {
-  parts.push(modelName)
+function shortModelName(id: string | undefined, displayName: string | undefined): string {
+  const src = (id ?? "").replace(/\[.*?\]/g, "")
+  const m = src.match(/^claude-(opus|sonnet|haiku)-(\d+)-(\d+)/i)
+  if (m) {
+    return `${m[1].toLowerCase()}${m[2]}.${m[3]}`
+  }
+  return (displayName ?? "").replace(/\s+/g, "").toLowerCase()
+}
+
+function contextTag(size: number | undefined): string {
+  if (size === 1000000) return "[1m]"
+  if (size === 200000) return "[200k]"
+  return ""
+}
+
+const compact = shortModelName(data.model?.id, data.model?.display_name)
+if (compact !== "") {
+  parts.push(`${compact}${contextTag(data.context_window?.context_window_size)}`)
 }
 
 const ctx = data.context_window?.used_percentage
