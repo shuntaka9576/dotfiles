@@ -22,6 +22,11 @@
         clone_target = "https://github.com/kayac/homebrew-tap";
         force_auto_update = true;
       }
+      {
+        name = "productdevbook/tap";
+        clone_target = "https://github.com/productdevbook/homebrew-tap";
+        force_auto_update = true;
+      }
     ];
     brews = [
       "shuntaka9576/tap/blocc"
@@ -75,6 +80,7 @@
       "codex-app"
       "nani"
       "google-gemini"
+      "productdevbook/tap/portkiller"
     ];
     masApps = {
       "Kindle" = 302584613;

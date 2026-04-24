@@ -223,5 +223,6 @@
   "editor.unicodeHighlight.nonBasicASCII": false,
   "kiroAgent.agentAutonomy": "Supervised",
   "kiroAgent.modelSelection": "claude-opus-4.6",
-  "workbench.colorTheme": "Dark Modern"
+  "workbench.colorTheme": "Dark Modern",
+  "claudeCode.preferredLocation": "panel"
 }
