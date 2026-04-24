@@ -12,6 +12,6 @@ LOG=$(git log --oneline -20)
 MSG=$(echo "$DIFF" | claude --no-session-persistence --print --model haiku "Here are the recent commits in this repository:
 $LOG
 
-Based on the commit style above and the diff from stdin, write a comprehensive Git commit message. Use Conventional Commits format (type(scope): description). Output ONLY the commit message. Do NOT wrap in backticks or any markdown formatting.")
+Based on the commit style above and the diff from stdin, write a comprehensive Git commit message. Use Conventional Commits format without scope (type: description). Output ONLY the commit message. Do NOT wrap in backticks or any markdown formatting.")
 
 git commit -m "$MSG"
