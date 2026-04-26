@@ -1,7 +1,7 @@
 {
     "anthropic-skills": {
         "cargoLock": null,
-        "date": "2026-04-09",
+        "date": "2026-04-23",
         "extract": null,
         "name": "anthropic-skills",
         "passthru": null,
@@ -13,12 +13,12 @@
             "name": null,
             "owner": "anthropics",
             "repo": "skills",
-            "rev": "12ab35c2eb5668c95810e6a6066f40f4218adc39",
-            "sha256": "sha256-H/oorOl5cch7bnziDz7gHNBv5Q0OAwFbk9w1WLku2kk=",
+            "rev": "5128e1865d670f5d6c9cef000e6dfc4e951fb5b9",
+            "sha256": "sha256-xFsg66TCtKzSgRIW6Ab771FWEIhei3jPgfE4byMiB44=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "12ab35c2eb5668c95810e6a6066f40f4218adc39"
+        "version": "5128e1865d670f5d6c9cef000e6dfc4e951fb5b9"
     },
     "fd": {
         "cargoLock": null,
@@ -40,6 +40,27 @@
             "type": "github"
         },
         "version": "v10.4.2"
+    },
+    "gh-infra": {
+        "cargoLock": null,
+        "date": "2026-04-21",
+        "extract": null,
+        "name": "gh-infra",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "babarot",
+            "repo": "gh-infra",
+            "rev": "d77097abbc5c90a11cde5d9099585fecd16c69bb",
+            "sha256": "sha256-pIDn6BI/pzHG1dRRuNX5IfHJYOey4mXmVVQ+7+9Wd2k=",
+            "sparseCheckout": [],
+            "type": "github"
+        },
+        "version": "d77097abbc5c90a11cde5d9099585fecd16c69bb"
     },
     "google-workspace-cli": {
         "cargoLock": null,
@@ -118,12 +139,12 @@
             "name": null,
             "owner": "microsoft",
             "repo": "playwright-cli",
-            "rev": "v0.1.6",
-            "sha256": "sha256-TUzWI0uOsm5HP4RKlMwm4bcYdS0fUkO6ceH82o1zSmU=",
+            "rev": "v0.1.9",
+            "sha256": "sha256-w1mPi1CxmOsQAo6ruQAb7s+omrdG+Pnn0jZd7mt0yQA=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "v0.1.6"
+        "version": "v0.1.9"
     },
     "television": {
         "cargoLock": null,
@@ -139,12 +160,12 @@
             "name": null,
             "owner": "alexpasmantier",
             "repo": "television",
-            "rev": "0.15.5",
-            "sha256": "sha256-p0FRLc55Ly6pkQfse1kNGpJhoXjMZIYVbNzDfjWW85Q=",
+            "rev": "0.15.6",
+            "sha256": "sha256-0oWgVfybsSLHDeAqTQP2ijJ/84XdcdqD0eqxIv6jk9o=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "0.15.5"
+        "version": "0.15.6"
     },
     "worktrunk": {
         "cargoLock": null,
@@ -160,11 +181,32 @@
             "name": null,
             "owner": "max-sixty",
             "repo": "worktrunk",
-            "rev": "v0.35.3",
-            "sha256": "sha256-ngal+DA2TW2K9P8HZYjICoCFZUuQT2WirwBMpZoybS0=",
+            "rev": "v0.44.0",
+            "sha256": "sha256-YNqPjpMndm9W1mmBQzuXDDENgwnv39P6eUiQ++jmvZU=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "v0.35.3"
+        "version": "v0.44.0"
+    },
+    "zenn-markdown-skill": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "zenn-markdown-skill",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "shuntaka9576",
+            "repo": "zenn-markdown-skill",
+            "rev": "v0.1.0",
+            "sha256": "sha256-IGVJ/b9QfnFggSYc3RbpUG+UQnP+FiNqfmMqJQww1XY=",
+            "sparseCheckout": [],
+            "type": "github"
+        },
+        "version": "v0.1.0"
     }
 }

@@ -8,15 +8,15 @@
 {
   anthropic-skills = {
     pname = "anthropic-skills";
-    version = "12ab35c2eb5668c95810e6a6066f40f4218adc39";
+    version = "5128e1865d670f5d6c9cef000e6dfc4e951fb5b9";
     src = fetchFromGitHub {
       owner = "anthropics";
       repo = "skills";
-      rev = "12ab35c2eb5668c95810e6a6066f40f4218adc39";
+      rev = "5128e1865d670f5d6c9cef000e6dfc4e951fb5b9";
       fetchSubmodules = false;
-      sha256 = "sha256-H/oorOl5cch7bnziDz7gHNBv5Q0OAwFbk9w1WLku2kk=";
+      sha256 = "sha256-xFsg66TCtKzSgRIW6Ab771FWEIhei3jPgfE4byMiB44=";
     };
-    date = "2026-04-09";
+    date = "2026-04-23";
   };
   fd = {
     pname = "fd";
@@ -28,6 +28,18 @@
       fetchSubmodules = false;
       sha256 = "sha256-D1FCry69KqXgLxU4rVmgKjkM3JqeBRQDfbp3sJtVAbU=";
     };
+  };
+  gh-infra = {
+    pname = "gh-infra";
+    version = "d77097abbc5c90a11cde5d9099585fecd16c69bb";
+    src = fetchFromGitHub {
+      owner = "babarot";
+      repo = "gh-infra";
+      rev = "d77097abbc5c90a11cde5d9099585fecd16c69bb";
+      fetchSubmodules = false;
+      sha256 = "sha256-pIDn6BI/pzHG1dRRuNX5IfHJYOey4mXmVVQ+7+9Wd2k=";
+    };
+    date = "2026-04-21";
   };
   google-workspace-cli = {
     pname = "google-workspace-cli";
@@ -64,35 +76,46 @@
   };
   playwright-cli = {
     pname = "playwright-cli";
-    version = "v0.1.6";
+    version = "v0.1.9";
     src = fetchFromGitHub {
       owner = "microsoft";
       repo = "playwright-cli";
-      rev = "v0.1.6";
+      rev = "v0.1.9";
       fetchSubmodules = false;
-      sha256 = "sha256-TUzWI0uOsm5HP4RKlMwm4bcYdS0fUkO6ceH82o1zSmU=";
+      sha256 = "sha256-w1mPi1CxmOsQAo6ruQAb7s+omrdG+Pnn0jZd7mt0yQA=";
     };
   };
   television = {
     pname = "television";
-    version = "0.15.5";
+    version = "0.15.6";
     src = fetchFromGitHub {
       owner = "alexpasmantier";
       repo = "television";
-      rev = "0.15.5";
+      rev = "0.15.6";
       fetchSubmodules = false;
-      sha256 = "sha256-p0FRLc55Ly6pkQfse1kNGpJhoXjMZIYVbNzDfjWW85Q=";
+      sha256 = "sha256-0oWgVfybsSLHDeAqTQP2ijJ/84XdcdqD0eqxIv6jk9o=";
     };
   };
   worktrunk = {
     pname = "worktrunk";
-    version = "v0.35.3";
+    version = "v0.44.0";
     src = fetchFromGitHub {
       owner = "max-sixty";
       repo = "worktrunk";
-      rev = "v0.35.3";
+      rev = "v0.44.0";
       fetchSubmodules = false;
-      sha256 = "sha256-ngal+DA2TW2K9P8HZYjICoCFZUuQT2WirwBMpZoybS0=";
+      sha256 = "sha256-YNqPjpMndm9W1mmBQzuXDDENgwnv39P6eUiQ++jmvZU=";
+    };
+  };
+  zenn-markdown-skill = {
+    pname = "zenn-markdown-skill";
+    version = "v0.1.0";
+    src = fetchFromGitHub {
+      owner = "shuntaka9576";
+      repo = "zenn-markdown-skill";
+      rev = "v0.1.0";
+      fetchSubmodules = false;
+      sha256 = "sha256-IGVJ/b9QfnFggSYc3RbpUG+UQnP+FiNqfmMqJQww1XY=";
     };
   };
 }

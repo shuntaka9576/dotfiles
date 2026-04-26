@@ -30,3 +30,12 @@ fetch.github = "googleworkspace/cli"
 [worktrunk]
 src.github = "max-sixty/worktrunk"
 fetch.github = "max-sixty/worktrunk"
+
+[gh-infra]
+src.git = "https://github.com/babarot/gh-infra.git"
+src.branch = "main"
+fetch.github = "babarot/gh-infra"
+
+[zenn-markdown-skill]
+src.github = "shuntaka9576/zenn-markdown-skill"
+fetch.github = "shuntaka9576/zenn-markdown-skill"

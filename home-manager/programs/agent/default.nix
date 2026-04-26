@@ -63,6 +63,15 @@ let
     "gws-workflow-weekly-digest"
   ];
 
+  # Third-party babarot/gh-infra skills
+  ghInfraSkills = [
+    "ci-cd"
+    "file-manifest"
+    "gh-infra"
+    "import-into"
+    "repository-manifest"
+  ];
+
   # Deploy targets for agent skills
   skillTargets = [
     ".config/claude/skills"
@@ -92,13 +101,21 @@ let
         }) gwsSkills
       );
 
+      ghInfraEntries = builtins.listToAttrs (
+        map (name: {
+          name = "${target}/${name}";
+          value.source = "${pkgs.sources.gh-infra.src}/skills/${name}";
+        }) ghInfraSkills
+      );
+
       thirdPartyEntries = {
         "${target}/playwright-cli".source = "${pkgs.sources.playwright-cli.src}/skills/playwright-cli";
         "${target}/skill-creator".source = "${pkgs.sources.anthropic-skills.src}/skills/skill-creator";
         "${target}/worktrunk".source = "${pkgs.sources.worktrunk.src}/skills/worktrunk";
+        "${target}/zenn-markdown".source = "${pkgs.sources.zenn-markdown-skill.src}/skills/zenn-markdown";
       };
     in
-    localEntries // gwsEntries // thirdPartyEntries;
+    localEntries // gwsEntries // ghInfraEntries // thirdPartyEntries;
 in
 {
   imports = [ ./mcp/default.nix ];

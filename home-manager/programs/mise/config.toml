@@ -3,3 +3,6 @@ idiomatic_version_file_enable_tools = ["node", "python", "go", "rust"]
 trusted_config_paths = ["~"]
 npm.bun = true
 python.precompiled_flavor = "install_only"
+
+[tools]
+hyperfine = "latest"
