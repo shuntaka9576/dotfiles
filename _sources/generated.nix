@@ -98,13 +98,13 @@
   };
   worktrunk = {
     pname = "worktrunk";
-    version = "v0.44.0";
+    version = "v0.45.0";
     src = fetchFromGitHub {
       owner = "max-sixty";
       repo = "worktrunk";
-      rev = "v0.44.0";
+      rev = "v0.45.0";
       fetchSubmodules = false;
-      sha256 = "sha256-YNqPjpMndm9W1mmBQzuXDDENgwnv39P6eUiQ++jmvZU=";
+      sha256 = "sha256-7ZM6k2gyQcmAae3N+MNfExplHBxq/mjad1445j0wQWI=";
     };
   };
   zenn-markdown-skill = {
