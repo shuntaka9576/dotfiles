@@ -61,6 +61,16 @@ PR_NUMBER=$(echo $PR_URL | grep -o '[0-9]*$')
 gh browse $PR_NUMBER
 ```
 
+## PRタイトルの形式
+
+Conventional Commits 形式で `type: description` のみ使用する（scope は付けない）。
+
+- OK: `fix: PR説明文の更新が動かない`
+- OK: `feat: ベースブランチ保護ガードを追加`
+- NG: `fix(api): ...`（`(scope)` を付けない）
+
+これは `aic` (`home-manager/programs/lazygit/ai-commit.sh`) のコミットメッセージ形式と統一する方針。
+
 ## PR説明の内容
 
 以下を含む説明を記載:
