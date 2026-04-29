@@ -4,3 +4,7 @@ home-manager/programs/agent/mcp/.mcp-general.json
 home-manager/programs/agent/skills/.system/
 home-manager/programs/agent/skills/cm-*
 .stamps/
+
+
+# APM dependencies
+apm_modules/

@@ -2,57 +2,64 @@ name: shuntaka-dotfiles
 version: 1.0.0
 dependencies:
   apm:
-    # Google Workspace スキル
-    - googleworkspace/cli/skills/gws-shared
-    - googleworkspace/cli/skills/gws-admin-reports
-    - googleworkspace/cli/skills/gws-calendar
-    - googleworkspace/cli/skills/gws-calendar-agenda
-    - googleworkspace/cli/skills/gws-calendar-insert
-    - googleworkspace/cli/skills/gws-chat
-    - googleworkspace/cli/skills/gws-chat-send
-    - googleworkspace/cli/skills/gws-classroom
-    - googleworkspace/cli/skills/gws-docs
-    - googleworkspace/cli/skills/gws-docs-write
-    - googleworkspace/cli/skills/gws-drive
-    - googleworkspace/cli/skills/gws-drive-upload
-    - googleworkspace/cli/skills/gws-events
-    - googleworkspace/cli/skills/gws-events-renew
-    - googleworkspace/cli/skills/gws-events-subscribe
-    - googleworkspace/cli/skills/gws-forms
-    - googleworkspace/cli/skills/gws-gmail
-    - googleworkspace/cli/skills/gws-gmail-forward
-    - googleworkspace/cli/skills/gws-gmail-reply
-    - googleworkspace/cli/skills/gws-gmail-reply-all
-    - googleworkspace/cli/skills/gws-gmail-send
-    - googleworkspace/cli/skills/gws-gmail-triage
-    - googleworkspace/cli/skills/gws-gmail-watch
-    - googleworkspace/cli/skills/gws-keep
-    - googleworkspace/cli/skills/gws-meet
-    - googleworkspace/cli/skills/gws-modelarmor
-    - googleworkspace/cli/skills/gws-modelarmor-create-template
-    - googleworkspace/cli/skills/gws-modelarmor-sanitize-prompt
-    - googleworkspace/cli/skills/gws-modelarmor-sanitize-response
-    - googleworkspace/cli/skills/gws-people
-    - googleworkspace/cli/skills/gws-sheets
-    - googleworkspace/cli/skills/gws-sheets-append
-    - googleworkspace/cli/skills/gws-sheets-read
-    - googleworkspace/cli/skills/gws-slides
-    - googleworkspace/cli/skills/gws-tasks
-    - googleworkspace/cli/skills/gws-workflow
-    - googleworkspace/cli/skills/gws-workflow-email-to-task
-    - googleworkspace/cli/skills/gws-workflow-file-announce
-    - googleworkspace/cli/skills/gws-workflow-meeting-prep
-    - googleworkspace/cli/skills/gws-workflow-standup-report
-    - googleworkspace/cli/skills/gws-workflow-weekly-digest
-    # gh-infra スキル
-    - babarot/gh-infra/skills/ci-cd
-    - babarot/gh-infra/skills/file-manifest
-    - babarot/gh-infra/skills/gh-infra
-    - babarot/gh-infra/skills/import-into
-    - babarot/gh-infra/skills/repository-manifest
-    # サードパーティ
-    - microsoft/playwright-cli/skills/playwright-cli
-    - anthropics/skills/skills/skill-creator
-    - max-sixty/worktrunk/skills/worktrunk
-    - shuntaka9576/zenn-markdown-skill/skills/zenn-markdown
+    # Google Workspace skills
+    - googleworkspace/cli/skills/gws-shared#a3768d0e82ad83cca2da97724e46bea4ff0e6dbd
+    - googleworkspace/cli/skills/gws-admin-reports#a3768d0e82ad83cca2da97724e46bea4ff0e6dbd
+    - googleworkspace/cli/skills/gws-calendar#a3768d0e82ad83cca2da97724e46bea4ff0e6dbd
+    - googleworkspace/cli/skills/gws-calendar-agenda#a3768d0e82ad83cca2da97724e46bea4ff0e6dbd
+    - googleworkspace/cli/skills/gws-calendar-insert#a3768d0e82ad83cca2da97724e46bea4ff0e6dbd
+    - googleworkspace/cli/skills/gws-chat#a3768d0e82ad83cca2da97724e46bea4ff0e6dbd
+    - googleworkspace/cli/skills/gws-chat-send#a3768d0e82ad83cca2da97724e46bea4ff0e6dbd
+    - googleworkspace/cli/skills/gws-classroom#a3768d0e82ad83cca2da97724e46bea4ff0e6dbd
+    - googleworkspace/cli/skills/gws-docs#a3768d0e82ad83cca2da97724e46bea4ff0e6dbd
+    - googleworkspace/cli/skills/gws-docs-write#a3768d0e82ad83cca2da97724e46bea4ff0e6dbd
+    - googleworkspace/cli/skills/gws-drive#a3768d0e82ad83cca2da97724e46bea4ff0e6dbd
+    - googleworkspace/cli/skills/gws-drive-upload#a3768d0e82ad83cca2da97724e46bea4ff0e6dbd
+    - googleworkspace/cli/skills/gws-events#a3768d0e82ad83cca2da97724e46bea4ff0e6dbd
+    - googleworkspace/cli/skills/gws-events-renew#a3768d0e82ad83cca2da97724e46bea4ff0e6dbd
+    - googleworkspace/cli/skills/gws-events-subscribe#a3768d0e82ad83cca2da97724e46bea4ff0e6dbd
+    - googleworkspace/cli/skills/gws-forms#a3768d0e82ad83cca2da97724e46bea4ff0e6dbd
+    - googleworkspace/cli/skills/gws-gmail#a3768d0e82ad83cca2da97724e46bea4ff0e6dbd
+    - googleworkspace/cli/skills/gws-gmail-forward#a3768d0e82ad83cca2da97724e46bea4ff0e6dbd
+    - googleworkspace/cli/skills/gws-gmail-reply#a3768d0e82ad83cca2da97724e46bea4ff0e6dbd
+    - googleworkspace/cli/skills/gws-gmail-reply-all#a3768d0e82ad83cca2da97724e46bea4ff0e6dbd
+    - googleworkspace/cli/skills/gws-gmail-send#a3768d0e82ad83cca2da97724e46bea4ff0e6dbd
+    - googleworkspace/cli/skills/gws-gmail-triage#a3768d0e82ad83cca2da97724e46bea4ff0e6dbd
+    - googleworkspace/cli/skills/gws-gmail-watch#a3768d0e82ad83cca2da97724e46bea4ff0e6dbd
+    - googleworkspace/cli/skills/gws-keep#a3768d0e82ad83cca2da97724e46bea4ff0e6dbd
+    - googleworkspace/cli/skills/gws-meet#a3768d0e82ad83cca2da97724e46bea4ff0e6dbd
+    - googleworkspace/cli/skills/gws-modelarmor#a3768d0e82ad83cca2da97724e46bea4ff0e6dbd
+    - googleworkspace/cli/skills/gws-modelarmor-create-template#a3768d0e82ad83cca2da97724e46bea4ff0e6dbd
+    - googleworkspace/cli/skills/gws-modelarmor-sanitize-prompt#a3768d0e82ad83cca2da97724e46bea4ff0e6dbd
+    - googleworkspace/cli/skills/gws-modelarmor-sanitize-response#a3768d0e82ad83cca2da97724e46bea4ff0e6dbd
+    - googleworkspace/cli/skills/gws-people#a3768d0e82ad83cca2da97724e46bea4ff0e6dbd
+    - googleworkspace/cli/skills/gws-sheets#a3768d0e82ad83cca2da97724e46bea4ff0e6dbd
+    - googleworkspace/cli/skills/gws-sheets-append#a3768d0e82ad83cca2da97724e46bea4ff0e6dbd
+    - googleworkspace/cli/skills/gws-sheets-read#a3768d0e82ad83cca2da97724e46bea4ff0e6dbd
+    - googleworkspace/cli/skills/gws-slides#a3768d0e82ad83cca2da97724e46bea4ff0e6dbd
+    - googleworkspace/cli/skills/gws-tasks#a3768d0e82ad83cca2da97724e46bea4ff0e6dbd
+    - googleworkspace/cli/skills/gws-workflow#a3768d0e82ad83cca2da97724e46bea4ff0e6dbd
+    - googleworkspace/cli/skills/gws-workflow-email-to-task#a3768d0e82ad83cca2da97724e46bea4ff0e6dbd
+    - googleworkspace/cli/skills/gws-workflow-file-announce#a3768d0e82ad83cca2da97724e46bea4ff0e6dbd
+    - googleworkspace/cli/skills/gws-workflow-meeting-prep#a3768d0e82ad83cca2da97724e46bea4ff0e6dbd
+    - googleworkspace/cli/skills/gws-workflow-standup-report#a3768d0e82ad83cca2da97724e46bea4ff0e6dbd
+    - googleworkspace/cli/skills/gws-workflow-weekly-digest#a3768d0e82ad83cca2da97724e46bea4ff0e6dbd
+    # gh-infra skills
+    - babarot/gh-infra/skills/ci-cd#d77097abbc5c90a11cde5d9099585fecd16c69bb # v0.13.0
+    - babarot/gh-infra/skills/file-manifest#d77097abbc5c90a11cde5d9099585fecd16c69bb # v0.13.0
+    - babarot/gh-infra/skills/gh-infra#d77097abbc5c90a11cde5d9099585fecd16c69bb # v0.13.0
+    - babarot/gh-infra/skills/import-into#d77097abbc5c90a11cde5d9099585fecd16c69bb # v0.13.0
+    - babarot/gh-infra/skills/repository-manifest#d77097abbc5c90a11cde5d9099585fecd16c69bb # v0.13.0
+    # Third-party
+    - microsoft/playwright-cli/skills/playwright-cli#ee24ded1770c7a4f7a8cbb8e22aac9812e151feb # v0.1.9
+    - anthropics/skills/skills/skill-creator#5128e1865d670f5d6c9cef000e6dfc4e951fb5b9
+    - max-sixty/worktrunk/skills/worktrunk#53fd6135397b146f5038876118fd3ab8b3a36521
+    - shuntaka9576/zenn-markdown-skill/skills/zenn-markdown#1ed499daf5d699db5ab7afc379917dc2e16ec360 # v0.1.0
+    # Claude Code plugins
+    # LSP plugins (typescript-lsp / rust-analyzer-lsp / pyright-lsp / gopls-lsp) are
+    # not APM-installable -- upstream contains only LICENSE/README, no plugin.json.
+    # Keep them in settings.json `enabledPlugins`.
+    - anthropics/claude-plugins-official/plugins/pr-review-toolkit#e73e9a6257ac5285a7218dc5e7e99b1ae2dc65e7
+    - anthropics/claude-plugins-official/plugins/feature-dev#e73e9a6257ac5285a7218dc5e7e99b1ae2dc65e7
+    - openai/codex-plugin-cc/plugins/codex#807e03ac9d5aa23bc395fdec8c3767500a86b3cf # v1.0.4
   mcp: []

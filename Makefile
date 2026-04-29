@@ -30,8 +30,9 @@ MISE_TOML := home-manager/programs/mise/mise.toml
 DEFAULT_PYTHON_PKGS := home-manager/programs/mise/.default-python-packages
 DEFAULT_GO_PKGS := home-manager/programs/mise/.default-go-packages
 CLAUDE_VERSION := home-manager/programs/claude/.claude-version
+APM_YML := home-manager/programs/agent/apm.yml
 
-tools: $(STAMPS_DIR)/tools-install $(STAMPS_DIR)/tools-default-packages $(STAMPS_DIR)/tools-claude
+tools: $(STAMPS_DIR)/tools-install $(STAMPS_DIR)/tools-default-packages $(STAMPS_DIR)/tools-claude $(STAMPS_DIR)/tools-apm
 
 $(STAMPS_DIR)/tools-install: $(MISE_TOML)
 	mise install
@@ -46,6 +47,11 @@ $(STAMPS_DIR)/tools-default-packages: $(DEFAULT_PYTHON_PKGS) $(DEFAULT_GO_PKGS) 
 
 $(STAMPS_DIR)/tools-claude: $(CLAUDE_VERSION)
 	@bash home-manager/programs/claude/install.sh
+	@mkdir -p $(STAMPS_DIR)
+	@touch $@
+
+$(STAMPS_DIR)/tools-apm: $(APM_YML) $(STAMPS_DIR)/tools-install
+	apm install -g
 	@mkdir -p $(STAMPS_DIR)
 	@touch $@
 
@@ -68,7 +74,12 @@ tools-claude:
 	@mkdir -p $(STAMPS_DIR)
 	@touch $(STAMPS_DIR)/tools-claude
 
+tools-apm:
+	apm install -g
+	@mkdir -p $(STAMPS_DIR)
+	@touch $(STAMPS_DIR)/tools-apm
+
 clean-stamps:
 	rm -rf $(STAMPS_DIR)
 
-.PHONY: all init update switch mcp clean-mcp gc fmt tools tools-install tools-upgrade tools-default-packages tools-claude clean-stamps
+.PHONY: all init update switch mcp clean-mcp gc fmt tools tools-install tools-upgrade tools-default-packages tools-claude tools-apm clean-stamps

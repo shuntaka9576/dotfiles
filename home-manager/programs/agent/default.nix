@@ -38,9 +38,10 @@ in
 {
   imports = [ ./mcp/default.nix ];
 
-  home.file =
-    builtins.foldl' (acc: target: acc // mkSkillEntries target) { } skillTargets
-    // {
-      ".apm/apm.yml".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/home-manager/programs/agent/apm.yml";
-    };
+  home.file = builtins.foldl' (acc: target: acc // mkSkillEntries target) { } skillTargets // {
+    ".apm/apm.yml".source =
+      config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/home-manager/programs/agent/apm.yml";
+    ".apm/apm.lock.yaml".source =
+      config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/home-manager/programs/agent/apm.lock.yaml";
+  };
 }
