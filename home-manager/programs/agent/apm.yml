@@ -1,0 +1,58 @@
+name: shuntaka-dotfiles
+version: 1.0.0
+dependencies:
+  apm:
+    # Google Workspace スキル
+    - googleworkspace/cli/skills/gws-shared
+    - googleworkspace/cli/skills/gws-admin-reports
+    - googleworkspace/cli/skills/gws-calendar
+    - googleworkspace/cli/skills/gws-calendar-agenda
+    - googleworkspace/cli/skills/gws-calendar-insert
+    - googleworkspace/cli/skills/gws-chat
+    - googleworkspace/cli/skills/gws-chat-send
+    - googleworkspace/cli/skills/gws-classroom
+    - googleworkspace/cli/skills/gws-docs
+    - googleworkspace/cli/skills/gws-docs-write
+    - googleworkspace/cli/skills/gws-drive
+    - googleworkspace/cli/skills/gws-drive-upload
+    - googleworkspace/cli/skills/gws-events
+    - googleworkspace/cli/skills/gws-events-renew
+    - googleworkspace/cli/skills/gws-events-subscribe
+    - googleworkspace/cli/skills/gws-forms
+    - googleworkspace/cli/skills/gws-gmail
+    - googleworkspace/cli/skills/gws-gmail-forward
+    - googleworkspace/cli/skills/gws-gmail-reply
+    - googleworkspace/cli/skills/gws-gmail-reply-all
+    - googleworkspace/cli/skills/gws-gmail-send
+    - googleworkspace/cli/skills/gws-gmail-triage
+    - googleworkspace/cli/skills/gws-gmail-watch
+    - googleworkspace/cli/skills/gws-keep
+    - googleworkspace/cli/skills/gws-meet
+    - googleworkspace/cli/skills/gws-modelarmor
+    - googleworkspace/cli/skills/gws-modelarmor-create-template
+    - googleworkspace/cli/skills/gws-modelarmor-sanitize-prompt
+    - googleworkspace/cli/skills/gws-modelarmor-sanitize-response
+    - googleworkspace/cli/skills/gws-people
+    - googleworkspace/cli/skills/gws-sheets
+    - googleworkspace/cli/skills/gws-sheets-append
+    - googleworkspace/cli/skills/gws-sheets-read
+    - googleworkspace/cli/skills/gws-slides
+    - googleworkspace/cli/skills/gws-tasks
+    - googleworkspace/cli/skills/gws-workflow
+    - googleworkspace/cli/skills/gws-workflow-email-to-task
+    - googleworkspace/cli/skills/gws-workflow-file-announce
+    - googleworkspace/cli/skills/gws-workflow-meeting-prep
+    - googleworkspace/cli/skills/gws-workflow-standup-report
+    - googleworkspace/cli/skills/gws-workflow-weekly-digest
+    # gh-infra スキル
+    - babarot/gh-infra/skills/ci-cd
+    - babarot/gh-infra/skills/file-manifest
+    - babarot/gh-infra/skills/gh-infra
+    - babarot/gh-infra/skills/import-into
+    - babarot/gh-infra/skills/repository-manifest
+    # サードパーティ
+    - microsoft/playwright-cli/skills/playwright-cli
+    - anthropics/skills/skills/skill-creator
+    - max-sixty/worktrunk/skills/worktrunk
+    - shuntaka9576/zenn-markdown-skill/skills/zenn-markdown
+  mcp: []
