@@ -13,7 +13,6 @@ let
     "aws-logs-investigate"
     "aws-profiles"
     "aws-vault-exec"
-    "codex-plan-review"
     "it-news-digest"
   ];
 

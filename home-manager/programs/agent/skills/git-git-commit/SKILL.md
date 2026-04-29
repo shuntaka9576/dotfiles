@@ -22,7 +22,7 @@ description: Git Commit
 1. Analyze staged changes with `git diff --cached`
 2. If there are no staged changes, notify and exit
 3. Check commit style with `git log`
-4. Please write a comprehensive commit message based on git diff
+4. Please write a comprehensive commit message based on git diff. Use Conventional Commits format without scope (`type: description`). Do NOT include parentheses for scope (e.g. write `fix: ...` not `fix(api): ...`)
 5. Run `git commit -m "message"`
 
 ## Constraints
