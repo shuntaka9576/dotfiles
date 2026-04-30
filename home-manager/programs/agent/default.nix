@@ -75,7 +75,6 @@ let
   skillTargets = [
     ".config/claude/skills"
     ".codex/skills"
-    ".config/opencode/skills"
     ".copilot/skills"
   ];
 
