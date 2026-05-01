@@ -3,15 +3,17 @@ model_reasoning_effort = "high"
 approval_policy = "on-request"
 sandbox_mode = "workspace-write"
 hide_agent_reasoning = true
-network_access = true
 
 notify = ["agentoast hook codex"]
 
 web_search = "live"
 suppress_unstable_features_warning = true
-model = "gpt-5.4"
+model = "gpt-5.5"
 personality = "pragmatic"
 project_doc_fallback_filenames = ["CLAUDE.md"]
+
+[sandbox_workspace_write]
+network_access = true
 
 [features]
 collaboration_modes = true

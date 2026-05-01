@@ -122,6 +122,7 @@
         "/System/Applications/Utilities/Activity Monitor.app"
         "/Applications/WezTerm.app"
         "/Applications/Google Chrome.app"
+        "/Applications/Codex.app"
       ];
     };
   };
