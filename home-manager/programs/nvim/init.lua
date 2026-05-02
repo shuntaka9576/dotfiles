@@ -95,6 +95,16 @@ vim.api.nvim_create_autocmd("FocusGained", {
   end,
 })
 
+-- When returning from another tmux pane to a terminal buffer (e.g. snacks lazygit popup),
+-- snap back into terminal mode so lazygit receives input directly.
+vim.api.nvim_create_autocmd("FocusGained", {
+  callback = function()
+    if vim.bo.buftype == "terminal" then
+      vim.cmd("startinsert")
+    end
+  end,
+})
+
 -- JS/TS 系は設定ファイルがある場合のみ LSP でフォーマット
 vim.api.nvim_create_autocmd("BufWritePre", {
   pattern = { "*.ts", "*.tsx", "*.mts", "*.js", "*.jsx" },
@@ -592,6 +602,56 @@ require("lazy").setup({
       -- vim.cmd([[colorscheme tokyonight]])
       vim.cmd([[colorscheme tokyonight-storm]])
     end,
+  },
+  {
+    "folke/snacks.nvim",
+    priority = 1000,
+    lazy = false,
+    opts = {
+      lazygit = {
+        configure = true,
+        win = {
+          style = "lazygit",
+          border = "rounded",
+          width = 0.9,
+          height = 0.9,
+          keys = {
+            hide_term = {
+              "<C-q>",
+              function(self)
+                self:hide()
+              end,
+              mode = "t",
+              desc = "Hide Lazygit popup (preserve process)",
+            },
+          },
+        },
+      },
+      terminal = {},
+    },
+    keys = {
+      {
+        "<leader>gg",
+        function()
+          Snacks.lazygit()
+        end,
+        desc = "Lazygit (popup, persistent)",
+      },
+      {
+        "<leader>gl",
+        function()
+          Snacks.lazygit.log()
+        end,
+        desc = "Lazygit log",
+      },
+      {
+        "<leader>gf",
+        function()
+          Snacks.lazygit.log_file()
+        end,
+        desc = "Lazygit current file history",
+      },
+    },
   },
   { "mattn/vim-goimports" },
   {
@@ -1110,6 +1170,26 @@ require("lazy").setup({
         ":lua require'nvim-tmux-navigation'.NvimTmuxNavigateLeft()<CR>",
         { noremap = true, silent = true }
       )
+
+      -- Terminal mode navigation. If the current window is a floating terminal
+      -- (e.g. snacks lazygit popup), close the float before navigating so the
+      -- cursor doesn't end up in a broken half-state on return. The terminal
+      -- buffer/process is preserved — re-open via <leader>gg.
+      local function term_nav(direction)
+        return function()
+          if vim.bo.buftype == "terminal" then
+            local cfg = vim.api.nvim_win_get_config(0)
+            if cfg.relative and cfg.relative ~= "" then
+              vim.api.nvim_win_close(0, false)
+            end
+          end
+          require("nvim-tmux-navigation")["NvimTmuxNavigate" .. direction]()
+        end
+      end
+      vim.keymap.set("t", "<C-w>h", term_nav("Left"), { noremap = true, silent = true })
+      vim.keymap.set("t", "<C-w>j", term_nav("Down"), { noremap = true, silent = true })
+      vim.keymap.set("t", "<C-w>k", term_nav("Up"), { noremap = true, silent = true })
+      vim.keymap.set("t", "<C-w>l", term_nav("Right"), { noremap = true, silent = true })
     end,
   },
   {
