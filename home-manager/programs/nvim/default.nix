@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ pkgs, config, lib, ... }:
 {
   programs.neovim = {
     enable = true;
@@ -8,10 +8,10 @@
     ];
     withNodeJs = true;
   };
-  home.file.".config/nvim/init.lua" = {
+  xdg.configFile."nvim/init.lua" = lib.mkForce {
     source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/home-manager/programs/nvim/init.lua";
   };
-  home.file.".config/nvim/lazy-lock.json" = {
+  xdg.configFile."nvim/lazy-lock.json" = {
     source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/home-manager/programs/nvim/lazy-lock.json";
   };
 }
