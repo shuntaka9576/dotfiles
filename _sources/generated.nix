@@ -8,15 +8,15 @@
 {
   anthropic-skills = {
     pname = "anthropic-skills";
-    version = "5128e1865d670f5d6c9cef000e6dfc4e951fb5b9";
+    version = "d230a6dd6eb1a0dbee9fec55e2f00a96e28dff81";
     src = fetchFromGitHub {
       owner = "anthropics";
       repo = "skills";
-      rev = "5128e1865d670f5d6c9cef000e6dfc4e951fb5b9";
+      rev = "d230a6dd6eb1a0dbee9fec55e2f00a96e28dff81";
       fetchSubmodules = false;
-      sha256 = "sha256-xFsg66TCtKzSgRIW6Ab771FWEIhei3jPgfE4byMiB44=";
+      sha256 = "sha256-6GyoLtVWna20TrLg7Y2R6wCWD6C4GbDtIB0jbl5VESY=";
     };
-    date = "2026-04-23";
+    date = "2026-05-03";
   };
   fd = {
     pname = "fd";
@@ -76,13 +76,13 @@
   };
   playwright-cli = {
     pname = "playwright-cli";
-    version = "v0.1.10";
+    version = "v0.1.11";
     src = fetchFromGitHub {
       owner = "microsoft";
       repo = "playwright-cli";
-      rev = "v0.1.10";
+      rev = "v0.1.11";
       fetchSubmodules = false;
-      sha256 = "sha256-dxv4bjwLKlsBC6pQhOOYyLD5Zo8WBvnqipLwJ0YpcDE=";
+      sha256 = "sha256-tmFXB4c3EXh6GLVphiQUbaUEjf2e0CI9k1YI9a2Yn2w=";
     };
   };
   television = {
@@ -98,13 +98,13 @@
   };
   worktrunk = {
     pname = "worktrunk";
-    version = "v0.46.1";
+    version = "v0.47.0";
     src = fetchFromGitHub {
       owner = "max-sixty";
       repo = "worktrunk";
-      rev = "v0.46.1";
+      rev = "v0.47.0";
       fetchSubmodules = false;
-      sha256 = "sha256-G8nRU6DtvGEBBn106OZsmxOVaJpFiVAv/h1AMJzqfnA=";
+      sha256 = "sha256-gN5M/H/O1KRXhw0RJ+tv2Dm4eqmue2QkJOpSNtJJ80k=";
     };
   };
   zenn-markdown-skill = {
