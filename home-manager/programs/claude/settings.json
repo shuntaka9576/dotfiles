@@ -61,7 +61,8 @@
     "gopls-lsp@claude-plugins-official": true,
     "codex@openai-codex": true,
     "pr-review-toolkit@claude-plugins-official": true,
-    "feature-dev@claude-plugins-official": true
+    "feature-dev@claude-plugins-official": true,
+    "figma@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "openai-codex": {
