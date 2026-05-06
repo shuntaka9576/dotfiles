@@ -1,7 +1,7 @@
 {
     "anthropic-skills": {
         "cargoLock": null,
-        "date": "2026-05-03",
+        "date": "2026-05-06",
         "extract": null,
         "name": "anthropic-skills",
         "passthru": null,
@@ -13,12 +13,12 @@
             "name": null,
             "owner": "anthropics",
             "repo": "skills",
-            "rev": "d230a6dd6eb1a0dbee9fec55e2f00a96e28dff81",
-            "sha256": "sha256-6GyoLtVWna20TrLg7Y2R6wCWD6C4GbDtIB0jbl5VESY=",
+            "rev": "d211d437443a7b2496a3dad9575e7dddd724c585",
+            "sha256": "sha256-5NGI0gojBGoXXus8CPhIrigyWSEYJg8gnCzWYl6PsLA=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "d230a6dd6eb1a0dbee9fec55e2f00a96e28dff81"
+        "version": "d211d437443a7b2496a3dad9575e7dddd724c585"
     },
     "fd": {
         "cargoLock": null,
@@ -43,7 +43,7 @@
     },
     "gh-infra": {
         "cargoLock": null,
-        "date": "2026-04-21",
+        "date": "2026-05-06",
         "extract": null,
         "name": "gh-infra",
         "passthru": null,
@@ -55,12 +55,12 @@
             "name": null,
             "owner": "babarot",
             "repo": "gh-infra",
-            "rev": "d77097abbc5c90a11cde5d9099585fecd16c69bb",
-            "sha256": "sha256-pIDn6BI/pzHG1dRRuNX5IfHJYOey4mXmVVQ+7+9Wd2k=",
+            "rev": "00e1f2d79f1ccd1a43a64992a87a1e6b12b1fd4e",
+            "sha256": "sha256-nKc+QG+A48zUka2zIi+XYgcWm3aBuovNynfYbD2mU6w=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "d77097abbc5c90a11cde5d9099585fecd16c69bb"
+        "version": "00e1f2d79f1ccd1a43a64992a87a1e6b12b1fd4e"
     },
     "google-workspace-cli": {
         "cargoLock": null,
