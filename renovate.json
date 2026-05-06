@@ -62,6 +62,16 @@
       "matchStrings": ["(?<depName>\\S+)==(?<currentValue>\\S+)"],
       "datasourceTemplate": "pypi",
       "versioningTemplate": "pep440"
+    },
+    {
+      "customType": "regex",
+      "fileMatch": ["home-manager/programs/agent/apm\\.yml$"],
+      "matchStrings": [
+        "-\\s+(?<depName>[\\w.-]+/[\\w.-]+)/[^#\\s]+#(?<currentDigest>[0-9a-f]{40})"
+      ],
+      "currentValueTemplate": "main",
+      "datasourceTemplate": "git-refs",
+      "packageNameTemplate": "https://github.com/{{depName}}"
     }
   ]
 }
