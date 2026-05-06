@@ -11,7 +11,7 @@
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixpkgs-deno-pinned.url = "github:NixOS/nixpkgs/dfd9566f82a6e1d55c30f861879186440614696e";
+    nixpkgs-deno-pinned.url = "github:NixOS/nixpkgs/0840f47235bf644aff1416cca9b6323862def8a1";
     git-wt = {
       url = "github:ahmedelgabri/git-wt";
       inputs.nixpkgs.follows = "nixpkgs";
