@@ -57,6 +57,9 @@ tools-install:
 tools-upgrade:
 	mise upgrade
 
+tools-prune:
+	mise prune -y
+
 tools-default-packages:
 	mise install python --force
 	mise install go --force
@@ -71,4 +74,6 @@ tools-claude:
 clean-stamps:
 	rm -rf $(STAMPS_DIR)
 
-.PHONY: all init update switch mcp clean-mcp gc fmt tools tools-install tools-upgrade tools-default-packages tools-claude clean-stamps
+clean: clean-mcp clean-stamps tools-prune gc
+
+.PHONY: all init update switch mcp clean-mcp gc fmt tools tools-install tools-upgrade tools-prune tools-default-packages tools-claude clean-stamps clean
