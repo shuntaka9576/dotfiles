@@ -76,13 +76,13 @@
   };
   playwright-cli = {
     pname = "playwright-cli";
-    version = "v0.1.11";
+    version = "v0.1.13";
     src = fetchFromGitHub {
       owner = "microsoft";
       repo = "playwright-cli";
-      rev = "v0.1.11";
+      rev = "v0.1.13";
       fetchSubmodules = false;
-      sha256 = "sha256-tmFXB4c3EXh6GLVphiQUbaUEjf2e0CI9k1YI9a2Yn2w=";
+      sha256 = "sha256-hHK/GR5Drlt+e0L9kyNmn+ht1PCrVH6WrVbxGB1Wsxg=";
     };
   };
   television = {

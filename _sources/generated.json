@@ -139,12 +139,12 @@
             "name": null,
             "owner": "microsoft",
             "repo": "playwright-cli",
-            "rev": "v0.1.11",
-            "sha256": "sha256-tmFXB4c3EXh6GLVphiQUbaUEjf2e0CI9k1YI9a2Yn2w=",
+            "rev": "v0.1.13",
+            "sha256": "sha256-hHK/GR5Drlt+e0L9kyNmn+ht1PCrVH6WrVbxGB1Wsxg=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "v0.1.11"
+        "version": "v0.1.13"
     },
     "television": {
         "cargoLock": null,
