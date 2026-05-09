@@ -1,25 +1,25 @@
 check_for_update_on_startup = false
 model_reasoning_effort = "high"
-approval_policy = "on-request"
+approval_policy = "never"
 sandbox_mode = "workspace-write"
 hide_agent_reasoning = true
-
-notify = ["agentoast hook codex"]
-
 web_search = "live"
 suppress_unstable_features_warning = true
 model = "gpt-5.5"
 personality = "pragmatic"
 project_doc_fallback_filenames = ["CLAUDE.md"]
 
+notify = ["agentoast hook codex"]
+
 [sandbox_workspace_write]
 network_access = true
 
 [features]
 collaboration_modes = true
+goals = true
 
-[projects."/Users/shuntaka/repos/github.com/shuntaka9576/memo"]
-trust_level = "trusted"
+[plugins."browser-use@openai-bundled"]
+enabled = true
 
-[projects."/Users/shuntaka/dotfiles"]
-trust_level = "trusted"
+[plugins."computer-use@openai-bundled"]
+enabled = true

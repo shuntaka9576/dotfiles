@@ -80,8 +80,9 @@ if (existsSync(opencodeBasePath)) {
 }
 
 // --- Codex ---
-// ベース設定を読み込み、MCP をマージして TOML で出力
-const codexBasePath = resolve(DOTFILES, "home-manager/programs/codex/config.toml")
+// ベース設定 + ローカル上書き + MCP をマージして TOML で出力
+const codexBasePath = resolve(DOTFILES, "home-manager/programs/codex/config.base.toml")
+const codexLocalPath = resolve(DOTFILES, "home-manager/programs/codex/config.local.toml")
 const codexOutPath = `${HOME}/.codex/config.toml`
 
 function toTomlKey(key: string): string {
@@ -268,17 +269,44 @@ function toCodexFormat(servers: Record<string, McpServer>) {
   return result
 }
 
+function deepMerge(
+  target: Record<string, unknown>,
+  source: Record<string, unknown>,
+): Record<string, unknown> {
+  for (const [key, value] of Object.entries(source)) {
+    const existing = target[key]
+    if (
+      typeof value === "object" &&
+      value !== null &&
+      !Array.isArray(value) &&
+      typeof existing === "object" &&
+      existing !== null &&
+      !Array.isArray(existing)
+    ) {
+      target[key] = deepMerge(existing as Record<string, unknown>, value as Record<string, unknown>)
+    } else {
+      target[key] = value
+    }
+  }
+  return target
+}
+
 if (existsSync(codexBasePath)) {
   const baseText = readFileSync(codexBasePath, "utf-8")
-  const base = parseSimpleToml(baseText)
+  const merged = parseSimpleToml(baseText)
+  // Layer in local-only overrides (gitignored).
+  if (existsSync(codexLocalPath)) {
+    const localText = readFileSync(codexLocalPath, "utf-8")
+    deepMerge(merged, parseSimpleToml(localText))
+  }
   // Remove existing mcp_servers
-  delete base.mcp_servers
+  delete merged.mcp_servers
   // Add new mcp_servers
   const codexMcp = toCodexFormat(mcpCode.mcpServers ?? {})
-  base.mcp_servers = codexMcp
+  merged.mcp_servers = codexMcp
   const outDir = dirname(codexOutPath)
   if (!existsSync(outDir)) mkdirSync(outDir, { recursive: true })
-  const tomlContent = toToml(base) + "\n"
+  const tomlContent = toToml(merged) + "\n"
   writeFileSync(codexOutPath, tomlContent)
   console.log(`[sync-mcp] Updated ${codexOutPath}`)
 }

@@ -1,0 +1,6 @@
+# Local-only Codex config overrides (gitignored).
+# Merged into ~/.codex/config.toml on top of config.base.toml by sync-mcp.ts.
+
+# Example: trust a private repo without committing its name.
+# [projects."/Users/you/repos/github.com/you/private-repo"]
+# trust_level = "trusted"
