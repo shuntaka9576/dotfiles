@@ -868,3 +868,9 @@ description = "AWS Bedrock Anthropicの推論プロファイル一覧"
 command = "aws bedrock list-inference-profiles --type-equals SYSTEM_DEFINED --query \"inferenceProfileSummaries[?contains(inferenceProfileId, 'anthropic')].[inferenceProfileId, status]\" --output table"
 tag = ['aws', 'bedrock', 'anthropic']
 output = ""
+
+[[snippets]]
+description = "Bedrock経由でclaude起動"
+command = "CLAUDE_CODE_USE_BEDROCK=1 claude"
+tag = ['aws', 'bedrock', 'claude']
+output = ""
