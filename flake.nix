@@ -12,6 +12,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixpkgs-deno-pinned.url = "github:NixOS/nixpkgs/dfd9566f82a6e1d55c30f861879186440614696e";
+    nixpkgs-mise-pinned.url = "github:NixOS/nixpkgs/b86751bc4085f48661017fa226dee99fab6c651b";
     git-wt = {
       url = "github:ahmedelgabri/git-wt";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -31,6 +32,7 @@
       self,
       nixpkgs,
       nixpkgs-deno-pinned,
+      nixpkgs-mise-pinned,
       home-manager,
       darwin,
       treefmt-nix,
@@ -82,7 +84,7 @@
     in
     {
       overlays.default = [
-        (import ./overlays { inherit self nixpkgs-deno-pinned; })
+        (import ./overlays { inherit self nixpkgs-deno-pinned nixpkgs-mise-pinned; })
         rust-overlay.overlays.default
       ];
 
