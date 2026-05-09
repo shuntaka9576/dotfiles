@@ -1,17 +1,7 @@
 #!/usr/bin/env -S deno run --allow-read --allow-env
 
-const BAR_CHAR = "⣿"
 const R = "\x1b[0m"
 const DIM = "\x1b[2m"
-function dimGradient(pct: number): string {
-  if (pct < 50) {
-    return "\x1b[38;2;0;60;24m"
-  } else if (pct < 80) {
-    return "\x1b[38;2;76;60;0m"
-  } else {
-    return "\x1b[38;2;76;18;18m"
-  }
-}
 
 function gradient(pct: number): string {
   if (pct < 50) {
@@ -23,17 +13,50 @@ function gradient(pct: number): string {
   }
 }
 
-function bar(pct: number, width = 10): string {
+const PIE = ["○", "◔", "◑", "◕", "●"] as const
+
+function pie(pct: number): string {
   pct = Math.min(Math.max(pct, 0), 100)
-  const full = Math.round((pct * width) / 100)
-  const filled = gradient(pct) + "█".repeat(full) + R
-  const empty = dimGradient(pct) + BAR_CHAR.repeat(width - full) + R
-  return filled + empty
+  const idx = Math.min(4, Math.floor((pct + 12.5) / 25))
+  return `${gradient(pct)}${PIE[idx]}${R}`
 }
 
-function fmt(label: string, pct: number): string {
+const EFFORT_IDX: Record<string, number> = {
+  low: 0,
+  medium: 1,
+  high: 2,
+  xhigh: 3,
+  max: 4,
+}
+
+function effortPie(level: string | undefined): string {
+  if (!level) return ""
+  const idx = EFFORT_IDX[level.toLowerCase()]
+  if (idx == null) return ""
+  return ` ${PIE[idx]}`
+}
+
+function formatRemaining(secs: number): string | null {
+  if (secs <= 0) return null
+  if (secs >= 86400) {
+    const d = Math.floor(secs / 86400)
+    const h = Math.floor((secs % 86400) / 3600)
+    return `${d}d${h}h`
+  }
+  const h = Math.floor(secs / 3600)
+  return `${h}h`
+}
+
+function fmtPie(label: string, pct: number, resetsAt?: number): string {
   const p = Math.round(pct)
-  return `${label} ${bar(pct)} ${gradient(pct)}${p}%${R}`
+  let suffix = ""
+  if (resetsAt != null) {
+    const remaining = formatRemaining(resetsAt - Math.floor(Date.now() / 1000))
+    if (remaining !== null) {
+      suffix = `${DIM}·${remaining}${R}`
+    }
+  }
+  return `${label} ${pie(pct)} ${gradient(pct)}${p}%${R}${suffix}`
 }
 
 // Read JSON input from stdin
@@ -65,22 +88,23 @@ function contextTag(size: number | undefined): string {
 
 const compact = shortModelName(data.model?.id, data.model?.display_name)
 if (compact !== "") {
-  parts.push(`${compact}${contextTag(data.context_window?.context_window_size)}`)
+  const tag = effortPie(data.effort?.level)
+  parts.push(`${compact}${contextTag(data.context_window?.context_window_size)}${tag}`)
 }
 
 const ctx = data.context_window?.used_percentage
 if (ctx != null) {
-  parts.push(fmt("ctx", ctx))
+  parts.push(fmtPie("ctx", ctx))
 }
 
 const five = data.rate_limits?.five_hour?.used_percentage
 if (five != null) {
-  parts.push(fmt("5h", five))
+  parts.push(fmtPie("5h", five, data.rate_limits?.five_hour?.resets_at))
 }
 
 const week = data.rate_limits?.seven_day?.used_percentage
 if (week != null) {
-  parts.push(fmt("7d", week))
+  parts.push(fmtPie("7d", week, data.rate_limits?.seven_day?.resets_at))
 }
 
 const output = parts.map((p) => ` ${p} `).join(`${DIM}│${R}`)
