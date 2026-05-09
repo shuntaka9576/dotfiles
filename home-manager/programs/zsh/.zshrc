@@ -200,6 +200,10 @@ export PLAYWRIGHT_MCP_OUTPUT_DIR="/tmp/playwright-cli"
 export PATH="/opt/homebrew/opt/php@7.4/bin:$PATH"
 # export PATH="$HOME/.cargo/bin:$PATH"
 
+# pnpm global (prepend before Nix profile so `pnpm add -g` packages take precedence)
+export PNPM_HOME="$HOME/.local/share/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+
 export CC=/usr/bin/clang
 
 export AWS_ASSUME_ROLE_TTL=12h
