@@ -27,6 +27,11 @@
         clone_target = "https://github.com/productdevbook/homebrew-tap";
         force_auto_update = true;
       }
+      {
+        name = "microsoft/apm";
+        clone_target = "https://github.com/microsoft/homebrew-apm";
+        force_auto_update = true;
+      }
     ];
     brews = [
       "shuntaka9576/tap/blocc"
@@ -34,6 +39,7 @@
       "shuntaka9576/tap/ddbrew"
 
       "kayac/tap/ecspresso"
+      "microsoft/apm/apm"
       "docker-credential-helper"
       "postgresql"
       "pstree"
