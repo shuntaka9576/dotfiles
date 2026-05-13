@@ -8,15 +8,15 @@
 {
   anthropic-skills = {
     pname = "anthropic-skills";
-    version = "d211d437443a7b2496a3dad9575e7dddd724c585";
+    version = "f458cee31a7577a47ba0c9a101976fa599385174";
     src = fetchFromGitHub {
       owner = "anthropics";
       repo = "skills";
-      rev = "d211d437443a7b2496a3dad9575e7dddd724c585";
+      rev = "f458cee31a7577a47ba0c9a101976fa599385174";
       fetchSubmodules = false;
-      sha256 = "sha256-5NGI0gojBGoXXus8CPhIrigyWSEYJg8gnCzWYl6PsLA=";
+      sha256 = "sha256-jKNYFom6R+Qw7LQ8vFPBe51JpqIP0tTSY8LM4aPlnT4=";
     };
-    date = "2026-05-06";
+    date = "2026-05-08";
   };
   fd = {
     pname = "fd";
@@ -87,24 +87,24 @@
   };
   television = {
     pname = "television";
-    version = "0.15.6";
+    version = "0.15.7";
     src = fetchFromGitHub {
       owner = "alexpasmantier";
       repo = "television";
-      rev = "0.15.6";
+      rev = "0.15.7";
       fetchSubmodules = false;
-      sha256 = "sha256-0oWgVfybsSLHDeAqTQP2ijJ/84XdcdqD0eqxIv6jk9o=";
+      sha256 = "sha256-VfCD3qXgueXqJbImOQbnY5JtAFVmzazBQ5Tgh4YIw4s=";
     };
   };
   worktrunk = {
     pname = "worktrunk";
-    version = "v0.48.0";
+    version = "v0.50.0";
     src = fetchFromGitHub {
       owner = "max-sixty";
       repo = "worktrunk";
-      rev = "v0.48.0";
+      rev = "v0.50.0";
       fetchSubmodules = false;
-      sha256 = "sha256-iNviDjcYfBooXKGCXfW8feEDOHTIV/DYRHpAWSDU2xY=";
+      sha256 = "sha256-ZCcrTXVVbB61r2tMTFwN3x5+C1i6T/wn28dviGr5rtM=";
     };
   };
   zenn-markdown-skill = {
