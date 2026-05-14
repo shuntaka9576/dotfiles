@@ -13,7 +13,7 @@ os:
 customCommands:
   - key: "<c-g>"
     context: "files"
-    description: "AI commit message (Claude haiku)"
+    description: "AI commit message (codex gpt-5.5)"
     command: "bash ~/dotfiles/home-manager/programs/lazygit/ai-commit.sh"
-    loadingText: "Generating commit message with Claude..."
+    loadingText: "Generating commit message with codex..."
     output: log
