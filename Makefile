@@ -8,6 +8,7 @@ update:
 	$(MAKE)
 
 switch:
+	@rm -f "$(HOME)/Library/Application Support/Claude/claude_desktop_config.json.backup"
 	sudo nix run github:LnL7/nix-darwin --extra-experimental-features 'flakes nix-command' -- switch --flake "path:.#shuntaka"
 
 mcp: clean-mcp
