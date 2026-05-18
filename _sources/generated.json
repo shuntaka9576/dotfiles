@@ -1,7 +1,7 @@
 {
     "anthropic-skills": {
         "cargoLock": null,
-        "date": "2026-05-08",
+        "date": "2026-05-17",
         "extract": null,
         "name": "anthropic-skills",
         "passthru": null,
@@ -13,12 +13,12 @@
             "name": null,
             "owner": "anthropics",
             "repo": "skills",
-            "rev": "f458cee31a7577a47ba0c9a101976fa599385174",
-            "sha256": "sha256-jKNYFom6R+Qw7LQ8vFPBe51JpqIP0tTSY8LM4aPlnT4=",
+            "rev": "6a5bb06904ab164a345e41c381fc9097954b83da",
+            "sha256": "sha256-GytrPFxw1PC2B0MILR6eNa83qAmxcjvLPkJzHQXT93g=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "f458cee31a7577a47ba0c9a101976fa599385174"
+        "version": "6a5bb06904ab164a345e41c381fc9097954b83da"
     },
     "fd": {
         "cargoLock": null,
@@ -181,12 +181,12 @@
             "name": null,
             "owner": "max-sixty",
             "repo": "worktrunk",
-            "rev": "v0.50.0",
-            "sha256": "sha256-ZCcrTXVVbB61r2tMTFwN3x5+C1i6T/wn28dviGr5rtM=",
+            "rev": "v0.51.0",
+            "sha256": "sha256-/6uN2GNGKsqeyubWTaGbepLRDVl0lSgBGJYeN3EPuUU=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "v0.50.0"
+        "version": "v0.51.0"
     },
     "zenn-markdown-skill": {
         "cargoLock": null,
