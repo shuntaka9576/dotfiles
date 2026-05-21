@@ -8,15 +8,15 @@
 {
   anthropic-skills = {
     pname = "anthropic-skills";
-    version = "6a5bb06904ab164a345e41c381fc9097954b83da";
+    version = "690f15cac7f7b4c055c5ab109c79ed9259934081";
     src = fetchFromGitHub {
       owner = "anthropics";
       repo = "skills";
-      rev = "6a5bb06904ab164a345e41c381fc9097954b83da";
+      rev = "690f15cac7f7b4c055c5ab109c79ed9259934081";
       fetchSubmodules = false;
-      sha256 = "sha256-GytrPFxw1PC2B0MILR6eNa83qAmxcjvLPkJzHQXT93g=";
+      sha256 = "sha256-GMXFJSePrpEvhzMQ82YI9Z10BDkuFK/lXUDELclvQ4c=";
     };
-    date = "2026-05-17";
+    date = "2026-05-19";
   };
   fd = {
     pname = "fd";
@@ -31,15 +31,15 @@
   };
   gh-infra = {
     pname = "gh-infra";
-    version = "287941ae5f0011290199c7bf9c53dbf4e3d77a54";
+    version = "d3f874dd62d1f90cfb3f475673e0bfcb02be7ff6";
     src = fetchFromGitHub {
       owner = "babarot";
       repo = "gh-infra";
-      rev = "287941ae5f0011290199c7bf9c53dbf4e3d77a54";
+      rev = "d3f874dd62d1f90cfb3f475673e0bfcb02be7ff6";
       fetchSubmodules = false;
-      sha256 = "sha256-aohCoTqA87aqDQ6ytFjnBc03j3NsDZE5je2L14HgX6Q=";
+      sha256 = "sha256-imn/EyIWkMs0lVpoLmM/3KYjRWZpNFy+L471oRV7NAs=";
     };
-    date = "2026-05-17";
+    date = "2026-05-20";
   };
   google-workspace-cli = {
     pname = "google-workspace-cli";
@@ -98,13 +98,13 @@
   };
   worktrunk = {
     pname = "worktrunk";
-    version = "v0.51.0";
+    version = "v0.52.0";
     src = fetchFromGitHub {
       owner = "max-sixty";
       repo = "worktrunk";
-      rev = "v0.51.0";
+      rev = "v0.52.0";
       fetchSubmodules = false;
-      sha256 = "sha256-/6uN2GNGKsqeyubWTaGbepLRDVl0lSgBGJYeN3EPuUU=";
+      sha256 = "sha256-KWBN/y4SmS/T1D+/T7/GqlqXi+J/KyYAVzyarSZqbhc=";
     };
   };
   zenn-markdown-skill = {
