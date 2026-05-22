@@ -181,12 +181,12 @@
             "name": null,
             "owner": "max-sixty",
             "repo": "worktrunk",
-            "rev": "v0.52.0",
-            "sha256": "sha256-KWBN/y4SmS/T1D+/T7/GqlqXi+J/KyYAVzyarSZqbhc=",
+            "rev": "v0.53.0",
+            "sha256": "sha256-1qWVELd9+XINjnzNNKeeCR9CxX/0DJVV6TS2cI0KhP4=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "v0.52.0"
+        "version": "v0.53.0"
     },
     "zenn-markdown-skill": {
         "cargoLock": null,
