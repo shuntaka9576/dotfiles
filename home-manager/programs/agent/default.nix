@@ -76,7 +76,7 @@ let
   skillTargets = [
     ".config/claude/skills"
     ".codex/skills"
-    ".copilot/skills"
+    ".agents/skills"
   ];
 
   skillsDir = "${config.home.homeDirectory}/dotfiles/home-manager/programs/agent/skills";
