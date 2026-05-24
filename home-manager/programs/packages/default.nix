@@ -29,6 +29,7 @@
       sqlx-cli
       cargo-make
       lefthook
+      gitleaks
       docker
       tokei
       ghq
