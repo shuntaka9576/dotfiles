@@ -75,7 +75,6 @@ let
   # Deploy targets for agent skills
   skillTargets = [
     ".config/claude/skills"
-    ".codex/skills"
     ".agents/skills"
   ];
 

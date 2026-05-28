@@ -99,7 +99,6 @@
   },
   "language": "Japanese",
   "alwaysThinkingEnabled": true,
-  "useAutoModeDuringPlan": true,
   "effortLevel": "xhigh",
   "autoMemoryEnabled": false,
   "showThinkingSummaries": true,
@@ -107,6 +106,7 @@
   "theme": "dark",
   "agentPushNotifEnabled": true,
   "skipAutoPermissionPrompt": true,
+  "useAutoModeDuringPlan": true,
   "feedbackSurveyState": {
     "lastShownTime": 1754030471611
   }
