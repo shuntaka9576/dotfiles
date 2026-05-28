@@ -6,11 +6,11 @@ export const NotifyPlugin = async ({
     strings: TemplateStringsArray,
     ...values: unknown[]
   ) => {
-    text: () => Promise<string>;
-    catch: (fn: () => string) => Promise<string>;
-    nothrow: () => { quiet: () => Promise<unknown> };
-  };
-  directory: string;
+    text: () => Promise<string>
+    catch: (fn: () => string) => Promise<string>
+    nothrow: () => { quiet: () => Promise<unknown> }
+  }
+  directory: string
 }) => {
   return {
     event: async ({ event }: { event: { type: string; properties: Record<string, unknown> } }) => {
@@ -18,9 +18,9 @@ export const NotifyPlugin = async ({
         type: event.type,
         properties: event.properties,
         directory,
-      });
+      })
 
-      await $`agentoast hook opencode ${payload}`.nothrow().quiet();
+      await $`agentoast hook opencode ${payload}`.nothrow().quiet()
     },
-  };
-};
+  }
+}

@@ -3,10 +3,7 @@
   "theme": "opencode",
   "model": "glm-4.7-free",
   "autoupdate": false,
-  "plugin": [
-    "opencode-cursor-oauth",
-    "@rama_nigg/open-cursor@latest"
-  ],
+  "plugin": ["opencode-cursor-oauth", "@rama_nigg/open-cursor@latest"],
   "provider": {
     "cursor": {
       "name": "Cursor"
@@ -111,10 +108,7 @@
   "mcp": {
     "chrome-devtools": {
       "type": "local",
-      "command": [
-        "/Users/shuntaka/.local/share/mise/shims/chrome-devtools-mcp",
-        "--autoConnect"
-      ]
+      "command": ["/Users/shuntaka/.local/share/mise/shims/chrome-devtools-mcp", "--autoConnect"]
     },
     "figma-remote": {
       "type": "remote",
