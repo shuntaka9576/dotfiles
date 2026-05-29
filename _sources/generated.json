@@ -1,7 +1,7 @@
 {
     "anthropic-skills": {
         "cargoLock": null,
-        "date": "2026-05-19",
+        "date": "2026-05-28",
         "extract": null,
         "name": "anthropic-skills",
         "passthru": null,
@@ -13,12 +13,12 @@
             "name": null,
             "owner": "anthropics",
             "repo": "skills",
-            "rev": "690f15cac7f7b4c055c5ab109c79ed9259934081",
-            "sha256": "sha256-GMXFJSePrpEvhzMQ82YI9Z10BDkuFK/lXUDELclvQ4c=",
+            "rev": "da20c92503b2e8ff1cf28ca81a0df4673debdbf7",
+            "sha256": "sha256-BiZvEV7VK1AwhiGg+pNMgTUQmt4exevLWwL0Brx4YyE=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "690f15cac7f7b4c055c5ab109c79ed9259934081"
+        "version": "da20c92503b2e8ff1cf28ca81a0df4673debdbf7"
     },
     "fd": {
         "cargoLock": null,
@@ -97,12 +97,12 @@
             "name": null,
             "owner": "mattn",
             "repo": "memo",
-            "rev": "v0.0.20",
-            "sha256": "sha256-9lYlxzT87tTDOXSifMF90Dytl6YHXtJIxJDH1enmXRA=",
+            "rev": "v0.0.22",
+            "sha256": "sha256-xI7R1meEGF5ZJDQvMgbMIkPVVZ2wSZxVt4KcG8fJQyI=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "v0.0.20"
+        "version": "v0.0.22"
     },
     "pet": {
         "cargoLock": null,

@@ -8,15 +8,15 @@
 {
   anthropic-skills = {
     pname = "anthropic-skills";
-    version = "690f15cac7f7b4c055c5ab109c79ed9259934081";
+    version = "da20c92503b2e8ff1cf28ca81a0df4673debdbf7";
     src = fetchFromGitHub {
       owner = "anthropics";
       repo = "skills";
-      rev = "690f15cac7f7b4c055c5ab109c79ed9259934081";
+      rev = "da20c92503b2e8ff1cf28ca81a0df4673debdbf7";
       fetchSubmodules = false;
-      sha256 = "sha256-GMXFJSePrpEvhzMQ82YI9Z10BDkuFK/lXUDELclvQ4c=";
+      sha256 = "sha256-BiZvEV7VK1AwhiGg+pNMgTUQmt4exevLWwL0Brx4YyE=";
     };
-    date = "2026-05-19";
+    date = "2026-05-28";
   };
   fd = {
     pname = "fd";
@@ -54,13 +54,13 @@
   };
   memo = {
     pname = "memo";
-    version = "v0.0.20";
+    version = "v0.0.22";
     src = fetchFromGitHub {
       owner = "mattn";
       repo = "memo";
-      rev = "v0.0.20";
+      rev = "v0.0.22";
       fetchSubmodules = false;
-      sha256 = "sha256-9lYlxzT87tTDOXSifMF90Dytl6YHXtJIxJDH1enmXRA=";
+      sha256 = "sha256-xI7R1meEGF5ZJDQvMgbMIkPVVZ2wSZxVt4KcG8fJQyI=";
     };
   };
   pet = {
