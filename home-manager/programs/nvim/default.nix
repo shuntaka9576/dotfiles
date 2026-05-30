@@ -12,6 +12,8 @@
       lazy-nvim
     ];
     withNodeJs = true;
+    withRuby = true;
+    withPython3 = true;
   };
   xdg.configFile."nvim/init.lua" = lib.mkForce {
     source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/home-manager/programs/nvim/init.lua";

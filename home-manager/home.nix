@@ -9,6 +9,7 @@
     inherit username;
     homeDirectory = lib.mkForce homeDirectory;
     stateVersion = "24.11";
+    enableNixpkgsReleaseCheck = false;
   };
 
   xdg.enable = true;

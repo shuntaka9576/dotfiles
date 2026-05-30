@@ -9,7 +9,7 @@ final: prev: {
   inherit
     (
       (import nixpkgs-deno-pinned {
-        inherit (final) system;
+        inherit (final.stdenv.hostPlatform) system;
       })
     )
     deno
@@ -21,7 +21,7 @@ final: prev: {
   inherit
     (
       (import nixpkgs-mise-pinned {
-        inherit (final) system;
+        inherit (final.stdenv.hostPlatform) system;
       })
     )
     mise
