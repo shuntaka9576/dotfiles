@@ -1,4 +1,25 @@
 {
+    "agentoast": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "agentoast",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "shuntaka9576",
+            "repo": "agentoast",
+            "rev": "v0.45.0",
+            "sha256": "sha256-8cEPQ3lJnVRxGnds/3I9AcpdLPOft+NNUKs0MUSWBkM=",
+            "sparseCheckout": [],
+            "type": "github"
+        },
+        "version": "v0.45.0"
+    },
     "anthropic-skills": {
         "cargoLock": null,
         "date": "2026-05-28",

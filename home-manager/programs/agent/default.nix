@@ -107,6 +107,7 @@ let
       );
 
       thirdPartyEntries = {
+        "${target}/agentoast-send".source = "${pkgs.sources.agentoast.src}/skills/agentoast-send";
         "${target}/playwright-cli".source = "${pkgs.sources.playwright-cli.src}/skills/playwright-cli";
         "${target}/skill-creator".source = "${pkgs.sources.anthropic-skills.src}/skills/skill-creator";
         "${target}/worktrunk".source = "${pkgs.sources.worktrunk.src}/skills/worktrunk";

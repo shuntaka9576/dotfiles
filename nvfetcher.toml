@@ -39,3 +39,7 @@ fetch.github = "babarot/gh-infra"
 [zenn-markdown-skill]
 src.github = "shuntaka9576/zenn-markdown-skill"
 fetch.github = "shuntaka9576/zenn-markdown-skill"
+
+[agentoast]
+src.github = "shuntaka9576/agentoast"
+fetch.github = "shuntaka9576/agentoast"

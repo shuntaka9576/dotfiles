@@ -6,6 +6,17 @@
   dockerTools,
 }:
 {
+  agentoast = {
+    pname = "agentoast";
+    version = "v0.45.0";
+    src = fetchFromGitHub {
+      owner = "shuntaka9576";
+      repo = "agentoast";
+      rev = "v0.45.0";
+      fetchSubmodules = false;
+      sha256 = "sha256-8cEPQ3lJnVRxGnds/3I9AcpdLPOft+NNUKs0MUSWBkM=";
+    };
+  };
   anthropic-skills = {
     pname = "anthropic-skills";
     version = "da20c92503b2e8ff1cf28ca81a0df4673debdbf7";
