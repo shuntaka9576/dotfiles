@@ -225,5 +225,6 @@
   "kiroAgent.modelSelection": "claude-opus-4.6",
   "workbench.colorTheme": "Dark Modern",
   "claudeCode.preferredLocation": "panel",
-  "window.autoDetectColorScheme": false
+  "window.autoDetectColorScheme": false,
+  "workbench.secondarySideBar.defaultVisibility": "hidden"
 }
