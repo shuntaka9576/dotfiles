@@ -13,16 +13,16 @@
             "name": null,
             "owner": "shuntaka9576",
             "repo": "agentoast",
-            "rev": "v0.45.0",
-            "sha256": "sha256-8cEPQ3lJnVRxGnds/3I9AcpdLPOft+NNUKs0MUSWBkM=",
+            "rev": "v0.46.1",
+            "sha256": "sha256-O4ixiaVq/svCDz8jy0W8nSBLfuu0kwEj++iyFSzIfZs=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "v0.45.0"
+        "version": "v0.46.1"
     },
     "anthropic-skills": {
         "cargoLock": null,
-        "date": "2026-05-28",
+        "date": "2026-06-09",
         "extract": null,
         "name": "anthropic-skills",
         "passthru": null,
@@ -34,12 +34,12 @@
             "name": null,
             "owner": "anthropics",
             "repo": "skills",
-            "rev": "da20c92503b2e8ff1cf28ca81a0df4673debdbf7",
-            "sha256": "sha256-BiZvEV7VK1AwhiGg+pNMgTUQmt4exevLWwL0Brx4YyE=",
+            "rev": "57546260929473d4e0d1c1bb75297be2fdfa1949",
+            "sha256": "sha256-1D9otXxDvmKASBu/vtAEWv6kE+U+jG4OxZpRLZbGEF0=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "da20c92503b2e8ff1cf28ca81a0df4673debdbf7"
+        "version": "57546260929473d4e0d1c1bb75297be2fdfa1949"
     },
     "fd": {
         "cargoLock": null,
@@ -160,12 +160,12 @@
             "name": null,
             "owner": "microsoft",
             "repo": "playwright-cli",
-            "rev": "v0.1.13",
-            "sha256": "sha256-hHK/GR5Drlt+e0L9kyNmn+ht1PCrVH6WrVbxGB1Wsxg=",
+            "rev": "v0.1.14",
+            "sha256": "sha256-wLE04sfPMh43IzIp6/HKBjloy3iSSanSYdYtklc6lQ4=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "v0.1.13"
+        "version": "v0.1.14"
     },
     "television": {
         "cargoLock": null,
@@ -181,12 +181,12 @@
             "name": null,
             "owner": "alexpasmantier",
             "repo": "television",
-            "rev": "0.15.7",
-            "sha256": "sha256-VfCD3qXgueXqJbImOQbnY5JtAFVmzazBQ5Tgh4YIw4s=",
+            "rev": "0.15.8",
+            "sha256": "sha256-Q+F+Q/DCIML1d5bupaoReVMmCldfp7rzmoVgaqg7bPw=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "0.15.7"
+        "version": "0.15.8"
     },
     "worktrunk": {
         "cargoLock": null,
@@ -202,12 +202,12 @@
             "name": null,
             "owner": "max-sixty",
             "repo": "worktrunk",
-            "rev": "v0.56.0",
-            "sha256": "sha256-6Soz41fyieWczJBNiv50UGUVMsvVej/1pMX3iPnvXg8=",
+            "rev": "v0.57.0",
+            "sha256": "sha256-3sbwf0Qbn0y3+qLSGBsAeCGIwYmQgBpZaXNG1cUYP08=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "v0.56.0"
+        "version": "v0.57.0"
     },
     "zenn-markdown-skill": {
         "cargoLock": null,

@@ -8,26 +8,26 @@
 {
   agentoast = {
     pname = "agentoast";
-    version = "v0.45.0";
+    version = "v0.46.1";
     src = fetchFromGitHub {
       owner = "shuntaka9576";
       repo = "agentoast";
-      rev = "v0.45.0";
+      rev = "v0.46.1";
       fetchSubmodules = false;
-      sha256 = "sha256-8cEPQ3lJnVRxGnds/3I9AcpdLPOft+NNUKs0MUSWBkM=";
+      sha256 = "sha256-O4ixiaVq/svCDz8jy0W8nSBLfuu0kwEj++iyFSzIfZs=";
     };
   };
   anthropic-skills = {
     pname = "anthropic-skills";
-    version = "da20c92503b2e8ff1cf28ca81a0df4673debdbf7";
+    version = "57546260929473d4e0d1c1bb75297be2fdfa1949";
     src = fetchFromGitHub {
       owner = "anthropics";
       repo = "skills";
-      rev = "da20c92503b2e8ff1cf28ca81a0df4673debdbf7";
+      rev = "57546260929473d4e0d1c1bb75297be2fdfa1949";
       fetchSubmodules = false;
-      sha256 = "sha256-BiZvEV7VK1AwhiGg+pNMgTUQmt4exevLWwL0Brx4YyE=";
+      sha256 = "sha256-1D9otXxDvmKASBu/vtAEWv6kE+U+jG4OxZpRLZbGEF0=";
     };
-    date = "2026-05-28";
+    date = "2026-06-09";
   };
   fd = {
     pname = "fd";
@@ -87,35 +87,35 @@
   };
   playwright-cli = {
     pname = "playwright-cli";
-    version = "v0.1.13";
+    version = "v0.1.14";
     src = fetchFromGitHub {
       owner = "microsoft";
       repo = "playwright-cli";
-      rev = "v0.1.13";
+      rev = "v0.1.14";
       fetchSubmodules = false;
-      sha256 = "sha256-hHK/GR5Drlt+e0L9kyNmn+ht1PCrVH6WrVbxGB1Wsxg=";
+      sha256 = "sha256-wLE04sfPMh43IzIp6/HKBjloy3iSSanSYdYtklc6lQ4=";
     };
   };
   television = {
     pname = "television";
-    version = "0.15.7";
+    version = "0.15.8";
     src = fetchFromGitHub {
       owner = "alexpasmantier";
       repo = "television";
-      rev = "0.15.7";
+      rev = "0.15.8";
       fetchSubmodules = false;
-      sha256 = "sha256-VfCD3qXgueXqJbImOQbnY5JtAFVmzazBQ5Tgh4YIw4s=";
+      sha256 = "sha256-Q+F+Q/DCIML1d5bupaoReVMmCldfp7rzmoVgaqg7bPw=";
     };
   };
   worktrunk = {
     pname = "worktrunk";
-    version = "v0.56.0";
+    version = "v0.57.0";
     src = fetchFromGitHub {
       owner = "max-sixty";
       repo = "worktrunk";
-      rev = "v0.56.0";
+      rev = "v0.57.0";
       fetchSubmodules = false;
-      sha256 = "sha256-6Soz41fyieWczJBNiv50UGUVMsvVej/1pMX3iPnvXg8=";
+      sha256 = "sha256-3sbwf0Qbn0y3+qLSGBsAeCGIwYmQgBpZaXNG1cUYP08=";
     };
   };
   zenn-markdown-skill = {
