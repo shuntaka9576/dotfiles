@@ -1,4 +1,9 @@
-{ pkgs, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 {
   system.stateVersion = 5;
   system.primaryUser = "shuntaka";
@@ -93,6 +98,21 @@
       "CompareMerge" = 478570084;
     };
   };
+
+  # Homebrew 6.0+ refuses to load formulae/casks from untrusted non-official taps.
+  # extraActivation runs before the homebrew activation script, so trust them here.
+  # Replace with homebrew.taps `trusted = true` once nix-darwin#1789 is merged.
+  system.activationScripts.extraActivation.text = ''
+    if [ -f /opt/homebrew/bin/brew ]; then
+      echo >&2 "Trusting Homebrew taps..."
+      PATH="/opt/homebrew/bin:$PATH" \
+      sudo \
+        --preserve-env=PATH \
+        --user=shuntaka \
+        --set-home \
+        /opt/homebrew/bin/brew trust --tap ${lib.escapeShellArgs (map (t: t.name) config.homebrew.taps)}
+    fi
+  '';
 
   system.keyboard = {
     enableKeyMapping = true;
