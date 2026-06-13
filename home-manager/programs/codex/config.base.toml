@@ -9,7 +9,7 @@ model = "gpt-5.5"
 personality = "pragmatic"
 project_doc_fallback_filenames = ["CLAUDE.md"]
 
-notify = ["agentoast hook codex"]
+notify = ["agentoast", "hook", "codex"]
 
 [sandbox_workspace_write]
 network_access = true
