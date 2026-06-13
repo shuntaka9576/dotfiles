@@ -8,13 +8,13 @@
 {
   agentoast = {
     pname = "agentoast";
-    version = "v0.46.1";
+    version = "v0.48.0";
     src = fetchFromGitHub {
       owner = "shuntaka9576";
       repo = "agentoast";
-      rev = "v0.46.1";
+      rev = "v0.48.0";
       fetchSubmodules = false;
-      sha256 = "sha256-O4ixiaVq/svCDz8jy0W8nSBLfuu0kwEj++iyFSzIfZs=";
+      sha256 = "sha256-AD1uzJ0EKKftIpAsbhjFc9Ye1ElENGy5pC/0id9SDVY=";
     };
   };
   anthropic-skills = {
