@@ -37,6 +37,11 @@
         clone_target = "https://github.com/microsoft/homebrew-apm";
         force_auto_update = true;
       }
+      {
+        name = "helvesec/rmux";
+        clone_target = "https://github.com/Helvesec/homebrew-rmux";
+        force_auto_update = true;
+      }
     ];
     brews = [
       "shuntaka9576/tap/blocc"
@@ -45,6 +50,7 @@
 
       "kayac/tap/ecspresso"
       "microsoft/apm/apm"
+      "helvesec/rmux/rmux"
       "docker-credential-helper"
       "postgresql"
       "pstree"
