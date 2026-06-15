@@ -23,7 +23,7 @@ return {
   cursor_blink_ease_in = "Constant",
   cursor_blink_ease_out = "Constant",
   front_end = "WebGpu",
-  notification_handling = "AlwaysShow",
+  notification_handling = "NeverShow",
   font = wezterm.font_with_fallback({
     { family = "PlemolJP Console NF", assume_emoji_presentation = false },
     { family = "Symbols Nerd Font Mono", assume_emoji_presentation = false },
