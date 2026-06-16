@@ -8,13 +8,13 @@
 {
   agentoast = {
     pname = "agentoast";
-    version = "v0.49.1";
+    version = "v0.49.2";
     src = fetchFromGitHub {
       owner = "shuntaka9576";
       repo = "agentoast";
-      rev = "v0.49.1";
+      rev = "v0.49.2";
       fetchSubmodules = false;
-      sha256 = "sha256-YDtW3i4j2D/cYCs/ibkV15ZyEYOApMFVJj0u1jT93u8=";
+      sha256 = "sha256-9IXhgkoQbw3jQZtAMg2BDfnnSIVKAWLlbTlIphSqe7w=";
     };
   };
   anthropic-skills = {
@@ -98,13 +98,13 @@
   };
   television = {
     pname = "television";
-    version = "0.15.8";
+    version = "0.15.9";
     src = fetchFromGitHub {
       owner = "alexpasmantier";
       repo = "television";
-      rev = "0.15.8";
+      rev = "0.15.9";
       fetchSubmodules = false;
-      sha256 = "sha256-Q+F+Q/DCIML1d5bupaoReVMmCldfp7rzmoVgaqg7bPw=";
+      sha256 = "sha256-JrQUFlhAAaB+VGP184I44hSsIyfCaTMNXxyPp0E5GM0=";
     };
   };
   worktrunk = {
