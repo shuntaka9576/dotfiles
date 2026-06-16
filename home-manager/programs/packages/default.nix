@@ -30,6 +30,7 @@
       cargo-make
       lefthook
       gitleaks
+      semgrep
       docker
       tokei
       ghq

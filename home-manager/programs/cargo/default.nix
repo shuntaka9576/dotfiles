@@ -11,7 +11,7 @@ let
   };
   television = pkgs.rustPlatform.buildRustPackage {
     inherit (pkgs.sources.television) pname version src;
-    cargoHash = "sha256-l4lFyU6psDt2+xFfVKsX13QwurZJ56xMhV1bm1Lw7MA=";
+    cargoHash = "sha256-eD+NQYY9QnCBZ+SiOCQbcLZ2p3uX0u/nEnft2f6NfU0=";
     doCheck = false;
   };
 in
