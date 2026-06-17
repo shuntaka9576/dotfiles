@@ -8,13 +8,13 @@
 {
   agentoast = {
     pname = "agentoast";
-    version = "v0.49.2";
+    version = "v0.49.4";
     src = fetchFromGitHub {
       owner = "shuntaka9576";
       repo = "agentoast";
-      rev = "v0.49.2";
+      rev = "v0.49.4";
       fetchSubmodules = false;
-      sha256 = "sha256-9IXhgkoQbw3jQZtAMg2BDfnnSIVKAWLlbTlIphSqe7w=";
+      sha256 = "sha256-YHIZArqfaITTvI+OnQl8v2Sh1ionZvWaVLSBLzAcpeU=";
     };
   };
   anthropic-skills = {
@@ -109,13 +109,13 @@
   };
   worktrunk = {
     pname = "worktrunk";
-    version = "v0.58.0";
+    version = "v0.59.0";
     src = fetchFromGitHub {
       owner = "max-sixty";
       repo = "worktrunk";
-      rev = "v0.58.0";
+      rev = "v0.59.0";
       fetchSubmodules = false;
-      sha256 = "sha256-yjya7J35wXZoT2CCZhH2Qhgu6vjFzH3pHinMCiyMhe4=";
+      sha256 = "sha256-wX5UyY8wT9rtdFFBaaGG+BQEhUcyu+wjL5kn4HXq5/c=";
     };
   };
   zenn-markdown-skill = {
