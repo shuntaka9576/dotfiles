@@ -13,12 +13,12 @@
             "name": null,
             "owner": "shuntaka9576",
             "repo": "agentoast",
-            "rev": "v0.49.4",
-            "sha256": "sha256-YHIZArqfaITTvI+OnQl8v2Sh1ionZvWaVLSBLzAcpeU=",
+            "rev": "v0.49.5",
+            "sha256": "sha256-oZD2JCoTfIFZZHGFQitMwNKGD4X8qk0VANY8hlOrnGs=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "v0.49.4"
+        "version": "v0.49.5"
     },
     "anthropic-skills": {
         "cargoLock": null,
@@ -202,12 +202,12 @@
             "name": null,
             "owner": "max-sixty",
             "repo": "worktrunk",
-            "rev": "v0.59.0",
-            "sha256": "sha256-wX5UyY8wT9rtdFFBaaGG+BQEhUcyu+wjL5kn4HXq5/c=",
+            "rev": "v0.60.0",
+            "sha256": "sha256-8GmyAx6+sItB/QMZ2GIafavwPVfTldrupJuMMXYSigg=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "v0.59.0"
+        "version": "v0.60.0"
     },
     "zenn-markdown-skill": {
         "cargoLock": null,
