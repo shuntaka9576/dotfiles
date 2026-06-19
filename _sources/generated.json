@@ -13,12 +13,12 @@
             "name": null,
             "owner": "shuntaka9576",
             "repo": "agentoast",
-            "rev": "v0.49.5",
-            "sha256": "sha256-oZD2JCoTfIFZZHGFQitMwNKGD4X8qk0VANY8hlOrnGs=",
+            "rev": "v0.49.6",
+            "sha256": "sha256-RqPpMT+qY8GiprcrEmq6wT73GTCjEmhUYShn8uG51BA=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "v0.49.5"
+        "version": "v0.49.6"
     },
     "anthropic-skills": {
         "cargoLock": null,
