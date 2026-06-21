@@ -1,7 +1,7 @@
 check_for_update_on_startup = false
 model_reasoning_effort = "high"
 approval_policy = "never"
-sandbox_mode = "workspace-write"
+sandbox_mode = "danger-full-access"
 hide_agent_reasoning = true
 web_search = "live"
 suppress_unstable_features_warning = true
@@ -10,9 +10,6 @@ personality = "pragmatic"
 project_doc_fallback_filenames = ["CLAUDE.md"]
 
 notify = ["agentoast", "hook", "codex"]
-
-[sandbox_workspace_write]
-network_access = true
 
 [features]
 collaboration_modes = true
