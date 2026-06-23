@@ -47,11 +47,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1781344404,
-        "narHash": "sha256-w3mNWAYEW6S6cQ4WGNX8bXuJB4OI6oNgnE6jdTcIcbw=",
+        "lastModified": 1781905941,
+        "narHash": "sha256-my7Ux4U12GKe4qxFQpjoqPH8Ck3tInTRLrx5WENhp7k=",
         "owner": "ahmedelgabri",
         "repo": "git-wt",
-        "rev": "bb4edfa755f8abe042529d4aaecebe70dc6a70b8",
+        "rev": "7528a130b53ad97b3fb4394fd4cd8b86a2b39b06",
         "type": "github"
       },
       "original": {
@@ -67,11 +67,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1781884383,
-        "narHash": "sha256-i27BvWCxpdunZVCpeO1WrGLw2chG8LlMiuD6FSYezjo=",
+        "lastModified": 1782051614,
+        "narHash": "sha256-xBRAhYLEXcjp8hM2tkkTTLb6PWU7VDxDoogl25g7Ezs=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "e061b008856927dacf7adfcd44343f353413cbd8",
+        "rev": "d1ccd0721ec599866622665f3651e19e6e2d4c6a",
         "type": "github"
       },
       "original": {
@@ -178,11 +178,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1781850613,
-        "narHash": "sha256-UL/f++6fbg1MSC63NSynUVsww+DSay0N5TsbFzLZIsQ=",
+        "lastModified": 1782012058,
+        "narHash": "sha256-9mWUnReOUXfKjZuJAL/bAFH3LUyECTRtXgSNVjRw3UY=",
         "owner": "oxalica",
         "repo": "rust-overlay",
-        "rev": "4baecb43a008cd004e5220a777e1724bd8d43e43",
+        "rev": "8534567325bd8a8d2928e6afd81e0a87d19efd3c",
         "type": "github"
       },
       "original": {
