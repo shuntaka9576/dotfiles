@@ -219,7 +219,7 @@
   "kiroAgent.trustedCommands": ["*"],
   "github.copilot.nextEditSuggestions.enabled": true,
   "git.autofetch": false,
-  "extensions.autoUpdate": false,
+  "extensions.autoUpdate": "off",
   "editor.unicodeHighlight.nonBasicASCII": false,
   "kiroAgent.agentAutonomy": "Supervised",
   "kiroAgent.modelSelection": "claude-opus-4.6",
