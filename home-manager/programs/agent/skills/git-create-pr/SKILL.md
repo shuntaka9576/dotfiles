@@ -1,7 +1,6 @@
 ---
 name: git-create-pr
 description: プルリクエスト作成
-argument-hint: ""
 ---
 
 # プルリクエスト作成
