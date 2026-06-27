@@ -19,15 +19,15 @@
   };
   anthropic-skills = {
     pname = "anthropic-skills";
-    version = "57546260929473d4e0d1c1bb75297be2fdfa1949";
+    version = "35414756ca55738e050562e272a6bbc6273aa926";
     src = fetchFromGitHub {
       owner = "anthropics";
       repo = "skills";
-      rev = "57546260929473d4e0d1c1bb75297be2fdfa1949";
+      rev = "35414756ca55738e050562e272a6bbc6273aa926";
       fetchSubmodules = false;
-      sha256 = "sha256-1D9otXxDvmKASBu/vtAEWv6kE+U+jG4OxZpRLZbGEF0=";
+      sha256 = "sha256-7JB/zj2rBFdvbbFuGIFDXnm1TN26E67fRO1deQvzs34=";
     };
-    date = "2026-06-09";
+    date = "2026-06-27";
   };
   fd = {
     pname = "fd";
@@ -109,13 +109,13 @@
   };
   worktrunk = {
     pname = "worktrunk";
-    version = "v0.61.0";
+    version = "v0.62.0";
     src = fetchFromGitHub {
       owner = "max-sixty";
       repo = "worktrunk";
-      rev = "v0.61.0";
+      rev = "v0.62.0";
       fetchSubmodules = false;
-      sha256 = "sha256-jyj9e1E9wPxcMuWl3/nDrPTh68yNRuxMOEFmvjE3dRk=";
+      sha256 = "sha256-Zw6Ogg16XZz4rQxb3YGXGN6dcwutnF5jeexDYb6j8vU=";
     };
   };
   zenn-markdown-skill = {
