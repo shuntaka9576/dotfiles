@@ -58,6 +58,10 @@
       ngrok
       go-jsonnet
       ssm-session-manager-plugin
+      kubectl
+      kubernetes-helm
+      kubectx
+      k9s
       shfmt
       nkf
       bruno

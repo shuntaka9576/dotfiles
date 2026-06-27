@@ -32,6 +32,7 @@ in
       tka = "tmux kill-server";
       "..." = "cd ../..";
       ecs = "ecspresso";
+      k = "kubectl";
       aic = "bash ~/dotfiles/home-manager/programs/lazygit/ai-commit.sh";
       wsc = "wt switch --create";
       wd = ''

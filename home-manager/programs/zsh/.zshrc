@@ -18,6 +18,20 @@ if [[ ! -s "$_mise_cache" ]]; then
 fi
 source "$_mise_cache"
 
+# kubernetes (kubectl/k9s/helm completion cached + KUBECONFIG)
+export KUBECONFIG=~/.kube/config-mycluster
+for _k8s_cmd in kubectl k9s helm; do
+  if command -v "$_k8s_cmd" >/dev/null 2>&1; then
+    _k8s_cache="$_zsh_cache_dir/${_k8s_cmd}.zsh"
+    if [[ ! -s "$_k8s_cache" ]]; then
+      "$_k8s_cmd" completion zsh > "$_k8s_cache"
+    fi
+    source "$_k8s_cache"
+  fi
+done
+unset _k8s_cmd _k8s_cache
+command -v kubectl >/dev/null 2>&1 && compdef __start_kubectl k
+
 # Custom prompt (Pure-like without git)
 setopt PROMPT_SUBST
 zmodload zsh/datetime
