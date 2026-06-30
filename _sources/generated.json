@@ -160,12 +160,12 @@
             "name": null,
             "owner": "microsoft",
             "repo": "playwright-cli",
-            "rev": "v0.1.14",
-            "sha256": "sha256-wLE04sfPMh43IzIp6/HKBjloy3iSSanSYdYtklc6lQ4=",
+            "rev": "v0.1.15",
+            "sha256": "sha256-M0NZ7h1kSIsxktMWe5n75LDc+MHZvSq6b+iRx6opakU=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "v0.1.14"
+        "version": "v0.1.15"
     },
     "television": {
         "cargoLock": null,
@@ -202,12 +202,12 @@
             "name": null,
             "owner": "max-sixty",
             "repo": "worktrunk",
-            "rev": "v0.63.0",
-            "sha256": "sha256-7tGXF3yow7FSVoA/Qs+kBX7Dw+kpNzz2lS+k1kxEM2k=",
+            "rev": "v0.64.0",
+            "sha256": "sha256-i/qmeBrcWudkJLouKf2x8K9FINVe8nC87uki+bJyY34=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "v0.63.0"
+        "version": "v0.64.0"
     },
     "zenn-markdown-skill": {
         "cargoLock": null,
