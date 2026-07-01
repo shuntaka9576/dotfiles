@@ -12,7 +12,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixpkgs-deno-pinned.url = "github:NixOS/nixpkgs/dfd9566f82a6e1d55c30f861879186440614696e";
-    nixpkgs-mise-pinned.url = "github:NixOS/nixpkgs/f4df4db3be2a5c3926b406d1b2ddeb5d88a6d94d";
+    nixpkgs-mise-pinned.url = "github:NixOS/nixpkgs/a284c5009aff8aec0a28debe51e8cbb68f58f9ea";
     git-wt = {
       url = "github:ahmedelgabri/git-wt";
       inputs.nixpkgs.follows = "nixpkgs";
