@@ -8,26 +8,26 @@
 {
   agentoast = {
     pname = "agentoast";
-    version = "v0.50.0";
+    version = "v0.50.1";
     src = fetchFromGitHub {
       owner = "shuntaka9576";
       repo = "agentoast";
-      rev = "v0.50.0";
+      rev = "v0.50.1";
       fetchSubmodules = false;
-      sha256 = "sha256-Z9wJDxNlZoX7ZGy/NMlMbN87M44QGwHIVHVeOOxpHfs=";
+      sha256 = "sha256-fnRTyPY/qvhROEcSCK1aHOOLegjzrB/4Ibuwx/WzNS0=";
     };
   };
   anthropic-skills = {
     pname = "anthropic-skills";
-    version = "35414756ca55738e050562e272a6bbc6273aa926";
+    version = "9d2f1ae187231d8199c64b5b762e1bdf2244733d";
     src = fetchFromGitHub {
       owner = "anthropics";
       repo = "skills";
-      rev = "35414756ca55738e050562e272a6bbc6273aa926";
+      rev = "9d2f1ae187231d8199c64b5b762e1bdf2244733d";
       fetchSubmodules = false;
-      sha256 = "sha256-7JB/zj2rBFdvbbFuGIFDXnm1TN26E67fRO1deQvzs34=";
+      sha256 = "sha256-U7Nt1xrFOSOEm4vuWmy4pVsEyvv+Hj4sv8yXOofmwAw=";
     };
-    date = "2026-06-27";
+    date = "2026-07-01";
   };
   fd = {
     pname = "fd";
