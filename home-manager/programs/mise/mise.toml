@@ -3,7 +3,7 @@ node.gpg_verify = false
 
 [tools]
 node = "24.16.0"
-python = "3.14.5"
+python = "3.14.6"
 rust = { version = "latest", targets = "aarch64-apple-darwin", components = "rust-src,clippy,rust-analyzer,llvm-tools" }
 go = "1.26.4"
 "npm:pnpm" = "11.9.0"
