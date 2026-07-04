@@ -10,7 +10,6 @@ minimumReleaseAgeExcludes = [
   "@google/gemini-cli",
   "@google/gemini-cli-core",
   "@modelcontextprotocol/sdk",
-  "@aikidosec/safe-chain",
   "@openai/codex",
   "@anthropic-ai/claude-code",
 ]

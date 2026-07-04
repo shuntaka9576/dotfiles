@@ -876,12 +876,6 @@ tag = ['aws', 'bedrock', 'claude']
 output = ""
 
 [[snippets]]
-description = "safe-chainの除外設定と最小パッケージ経過時間設定"
-command = 'SAFE_CHAIN_MINIMUM_PACKAGE_AGE_EXCLUSIONS="@aws-sdk/*,@smithy/*" SAFE_CHAIN_MINIMUM_PACKAGE_AGE_HOURS=24 <command>'
-tag = ['safe-chain', 'npm', 'security']
-output = ""
-
-[[snippets]]
 description = "kubectlでTiDBにポートフォワード"
 command = "kubectl -n tidb-cluster port-forward svc/basic-tidb 4000:4000"
 tag = ['kubectl', 'kubernetes', 'tidb', 'port-forward']

@@ -229,7 +229,6 @@ unsetopt BEEP
 # for rustup
 # . "$HOME/.cargo/env"
 
-source ~/.safe-chain/scripts/init-posix.sh
 export SSH_AUTH_SOCK=~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
 # source ~/.config/op/plugins.sh
 
