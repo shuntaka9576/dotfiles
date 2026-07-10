@@ -6,19 +6,19 @@
   },
   "env": {
     "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "1",
-    "CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY": "1",
     "CLAUDE_CODE_HIDE_CWD": "1",
     "CLAUDE_CODE_NEW_INIT": "1",
     "ENABLE_TOOL_SEARCH": "true",
     "CLAUDE_CODE_DISABLE_TERMINAL_TITLE": "1",
     "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1",
-    "CLAUDE_CODE_NO_FLICKER": "1",
     "CLAUDE_CODE_DISABLE_ADAPTIVE_THINKING": "1",
-    "CLAUDE_CODE_ENABLE_PROMPT_SUGGESTION": "false",
-    "CLAUDE_CODE_SUBAGENT_MODEL": "claude-sonnet-4-6",
+    "CLAUDE_CODE_SUBAGENT_MODEL": "claude-sonnet-5",
     "DISABLE_AUTOUPDATER": "1"
   },
-  "includeCoAuthoredBy": false,
+  "attribution": {
+    "commit": "",
+    "pr": ""
+  },
   "permissions": {
     "allow": [
       "Bash(aws logs get-*)",
@@ -30,7 +30,7 @@
     ],
     "defaultMode": "auto"
   },
-  "model": "claude-opus-4-7[1m]",
+  "model": "fable[1m]",
   "enableAllProjectMcpServers": true,
   "hooks": {
     "Stop": [
@@ -71,16 +71,15 @@
   },
   "language": "Japanese",
   "alwaysThinkingEnabled": true,
+  "promptSuggestionEnabled": false,
+  "feedbackSurveyRate": 0,
   "effortLevel": "xhigh",
+  "tui": "fullscreen",
   "autoMemoryEnabled": false,
   "showThinkingSummaries": true,
   "skipDangerousModePermissionPrompt": true,
   "theme": "dark",
   "agentPushNotifEnabled": true,
   "skipAutoPermissionPrompt": true,
-  "useAutoModeDuringPlan": true,
-  "feedbackSurveyState": {
-    "lastShownTime": 1754030471611
-  },
-  "tui": "fullscreen"
+  "useAutoModeDuringPlan": true
 }

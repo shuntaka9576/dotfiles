@@ -5,7 +5,7 @@
   ...
 }:
 let
-  claudeBase = "claude --chrome --dangerously-skip-permissions --teammate-mode tmux --enable-auto-mode";
+  claudeBase = "claude --chrome --dangerously-skip-permissions --enable-auto-mode";
 in
 {
   programs.zsh = {
