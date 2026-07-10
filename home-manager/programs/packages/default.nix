@@ -66,6 +66,7 @@
       nkf
       bruno
       zizmor
+      herdr
     ]
     ++ lib.optionals (system == "aarch64-darwin") [ reattach-to-user-namespace ];
 
