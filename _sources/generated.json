@@ -13,16 +13,16 @@
             "name": null,
             "owner": "shuntaka9576",
             "repo": "agentoast",
-            "rev": "v0.50.1",
-            "sha256": "sha256-fnRTyPY/qvhROEcSCK1aHOOLegjzrB/4Ibuwx/WzNS0=",
+            "rev": "v0.50.2",
+            "sha256": "sha256-fLxARUIJgXK9j2jOZ3F7J/8/JJnVl+MtwrnX399tWKE=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "v0.50.1"
+        "version": "v0.50.2"
     },
     "anthropic-skills": {
         "cargoLock": null,
-        "date": "2026-07-01",
+        "date": "2026-07-16",
         "extract": null,
         "name": "anthropic-skills",
         "passthru": null,
@@ -34,12 +34,12 @@
             "name": null,
             "owner": "anthropics",
             "repo": "skills",
-            "rev": "9d2f1ae187231d8199c64b5b762e1bdf2244733d",
-            "sha256": "sha256-U7Nt1xrFOSOEm4vuWmy4pVsEyvv+Hj4sv8yXOofmwAw=",
+            "rev": "fa0fa64bdc967915dc8399e803be67759e1e62b8",
+            "sha256": "sha256-QZ+zJkyLd/42rxgtJEZSUOz9R75Tse6UXW7G0nOkFS8=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "9d2f1ae187231d8199c64b5b762e1bdf2244733d"
+        "version": "fa0fa64bdc967915dc8399e803be67759e1e62b8"
     },
     "fd": {
         "cargoLock": null,
