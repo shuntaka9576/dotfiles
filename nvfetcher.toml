@@ -6,14 +6,6 @@ fetch.github = "knqyf263/pet"
 src.github = "mattn/memo"
 fetch.github = "mattn/memo"
 
-[fd]
-src.github = "sharkdp/fd"
-fetch.github = "sharkdp/fd"
-
-[television]
-src.github = "alexpasmantier/television"
-fetch.github = "alexpasmantier/television"
-
 [playwright-cli]
 src.github = "microsoft/playwright-cli"
 fetch.github = "microsoft/playwright-cli"

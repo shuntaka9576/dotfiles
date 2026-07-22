@@ -29,17 +29,6 @@
     };
     date = "2026-07-22";
   };
-  fd = {
-    pname = "fd";
-    version = "v10.4.2";
-    src = fetchFromGitHub {
-      owner = "sharkdp";
-      repo = "fd";
-      rev = "v10.4.2";
-      fetchSubmodules = false;
-      sha256 = "sha256-D1FCry69KqXgLxU4rVmgKjkM3JqeBRQDfbp3sJtVAbU=";
-    };
-  };
   gh-infra = {
     pname = "gh-infra";
     version = "d3f874dd62d1f90cfb3f475673e0bfcb02be7ff6";
@@ -94,17 +83,6 @@
       rev = "v0.1.17";
       fetchSubmodules = false;
       sha256 = "sha256-tc/2Qck3mm6BqWTu2lvvfsM0/BHO/Z0ZvCdFZ7QQqKI=";
-    };
-  };
-  television = {
-    pname = "television";
-    version = "0.15.9";
-    src = fetchFromGitHub {
-      owner = "alexpasmantier";
-      repo = "television";
-      rev = "0.15.9";
-      fetchSubmodules = false;
-      sha256 = "sha256-JrQUFlhAAaB+VGP184I44hSsIyfCaTMNXxyPp0E5GM0=";
     };
   };
   worktrunk = {

@@ -2,6 +2,7 @@
   self,
   nixpkgs-deno-pinned,
   nixpkgs-mise-pinned,
+  nixpkgs-cargo-watch-pinned,
 }:
 final: prev: {
   sources = final.callPackage "${self}/_sources/generated.nix" { };
@@ -25,6 +26,18 @@ final: prev: {
       })
     )
     mise
+    ;
+
+  # Pin cargo-watch to a stable channel that has cached binaries.
+  # unstable の cargo-watch は mac-notification-sys の linker が
+  # aarch64-darwin で SIGTRAP して source build できないため回避。
+  inherit
+    (
+      (import nixpkgs-cargo-watch-pinned {
+        inherit (final.stdenv.hostPlatform) system;
+      })
+    )
+    cargo-watch
     ;
 
   direnv = prev.direnv.overrideAttrs (oldAttrs: {

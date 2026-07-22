@@ -5,7 +5,6 @@
     "command": "~/dotfiles/home-manager/programs/claude/file-suggestion.sh"
   },
   "env": {
-    "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "1",
     "CLAUDE_CODE_HIDE_CWD": "1",
     "CLAUDE_CODE_NEW_INIT": "1",
     "ENABLE_TOOL_SEARCH": "true",
@@ -67,13 +66,19 @@
         "source": "github",
         "repo": "anthropics/skills"
       }
+    },
+    "harness": {
+      "source": {
+        "source": "github",
+        "repo": "shuntaka9576/harness-template-min"
+      }
     }
   },
   "language": "Japanese",
-  "alwaysThinkingEnabled": true,
-  "promptSuggestionEnabled": false,
   "feedbackSurveyRate": 0,
+  "alwaysThinkingEnabled": true,
   "effortLevel": "xhigh",
+  "promptSuggestionEnabled": false,
   "tui": "fullscreen",
   "autoMemoryEnabled": false,
   "showThinkingSummaries": true,

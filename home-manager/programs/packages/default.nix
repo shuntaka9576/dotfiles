@@ -3,6 +3,9 @@
   system,
   ...
 }:
+let
+  cloudinaryCli = pkgs.callPackage ./cloudinary-cli.nix { };
+in
 {
   home.packages =
     with pkgs;
@@ -67,6 +70,7 @@
       bruno
       zizmor
       herdr
+      cloudinaryCli
     ]
     ++ lib.optionals (system == "aarch64-darwin") [ reattach-to-user-namespace ];
 
