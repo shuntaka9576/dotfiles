@@ -19,15 +19,15 @@
   };
   anthropic-skills = {
     pname = "anthropic-skills";
-    version = "fa0fa64bdc967915dc8399e803be67759e1e62b8";
+    version = "1f630fdf9259cec4a14913127dfd7c3b69ef72eb";
     src = fetchFromGitHub {
       owner = "anthropics";
       repo = "skills";
-      rev = "fa0fa64bdc967915dc8399e803be67759e1e62b8";
+      rev = "1f630fdf9259cec4a14913127dfd7c3b69ef72eb";
       fetchSubmodules = false;
-      sha256 = "sha256-QZ+zJkyLd/42rxgtJEZSUOz9R75Tse6UXW7G0nOkFS8=";
+      sha256 = "sha256-XPXKd05IEiyTPlAPkowfJUal1UfRlxEHo+GgszgHQCI=";
     };
-    date = "2026-07-16";
+    date = "2026-07-22";
   };
   fd = {
     pname = "fd";
