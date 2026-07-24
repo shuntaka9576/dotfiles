@@ -12,7 +12,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixpkgs-deno-pinned.url = "github:NixOS/nixpkgs/dfd9566f82a6e1d55c30f861879186440614696e";
-    nixpkgs-mise-pinned.url = "github:NixOS/nixpkgs/f4df4db3be2a5c3926b406d1b2ddeb5d88a6d94d";
+    nixpkgs-mise-pinned.url = "github:NixOS/nixpkgs/33b11c7a186b10c33c84081306a55d07a386b8a9";
     nixpkgs-cargo-watch-pinned.url = "github:NixOS/nixpkgs/nixpkgs-26.05-darwin";
     nixpkgs-git-wt.url = "github:NixOS/nixpkgs/nixpkgs-26.05-darwin";
     git-wt = {
