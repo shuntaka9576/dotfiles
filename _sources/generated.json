@@ -13,16 +13,16 @@
             "name": null,
             "owner": "shuntaka9576",
             "repo": "agentoast",
-            "rev": "v0.50.2",
-            "sha256": "sha256-fLxARUIJgXK9j2jOZ3F7J/8/JJnVl+MtwrnX399tWKE=",
+            "rev": "v0.51.0",
+            "sha256": "sha256-mB5z8Xg6fnARvU3NxKIAYXLsQwmijIRp+kwvgrpumTY=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "v0.50.2"
+        "version": "v0.51.0"
     },
     "anthropic-skills": {
         "cargoLock": null,
-        "date": "2026-07-22",
+        "date": "2026-07-24",
         "extract": null,
         "name": "anthropic-skills",
         "passthru": null,
@@ -34,33 +34,12 @@
             "name": null,
             "owner": "anthropics",
             "repo": "skills",
-            "rev": "1f630fdf9259cec4a14913127dfd7c3b69ef72eb",
-            "sha256": "sha256-XPXKd05IEiyTPlAPkowfJUal1UfRlxEHo+GgszgHQCI=",
+            "rev": "b29e7cf65e5cb78a5ac33d582270551bc74a14eb",
+            "sha256": "sha256-RH2B03gj4kzw1j5LORezgUZPPu8mW+mWb+Kl2U7WUbY=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "1f630fdf9259cec4a14913127dfd7c3b69ef72eb"
-    },
-    "fd": {
-        "cargoLock": null,
-        "date": null,
-        "extract": null,
-        "name": "fd",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "deepClone": false,
-            "fetchSubmodules": false,
-            "leaveDotGit": false,
-            "name": null,
-            "owner": "sharkdp",
-            "repo": "fd",
-            "rev": "v10.4.2",
-            "sha256": "sha256-D1FCry69KqXgLxU4rVmgKjkM3JqeBRQDfbp3sJtVAbU=",
-            "sparseCheckout": [],
-            "type": "github"
-        },
-        "version": "v10.4.2"
+        "version": "b29e7cf65e5cb78a5ac33d582270551bc74a14eb"
     },
     "gh-infra": {
         "cargoLock": null,
@@ -167,27 +146,6 @@
         },
         "version": "v0.1.17"
     },
-    "television": {
-        "cargoLock": null,
-        "date": null,
-        "extract": null,
-        "name": "television",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "deepClone": false,
-            "fetchSubmodules": false,
-            "leaveDotGit": false,
-            "name": null,
-            "owner": "alexpasmantier",
-            "repo": "television",
-            "rev": "0.15.9",
-            "sha256": "sha256-JrQUFlhAAaB+VGP184I44hSsIyfCaTMNXxyPp0E5GM0=",
-            "sparseCheckout": [],
-            "type": "github"
-        },
-        "version": "0.15.9"
-    },
     "worktrunk": {
         "cargoLock": null,
         "date": null,
@@ -202,12 +160,12 @@
             "name": null,
             "owner": "max-sixty",
             "repo": "worktrunk",
-            "rev": "v0.68.0",
-            "sha256": "sha256-4mxWRNNrpM5Fo49Xm8ypzBS15Y8kPPFd1iPod1RwxjA=",
+            "rev": "v0.69.2",
+            "sha256": "sha256-pxSl2gfXkgrE19CUB0TPlYdBElBn7aaY0xLU+Fu3E1Q=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "v0.68.0"
+        "version": "v0.69.2"
     },
     "zenn-markdown-skill": {
         "cargoLock": null,

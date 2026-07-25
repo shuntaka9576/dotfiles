@@ -8,26 +8,26 @@
 {
   agentoast = {
     pname = "agentoast";
-    version = "v0.50.2";
+    version = "v0.51.0";
     src = fetchFromGitHub {
       owner = "shuntaka9576";
       repo = "agentoast";
-      rev = "v0.50.2";
+      rev = "v0.51.0";
       fetchSubmodules = false;
-      sha256 = "sha256-fLxARUIJgXK9j2jOZ3F7J/8/JJnVl+MtwrnX399tWKE=";
+      sha256 = "sha256-mB5z8Xg6fnARvU3NxKIAYXLsQwmijIRp+kwvgrpumTY=";
     };
   };
   anthropic-skills = {
     pname = "anthropic-skills";
-    version = "1f630fdf9259cec4a14913127dfd7c3b69ef72eb";
+    version = "b29e7cf65e5cb78a5ac33d582270551bc74a14eb";
     src = fetchFromGitHub {
       owner = "anthropics";
       repo = "skills";
-      rev = "1f630fdf9259cec4a14913127dfd7c3b69ef72eb";
+      rev = "b29e7cf65e5cb78a5ac33d582270551bc74a14eb";
       fetchSubmodules = false;
-      sha256 = "sha256-XPXKd05IEiyTPlAPkowfJUal1UfRlxEHo+GgszgHQCI=";
+      sha256 = "sha256-RH2B03gj4kzw1j5LORezgUZPPu8mW+mWb+Kl2U7WUbY=";
     };
-    date = "2026-07-22";
+    date = "2026-07-24";
   };
   gh-infra = {
     pname = "gh-infra";
@@ -87,13 +87,13 @@
   };
   worktrunk = {
     pname = "worktrunk";
-    version = "v0.68.0";
+    version = "v0.69.2";
     src = fetchFromGitHub {
       owner = "max-sixty";
       repo = "worktrunk";
-      rev = "v0.68.0";
+      rev = "v0.69.2";
       fetchSubmodules = false;
-      sha256 = "sha256-4mxWRNNrpM5Fo49Xm8ypzBS15Y8kPPFd1iPod1RwxjA=";
+      sha256 = "sha256-pxSl2gfXkgrE19CUB0TPlYdBElBn7aaY0xLU+Fu3E1Q=";
     };
   };
   zenn-markdown-skill = {
