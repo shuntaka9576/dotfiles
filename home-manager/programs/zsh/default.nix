@@ -62,6 +62,13 @@ in
         lazygit
       '';
       d = ''
+        print -n "agent [claude/codex] (default: claude): ";
+        read _agent_choice;
+        case "$_agent_choice" in
+          co|codex) AGENT_CMD="co" ;;
+          *) AGENT_CMD="c" ;;
+        esac
+
         _dir=''${PWD:t};
         _toplevel="$(git rev-parse --show-toplevel 2>/dev/null)";
         _repo=''${_toplevel:h:t};
@@ -75,7 +82,7 @@ in
         tmux rename-window "$WIN_NAME" \; split-window -v -p 20 -c "$PWD" \; select-pane -t "$NVIM_PANE";
         CLAUDE_TOP=$(tmux split-window -h -p 50 -c "$PWD" -P -F "#{pane_id}");
         CLAUDE_BOTTOM=$(tmux split-window -h -p 50 -c "$PWD" -P -F "#{pane_id}");
-        tmux send-keys -t "$NVIM_PANE" "nvim +'autocmd VimEnter * ++once NvimTreeToggle'" C-m \; send-keys -t "$CLAUDE_TOP" "c" C-m \; send-keys -t "$CLAUDE_BOTTOM" "c" C-m \; select-pane -t "$CLAUDE_TOP";
+        tmux send-keys -t "$NVIM_PANE" "nvim +'autocmd VimEnter * ++once NvimTreeToggle'" C-m \; send-keys -t "$CLAUDE_TOP" "$AGENT_CMD" C-m \; send-keys -t "$CLAUDE_BOTTOM" "$AGENT_CMD" C-m \; select-pane -t "$CLAUDE_TOP";
       '';
       dc = ''
         _dir=''${PWD:t};

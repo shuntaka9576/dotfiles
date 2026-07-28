@@ -84,6 +84,8 @@ if (existsSync(opencodeBasePath)) {
 const codexBasePath = resolve(DOTFILES, "home-manager/programs/codex/config.base.toml")
 const codexLocalPath = resolve(DOTFILES, "home-manager/programs/codex/config.local.toml")
 const codexOutPath = `${HOME}/.codex/config.toml`
+// Codex provides Figma through its plugin, so avoid a duplicate MCP connection and OAuth warning.
+const codexExcludedMcpServers = new Set(["figma-remote"])
 
 function toTomlKey(key: string): string {
   if (/^[a-zA-Z0-9_-]+$/.test(key)) return key
@@ -248,9 +250,14 @@ type CodexMcpServerRemote = {
 
 type CodexMcpServer = CodexMcpServerStdio | CodexMcpServerRemote
 
-function toCodexFormat(servers: Record<string, McpServer>) {
+function toCodexFormat(
+  servers: Record<string, McpServer>,
+  excludedServers: ReadonlySet<string> = new Set(),
+) {
   const result: Record<string, CodexMcpServer> = {}
   for (const [name, server] of Object.entries(servers)) {
+    if (excludedServers.has(name)) continue
+
     if (server.url) {
       result[name] = { url: server.url }
     } else if (server.command) {
@@ -302,7 +309,7 @@ if (existsSync(codexBasePath)) {
   // Remove existing mcp_servers
   delete merged.mcp_servers
   // Add new mcp_servers
-  const codexMcp = toCodexFormat(mcpCode.mcpServers ?? {})
+  const codexMcp = toCodexFormat(mcpCode.mcpServers ?? {}, codexExcludedMcpServers)
   merged.mcp_servers = codexMcp
   const outDir = dirname(codexOutPath)
   if (!existsSync(outDir)) mkdirSync(outDir, { recursive: true })

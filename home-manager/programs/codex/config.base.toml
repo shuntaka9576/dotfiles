@@ -1,22 +1,12 @@
 check_for_update_on_startup = false
-model_reasoning_effort = "high"
+model = "gpt-5.6-sol"
+personality = "pragmatic"
+
 approval_policy = "never"
 sandbox_mode = "danger-full-access"
-hide_agent_reasoning = true
 web_search = "live"
-suppress_unstable_features_warning = true
-model = "gpt-5.5"
-personality = "pragmatic"
+
+model_reasoning_effort = "high"
+hide_agent_reasoning = true
 project_doc_fallback_filenames = ["CLAUDE.md"]
-
 notify = ["agentoast", "hook", "codex"]
-
-[features]
-collaboration_modes = true
-goals = true
-
-[plugins."browser-use@openai-bundled"]
-enabled = true
-
-[plugins."computer-use@openai-bundled"]
-enabled = true
