@@ -19,7 +19,6 @@ in
       jq
       shellcheck
       wget
-      mosh
       duckdb
       ripgrep
       eza
