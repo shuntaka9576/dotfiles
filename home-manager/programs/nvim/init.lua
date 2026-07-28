@@ -864,6 +864,17 @@ require("lazy").setup({
     end,
   },
   {
+    "shuntaka9576/shuntaka-dev",
+    name = "shuntaka-preview.nvim",
+    cmd = { "ShuntakaPreview", "ShuntakaPreviewStop" },
+    config = function(plugin)
+      -- lazy.nvim cannot treat a monorepo subdirectory as a plugin, so add it to rtp
+      -- right before require (init-time append misses the first session after install)
+      vim.opt.rtp:append(plugin.dir .. "/tools/shuntaka-preview.nvim")
+      require("shuntaka-preview").setup({})
+    end,
+  },
+  {
     "shellRaining/hlchunk.nvim",
     event = { "BufReadPre", "BufNewFile" },
     config = function()

@@ -52,6 +52,7 @@ in
       # rust-bin.beta.latest.default
       # rustup
       nixfmt
+      nh
       noto-fonts
       noto-fonts-cjk-sans
       noto-fonts-cjk-serif

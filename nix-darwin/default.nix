@@ -7,6 +7,10 @@
 {
   system.stateVersion = 5;
   system.primaryUser = "shuntaka";
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
   security.sudo.extraConfig = ''
     shuntaka ALL = (ALL) NOPASSWD: ALL
   '';

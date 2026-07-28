@@ -21,7 +21,10 @@ clean-mcp:
 	rm -f home-manager/programs/agent/mcp/.mcp-code.json
 
 gc:
-	nix-collect-garbage -d
+	sudo -H nh clean all --keep 3
+
+gc-dry:
+	sudo -H nh clean all --keep 3 --dry
 
 fmt:
 	nix fmt
@@ -77,4 +80,4 @@ clean-stamps:
 
 clean: clean-mcp clean-stamps tools-prune gc
 
-.PHONY: all init update switch mcp clean-mcp gc fmt tools tools-install tools-upgrade tools-prune tools-default-packages tools-claude clean-stamps clean
+.PHONY: all init update switch mcp clean-mcp gc gc-dry fmt tools tools-install tools-upgrade tools-prune tools-default-packages tools-claude clean-stamps clean
