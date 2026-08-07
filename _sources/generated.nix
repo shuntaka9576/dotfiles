@@ -76,24 +76,24 @@
   };
   playwright-cli = {
     pname = "playwright-cli";
-    version = "v0.1.17";
+    version = "v0.1.18";
     src = fetchFromGitHub {
       owner = "microsoft";
       repo = "playwright-cli";
-      rev = "v0.1.17";
+      rev = "v0.1.18";
       fetchSubmodules = false;
-      sha256 = "sha256-tc/2Qck3mm6BqWTu2lvvfsM0/BHO/Z0ZvCdFZ7QQqKI=";
+      sha256 = "sha256-E/AzDJhD12PWSaA3iRY+hloPsSWnAw18gTa/ItVhr3E=";
     };
   };
   worktrunk = {
     pname = "worktrunk";
-    version = "v0.69.2";
+    version = "v0.71.0";
     src = fetchFromGitHub {
       owner = "max-sixty";
       repo = "worktrunk";
-      rev = "v0.69.2";
+      rev = "v0.71.0";
       fetchSubmodules = false;
-      sha256 = "sha256-pxSl2gfXkgrE19CUB0TPlYdBElBn7aaY0xLU+Fu3E1Q=";
+      sha256 = "sha256-TBna2iFzrVyfa4D/rDysQdZPS5yHEv/mTY8ixc4GilE=";
     };
   };
   zenn-markdown-skill = {
