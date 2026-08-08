@@ -16,6 +16,9 @@ _: {
         name = "shuntaka9576";
         email = "shuntaka9576@gmail.com";
       };
+      url."git@github.com:" = {
+        insteadOf = "https://github.com/";
+      };
       ghq = {
         root = "~/repos";
       };
