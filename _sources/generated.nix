@@ -19,15 +19,15 @@
   };
   anthropic-skills = {
     pname = "anthropic-skills";
-    version = "f379e5ad66e2febc1616cf8d6284666fecbe514e";
+    version = "41bbe19d1a1a7eaab5e7bb9050a417e5c6cffc8f";
     src = fetchFromGitHub {
       owner = "anthropics";
       repo = "skills";
-      rev = "f379e5ad66e2febc1616cf8d6284666fecbe514e";
+      rev = "41bbe19d1a1a7eaab5e7bb9050a417e5c6cffc8f";
       fetchSubmodules = false;
-      sha256 = "sha256-BDLEsQ4rJLspINlHpu0rkvaC4BHdwQ4QUTko/v+xbAE=";
+      sha256 = "sha256-sjgPv9tZZVTXPxZWaCOc7JwFceNn3C1ghy8mSHqgqB8=";
     };
-    date = "2026-08-17";
+    date = "2026-09-03";
   };
   gh-infra = {
     pname = "gh-infra";
@@ -76,24 +76,24 @@
   };
   playwright-cli = {
     pname = "playwright-cli";
-    version = "v0.1.18";
+    version = "v0.1.19";
     src = fetchFromGitHub {
       owner = "microsoft";
       repo = "playwright-cli";
-      rev = "v0.1.18";
+      rev = "v0.1.19";
       fetchSubmodules = false;
-      sha256 = "sha256-E/AzDJhD12PWSaA3iRY+hloPsSWnAw18gTa/ItVhr3E=";
+      sha256 = "sha256-pbv51ybubbjoIpKg0k7lfXfZ9Z+qdZI2lRhQeI+/mFA=";
     };
   };
   worktrunk = {
     pname = "worktrunk";
-    version = "v0.74.0";
+    version = "v0.76.0";
     src = fetchFromGitHub {
       owner = "max-sixty";
       repo = "worktrunk";
-      rev = "v0.74.0";
+      rev = "v0.76.0";
       fetchSubmodules = false;
-      sha256 = "sha256-uSGGnQ8VmkbSuy8RrdRXEc4thNTlXfdsIolp2wWrGAk=";
+      sha256 = "sha256-GrkBwQOhFur1TVUufUJdp9f7nHwUXGa46+YRsgK1S6w=";
     };
   };
   zenn-markdown-skill = {
