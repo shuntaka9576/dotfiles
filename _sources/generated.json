@@ -22,7 +22,7 @@
     },
     "anthropic-skills": {
         "cargoLock": null,
-        "date": "2026-08-17",
+        "date": "2026-09-03",
         "extract": null,
         "name": "anthropic-skills",
         "passthru": null,
@@ -34,12 +34,12 @@
             "name": null,
             "owner": "anthropics",
             "repo": "skills",
-            "rev": "f379e5ad66e2febc1616cf8d6284666fecbe514e",
-            "sha256": "sha256-BDLEsQ4rJLspINlHpu0rkvaC4BHdwQ4QUTko/v+xbAE=",
+            "rev": "41bbe19d1a1a7eaab5e7bb9050a417e5c6cffc8f",
+            "sha256": "sha256-sjgPv9tZZVTXPxZWaCOc7JwFceNn3C1ghy8mSHqgqB8=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "f379e5ad66e2febc1616cf8d6284666fecbe514e"
+        "version": "41bbe19d1a1a7eaab5e7bb9050a417e5c6cffc8f"
     },
     "gh-infra": {
         "cargoLock": null,
@@ -139,12 +139,12 @@
             "name": null,
             "owner": "microsoft",
             "repo": "playwright-cli",
-            "rev": "v0.1.18",
-            "sha256": "sha256-E/AzDJhD12PWSaA3iRY+hloPsSWnAw18gTa/ItVhr3E=",
+            "rev": "v0.1.19",
+            "sha256": "sha256-pbv51ybubbjoIpKg0k7lfXfZ9Z+qdZI2lRhQeI+/mFA=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "v0.1.18"
+        "version": "v0.1.19"
     },
     "worktrunk": {
         "cargoLock": null,
@@ -160,12 +160,12 @@
             "name": null,
             "owner": "max-sixty",
             "repo": "worktrunk",
-            "rev": "v0.74.0",
-            "sha256": "sha256-uSGGnQ8VmkbSuy8RrdRXEc4thNTlXfdsIolp2wWrGAk=",
+            "rev": "v0.76.0",
+            "sha256": "sha256-GrkBwQOhFur1TVUufUJdp9f7nHwUXGa46+YRsgK1S6w=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "v0.74.0"
+        "version": "v0.76.0"
     },
     "zenn-markdown-skill": {
         "cargoLock": null,
