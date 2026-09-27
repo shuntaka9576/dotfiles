@@ -7,7 +7,7 @@ python = "3.14.7"
 rust = { version = "latest", targets = "aarch64-apple-darwin", components = "rust-src,clippy,rust-analyzer,llvm-tools" }
 go = "1.27.1"
 "npm:pnpm" = "12.6.0"
-bun = "1.3.14"
+bun = "1.4.2"
 yarn = "4.18.0"
 gcloud = "559.0.0"
 
