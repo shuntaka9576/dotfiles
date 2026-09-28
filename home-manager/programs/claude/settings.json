@@ -7,10 +7,8 @@
   "env": {
     "CLAUDE_CODE_HIDE_CWD": "1",
     "CLAUDE_CODE_NEW_INIT": "1",
-    "ENABLE_TOOL_SEARCH": "true",
     "CLAUDE_CODE_DISABLE_TERMINAL_TITLE": "1",
     "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1",
-    "CLAUDE_CODE_DISABLE_ADAPTIVE_THINKING": "1",
     "CLAUDE_CODE_SUBAGENT_MODEL": "claude-sonnet-5",
     "DISABLE_AUTOUPDATER": "1"
   },
@@ -29,12 +27,11 @@
     ],
     "defaultMode": "auto"
   },
-  "model": "fable[1m]",
+  "model": "fable",
   "enableAllProjectMcpServers": true,
   "hooks": {
     "Stop": [
       {
-        "matcher": "",
         "hooks": [
           {
             "type": "command",
@@ -45,7 +42,6 @@
     ],
     "Notification": [
       {
-        "matcher": "",
         "hooks": [
           {
             "type": "command",
@@ -59,7 +55,6 @@
     "type": "command",
     "command": "~/dotfiles/home-manager/programs/claude/statusline/statusline.ts"
   },
-  "enabledPlugins": {},
   "extraKnownMarketplaces": {
     "anthropic-agent-skills": {
       "source": {
@@ -76,15 +71,12 @@
   },
   "language": "Japanese",
   "feedbackSurveyRate": 0,
-  "alwaysThinkingEnabled": true,
   "effortLevel": "xhigh",
   "promptSuggestionEnabled": false,
   "tui": "fullscreen",
   "autoMemoryEnabled": false,
   "showThinkingSummaries": true,
-  "skipDangerousModePermissionPrompt": true,
   "theme": "dark",
   "agentPushNotifEnabled": true,
-  "skipAutoPermissionPrompt": true,
-  "useAutoModeDuringPlan": true
+  "skipAutoPermissionPrompt": true
 }
