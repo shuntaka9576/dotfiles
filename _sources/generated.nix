@@ -31,15 +31,15 @@
   };
   gh-infra = {
     pname = "gh-infra";
-    version = "d3f874dd62d1f90cfb3f475673e0bfcb02be7ff6";
+    version = "14239618dc46bbc3c46ddac825b132191378f2c5";
     src = fetchFromGitHub {
       owner = "babarot";
       repo = "gh-infra";
-      rev = "d3f874dd62d1f90cfb3f475673e0bfcb02be7ff6";
+      rev = "14239618dc46bbc3c46ddac825b132191378f2c5";
       fetchSubmodules = false;
-      sha256 = "sha256-imn/EyIWkMs0lVpoLmM/3KYjRWZpNFy+L471oRV7NAs=";
+      sha256 = "sha256-v5+vPoDyTYo/LQxOAP1Vii/JlaMHvqwOLtrnTC5Ayjw=";
     };
-    date = "2026-05-20";
+    date = "2026-09-27";
   };
   google-workspace-cli = {
     pname = "google-workspace-cli";
@@ -76,24 +76,24 @@
   };
   playwright-cli = {
     pname = "playwright-cli";
-    version = "v0.1.21";
+    version = "v0.1.22";
     src = fetchFromGitHub {
       owner = "microsoft";
       repo = "playwright-cli";
-      rev = "v0.1.21";
+      rev = "v0.1.22";
       fetchSubmodules = false;
-      sha256 = "sha256-ZHfQBZQejJKNYfhszd99i4GIzEpomBzX0/HkMK2T8DQ=";
+      sha256 = "sha256-80xzHvf7BHGvoKvMdkGeNUsUrpZrpw5eryuQM8NKT/E=";
     };
   };
   worktrunk = {
     pname = "worktrunk";
-    version = "v0.79.0";
+    version = "v0.80.0";
     src = fetchFromGitHub {
       owner = "max-sixty";
       repo = "worktrunk";
-      rev = "v0.79.0";
+      rev = "v0.80.0";
       fetchSubmodules = false;
-      sha256 = "sha256-wOTNqyBd+qw+fREbY52BKtBod0Y50OHRKdHAGljXNuc=";
+      sha256 = "sha256-wT9V9A6ty4yCp/wJ9F92AC5SrsQzemEb8/d2NSjH/SY=";
     };
   };
   zenn-markdown-skill = {

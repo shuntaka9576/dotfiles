@@ -43,7 +43,7 @@
     },
     "gh-infra": {
         "cargoLock": null,
-        "date": "2026-05-20",
+        "date": "2026-09-27",
         "extract": null,
         "name": "gh-infra",
         "passthru": null,
@@ -55,12 +55,12 @@
             "name": null,
             "owner": "babarot",
             "repo": "gh-infra",
-            "rev": "d3f874dd62d1f90cfb3f475673e0bfcb02be7ff6",
-            "sha256": "sha256-imn/EyIWkMs0lVpoLmM/3KYjRWZpNFy+L471oRV7NAs=",
+            "rev": "14239618dc46bbc3c46ddac825b132191378f2c5",
+            "sha256": "sha256-v5+vPoDyTYo/LQxOAP1Vii/JlaMHvqwOLtrnTC5Ayjw=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "d3f874dd62d1f90cfb3f475673e0bfcb02be7ff6"
+        "version": "14239618dc46bbc3c46ddac825b132191378f2c5"
     },
     "google-workspace-cli": {
         "cargoLock": null,
@@ -139,12 +139,12 @@
             "name": null,
             "owner": "microsoft",
             "repo": "playwright-cli",
-            "rev": "v0.1.21",
-            "sha256": "sha256-ZHfQBZQejJKNYfhszd99i4GIzEpomBzX0/HkMK2T8DQ=",
+            "rev": "v0.1.22",
+            "sha256": "sha256-80xzHvf7BHGvoKvMdkGeNUsUrpZrpw5eryuQM8NKT/E=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "v0.1.21"
+        "version": "v0.1.22"
     },
     "worktrunk": {
         "cargoLock": null,
@@ -160,12 +160,12 @@
             "name": null,
             "owner": "max-sixty",
             "repo": "worktrunk",
-            "rev": "v0.79.0",
-            "sha256": "sha256-wOTNqyBd+qw+fREbY52BKtBod0Y50OHRKdHAGljXNuc=",
+            "rev": "v0.80.0",
+            "sha256": "sha256-wT9V9A6ty4yCp/wJ9F92AC5SrsQzemEb8/d2NSjH/SY=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "v0.79.0"
+        "version": "v0.80.0"
     },
     "zenn-markdown-skill": {
         "cargoLock": null,
