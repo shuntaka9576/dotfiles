@@ -19,27 +19,27 @@
   };
   anthropic-skills = {
     pname = "anthropic-skills";
-    version = "33375500bcea98d610eb30ce10ac4e59b89c390d";
+    version = "8a1541c4a3ffa5a20a5a91de0dcf3f0bab1d1ef4";
     src = fetchFromGitHub {
       owner = "anthropics";
       repo = "skills";
-      rev = "33375500bcea98d610eb30ce10ac4e59b89c390d";
+      rev = "8a1541c4a3ffa5a20a5a91de0dcf3f0bab1d1ef4";
       fetchSubmodules = false;
-      sha256 = "sha256-xUs7UX8pOcZwR0okaSbI/f8EE5F4Zi/BUd+nIZNafPc=";
+      sha256 = "sha256-PRBkTEGNwT73EFCvuTprzIBGiG+UGSYiaCkY7Ji13us=";
     };
-    date = "2026-09-24";
+    date = "2026-09-28";
   };
   gh-infra = {
     pname = "gh-infra";
-    version = "14239618dc46bbc3c46ddac825b132191378f2c5";
+    version = "7e6443a6432e78674d362a0b2fd4d1b6e190c7ab";
     src = fetchFromGitHub {
       owner = "babarot";
       repo = "gh-infra";
-      rev = "14239618dc46bbc3c46ddac825b132191378f2c5";
+      rev = "7e6443a6432e78674d362a0b2fd4d1b6e190c7ab";
       fetchSubmodules = false;
-      sha256 = "sha256-v5+vPoDyTYo/LQxOAP1Vii/JlaMHvqwOLtrnTC5Ayjw=";
+      sha256 = "sha256-1k7HVa86jR933lyEr1cLnb6ilLRqhGPvsPEJ8S2Of84=";
     };
-    date = "2026-09-27";
+    date = "2026-09-29";
   };
   google-workspace-cli = {
     pname = "google-workspace-cli";
