@@ -1,5 +1,5 @@
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "fs"
-import { parse as parseJsonc } from "jsonc-parser"
+import { applyEdits, modify as modifyJsonc } from "jsonc-parser"
 import { dirname, resolve } from "path"
 
 const HOME = process.env.HOME!
@@ -69,13 +69,14 @@ function toOpencodeFormat(servers: Record<string, McpServer>) {
 
 if (existsSync(opencodeBasePath)) {
   const baseText = readFileSync(opencodeBasePath, "utf-8")
-  const base = parseJsonc(baseText) as Record<string, unknown>
-  delete base.mcp
   const opencodeMcp = toOpencodeFormat(mcpCode.mcpServers ?? {})
-  const merged = { ...base, mcp: { servers: opencodeMcp } }
+  // コメントを残すため、mcp.servers だけを書き換える
+  const edits = modifyJsonc(baseText, ["mcp", "servers"], opencodeMcp, {
+    formattingOptions: { insertSpaces: true, tabSize: 2 },
+  })
   const outDir = dirname(opencodeOutPath)
   if (!existsSync(outDir)) mkdirSync(outDir, { recursive: true })
-  writeFileSync(opencodeOutPath, JSON.stringify(merged, null, 2) + "\n")
+  writeFileSync(opencodeOutPath, applyEdits(baseText, edits))
   console.log(`[sync-mcp] Updated ${opencodeOutPath}`)
 }
 

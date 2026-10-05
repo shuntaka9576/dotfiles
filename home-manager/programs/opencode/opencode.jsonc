@@ -1,7 +1,78 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "model": "glm-4.7-free",
+  // 既定モデル: SWE-bench Verified トップ級で、Kimi K3 より安い
+  "model": "fireworks-ai/accounts/fireworks/models/glm-5p3",
   "update": "disable",
+  "providers": {
+    // 認証は TUI の /connect → Fireworks AI で行う (キーは dotfiles に置かない)
+    "fireworks-ai": {
+      "models": {
+        // --- フロンティア枠: オープンウェイト最上位 ---
+        // GLM 5.3 (Z.ai): SWE-bench Verified 94.2%, 1M ctx, $1.4/$4.4
+        "accounts/fireworks/models/glm-5p3": {},
+        // Kimi K3 (Moonshot): 2.8T/104B active, オープンウェイト総合トップ, 1M ctx, $3/$15
+        "accounts/fireworks/models/kimi-k3": {},
+        // Qwen3.8 2.4T A95B (Alibaba): Qwen3.8-Max のオープンウェイト版, SWE-bench Pro 67.7, $2/$6
+        "accounts/fireworks/models/qwen3p8-2p4t-a95b": {},
+
+        // --- DGX Spark (128GB/台) 2-3 台でセルフホストできる枠 ---
+        // [2 台] GLM 5.3 Flash: 320B/18B active, NVFP4, $0.15/$0.5
+        "accounts/fireworks/models/glm-5p3-flash": {},
+        // [2 台] DeepSeek V4 Flash: 284B/13B active, vLLM 公式レシピあり, 1M ctx
+        // Fireworks の serverless では提供終了 ("Model not found ... not deployed") のため隠す
+        "accounts/fireworks/models/deepseek-v4-flash": { "disabled": true },
+        // [2-3 台] MiniMax M3: 428B/23B active, NVFP4, 512K ctx, $0.3/$1.2
+        "accounts/fireworks/models/minimax-m3": {},
+
+        // --- DGX Spark 4 台でセルフホストできる枠 ---
+        // DeepSeek V4.1 Flash: 552B/16B active (MXFP4 で約 510GB), 1M ctx, $0.3/$1.2
+        "accounts/fireworks/models/deepseek-v4p1-flash": {},
+        // Nemotron 3 Ultra (NVIDIA): 550B/55B active, NVFP4 ネイティブ, NVIDIA 公式の Spark 4 台手順あり, $0.6/$2.4
+        "accounts/fireworks/models/nemotron-3-ultra-nvfp4": {},
+
+        // --- 以下はモデル選択から隠す ---
+        // 旧世代
+        "accounts/fireworks/models/glm-5p2": { "disabled": true },
+        "accounts/fireworks/models/kimi-k2p7-code": { "disabled": true },
+        "accounts/fireworks/models/deepseek-v4-pro": { "disabled": true },
+        "accounts/fireworks/models/gpt-oss-120b": { "disabled": true },
+        // 今回の構成から外したもの
+        "accounts/fireworks/models/ember-1": { "disabled": true },
+        "accounts/fireworks/models/inkling": { "disabled": true },
+        "accounts/fireworks/models/nemotron-lightning-3p5-30b-a3b": { "disabled": true },
+        // 上の 2.4T A95B と同系統のクローズド版
+        "accounts/fireworks/models/qwen3p8-max": { "disabled": true },
+        // priority 版 (優先キュー課金)
+        "accounts/fireworks/models/deepseek-v4p1-flash-priority": { "disabled": true },
+        "accounts/fireworks/models/glm-5p3-priority": { "disabled": true },
+        "accounts/fireworks/models/glm-5p3-flash-priority": { "disabled": true },
+        "accounts/fireworks/models/gpt-oss-120b-priority": { "disabled": true },
+        "accounts/fireworks/models/inkling-priority": { "disabled": true },
+        "accounts/fireworks/models/kimi-k3-priority": { "disabled": true },
+        "accounts/fireworks/models/minimax-m3-priority": { "disabled": true },
+        "accounts/fireworks/models/nemotron-lightning-3p5-30b-a3b-priority": { "disabled": true },
+        "accounts/fireworks/models/qwen3p8-max-priority": { "disabled": true },
+        // ルーター (fast 版 / latest エイリアス)
+        "accounts/fireworks/routers/deepseek-flash-latest": { "disabled": true },
+        "accounts/fireworks/routers/deepseek-flash-latest-priority": { "disabled": true },
+        "accounts/fireworks/routers/glm-5p3-fast": { "disabled": true },
+        "accounts/fireworks/routers/glm-fast-latest": { "disabled": true },
+        "accounts/fireworks/routers/glm-flash-latest": { "disabled": true },
+        "accounts/fireworks/routers/glm-flash-latest-priority": { "disabled": true },
+        "accounts/fireworks/routers/glm-latest": { "disabled": true },
+        "accounts/fireworks/routers/glm-latest-priority": { "disabled": true },
+        "accounts/fireworks/routers/kimi-fast-latest": { "disabled": true },
+        "accounts/fireworks/routers/kimi-k3-fast": { "disabled": true },
+        "accounts/fireworks/routers/kimi-latest": { "disabled": true },
+        "accounts/fireworks/routers/kimi-latest-priority": { "disabled": true },
+        "accounts/fireworks/routers/minimax-latest": { "disabled": true },
+        "accounts/fireworks/routers/minimax-latest-priority": { "disabled": true },
+        "accounts/fireworks/routers/qwen-max-latest": { "disabled": true },
+        "accounts/fireworks/routers/qwen-max-latest-priority": { "disabled": true }
+      }
+    }
+  },
+  // mcp は sync-mcp.ts が mcp-code.jsonnet から生成する
   "mcp": {
     "servers": {}
   }
