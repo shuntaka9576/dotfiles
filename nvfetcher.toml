@@ -6,10 +6,6 @@ fetch.github = "knqyf263/pet"
 src.github = "mattn/memo"
 fetch.github = "mattn/memo"
 
-[playwright-cli]
-src.github = "microsoft/playwright-cli"
-fetch.github = "microsoft/playwright-cli"
-
 [anthropic-skills]
 src.git = "https://github.com/anthropics/skills.git"
 src.branch = "main"

@@ -125,27 +125,6 @@
         },
         "version": "v1.0.1"
     },
-    "playwright-cli": {
-        "cargoLock": null,
-        "date": null,
-        "extract": null,
-        "name": "playwright-cli",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "deepClone": false,
-            "fetchSubmodules": false,
-            "leaveDotGit": false,
-            "name": null,
-            "owner": "microsoft",
-            "repo": "playwright-cli",
-            "rev": "v0.1.22",
-            "sha256": "sha256-80xzHvf7BHGvoKvMdkGeNUsUrpZrpw5eryuQM8NKT/E=",
-            "sparseCheckout": [],
-            "type": "github"
-        },
-        "version": "v0.1.22"
-    },
     "worktrunk": {
         "cargoLock": null,
         "date": null,

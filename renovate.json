@@ -25,7 +25,7 @@
     },
     {
       "matchFileNames": ["**/mise.toml"],
-      "matchPackageNames": ["@openai/codex", "opencode-ai"],
+      "matchPackageNames": ["@openai/codex", "@opencode/cli"],
       "minimumReleaseAge": "0 days",
       "groupName": "immediate updates",
       "groupSlug": "immediate-updates"
@@ -41,7 +41,7 @@
       "matchFileNames": ["**/mise.toml"],
       "matchManagers": ["mise"],
       "matchDatasources": ["npm"],
-      "excludePackageNames": ["@openai/codex", "opencode-ai"],
+      "excludePackageNames": ["@openai/codex", "@opencode/cli"],
       "groupName": "mise npm packages",
       "groupSlug": "mise-npm",
       "schedule": ["every weekend"]

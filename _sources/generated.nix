@@ -74,17 +74,6 @@
       sha256 = "sha256-B0ilobUlp6UUXu6+lVqIHkbFnxVu33eXZFf+F7ODoQU=";
     };
   };
-  playwright-cli = {
-    pname = "playwright-cli";
-    version = "v0.1.22";
-    src = fetchFromGitHub {
-      owner = "microsoft";
-      repo = "playwright-cli";
-      rev = "v0.1.22";
-      fetchSubmodules = false;
-      sha256 = "sha256-80xzHvf7BHGvoKvMdkGeNUsUrpZrpw5eryuQM8NKT/E=";
-    };
-  };
   worktrunk = {
     pname = "worktrunk";
     version = "v0.80.0";

@@ -72,7 +72,7 @@ if (existsSync(opencodeBasePath)) {
   const base = parseJsonc(baseText) as Record<string, unknown>
   delete base.mcp
   const opencodeMcp = toOpencodeFormat(mcpCode.mcpServers ?? {})
-  const merged = { ...base, mcp: opencodeMcp }
+  const merged = { ...base, mcp: { servers: opencodeMcp } }
   const outDir = dirname(opencodeOutPath)
   if (!existsSync(outDir)) mkdirSync(outDir, { recursive: true })
   writeFileSync(opencodeOutPath, JSON.stringify(merged, null, 2) + "\n")

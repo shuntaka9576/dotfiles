@@ -5,10 +5,6 @@ local pythonpath = home + '/.local/share/mise/installs/python/3.13.7';
 
 {
   mcpServers: {
-    'figma-remote': {
-      type: 'http',
-      url: 'https://mcp.figma.com/mcp',
-    },
     // 'aws-knowledge-mcp-server': {
     //   command: nodepath + '/bin/npx',
     //   args: [
@@ -20,10 +16,6 @@ local pythonpath = home + '/.local/share/mise/installs/python/3.13.7';
     //     PATH: nodepath + '/bin:/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin',
     //   },
     // },
-    'chrome-devtools': {
-      command: home + '/.local/share/mise/shims/chrome-devtools-mcp',
-      args: ['--autoConnect'],
-    },
     // 'aws-knowledge-mcp-server': {
     //   command: 'mcp-remote',
     //   args: [
