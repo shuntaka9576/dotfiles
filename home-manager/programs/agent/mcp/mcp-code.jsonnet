@@ -1,19 +1,21 @@
 local secrets = import 'secrets.jsonnet';
 local home = std.extVar('HOME');
-local nodepath = home + '/.local/share/mise/installs/node/24.7.0';
-local pythonpath = home + '/.local/share/mise/installs/python/3.13.7';
+// mise の shim 経由にすることで node/python のバージョンを上げても追従する
+local shims = home + '/.local/share/mise/shims';
+local bin(name) = shims + '/' + name;
+local defaultPath = shims + ':/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin';
 
 {
   mcpServers: {
     // 'aws-knowledge-mcp-server': {
-    //   command: nodepath + '/bin/npx',
+    //   command: bin('npx'),
     //   args: [
     //     '-y',
     //     'mcp-remote',
     //     'https://knowledge-mcp.global.api.aws',
     //   ],
     //   env: {
-    //     PATH: nodepath + '/bin:/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin',
+    //     PATH: defaultPath,
     //   },
     // },
     // 'aws-knowledge-mcp-server': {
@@ -24,15 +26,6 @@ local pythonpath = home + '/.local/share/mise/installs/python/3.13.7';
     // },
     // 'aws-knowledge-mcp-server': {
     //   url: 'https://knowledge-mcp.global.api.aws',
-    // },
-    // serena: {
-    //   command: pythonpath + '/bin/uvx',
-    //   args: [
-    //     '--from',
-    //     'git+https://github.com/oraios/serena',
-    //     'serena',
-    //     'start-mcp-server',
-    //   ],
     // },
     // github: {
     //   type: 'http',
@@ -46,18 +39,18 @@ local pythonpath = home + '/.local/share/mise/installs/python/3.13.7';
     //   "args": ["-y", "figma-developer-mcp", "--figma-api-key=" + secrets.figma.token, "--stdio"]
     // },
     // playwright: {
-    //   command: nodepath + '/bin/npx',
+    //   command: bin('npx'),
     //   args: ['@playwright/mcp@latest'],
     // },
     // "awslabs.aws-documentation-mcp-server": {
-    //   command: pythonpath + '/bin/uvx',
+    //   command: bin('uvx'),
     //   args: ["awslabs.aws-documentation-mcp-server@latest"],
     //   env: {
     //     "FASTMCP_LOG_LEVEL": "ERROR"
     //   }
     // },
     // mysql: {
-    //   command: pythonpath + '/bin/mysql_mcp_server',
+    //   command: bin('mysql_mcp_server'),
     //   args: [],
     //   env: {
     //     MYSQL_HOST: secrets.mcp_server_mysql.host,
@@ -82,7 +75,7 @@ local pythonpath = home + '/.local/share/mise/installs/python/3.13.7';
     //   },
     // },
     // postgres: {
-    //   command: pythonpath + '/bin/uvx',
+    //   command: bin('uvx'),
     //   args: ['postgres-mcp-server'],
     //   env: {
     //     POSTGRES_HOST: secrets.postgres.host,
@@ -93,7 +86,7 @@ local pythonpath = home + '/.local/share/mise/installs/python/3.13.7';
     //   },
     // },
     // 'aws.dp-mcp': {
-    //   command: pythonpath + '/bin/uvx',
+    //   command: bin('uvx'),
     //   args: [
     //     'awslabs.aws-dataprocessing-mcp-server@latest',
     //     '--allow-write',

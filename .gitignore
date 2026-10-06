@@ -4,4 +4,5 @@ home-manager/programs/agent/mcp/.mcp-general.json
 home-manager/programs/agent/skills/.system/
 home-manager/programs/agent/skills/cm-*
 home-manager/programs/codex/config.local.toml
+home-manager/programs/opencode/.opencode.jsonc
 .stamps/

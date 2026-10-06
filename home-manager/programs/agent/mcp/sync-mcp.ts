@@ -22,9 +22,11 @@ if (existsSync(claudeJsonPath)) {
 }
 
 // --- Opencode ---
-// ベース設定を読み込み、MCP をマージして出力
+// ベース設定(リポジトリ管理)を読み込み、MCP をマージした生成物をリポジトリ内に出力する。
+// ~/.config/opencode/opencode.jsonc は home-manager がこの生成物へ symlink するため、
+// ベースファイルを直接書き換えない。
 const opencodeBasePath = resolve(DOTFILES, "home-manager/programs/opencode/opencode.jsonc")
-const opencodeOutPath = `${HOME}/.config/opencode/opencode.jsonc`
+const opencodeOutPath = resolve(DOTFILES, "home-manager/programs/opencode/.opencode.jsonc")
 
 type McpServer = {
   command?: string

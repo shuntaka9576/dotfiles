@@ -19,6 +19,7 @@ mcp: clean-mcp
 clean-mcp:
 	rm -f home-manager/programs/agent/mcp/.mcp-general.json
 	rm -f home-manager/programs/agent/mcp/.mcp-code.json
+	rm -f home-manager/programs/opencode/.opencode.jsonc
 
 gc:
 	sudo -H nh clean all --keep 3
