@@ -72,16 +72,16 @@
   "language": "Japanese",
   "feedbackSurveyRate": 0,
   "effortLevel": "xhigh",
+  "modelSettings": {
+    "claude-opus-5-5": {
+      "effortLevel": "xhigh"
+    }
+  },
   "promptSuggestionEnabled": false,
   "tui": "fullscreen",
   "autoMemoryEnabled": false,
   "showThinkingSummaries": true,
   "theme": "dark",
   "agentPushNotifEnabled": true,
-  "skipAutoPermissionPrompt": true,
-  "modelSettings": {
-    "claude-opus-5-5": {
-      "effortLevel": "high"
-    }
-  }
+  "skipAutoPermissionPrompt": true
 }
