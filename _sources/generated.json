@@ -22,7 +22,7 @@
     },
     "anthropic-skills": {
         "cargoLock": null,
-        "date": "2026-09-28",
+        "date": "2026-10-09",
         "extract": null,
         "name": "anthropic-skills",
         "passthru": null,
@@ -34,16 +34,16 @@
             "name": null,
             "owner": "anthropics",
             "repo": "skills",
-            "rev": "8a1541c4a3ffa5a20a5a91de0dcf3f0bab1d1ef4",
-            "sha256": "sha256-PRBkTEGNwT73EFCvuTprzIBGiG+UGSYiaCkY7Ji13us=",
+            "rev": "dbd4588f9e1033efb41dad4bef2f7947c8993d44",
+            "sha256": "sha256-+UIqBnzyeIOvJSKYaDaE3GYPEpLw7qQqyUw5S971AfU=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "8a1541c4a3ffa5a20a5a91de0dcf3f0bab1d1ef4"
+        "version": "dbd4588f9e1033efb41dad4bef2f7947c8993d44"
     },
     "gh-infra": {
         "cargoLock": null,
-        "date": "2026-09-29",
+        "date": "2026-10-22",
         "extract": null,
         "name": "gh-infra",
         "passthru": null,
@@ -55,12 +55,12 @@
             "name": null,
             "owner": "babarot",
             "repo": "gh-infra",
-            "rev": "7e6443a6432e78674d362a0b2fd4d1b6e190c7ab",
-            "sha256": "sha256-1k7HVa86jR933lyEr1cLnb6ilLRqhGPvsPEJ8S2Of84=",
+            "rev": "9725bf36667476a88ae594de48a9c26aaea4e201",
+            "sha256": "sha256-zzB8WoLitC3A2795kRK0Szb7gfAH+NqsQuBLEdChE7E=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "7e6443a6432e78674d362a0b2fd4d1b6e190c7ab"
+        "version": "9725bf36667476a88ae594de48a9c26aaea4e201"
     },
     "google-workspace-cli": {
         "cargoLock": null,
@@ -139,12 +139,12 @@
             "name": null,
             "owner": "max-sixty",
             "repo": "worktrunk",
-            "rev": "v0.80.0",
-            "sha256": "sha256-wT9V9A6ty4yCp/wJ9F92AC5SrsQzemEb8/d2NSjH/SY=",
+            "rev": "v0.81.0",
+            "sha256": "sha256-Sgim8WgH5nGr1GhSZRtwkRu87b/S2W9gp7eHgtTGBAo=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "v0.80.0"
+        "version": "v0.81.0"
     },
     "zenn-markdown-skill": {
         "cargoLock": null,
