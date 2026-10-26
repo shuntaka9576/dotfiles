@@ -43,7 +43,7 @@
     },
     "gh-infra": {
         "cargoLock": null,
-        "date": "2026-10-22",
+        "date": "2026-10-26",
         "extract": null,
         "name": "gh-infra",
         "passthru": null,
@@ -55,12 +55,12 @@
             "name": null,
             "owner": "babarot",
             "repo": "gh-infra",
-            "rev": "9725bf36667476a88ae594de48a9c26aaea4e201",
-            "sha256": "sha256-zzB8WoLitC3A2795kRK0Szb7gfAH+NqsQuBLEdChE7E=",
+            "rev": "4d5791f7ff5169e0bbcd78b901d53b1bec07e44f",
+            "sha256": "sha256-LxiKb1VMfKHjileBO44TcJC7MRiYGL5A2zfnKw14zk4=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "9725bf36667476a88ae594de48a9c26aaea4e201"
+        "version": "4d5791f7ff5169e0bbcd78b901d53b1bec07e44f"
     },
     "google-workspace-cli": {
         "cargoLock": null,
