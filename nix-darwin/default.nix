@@ -97,6 +97,7 @@
       "wezterm"
       "screen-studio"
       "termius"
+      "windows-app"
       "aqua-voice"
       "codex-app"
       "nani"

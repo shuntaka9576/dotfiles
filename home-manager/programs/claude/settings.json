@@ -83,5 +83,40 @@
   "showThinkingSummaries": true,
   "theme": "dark",
   "agentPushNotifEnabled": true,
-  "skipAutoPermissionPrompt": true
+  "skipAutoPermissionPrompt": true,
+  "autoMode": {
+    "environment": [
+      "### Org-wide",
+      "**Organization**: None configured",
+      "**Cloud provider(s)**: AWS (CDK in iac/aws, ECS Fargate, Lambda); self-hosted MiniPC k8s cluster (cluster/) for TiDB + Tailscale",
+      "**Repository visibility**: PUBLIC — github.com/shuntaka9576/shuntaka-dev (confirmed via gh)",
+      "**Internal sharing / snippet hosting**: None configured — treat public paste/gist services as outside the trust boundary",
+      "**Secrets management**: Repo uses layered secret-leak defenses (CLAUDE_CODE_SUBPROCESS_ENV_SCRUB env scrub, secretlint on prompt submit, secretlint+gitleaks pre-commit, block-noverify hook on git commit/push); app-level secrets handling in apps/mcp-server/src/secrets.ts; sensitive-looking files: .envrc, .secretlintrc.json, apps/web/.env.local",
+      "**Default / protected branches**: main (default); protected via rulesets `protect` and `protect-main` (both active) — PR base branch is always main per CLAUDE.md; release PRs (tagpr-labeled, CalVer tag) merged by a human only",
+      "**CI/CD deploy targets**: AWS CDK deploy (`bun run deploy`, iac/aws) targeting the project's own AWS account; ECS Fargate tidb-proxy; Lambda backend reaching TiDB via tidb-proxy.internal:13306",
+      "**Network posture**: None configured",
+      "**Host containment**: None configured — assume Claude Code runs on an ordinary developer machine with open internet; local dev reaches the self-hosted TiDB cluster over Tailscale (Tailnet)",
+      "**Source control**: shuntaka9576/shuntaka-dev (github.com) only, the trusted repo and its origin remote — this repo is PUBLIC, so only this repo's own work is fine to push; confidential/secret material is never cleared into it regardless of visibility",
+      "**Trusted internal domains**: shuntaka.me, shuntaka.dev, api.shuntaka.me, api.shuntaka.dev, mcp.shuntaka.me (usage-corroborated hosts from this project's transcripts)",
+      "**Trusted cloud buckets**: None configured",
+      "**Key internal services**: tidb.<tailnet> (TiDB over Tailscale, port 4000); tidb-proxy.internal:13306 (ECS Fargate TiDB proxy for production Lambda)",
+      "**Internal package registry**: None configured",
+      "**Sensitive data locations & audiences**: .envrc, .secretlintrc.json, apps/web/.env.local, apps/mcp-server/src/secrets.ts, and any .env* file (per .gitignore) — credentials/secrets; share only with audiences cleared at the [named+specifics] bar",
+      "**Data retention / declassification**: None configured",
+      "**Sensitive remote targets**: any namespace/host/container with `prod` or `production` as a whole word/segment — includes blog_prd (prod DB) and tidb-proxy.internal production path; dump:prd package.json script targets production data",
+      "**Protected deployment namespaces / environments**: blog_prd (production TiDB database); tidb-cluster namespace treated with care as it hosts both dev and prod databases",
+      "**Protected IaC scopes**: IAM, RBAC, networking, quota, and node-pool resources; iac/aws CDK stacks; anything tagged prod/production; cluster/manifests for the self-hosted k8s cluster",
+      "### User-specific",
+      "**Primary use of Claude Code**: software development (full-stack monorepo: Next.js web, Rust/Axum blog-api, MCP server, AWS CDK infra, self-hosted k8s/TiDB cluster)",
+      "**Trusted repo**: /Users/shuntaka/repos/github.com/shuntaka9576/shuntaka-dev/main and its origin remote (github.com:shuntaka9576/shuntaka-dev.git) — PUBLIC repo",
+      "**Org-specific CLIs**: None configured",
+      "Routine under apps/, iac/aws/, cluster/, docs/ prefixes of the trusted repo is this user's normal working scope"
+    ],
+    "soft_deny": [
+      "$defaults",
+      "Bash(mysql:* blog_prd)",
+      "Bash(kubectl:* -n tidb-cluster)",
+      "Bash(aws:* --profile *prd*)"
+    ]
+  }
 }
