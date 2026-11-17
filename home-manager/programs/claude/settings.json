@@ -27,7 +27,7 @@
     ],
     "defaultMode": "auto"
   },
-  "model": "opus",
+  "model": "opus[1m]",
   "enableAllProjectMcpServers": true,
   "hooks": {
     "Stop": [
@@ -81,10 +81,17 @@
   "tui": "fullscreen",
   "autoMemoryEnabled": false,
   "showThinkingSummaries": true,
+  "skipDangerousModePermissionPrompt": true,
   "theme": "dark",
   "agentPushNotifEnabled": true,
   "skipAutoPermissionPrompt": true,
   "autoMode": {
+    "soft_deny": [
+      "$defaults",
+      "Bash(mysql:* blog_prd)",
+      "Bash(kubectl:* -n tidb-cluster)",
+      "Bash(aws:* --profile *prd*)"
+    ],
     "environment": [
       "### Org-wide",
       "**Organization**: None configured",
@@ -111,12 +118,6 @@
       "**Trusted repo**: /Users/shuntaka/repos/github.com/shuntaka9576/shuntaka-dev/main and its origin remote (github.com:shuntaka9576/shuntaka-dev.git) — PUBLIC repo",
       "**Org-specific CLIs**: None configured",
       "Routine under apps/, iac/aws/, cluster/, docs/ prefixes of the trusted repo is this user's normal working scope"
-    ],
-    "soft_deny": [
-      "$defaults",
-      "Bash(mysql:* blog_prd)",
-      "Bash(kubectl:* -n tidb-cluster)",
-      "Bash(aws:* --profile *prd*)"
     ]
   }
 }
