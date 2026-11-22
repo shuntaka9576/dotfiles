@@ -106,7 +106,6 @@
       "windows-app"
       "aqua-voice"
       "codex-app"
-      "nani"
       "plamo-translate"
       "keycastr"
       "kiro-cli"
