@@ -32,11 +32,6 @@
         force_auto_update = true;
       }
       {
-        name = "productdevbook/tap";
-        clone_target = "https://github.com/productdevbook/homebrew-tap";
-        force_auto_update = true;
-      }
-      {
         name = "microsoft/apm";
         clone_target = "https://github.com/microsoft/homebrew-apm";
         force_auto_update = true;
@@ -44,6 +39,16 @@
       {
         name = "helvesec/rmux";
         clone_target = "https://github.com/Helvesec/homebrew-rmux";
+        force_auto_update = true;
+      }
+      {
+        name = "atomicjar/tap";
+        clone_target = "https://github.com/atomicjar/homebrew-tap";
+        force_auto_update = true;
+      }
+      {
+        name = "stablyai/orca";
+        clone_target = "https://github.com/stablyai/homebrew-orca";
         force_auto_update = true;
       }
     ];
@@ -63,6 +68,7 @@
       "htop"
       "actionlint"
       "libsixel"
+      "hermes-agent"
     ];
     casks = [
       "windsurf"
@@ -97,15 +103,30 @@
       "wezterm"
       "screen-studio"
       "termius"
+      "windows-app"
       "aqua-voice"
       "codex-app"
       "nani"
-      "google-gemini"
-      "productdevbook/tap/portkiller"
+      "plamo-translate"
+      "keycastr"
+      "kiro-cli"
+      "grok-build"
+      "google-drive"
+      "microsoft-teams"
+      "atomicjar/tap/testcontainers-desktop"
+      "shuntaka9576/tap/agentoast"
+      "stablyai/orca/orca"
     ];
     masApps = {
       "Kindle" = 302584613;
       "CompareMerge" = 478570084;
+      "Xcode" = 497799835;
+      "Developer" = 640199958;
+      "Keynote" = 409183694;
+      "Numbers" = 409203825;
+      "Pages" = 409201541;
+      "LINE" = 539883307;
+      "Brother iPrint&Scan" = 1193539993;
     };
   };
 

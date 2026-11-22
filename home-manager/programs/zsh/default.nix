@@ -62,10 +62,11 @@ in
         lazygit
       '';
       d = ''
-        print -n "agent [claude/codex] (default: claude): ";
+        print -n "agent [c]laude / code[x] / [o]pencode (default: c): ";
         read _agent_choice;
         case "$_agent_choice" in
-          co|codex) AGENT_CMD="co" ;;
+          x|codex) AGENT_CMD="co" ;;
+          o|opencode) AGENT_CMD="o" ;;
           *) AGENT_CMD="c" ;;
         esac
 

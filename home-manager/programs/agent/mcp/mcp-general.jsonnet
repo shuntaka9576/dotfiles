@@ -1,8 +1,9 @@
 local secrets = import 'secrets.jsonnet';
 local home = std.extVar('HOME');
-local nodepath = home + '/.local/share/mise/installs/node/24.12.0';
-local pythonpath = home + '/.local/share/mise/installs/python/3.13.7';
-local defaultPath = nodepath + '/bin:/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin';
+// mise の shim 経由にすることで node/python のバージョンを上げても追従する
+local shims = home + '/.local/share/mise/shims';
+local bin(name) = shims + '/' + name;
+local defaultPath = shims + ':/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin';
 
 {
   mcpServers: {
@@ -10,21 +11,21 @@ local defaultPath = nodepath + '/bin:/usr/local/bin:/opt/homebrew/bin:/usr/bin:/
       command: home + '/.local/share/mise/shims/mcp-ask-user',
       args: ['--stdio'],
       env: {
-        PATH: '/Users/shuntaka/.local/share/mise/installs/node/24.13.0/bin:/usr/bin:/bin',
+        PATH: defaultPath,
       },
     },
     // 'color-picker': {
-    //   command: nodepath + '/bin/node',
+    //   command: bin('node'),
     //   args: ['--experimental-strip-types', '/Users/shuntaka/repos/github.com/shuntaka9576/mcp-apps-practice/server.ts'],
     // },
     // "Framelink Figma MCP": {
-    //   "command": nodepath + '/bin/npx',
+    //   "command": bin('npx'),
     //   "args": ["-y", "figma-developer-mcp", "--figma-api-key=" + secrets.figma.token, "--stdio"]
     // },
     // "mcp_server_mysql": {
-    //   "command": nodepath + '/bin/node',
+    //   "command": bin('node'),
     //   "args": [
-    //     nodepath + '/bin/mcp-server-mysql'
+    //     bin('mcp-server-mysql')
     //   ],
     //   "env": {
     //     "MYSQL_HOST": secrets.mcp_server_mysql.host,
@@ -38,7 +39,7 @@ local defaultPath = nodepath + '/bin:/usr/local/bin:/opt/homebrew/bin:/usr/bin:/
     //   }
     // },
     // "mysql": {
-    //   "command": nodepath + '/bin/npx',
+    //   "command": bin('npx'),
     //   "args": [
     //     "-y",
     //     "@modelcontextprotocol/server-mysql"
@@ -52,18 +53,18 @@ local defaultPath = nodepath + '/bin:/usr/local/bin:/opt/homebrew/bin:/usr/bin:/
     //   }
     // },
     // 'aws-knowledge-mcp-server': {
-    //   command: nodepath + '/bin/npx',
+    //   command: bin('npx'),
     //   args: [
     //     '-y',
     //     'mcp-remote',
     //     'https://knowledge-mcp.global.api.aws',
     //   ],
     //   env: {
-    //     PATH: nodepath + '/bin:/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin',
+    //     PATH: defaultPath,
     //   },
     // },
     // mysql: {
-    //   command: pythonpath + '/bin/mysql_mcp_server',
+    //   command: bin('mysql_mcp_server'),
     //   args: [],
     //   env: {
     //     MYSQL_HOST: secrets.mcp_server_mysql.host,
@@ -74,11 +75,11 @@ local defaultPath = nodepath + '/bin:/usr/local/bin:/opt/homebrew/bin:/usr/bin:/
     //   },
     // },
     // playwright: {
-    //   command: nodepath + '/bin/npx',
+    //   command: bin('npx'),
     //   args: ['@playwright/mcp@latest'],
     // },
     // "awslabs.aws-documentation-mcp-server": {
-    //   command: pythonpath + '/bin/uvx',
+    //   command: bin('uvx'),
     //   args: ["awslabs.aws-documentation-mcp-server@latest"],
     //   env: {
     //     "FASTMCP_LOG_LEVEL": "ERROR"
@@ -118,7 +119,7 @@ local defaultPath = nodepath + '/bin:/usr/local/bin:/opt/homebrew/bin:/usr/bin:/
     //   },
     // },
     // 'aws.dp-mcp': {
-    //   command: pythonpath + '/bin/uvx',
+    //   command: bin('uvx'),
     //   args: [
     //     'awslabs.aws-dataprocessing-mcp-server@latest',
     //     '--allow-write',
@@ -128,15 +129,6 @@ local defaultPath = nodepath + '/bin:/usr/local/bin:/opt/homebrew/bin:/usr/bin:/
     //     AWS_PROFILE: 'iot-demo',
     //     AWS_REGION: 'ap-northeast-1',
     //   },
-    // },
-    // serena: {
-    //   command: pythonpath + '/bin/uvx',
-    //   args: [
-    //     '--from',
-    //     'git+https://github.com/oraios/serena',
-    //     'serena',
-    //     'start-mcp-server',
-    //   ],
     // },
   },
 }

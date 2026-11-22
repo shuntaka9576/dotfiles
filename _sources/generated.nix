@@ -19,27 +19,27 @@
   };
   anthropic-skills = {
     pname = "anthropic-skills";
-    version = "b29e7cf65e5cb78a5ac33d582270551bc74a14eb";
+    version = "e4bb5d960d87126ff3b3a8af1a104b7db67560ba";
     src = fetchFromGitHub {
       owner = "anthropics";
       repo = "skills";
-      rev = "b29e7cf65e5cb78a5ac33d582270551bc74a14eb";
+      rev = "e4bb5d960d87126ff3b3a8af1a104b7db67560ba";
       fetchSubmodules = false;
-      sha256 = "sha256-RH2B03gj4kzw1j5LORezgUZPPu8mW+mWb+Kl2U7WUbY=";
+      sha256 = "sha256-Gr9LatjawHHK9uKpoclWoiDHZ0NTpP3/4Pmeatl8p/Q=";
     };
-    date = "2026-07-24";
+    date = "2026-11-16";
   };
   gh-infra = {
     pname = "gh-infra";
-    version = "d3f874dd62d1f90cfb3f475673e0bfcb02be7ff6";
+    version = "e47a0106041433ab5e4e025bf59df0fff5a526d5";
     src = fetchFromGitHub {
       owner = "babarot";
       repo = "gh-infra";
-      rev = "d3f874dd62d1f90cfb3f475673e0bfcb02be7ff6";
+      rev = "e47a0106041433ab5e4e025bf59df0fff5a526d5";
       fetchSubmodules = false;
-      sha256 = "sha256-imn/EyIWkMs0lVpoLmM/3KYjRWZpNFy+L471oRV7NAs=";
+      sha256 = "sha256-b0typWimVILRfIV5lP6sBO6cbYWQJNneRLqSSwGUDH8=";
     };
-    date = "2026-05-20";
+    date = "2026-11-10";
   };
   google-workspace-cli = {
     pname = "google-workspace-cli";
@@ -74,26 +74,15 @@
       sha256 = "sha256-B0ilobUlp6UUXu6+lVqIHkbFnxVu33eXZFf+F7ODoQU=";
     };
   };
-  playwright-cli = {
-    pname = "playwright-cli";
-    version = "v0.1.17";
-    src = fetchFromGitHub {
-      owner = "microsoft";
-      repo = "playwright-cli";
-      rev = "v0.1.17";
-      fetchSubmodules = false;
-      sha256 = "sha256-tc/2Qck3mm6BqWTu2lvvfsM0/BHO/Z0ZvCdFZ7QQqKI=";
-    };
-  };
   worktrunk = {
     pname = "worktrunk";
-    version = "v0.69.2";
+    version = "v0.83.0";
     src = fetchFromGitHub {
       owner = "max-sixty";
       repo = "worktrunk";
-      rev = "v0.69.2";
+      rev = "v0.83.0";
       fetchSubmodules = false;
-      sha256 = "sha256-pxSl2gfXkgrE19CUB0TPlYdBElBn7aaY0xLU+Fu3E1Q=";
+      sha256 = "sha256-yAdnbLzbNtWvDbEK4vKSutKxO8fGXlShjaHleFtkzTg=";
     };
   };
   zenn-markdown-skill = {

@@ -103,7 +103,6 @@ Authenticate if needed:
 ### Manual Application Installation
 
 - Happy Hacking Keyboard.app
-- Testcontainers Desktop.app
 
 </details>
 
