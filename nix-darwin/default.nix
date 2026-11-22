@@ -46,6 +46,11 @@
         clone_target = "https://github.com/atomicjar/homebrew-tap";
         force_auto_update = true;
       }
+      {
+        name = "stablyai/orca";
+        clone_target = "https://github.com/stablyai/homebrew-orca";
+        force_auto_update = true;
+      }
     ];
     brews = [
       "shuntaka9576/tap/blocc"
@@ -63,6 +68,7 @@
       "htop"
       "actionlint"
       "libsixel"
+      "hermes-agent"
     ];
     casks = [
       "windsurf"
@@ -109,6 +115,7 @@
       "microsoft-teams"
       "atomicjar/tap/testcontainers-desktop"
       "shuntaka9576/tap/agentoast"
+      "stablyai/orca/orca"
     ];
     masApps = {
       "Kindle" = 302584613;
