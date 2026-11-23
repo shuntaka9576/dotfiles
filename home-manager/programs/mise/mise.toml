@@ -5,7 +5,7 @@ node.gpg_verify = false
 node = "26.13.0"
 python = "3.15.2"
 rust = { version = "latest", targets = "aarch64-apple-darwin", components = "rust-src,clippy,rust-analyzer,llvm-tools" }
-go = "1.27.3"
+go = "1.27.4"
 "npm:pnpm" = "12.21.0"
 bun = "1.4.4"
 yarn = "4.18.1"
