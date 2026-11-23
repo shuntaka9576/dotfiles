@@ -145,7 +145,8 @@ To reduce exposure to newly published compromised packages, a **3-day minimum re
 
 **GitHub Actions:**
 
-- Third-party actions in `.github/workflows/` are pinned to full commit SHAs with version comments (e.g., `# v23`) so Renovate can update them while preserving SHA pinning.
+- Workflow dependencies in `.github/workflows/` are locked via GitHub Actions workflow lockfiles (`.github/workflows/actions.lock`), recording exact commit SHAs, `owner_id`, `repo_id`, and transitive dependencies while keeping readable version tags in workflow files.
+- Regenerate or verify the lockfile with `gh actions-lock` (`github/gh-actions-lock`) / `gh actions-lock --verify-local`.
 
 ## Troubleshooting
 
