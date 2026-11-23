@@ -126,6 +126,27 @@ Clean up old Nix generations and free up disk space
 make gc
 ```
 
+## Design
+
+### Supply Chain Protection
+
+To reduce exposure to newly published compromised packages, a **3-day minimum release age** policy is enforced consistently across package managers and automated dependency updates:
+
+| Tool | Setting | Value | Config |
+| --- | --- | --- | --- |
+| Renovate | `minimumReleaseAge` | `"3 days"` | `renovate.json` |
+| Bun | `minimumReleaseAge` | `259200` (3 days in seconds) | `home-manager/programs/bun/bunfig.toml` |
+| pnpm | `minimum-release-age` | `4320` (3 days in minutes) | `home-manager/programs/pnpm/rc` |
+
+**Exceptions (0-day / excluded from the age gate):**
+
+- Trusted core tooling and fast-moving AI coding CLIs are excluded so updates apply immediately without being blocked by the 3-day window (e.g., `pnpm`, `@anthropic-ai/claude-code`, `@openai/codex`, `@opencode/cli`, `@google/gemini-cli`, `@modelcontextprotocol/sdk`, `aws-cdk`).
+- Keep exclusion lists in sync between `renovate.json` (`0 days` immediate updates) and `bunfig.toml` / `pnpm/rc`, because `mise` installs global npm packages via the Bun backend (`npm.bun = true`).
+
+**GitHub Actions:**
+
+- Third-party actions in `.github/workflows/` are pinned to full commit SHAs with version comments (e.g., `# v23`) so Renovate can update them while preserving SHA pinning.
+
 ## Troubleshooting
 
 ### Renovate Debugging
