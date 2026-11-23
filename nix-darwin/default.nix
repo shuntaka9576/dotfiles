@@ -116,6 +116,9 @@
       "atomicjar/tap/testcontainers-desktop"
       "shuntaka9576/tap/agentoast"
       "stablyai/orca/orca"
+      "antigravity"
+      "antigravity-cli"
+      "antigravity-ide"
     ];
     masApps = {
       "Kindle" = 302584613;
