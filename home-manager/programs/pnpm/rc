@@ -9,4 +9,5 @@ minimum-release-age-exclude[]=@google/gemini-cli
 minimum-release-age-exclude[]=@google/gemini-cli-core
 minimum-release-age-exclude[]=@modelcontextprotocol/sdk
 minimum-release-age-exclude[]=@openai/codex
+minimum-release-age-exclude[]=@opencode/cli
 minimum-release-age-exclude[]=@anthropic-ai/claude-code
