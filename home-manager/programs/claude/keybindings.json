@@ -252,6 +252,12 @@
         "i": "plugin:install",
         "f": "plugin:favorite"
       }
+    },
+    {
+      "context": "Chat",
+      "bindings": {
+        "ctrl+alt+g": "command:orca-agent-view"
+      }
     }
   ]
 }
