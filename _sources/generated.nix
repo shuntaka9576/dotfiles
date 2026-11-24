@@ -31,15 +31,15 @@
   };
   gh-infra = {
     pname = "gh-infra";
-    version = "e47a0106041433ab5e4e025bf59df0fff5a526d5";
+    version = "054afa7f3560add889931b5976587dd175f56242";
     src = fetchFromGitHub {
       owner = "babarot";
       repo = "gh-infra";
-      rev = "e47a0106041433ab5e4e025bf59df0fff5a526d5";
+      rev = "054afa7f3560add889931b5976587dd175f56242";
       fetchSubmodules = false;
-      sha256 = "sha256-b0typWimVILRfIV5lP6sBO6cbYWQJNneRLqSSwGUDH8=";
+      sha256 = "sha256-kQ9NCcr/BG5B6YEtF1Pr4dZMVB5aEvcfT4wD83KVHt0=";
     };
-    date = "2026-11-10";
+    date = "2026-11-22";
   };
   google-workspace-cli = {
     pname = "google-workspace-cli";
